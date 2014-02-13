@@ -1,0 +1,127 @@
+% # vim:set sw=4 ts=4 sts=4 ft=html.epl expandtab:
+<div class="messages">
+% if (defined(flash('short'))) {
+    <div class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <strong><%= flash('filename') %></strong>
+        <ul>
+            <li><%=l 'view-link'%><%= link_to url_for('/')->to_abs.flash('short')       => begin %><%= url_for('/')->to_abs.flash('short') %><%= end %></li>
+            <li><%=l 'download-link' %> <%= link_to url_for('/')->to_abs.flash('short').'?dl' => begin %><%= url_for('/')->to_abs.flash('short').'?dl' %><%= end %></li>
+        </ul>
+    </div>
+% }
+% if (defined(flash('msg'))) {
+    <div class="alert alert-danger">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <strong><%=l 'some-bad' %></strong><br>
+        <%= flash('filename') %> <%= flash('msg') %>
+    </div>
+% }
+</div>
+
+<noscript>
+<form class="form" role="form" method="POST" action="<%== url_for 'add' %>" enctype="multipart/form-data">
+    <div class="form-group form-inline">
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" name="first-view"> <%=l 'delete-first' %>
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" name="delete-day"> <%=l 'delete-day' %>
+            </label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="lutim-file"><%=l 'upload_image' %></label>
+        <input type="file" name="file" id="lutim-file" required></input>
+        <p class="help-block"><%=l 'image-only' %></p>
+    </div>
+    <%= submit_button l('go'), class => 'btn btn-default btn-primary', id => 'submitbutton' %>
+</form>
+</noscript>
+
+<!-- D&D Zone-->
+<div class="jsonly">
+    <div class="form-group form-inline">
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" id="first-view"> <%=l 'delete-first' %>
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" id="delete-day"> <%=l 'delete-day' %>
+            </label>
+        </div>
+    </div>
+    <div id="drag-and-drop-zone" class="uploader">
+        <div><%=l 'drag-n-drop' %></div>
+        <div class="or"><%=l 'or' %></div>
+        <div class="browser">
+            <label>
+                <span><%=l 'file-browser' %></span>
+                <input type="file" name="files[]" multiple="multiple" title='Click to add Files'>
+            </label>
+        </div>
+    </div>
+</div>
+<!-- /D&D Zone -->
+
+%= javascript begin
+    function link(url, dl) {
+        if (dl) {
+            url = url+'?dl';
+        }
+        return '<a href="<%== url_for('index')->to_abs() %>'+url+'"><%== url_for('index')->to_abs() %>'+url+'</a>';
+    }
+    function message(success, msg) {
+        if(success) {
+            return '<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong>'
+                +msg.filename
+                +'</strong><ul><li>view link '
+                +link(msg.short, false)
+                +'</a></li><li>download link '
+                +link(msg.short, true)
+                +'</li></div>';
+        } else {
+            return '<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong><%=l 'some-bad' %></strong><br>'
+                +msg.filename
+                +' '
+                +msg.msg
+                +'</div>';
+        }
+    }
+    $('document').ready(function() {
+        $('.jsonly').show();
+        $('#drag-and-drop-zone').dmUploader({
+        url: '<%== url_for('add') %>',
+            dataType: 'json',
+            allowedTypes: 'image/*',
+            extraData: {
+                'format':     'json',
+                'first-view': $("#first-view").val(),
+                'delete-day': $("#delete-day").val()
+            },
+            /*onBeforeUpload: function(id){
+                $.danidemo.updateFileStatus(id, 'default', 'Uploading...');
+            },
+            onNewFile: function(id, file){
+                $.danidemo.addFile('#demo-files', id, file);
+            },
+            onUploadProgress: function(id, percent){
+                var percentStr = percent + '%';
+
+                $.danidemo.updateFileProgress(id, percentStr);
+            },*/
+            onUploadSuccess: function(id, data){
+            console.dir(data.msg);
+                $(".messages").append(message(data.success, data.msg));
+            },
+            onUploadError: function(id, message){
+                $(".messages").append(message(false, ''));
+            }
+        });
+    });
+% end

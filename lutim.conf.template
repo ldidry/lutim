@@ -1,0 +1,14 @@
+# vim:set sw=4 ts=4 sts=4 ft=perl expandtab:
+{
+    hypnotoad => {
+        listen => ['http://127.0.0.1:8080'],
+        user   => 'www-data',
+        group  => 'www-data'
+    },
+    contact       => 'John Doe, admin[at]example.com',
+    secrets       => ['fdjsofjoihrei'], # please provide a random string
+    piwik_img     => 'https://piwik.example.org/piwik.php?idsite=1&rec=1', #optional, only the piwik image tracker is allowed, no javascript
+    length        => 8, # optional
+    provis_step   => 5, # optional
+    provisionning => 100 # optional
+};

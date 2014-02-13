@@ -1,5 +1,80 @@
+% # vim:set sw=4 ts=4 sts=4 ft=html.epl expandtab:
+% use Mojo::Util qw(url_escape);
+% my $twitter_url = 'https://twitter.com/share';
+% my $url    = url_for('/')->to_abs();
+% $twitter_url .= '?url='.url_escape("$url")
+%              .'&via=framasky'
+%              .'&text=Check out this %23LUTIm instance! '.$url;
 <!DOCTYPE html>
 <html>
-  <head><title><%= title %></title></head>
-  <body><%= content %></body>
+    <head>
+        <title>LUTIm</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="utf-8" />
+        %= stylesheet 'css/bootstrap.min.css', media => 'screen'
+        %= stylesheet 'css/fontello.css'
+        %= stylesheet 'css/uploader.css'
+        %= stylesheet begin
+            body {
+                padding-top: 40px;
+                padding-bottom: 40px;
+                background-color: #eee;
+            }
+
+            .container {
+                padding: 15px;
+                margin: 0 auto;
+            }
+
+            .jsonly {
+                display: none;
+            }
+        % end
+        %= javascript 'js/jquery-2.1.0.min.js'
+        %= javascript 'js/bootstrap.min.js'
+        %= javascript 'js/dmuploader.min.js'
+        %= javascript 'js/modernizr.custom.min.js'
+    </head>
+    <body>
+        <div class="container">
+            <h1>Let's Upload That Image!</h1>
+            <p>
+                &copy; 2014 <%= link_to 'http://www.fiat-tux.fr' => begin %>Luc Didry<% end %> — 
+                <%=l 'license' %> <%= link_to 'https://www.gnu.org/licenses/agpl-3.0.html' => begin %>AGPL<% end %> — 
+                <span class="jsonly"><a data-toggle="modal" href="#myModal"><%=l 'informations' %></a> — </span>
+                <%= link_to 'https://github.com/ldidry/lutim' => (title => l 'fork-me') => begin %><i class="lead icon icon-github-circled"></i><% end %> 
+                <%= link_to $twitter_url                      => (title => l 'share-twitter')   => begin %><i class="lead icon icon-touiteur"></i><% end %> 
+                <%= link_to 'https://flattr.com/submit/auto?user_id=_SKy_&url='.$url.'&title=LUTIm&category=software' => (title => 'Flattr this') => begin %><i class="lead icon icon-flattr"></i><% end %> 
+                <%= link_to 'bitcoin:1K3n4MXNRSMHk28oTfXEvDunWFthePvd8v?label=lutim' => (title => 'Give Bitcoins') => begin %><i class="lead icon icon-bitcoin"></i><% end %>
+            </p>
+            <%= content %>
+            <div class="modal fade bs-modal-lg"  id="myModal" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h3 class="modal-title">LUTIm</h3>
+                        </div>
+                        <div class="modal-body">
+                            <%==l 'informations-body', url_for('index')->to_abs(), config('contact') %>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+            <noscript>
+                <div class="modal-header">
+                    <h3 class="modal-title">LUTIm</h3>
+                </div>
+                <div class="modal-body">
+                    <%==l 'informations-body', url_for('index')->to_abs(), config('contact') %>
+                </div>
+            </noscript>
+        </div>
+% if (defined(config('piwik_img'))) {
+        <img src="<%== config('piwik_img') %>" style="border:0" alt="" />
+% }
+    </body>
 </html>
