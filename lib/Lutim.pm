@@ -202,6 +202,7 @@ sub startup {
     $r->get('/:short' => sub {
         my $c     = shift;
         my $short = $c->param('short');
+        my $touit = $c->param('t');
         my $dl    = (defined($c->param('dl'))) ? 'attachment' : 'inline';
 
         my @images = LutimModel::Lutim->select('WHERE short = ? AND ENABLED = 1 AND path IS NOT NULL', $short);
@@ -222,7 +223,21 @@ sub startup {
                 );
                 return $c->redirect_to('/');
             }
-            if($c->render_file($images[0]->filename, $images[0]->path, $images[0]->mediatype, $dl) != 500) {
+
+            my $test;
+            if (defined($touit)) {
+                $test = 1;
+                $c->render(
+                    template => 'twitter',
+                    layout   => undef,
+                    short    => $images[0]->short,
+                    filename => $images[0]->filename
+                );
+            } else {
+                $test = $c->render_file($images[0]->filename, $images[0]->path, $images[0]->mediatype, $dl);
+            }
+
+            if ($test != 500) {
                 # Update counter and check provisionning
                 $c->on(finish => sub {
                     # Log access

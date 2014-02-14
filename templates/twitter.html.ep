@@ -1,0 +1,17 @@
+% # vim:set sw=4 ts=4 sts=4 ft=html.epl expandtab:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>LUTIm</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="utf-8" />
+        <meta name="twitter:card" content="photo">
+        <meta name="twitter:site" content="@framasky">
+        <meta name="twitter:image:src" content="<%= url_for('/')->to_abs().$short %>">
+    </head>
+    <body>
+        <img src="<%= url_for('/').$short %>" alt="<%= $filename %>">
+    </body>
+</html>
+
+

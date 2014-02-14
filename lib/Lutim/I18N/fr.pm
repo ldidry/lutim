@@ -31,6 +31,7 @@ our %Lexicon = (
     'informations-body' => $inf_body,
     'view-link'         => 'Lien d\'affichage :',
     'download-link'     => 'Lien de téléchargement :',
+    'twitter-link'      => 'Lien pour mettre dans un tweet :',
     'some-bad'          => 'Un problème est survenu',
     'delete-first'      => 'Supprimer au premier accès ?',
     'delete-day'        => 'Supprimer après 24 heures ?',

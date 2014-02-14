@@ -7,6 +7,7 @@
         <ul>
             <li><%=l 'view-link'%><%= link_to url_for('/')->to_abs.flash('short')       => begin %><%= url_for('/')->to_abs.flash('short') %><%= end %></li>
             <li><%=l 'download-link' %> <%= link_to url_for('/')->to_abs.flash('short').'?dl' => begin %><%= url_for('/')->to_abs.flash('short').'?dl' %><%= end %></li>
+            <li><%=l 'twitter-link' %> <%= link_to url_for('/')->to_abs.flash('short').'?t' => begin %><%= url_for('/')->to_abs.flash('short').'?t' %><%= end %></li>
         </ul>
     </div>
 % }
@@ -71,8 +72,8 @@
 
 %= javascript begin
     function link(url, dl) {
-        if (dl) {
-            url = url+'?dl';
+        if (dl !== '') {
+            url = url+'?'+dl;
         }
         return '<a href="<%== url_for('index')->to_abs() %>'+url+'"><%== url_for('index')->to_abs() %>'+url+'</a>';
     }
@@ -80,10 +81,12 @@
         if(success) {
             return '<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong>'
                 +msg.filename
-                +'</strong><ul><li>view link '
-                +link(msg.short, false)
-                +'</a></li><li>download link '
-                +link(msg.short, true)
+                +'</strong><ul><li><%=l 'view-link'%>'
+                +link(msg.short, '')
+                +'</a></li><li><%=l 'download-link' %>'
+                +link(msg.short, 'dl')
+                +'</a></li><li><%=l 'twitter-link' %>'
+                +link(msg.short, 't')
                 +'</li></div>';
         } else {
             return '<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong><%=l 'some-bad' %></strong><br>'

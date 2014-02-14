@@ -24,13 +24,14 @@ my $inf_body = <<EOF;
 EOF
 
 our %Lexicon = (
-    'license'        => 'License:',
-    'fork-me'        => 'Fork me on Github !',
-    'share-twitter'  => 'Share on Twitter',
-    'informations'   => 'Informations',
+    'license'           => 'License:',
+    'fork-me'           => 'Fork me on Github !',
+    'share-twitter'     => 'Share on Twitter',
+    'informations'      => 'Informations',
     'informations-body' => $inf_body,
     'view-link'         => 'View link:',
     'download-link'     => 'Download link:',
+    'twitter-link'      => 'Link for put in a tweet:',
     'some-bad'          => 'Something bad happened',
     'delete-first'      => 'Delete at first view?',
     'delete-day'        => 'Delete after 24 hours?',
