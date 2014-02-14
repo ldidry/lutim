@@ -4,7 +4,7 @@
 % my $url    = url_for('/')->to_abs();
 % $twitter_url .= '?url='.url_escape("$url")
 %              .'&via=framasky'
-%              .'&text=Check out this %23LUTIm instance! '.$url;
+%              .'&text=Check out this %23LUTIm instance! ';
 <!DOCTYPE html>
 <html>
     <head>
