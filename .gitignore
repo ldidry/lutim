@@ -1,5 +1,5 @@
-log/*
 lutim.conf
 lutim.db
+script/hypnotoad.pid
 local/*
 files/*
