@@ -5,6 +5,7 @@ use MIME::Types 'by_suffix';
 use Mojo::Util qw(quote);
 use Mojo::JSON;;
 use Digest::file qw(digest_file_hex);
+use Text::Unidecode;
 
 # This method will run once at server start
 sub startup {
@@ -124,7 +125,7 @@ sub startup {
                     my @records = LutimModel::Lutim->select('WHERE path IS NULL LIMIT 1');
                     if (scalar(@records)) {
                         # Save file and create record
-                        my $filename = $upload->filename;
+                        my $filename = unidecode($upload->filename);
                         my $ext      = ($filename =~ m/([^.]+)$/)[0];
                         my $path     = 'files/'.$records[0]->short.'.'.$ext;
                         $upload->move_to($path);
