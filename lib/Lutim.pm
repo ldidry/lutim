@@ -49,6 +49,14 @@ sub startup {
     );
 
     $self->helper(
+        ip => sub {
+            my $c  = shift;
+            my @ip = ($c->tx->remote_address eq '127.0.0.1') ? $c->tx->req->{content}->{headers}->{headers}->{'x-forwarded-for'}->[0]->[0] : ($c->tx->remote_address);
+            return join(',', @ip);
+        }
+    );
+
+    $self->helper(
         provisionning => sub {
             my $c = shift;
 
@@ -115,6 +123,8 @@ sub startup {
 
             my ($mediatype, $encoding) = by_suffix $upload->filename;
 
+            my $ip = $c->ip;
+
             my ($msg, $short);
             # Check file type
             if (index($mediatype, 'image') >= 0) {
@@ -138,11 +148,11 @@ sub startup {
                             delete_at_day        => ($c->param('delete-day')) ? 1 : 0,
                             delete_at_first_view => ($c->param('first-view')) ? 1 : 0,
                             created_at           => time(),
-                            created_by           => $c->tx->remote_address
+                            created_by           => $ip
                         );
 
                         # Log image creation
-                        $c->app->log->info('[CREATION] '.$c->tx->remote_address.' pushed '.$filename.' (path: '.$path.')');
+                        $c->app->log->info('[CREATION] '.$ip.' pushed '.$filename.' (path: '.$path.')');
 
                         # Give url to user
                         $short = $records[0]->short;
@@ -195,11 +205,12 @@ sub startup {
         my $dl    = (defined($c->param('dl'))) ? 'attachment' : 'inline';
 
         my @images = LutimModel::Lutim->select('WHERE short = ? AND ENABLED = 1 AND path IS NOT NULL', $short);
+        my $ip     = $c->ip;
 
         if (scalar(@images)) {
             if($images[0]->delete_at_day && $images[0]->created_at + 86400 <= time()) {
                 # Log deletion
-                $c->app->log->info('[DELETION] '.$c->tx->remote_address.' tried to view '.$images[0]->filename.' but it has been removed by expiration (path: '.$images[0]->path.')');
+                $c->app->log->info('[DELETION] '.$ip.' tried to view '.$images[0]->filename.' but it has been removed by expiration (path: '.$images[0]->path.')');
 
                 # Delete image
                 unlink $images[0]->path();
@@ -215,19 +226,19 @@ sub startup {
                 # Update counter and check provisionning
                 $c->on(finish => sub {
                     # Log access
-                    $c->app->log->info('[VIEW] '.$c->tx->remote_address.' viewed '.$images[0]->filename.' (path: '.$images[0]->path.')');
+                    $c->app->log->info('[VIEW] '.$ip.' viewed '.$images[0]->filename.' (path: '.$images[0]->path.')');
 
                     # Update record
                     my $counter = $images[0]->counter + 1;
                     $images[0]->update(counter => $counter);
 
                     $images[0]->update(last_access_at => time());
-                    $images[0]->update(last_access_by => $c->tx->remote_address);
+                    $images[0]->update(last_access_by => $ip);
 
                     # Delete image if needed
                     if ($images[0]->delete_at_first_view) {
                         # Log deletion
-                        $c->app->log->info('[DELETION] '.$c->tx->remote_address.' made '.$images[0]->filename.' removed (path: '.$images[0]->path.')');
+                        $c->app->log->info('[DELETION] '.$ip.' made '.$images[0]->filename.' removed (path: '.$images[0]->path.')');
 
                         # Delete image
                         unlink $images[0]->path();
@@ -242,7 +253,7 @@ sub startup {
 
             if (scalar(@images)) {
                 # Log access try
-                $c->app->log->info('[NOT FOUND] '.$c->tx->remote_address.' tried to view '.$short.' but it does\'nt exist.');
+                $c->app->log->info('[NOT FOUND] '.$ip.' tried to view '.$short.' but it does\'nt exist.');
 
                 # Warn user
                 $c->flash(
