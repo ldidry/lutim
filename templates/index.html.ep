@@ -93,35 +93,26 @@
                 +'</div>';
         }
     }
-    $('document').ready(function() {
-        $('.jsonly').show();
+    function bindddz(firstview, deleteday) {
         $('#drag-and-drop-zone').dmUploader({
-        url: '<%== url_for('add') %>',
+            url: '<%== url_for('add') %>',
             dataType: 'json',
             allowedTypes: 'image/*',
-            extraData: {
-                'format':     'json',
-                'first-view': $("#first-view").val(),
-                'delete-day': $("#delete-day").val()
-            },
-            /*onBeforeUpload: function(id){
-                $.danidemo.updateFileStatus(id, 'default', 'Uploading...');
-            },
-            onNewFile: function(id, file){
-                $.danidemo.addFile('#demo-files', id, file);
-            },
-            onUploadProgress: function(id, percent){
-                var percentStr = percent + '%';
-
-                $.danidemo.updateFileProgress(id, percentStr);
-            },*/
             onUploadSuccess: function(id, data){
-            console.dir(data.msg);
                 $(".messages").append(message(data.success, data.msg));
             },
             onUploadError: function(id, message){
                 $(".messages").append(message(false, ''));
             }
         });
+    };
+
+    $('document').ready(function() {
+        $('.jsonly').show();
+
+        var firstview = ($("#first-view").prop('checked')) ? 1 : 0;
+        var deleteday = ($("#delete-day").prop('checked')) ? 1 : 0;
+
+        bindddz(firstview, deleteday);
     });
 % end

@@ -195,9 +195,12 @@
     fd.append(widget.settings.fileName, file);
 
     // Append extra Form Data
-    $.each(widget.settings.extraData, function(exKey, exVal){
-      fd.append(exKey, exVal);
-    });
+    //$.each(widget.settings.extraData, function(exKey, exVal){
+      //fd.append(exKey, exVal);
+    //});
+    fd.append('format', 'json');
+    fd.append('first-view', ($("#first-view").prop('checked')) ? 1 : 0);
+    fd.append('delete-day', ($("#delete-day").prop('checked')) ? 1 : 0);
 
     widget.settings.onBeforeUpload.call(widget.element, widget.queuePos);
 
