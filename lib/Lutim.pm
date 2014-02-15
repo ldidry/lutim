@@ -51,7 +51,7 @@ sub startup {
     $self->helper(
         ip => sub {
             my $c  = shift;
-            my @ip = ($c->tx->remote_address eq '127.0.0.1') ? $c->tx->req->{content}->{headers}->{headers}->{'x-forwarded-for'}->[0]->[0] : ($c->tx->remote_address);
+            my @ip = ($c->tx->remote_address eq '127.0.0.1' && $c->app->mode eq 'production') ? $c->tx->req->{content}->{headers}->{headers}->{'x-forwarded-for'}->[0]->[0] : ($c->tx->remote_address);
             return join(',', @ip);
         }
     );
