@@ -6,12 +6,12 @@ my $inf_body = <<EOF;
 <p>LUTIm est un service gratuit et anonyme d’hébergement d’images. Il s’agit aussi du nom du logiciel (libre) qui fournit ce service.</p>
 <p>Les images déposées sur LUTIm peuvent être stockées indéfiniment, ou s’effacer dès le premier affichage ou au bout de 24h.</p>
 <h4>Comment ça marche ?</h4>
-<p>Faites glisser des images dans la zone prévue à cette effet ou sélectionnez un fichier de façon classique et LUTIm vous fournira deux URLs en retour. Une pour afficher l’image, l’autre pour la télécharger directement.</p>
-<p>Vous pouvez, de façon optionnelle, demander à ce que la ou les images déposées sur LUTIm soient supprimées après leur premier affichage (ou téléchargement) ou au bout de 24 heures.</p>
+<p>Faites glisser des images dans la zone prévue à cet effet ou sélectionnez un fichier de façon classique et LUTIm vous fournira deux URLs en retour. Une pour afficher l’image, l’autre pour la télécharger directement.</p>
+<p>Vous pouvez, de façon facultative, demander à ce que la ou les images déposées sur LUTIm soient supprimées après leur premier affichage (ou téléchargement) ou au bout de 24 heures.</p>
 <h4>C’est vraiment gratuit ?</h4>
 <p>Oui, ça l’est ! Par contre, si vous avez envie de soutenir le développeur, vous pouvez faire un microdon avec <a href="https://flattr.com/submit/auto?user_id=_SKy_&url=[_1]&title=LUTIm&category=software">Flattr</a> ou en <a href="bitcoin:1K3n4MXNRSMHk28oTfXEvDunWFthePvd8v?label=lutim">BitCoin</a>.</p>
 <h4>C’est vraiment anonyme ?</h4>
-<p>Oui, ça l’est ! Par contre, pour des raisons légales, votre adresse IP sera enregistrée lorsque vous enverrez ou consulterez une image.Ne vous affolez pas, c’est de toute façon le cas sur tous les sites sur lesquels vous surfez !</p>
+<p>Oui, ça l’est ! Par contre, pour des raisons légales, votre adresse IP sera enregistrée lorsque vous enverrez ou consulterez une image. Ne vous affolez pas, c’est de toute façon le cas sur tous les sites sur lesquels vous surfez !</p>
 <p>Les journaux systèmes contenant l’adresse IP des visiteurs d’une image sont conservés un an, tandis que l’IP de la personne ayant déposé l’image et celle du dernier visiteur de l’image sont stockées de manière définitive.</p>
 <p>Si les fichiers sont bien supprimés si vous en avez exprimé le choix, leur empreinte SHA512 est toutefois conservée.</p>
 <h4>Comment peut-on faire pour signaler une image ?</h4>
