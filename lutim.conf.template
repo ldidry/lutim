@@ -10,5 +10,6 @@
     piwik_img     => 'https://piwik.example.org/piwik.php?idsite=1&rec=1', #optional, only the piwik image tracker is allowed, no javascript
     length        => 8, # optional
     provis_step   => 5, # optional
-    provisionning => 100 # optional
+    provisionning => 100, # optional
+    tweet_card_via => '@framasky' # optional
 };
