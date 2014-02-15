@@ -31,12 +31,42 @@ cp lutim.conf.template lutim.conf
 carton exec hypnotoad script/lutim
 ```
 
-Yup, that's all, it will listen at "http://127.0.0.1:8080".
+Yup, that's all (Mojolicious magic), it will listen at "http://127.0.0.1:8080".
 
 For more options (interfaces, user, etc.), change the configuration in `lutim.conf` (have a look at http://mojolicio.us/perldoc/Mojo/Server/Hypnotoad#SETTINGS for the available options).
 
 ##Reverse proxy
 You can use a reverse proxy like Nginx or Varnish (or Apache with the mod\_proxy module). The web is full of tutos.
+
+Here's a valid *Varnish* configuration:
+```
+backend lutim {
+    .host = "127.0.0.1";
+    .port = "8080";
+}
+sub vcl_recv {
+    if (req.restarts == 0) {
+        set req.http.X-Forwarded-For = client.ip;
+    }
+    if (req.http.host == "lut.im") {
+        set req.backend = lutim;
+        return(pass);
+    }
+}
+```
+
+##Shutter integration
+See where Shutter (<http://en.wikipedia.org/wiki/Shutter_%28software%29>) keeps its plugins on your computer.
+On my computer, it's in `/usr/share/shutter/resources/system/upload_plugins/upload`.
+
+Then:
+```
+sudo cp utilities/Shutter.pm /usr/share/shutter/resources/system/upload_plugins/upload/Lutim.pm
+```
+
+And restart Shutter if it was running.
+
+Of course, this plugin is configured for the official instance of LUTIm (<http://lut.im>), feel free to edit it for your own instance.
 
 ##Internationalization
 LUTIm comes with english and french languages. It will choose the language to display from the browser's settings.
