@@ -12,12 +12,12 @@ my $inf_body = <<EOF;
 <p>Yes, it is! On the other side, if you want to support the developer, you can do it via <a href="https://flattr.com/submit/auto?user_id=_SKy_&url=[_1]&title=LUTIm&category=software">Flattr</a> or with <a href="bitcoin:1K3n4MXNRSMHk28oTfXEvDunWFthePvd8v?label=lutim">BitCoin</a>.</p>
 <h4>Is it really anonymous?</h4>
 <p>Yes, it is! On the other side, for legal reasons, your IP address will be stored when you send or view an image. Don't panic, it is the case of all sites on which you go!</p>
-<p>The log files containing the IP address of image viewers are retained for one year while the IP addresse of the image's sender, as the address of the last viewer are permanently retained.</p>
+<p>The log files containing the IP address of image viewers are retained for one year while the IP address of the image's sender, as the address of the last viewer are permanently retained.</p>
 <p>If the files are deleted if you ask it while posting it, their SHA512 footprint are retained.</p>
 <h4>How to report an image?</h4>
 <p>Please contact the administrator: [_2]</p>
 <h4>How do you pronounce LUTIm?</h4>
-<p>Juste like you pronounce the french word <a href="https://fr.wikipedia.org/wiki/Lutin">lutin</a> (/ly.tɛ̃/).</p>
+<p>Juste like you pronounce the French word <a href="https://fr.wikipedia.org/wiki/Lutin">lutin</a> (/ly.tɛ̃/).</p>
 <h4>What about the software which provides the service?</h4>
 <p>The LUTIm software is a <a href="http://en.wikipedia.org/wiki/Free_software">free software</a>, which allows you to download and install it on you own server. Have a look at the <a href="https://www.gnu.org/licenses/agpl-3.0.html">AGPL</a> to see what you can do.</p>
 <p>For more details, see the <a href="https://github.com/ldidry/lutim">Github</a> page of the project.</p>
