@@ -11,5 +11,6 @@
     length        => 8, # optional
     provis_step   => 5, # optional
     provisionning => 100, # optional
+    hosted_by     => 'My super hoster <img src="http://hoster.example.com" alt="Hoster logo">', # optional
     tweet_card_via => '@framasky' # optional
 };

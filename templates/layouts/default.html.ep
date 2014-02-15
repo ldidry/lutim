@@ -36,16 +36,25 @@
     </head>
     <body>
         <div class="container">
-            <h1>Let's Upload That Image!</h1>
-            <p>
-                &copy; 2014 <%= link_to 'http://www.fiat-tux.fr' => begin %>Luc Didry<% end %> — 
-                <%=l 'license' %> <%= link_to 'https://www.gnu.org/licenses/agpl-3.0.html' => begin %>AGPL<% end %> — 
-                <span class="jsonly"><a data-toggle="modal" href="#myModal"><%=l 'informations' %></a> — </span>
-                <%= link_to 'https://github.com/ldidry/lutim' => (title => l 'fork-me') => begin %><i class="lead icon icon-github-circled"></i><% end %> 
-                <%= link_to $twitter_url                      => (title => l 'share-twitter')   => begin %><i class="lead icon icon-touiteur"></i><% end %> 
-                <%= link_to 'https://flattr.com/submit/auto?user_id=_SKy_&url='.$url.'&title=LUTIm&category=software' => (title => 'Flattr this') => begin %><i class="lead icon icon-flattr"></i><% end %> 
-                <%= link_to 'bitcoin:1K3n4MXNRSMHk28oTfXEvDunWFthePvd8v?label=lutim' => (title => 'Give Bitcoins') => begin %><i class="lead icon icon-bitcoin"></i><% end %>
-            </p>
+            <div>
+% if (defined(config('hosted_by'))) {
+                <div class="pull-right">
+                    <%== config('hosted_by') %>
+                </div>
+% }
+                <div>
+                    <h1>Let's Upload That Image!</h1>
+                    <p>
+                        &copy; 2014 <%= link_to 'http://www.fiat-tux.fr' => begin %>Luc Didry<% end %> — 
+                        <%=l 'license' %> <%= link_to 'https://www.gnu.org/licenses/agpl-3.0.html' => begin %>AGPL<% end %> — 
+                        <span class="jsonly"><a data-toggle="modal" href="#myModal"><%=l 'informations' %></a> — </span>
+                        <%= link_to 'https://github.com/ldidry/lutim' => (title => l 'fork-me') => begin %><i class="lead icon icon-github-circled"></i><% end %> 
+                        <%= link_to $twitter_url                      => (title => l 'share-twitter')   => begin %><i class="lead icon icon-touiteur"></i><% end %> 
+                        <%= link_to 'https://flattr.com/submit/auto?user_id=_SKy_&url='.$url.'&title=LUTIm&category=software' => (title => 'Flattr this') => begin %><i class="lead icon icon-flattr"></i><% end %> 
+                        <%= link_to 'bitcoin:1K3n4MXNRSMHk28oTfXEvDunWFthePvd8v?label=lutim' => (title => 'Give Bitcoins') => begin %><i class="lead icon icon-bitcoin"></i><% end %>
+                    </p>
+                </div>
+            </div>
             <%= content %>
             <div class="modal fade bs-modal-lg"  id="myModal" role="dialog">
                 <div class="modal-dialog">
