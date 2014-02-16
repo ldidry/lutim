@@ -11,6 +11,7 @@
         <title>LUTIm</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta charset="utf-8" />
+        <link rel="icon" type="image/png" href="<%= url_for('/') %>img/favicon.png">
         %= stylesheet 'css/bootstrap.min.css', media => 'screen'
         %= stylesheet 'css/fontello.css'
         %= stylesheet 'css/uploader.css'
