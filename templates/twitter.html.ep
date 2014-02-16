@@ -5,12 +5,12 @@
         <title>LUTIm</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta charset="utf-8" />
-        <link rel="icon" type="image/png" href="<%= url_for('/') %>img/favicon.png">
+        <link rel="icon" type="image/png" href="<%= url_for('/')->base->scheme($self->req->url->base->scheme()) %>/img/favicon.png">
         <meta name="twitter:card" content="photo">
 % if (defined(config('tweet_card_via'))) {
         <meta name="twitter:site" content="<%= config('tweet_card_via') %>">
 % }
-        <meta name="twitter:image:src" content="<%= url_for('/')->to_abs().$short %>">
+        <meta name="twitter:image:src" content="<%= url_for('/')->base->scheme($self->req->url->base->scheme())->to_abs().'/'.$short %>">
     </head>
     <body>
         <img src="<%= url_for('/').$short %>" alt="<%= $filename %>">
