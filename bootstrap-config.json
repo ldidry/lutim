@@ -366,6 +366,7 @@
     "buttons.less",
     "input-groups.less",
     "alerts.less",
+    "progress-bars.less",
     "close.less",
     "component-animations.less",
     "modals.less",

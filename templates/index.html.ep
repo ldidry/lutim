@@ -101,7 +101,18 @@
             url: '<%== url_for('add') %>',
             dataType: 'json',
             allowedTypes: 'image/*',
+            onNewFile: function(id, file){
+                $(".messages").append('<div id="'+id+'-div">'+file.name+'<br><div class="progress"><div id="'+id+'"class="progress-bar progress-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"><span id="'+id+'-text" class="pull-left" style="padding-left: 10px;"> 0%</span></div></div></div>');
+            },
+            onUploadProgress: function(id, percent){
+                var percentStr = ' '+percent+'%';
+                $('#'+id).prop('aria-valuenow', percent);
+                $('#'+id).prop('style', 'width: '+percent+'%;');
+                $('#'+id+'-text').html(percentStr);
+
+            },
             onUploadSuccess: function(id, data){
+                $('#'+id+'-div').remove();
                 $(".messages").append(message(data.success, data.msg));
             },
             onUploadError: function(id, message){
