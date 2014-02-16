@@ -200,7 +200,7 @@
     //});
     fd.append('format', 'json');
     fd.append('first-view', ($("#first-view").prop('checked')) ? 1 : 0);
-    fd.append('delete-day', ($("#delete-day").prop('checked')) ? 1 : 0);
+    fd.append('delete-day', ($("#delete-day").val()));
 
     widget.settings.onBeforeUpload.call(widget.element, widget.queuePos);
 

@@ -23,14 +23,20 @@
 <noscript>
 <form class="form" role="form" method="POST" action="<%== url_for 'add' %>" enctype="multipart/form-data">
     <div class="form-group form-inline">
+        <span>
+            <label>
+                <select name="delete-day">
+                    <option value=0 selected="selected">pas de limitation de durée</option>
+                    <option value=1>24 heures</option>
+                    <option value=7>7 jours</option>
+                    <option value=30>30 jours</option>
+                    <option value=365>1 an</option>
+                </select>
+            </label>
+        </span>
         <div class="checkbox">
             <label>
                 <input type="checkbox" name="first-view"> <%=l 'delete-first' %>
-            </label>
-        </div>
-        <div class="checkbox">
-            <label>
-                <input type="checkbox" name="delete-day"> <%=l 'delete-day' %>
             </label>
         </div>
     </div>
@@ -46,14 +52,20 @@
 <!-- D&D Zone-->
 <div class="jsonly">
     <div class="form-group form-inline">
+        <span>
+            <label>
+                <select id="delete-day">
+                    <option value=0 selected="selected">pas de limitation de durée</option>
+                    <option value=1>24 heures</option>
+                    <option value=7>7 jours</option>
+                    <option value=30>30 jours</option>
+                    <option value=365>1 an</option>
+                </select>
+            </label>
+        </span>
         <div class="checkbox">
             <label>
                 <input type="checkbox" id="first-view"> <%=l 'delete-first' %>
-            </label>
-        </div>
-        <div class="checkbox">
-            <label>
-                <input type="checkbox" id="delete-day"> <%=l 'delete-day' %>
             </label>
         </div>
     </div>

@@ -44,7 +44,12 @@ our %Lexicon = (
     'image_not_found'   => 'Impossible de trouver l\'image',
     'no_more_short'     => 'Il n\'y a plus d\'URL disponible. Veuillez réessayer ou contactez l\'administrateur. [_1].',
     'no_valid_file'     => 'Le fichier [_1] n\'est pas une image.',
-    'file_too_big'      => 'Le fichier dépasse la limite de taille ([_1])'
+    'file_too_big'      => 'Le fichier dépasse la limite de taille ([_1])',
+    'no_time_limit'     => 'Pas de limitation de durée',
+    '24_hours'          => '24 heures',
+    '7_days'            => '7 jours',
+    '30_days'           => '30 jours',
+    '1_year'            => 'Un an',
 );
 
 1;

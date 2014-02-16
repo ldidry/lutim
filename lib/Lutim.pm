@@ -169,7 +169,7 @@ sub startup {
                             mediatype            => $mediatype,
                             footprint            => digest_file_hex($path, 'SHA-512'),
                             enabled              => 1,
-                            delete_at_day        => ($c->param('delete-day')) ? 1 : 0,
+                            delete_at_day        => ($c->param('delete-day')) ? $c->param('delete-day') : 0,
                             delete_at_first_view => ($c->param('first-view')) ? 1 : 0,
                             created_at           => time(),
                             created_by           => $ip
@@ -233,7 +233,7 @@ sub startup {
         my $ip     = $c->ip;
 
         if (scalar(@images)) {
-            if($images[0]->delete_at_day && $images[0]->created_at + 86400 <= time()) {
+            if($images[0]->delete_at_day && $images[0]->created_at + $images[0]->delete_at_day * 86400 <= time()) {
                 # Log deletion
                 $c->app->log->info('[DELETION] '.$ip.' tried to view '.$images[0]->filename.' but it has been removed by expiration (path: '.$images[0]->path.')');
 
