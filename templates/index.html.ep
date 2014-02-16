@@ -22,7 +22,7 @@
 </div>
 
 <noscript>
-    <form class="form" role="form" method="POST" action="<%== url_for('add')->base->scheme($scheme) %>/" enctype="multipart/form-data">
+    <form class="form" role="form" method="POST" action="<%== url_for('add') %>" enctype="multipart/form-data">
     <div class="form-group form-inline">
         <span>
             <label>
@@ -111,7 +111,7 @@
     }
     function bindddz(firstview, deleteday) {
         $('#drag-and-drop-zone').dmUploader({
-            url: '<%== url_for('add')->base->scheme($scheme) %>/',
+            url: '<%== url_for('add') %>',
             dataType: 'json',
             allowedTypes: 'image/*',
             maxFileSize: <%= $max_file_size %>,

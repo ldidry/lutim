@@ -111,8 +111,6 @@ sub startup {
     $r->get('/' => sub {
             my $c = shift;
 
-            $c->app->log->debug($c->dumper());
-
             $c->render(
                 template      => 'index',
                 max_file_size => $c->req->max_message_size
