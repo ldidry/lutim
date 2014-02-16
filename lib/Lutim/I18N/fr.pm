@@ -43,7 +43,8 @@ our %Lexicon = (
     'file-browser'      => 'Cliquez pour utiliser le navigateur de fichier',
     'image_not_found'   => 'Impossible de trouver l\'image',
     'no_more_short'     => 'Il n\'y a plus d\'URL disponible. Veuillez réessayer ou contactez l\'administrateur. [_1].',
-    'no_valid_file'     => 'Le fichier [_1] n\'est pas une image.'
+    'no_valid_file'     => 'Le fichier [_1] n\'est pas une image.',
+    'file_too_big'      => 'Le fichier dépasse la limite de taille ([_1])'
 );
 
 1;

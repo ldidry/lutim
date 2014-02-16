@@ -7,6 +7,8 @@ use Mojo::JSON;;
 use Digest::file qw(digest_file_hex);
 use Text::Unidecode;
 
+$ENV{MOJO_TMPDIR} = 'tmp';
+mkdir($ENV{MOJO_TMPDIR}, 0700) unless (-d $ENV{MOJO_TMPDIR});
 # This method will run once at server start
 sub startup {
     my $self = shift;
@@ -19,6 +21,8 @@ sub startup {
     $config->{provisionning} = 100 unless (defined($config->{provisionning}));
     $config->{provis_step}   = 5   unless (defined($config->{provis_step}));
     $config->{length}        = 8   unless (defined($config->{length}));
+
+    $ENV{MOJO_MAX_MESSAGE_SIZE} = $config->{max_file_size} if (defined($config->{max_file_size}));
 
     $self->secrets($config->{secrets});
 
@@ -107,7 +111,12 @@ sub startup {
     $r->get('/' => sub {
             my $c = shift;
 
-            $c->render( template => 'index');
+            $c->app->log->debug($c->dumper());
+
+            $c->render(
+                template      => 'index',
+                max_file_size => $c->req->max_message_size
+            );
 
             # Check provisionning
             $c->on(finish => sub {
@@ -131,6 +140,21 @@ sub startup {
                 # Create directory if needed
                 mkdir('files', 0700) unless (-d 'files');
 
+                if ($c->req->is_limit_exceeded) {
+                    $msg = l('file_too_big', $c->req->max_message_size);
+                    if (defined($c->param('format')) && $c->param('format') eq 'json') {
+                        return $c->render(
+                            json => {
+                                success => Mojo::JSON->false,
+                                msg     => $msg
+                            }
+                        );
+                    } else {
+                        $c->flash(msg      => $msg);
+                        $c->flash(filename => $upload->filename);
+                        return $c->redirect_to('/');
+                    }
+                }
                 if(LutimModel->begin) {
                     my @records = LutimModel::Lutim->select('WHERE path IS NULL LIMIT 1');
                     if (scalar(@records)) {

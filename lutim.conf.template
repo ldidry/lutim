@@ -5,12 +5,13 @@
         user   => 'www-data',
         group  => 'www-data'
     },
-    contact       => 'John Doe, admin[at]example.com',
-    secrets       => ['fdjsofjoihrei'], # please provide a random string
-    piwik_img     => 'https://piwik.example.org/piwik.php?idsite=1&rec=1', # optional, only the piwik image tracker is allowed, no javascript
-    length        => 8, # optional
-    provis_step   => 5, # optional
-    provisionning => 100, # optional
-    hosted_by     => 'My super hoster <img src="http://hoster.example.com" alt="Hoster logo">', # optional
-    tweet_card_via => '@framasky' # optional
+    contact        => 'John Doe, admin[at]example.com',
+    secrets        => ['fdjsofjoihrei'], # please provide a random string
+    piwik_img      => 'https://piwik.example.org/piwik.php?idsite=1&rec=1', # optional, only the piwik image tracker is allowed, no javascript
+    length         => 8, # optional
+    provis_step    => 5, # optional
+    provisionning  => 100, # optional
+    hosted_by      => 'My super hoster <img src="http://hoster.example.com" alt="Hoster logo">', # optional
+    tweet_card_via => '@framasky', # optional
+    max_file_size  =>  10485760  # optional, size in octets, you can write it 10*1024*1024
 };

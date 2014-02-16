@@ -44,6 +44,7 @@ our %Lexicon = (
     'image_not_found'   => 'Unable to find the image',
     'no_more_short'     => 'There is no more available URL. Retry or contact the administrator. [_1]',
     'no_valid_file'     => 'The file [_1] is not an image.',
+    'file_too_big'      => 'The file exceed the size limit ([_1])'
 );
 
 1;
