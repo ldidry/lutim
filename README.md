@@ -11,7 +11,7 @@ Images are indefinitly stored unless you request that they will be deleted at fi
 LUTIm is licensed under the terms of the AGPL. See the LICENSE file.
 
 ##Logo
-LUTIm's logo is an adaptation of a [Lutin by Godo](http://commons.wikimedia.org/wiki/File:Lutin_by_godo.jpg), licensed under the terms of the CC-BY-SA 3.0 license.
+LUTIm's logo is an adaptation of [Lutin](http://commons.wikimedia.org/wiki/File:Lutin_by_godo.jpg) by [Godo](http://www.lesfeeriesdubocage.com/godo-illustrateur/), licensed under the terms of the CC-BY-SA 3.0 license.
 
 ![LUTIm's logo](http://lut.im/img/LUTIm_small.png)
 
