@@ -1,7 +1,8 @@
 % # vim:set sw=4 ts=4 sts=4 ft=html.epl expandtab:
 % use Mojo::Util qw(url_escape);
 % my $twitter_url = 'https://twitter.com/share';
-% my $url    = url_for('/')->base->scheme($self->req->url->base->scheme())->to_abs().'/';
+% my $scheme = (defined(config('https')) && config('https')) ? 'https' : 'http';
+% my $url    = url_for('/')->base->scheme($scheme)->to_abs().'/';
 % $twitter_url .= '?url='.url_escape("$url")
 %              .'&via=framasky'
 %              .'&text=Check out this %23LUTIm instance! ';
@@ -11,7 +12,7 @@
         <title>LUTIm</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta charset="utf-8" />
-        <link rel="icon" type="image/png" href="<%= url_for('/')->base->scheme($self->req->url->base->scheme()) %>/img/favicon.png">
+        <link rel="icon" type="image/png" href="<%= url_for('/')->base->scheme($scheme) %>/img/favicon.png">
         %= stylesheet 'css/bootstrap.min.css', media => 'screen'
         %= stylesheet 'css/fontello.css'
         %= stylesheet 'css/uploader.css'
@@ -45,7 +46,7 @@
 % }
                 <div>
                     <div class="pull-left hidden-xs">
-                        <img src="<%= url_for('/')->base->scheme($self->req->url->base->scheme()) %>/img/LUTIm_small.png">
+                        <img src="<%= url_for('/')->base->scheme($scheme) %>/img/LUTIm_small.png">
                     </div>
                     <h1>Let's Upload That Image!</h1>
                     <p>
@@ -68,7 +69,7 @@
                             <h3 class="modal-title">LUTIm</h3>
                         </div>
                         <div class="modal-body">
-                            <%==l 'informations-body', url_for('/')->base->scheme($self->req->url->base->scheme())->to_abs().'/', config('contact') %>
+                            <%==l 'informations-body', url_for('/')->base->scheme($scheme)->to_abs().'/', config('contact') %>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -81,7 +82,7 @@
                     <h3 class="modal-title">LUTIm</h3>
                 </div>
                 <div class="modal-body">
-                    <%==l 'informations-body', url_for('/')->base->scheme($self->req->url->base->scheme())->to_abs().'/', config('contact') %>
+                    <%==l 'informations-body', url_for('/')->base->scheme($scheme)->to_abs().'/', config('contact') %>
                 </div>
             </noscript>
         </div>

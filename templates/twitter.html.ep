@@ -1,16 +1,17 @@
 % # vim:set sw=4 ts=4 sts=4 ft=html.epl expandtab:
+% my $scheme = (defined(config('https')) && config('https')) ? 'https' : 'http';
 <!DOCTYPE html>
 <html>
     <head>
         <title>LUTIm</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta charset="utf-8" />
-        <link rel="icon" type="image/png" href="<%= url_for('/')->base->scheme($self->req->url->base->scheme()) %>/img/favicon.png">
+        <link rel="icon" type="image/png" href="<%= url_for('/')->base->scheme($scheme) %>/img/favicon.png">
         <meta name="twitter:card" content="photo">
 % if (defined(config('tweet_card_via'))) {
         <meta name="twitter:site" content="<%= config('tweet_card_via') %>">
 % }
-        <meta name="twitter:image:src" content="<%= url_for('/')->base->scheme($self->req->url->base->scheme())->to_abs().'/'.$short %>">
+        <meta name="twitter:image:src" content="<%= url_for('/')->base->scheme($scheme)->to_abs().'/'.$short %>">
     </head>
     <body>
         <img src="<%= url_for('/').$short %>" alt="<%= $filename %>">
