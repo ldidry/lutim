@@ -43,6 +43,9 @@
                 </div>
 % }
                 <div>
+                    <div class="pull-left hidden-xs">
+                        <img src="<%= url_for('/') %>img/LUTIm_small.png">
+                    </div>
                     <h1>Let's Upload That Image!</h1>
                     <p>
                         &copy; 2014 <%= link_to 'http://www.fiat-tux.fr' => begin %>Luc Didry<% end %> — 

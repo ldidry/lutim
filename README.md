@@ -10,6 +10,11 @@ Images are indefinitly stored unless you request that they will be deleted at fi
 ##License
 LUTIm is licensed under the terms of the AGPL. See the LICENSE file.
 
+##Logo
+LUTIm's logo is an adaptation of a [Lutin by Godo](http://commons.wikimedia.org/wiki/File:Lutin_by_godo.jpg), licensed under the terms of the CC-BY-SA 3.0 license.
+
+![http://lut.im/img/LUTIm_small.png]
+
 ##Dependancies
 * Carton : Perl dependancies manager, it will get what you need, so don't bother for dependancies (but you can read the file `cpanfile` if you want).
 
