@@ -11,8 +11,8 @@ my $inf_body = <<EOF;
 <h4>C’est vraiment gratuit ?</h4>
 <p>Oui, ça l’est ! Par contre, si vous avez envie de soutenir le développeur, vous pouvez faire un microdon avec <a href="https://flattr.com/submit/auto?user_id=_SKy_&amp;url=[_1]&amp;title=LUTIm&amp;category=software">Flattr</a> ou en <a href="bitcoin:1K3n4MXNRSMHk28oTfXEvDunWFthePvd8v?label=lutim">BitCoin</a>.</p>
 <h4>C’est vraiment anonyme ?</h4>
-<p>Oui, ça l’est ! Par contre, pour des raisons légales, votre adresse IP sera enregistrée lorsque vous enverrez ou consulterez une image. Ne vous affolez pas, c’est de toute façon le cas sur tous les sites sur lesquels vous surfez !</p>
-<p>Les journaux systèmes contenant l’adresse IP des visiteurs d’une image sont conservés un an, tandis que l’IP de la personne ayant déposé l’image et celle du dernier visiteur de l’image sont stockées de manière définitive.</p>
+<p>Oui, ça l’est ! Par contre, pour des raisons légales, votre adresse IP sera enregistrée lorsque vous enverrez une image. Ne vous affolez pas, c’est de toute façon normalement le cas de tous les sites sur lesquels vous envoyez des fichiers !</p>
+<p>L’IP de la personne ayant déposé l’image est stockée de manière définitive.</p>
 <p>Si les fichiers sont bien supprimés si vous en avez exprimé le choix, leur empreinte SHA512 est toutefois conservée.</p>
 <h4>Comment peut-on faire pour signaler une image ?</h4>
 <p>Veuillez contacter l’administrateur : [_2]</p>
