@@ -27,12 +27,33 @@ After installing Carton :
 ```shell
 git clone https://github.com/ldidry/lutim.git
 cd lutim
-carton install
+carton install --deployment
 cp lutim.conf.template lutim.conf
+vi lutim.conf
 ```
+
+##Configuration
+* hypnotoad: listen to listen to, user and group which runs hypnotoad ;
+* contact: write something which make people able to contact you (contact form URL, email address, whatever) ;
+* secrets: an array of random string. Used by Mojolicious for encrypting session cookies.
+* piwik\_img: the image Piwik provides you to have records of visits without javascript (better privacy than js and cookies) ;
+* length: length of the random string part of image's URL (default is 8) ;
+* provis\_step: LUTIm provisions random strings for image's URL per pack of `provis_step` (default is 5) ;
+* provisioning: number of random strings to provision (default is 100) ;
+* hosted\_by: if someone hosts your LUTIm instance, you can add some HTML (a logo for example) to make it appear on index page ;
+* tweet\_card\_via: a twitter account which will appear on twitter cards ;
+* max\_file\_size: well, this is explicit (default is 10Mio = 10485760 octets) ;
+* https: 1 if you want to provide secure images URLs.
 
 ##Usage
 ```
+carton exec hypnotoad script/lutim
+```
+
+##Update
+```
+git pull
+carton install --deployment
 carton exec hypnotoad script/lutim
 ```
 

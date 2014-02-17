@@ -18,7 +18,8 @@ sub startup {
     my $config = $self->plugin('Config');
 
     # Default values
-    $config->{provisionning} = 100 unless (defined($config->{provisionning}));
+    $config->{provisioning}  = 100 unless (defined($config->{provisionning}));
+    $config->{provisioning}  = 100 unless (defined($config->{provisioning}));
     $config->{provis_step}   = 5   unless (defined($config->{provis_step}));
     $config->{length}        = 8   unless (defined($config->{length}));
 
@@ -61,11 +62,11 @@ sub startup {
     );
 
     $self->helper(
-        provisionning => sub {
+        provisioning => sub {
             my $c = shift;
 
-            # Create some short patterns for provisionning
-            if (LutimModel::Lutim->count('WHERE path IS NULL') < $c->config->{provisionning}) {
+            # Create some short patterns for provisioning
+            if (LutimModel::Lutim->count('WHERE path IS NULL') < $c->config->{provisioning}) {
                 for (my $i = 0; $i < $c->config->{provis_step}; $i++) {
                     if (LutimModel->begin) {
                         my $short;
@@ -103,7 +104,7 @@ sub startup {
 
     $self->defaults(layout => 'default');
 
-    $self->provisionning();
+    $self->provisioning();
 
     # Router
     my $r = $self->routes;
@@ -116,10 +117,10 @@ sub startup {
                 max_file_size => $c->req->max_message_size
             );
 
-            # Check provisionning
+            # Check provisioning
             $c->on(finish => sub {
                     my $c = shift;
-                    $c->provisionning();
+                    $c->provisioning();
                     $c->app->log->info('[HIT] someone visited site index');
                 }
             );
@@ -191,9 +192,9 @@ sub startup {
                 $msg = $c->l('no_valid_file', $upload->filename);
             }
 
-            # Check provisionning
+            # Check provisioning
             $c->on(finish => sub {
-                    shift->provisionning();
+                    shift->provisioning();
                 }
             );
 
@@ -262,7 +263,7 @@ sub startup {
             }
 
             if ($test != 500) {
-                # Update counter and check provisionning
+                # Update counter and check provisioning
                 $c->on(finish => sub {
                     # Log access
                     $c->app->log->info('[VIEW] someone viewed '.$images[0]->filename.' (path: '.$images[0]->path.')');
@@ -283,7 +284,7 @@ sub startup {
                         $images[0]->update(enabled => 0);
                     }
 
-                    shift->provisionning();
+                    shift->provisioning();
                 });
             }
         } else {
