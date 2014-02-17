@@ -43,7 +43,7 @@
     </div>
     <div class="form-group">
         <label for="lutim-file"><%=l 'upload_image' %></label>
-        <input type="file" name="file" id="lutim-file" required></input>
+        <input type="file" name="file" id="lutim-file" required>
         <p class="help-block"><%=l 'image-only' %></p>
     </div>
     <%= submit_button l('go'), class => 'btn btn-default btn-primary', id => 'submitbutton' %>
