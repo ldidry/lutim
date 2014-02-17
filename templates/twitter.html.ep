@@ -1,7 +1,7 @@
 % # vim:set sw=4 ts=4 sts=4 ft=html.epl expandtab:
 % my $scheme = (defined(config('https')) && config('https')) ? 'https' : 'http';
 <!DOCTYPE html>
-<html>
+<html style="height:100%;">
     <head>
         <title>LUTIm</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,8 +13,8 @@
 % }
         <meta name="twitter:image:src" content="<%= url_for('/')->base->scheme($scheme)->to_abs().'/'.$short %>">
     </head>
-    <body>
-        <img src="<%= url_for('/').$short %>" alt="<%= $filename %>">
+    <body style="height: 97%;">
+        <img style="max-width:100%; max-height:100%;" src="<%= url_for('/').$short %>" alt="<%= $filename %>">
     </body>
 </html>
 
