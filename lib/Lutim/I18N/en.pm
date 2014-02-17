@@ -9,7 +9,7 @@ my $inf_body = <<EOF;
 <p>Drag and drop an image in the appropriate area or use the traditional way to send files and LUTIm will provide you two URLs. One to view the image, the other to directly download it.</p>
 <p>You can, optionally, request that the image(s) posted on LUTIm to be deleted at first view (or download) or after 24 hours.</p>
 <h4>Is it really free (as in free beer)?</h4>
-<p>Yes, it is! On the other side, if you want to support the developer, you can do it via <a href="https://flattr.com/submit/auto?user_id=_SKy_&url=[_1]&title=LUTIm&category=software">Flattr</a> or with <a href="bitcoin:1K3n4MXNRSMHk28oTfXEvDunWFthePvd8v?label=lutim">BitCoin</a>.</p>
+<p>Yes, it is! On the other side, if you want to support the developer, you can do it via <a href="https://flattr.com/submit/auto?user_id=_SKy_&amp;url=[_1]&amp;title=LUTIm&amp;category=software">Flattr</a> or with <a href="bitcoin:1K3n4MXNRSMHk28oTfXEvDunWFthePvd8v?label=lutim">BitCoin</a>.</p>
 <h4>Is it really anonymous?</h4>
 <p>Yes, it is! On the other side, for legal reasons, your IP address will be stored when you send or view an image. Don't panic, it is the case of all sites on which you go!</p>
 <p>The log files containing the IP address of image viewers are retained for one year while the IP address of the image's sender, as the address of the last viewer are permanently retained.</p>
