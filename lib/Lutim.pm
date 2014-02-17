@@ -118,7 +118,9 @@ sub startup {
 
             # Check provisionning
             $c->on(finish => sub {
-                    shift->provisionning();
+                    my $c = shift;
+                    $c->provisionning();
+                    $c->app->log->info('[HIT] '.$c->ip.' visited site index');
                 }
             );
         }
