@@ -148,6 +148,14 @@ DISTRIBUTIONS
       File::Spec 3.29
       Test::More 0.42
       perl 5.00503
+  File-Type-0.22
+    pathname: P/PM/PMISON/File-Type-0.22.tar.gz
+    provides:
+      File::Type 0.22
+      File::Type::Builder 0.11
+    requirements:
+      IO::File 0.01
+      Test::More 0.01
   IPC-Run3-0.046
     pathname: R/RJ/RJBS/IPC-Run3-0.046.tar.gz
     provides:
@@ -156,16 +164,6 @@ DISTRIBUTIONS
       ExtUtils::MakeMaker 0
       Test::More 0.31
       Time::HiRes 0
-  MIME-Types-2.04
-    pathname: M/MA/MARKOV/MIME-Types-2.04.tar.gz
-    provides:
-      MIME::Type 2.04
-      MIME::Types 2.04
-    requirements:
-      ExtUtils::MakeMaker 0
-      File::Basename 0
-      File::Spec 0
-      Test::More 0.47
   Module-Build-0.4205
     pathname: L/LE/LEONT/Module-Build-0.4205.tar.gz
     provides:
@@ -221,8 +219,8 @@ DISTRIBUTIONS
       Text::ParseWords 0
       perl 5.006001
       version 0.87
-  Mojolicious-4.79
-    pathname: S/SR/SRI/Mojolicious-4.79.tar.gz
+  Mojolicious-4.81
+    pathname: S/SR/SRI/Mojolicious-4.81.tar.gz
     provides:
       Mojo undef
       Mojo::Asset undef
@@ -241,7 +239,6 @@ DISTRIBUTIONS
       Mojo::DOM undef
       Mojo::DOM::CSS undef
       Mojo::DOM::HTML undef
-      Mojo::DOM::Node undef
       Mojo::Date undef
       Mojo::EventEmitter undef
       Mojo::Exception undef
@@ -286,7 +283,7 @@ DISTRIBUTIONS
       Mojo::UserAgent::Server undef
       Mojo::UserAgent::Transactor undef
       Mojo::Util undef
-      Mojolicious 4.79
+      Mojolicious 4.81
       Mojolicious::Command undef
       Mojolicious::Command::cgi undef
       Mojolicious::Command::cpanify undef
@@ -414,3 +411,9 @@ DISTRIBUTIONS
       Test::Builder::Tester 1.02
       Test::More 0.62
       blib 0
+  Text-Unidecode-0.04
+    pathname: S/SB/SBURKE/Text-Unidecode-0.04.tar.gz
+    provides:
+      Text::Unidecode 0.04
+    requirements:
+      ExtUtils::MakeMaker 0

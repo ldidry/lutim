@@ -1,7 +1,7 @@
 package Lutim;
 use Mojo::Base 'Mojolicious';
 use LutimModel;
-use MIME::Types 'by_suffix';
+use File::Type;
 use Mojo::Util qw(quote);
 use Mojo::JSON;;
 use Digest::file qw(digest_file_hex);
@@ -130,13 +130,14 @@ sub startup {
             my $c      = shift;
             my $upload = $c->param('file');
 
-            my ($mediatype, $encoding) = by_suffix $upload->filename;
+            my $ft = File::Type->new();
+            my $mediatype = $ft->mime_type($upload->slurp());
 
             my $ip = $c->ip;
 
             my ($msg, $short);
             # Check file type
-            if (index($mediatype, 'image') >= 0) {
+            if (index($mediatype, 'image/') >= 0) {
                 # Create directory if needed
                 mkdir('files', 0700) unless (-d 'files');
 
