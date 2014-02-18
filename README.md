@@ -27,7 +27,7 @@ After installing Carton :
 ```shell
 git clone https://github.com/ldidry/lutim.git
 cd lutim
-carton install --deployment
+carton install
 cp lutim.conf.template lutim.conf
 vi lutim.conf
 ```
@@ -53,7 +53,7 @@ carton exec hypnotoad script/lutim
 ##Update
 ```
 git pull
-carton install --deployment
+carton install
 carton exec hypnotoad script/lutim
 ```
 
