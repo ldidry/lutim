@@ -137,6 +137,22 @@ sub startup {
         }
     )->name('about');
 
+    $r->get('/stats' => sub {
+            my $c = shift;
+
+            $c->render(
+                template => 'stats',
+                total    =>  LutimModel::Lutim->count('WHERE path IS NOT NULL')
+            );
+
+            # Check provisioning
+            $c->on(finish => sub {
+                    shift->provisioning();
+                }
+            );
+        }
+    )->name('stats');
+
     $r->post('/' => sub {
             my $c      = shift;
             my $upload = $c->param('file');

@@ -362,6 +362,7 @@
   "css": [
     "print.less",
     "type.less",
+    "tables.less",
     "forms.less",
     "buttons.less",
     "input-groups.less",

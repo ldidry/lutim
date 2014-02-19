@@ -1,5 +1,31 @@
 # carton snapshot format: version 1.0
 DISTRIBUTIONS
+  Class-Load-0.21
+    pathname: E/ET/ETHER/Class-Load-0.21.tar.gz
+    provides:
+      Class::Load 0.21
+      Class::Load::PP 0.21
+    requirements:
+      Carp 0
+      Data::OptList 0
+      Exporter 0
+      ExtUtils::MakeMaker 6.30
+      Module::Build::Tiny 0.034
+      Module::Implementation 0.04
+      Module::Runtime 0.012
+      Package::Stash 0.14
+      Scalar::Util 0
+      Try::Tiny 0
+      base 0
+      perl 5.008
+      strict 0
+      warnings 0
+  Class-Singleton-1.4
+    pathname: A/AB/ABW/Class-Singleton-1.4.tar.gz
+    provides:
+      Class::Singleton 1.4
+    requirements:
+      ExtUtils::MakeMaker 0
   DBD-SQLite-1.40
     pathname: I/IS/ISHIGAKI/DBD-SQLite-1.40.tar.gz
     provides:
@@ -111,6 +137,17 @@ DISTRIBUTIONS
       ExtUtils::MakeMaker 6.48
       Test::Simple 0.90
       perl 5.008
+  Data-OptList-0.109
+    pathname: R/RJ/RJBS/Data-OptList-0.109.tar.gz
+    provides:
+      Data::OptList 0.109
+    requirements:
+      ExtUtils::MakeMaker 6.30
+      List::Util 0
+      Params::Util 0
+      Sub::Install 0.921
+      strict 0
+      warnings 0
   Data-Validate-Domain-0.10
     pathname: N/NE/NEELY/Data-Validate-Domain-0.10.tar.gz
     provides:
@@ -138,6 +175,996 @@ DISTRIBUTIONS
       Data::Validate::Domain 0
       Data::Validate::IP 0
       ExtUtils::MakeMaker 0
+  DateTime-1.07
+    pathname: D/DR/DROLSKY/DateTime-1.07.tar.gz
+    provides:
+      DateTime 1.07
+      DateTime::Duration 1.07
+      DateTime::Helpers 1.07
+      DateTime::Infinite 1.07
+      DateTime::Infinite::Future 1.07
+      DateTime::Infinite::Past 1.07
+      DateTime::LeapSecond 1.07
+      inc::MyModuleBuild undef
+    requirements:
+      Carp 0
+      DateTime::Locale 0.41
+      DateTime::TimeZone 1.09
+      ExtUtils::CBuilder 0
+      Module::Build 0.3601
+      POSIX 0
+      Params::Validate 0.76
+      Scalar::Util 0
+      Try::Tiny 0
+      XSLoader 0
+      base 0
+      constant 0
+      integer 0
+      overload 0
+      perl 5.008001
+      strict 0
+      vars 0
+      warnings 0
+  DateTime-Locale-0.45
+    pathname: D/DR/DROLSKY/DateTime-Locale-0.45.tar.gz
+    provides:
+      DateTime::Locale 0.45
+      DateTime::Locale::Base undef
+      DateTime::Locale::Catalog undef
+      DateTime::Locale::aa undef
+      DateTime::Locale::aa_DJ undef
+      DateTime::Locale::aa_ER undef
+      DateTime::Locale::aa_ER_SAAHO undef
+      DateTime::Locale::aa_ET undef
+      DateTime::Locale::af undef
+      DateTime::Locale::af_NA undef
+      DateTime::Locale::af_ZA undef
+      DateTime::Locale::ak undef
+      DateTime::Locale::ak_GH undef
+      DateTime::Locale::am undef
+      DateTime::Locale::am_ET undef
+      DateTime::Locale::ar undef
+      DateTime::Locale::ar_AE undef
+      DateTime::Locale::ar_BH undef
+      DateTime::Locale::ar_DZ undef
+      DateTime::Locale::ar_EG undef
+      DateTime::Locale::ar_IQ undef
+      DateTime::Locale::ar_JO undef
+      DateTime::Locale::ar_KW undef
+      DateTime::Locale::ar_LB undef
+      DateTime::Locale::ar_LY undef
+      DateTime::Locale::ar_MA undef
+      DateTime::Locale::ar_OM undef
+      DateTime::Locale::ar_QA undef
+      DateTime::Locale::ar_SA undef
+      DateTime::Locale::ar_SD undef
+      DateTime::Locale::ar_SY undef
+      DateTime::Locale::ar_TN undef
+      DateTime::Locale::ar_YE undef
+      DateTime::Locale::as undef
+      DateTime::Locale::as_IN undef
+      DateTime::Locale::az undef
+      DateTime::Locale::az_AZ undef
+      DateTime::Locale::az_Cyrl undef
+      DateTime::Locale::az_Cyrl_AZ undef
+      DateTime::Locale::az_Latn undef
+      DateTime::Locale::az_Latn_AZ undef
+      DateTime::Locale::be undef
+      DateTime::Locale::be_BY undef
+      DateTime::Locale::bg undef
+      DateTime::Locale::bg_BG undef
+      DateTime::Locale::bn undef
+      DateTime::Locale::bn_BD undef
+      DateTime::Locale::bn_IN undef
+      DateTime::Locale::bo undef
+      DateTime::Locale::bo_CN undef
+      DateTime::Locale::bo_IN undef
+      DateTime::Locale::bs undef
+      DateTime::Locale::bs_BA undef
+      DateTime::Locale::byn undef
+      DateTime::Locale::byn_ER undef
+      DateTime::Locale::ca undef
+      DateTime::Locale::ca_ES undef
+      DateTime::Locale::cch undef
+      DateTime::Locale::cch_NG undef
+      DateTime::Locale::cop undef
+      DateTime::Locale::cs undef
+      DateTime::Locale::cs_CZ undef
+      DateTime::Locale::cy undef
+      DateTime::Locale::cy_GB undef
+      DateTime::Locale::da undef
+      DateTime::Locale::da_DK undef
+      DateTime::Locale::de undef
+      DateTime::Locale::de_AT undef
+      DateTime::Locale::de_BE undef
+      DateTime::Locale::de_CH undef
+      DateTime::Locale::de_DE undef
+      DateTime::Locale::de_LI undef
+      DateTime::Locale::de_LU undef
+      DateTime::Locale::dv undef
+      DateTime::Locale::dv_MV undef
+      DateTime::Locale::dz undef
+      DateTime::Locale::dz_BT undef
+      DateTime::Locale::ee undef
+      DateTime::Locale::ee_GH undef
+      DateTime::Locale::ee_TG undef
+      DateTime::Locale::el undef
+      DateTime::Locale::el_CY undef
+      DateTime::Locale::el_GR undef
+      DateTime::Locale::el_POLYTON undef
+      DateTime::Locale::en undef
+      DateTime::Locale::en_AS undef
+      DateTime::Locale::en_AU undef
+      DateTime::Locale::en_BE undef
+      DateTime::Locale::en_BW undef
+      DateTime::Locale::en_BZ undef
+      DateTime::Locale::en_CA undef
+      DateTime::Locale::en_Dsrt undef
+      DateTime::Locale::en_Dsrt_US undef
+      DateTime::Locale::en_GB undef
+      DateTime::Locale::en_GU undef
+      DateTime::Locale::en_HK undef
+      DateTime::Locale::en_IE undef
+      DateTime::Locale::en_IN undef
+      DateTime::Locale::en_JM undef
+      DateTime::Locale::en_MH undef
+      DateTime::Locale::en_MP undef
+      DateTime::Locale::en_MT undef
+      DateTime::Locale::en_NA undef
+      DateTime::Locale::en_NZ undef
+      DateTime::Locale::en_PH undef
+      DateTime::Locale::en_PK undef
+      DateTime::Locale::en_SG undef
+      DateTime::Locale::en_Shaw undef
+      DateTime::Locale::en_TT undef
+      DateTime::Locale::en_UM undef
+      DateTime::Locale::en_US undef
+      DateTime::Locale::en_US_POSIX undef
+      DateTime::Locale::en_VI undef
+      DateTime::Locale::en_ZA undef
+      DateTime::Locale::en_ZW undef
+      DateTime::Locale::eo undef
+      DateTime::Locale::es undef
+      DateTime::Locale::es_AR undef
+      DateTime::Locale::es_BO undef
+      DateTime::Locale::es_CL undef
+      DateTime::Locale::es_CO undef
+      DateTime::Locale::es_CR undef
+      DateTime::Locale::es_DO undef
+      DateTime::Locale::es_EC undef
+      DateTime::Locale::es_ES undef
+      DateTime::Locale::es_GT undef
+      DateTime::Locale::es_HN undef
+      DateTime::Locale::es_MX undef
+      DateTime::Locale::es_NI undef
+      DateTime::Locale::es_PA undef
+      DateTime::Locale::es_PE undef
+      DateTime::Locale::es_PR undef
+      DateTime::Locale::es_PY undef
+      DateTime::Locale::es_SV undef
+      DateTime::Locale::es_US undef
+      DateTime::Locale::es_UY undef
+      DateTime::Locale::es_VE undef
+      DateTime::Locale::et undef
+      DateTime::Locale::et_EE undef
+      DateTime::Locale::eu undef
+      DateTime::Locale::eu_ES undef
+      DateTime::Locale::fa undef
+      DateTime::Locale::fa_AF undef
+      DateTime::Locale::fa_IR undef
+      DateTime::Locale::fi undef
+      DateTime::Locale::fi_FI undef
+      DateTime::Locale::fil undef
+      DateTime::Locale::fil_PH undef
+      DateTime::Locale::fo undef
+      DateTime::Locale::fo_FO undef
+      DateTime::Locale::fr undef
+      DateTime::Locale::fr_BE undef
+      DateTime::Locale::fr_CA undef
+      DateTime::Locale::fr_CH undef
+      DateTime::Locale::fr_FR undef
+      DateTime::Locale::fr_LU undef
+      DateTime::Locale::fr_MC undef
+      DateTime::Locale::fr_SN undef
+      DateTime::Locale::fur undef
+      DateTime::Locale::fur_IT undef
+      DateTime::Locale::ga undef
+      DateTime::Locale::ga_IE undef
+      DateTime::Locale::gaa undef
+      DateTime::Locale::gaa_GH undef
+      DateTime::Locale::gez undef
+      DateTime::Locale::gez_ER undef
+      DateTime::Locale::gez_ET undef
+      DateTime::Locale::gl undef
+      DateTime::Locale::gl_ES undef
+      DateTime::Locale::gsw undef
+      DateTime::Locale::gsw_CH undef
+      DateTime::Locale::gu undef
+      DateTime::Locale::gu_IN undef
+      DateTime::Locale::gv undef
+      DateTime::Locale::gv_GB undef
+      DateTime::Locale::ha undef
+      DateTime::Locale::ha_Arab undef
+      DateTime::Locale::ha_Arab_NG undef
+      DateTime::Locale::ha_Arab_SD undef
+      DateTime::Locale::ha_GH undef
+      DateTime::Locale::ha_Latn undef
+      DateTime::Locale::ha_Latn_GH undef
+      DateTime::Locale::ha_Latn_NE undef
+      DateTime::Locale::ha_Latn_NG undef
+      DateTime::Locale::ha_NE undef
+      DateTime::Locale::ha_NG undef
+      DateTime::Locale::ha_SD undef
+      DateTime::Locale::haw undef
+      DateTime::Locale::haw_US undef
+      DateTime::Locale::he undef
+      DateTime::Locale::he_IL undef
+      DateTime::Locale::hi undef
+      DateTime::Locale::hi_IN undef
+      DateTime::Locale::hr undef
+      DateTime::Locale::hr_HR undef
+      DateTime::Locale::hu undef
+      DateTime::Locale::hu_HU undef
+      DateTime::Locale::hy undef
+      DateTime::Locale::hy_AM undef
+      DateTime::Locale::hy_AM_REVISED undef
+      DateTime::Locale::ia undef
+      DateTime::Locale::id undef
+      DateTime::Locale::id_ID undef
+      DateTime::Locale::ig undef
+      DateTime::Locale::ig_NG undef
+      DateTime::Locale::ii undef
+      DateTime::Locale::ii_CN undef
+      DateTime::Locale::is undef
+      DateTime::Locale::is_IS undef
+      DateTime::Locale::it undef
+      DateTime::Locale::it_CH undef
+      DateTime::Locale::it_IT undef
+      DateTime::Locale::iu undef
+      DateTime::Locale::ja undef
+      DateTime::Locale::ja_JP undef
+      DateTime::Locale::ka undef
+      DateTime::Locale::ka_GE undef
+      DateTime::Locale::kaj undef
+      DateTime::Locale::kaj_NG undef
+      DateTime::Locale::kam undef
+      DateTime::Locale::kam_KE undef
+      DateTime::Locale::kcg undef
+      DateTime::Locale::kcg_NG undef
+      DateTime::Locale::kfo undef
+      DateTime::Locale::kfo_CI undef
+      DateTime::Locale::kk undef
+      DateTime::Locale::kk_Cyrl undef
+      DateTime::Locale::kk_Cyrl_KZ undef
+      DateTime::Locale::kk_KZ undef
+      DateTime::Locale::kl undef
+      DateTime::Locale::kl_GL undef
+      DateTime::Locale::km undef
+      DateTime::Locale::km_KH undef
+      DateTime::Locale::kn undef
+      DateTime::Locale::kn_IN undef
+      DateTime::Locale::ko undef
+      DateTime::Locale::ko_KR undef
+      DateTime::Locale::kok undef
+      DateTime::Locale::kok_IN undef
+      DateTime::Locale::kpe undef
+      DateTime::Locale::kpe_GN undef
+      DateTime::Locale::kpe_LR undef
+      DateTime::Locale::ku undef
+      DateTime::Locale::ku_Arab undef
+      DateTime::Locale::ku_Arab_IQ undef
+      DateTime::Locale::ku_Arab_IR undef
+      DateTime::Locale::ku_Arab_SY undef
+      DateTime::Locale::ku_IQ undef
+      DateTime::Locale::ku_IR undef
+      DateTime::Locale::ku_Latn undef
+      DateTime::Locale::ku_Latn_TR undef
+      DateTime::Locale::ku_SY undef
+      DateTime::Locale::ku_TR undef
+      DateTime::Locale::kw undef
+      DateTime::Locale::kw_GB undef
+      DateTime::Locale::ky undef
+      DateTime::Locale::ky_KG undef
+      DateTime::Locale::ln undef
+      DateTime::Locale::ln_CD undef
+      DateTime::Locale::ln_CG undef
+      DateTime::Locale::lo undef
+      DateTime::Locale::lo_LA undef
+      DateTime::Locale::lt undef
+      DateTime::Locale::lt_LT undef
+      DateTime::Locale::lv undef
+      DateTime::Locale::lv_LV undef
+      DateTime::Locale::mk undef
+      DateTime::Locale::mk_MK undef
+      DateTime::Locale::ml undef
+      DateTime::Locale::ml_IN undef
+      DateTime::Locale::mn undef
+      DateTime::Locale::mn_CN undef
+      DateTime::Locale::mn_Cyrl undef
+      DateTime::Locale::mn_Cyrl_MN undef
+      DateTime::Locale::mn_MN undef
+      DateTime::Locale::mn_Mong undef
+      DateTime::Locale::mn_Mong_CN undef
+      DateTime::Locale::mo undef
+      DateTime::Locale::mr undef
+      DateTime::Locale::mr_IN undef
+      DateTime::Locale::ms undef
+      DateTime::Locale::ms_BN undef
+      DateTime::Locale::ms_MY undef
+      DateTime::Locale::mt undef
+      DateTime::Locale::mt_MT undef
+      DateTime::Locale::my undef
+      DateTime::Locale::my_MM undef
+      DateTime::Locale::nb undef
+      DateTime::Locale::nb_NO undef
+      DateTime::Locale::nds undef
+      DateTime::Locale::nds_DE undef
+      DateTime::Locale::ne undef
+      DateTime::Locale::ne_IN undef
+      DateTime::Locale::ne_NP undef
+      DateTime::Locale::nl undef
+      DateTime::Locale::nl_BE undef
+      DateTime::Locale::nl_NL undef
+      DateTime::Locale::nn undef
+      DateTime::Locale::nn_NO undef
+      DateTime::Locale::no undef
+      DateTime::Locale::nr undef
+      DateTime::Locale::nr_ZA undef
+      DateTime::Locale::nso undef
+      DateTime::Locale::nso_ZA undef
+      DateTime::Locale::ny undef
+      DateTime::Locale::ny_MW undef
+      DateTime::Locale::oc undef
+      DateTime::Locale::oc_FR undef
+      DateTime::Locale::om undef
+      DateTime::Locale::om_ET undef
+      DateTime::Locale::om_KE undef
+      DateTime::Locale::or undef
+      DateTime::Locale::or_IN undef
+      DateTime::Locale::pa undef
+      DateTime::Locale::pa_Arab undef
+      DateTime::Locale::pa_Arab_PK undef
+      DateTime::Locale::pa_Guru undef
+      DateTime::Locale::pa_Guru_IN undef
+      DateTime::Locale::pa_IN undef
+      DateTime::Locale::pa_PK undef
+      DateTime::Locale::pl undef
+      DateTime::Locale::pl_PL undef
+      DateTime::Locale::ps undef
+      DateTime::Locale::ps_AF undef
+      DateTime::Locale::pt undef
+      DateTime::Locale::pt_BR undef
+      DateTime::Locale::pt_PT undef
+      DateTime::Locale::ro undef
+      DateTime::Locale::ro_MD undef
+      DateTime::Locale::ro_RO undef
+      DateTime::Locale::root undef
+      DateTime::Locale::ru undef
+      DateTime::Locale::ru_RU undef
+      DateTime::Locale::ru_UA undef
+      DateTime::Locale::rw undef
+      DateTime::Locale::rw_RW undef
+      DateTime::Locale::sa undef
+      DateTime::Locale::sa_IN undef
+      DateTime::Locale::se undef
+      DateTime::Locale::se_FI undef
+      DateTime::Locale::se_NO undef
+      DateTime::Locale::sh undef
+      DateTime::Locale::sh_BA undef
+      DateTime::Locale::sh_CS undef
+      DateTime::Locale::sh_YU undef
+      DateTime::Locale::si undef
+      DateTime::Locale::si_LK undef
+      DateTime::Locale::sid undef
+      DateTime::Locale::sid_ET undef
+      DateTime::Locale::sk undef
+      DateTime::Locale::sk_SK undef
+      DateTime::Locale::sl undef
+      DateTime::Locale::sl_SI undef
+      DateTime::Locale::so undef
+      DateTime::Locale::so_DJ undef
+      DateTime::Locale::so_ET undef
+      DateTime::Locale::so_KE undef
+      DateTime::Locale::so_SO undef
+      DateTime::Locale::sq undef
+      DateTime::Locale::sq_AL undef
+      DateTime::Locale::sr undef
+      DateTime::Locale::sr_BA undef
+      DateTime::Locale::sr_CS undef
+      DateTime::Locale::sr_Cyrl undef
+      DateTime::Locale::sr_Cyrl_BA undef
+      DateTime::Locale::sr_Cyrl_CS undef
+      DateTime::Locale::sr_Cyrl_ME undef
+      DateTime::Locale::sr_Cyrl_RS undef
+      DateTime::Locale::sr_Cyrl_YU undef
+      DateTime::Locale::sr_Latn undef
+      DateTime::Locale::sr_Latn_BA undef
+      DateTime::Locale::sr_Latn_CS undef
+      DateTime::Locale::sr_Latn_ME undef
+      DateTime::Locale::sr_Latn_RS undef
+      DateTime::Locale::sr_Latn_YU undef
+      DateTime::Locale::sr_ME undef
+      DateTime::Locale::sr_RS undef
+      DateTime::Locale::sr_YU undef
+      DateTime::Locale::ss undef
+      DateTime::Locale::ss_SZ undef
+      DateTime::Locale::ss_ZA undef
+      DateTime::Locale::st undef
+      DateTime::Locale::st_LS undef
+      DateTime::Locale::st_ZA undef
+      DateTime::Locale::sv undef
+      DateTime::Locale::sv_FI undef
+      DateTime::Locale::sv_SE undef
+      DateTime::Locale::sw undef
+      DateTime::Locale::sw_KE undef
+      DateTime::Locale::sw_TZ undef
+      DateTime::Locale::syr undef
+      DateTime::Locale::syr_SY undef
+      DateTime::Locale::ta undef
+      DateTime::Locale::ta_IN undef
+      DateTime::Locale::te undef
+      DateTime::Locale::te_IN undef
+      DateTime::Locale::tg undef
+      DateTime::Locale::tg_Cyrl undef
+      DateTime::Locale::tg_Cyrl_TJ undef
+      DateTime::Locale::tg_TJ undef
+      DateTime::Locale::th undef
+      DateTime::Locale::th_TH undef
+      DateTime::Locale::ti undef
+      DateTime::Locale::ti_ER undef
+      DateTime::Locale::ti_ET undef
+      DateTime::Locale::tig undef
+      DateTime::Locale::tig_ER undef
+      DateTime::Locale::tl undef
+      DateTime::Locale::tn undef
+      DateTime::Locale::tn_ZA undef
+      DateTime::Locale::to undef
+      DateTime::Locale::to_TO undef
+      DateTime::Locale::tr undef
+      DateTime::Locale::tr_TR undef
+      DateTime::Locale::trv undef
+      DateTime::Locale::trv_TW undef
+      DateTime::Locale::ts undef
+      DateTime::Locale::ts_ZA undef
+      DateTime::Locale::tt undef
+      DateTime::Locale::tt_RU undef
+      DateTime::Locale::ug undef
+      DateTime::Locale::ug_Arab undef
+      DateTime::Locale::ug_Arab_CN undef
+      DateTime::Locale::ug_CN undef
+      DateTime::Locale::uk undef
+      DateTime::Locale::uk_UA undef
+      DateTime::Locale::ur undef
+      DateTime::Locale::ur_IN undef
+      DateTime::Locale::ur_PK undef
+      DateTime::Locale::uz undef
+      DateTime::Locale::uz_AF undef
+      DateTime::Locale::uz_Arab undef
+      DateTime::Locale::uz_Arab_AF undef
+      DateTime::Locale::uz_Cyrl undef
+      DateTime::Locale::uz_Cyrl_UZ undef
+      DateTime::Locale::uz_Latn undef
+      DateTime::Locale::uz_Latn_UZ undef
+      DateTime::Locale::uz_UZ undef
+      DateTime::Locale::ve undef
+      DateTime::Locale::ve_ZA undef
+      DateTime::Locale::vi undef
+      DateTime::Locale::vi_VN undef
+      DateTime::Locale::wal undef
+      DateTime::Locale::wal_ET undef
+      DateTime::Locale::wo undef
+      DateTime::Locale::wo_Latn undef
+      DateTime::Locale::wo_Latn_SN undef
+      DateTime::Locale::wo_SN undef
+      DateTime::Locale::xh undef
+      DateTime::Locale::xh_ZA undef
+      DateTime::Locale::yo undef
+      DateTime::Locale::yo_NG undef
+      DateTime::Locale::zh undef
+      DateTime::Locale::zh_CN undef
+      DateTime::Locale::zh_HK undef
+      DateTime::Locale::zh_Hans undef
+      DateTime::Locale::zh_Hans_CN undef
+      DateTime::Locale::zh_Hans_HK undef
+      DateTime::Locale::zh_Hans_MO undef
+      DateTime::Locale::zh_Hans_SG undef
+      DateTime::Locale::zh_Hant undef
+      DateTime::Locale::zh_Hant_HK undef
+      DateTime::Locale::zh_Hant_MO undef
+      DateTime::Locale::zh_Hant_TW undef
+      DateTime::Locale::zh_MO undef
+      DateTime::Locale::zh_SG undef
+      DateTime::Locale::zh_TW undef
+      DateTime::Locale::zu undef
+      DateTime::Locale::zu_ZA undef
+    requirements:
+      List::MoreUtils 0
+      Module::Build 0
+      Params::Validate 0.91
+      perl 5.006
+  DateTime-TimeZone-1.64
+    pathname: D/DR/DROLSKY/DateTime-TimeZone-1.64.tar.gz
+    provides:
+      DateTime::TimeZone 1.64
+      DateTime::TimeZone::Africa::Abidjan 1.64
+      DateTime::TimeZone::Africa::Accra 1.64
+      DateTime::TimeZone::Africa::Addis_Ababa 1.64
+      DateTime::TimeZone::Africa::Algiers 1.64
+      DateTime::TimeZone::Africa::Asmara 1.64
+      DateTime::TimeZone::Africa::Bamako 1.64
+      DateTime::TimeZone::Africa::Bangui 1.64
+      DateTime::TimeZone::Africa::Banjul 1.64
+      DateTime::TimeZone::Africa::Bissau 1.64
+      DateTime::TimeZone::Africa::Blantyre 1.64
+      DateTime::TimeZone::Africa::Brazzaville 1.64
+      DateTime::TimeZone::Africa::Bujumbura 1.64
+      DateTime::TimeZone::Africa::Cairo 1.64
+      DateTime::TimeZone::Africa::Casablanca 1.64
+      DateTime::TimeZone::Africa::Ceuta 1.64
+      DateTime::TimeZone::Africa::Conakry 1.64
+      DateTime::TimeZone::Africa::Dakar 1.64
+      DateTime::TimeZone::Africa::Dar_es_Salaam 1.64
+      DateTime::TimeZone::Africa::Djibouti 1.64
+      DateTime::TimeZone::Africa::Douala 1.64
+      DateTime::TimeZone::Africa::El_Aaiun 1.64
+      DateTime::TimeZone::Africa::Freetown 1.64
+      DateTime::TimeZone::Africa::Gaborone 1.64
+      DateTime::TimeZone::Africa::Harare 1.64
+      DateTime::TimeZone::Africa::Johannesburg 1.64
+      DateTime::TimeZone::Africa::Kampala 1.64
+      DateTime::TimeZone::Africa::Khartoum 1.64
+      DateTime::TimeZone::Africa::Kigali 1.64
+      DateTime::TimeZone::Africa::Kinshasa 1.64
+      DateTime::TimeZone::Africa::Lagos 1.64
+      DateTime::TimeZone::Africa::Libreville 1.64
+      DateTime::TimeZone::Africa::Lome 1.64
+      DateTime::TimeZone::Africa::Luanda 1.64
+      DateTime::TimeZone::Africa::Lubumbashi 1.64
+      DateTime::TimeZone::Africa::Lusaka 1.64
+      DateTime::TimeZone::Africa::Malabo 1.64
+      DateTime::TimeZone::Africa::Maputo 1.64
+      DateTime::TimeZone::Africa::Maseru 1.64
+      DateTime::TimeZone::Africa::Mbabane 1.64
+      DateTime::TimeZone::Africa::Mogadishu 1.64
+      DateTime::TimeZone::Africa::Monrovia 1.64
+      DateTime::TimeZone::Africa::Nairobi 1.64
+      DateTime::TimeZone::Africa::Ndjamena 1.64
+      DateTime::TimeZone::Africa::Niamey 1.64
+      DateTime::TimeZone::Africa::Nouakchott 1.64
+      DateTime::TimeZone::Africa::Ouagadougou 1.64
+      DateTime::TimeZone::Africa::Porto_Novo 1.64
+      DateTime::TimeZone::Africa::Sao_Tome 1.64
+      DateTime::TimeZone::Africa::Tripoli 1.64
+      DateTime::TimeZone::Africa::Tunis 1.64
+      DateTime::TimeZone::Africa::Windhoek 1.64
+      DateTime::TimeZone::America::Adak 1.64
+      DateTime::TimeZone::America::Anchorage 1.64
+      DateTime::TimeZone::America::Antigua 1.64
+      DateTime::TimeZone::America::Araguaina 1.64
+      DateTime::TimeZone::America::Argentina::Buenos_Aires 1.64
+      DateTime::TimeZone::America::Argentina::Catamarca 1.64
+      DateTime::TimeZone::America::Argentina::Cordoba 1.64
+      DateTime::TimeZone::America::Argentina::Jujuy 1.64
+      DateTime::TimeZone::America::Argentina::La_Rioja 1.64
+      DateTime::TimeZone::America::Argentina::Mendoza 1.64
+      DateTime::TimeZone::America::Argentina::Rio_Gallegos 1.64
+      DateTime::TimeZone::America::Argentina::Salta 1.64
+      DateTime::TimeZone::America::Argentina::San_Juan 1.64
+      DateTime::TimeZone::America::Argentina::San_Luis 1.64
+      DateTime::TimeZone::America::Argentina::Tucuman 1.64
+      DateTime::TimeZone::America::Argentina::Ushuaia 1.64
+      DateTime::TimeZone::America::Asuncion 1.64
+      DateTime::TimeZone::America::Atikokan 1.64
+      DateTime::TimeZone::America::Bahia 1.64
+      DateTime::TimeZone::America::Bahia_Banderas 1.64
+      DateTime::TimeZone::America::Barbados 1.64
+      DateTime::TimeZone::America::Belem 1.64
+      DateTime::TimeZone::America::Belize 1.64
+      DateTime::TimeZone::America::Blanc_Sablon 1.64
+      DateTime::TimeZone::America::Boa_Vista 1.64
+      DateTime::TimeZone::America::Bogota 1.64
+      DateTime::TimeZone::America::Boise 1.64
+      DateTime::TimeZone::America::Cambridge_Bay 1.64
+      DateTime::TimeZone::America::Campo_Grande 1.64
+      DateTime::TimeZone::America::Cancun 1.64
+      DateTime::TimeZone::America::Caracas 1.64
+      DateTime::TimeZone::America::Cayenne 1.64
+      DateTime::TimeZone::America::Cayman 1.64
+      DateTime::TimeZone::America::Chicago 1.64
+      DateTime::TimeZone::America::Chihuahua 1.64
+      DateTime::TimeZone::America::Costa_Rica 1.64
+      DateTime::TimeZone::America::Creston 1.64
+      DateTime::TimeZone::America::Cuiaba 1.64
+      DateTime::TimeZone::America::Curacao 1.64
+      DateTime::TimeZone::America::Danmarkshavn 1.64
+      DateTime::TimeZone::America::Dawson 1.64
+      DateTime::TimeZone::America::Dawson_Creek 1.64
+      DateTime::TimeZone::America::Denver 1.64
+      DateTime::TimeZone::America::Detroit 1.64
+      DateTime::TimeZone::America::Edmonton 1.64
+      DateTime::TimeZone::America::Eirunepe 1.64
+      DateTime::TimeZone::America::El_Salvador 1.64
+      DateTime::TimeZone::America::Fortaleza 1.64
+      DateTime::TimeZone::America::Glace_Bay 1.64
+      DateTime::TimeZone::America::Godthab 1.64
+      DateTime::TimeZone::America::Goose_Bay 1.64
+      DateTime::TimeZone::America::Grand_Turk 1.64
+      DateTime::TimeZone::America::Guatemala 1.64
+      DateTime::TimeZone::America::Guayaquil 1.64
+      DateTime::TimeZone::America::Guyana 1.64
+      DateTime::TimeZone::America::Halifax 1.64
+      DateTime::TimeZone::America::Havana 1.64
+      DateTime::TimeZone::America::Hermosillo 1.64
+      DateTime::TimeZone::America::Indiana::Indianapolis 1.64
+      DateTime::TimeZone::America::Indiana::Knox 1.64
+      DateTime::TimeZone::America::Indiana::Marengo 1.64
+      DateTime::TimeZone::America::Indiana::Petersburg 1.64
+      DateTime::TimeZone::America::Indiana::Tell_City 1.64
+      DateTime::TimeZone::America::Indiana::Vevay 1.64
+      DateTime::TimeZone::America::Indiana::Vincennes 1.64
+      DateTime::TimeZone::America::Indiana::Winamac 1.64
+      DateTime::TimeZone::America::Inuvik 1.64
+      DateTime::TimeZone::America::Iqaluit 1.64
+      DateTime::TimeZone::America::Jamaica 1.64
+      DateTime::TimeZone::America::Juneau 1.64
+      DateTime::TimeZone::America::Kentucky::Louisville 1.64
+      DateTime::TimeZone::America::Kentucky::Monticello 1.64
+      DateTime::TimeZone::America::La_Paz 1.64
+      DateTime::TimeZone::America::Lima 1.64
+      DateTime::TimeZone::America::Los_Angeles 1.64
+      DateTime::TimeZone::America::Maceio 1.64
+      DateTime::TimeZone::America::Managua 1.64
+      DateTime::TimeZone::America::Manaus 1.64
+      DateTime::TimeZone::America::Martinique 1.64
+      DateTime::TimeZone::America::Matamoros 1.64
+      DateTime::TimeZone::America::Mazatlan 1.64
+      DateTime::TimeZone::America::Menominee 1.64
+      DateTime::TimeZone::America::Merida 1.64
+      DateTime::TimeZone::America::Metlakatla 1.64
+      DateTime::TimeZone::America::Mexico_City 1.64
+      DateTime::TimeZone::America::Miquelon 1.64
+      DateTime::TimeZone::America::Moncton 1.64
+      DateTime::TimeZone::America::Monterrey 1.64
+      DateTime::TimeZone::America::Montevideo 1.64
+      DateTime::TimeZone::America::Montreal 1.64
+      DateTime::TimeZone::America::Nassau 1.64
+      DateTime::TimeZone::America::New_York 1.64
+      DateTime::TimeZone::America::Nipigon 1.64
+      DateTime::TimeZone::America::Nome 1.64
+      DateTime::TimeZone::America::Noronha 1.64
+      DateTime::TimeZone::America::North_Dakota::Beulah 1.64
+      DateTime::TimeZone::America::North_Dakota::Center 1.64
+      DateTime::TimeZone::America::North_Dakota::New_Salem 1.64
+      DateTime::TimeZone::America::Ojinaga 1.64
+      DateTime::TimeZone::America::Panama 1.64
+      DateTime::TimeZone::America::Pangnirtung 1.64
+      DateTime::TimeZone::America::Paramaribo 1.64
+      DateTime::TimeZone::America::Phoenix 1.64
+      DateTime::TimeZone::America::Port_au_Prince 1.64
+      DateTime::TimeZone::America::Port_of_Spain 1.64
+      DateTime::TimeZone::America::Porto_Velho 1.64
+      DateTime::TimeZone::America::Puerto_Rico 1.64
+      DateTime::TimeZone::America::Rainy_River 1.64
+      DateTime::TimeZone::America::Rankin_Inlet 1.64
+      DateTime::TimeZone::America::Recife 1.64
+      DateTime::TimeZone::America::Regina 1.64
+      DateTime::TimeZone::America::Resolute 1.64
+      DateTime::TimeZone::America::Rio_Branco 1.64
+      DateTime::TimeZone::America::Santa_Isabel 1.64
+      DateTime::TimeZone::America::Santarem 1.64
+      DateTime::TimeZone::America::Santiago 1.64
+      DateTime::TimeZone::America::Santo_Domingo 1.64
+      DateTime::TimeZone::America::Sao_Paulo 1.64
+      DateTime::TimeZone::America::Scoresbysund 1.64
+      DateTime::TimeZone::America::Sitka 1.64
+      DateTime::TimeZone::America::St_Johns 1.64
+      DateTime::TimeZone::America::Swift_Current 1.64
+      DateTime::TimeZone::America::Tegucigalpa 1.64
+      DateTime::TimeZone::America::Thule 1.64
+      DateTime::TimeZone::America::Thunder_Bay 1.64
+      DateTime::TimeZone::America::Tijuana 1.64
+      DateTime::TimeZone::America::Toronto 1.64
+      DateTime::TimeZone::America::Vancouver 1.64
+      DateTime::TimeZone::America::Whitehorse 1.64
+      DateTime::TimeZone::America::Winnipeg 1.64
+      DateTime::TimeZone::America::Yakutat 1.64
+      DateTime::TimeZone::America::Yellowknife 1.64
+      DateTime::TimeZone::Antarctica::Casey 1.64
+      DateTime::TimeZone::Antarctica::Davis 1.64
+      DateTime::TimeZone::Antarctica::DumontDUrville 1.64
+      DateTime::TimeZone::Antarctica::Macquarie 1.64
+      DateTime::TimeZone::Antarctica::Mawson 1.64
+      DateTime::TimeZone::Antarctica::Palmer 1.64
+      DateTime::TimeZone::Antarctica::Rothera 1.64
+      DateTime::TimeZone::Antarctica::Syowa 1.64
+      DateTime::TimeZone::Antarctica::Vostok 1.64
+      DateTime::TimeZone::Asia::Aden 1.64
+      DateTime::TimeZone::Asia::Almaty 1.64
+      DateTime::TimeZone::Asia::Amman 1.64
+      DateTime::TimeZone::Asia::Anadyr 1.64
+      DateTime::TimeZone::Asia::Aqtau 1.64
+      DateTime::TimeZone::Asia::Aqtobe 1.64
+      DateTime::TimeZone::Asia::Ashgabat 1.64
+      DateTime::TimeZone::Asia::Baghdad 1.64
+      DateTime::TimeZone::Asia::Bahrain 1.64
+      DateTime::TimeZone::Asia::Baku 1.64
+      DateTime::TimeZone::Asia::Bangkok 1.64
+      DateTime::TimeZone::Asia::Beirut 1.64
+      DateTime::TimeZone::Asia::Bishkek 1.64
+      DateTime::TimeZone::Asia::Brunei 1.64
+      DateTime::TimeZone::Asia::Choibalsan 1.64
+      DateTime::TimeZone::Asia::Chongqing 1.64
+      DateTime::TimeZone::Asia::Colombo 1.64
+      DateTime::TimeZone::Asia::Damascus 1.64
+      DateTime::TimeZone::Asia::Dhaka 1.64
+      DateTime::TimeZone::Asia::Dili 1.64
+      DateTime::TimeZone::Asia::Dubai 1.64
+      DateTime::TimeZone::Asia::Dushanbe 1.64
+      DateTime::TimeZone::Asia::Gaza 1.64
+      DateTime::TimeZone::Asia::Harbin 1.64
+      DateTime::TimeZone::Asia::Hebron 1.64
+      DateTime::TimeZone::Asia::Ho_Chi_Minh 1.64
+      DateTime::TimeZone::Asia::Hong_Kong 1.64
+      DateTime::TimeZone::Asia::Hovd 1.64
+      DateTime::TimeZone::Asia::Irkutsk 1.64
+      DateTime::TimeZone::Asia::Jakarta 1.64
+      DateTime::TimeZone::Asia::Jayapura 1.64
+      DateTime::TimeZone::Asia::Jerusalem 1.64
+      DateTime::TimeZone::Asia::Kabul 1.64
+      DateTime::TimeZone::Asia::Kamchatka 1.64
+      DateTime::TimeZone::Asia::Karachi 1.64
+      DateTime::TimeZone::Asia::Kashgar 1.64
+      DateTime::TimeZone::Asia::Kathmandu 1.64
+      DateTime::TimeZone::Asia::Khandyga 1.64
+      DateTime::TimeZone::Asia::Kolkata 1.64
+      DateTime::TimeZone::Asia::Krasnoyarsk 1.64
+      DateTime::TimeZone::Asia::Kuala_Lumpur 1.64
+      DateTime::TimeZone::Asia::Kuching 1.64
+      DateTime::TimeZone::Asia::Kuwait 1.64
+      DateTime::TimeZone::Asia::Macau 1.64
+      DateTime::TimeZone::Asia::Magadan 1.64
+      DateTime::TimeZone::Asia::Makassar 1.64
+      DateTime::TimeZone::Asia::Manila 1.64
+      DateTime::TimeZone::Asia::Muscat 1.64
+      DateTime::TimeZone::Asia::Nicosia 1.64
+      DateTime::TimeZone::Asia::Novokuznetsk 1.64
+      DateTime::TimeZone::Asia::Novosibirsk 1.64
+      DateTime::TimeZone::Asia::Omsk 1.64
+      DateTime::TimeZone::Asia::Oral 1.64
+      DateTime::TimeZone::Asia::Phnom_Penh 1.64
+      DateTime::TimeZone::Asia::Pontianak 1.64
+      DateTime::TimeZone::Asia::Pyongyang 1.64
+      DateTime::TimeZone::Asia::Qatar 1.64
+      DateTime::TimeZone::Asia::Qyzylorda 1.64
+      DateTime::TimeZone::Asia::Rangoon 1.64
+      DateTime::TimeZone::Asia::Riyadh 1.64
+      DateTime::TimeZone::Asia::Sakhalin 1.64
+      DateTime::TimeZone::Asia::Samarkand 1.64
+      DateTime::TimeZone::Asia::Seoul 1.64
+      DateTime::TimeZone::Asia::Shanghai 1.64
+      DateTime::TimeZone::Asia::Singapore 1.64
+      DateTime::TimeZone::Asia::Taipei 1.64
+      DateTime::TimeZone::Asia::Tashkent 1.64
+      DateTime::TimeZone::Asia::Tbilisi 1.64
+      DateTime::TimeZone::Asia::Tehran 1.64
+      DateTime::TimeZone::Asia::Thimphu 1.64
+      DateTime::TimeZone::Asia::Tokyo 1.64
+      DateTime::TimeZone::Asia::Ulaanbaatar 1.64
+      DateTime::TimeZone::Asia::Urumqi 1.64
+      DateTime::TimeZone::Asia::Ust_Nera 1.64
+      DateTime::TimeZone::Asia::Vientiane 1.64
+      DateTime::TimeZone::Asia::Vladivostok 1.64
+      DateTime::TimeZone::Asia::Yakutsk 1.64
+      DateTime::TimeZone::Asia::Yekaterinburg 1.64
+      DateTime::TimeZone::Asia::Yerevan 1.64
+      DateTime::TimeZone::Atlantic::Azores 1.64
+      DateTime::TimeZone::Atlantic::Bermuda 1.64
+      DateTime::TimeZone::Atlantic::Canary 1.64
+      DateTime::TimeZone::Atlantic::Cape_Verde 1.64
+      DateTime::TimeZone::Atlantic::Faroe 1.64
+      DateTime::TimeZone::Atlantic::Madeira 1.64
+      DateTime::TimeZone::Atlantic::Reykjavik 1.64
+      DateTime::TimeZone::Atlantic::South_Georgia 1.64
+      DateTime::TimeZone::Atlantic::St_Helena 1.64
+      DateTime::TimeZone::Atlantic::Stanley 1.64
+      DateTime::TimeZone::Australia::Adelaide 1.64
+      DateTime::TimeZone::Australia::Brisbane 1.64
+      DateTime::TimeZone::Australia::Broken_Hill 1.64
+      DateTime::TimeZone::Australia::Currie 1.64
+      DateTime::TimeZone::Australia::Darwin 1.64
+      DateTime::TimeZone::Australia::Eucla 1.64
+      DateTime::TimeZone::Australia::Hobart 1.64
+      DateTime::TimeZone::Australia::Lindeman 1.64
+      DateTime::TimeZone::Australia::Lord_Howe 1.64
+      DateTime::TimeZone::Australia::Melbourne 1.64
+      DateTime::TimeZone::Australia::Perth 1.64
+      DateTime::TimeZone::Australia::Sydney 1.64
+      DateTime::TimeZone::CET 1.64
+      DateTime::TimeZone::CST6CDT 1.64
+      DateTime::TimeZone::Catalog 1.64
+      DateTime::TimeZone::EET 1.64
+      DateTime::TimeZone::EST 1.64
+      DateTime::TimeZone::EST5EDT 1.64
+      DateTime::TimeZone::Europe::Amsterdam 1.64
+      DateTime::TimeZone::Europe::Andorra 1.64
+      DateTime::TimeZone::Europe::Athens 1.64
+      DateTime::TimeZone::Europe::Belgrade 1.64
+      DateTime::TimeZone::Europe::Berlin 1.64
+      DateTime::TimeZone::Europe::Brussels 1.64
+      DateTime::TimeZone::Europe::Bucharest 1.64
+      DateTime::TimeZone::Europe::Budapest 1.64
+      DateTime::TimeZone::Europe::Chisinau 1.64
+      DateTime::TimeZone::Europe::Copenhagen 1.64
+      DateTime::TimeZone::Europe::Dublin 1.64
+      DateTime::TimeZone::Europe::Gibraltar 1.64
+      DateTime::TimeZone::Europe::Helsinki 1.64
+      DateTime::TimeZone::Europe::Istanbul 1.64
+      DateTime::TimeZone::Europe::Kaliningrad 1.64
+      DateTime::TimeZone::Europe::Kiev 1.64
+      DateTime::TimeZone::Europe::Lisbon 1.64
+      DateTime::TimeZone::Europe::London 1.64
+      DateTime::TimeZone::Europe::Luxembourg 1.64
+      DateTime::TimeZone::Europe::Madrid 1.64
+      DateTime::TimeZone::Europe::Malta 1.64
+      DateTime::TimeZone::Europe::Minsk 1.64
+      DateTime::TimeZone::Europe::Monaco 1.64
+      DateTime::TimeZone::Europe::Moscow 1.64
+      DateTime::TimeZone::Europe::Oslo 1.64
+      DateTime::TimeZone::Europe::Paris 1.64
+      DateTime::TimeZone::Europe::Prague 1.64
+      DateTime::TimeZone::Europe::Riga 1.64
+      DateTime::TimeZone::Europe::Rome 1.64
+      DateTime::TimeZone::Europe::Samara 1.64
+      DateTime::TimeZone::Europe::Simferopol 1.64
+      DateTime::TimeZone::Europe::Sofia 1.64
+      DateTime::TimeZone::Europe::Stockholm 1.64
+      DateTime::TimeZone::Europe::Tallinn 1.64
+      DateTime::TimeZone::Europe::Tirane 1.64
+      DateTime::TimeZone::Europe::Uzhgorod 1.64
+      DateTime::TimeZone::Europe::Vienna 1.64
+      DateTime::TimeZone::Europe::Vilnius 1.64
+      DateTime::TimeZone::Europe::Volgograd 1.64
+      DateTime::TimeZone::Europe::Warsaw 1.64
+      DateTime::TimeZone::Europe::Zaporozhye 1.64
+      DateTime::TimeZone::Europe::Zurich 1.64
+      DateTime::TimeZone::Floating 1.64
+      DateTime::TimeZone::HST 1.64
+      DateTime::TimeZone::Indian::Antananarivo 1.64
+      DateTime::TimeZone::Indian::Chagos 1.64
+      DateTime::TimeZone::Indian::Christmas 1.64
+      DateTime::TimeZone::Indian::Cocos 1.64
+      DateTime::TimeZone::Indian::Comoro 1.64
+      DateTime::TimeZone::Indian::Kerguelen 1.64
+      DateTime::TimeZone::Indian::Mahe 1.64
+      DateTime::TimeZone::Indian::Maldives 1.64
+      DateTime::TimeZone::Indian::Mauritius 1.64
+      DateTime::TimeZone::Indian::Mayotte 1.64
+      DateTime::TimeZone::Indian::Reunion 1.64
+      DateTime::TimeZone::Local 1.64
+      DateTime::TimeZone::Local::Unix 1.64
+      DateTime::TimeZone::Local::VMS 1.64
+      DateTime::TimeZone::Local::Win32 1.64
+      DateTime::TimeZone::MET 1.64
+      DateTime::TimeZone::MST 1.64
+      DateTime::TimeZone::MST7MDT 1.64
+      DateTime::TimeZone::OffsetOnly 1.64
+      DateTime::TimeZone::OlsonDB 1.64
+      DateTime::TimeZone::OlsonDB::Change 1.64
+      DateTime::TimeZone::OlsonDB::Observance 1.64
+      DateTime::TimeZone::OlsonDB::Rule 1.64
+      DateTime::TimeZone::OlsonDB::Zone 1.64
+      DateTime::TimeZone::PST8PDT 1.64
+      DateTime::TimeZone::Pacific::Apia 1.64
+      DateTime::TimeZone::Pacific::Auckland 1.64
+      DateTime::TimeZone::Pacific::Chatham 1.64
+      DateTime::TimeZone::Pacific::Chuuk 1.64
+      DateTime::TimeZone::Pacific::Easter 1.64
+      DateTime::TimeZone::Pacific::Efate 1.64
+      DateTime::TimeZone::Pacific::Enderbury 1.64
+      DateTime::TimeZone::Pacific::Fakaofo 1.64
+      DateTime::TimeZone::Pacific::Fiji 1.64
+      DateTime::TimeZone::Pacific::Funafuti 1.64
+      DateTime::TimeZone::Pacific::Galapagos 1.64
+      DateTime::TimeZone::Pacific::Gambier 1.64
+      DateTime::TimeZone::Pacific::Guadalcanal 1.64
+      DateTime::TimeZone::Pacific::Guam 1.64
+      DateTime::TimeZone::Pacific::Honolulu 1.64
+      DateTime::TimeZone::Pacific::Kiritimati 1.64
+      DateTime::TimeZone::Pacific::Kosrae 1.64
+      DateTime::TimeZone::Pacific::Kwajalein 1.64
+      DateTime::TimeZone::Pacific::Majuro 1.64
+      DateTime::TimeZone::Pacific::Marquesas 1.64
+      DateTime::TimeZone::Pacific::Midway 1.64
+      DateTime::TimeZone::Pacific::Nauru 1.64
+      DateTime::TimeZone::Pacific::Niue 1.64
+      DateTime::TimeZone::Pacific::Norfolk 1.64
+      DateTime::TimeZone::Pacific::Noumea 1.64
+      DateTime::TimeZone::Pacific::Pago_Pago 1.64
+      DateTime::TimeZone::Pacific::Palau 1.64
+      DateTime::TimeZone::Pacific::Pitcairn 1.64
+      DateTime::TimeZone::Pacific::Pohnpei 1.64
+      DateTime::TimeZone::Pacific::Port_Moresby 1.64
+      DateTime::TimeZone::Pacific::Rarotonga 1.64
+      DateTime::TimeZone::Pacific::Saipan 1.64
+      DateTime::TimeZone::Pacific::Tahiti 1.64
+      DateTime::TimeZone::Pacific::Tarawa 1.64
+      DateTime::TimeZone::Pacific::Tongatapu 1.64
+      DateTime::TimeZone::Pacific::Wake 1.64
+      DateTime::TimeZone::Pacific::Wallis 1.64
+      DateTime::TimeZone::UTC 1.64
+      DateTime::TimeZone::WET 1.64
+    requirements:
+      Class::Load 0
+      Class::Singleton 1.03
+      Cwd 3
+      ExtUtils::MakeMaker 6.30
+      File::Basename 0
+      File::Compare 0
+      File::Find 0
+      File::Spec 0
+      List::Util 0
+      Params::Validate 0.72
+      constant 0
+      parent 0
+      strict 0
+      vars 0
+      warnings 0
+  Dist-CheckConflicts-0.10
+    pathname: D/DO/DOY/Dist-CheckConflicts-0.10.tar.gz
+    provides:
+      Dist::CheckConflicts 0.10
+    requirements:
+      Carp 0
+      Exporter 0
+      ExtUtils::MakeMaker 6.30
+      List::MoreUtils 0.12
+      Module::Runtime 0.009
+      base 0
+      strict 0
+      warnings 0
+  ExtUtils-Config-0.007
+    pathname: L/LE/LEONT/ExtUtils-Config-0.007.tar.gz
+    provides:
+      ExtUtils::Config 0.007
+    requirements:
+      Config 0
+      Data::Dumper 0
+      ExtUtils::MakeMaker 6.30
+      File::Find 0
+      File::Temp 0
+      Test::More 0.88
+      strict 0
+      warnings 0
+  ExtUtils-Helpers-0.021
+    pathname: L/LE/LEONT/ExtUtils-Helpers-0.021.tar.gz
+    provides:
+      ExtUtils::Helpers 0.021
+      ExtUtils::Helpers::Unix 0.021
+      ExtUtils::Helpers::VMS 0.021
+      ExtUtils::Helpers::Windows 0.021
+    requirements:
+      Carp 0
+      Config 0
+      Exporter 5.57
+      ExtUtils::MakeMaker 6.30
+      File::Basename 0
+      File::Copy 0
+      File::Spec::Functions 0
+      Module::Load 0
+      Text::ParseWords 3.24
+      strict 0
+      warnings 0
+  ExtUtils-InstallPaths-0.010
+    pathname: L/LE/LEONT/ExtUtils-InstallPaths-0.010.tar.gz
+    provides:
+      ExtUtils::InstallPaths 0.010
+    requirements:
+      Carp 0
+      ExtUtils::Config 0.002
+      ExtUtils::MakeMaker 6.30
+      File::Spec 0
+      strict 0
+      warnings 0
   File-Remove-1.52
     pathname: A/AD/ADAMK/File-Remove-1.52.tar.gz
     provides:
@@ -164,6 +1191,15 @@ DISTRIBUTIONS
       ExtUtils::MakeMaker 0
       Test::More 0.31
       Time::HiRes 0
+  List-MoreUtils-0.33
+    pathname: A/AD/ADAMK/List-MoreUtils-0.33.tar.gz
+    provides:
+      List::MoreUtils 0.33
+    requirements:
+      ExtUtils::CBuilder 0.27
+      ExtUtils::MakeMaker 6.52
+      Test::More 0.82
+      perl 5.00503
   Module-Build-0.4205
     pathname: L/LE/LEONT/Module-Build-0.4205.tar.gz
     provides:
@@ -219,8 +1255,58 @@ DISTRIBUTIONS
       Text::ParseWords 0
       perl 5.006001
       version 0.87
-  Mojolicious-4.81
-    pathname: S/SR/SRI/Mojolicious-4.81.tar.gz
+  Module-Build-Tiny-0.035
+    pathname: L/LE/LEONT/Module-Build-Tiny-0.035.tar.gz
+    provides:
+      Module::Build::Tiny 0.035
+    requirements:
+      CPAN::Meta 0
+      DynaLoader 0
+      Exporter 5.57
+      ExtUtils::CBuilder 0
+      ExtUtils::Config 0.003
+      ExtUtils::Helpers 0.020
+      ExtUtils::Install 0
+      ExtUtils::InstallPaths 0.002
+      ExtUtils::ParseXS 0
+      File::Basename 0
+      File::Find 0
+      File::Path 0
+      File::Spec::Functions 0
+      Getopt::Long 2.36
+      JSON::PP 2
+      Pod::Man 0
+      TAP::Harness::Env 0
+      perl 5.006
+      strict 0
+      warnings 0
+  Module-Implementation-0.07
+    pathname: D/DR/DROLSKY/Module-Implementation-0.07.tar.gz
+    provides:
+      Module::Implementation 0.07
+      T::Impl1 undef
+      T::Impl2 undef
+      T::ImplFails1 undef
+      T::ImplFails2 undef
+    requirements:
+      Carp 0
+      ExtUtils::MakeMaker 6.30
+      Module::Runtime 0.012
+      Try::Tiny 0
+      strict 0
+      warnings 0
+  Module-Runtime-0.014
+    pathname: Z/ZE/ZEFRAM/Module-Runtime-0.014.tar.gz
+    provides:
+      Module::Runtime 0.014
+    requirements:
+      Module::Build 0
+      Test::More 0
+      perl 5.006
+      strict 0
+      warnings 0
+  Mojolicious-4.83
+    pathname: S/SR/SRI/Mojolicious-4.83.tar.gz
     provides:
       Mojo undef
       Mojo::Asset undef
@@ -283,7 +1369,7 @@ DISTRIBUTIONS
       Mojo::UserAgent::Server undef
       Mojo::UserAgent::Transactor undef
       Mojo::Util undef
-      Mojolicious 4.81
+      Mojolicious 4.83
       Mojolicious::Command undef
       Mojolicious::Command::cgi undef
       Mojolicious::Command::cpanify undef
@@ -378,6 +1464,44 @@ DISTRIBUTIONS
       Test::More 0.47
       Test::Script 1.06
       perl 5.006
+  Package-Stash-0.36
+    pathname: D/DO/DOY/Package-Stash-0.36.tar.gz
+    provides:
+      Package::Stash 0.36
+      Package::Stash::PP 0.36
+    requirements:
+      B 0
+      Carp 0
+      Config 0
+      Dist::CheckConflicts 0.02
+      ExtUtils::MakeMaker 6.30
+      File::Find 0
+      File::Spec 0
+      File::Temp 0
+      Getopt::Long 0
+      Module::Implementation 0.06
+      Package::Stash::XS 0.26
+      Scalar::Util 0
+      Symbol 0
+      Test::Fatal 0
+      Test::More 0.88
+      Test::Requires 0
+      Text::ParseWords 0
+      base 0
+      constant 0
+      lib 0
+      strict 0
+      warnings 0
+  Package-Stash-XS-0.28
+    pathname: D/DO/DOY/Package-Stash-XS-0.28.tar.gz
+    provides:
+      CompileTime undef
+      Package::Stash::XS 0.28
+    requirements:
+      ExtUtils::MakeMaker 6.30
+      XSLoader 0
+      strict 0
+      warnings 0
   Params-Util-1.07
     pathname: A/AD/ADAMK/Params-Util-1.07.tar.gz
     provides:
@@ -389,6 +1513,41 @@ DISTRIBUTIONS
       Scalar::Util 1.18
       Test::More 0.42
       perl 5.00503
+  Params-Validate-1.08
+    pathname: D/DR/DROLSKY/Params-Validate-1.08.tar.gz
+    provides:
+      Attribute::Params::Validate 1.08
+      Bar undef
+      Baz undef
+      Foo undef
+      PVTests undef
+      PVTests::Callbacks undef
+      PVTests::Defaults undef
+      PVTests::Regex undef
+      PVTests::Standard undef
+      PVTests::With undef
+      Params::Validate 1.08
+      Params::Validate::Constants 1.08
+      Params::Validate::PP 1.08
+      Params::Validate::XS 1.08
+      Quux undef
+      Testing::X undef
+      Yadda undef
+      inc::MyModuleBuild undef
+    requirements:
+      Attribute::Handlers 0.79
+      Carp 0
+      Exporter 0
+      ExtUtils::CBuilder 0
+      Module::Build 0.3601
+      Module::Implementation 0
+      Scalar::Util 1.10
+      XSLoader 0
+      attributes 0
+      perl 5.008001
+      strict 0
+      vars 0
+      warnings 0
   Probe-Perl-0.03
     pathname: K/KW/KWILLIAMS/Probe-Perl-0.03.tar.gz
     provides:
@@ -398,6 +1557,94 @@ DISTRIBUTIONS
       ExtUtils::MakeMaker 6.30
       File::Spec 0
       strict 0
+  Sub-Install-0.927
+    pathname: R/RJ/RJBS/Sub-Install-0.927.tar.gz
+    provides:
+      Sub::Install 0.927
+    requirements:
+      B 0
+      Carp 0
+      ExtUtils::MakeMaker 6.30
+      Scalar::Util 0
+      strict 0
+      warnings 0
+  Test-Fatal-0.013
+    pathname: R/RJ/RJBS/Test-Fatal-0.013.tar.gz
+    provides:
+      Test::Fatal 0.013
+    requirements:
+      Carp 0
+      Exporter 5.57
+      ExtUtils::MakeMaker 6.30
+      Test::Builder 0
+      Try::Tiny 0.07
+      strict 0
+      warnings 0
+  Test-Harness-3.30
+    pathname: L/LE/LEONT/Test-Harness-3.30.tar.gz
+    provides:
+      App::Prove 3.30
+      App::Prove::State 3.30
+      App::Prove::State::Result 3.30
+      App::Prove::State::Result::Test 3.30
+      TAP::Base 3.30
+      TAP::Formatter::Base 3.30
+      TAP::Formatter::Color 3.30
+      TAP::Formatter::Console 3.30
+      TAP::Formatter::Console::ParallelSession 3.30
+      TAP::Formatter::Console::Session 3.30
+      TAP::Formatter::File 3.30
+      TAP::Formatter::File::Session 3.30
+      TAP::Formatter::Session 3.30
+      TAP::Harness 3.30
+      TAP::Harness::Env 3.30
+      TAP::Object 3.30
+      TAP::Parser 3.30
+      TAP::Parser::Aggregator 3.30
+      TAP::Parser::Grammar 3.30
+      TAP::Parser::Iterator 3.30
+      TAP::Parser::Iterator::Array 3.30
+      TAP::Parser::Iterator::Process 3.30
+      TAP::Parser::Iterator::Stream 3.30
+      TAP::Parser::IteratorFactory 3.30
+      TAP::Parser::Multiplexer 3.30
+      TAP::Parser::Result 3.30
+      TAP::Parser::Result::Bailout 3.30
+      TAP::Parser::Result::Comment 3.30
+      TAP::Parser::Result::Plan 3.30
+      TAP::Parser::Result::Pragma 3.30
+      TAP::Parser::Result::Test 3.30
+      TAP::Parser::Result::Unknown 3.30
+      TAP::Parser::Result::Version 3.30
+      TAP::Parser::Result::YAML 3.30
+      TAP::Parser::ResultFactory 3.30
+      TAP::Parser::Scheduler 3.30
+      TAP::Parser::Scheduler::Job 3.30
+      TAP::Parser::Scheduler::Spinner 3.30
+      TAP::Parser::Source 3.30
+      TAP::Parser::SourceHandler 3.30
+      TAP::Parser::SourceHandler::Executable 3.30
+      TAP::Parser::SourceHandler::File 3.30
+      TAP::Parser::SourceHandler::Handle 3.30
+      TAP::Parser::SourceHandler::Perl 3.30
+      TAP::Parser::SourceHandler::RawTAP 3.30
+      TAP::Parser::YAMLish::Reader 3.30
+      TAP::Parser::YAMLish::Writer 3.30
+      Test::Harness 3.30
+    requirements:
+      ExtUtils::MakeMaker 0
+  Test-Requires-0.07
+    pathname: T/TO/TOKUHIROM/Test-Requires-0.07.tar.gz
+    provides:
+      Test::Requires 0.07
+    requirements:
+      CPAN::Meta 0
+      CPAN::Meta::Prereqs 0
+      ExtUtils::MakeMaker 6.59
+      Module::Build 0.38
+      Test::Builder::Module 0
+      Test::More 0.61
+      perl 5.008_001
   Test-Script-1.07
     pathname: A/AD/ADAMK/Test-Script-1.07.tar.gz
     provides:
@@ -417,3 +1664,14 @@ DISTRIBUTIONS
       Text::Unidecode 0.04
     requirements:
       ExtUtils::MakeMaker 0
+  Try-Tiny-0.19
+    pathname: D/DO/DOY/Try-Tiny-0.19.tar.gz
+    provides:
+      Try::Tiny 0.19
+    requirements:
+      Carp 0
+      Exporter 5.57
+      ExtUtils::MakeMaker 6.30
+      constant 0
+      strict 0
+      warnings 0

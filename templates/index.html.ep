@@ -83,6 +83,7 @@
 </div>
 <!-- /D&D Zone -->
 
+%= javascript 'js/dmuploader.min.js'
 %= javascript begin
     function link(url, dl) {
         if (dl !== '') {
