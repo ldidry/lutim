@@ -53,6 +53,7 @@
                         &copy; 2014 <%= link_to 'http://www.fiat-tux.fr' => begin %>Luc Didry<% end %> — 
                         <%=l 'license' %> <%= link_to 'https://www.gnu.org/licenses/agpl-3.0.html' => begin %>AGPL<% end %> — 
                         <span class="jsonly"><a data-toggle="modal" href="#myModal"><%=l 'informations' %></a> — </span>
+                        <noscript><%= link_to url_for('about') => begin %><%=l 'informations' %><% end %> — </noscript>
                         <%= link_to 'https://github.com/ldidry/lutim' => (title => l 'fork-me') => begin %><i class="lead icon icon-github-circled"></i><% end %> 
                         <%= link_to $twitter_url                      => (title => l 'share-twitter')   => begin %><i class="lead icon icon-touiteur"></i><% end %> 
                         <%= link_to 'https://flattr.com/submit/auto?user_id=_SKy_&url='.$url.'&title=LUTIm&category=software' => (title => 'Flattr this') => begin %><i class="lead icon icon-flattr"></i><% end %> 
@@ -77,14 +78,6 @@
                     </div><!-- /.modal-content -->
                 </div><!-- /.modal-dialog -->
             </div><!-- /.modal -->
-            <noscript>
-                <div class="modal-header">
-                    <h3 class="modal-title">LUTIm</h3>
-                </div>
-                <div class="modal-body">
-                    <%==l 'informations-body', url_for('/')->base->scheme($scheme)->to_abs().'/', config('contact') %>
-                </div>
-            </noscript>
         </div>
 % if (defined(config('piwik_img'))) {
         <img src="<%== config('piwik_img') %>" style="border:0" alt="" />

@@ -50,6 +50,7 @@ our %Lexicon = (
     '7_days'            => '7 jours',
     '30_days'           => '30 jours',
     '1_year'            => 'Un an',
+    'back-to-index'         => 'Retour à la page d\'accueil'
 );
 
 1;

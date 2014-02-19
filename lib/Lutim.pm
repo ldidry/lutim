@@ -132,6 +132,11 @@ sub startup {
         }
     )->name('index');
 
+    $r->get('/about' => sub {
+            shift->render(template => 'about');
+        }
+    )->name('about');
+
     $r->post('/' => sub {
             my $c      = shift;
             my $upload = $c->param('file');
