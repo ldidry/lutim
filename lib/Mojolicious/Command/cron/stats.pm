@@ -24,7 +24,7 @@ sub run {
     my $separation = time() - $config->{stats_day_num} * 86400;
 
     my %data;
-    for my $img (LutimModel::Lutim->select('WHERE path IS NOT NULL AND created_at > = ?', $separation)) {
+    for my $img (LutimModel::Lutim->select('WHERE path IS NOT NULL AND created_at >= ?', $separation)) {
         my $time                 = DateTime->from_epoch(epoch => $img->created_at);
         my ($year, $month, $day) = ($time->year(), $time->month(), $time->day());
 
