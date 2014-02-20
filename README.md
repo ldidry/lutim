@@ -10,6 +10,9 @@ Images are indefinitly stored unless you request that they will be deleted at fi
 ##License
 LUTIm is licensed under the terms of the AGPL. See the LICENSE file.
 
+##Official instance
+You can see it working at http://lut.im.
+
 ##Logo
 LUTIm's logo is an adaptation of [Lutin](http://commons.wikimedia.org/wiki/File:Lutin_by_godo.jpg) by [Godo](http://godoillustrateur.wordpress.com/), licensed under the terms of the CC-BY-SA 3.0 license.
 
@@ -20,6 +23,12 @@ LUTIm's logo is an adaptation of [Lutin](http://commons.wikimedia.org/wiki/File:
 
 ```shell
 sudo cpan Carton
+```
+
+or
+
+```shell
+sudo apt-get install carton
 ```
 
 ##Installation
@@ -131,6 +140,3 @@ There's just a few sentences, so it will be quick to translate. Please consider 
 
 ##Others projects dependancies
 LUTIm is written in Perl with the [Mojolicious](http://mojolicio.us) framework, uses the [Twitter bootstrap](http://getbootstrap.com) framework to look not too ugly, [JQuery](http://jquery.com) and [JQuery File Uploader](https://github.com/danielm/uploader/) (slightly modified) to add some modernity, [Raphaël](http://raphaeljs.com/) and [SimpleGraph](http://benaskins.github.io/simplegraph/) for stats graphs.
-
-##Official instance
-You can see it working at http://lut.im.
