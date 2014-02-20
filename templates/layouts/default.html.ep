@@ -34,6 +34,11 @@
         % end
         %= javascript 'js/jquery-2.1.0.min.js'
         %= javascript 'js/bootstrap.min.js'
+        %= javascript begin
+            $('document').ready(function() {
+                $('.jsonly').show();
+            });
+        % end
     </head>
     <body>
         <div class="container">

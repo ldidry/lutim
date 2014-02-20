@@ -140,8 +140,6 @@
     };
 
     $('document').ready(function() {
-        $('.jsonly').show();
-
         var firstview = ($("#first-view").prop('checked')) ? 1 : 0;
         var deleteday = ($("#delete-day").prop('checked')) ? 1 : 0;
 
