@@ -127,6 +127,13 @@ sub startup {
         }
     );
 
+    $self->hook(
+        after_dispatch => sub {
+            shift->provisioning();
+        }
+    );
+
+
     $self->defaults(layout => 'default');
 
     $self->provisioning();
@@ -142,10 +149,9 @@ sub startup {
                 max_file_size => $c->req->max_message_size
             );
 
-            # Check provisioning
+
             $c->on(finish => sub {
                     my $c = shift;
-                    $c->provisioning();
                     $c->app->log->info('[HIT] someone visited site index');
                 }
             );
@@ -163,12 +169,6 @@ sub startup {
             $c->render(
                 template => 'stats',
                 total    =>  LutimModel::Lutim->count('WHERE path IS NOT NULL')
-            );
-
-            # Check provisioning
-            $c->on(finish => sub {
-                    shift->provisioning();
-                }
             );
         }
     )->name('stats');
@@ -264,12 +264,6 @@ sub startup {
                     $c->redirect_to('/');
                 }
             } else {
-            # Check provisioning
-            $c->on(finish => sub {
-                    shift->provisioning();
-                }
-            );
-
                 if (defined($c->param('format')) && $c->param('format') eq 'json') {
                     $c->render(
                         json => {
@@ -327,7 +321,7 @@ sub startup {
             }
 
             if ($test != 500) {
-                # Update counter and check provisioning
+                # Update counter
                 $c->on(finish => sub {
                     # Log access
                     $c->app->log->info('[VIEW] someone viewed '.$images[0]->filename.' (path: '.$images[0]->path.')');
@@ -347,8 +341,6 @@ sub startup {
                         unlink $images[0]->path();
                         $images[0]->update(enabled => 0);
                     }
-
-                    shift->provisioning();
                 });
             }
         } else {
