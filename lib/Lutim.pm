@@ -42,6 +42,9 @@ sub startup {
                 );
                 return 500;
             }
+
+            $mediatype =~ s/x-//;
+
             $asset      = Mojo::Asset::File->new(path => $path);
             my $headers = Mojo::Headers->new();
             $headers->add('Content-Type'        => $mediatype.';name='.$filename);
