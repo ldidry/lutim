@@ -20,4 +20,5 @@
     #keep_ip_during    => 365, # optional, number of days, after that delay, the IP addresses of image creators will be deleted (used with script/lutim cron cleanbdd)
     #max_total_size    => 10*1024*1024*1024, # optional, maximum total size of the files directory (used with script/lutim cron watch)
     #policy_when_full  => 'warn', # optional, policy when files directory is over max_total_size. Valid values are 'warn', 'stop-upload' and 'delete'. See README.
+    #broadcast_message => 'Maintenance', #optional, the broadcast_message is displayed on all pages of LUTIm (but no in json response)
 };

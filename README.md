@@ -55,6 +55,7 @@ vi lutim.conf
 * https: 1 if you want to provide secure images URLs (default is 0) ;
 * stats\_day\_num: when you generate statistics with `script/lutim cron stats`, you will have stats for the last `stats_day_num` days (default is 365) ;
 * keep\_ip\_during: when you delete IP addresses of image's senders with `script/lutim cron cleanbdd`, the IP addresses of images older than `keep_ip_during` days will be deleted (default is 365) ;
+* broadcast\_message: put some string (not HTML) here and this message will be displayed on all LUTIm pages (not in JSON responses)
 
 ##Usage
 ```
@@ -124,6 +125,14 @@ If the files directory go under quota, the `stop-upload` file is deleted. If you
 ```shell
 carton exec script/lutim cron watch
 ```
+
+##Broadcast message
+Set a string in the `broadcast_message` option of `lutim.conf` and reload the server with:
+```shell
+carton exec hypnotoad script/lutim
+```
+
+It may take a few reload before the message is displayed.
 
 ##Shutter integration
 See where Shutter (<http://en.wikipedia.org/wiki/Shutter_%28software%29>) keeps its plugins on your computer.
