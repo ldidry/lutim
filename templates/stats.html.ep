@@ -9,6 +9,7 @@
 
 <h4><%= $total %><%=l 'pushed-images' %></h4>
 
+<%= link_to url_for('index') => ( class => "btn btn-primary btn-lg" ) => begin %><%=l 'back-to-index' %><% end%>
 %= javascript begin
     function graph(stats_data, stats_labels, stats_total) {
         // Plot the data
