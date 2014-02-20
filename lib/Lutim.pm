@@ -23,6 +23,8 @@ sub startup {
     $config->{provis_step}   = 5   unless (defined($config->{provis_step}));
     $config->{length}        = 8   unless (defined($config->{length}));
 
+    die "You need to provide a contact information in lutim.conf !" unless (defined($config->{contact}));
+
     $ENV{MOJO_MAX_MESSAGE_SIZE} = $config->{max_file_size} if (defined($config->{max_file_size}));
 
     $self->secrets($config->{secrets});
