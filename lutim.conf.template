@@ -16,5 +16,6 @@
     max_file_size  =>  10485760,  # optional, size in octets, you can write it 10*1024*1024
     #hosted_by      => 'My super hoster <img src="http://hoster.example.com" alt="Hoster logo">', # optional
     #https          => 0, # optional, set to 1 if you use Lutim behind a secure web server
-    #stats_day_num  => 365, # optional, number of days shown in /stats page
+    #stats_day_num  => 365, # optional, number of days shown in /stats page (used with script/lutim cron stats)
+    #keep_ip_during => 365, # optional, number of days, after that delay, the IP addresses of image creators will be deleted (used with script/lutim cron cleanbdd)
 };

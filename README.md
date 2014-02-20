@@ -43,7 +43,9 @@ vi lutim.conf
 * hosted\_by: if someone hosts your LUTIm instance, you can add some HTML (a logo for example) to make it appear on index page ;
 * tweet\_card\_via: a twitter account which will appear on twitter cards ;
 * max\_file\_size: well, this is explicit (default is 10Mio = 10485760 octets) ;
-* https: 1 if you want to provide secure images URLs.
+* https: 1 if you want to provide secure images URLs (default is 0) ;
+* stats\_day\_num: when you generate statistics with `script/lutim cron stats`, you will have stats for the last `stats_day_num` days (default is 365) ;
+* keep\_ip\_during: when you delete IP addresses of image's senders with `script/lutim cron cleanbdd`, the IP addresses of images older than `keep_ip_during` days will be deleted (default is 365) ;
 
 ##Usage
 ```
@@ -80,6 +82,27 @@ sub vcl_recv {
     }
 }
 ```
+
+##Cron jobs
+LUTIm have commands which can be used in cron jobs.
+
+To see what commands are available:
+```shell
+carton exec script/lutim cron
+```
+
+###Statistics
+To generate statistics which can be viewed at the address `/stats`:
+```shell
+carton exec script/lutim cron stats
+```
+
+###Delete IP adresses from database
+To automatically delete the IP addresses of image's senders after a configurable delay:
+```shell
+carton exec script/lutim cron cleanbdd
+```
+
 
 ##Shutter integration
 See where Shutter (<http://en.wikipedia.org/wiki/Shutter_%28software%29>) keeps its plugins on your computer.
