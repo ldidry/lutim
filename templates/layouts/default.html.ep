@@ -60,6 +60,11 @@
                     </p>
                 </div>
             </div>
+% if (defined(stash('stop_upload'))) {
+            <div class="alert alert-danger">
+                <strong><%= stash('stop_upload') %></strong>
+            </div>
+% }
             <%= content %>
             <div class="modal fade bs-modal-lg"  id="myModal" role="dialog">
                 <div class="modal-dialog">

@@ -5,3 +5,5 @@ requires 'ORLite';
 requires 'File::Type';
 requires 'Text::Unidecode';
 requires 'DateTime';
+requires 'Filesys::DiskUsage';
+requires 'Switch';

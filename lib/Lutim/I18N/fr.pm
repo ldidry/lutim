@@ -53,7 +53,8 @@ our %Lexicon = (
     'pushed-images'         => ' images envoyées sur cette instance depuis le début.',
     'graph-data-once-a-day' => 'Les données du graphique ne sont pas mises à jour en temps réél.',
     'lutim-stats'           => 'Statistiques de LUTIm',
-    'back-to-index'         => 'Retour à la page d\'accueil'
+    'back-to-index'         => 'Retour à la page d\'accueil',
+    'stop_upload'           => 'L\'envoi d\'images est actuellement désactivé, veuillez réessayer plus ou contacter l\'administrateur ([_1]).',
 );
 
 1;

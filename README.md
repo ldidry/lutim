@@ -112,6 +112,18 @@ To automatically delete the IP addresses of image's senders after a configurable
 carton exec script/lutim cron cleanbdd
 ```
 
+###Watch the size of the files directory
+To execute an action when the files directory is heavier than `max_total_size`.
+The available actions are `warn` and `stop-upload`:
+* `warn` prints a message on the standard out (which is normally mailed to you by `cron`) ;
+* `stop-upload` prints a message on the standard out and creates the `stop-upload` file which prevents uploading and put a warn on LUTIm interface ;
+* **DANGEROUS OPTION!!!** `delete` prints a message on the standard out and delete older images until the files directory goes under quota.
+
+If the files directory go under quota, the `stop-upload` file is deleted. If you want to manually prevents uploading, create a file named `stop-upload.manual`.
+
+```shell
+carton exec script/lutim cron watch
+```
 
 ##Shutter integration
 See where Shutter (<http://en.wikipedia.org/wiki/Shutter_%28software%29>) keeps its plugins on your computer.

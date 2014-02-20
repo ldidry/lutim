@@ -77,7 +77,7 @@ sub startup {
                         my $short;
                         do {
                             $short= $c->shortener($c->config->{length});
-                        } while (LutimModel::Lutim->count('WHERE short = ?', $short));
+                        } while (LutimModel::Lutim->count('WHERE short = ?', $short) || $short eq 'about' || $short eq 'stats');
 
                         LutimModel::Lutim->create(
                             short                => $short,
@@ -104,6 +104,26 @@ sub startup {
                 $result .= $chars[rand scalar(@chars)];
             }
             return $result;
+        }
+    );
+
+    $self->helper(
+        stop_upload => sub {
+            my $c = shift;
+
+            if (-f 'stop-upload' || -f 'stop-upload.manual') {
+                $c->stash(
+                    stop_upload => $c->l('stop_upload', $config->{contact})
+                );
+                return 1;
+            }
+            return 0;
+        }
+    );
+
+    $self->hook(
+        before_dispatch => sub {
+            shift->stop_upload();
         }
     );
 
@@ -157,96 +177,114 @@ sub startup {
             my $c      = shift;
             my $upload = $c->param('file');
 
-            my $ft = File::Type->new();
-            my $mediatype = $ft->mime_type($upload->slurp());
+            if(!defined($c->stash('stop_upload'))) {
+                my $ft = File::Type->new();
+                my $mediatype = $ft->mime_type($upload->slurp());
 
-            my $ip = $c->ip;
+                my $ip = $c->ip;
 
-            my ($msg, $short);
-            # Check file type
-            if (index($mediatype, 'image/') >= 0) {
-                # Create directory if needed
-                mkdir('files', 0700) unless (-d 'files');
+                my ($msg, $short);
+                # Check file type
+                if (index($mediatype, 'image/') >= 0) {
+                    # Create directory if needed
+                    mkdir('files', 0700) unless (-d 'files');
 
-                if ($c->req->is_limit_exceeded) {
-                    $msg = l('file_too_big', $c->req->max_message_size);
-                    if (defined($c->param('format')) && $c->param('format') eq 'json') {
-                        return $c->render(
-                            json => {
-                                success => Mojo::JSON->false,
-                                msg     => $msg
-                            }
-                        );
-                    } else {
-                        $c->flash(msg      => $msg);
-                        $c->flash(filename => $upload->filename);
-                        return $c->redirect_to('/');
+                    if ($c->req->is_limit_exceeded) {
+                        $msg = l('file_too_big', $c->req->max_message_size);
+                        if (defined($c->param('format')) && $c->param('format') eq 'json') {
+                            return $c->render(
+                                json => {
+                                    success => Mojo::JSON->false,
+                                    msg     => $msg
+                                }
+                            );
+                        } else {
+                            $c->flash(msg      => $msg);
+                            $c->flash(filename => $upload->filename);
+                            return $c->redirect_to('/');
+                        }
                     }
-                }
-                if(LutimModel->begin) {
-                    my @records = LutimModel::Lutim->select('WHERE path IS NULL LIMIT 1');
-                    if (scalar(@records)) {
-                        # Save file and create record
-                        my $filename = unidecode($upload->filename);
-                        my $ext      = ($filename =~ m/([^.]+)$/)[0];
-                        my $path     = 'files/'.$records[0]->short.'.'.$ext;
-                        $upload->move_to($path);
-                        $records[0]->update(
-                            path                 => $path,
-                            filename             => $filename,
-                            mediatype            => $mediatype,
-                            footprint            => digest_file_hex($path, 'SHA-512'),
-                            enabled              => 1,
-                            delete_at_day        => ($c->param('delete-day')) ? $c->param('delete-day') : 0,
-                            delete_at_first_view => ($c->param('first-view')) ? 1 : 0,
-                            created_at           => time(),
-                            created_by           => $ip
-                        );
+                    if(LutimModel->begin) {
+                        my @records = LutimModel::Lutim->select('WHERE path IS NULL LIMIT 1');
+                        if (scalar(@records)) {
+                            # Save file and create record
+                            my $filename = unidecode($upload->filename);
+                            my $ext      = ($filename =~ m/([^.]+)$/)[0];
+                            my $path     = 'files/'.$records[0]->short.'.'.$ext;
+                            $upload->move_to($path);
+                            $records[0]->update(
+                                path                 => $path,
+                                filename             => $filename,
+                                mediatype            => $mediatype,
+                                footprint            => digest_file_hex($path, 'SHA-512'),
+                                enabled              => 1,
+                                delete_at_day        => ($c->param('delete-day')) ? $c->param('delete-day') : 0,
+                                delete_at_first_view => ($c->param('first-view')) ? 1 : 0,
+                                created_at           => time(),
+                                created_by           => $ip
+                            );
 
-                        # Log image creation
-                        $c->app->log->info('[CREATION] someone pushed '.$filename.' (path: '.$path.')');
+                            # Log image creation
+                            $c->app->log->info('[CREATION] someone pushed '.$filename.' (path: '.$path.')');
 
-                        # Give url to user
-                        $short = $records[0]->short;
-                    } else {
-                        # Houston, we have a problem
-                        $msg = $c->l('no_more_short', $c->config->{contact});
+                            # Give url to user
+                            $short = $records[0]->short;
+                        } else {
+                            # Houston, we have a problem
+                            $msg = $c->l('no_more_short', $c->config->{contact});
+                        }
                     }
+                    LutimModel->commit;
+                } else {
+                    $msg = $c->l('no_valid_file', $upload->filename);
                 }
-                LutimModel->commit;
+
+                if (defined($c->param('format')) && $c->param('format') eq 'json') {
+                    if (defined($short)) {
+                        $msg = {
+                            filename => $upload->filename,
+                            short    => $short
+                        };
+                    } else {
+                        $msg = {
+                            filename => $upload->filename,
+                            msg      => $msg
+                        };
+                    }
+                    $c->render(
+                        json => {
+                            success => (defined($short)) ? Mojo::JSON->true : Mojo::JSON->false,
+                            msg     => $msg
+                        }
+                    );
+                } else {
+                    $c->flash(msg      => $msg)   if (defined($msg));
+                    $c->flash(short    => $short) if (defined($short));
+                    $c->flash(filename => $upload->filename);
+                    $c->redirect_to('/');
+                }
             } else {
-                $msg = $c->l('no_valid_file', $upload->filename);
-            }
-
             # Check provisioning
             $c->on(finish => sub {
                     shift->provisioning();
                 }
             );
 
-            if (defined($c->param('format')) && $c->param('format') eq 'json') {
-                if (defined($short)) {
-                    $msg = {
-                        filename => $upload->filename,
-                        short    => $short
-                    };
+                if (defined($c->param('format')) && $c->param('format') eq 'json') {
+                    $c->render(
+                        json => {
+                            success => Mojo::JSON->false,
+                            msg     => {
+                                filename => $upload->filename,
+                                msg      => $c->stash('stop_upload')
+                            }
+                        }
+                    );
                 } else {
-                    $msg = {
-                        filename => $upload->filename,
-                        msg      => $msg
-                    };
+                    $c->flash(msg      => $c->stash('stop_upload'));
+                    $c->flash(filename => $upload->filename);
+                    $c->redirect_to('/');
                 }
-                $c->render(
-                    json => {
-                        success => (defined($short)) ? Mojo::JSON->true : Mojo::JSON->false,
-                        msg     => $msg
-                    }
-                );
-            } else {
-                $c->flash(msg      => $msg)   if (defined($msg));
-                $c->flash(short    => $short) if (defined($short));
-                $c->flash(filename => $upload->filename);
-                $c->redirect_to('/');
             }
         }
     )->name('add');

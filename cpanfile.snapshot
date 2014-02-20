@@ -1183,6 +1183,14 @@ DISTRIBUTIONS
     requirements:
       IO::File 0.01
       Test::More 0.01
+  Filesys-DiskUsage-0.05
+    pathname: C/CO/COG/Filesys-DiskUsage-0.05.tar.gz
+    provides:
+      Filesys::DiskUsage 0.05
+    requirements:
+      ExtUtils::MakeMaker 0
+      File::Basename 0
+      Test::More 0
   IPC-Run3-0.046
     pathname: R/RJ/RJBS/IPC-Run3-0.046.tar.gz
     provides:
@@ -1568,6 +1576,14 @@ DISTRIBUTIONS
       Scalar::Util 0
       strict 0
       warnings 0
+  Switch-2.16
+    pathname: R/RG/RGARCIA/Switch-2.16.tar.gz
+    provides:
+      Switch 2.16
+    requirements:
+      ExtUtils::MakeMaker 0
+      Filter::Util::Call 0
+      Text::Balanced 0
   Test-Fatal-0.013
     pathname: R/RJ/RJBS/Test-Fatal-0.013.tar.gz
     provides:
