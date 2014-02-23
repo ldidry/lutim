@@ -230,7 +230,7 @@ sub startup {
                             );
 
                             # Log image creation
-                            $c->app->log->info('[CREATION] someone pushed '.$filename.' (path: '.$path.')');
+                            $c->app->log->info('[CREATION] '.$c->ip.' pushed '.$filename.' (path: '.$path.')');
 
                             # Give url to user
                             $short = $records[0]->short;
