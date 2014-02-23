@@ -55,7 +55,8 @@ vi lutim.conf
 * https: 1 if you want to provide secure images URLs (default is 0) ;
 * stats\_day\_num: when you generate statistics with `script/lutim cron stats`, you will have stats for the last `stats_day_num` days (default is 365) ;
 * keep\_ip\_during: when you delete IP addresses of image's senders with `script/lutim cron cleanbdd`, the IP addresses of images older than `keep_ip_during` days will be deleted (default is 365) ;
-* broadcast\_message: put some string (not HTML) here and this message will be displayed on all LUTIm pages (not in JSON responses)
+* broadcast\_message: put some string (not HTML) here and this message will be displayed on all LUTIm pages (not in JSON responses) ;
+* allowed\_domains: array of authorized domains for API calls. Example: `['http://1.example.com', 'http://2.example.com']`. If you want to authorize everyone to use the API: `['*']`.
 
 ##Usage
 ```
@@ -133,6 +134,26 @@ carton exec hypnotoad script/lutim
 ```
 
 It may take a few reload before the message is displayed.
+
+##API
+You can add images by using the API. Here's the parameters of the `POST` request to `/` adress:.
+* format: json
+    MANDATORY if you want to get a json response, otherwise it will send a web page
+* file: the image file
+    MANDATORY
+* delete-day: number of days you want the image to stay
+    OPTIONAL if 0, it will be available undefinitely
+* first-view: 1
+    OPTIONAL if not 0, the image will be deleted at first view
+
+
+Exemple with curl:
+```shell
+curl -F "format=json" -F "file=@/tmp/snap0001.jpg" http://lut.im
+```
+
+You can allow people to use your instance of LUTIm from other domains.
+Add the allowed domains as an array in the `allowed_domains` conf option. Put '`[*]`' if you want to allow all domains.
 
 ##Shutter integration
 See where Shutter (<http://en.wikipedia.org/wiki/Shutter_%28software%29>) keeps its plugins on your computer.

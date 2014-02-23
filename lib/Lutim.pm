@@ -128,7 +128,20 @@ sub startup {
 
     $self->hook(
         before_dispatch => sub {
-            shift->stop_upload();
+            my $c = shift;
+            $c->stop_upload();
+            if (defined($c->config->{allowed_domains})) {
+                if ($c->config->{allowed_domains}->[0] eq '*') {
+                    $c->res->headers->header('Access-Control-Allow-Origin' => '*');
+                } elsif (my $origin = $c->req->headers->origin) {
+                    for my $domain ($c->config->{allowed_domains}) {
+                        if ($domain->[0] eq $origin) {
+                            $c->res->headers->header('Access-Control-Allow-Origin' => $origin);
+                            last;
+                        }
+                    }
+                }
+            }
         }
     );
 
@@ -145,6 +158,12 @@ sub startup {
 
     # Router
     my $r = $self->routes;
+
+    $r->options(sub {
+        my $c = shift;
+        $c->res->headers->allow('POST');
+        $c->render(data => '', status => 204);
+    });
 
     $r->get('/' => sub {
             my $c = shift;

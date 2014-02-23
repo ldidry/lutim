@@ -21,4 +21,5 @@
     #max_total_size    => 10*1024*1024*1024, # optional, maximum total size of the files directory (used with script/lutim cron watch)
     #policy_when_full  => 'warn', # optional, policy when files directory is over max_total_size. Valid values are 'warn', 'stop-upload' and 'delete'. See README.
     #broadcast_message => 'Maintenance', #optional, the broadcast_message is displayed on all pages of LUTIm (but no in json response)
+    #allowed_domains   => ['http://1.example.com', 'http://2.example.com'], #optional, array of authorized domains for API calls. If you want to authorize everyone to use the API: ['*']
 };
