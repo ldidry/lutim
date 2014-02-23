@@ -103,9 +103,9 @@ carton exec script/lutim cron
 ```
 
 ###Statistics
-To generate statistics which can be viewed at the address `/stats`:
+To generate statistics which can be viewed at the address `/stats` (we need to reload hypnotoad after the stats generation):
 ```shell
-carton exec script/lutim cron stats
+carton exec script/lutim cron stats && carton exec hypnotoad script/lutim
 ```
 
 ###Delete IP adresses from database
@@ -133,7 +133,7 @@ Set a string in the `broadcast_message` option of `lutim.conf` and reload the se
 carton exec hypnotoad script/lutim
 ```
 
-It may take a few reload before the message is displayed.
+It may take a few reload of page before the message is displayed.
 
 ##API
 You can add images by using the API. Here's the parameters of the `POST` request to `/` adress:.
