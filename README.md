@@ -18,8 +18,8 @@ LUTIm's logo is an adaptation of [Lutin](http://commons.wikimedia.org/wiki/File:
 
 ![LUTIm's logo](http://lut.im/img/LUTIm_small.png)
 
-##Dependancies
-* Carton : Perl dependancies manager, it will get what you need, so don't bother for dependancies (but you can read the file `cpanfile` if you want).
+##Dependencies
+* Carton : Perl dependencies manager, it will get what you need, so don't bother for dependencies (but you can read the file `cpanfile` if you want).
 
 ```shell
 sudo cpan Carton
@@ -42,20 +42,20 @@ vi lutim.conf
 ```
 
 ##Configuration
-* hypnotoad: listen to listen to, user and group which runs hypnotoad ;
-* contact: write something which make people able to contact you (contact form URL, email address, whatever) ;
+* hypnotoad: listen to listen to, user and group which runs hypnotoad ;
+* contact: write something which make people able to contact you (contact form URL, email address, whatever) ;
 * secrets: an array of random string. Used by Mojolicious for encrypting session cookies.
-* piwik\_img: the image Piwik provides you to have records of visits without javascript (better privacy than js and cookies) ;
-* length: length of the random string part of image's URL (default is 8) ;
-* provis\_step: LUTIm provisions random strings for image's URL per pack of `provis_step` (default is 5) ;
-* provisioning: number of random strings to provision (default is 100) ;
-* hosted\_by: if someone hosts your LUTIm instance, you can add some HTML (a logo for example) to make it appear on index page ;
-* tweet\_card\_via: a twitter account which will appear on twitter cards ;
-* max\_file\_size: well, this is explicit (default is 10Mio = 10485760 octets) ;
-* https: 1 if you want to provide secure images URLs (default is 0) ;
-* stats\_day\_num: when you generate statistics with `script/lutim cron stats`, you will have stats for the last `stats_day_num` days (default is 365) ;
-* keep\_ip\_during: when you delete IP addresses of image's senders with `script/lutim cron cleanbdd`, the IP addresses of images older than `keep_ip_during` days will be deleted (default is 365) ;
-* broadcast\_message: put some string (not HTML) here and this message will be displayed on all LUTIm pages (not in JSON responses) ;
+* piwik\_img: the Piwik image provides you records of visits without javascript (better privacy than js and cookies) ;
+* length: length of the random string part of image's URL (default is 8) ;
+* provis\_step: LUTIm provisions random strings for image's URL per pack of `provis_step` (default is 5) ;
+* provisioning: number of random strings to provision (default is 100) ;
+* hosted\_by: if someone hosts your LUTIm instance, you can add some HTML (a logo for example) to make it appear on index page ;
+* tweet\_card\_via: a Twitter account which will appear on Twitter cards ;
+* max\_file\_size: well, this is explicit (default is 10Mio = 10485760 octets) ;
+* https: 1 if you want to provide secure images URLs (default is 0) ;
+* stats\_day\_num: when you generate statistics with `script/lutim cron stats`, you will have stats for the last `stats_day_num` days (default is 365) ;
+* keep\_ip\_during: when you delete IP addresses of image's senders with `script/lutim cron cleanbdd`, the IP addresses of images older than `keep_ip_during` days will be deleted (default is 365) ;
+* broadcast\_message: put some string (not HTML) here and this message will be displayed on all LUTIm pages (not in JSON responses) ;
 * allowed\_domains: array of authorized domains for API calls. Example: `['http://1.example.com', 'http://2.example.com']`. If you want to authorize everyone to use the API: `['*']`.
 
 ##Usage
@@ -117,8 +117,8 @@ carton exec script/lutim cron cleanbdd
 ###Watch the size of the files directory
 To execute an action when the files directory is heavier than `max_total_size`.
 The available actions are `warn` and `stop-upload`:
-* `warn` prints a message on the standard out (which is normally mailed to you by `cron`) ;
-* `stop-upload` prints a message on the standard out and creates the `stop-upload` file which prevents uploading and put a warn on LUTIm interface ;
+* `warn` prints a message on the standard out (which is normally mailed to you by `cron`) ;
+* `stop-upload` prints a message on the standard out and creates the `stop-upload` file which prevents uploading and put a warn on LUTIm interface ;
 * **DANGEROUS OPTION!!!** `delete` prints a message on the standard out and delete older images until the files directory goes under quota.
 
 If the files directory go under quota, the `stop-upload` file is deleted. If you want to manually prevents uploading, create a file named `stop-upload.manual`.
@@ -133,7 +133,7 @@ Set a string in the `broadcast_message` option of `lutim.conf` and reload the se
 carton exec hypnotoad script/lutim
 ```
 
-It may take a few reload of page before the message is displayed.
+It may take a few reloads of page before the message is displayed.
 
 ##API
 You can add images by using the API. Here's the parameters of the `POST` request to `/` adress:.
@@ -169,9 +169,9 @@ And restart Shutter if it was running.
 Of course, this plugin is configured for the official instance of LUTIm (<http://lut.im>), feel free to edit it for your own instance.
 
 ##Internationalization
-LUTIm comes with english and french languages. It will choose the language to display from the browser's settings.
+LUTIm comes with English and French languages. It will choose the language to display from the browser's settings.
 
-If you want to add more languages, for example german:
+If you want to add more languages, for example German:
 ```shell
 cd lib/I18N
 cp en.pm de.pm
