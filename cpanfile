@@ -7,3 +7,4 @@ requires 'Text::Unidecode';
 requires 'DateTime';
 requires 'Filesys::DiskUsage';
 requires 'Switch';
+requires 'Data::Validate::URI';

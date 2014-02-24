@@ -43,7 +43,11 @@
     </div>
     <div class="form-group">
         <label for="lutim-file"><%=l 'upload_image' %></label>
-        <input type="file" name="file" id="lutim-file" required>
+        <input type="file" name="file" id="lutim-file">
+    </div>
+    <div class="form-group">
+        <label for="lutim-file-url"><%=l 'upload_image_url' %></label>
+        <input type="url" name="lutim-file-url" id="lutim-file-url" placeholder="<%=l 'image_url' %>">
         <p class="help-block"><%=l 'image-only' %></p>
     </div>
     <%= submit_button l('go'), class => 'btn btn-default btn-primary', id => 'submitbutton' %>
@@ -80,6 +84,16 @@
             </label>
         </div>
     </div>
+    <p class="help-block"><%=l 'image-only' %></p>
+    <form class="form-horizontal" role="form" method="POST" action="<%== url_for('add') %>">
+        <div class="form-group">
+            <span class="col-sm-3"><span class="hidden-spin" style="font-size:200%; display:none;" > <i class="icon-spinner animate-spin pull-right"></i></span><label for="lutim-file-url" class="control-label pull-right"><%=l 'upload_image_url' %></label></span>
+            <div class="col-sm-9">
+                <input type="url" name="file-url" class="form-control" id="lutim-file-url" placeholder="<%=l 'image_url' %>">
+            </div>
+        </div>
+        <a href="#" class="btn btn-default btn-primary pull-right" id="file-url-button"><%=l 'go' %></a>
+    </form>
 </div>
 <!-- /D&D Zone -->
 
@@ -137,12 +151,48 @@
                 $(".messages").append(message(false, { filename: file.name, msg: '<%= l('file_too_big', $max_file_size) %>'}));
             }
         });
-    };
+    }
+
+    function upload_url() {
+        var val = $("#lutim-file-url").val();
+        if (val !== undefined && val !== "") {
+            $("#lutim-file-url").prop('disabled', 'disabled');
+            $(".hidden-spin").css('display', 'block');
+            console.log(val);
+            $.ajax({
+                url  : '<%== url_for('add') %>',
+                type : "POST",
+                data : {
+                    'lutim-file-url' : val,
+                    'format'         : 'json',
+                    'first-view'     : ($("#first-view").prop('checked')) ? 1 : 0,
+                    'delete-day'     : $("#delete-day").val()
+                },
+                success: function(data) {
+                    $(".messages").append(message(data.success, data.msg));
+                    if (data.success) {
+                        $("#lutim-file-url").val('');
+                    }
+                },
+                error: function() {
+                    $(".messages").append(message(false, ''));
+                },
+                complete: function() {
+                    $("#lutim-file-url").prop('disabled', '');
+                    $(".hidden-spin").css('display', 'none');
+                }
+            });
+        } else {
+            console.log("fhdsjnf");
+        }
+    }
 
     $('document').ready(function() {
         var firstview = ($("#first-view").prop('checked')) ? 1 : 0;
         var deleteday = ($("#delete-day").prop('checked')) ? 1 : 0;
 
         bindddz(firstview, deleteday);
+
+        $("#file-url-button").on("click", upload_url);
     });
 % end

@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'fontello';
-  src: url('../font/fontello.eot?4658339');
-  src: url('../font/fontello.eot?4658339#iefix') format('embedded-opentype'),
-       url('../font/fontello.woff?4658339') format('woff'),
-       url('../font/fontello.ttf?4658339') format('truetype'),
-       url('../font/fontello.svg?4658339#fontello') format('svg');
+  src: url('../font/fontello.eot?14228411');
+  src: url('../font/fontello.eot?14228411#iefix') format('embedded-opentype'),
+       url('../font/fontello.woff?14228411') format('woff'),
+       url('../font/fontello.ttf?14228411') format('truetype'),
+       url('../font/fontello.svg?14228411#fontello') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -14,7 +14,7 @@
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: 'fontello';
-    src: url('../font/fontello.svg?4658339#fontello') format('svg');
+    src: url('../font/fontello.svg?14228411#fontello') format('svg');
   }
 }
 */
@@ -51,6 +51,7 @@
 }
  
 .icon-bitcoin:before { content: '\e802'; } /* '' */
+.icon-spinner:before { content: '\e805'; } /* '' */
 .icon-github-circled:before { content: '\e800'; } /* '' */
 .icon-touiteur:before { content: '\e801'; } /* '' */
 .icon-flattr:before { content: '\e803'; } /* '' */

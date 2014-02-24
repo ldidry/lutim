@@ -55,6 +55,10 @@ our %Lexicon = (
     'lutim-stats'           => 'LUTIm\'s statistics',
     'back-to-index'         => 'Back to homepage',
     'stop_upload'           => 'Uploading is currently disabled, please try later or contact the administrator ([_1]).',
+    'download_error'        => 'An error occured while downloading the image.',
+    'no_valid_url'          => 'The URL is not valid.',
+    'image_url'             => 'Image URL',
+    'upload_image_url'      => 'Upload an image with its URL',
 );
 
 1;

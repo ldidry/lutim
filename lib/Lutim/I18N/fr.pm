@@ -55,6 +55,10 @@ our %Lexicon = (
     'lutim-stats'           => 'Statistiques de LUTIm',
     'back-to-index'         => 'Retour à la page d\'accueil',
     'stop_upload'           => 'L\'envoi d\'images est actuellement désactivé, veuillez réessayer plus ou contacter l\'administrateur ([_1]).',
+    'download_error'        => 'Une erreur est survenue lors du téléchargement de l\'image.',
+    'no_valid_url'          => 'l\'URL n\'est pas valide.',
+    'image_url'             => 'URL de l\'image',
+    'upload_image_url'      => 'Déposer une image par son URL',
 );
 
 1;

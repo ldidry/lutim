@@ -15,6 +15,7 @@
         <link rel="icon" type="image/png" href="<%= url_for('/') %>img/favicon.png">
         %= stylesheet 'css/bootstrap.min.css', media => 'screen'
         %= stylesheet 'css/fontello.css'
+        %= stylesheet 'css/animation.css'
         %= stylesheet 'css/uploader.css'
         %= stylesheet begin
             body {
@@ -41,7 +42,7 @@
         % end
     </head>
     <body>
-        <div class="container">
+        <div class="container-fluid">
             <div>
 % if (defined(config('hosted_by'))) {
                 <div class="pull-right">

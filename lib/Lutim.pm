@@ -2,10 +2,10 @@ package Lutim;
 use Mojo::Base 'Mojolicious';
 use LutimModel;
 use File::Type;
-use Mojo::Util qw(quote);
-use Mojo::JSON;;
+use Mojo::Util qw(quote url_unescape);
 use Digest::file qw(digest_file_hex);
 use Text::Unidecode;
+use Data::Validate::URI qw(is_http_uri is_https_uri);
 
 $ENV{MOJO_TMPDIR} = 'tmp';
 mkdir($ENV{MOJO_TMPDIR}, 0700) unless (-d $ENV{MOJO_TMPDIR});
@@ -198,10 +198,63 @@ sub startup {
     )->name('stats');
 
     $r->post('/' => sub {
-            my $c      = shift;
-            my $upload = $c->param('file');
+            my $c        = shift;
+            my $upload   = $c->param('file');
+            my $file_url = $c->param('lutim-file-url');
 
             if(!defined($c->stash('stop_upload'))) {
+                if (defined($file_url)) {
+                    if (is_http_uri($file_url) || is_https_uri($file_url)) {
+                        my $ua = Mojo::UserAgent->new;
+                        my $tx = $ua->get($file_url => {DNT => 1});
+                        if (my $res = $tx->success) {
+                            $file_url    = url_unescape $file_url;
+                            $file_url    =~ m#^.*/([^/]*)$#;
+                            my $filename = $1;
+                            $filename    = 'uploaded.image' unless (defined($filename));
+                            $filename   .= '.image' if (index($filename, '.') == -1);
+                            $upload      = Mojo::Upload->new(
+                                asset    => $tx->res->content->asset,
+                                filename => $filename
+                            );
+                        } else {
+                            my $msg = $c->l('download_error');
+                            if (defined($c->param('format')) && $c->param('format') eq 'json') {
+                                return $c->render(
+                                    json => {
+                                        success => Mojo::JSON->false,
+                                        msg     => {
+                                            filename => $file_url,
+                                            msg      => $msg
+                                        }
+                                    }
+                                );
+                            } else {
+                                $c->flash(msg      => $msg);
+                                $c->flash(filename => $file_url);
+                                return $c->redirect_to('/');
+                            }
+                        }
+                    } else {
+                        my $msg = $c->l('no_valid_url');
+                        if (defined($c->param('format')) && $c->param('format') eq 'json') {
+                            return $c->render(
+                                json => {
+                                    success => Mojo::JSON->false,
+                                    msg     => {
+                                        filename => $file_url,
+                                        msg      => $msg
+                                    }
+                                }
+                            );
+                        } else {
+                            $c->flash(msg      => $msg);
+                            $c->flash(filename => $file_url);
+                            return $c->redirect_to('/');
+                        }
+                    }
+                }
+
                 my $ft = File::Type->new();
                 my $mediatype = $ft->mime_type($upload->slurp());
 
