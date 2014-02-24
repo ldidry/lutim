@@ -59,6 +59,11 @@ our %Lexicon = (
     'no_valid_url'          => 'The URL is not valid.',
     'image_url'             => 'Image URL',
     'upload_image_url'      => 'Upload an image with its URL',
+    'delay_0'               => 'no time limit',
+    'delay_1'               => '24 hours',
+    'delay_7'               => '7 days',
+    'delay_30'              => '30 days',
+    'delay_365'             => '1 year',
 );
 
 1;

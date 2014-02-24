@@ -126,6 +126,17 @@ sub startup {
         }
     );
 
+    $self->helper(
+        is_selected => sub {
+            my $c   = shift;
+            my $num = shift;
+
+            $c->config->{default_delay} = 0 unless (defined($c->config->{default_delay}));
+
+            return ($num == $c->config->{default_delay}) ? 'selected="selected"' : '';
+        }
+    );
+
     $self->hook(
         before_dispatch => sub {
             my $c = shift;
