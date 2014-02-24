@@ -5,7 +5,7 @@ It means Let's Upload That Image.
 
 ##What does it do?
 It stores images and allows you to see them or download them.
-Images are indefinitly stored unless you request that they will be deleted at first view or after 24 hours.
+Images are indefinitly stored unless you request that they will be deleted at first view or after 24 hours / one week / one month / one year.
 
 ##License
 LUTIm is licensed under the terms of the AGPL. See the LICENSE file.
@@ -112,6 +112,12 @@ carton exec script/lutim cron stats && carton exec hypnotoad script/lutim
 To automatically delete the IP addresses of image's senders after a configurable delay:
 ```shell
 carton exec script/lutim cron cleanbdd
+```
+
+###Delete expired files
+To automatically delete files which availability delay is over (when you choose that your image will be deleted after 24h / one week / etc.)
+```shell
+carton exec script/lutim cron cleanfiles
 ```
 
 ###Watch the size of the files directory
