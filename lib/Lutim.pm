@@ -127,13 +127,43 @@ sub startup {
     );
 
     $self->helper(
+        max_delay => sub {
+            my $c = shift;
+
+            if (defined($c->config->{max_delay})) {
+                my $delay = $c->config->{max_delay};
+                if ($delay >= 0) {
+                    return $delay;
+                } else {
+                    warn "max_delay set to a negative value. Default to 0."
+                }
+            }
+            return 0;
+        }
+    );
+
+    $self->helper(
+        default_delay => sub {
+            my $c = shift;
+
+            if (defined($c->config->{default_delay})) {
+                my $delay = $c->config->{default_delay};
+                if ($delay >= 0) {
+                    return $delay;
+                } else {
+                    warn "default_delay set to a negative value. Default to 0."
+                }
+            }
+            return 0;
+        }
+    );
+
+    $self->helper(
         is_selected => sub {
             my $c   = shift;
             my $num = shift;
 
-            $c->config->{default_delay} = 0 unless (defined($c->config->{default_delay}));
-
-            return ($num == $c->config->{default_delay}) ? 'selected="selected"' : '';
+            return ($num == $c->default_delay) ? 'selected="selected"' : '';
         }
     );
 
@@ -306,7 +336,7 @@ sub startup {
                                 mediatype            => $mediatype,
                                 footprint            => digest_file_hex($path, 'SHA-512'),
                                 enabled              => 1,
-                                delete_at_day        => ($c->param('delete-day')) ? $c->param('delete-day') : 0,
+                                delete_at_day        => ($c->param('delete-day')) ? $c->param('delete-day') : $c->max_delay,
                                 delete_at_first_view => ($c->param('first-view')) ? 1 : 0,
                                 created_at           => time(),
                                 created_by           => $ip

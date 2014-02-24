@@ -1,6 +1,11 @@
 % # vim:set sw=4 ts=4 sts=4 ft=html.epl expandtab:
 % my $scheme = (defined(config('https')) && config('https')) ? 'https' : 'http';
 <div class="messages">
+% if (max_delay != 0) {
+    <div class="alert alert-warning text-center">
+        <strong><%=l('max_delay', max_delay) %></strong>
+    </div>
+% }
 % if (defined(flash('short'))) {
     <div class="alert alert-success">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>

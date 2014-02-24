@@ -64,6 +64,7 @@ our %Lexicon = (
     'delay_7'               => '7 days',
     'delay_30'              => '30 days',
     'delay_365'             => '1 year',
+    'max_delay'             => 'Warning! The maximum time limit for an image is [_1] day(s), even if you choose "no time limit".',
 );
 
 1;

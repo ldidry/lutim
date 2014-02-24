@@ -64,6 +64,7 @@ our %Lexicon = (
     'delay_7'               => '7 jours',
     'delay_30'              => '30 jours',
     'delay_365'             => '1 an',
+    'max_delay'             => 'Attention ! Le délai maximal de rétention d\'une image est de [_1] jour(s), même si vous choisissez « pas de limitation de durée ».',
 );
 
 1;
