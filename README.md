@@ -189,3 +189,8 @@ There's just a few sentences, so it will be quick to translate. Please consider 
 
 ##Others projects dependancies
 LUTIm is written in Perl with the [Mojolicious](http://mojolicio.us) framework, uses the [Twitter bootstrap](http://getbootstrap.com) framework to look not too ugly, [JQuery](http://jquery.com) and [JQuery File Uploader](https://github.com/danielm/uploader/) (slightly modified) to add some modernity, [Raphaël](http://raphaeljs.com/) and [SimpleGraph](http://benaskins.github.io/simplegraph/) for stats graphs.
+
+##Contributors
+* Luc Didry, aka Sky (<http://www.fiat-tux.fr>), main developer
+* Jean-Bernard Marcon, aka Goofy (<https://github.com/goofy-bz>)
+* Jean-Christophe Bach (<https://github.com/jcb>)

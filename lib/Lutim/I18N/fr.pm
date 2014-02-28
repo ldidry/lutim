@@ -21,6 +21,12 @@ my $inf_body = <<EOF;
 <h4>Et à propos du logiciel qui fournit le service ?</h4>
 <p>Le logiciel LUTIm est un <a href="https://fr.wikipedia.org/wiki/Logiciel_libre">logiciel libre</a>, ce qui vous permet de le télécharger et de l’installer sur votre propre serveur. Jetez un coup d’œil à l’<a href="https://www.gnu.org/licenses/agpl-3.0.html">AGPL</a> pour voir quels sont vos droits.</p>
 <p>Pour plus de détails, consultez la page <a href="https://github.com/ldidry/lutim">Github</a> du projet.</p>
+<h4>Contributors</h4
+<ul>
+    <li>Luc Didry, aka Sky (<a href="http://www.fiat-tux.fr">http://www.fiat-tux.fr</a>), développeur principal</li>
+    <li>Jean-Bernard Marcon, aka Goofy (<a href="https://github.com/goofy-bz">https://github.com/goofy-bz</a>)</li>
+    <li>Jean-Christophe Bach (<a href="https://github.com/jcb">https://github.com/jcb</a>)</li>
+</ul>
 EOF
 
 our %Lexicon = (
