@@ -6,6 +6,7 @@ use Mojo::Util qw(quote url_unescape);
 use Digest::file qw(digest_file_hex);
 use Text::Unidecode;
 use Data::Validate::URI qw(is_http_uri is_https_uri);
+use DateTime;
 
 $ENV{MOJO_TMPDIR} = 'tmp';
 mkdir($ENV{MOJO_TMPDIR}, 0700) unless (-d $ENV{MOJO_TMPDIR});
@@ -32,7 +33,7 @@ sub startup {
     $self->helper(
         render_file => sub {
             my $c = shift;
-            my ($filename, $path, $mediatype, $dl) = @_;
+            my ($filename, $path, $mediatype, $dl, $expires, $nocache) = @_;
 
             $filename = quote($filename);
 
@@ -49,6 +50,11 @@ sub startup {
 
             $asset      = Mojo::Asset::File->new(path => $path);
             my $headers = Mojo::Headers->new();
+            if ($nocache) {
+                $headers->add('Cache-Control'       => 'no-cache');
+            } else {
+                $headers->add('Expires'             => $expires);
+            }
             $headers->add('Content-Type'        => $mediatype.';name='.$filename);
             $headers->add('Content-Disposition' => $dl.';filename='.$filename);
             $headers->add('Content-Length'      => $asset->size);
@@ -435,7 +441,11 @@ sub startup {
                     filename => $images[0]->filename
                 );
             } else {
-                $test = $c->render_file($images[0]->filename, $images[0]->path, $images[0]->mediatype, $dl);
+                my $expires = ($images[0]->delete_at_day) ? $images[0]->delete_at_day : 360;
+                my $dt = DateTime->from_epoch( epoch => $expires * 86400 + $images[0]->created_at);
+                $dt->set_time_zone('GMT');
+                $expires = $dt->strftime("%a, %d %b %Y %H:%M:%S GMT");
+                $test = $c->render_file($images[0]->filename, $images[0]->path, $images[0]->mediatype, $dl, $expires, $images[0]->delete_at_first_view);
             }
 
             if ($test != 500) {

@@ -91,7 +91,6 @@ sub vcl_recv {
     }
     if (req.http.host == "lut.im") {
         set req.backend = lutim;
-        return(pass);
     }
 }
 ```
