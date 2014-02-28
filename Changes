@@ -1,0 +1,26 @@
+Revision history for LUTIm
+
+0.2  2014-02-??
+	- Bugfixes
+	- HTML validity
+	- Stats (via cron stats command)
+	- Anonymize IP in DB after a delay (via cron cleanbdd command)
+	- Watch files directory size (via cron watch command)
+	- Anonymize logs (log only the senders' IP address)
+	- Favicon and logo
+	- Better MIME type detection
+	- Broadcast message on all pages available
+	- File max size configurable
+	- Progress bar
+	- More options for suppression delay
+	- Updated documentation
+	- Cross-domain API
+	- Upload by image URL
+	- Add HTTP headers Expires and Content-Cache
+
+0.1  2014-02-15
+	- Image viewing link
+	- Image downloading link
+	- Image twitter card link
+	- Shutter Plugin
+	- Configurable "Hosted by" information
