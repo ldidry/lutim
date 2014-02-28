@@ -203,7 +203,7 @@ sub startup {
 
     $r->options(sub {
         my $c = shift;
-        $c->res->headers->allow('POST');
+        $c->res->headers->allow('POST') if (defined($c->config->{allowed_domains}));
         $c->render(data => '', status => 204);
     });
 
