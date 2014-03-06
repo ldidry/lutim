@@ -58,7 +58,8 @@ vi lutim.conf
 * broadcast\_message: put some string (not HTML) here and this message will be displayed on all LUTIm pages (not in JSON responses) ;
 * allowed\_domains: array of authorized domains for API calls. Example: `['http://1.example.com', 'http://2.example.com']`. If you want to authorize everyone to use the API: `['*']`.
 * default\_delay: what is the default time limit for files? Valid values are 0, 1, 7, 30 and 365;
-* max\_delay: if defined, the images will be deleted after that delay (in days), even if they were uploaded with "no delay" (or value superior to max\_delay) option and a warning message will be displayed on homepage.
+* max\_delay: if defined, the images will be deleted after that delay (in days), even if they were uploaded with "no delay" (or value superior to max\_delay) option and a warning message will be displayed on homepage;
+# always\_encrypt: if set to 1, all images will be encrypted.
 
 ##Usage
 ```
@@ -141,6 +142,11 @@ carton exec hypnotoad script/lutim
 ```
 
 It may take a few reloads of page before the message is displayed.
+
+##Encryption
+LUTIm do encryption on the server if asked to, but does not store the key.
+
+The encryption is made on the server since LUTIm is made to be usable even without javascript. If you want to add client-side encryption for javascript-enabled browsers, patches are welcome.
 
 ##API
 You can add images by using the API. Here's the parameters of the `POST` request to `/` adress:.

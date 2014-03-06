@@ -26,6 +26,13 @@ DISTRIBUTIONS
       Class::Singleton 1.4
     requirements:
       ExtUtils::MakeMaker 0
+  Crypt-CBC-2.33
+    pathname: L/LD/LDS/Crypt-CBC-2.33.tar.gz
+    provides:
+      Crypt::CBC 2.33
+    requirements:
+      Digest::MD5 2.00
+      ExtUtils::MakeMaker 0
   DBD-SQLite-1.40
     pathname: I/IS/ISHIGAKI/DBD-SQLite-1.40.tar.gz
     provides:

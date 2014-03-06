@@ -2,6 +2,7 @@ package Lutim;
 use Mojo::Base 'Mojolicious';
 use Mojo::Util qw(quote);
 use LutimModel;
+use Crypt::CBC;
 
 $ENV{MOJO_TMPDIR} = 'tmp';
 mkdir($ENV{MOJO_TMPDIR}, 0700) unless (-d $ENV{MOJO_TMPDIR});
@@ -14,10 +15,11 @@ sub startup {
     my $config = $self->plugin('Config');
 
     # Default values
-    $config->{provisioning}  = 100 unless (defined($config->{provisionning}));
-    $config->{provisioning}  = 100 unless (defined($config->{provisioning}));
-    $config->{provis_step}   = 5   unless (defined($config->{provis_step}));
-    $config->{length}        = 8   unless (defined($config->{length}));
+    $config->{provisioning}   = 100 unless (defined($config->{provisionning}));
+    $config->{provisioning}   = 100 unless (defined($config->{provisioning}));
+    $config->{provis_step}    = 5   unless (defined($config->{provis_step}));
+    $config->{length}         = 8   unless (defined($config->{length}));
+    $config->{always_encrypt} = 0   unless (defined($config->{always_encrypt}));
 
     die "You need to provide a contact information in lutim.conf !" unless (defined($config->{contact}));
 
@@ -28,7 +30,7 @@ sub startup {
     $self->helper(
         render_file => sub {
             my $c = shift;
-            my ($filename, $path, $mediatype, $dl, $expires, $nocache) = @_;
+            my ($filename, $path, $mediatype, $dl, $expires, $nocache, $key) = @_;
 
             $filename = quote($filename);
 
@@ -43,18 +45,25 @@ sub startup {
 
             $mediatype =~ s/x-//;
 
-            $asset      = Mojo::Asset::File->new(path => $path);
             my $headers = Mojo::Headers->new();
             if ($nocache) {
-                $headers->add('Cache-Control'       => 'no-cache');
+                $headers->add('Cache-Control'   => 'no-cache');
             } else {
-                $headers->add('Expires'             => $expires);
+                $headers->add('Expires'         => $expires);
             }
             $headers->add('Content-Type'        => $mediatype.';name='.$filename);
             $headers->add('Content-Disposition' => $dl.';filename='.$filename);
-            $headers->add('Content-Length'      => $asset->size);
             $c->res->content->headers($headers);
+
+            $c->app->log->debug($key);
+            if ($key) {
+                $asset = $c->decrypt($key, $path);
+            } else {
+                $asset = Mojo::Asset::File->new(path => $path);
+            }
             $c->res->content->asset($asset);
+            $headers->add('Content-Length' => $asset->size);
+
             return $c->rendered(200);
         }
     );
@@ -169,6 +178,64 @@ sub startup {
         }
     );
 
+    $self->helper(
+        crypt => sub {
+            my $c        = shift;
+            my $upload   = shift;
+            my $filename = shift;
+
+            my $key   = $c->shortener(8);
+
+            my $cipher = Crypt::CBC->new(
+                -key    => $key,
+                -cipher => 'Blowfish',
+                -header => 'none',
+                -iv     => 'dupajasi'
+            );
+
+            $cipher->start('encrypting');
+
+            my $crypt_asset = Mojo::Asset::File->new;
+
+            $crypt_asset->add_chunk($cipher->crypt($upload->slurp));
+            $crypt_asset->add_chunk($cipher->finish);
+
+            my $crypt_upload = Mojo::Upload->new;
+            $crypt_upload->filename($filename);
+            $crypt_upload->asset($crypt_asset);
+
+            return ($crypt_upload, $key);
+        }
+    );
+
+    $self->helper(
+        decrypt => sub {
+            my $c    = shift;
+            my $key  = shift;
+            my $file = shift;
+
+            my $cipher = Crypt::CBC->new(
+                -key    => $key,
+                -cipher => 'Blowfish',
+                -header => 'none',
+                -iv     => 'dupajasi'
+            );
+
+            $cipher->start('decrypting');
+
+            my $decrypt_asset = Mojo::Asset::File->new;
+
+            open(my $f, "<",$file) or die "Unable to read encrypted file: $!";
+            binmode $f;
+            while (read($f, my $buffer,1024)) {
+                  $decrypt_asset->add_chunk($cipher->crypt($buffer));
+            }
+            $decrypt_asset->add_chunk($cipher->finish) ;
+
+            return $decrypt_asset;
+        }
+    );
+
     $self->hook(
         before_dispatch => sub {
             my $c = shift;
@@ -227,6 +294,9 @@ sub startup {
     $r->get('/:short')->
         to('Controller#short')->
         name('short');
+
+    $r->get('/:short/:key')->
+        to('Controller#short');
 }
 
 1;

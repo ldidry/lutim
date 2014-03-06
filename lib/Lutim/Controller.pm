@@ -126,6 +126,10 @@ sub add {
                     my $filename = unidecode($upload->filename);
                     my $ext      = ($filename =~ m/([^.]+)$/)[0];
                     my $path     = 'files/'.$records[0]->short.'.'.$ext;
+                    my $key;
+                    if ($c->param('crypt') || $c->config->{always_encrypt}) {
+                        ($upload, $key) = $c->crypt($upload, $filename);
+                    }
                     $upload->move_to($path);
                     $records[0]->update(
                         path                 => $path,
@@ -143,7 +147,8 @@ sub add {
                     $c->app->log->info('[CREATION] '.$c->ip.' pushed '.$filename.' (path: '.$path.')');
 
                     # Give url to user
-                    $short = $records[0]->short;
+                    $short  = $records[0]->short;
+                    $short .= '/'.$key if (defined($key));
                 } else {
                     # Houston, we have a problem
                     $msg = $c->l('no_more_short', $c->config->{contact});
@@ -201,6 +206,7 @@ sub short {
     my $c     = shift;
     my $short = $c->param('short');
     my $touit = $c->param('t');
+    my $key   = $c->param('key');
     my $dl    = (defined($c->param('dl'))) ? 'attachment' : 'inline';
 
     my @images = LutimModel::Lutim->select('WHERE short = ? AND ENABLED = 1 AND path IS NOT NULL', $short);
@@ -224,10 +230,12 @@ sub short {
         my $test;
         if (defined($touit)) {
             $test = 1;
+            my $short  = $images[0]->short;
+               $short .= '/'.$key if (defined($key));
             $c->render(
                 template => 'twitter',
                 layout   => undef,
-                short    => $images[0]->short,
+                short    => $short,
                 filename => $images[0]->filename
             );
         } else {
@@ -235,7 +243,8 @@ sub short {
             my $dt = DateTime->from_epoch( epoch => $expires * 86400 + $images[0]->created_at);
             $dt->set_time_zone('GMT');
             $expires = $dt->strftime("%a, %d %b %Y %H:%M:%S GMT");
-            $test = $c->render_file($images[0]->filename, $images[0]->path, $images[0]->mediatype, $dl, $expires, $images[0]->delete_at_first_view);
+
+            $test = $c->render_file($images[0]->filename, $images[0]->path, $images[0]->mediatype, $dl, $expires, $images[0]->delete_at_first_view, $key);
         }
 
         if ($test != 500) {

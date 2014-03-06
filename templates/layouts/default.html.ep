@@ -35,6 +35,12 @@
             ul.no-bullet {
                 list-style-type: none;
             }
+
+% if ($self->config->{always_encrypt}) {
+            label.always-encrypt {
+                display: none;
+            }
+% }
         % end
         %= javascript 'js/jquery-2.1.0.min.js'
         %= javascript 'js/bootstrap.min.js'

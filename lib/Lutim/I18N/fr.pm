@@ -71,6 +71,8 @@ our %Lexicon = (
     'delay_30'              => '30 jours',
     'delay_365'             => '1 an',
     'max_delay'             => 'Attention ! Le délai maximal de rétention d\'une image est de [_1] jour(s), même si vous choisissez « pas de limitation de durée ».',
+    'crypt_image'           => 'Chiffrer l\'image (LUTIm ne stocke pas la clé).',
+    'always_encrypt'        => 'Les images sont chiffrées sur le serveur (LUTIm ne stocke pas la clé).',
 );
 
 1;

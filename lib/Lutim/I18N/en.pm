@@ -71,6 +71,8 @@ our %Lexicon = (
     'delay_30'              => '30 days',
     'delay_365'             => '1 year',
     'max_delay'             => 'Warning! The maximum time limit for an image is [_1] day(s), even if you choose "no time limit".',
+    'crypt_image'           => 'Encrypt the image (LUTIm does not keep the key).',
+    'always_encrypt'        => 'The images are encrypted on the server (LUTIm does not keep the key).',
 );
 
 1;
