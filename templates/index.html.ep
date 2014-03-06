@@ -3,6 +3,7 @@
 <div class="messages">
 % if (max_delay != 0) {
     <div class="alert alert-warning text-center">
+        <button type="button" class="close jsonly" data-dismiss="alert" aria-hidden="true">&times;</button>
         <strong><%=l('max_delay', max_delay) %></strong>
     </div>
 % }
@@ -11,7 +12,6 @@
 % }
 % if (defined(flash('short'))) {
     <div class="alert alert-success">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
         <strong><%= flash('filename') %></strong>
         <ul class="no-bullet">
             <li><i class="icon icon-eye" title="<%=l 'view-link' %>"></i> <%= link_to url_for('/')->base->scheme($scheme)->to_abs.'/'.flash('short') => begin %><%= url_for('/')->base->scheme($scheme)->to_abs.'/'.flash('short') %><%= end %></li>
@@ -22,7 +22,6 @@
 % }
 % if (defined(flash('msg'))) {
     <div class="alert alert-danger">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
         <strong><%=l 'some-bad' %></strong><br>
         <%= flash('filename') %> <%= flash('msg') %>
     </div>
