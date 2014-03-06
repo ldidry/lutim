@@ -68,7 +68,8 @@ sub startup {
             for my $x (@x_forward) {
                 $proxy .= join(', ', @$x);
             }
-            return ($proxy) ? $proxy : $c->tx->remote_address;
+            my $ip = ($proxy) ? $proxy : $c->tx->remote_address;
+            return $ip.' Remote port: '.$c->tx->remote_port;
         }
     );
 
