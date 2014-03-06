@@ -1,13 +1,7 @@
 % # vim:set sw=4 ts=4 sts=4 ft=html.epl expandtab:
 % my $scheme = (defined(config('https')) && config('https')) ? 'https' : 'http';
 <div class="messages">
-% if (max_delay != 0) {
-    <div class="alert alert-warning text-center">
-        <button type="button" class="close jsonly" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <strong><%=l('max_delay', max_delay) %></strong>
-    </div>
-% }
-% if ($self->config->{always_encrypt}) {
+% if (config('always_encrypt')) {
     <p><%=l 'always_encrypt' %></p>
 % }
 % if (defined(flash('short'))) {
@@ -33,7 +27,23 @@
     <div class="form-group form-inline">
         <select name="delete-day" class="form-control">
             % for my $delay (qw/0 1 7 30 365/) {
-                <option value="<%= $delay %>" <%== is_selected($delay) %>><%=l "delay_$delay" %></option>
+            %   my $text = ($delay == 7 || $delay == 30) ? l('delay_days', $delay) : l("delay_$delay");
+            %   if (config('max_delay')) {
+            %       if ($delay) {
+            %           if ($delay < config('max_delay')) {
+                            <option value="<%= $delay %>" <%== is_selected($delay) %>><%= $text %></option>
+            %           } elsif ($delay == config('max_delay')) {
+                            <option value="<%= $delay %>" <%== is_selected($delay) %>><%= $text %></option>
+            %               last;
+            %           } else {
+            %               my $text = ($delay == 1) ? l('delay_1') : l('delay_days', $delay);
+                            <option value="<%= config('max_delay') %>" <%== is_selected(config('max_delay')) %>><%=l('delay_days', config('max_delay')) %></option>
+            %               last;
+            %           }
+            %       }
+            %   } else {
+                    <option value="<%= $delay %>" <%== is_selected($delay) %>><%= $text %></option>
+            %   }
             % }
         </select>
         <div class="checkbox">
@@ -63,7 +73,23 @@
     <div class="form-group form-inline">
         <select id="delete-day" class="form-control">
             % for my $delay (qw/0 1 7 30 365/) {
-                <option value="<%= $delay %>" <%== is_selected($delay) %>><%=l "delay_$delay" %></option>
+            %   my $text = ($delay == 7 || $delay == 30) ? l('delay_days', $delay) : l("delay_$delay");
+            %   if (config('max_delay')) {
+            %       if ($delay) {
+            %           if ($delay < config('max_delay')) {
+                            <option value="<%= $delay %>" <%== is_selected($delay) %>><%= $text %></option>
+            %           } elsif ($delay == config('max_delay')) {
+                            <option value="<%= $delay %>" <%== is_selected($delay) %>><%= $text %></option>
+            %               last;
+            %           } else {
+            %               my $text = ($delay == 1) ? l('delay_1') : l('delay_days', $delay);
+                            <option value="<%= config('max_delay') %>" <%== is_selected(config('max_delay')) %>><%=l('delay_days', config('max_delay')) %></option>
+            %               last;
+            %           }
+            %       }
+            %   } else {
+                    <option value="<%= $delay %>" <%== is_selected($delay) %>><%= $text %></option>
+            %   }
             % }
         </select>
         <div class="checkbox">

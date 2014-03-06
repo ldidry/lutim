@@ -36,7 +36,7 @@
                 list-style-type: none;
             }
 
-% if ($self->config->{always_encrypt}) {
+% if (config('always_encrypt')) {
             label.always-encrypt {
                 display: none;
             }
@@ -75,9 +75,9 @@
                     </p>
                 </div>
             </div>
-% if (defined($config->{broadcast_message})) {
+% if (defined(config('broadcast_message'))) {
             <div class="alert alert-info">
-                <strong><%= $config->{broadcast_message} %></strong>
+                <strong><%= config('broadcast_message') %></strong>
             </div>
 % }
 % if (defined(stash('stop_upload'))) {
