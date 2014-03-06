@@ -41,7 +41,7 @@ sub add {
     my $file_url = $c->param('lutim-file-url');
 
     if(!defined($c->stash('stop_upload'))) {
-        if (defined($file_url)) {
+        if (defined($file_url) && $file_url) {
             if (is_http_uri($file_url) || is_https_uri($file_url)) {
                 my $ua = Mojo::UserAgent->new;
                 my $tx = $ua->get($file_url => {DNT => 1});
