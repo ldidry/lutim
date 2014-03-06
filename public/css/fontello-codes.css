@@ -1,4 +1,6 @@
 
+.icon-eye:before { content: '\e806'; } /* '' */
+.icon-download:before { content: '\e804'; } /* '' */
 .icon-bitcoin:before { content: '\e802'; } /* '' */
 .icon-spinner:before { content: '\e805'; } /* '' */
 .icon-github-circled:before { content: '\e800'; } /* '' */
