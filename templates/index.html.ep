@@ -52,7 +52,7 @@
     </div>
     <div class="form-group">
         <label for="lutim-file-url"><%=l 'upload_image_url' %></label>
-        <input type="url" name="lutim-file-url" id="lutim-file-url" placeholder="<%=l 'image_url' %>">
+        <input type="url" name="lutim-file-url" placeholder="<%=l 'image_url' %>">
         <p class="help-block"><%=l 'image-only' %></p>
     </div>
     <%= submit_button l('go'), class => 'btn btn-default btn-primary', id => 'submitbutton' %>
