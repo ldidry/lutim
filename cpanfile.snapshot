@@ -26,6 +26,12 @@ DISTRIBUTIONS
       Class::Singleton 1.4
     requirements:
       ExtUtils::MakeMaker 0
+  Crypt-Blowfish-2.14
+    pathname: D/DP/DPARIS/Crypt-Blowfish-2.14.tar.gz
+    provides:
+      Crypt::Blowfish 2.14
+    requirements:
+      ExtUtils::MakeMaker 0
   Crypt-CBC-2.33
     pathname: L/LD/LDS/Crypt-CBC-2.33.tar.gz
     provides:
@@ -42,7 +48,7 @@ DISTRIBUTIONS
       DBD::SQLite::dr 1.40
     requirements:
       DBI 1.57
-      ExtUtils::MakeMaker 6.48
+      ExtUtils::MakeMaker 0
       File::Spec 0.82
       Test::Builder 0.86
       Test::More 0.47
@@ -1172,6 +1178,47 @@ DISTRIBUTIONS
       File::Spec 0
       strict 0
       warnings 0
+  ExtUtils-MakeMaker-6.88
+    pathname: B/BI/BINGOS/ExtUtils-MakeMaker-6.88.tar.gz
+    provides:
+      DynaLoader 6.88
+      ExtUtils::Command::MM 6.88
+      ExtUtils::Liblist 6.88
+      ExtUtils::Liblist::Kid 6.88
+      ExtUtils::MM 6.88
+      ExtUtils::MM_AIX 6.88
+      ExtUtils::MM_Any 6.88
+      ExtUtils::MM_BeOS 6.88
+      ExtUtils::MM_Cygwin 6.88
+      ExtUtils::MM_DOS 6.88
+      ExtUtils::MM_Darwin 6.88
+      ExtUtils::MM_MacOS 6.88
+      ExtUtils::MM_NW5 6.88
+      ExtUtils::MM_OS2 6.88
+      ExtUtils::MM_QNX 6.88
+      ExtUtils::MM_UWIN 6.88
+      ExtUtils::MM_Unix 6.88
+      ExtUtils::MM_VMS 6.88
+      ExtUtils::MM_VOS 6.88
+      ExtUtils::MM_Win32 6.88
+      ExtUtils::MM_Win95 6.88
+      ExtUtils::MY 6.88
+      ExtUtils::MakeMaker 6.88
+      ExtUtils::MakeMaker::Config 6.88
+      ExtUtils::MakeMaker::_version 6.88
+      ExtUtils::Mkbootstrap 6.88
+      ExtUtils::Mksymlists 6.88
+      ExtUtils::testlib 6.88
+      MM 6.88
+      MY 6.88
+      in 6.88
+    requirements:
+      Data::Dumper 0
+      DirHandle 0
+      File::Basename 0
+      File::Spec 0.8
+      Pod::Man 0
+      perl 5.006
   File-Remove-1.52
     pathname: A/AD/ADAMK/File-Remove-1.52.tar.gz
     provides:
@@ -1215,6 +1262,16 @@ DISTRIBUTIONS
       ExtUtils::MakeMaker 6.52
       Test::More 0.82
       perl 5.00503
+  MIME-Types-2.04
+    pathname: M/MA/MARKOV/MIME-Types-2.04.tar.gz
+    provides:
+      MIME::Type 2.04
+      MIME::Types 2.04
+    requirements:
+      ExtUtils::MakeMaker 0
+      File::Basename 0
+      File::Spec 0
+      Test::More 0.47
   Module-Build-0.4205
     pathname: L/LE/LEONT/Module-Build-0.4205.tar.gz
     provides:
@@ -1320,8 +1377,8 @@ DISTRIBUTIONS
       perl 5.006
       strict 0
       warnings 0
-  Mojolicious-4.83
-    pathname: S/SR/SRI/Mojolicious-4.83.tar.gz
+  Mojolicious-4.87
+    pathname: S/SR/SRI/Mojolicious-4.87.tar.gz
     provides:
       Mojo undef
       Mojo::Asset undef
@@ -1384,7 +1441,7 @@ DISTRIBUTIONS
       Mojo::UserAgent::Server undef
       Mojo::UserAgent::Transactor undef
       Mojo::Util undef
-      Mojolicious 4.83
+      Mojolicious 4.87
       Mojolicious::Command undef
       Mojolicious::Command::cgi undef
       Mojolicious::Command::cpanify undef
@@ -1432,6 +1489,7 @@ DISTRIBUTIONS
       ojo undef
     requirements:
       ExtUtils::MakeMaker 0
+      perl 5.010001
   Mojolicious-Plugin-I18N-1.21
     pathname: S/SH/SHARIFULN/Mojolicious-Plugin-I18N-1.21.tar.gz
     provides:

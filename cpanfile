@@ -9,3 +9,4 @@ requires 'Filesys::DiskUsage';
 requires 'Switch';
 requires 'Data::Validate::URI';
 requires 'Crypt::CBC';
+requires 'Crypt::Blowfish';
