@@ -4,14 +4,19 @@
 % if (config('always_encrypt')) {
     <p><%=l 'always_encrypt' %></p>
 % }
-% if (defined(flash('short'))) {
+% if (defined(stash('short'))) {
     <div class="alert alert-success">
-        <strong><%= flash('filename') %></strong>
-        <ul class="no-bullet">
-            <li><i class="icon icon-eye" title="<%=l 'view-link' %>"></i> <%= link_to url_for('/')->base->scheme($scheme)->to_abs.'/'.flash('short') => begin %><%= url_for('/')->base->scheme($scheme)->to_abs.'/'.flash('short') %><%= end %></li>
-            <li><i class="icon icon-download" title="<%=l 'download-link' %>"></i> <%= link_to url_for('/')->base->scheme($scheme)->to_abs.'/'.flash('short').'?dl' => begin %><%= url_for('/')->base->scheme($scheme)->to_abs.'/'.flash('short').'?dl' %><%= end %></li>
-            <li><i class="icon icon-touiteur" title="<%=l 'twitter-link' %>"></i> <%= link_to url_for('/')->base->scheme($scheme)->to_abs.'/'.flash('short').'?t' => begin %><%= url_for('/')->base->scheme($scheme)->to_abs.'/'.flash('short').'?t' %><%= end %></li>
-        </ul>
+%     if (defined(stash('short'))) {
+        <img class="pull-left thumbnail" alt="<%= stash('filename') %> thumbnail" src="<%= stash('thumb') %>">
+%     }
+        <div>
+            <strong><%= stash('filename') %></strong>
+            <ul class="list-unstyled">
+                <li><i class="icon icon-eye" title="<%=l 'view-link' %>"></i> <%= link_to url_for('/')->base->scheme($scheme)->to_abs.'/'.stash('short') => begin %><%= url_for('/')->base->scheme($scheme)->to_abs.'/'.stash('short') %><%= end %></li>
+                <li><i class="icon icon-download" title="<%=l 'download-link' %>"></i> <%= link_to url_for('/')->base->scheme($scheme)->to_abs.'/'.stash('short').'?dl' => begin %><%= url_for('/')->base->scheme($scheme)->to_abs.'/'.stash('short').'?dl' %><%= end %></li>
+                <li><i class="icon icon-touiteur" title="<%=l 'twitter-link' %>"></i> <%= link_to url_for('/')->base->scheme($scheme)->to_abs.'/'.stash('short').'?t' => begin %><%= url_for('/')->base->scheme($scheme)->to_abs.'/'.stash('short').'?t' %><%= end %></li>
+            </ul>
+        </div>
     </div>
 % }
 % if (defined(flash('msg'))) {
@@ -134,15 +139,19 @@
     }
     function message(success, msg) {
         if(success) {
-            return '<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong>'
+            var thumb = (msg.thumb !== null) ? '<img class="pull-left thumbnail" alt="'+msg.filename+' thumbnail" src="'+msg.thumb+'">' : ''
+            return '<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'
+                +thumb
+                +'<div><strong>'
                 +msg.filename
-                +'</strong><ul class="no-bullet"><li><i class="icon icon-eye" title="<%=l 'view-link' %>"></i> '
+                +'</strong>'
+                +'<ul class="list-unstyled"><li><i class="icon icon-eye" title="<%=l 'view-link' %>"></i>&nbsp;'
                 +link(msg.short, '')
-                +'</a></li><li><i class="icon icon-download" title="<%=l 'download-link' %>"></i> '
+                +'</a></li><li><i class="icon icon-download" title="<%=l 'download-link' %>"></i>&nbsp;'
                 +link(msg.short, 'dl')
-                +'</a></li><li><i class="icon icon-touiteur" title="<%=l 'twitter-link' %>"></i> '
+                +'</a></li><li><i class="icon icon-touiteur" title="<%=l 'twitter-link' %>"></i>&nbsp;'
                 +link(msg.short, 't')
-                +'</li></div>';
+                +'</li></ul></div>';
         } else {
             return '<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong><%=l 'some-bad' %></strong><br>'
                 +msg.filename

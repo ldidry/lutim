@@ -31,6 +31,14 @@ or
 sudo apt-get install carton
 ```
 
+###Thumbnails dependancy
+If you want to provide thumbnails of uploaded images, you have to install the *ImageMagick* image manipulation software (<http://www.imagemagick.org/>) and the Image::Magick CPAN module.
+
+On Debian, you can do:
+```shell
+sudo apt-get install perlmagick
+```
+
 ##Installation
 After installing Carton :
 ```shell

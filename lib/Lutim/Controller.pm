@@ -1,12 +1,23 @@
 # vim:set sw=4 ts=4 sts=4 expandtab:
 package Lutim::Controller;
 use Mojo::Base 'Mojolicious::Controller';
-use Mojo::Util qw(url_unescape);
+use Mojo::Util qw(url_unescape b64_encode);
 use DateTime;
 use File::Type;
 use Digest::file qw(digest_file_hex);
 use Text::Unidecode;
 use Data::Validate::URI qw(is_http_uri is_https_uri);
+
+use vars qw($im_loaded);
+BEGIN {
+    eval "use Image::Magick";
+    if ($@) {
+        warn "You don't have Image::Magick installed so you won't have thumbnails.";
+        $im_loaded = 0;
+    } else {
+        $im_loaded = 1;
+    }
+}
 
 sub home {
     my $c = shift;
@@ -98,7 +109,7 @@ sub add {
 
         my $ip = $c->ip;
 
-        my ($msg, $short);
+        my ($msg, $short, $thumb);
         # Check file type
         if (index($mediatype, 'image/') >= 0) {
             # Create directory if needed
@@ -126,6 +137,14 @@ sub add {
                     my $filename = unidecode($upload->filename);
                     my $ext      = ($filename =~ m/([^.]+)$/)[0];
                     my $path     = 'files/'.$records[0]->short.'.'.$ext;
+                    if ($im_loaded) {
+                        my $im = Image::Magick->new;
+                        $im->BlobToImage($upload->slurp);
+                        $im->Resize(geometry=>'x85');
+
+                        $thumb  = 'data:'.$mediatype.';base64,';
+                        $thumb .= b64_encode $im->ImageToBlob();
+                    }
                     my $key;
                     if ($c->param('crypt') || $c->config->{always_encrypt}) {
                         ($upload, $key) = $c->crypt($upload, $filename);
@@ -163,7 +182,8 @@ sub add {
             if (defined($short)) {
                 $msg = {
                     filename => $upload->filename,
-                    short    => $short
+                    short    => $short,
+                    thumb    => $thumb
                 };
             } else {
                 $msg = {
@@ -171,21 +191,30 @@ sub add {
                     msg      => $msg
                 };
             }
-            $c->render(
+            return $c->render(
                 json => {
                     success => (defined($short)) ? Mojo::JSON->true : Mojo::JSON->false,
                     msg     => $msg
                 }
             );
         } else {
-            $c->flash(msg      => $msg)   if (defined($msg));
-            $c->flash(short    => $short) if (defined($short));
-            $c->flash(filename => $upload->filename);
-            $c->redirect_to('/');
+            if ((defined($msg))) {
+                $c->flash(msg      => $msg);
+                $c->flash(filename => $upload->filename);
+                return $c->redirect_to('/');
+            } else {
+                $c->stash(short    => $short) if (defined($short));
+                $c->stash(thumb    => $thumb);
+                $c->stash(filename => $upload->filename);
+                return $c->render(
+                    template      => 'index',
+                    max_file_size => $c->req->max_message_size
+                );
+            }
         }
     } else {
         if (defined($c->param('format')) && $c->param('format') eq 'json') {
-            $c->render(
+            return $c->render(
                 json => {
                     success => Mojo::JSON->false,
                     msg     => {
@@ -197,7 +226,7 @@ sub add {
         } else {
             $c->flash(msg      => $c->stash('stop_upload'));
             $c->flash(filename => $upload->filename);
-            $c->redirect_to('/');
+            return $c->redirect_to('/');
         }
     }
 }
@@ -232,7 +261,7 @@ sub short {
             $test = 1;
             my $short  = $images[0]->short;
                $short .= '/'.$key if (defined($key));
-            $c->render(
+            return $c->render(
                 template => 'twitter',
                 layout   => undef,
                 short    => $short,

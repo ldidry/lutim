@@ -32,8 +32,8 @@
                 display: none;
             }
 
-            ul.no-bullet {
-                list-style-type: none;
+            .thumbnail {
+                margin-right: 8px;
             }
 
 % if (config('always_encrypt')) {
