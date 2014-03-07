@@ -1,6 +1,8 @@
 Revision history for LUTIm
 
-0.2  2014-02-??
+0.2  2014-03-07
+	- Server-side encryption available
+	- Thumbnails of uploaded images in response
 	- Bugfixes
 	- HTML validity
 	- Stats (via cron stats command)
