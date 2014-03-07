@@ -1,7 +1,7 @@
 # vim:set sw=4 ts=4 sts=4 ft=perl expandtab:
 # See README.md for more explanations
 {
-    hypnotoad => {
+    hypnotoad => { # Please, really, have a look on README.md for explanations! This is important here!
         listen => ['http://127.0.0.1:8080'],
         user   => 'www-data',
         group  => 'www-data'
