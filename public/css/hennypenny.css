@@ -1,0 +1,6 @@
+@font-face {
+  font-family: 'Henny_Penny';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Henny Penny'), local('HennyPenny-Regular'), url(../font/hennypenny.ttf) format('truetype');
+}

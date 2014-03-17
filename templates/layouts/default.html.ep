@@ -17,6 +17,7 @@
         %= stylesheet 'css/fontello.css'
         %= stylesheet 'css/animation.css'
         %= stylesheet 'css/uploader.css'
+        %= stylesheet 'css/hennypenny.css'
         %= stylesheet begin
             body {
                 padding-top: 40px;
@@ -34,6 +35,15 @@
 
             .thumbnail {
                 margin-right: 8px;
+            }
+
+            .hennypenny {
+                font-family: 'Henny_Penny', cursive;
+                font-size: 42px;
+            }
+
+            .logo {
+                margin-right: 10px;
             }
 
 % if (config('always_encrypt')) {
@@ -59,10 +69,10 @@
                 </div>
 % }
                 <div>
-                    <div class="pull-left hidden-xs">
+                    <div class="pull-left hidden-xs logo">
                         <img src="<%= url_for('/') %>img/LUTIm_small.png" alt="LUTIm logo">
                     </div>
-                    <h1>Let's Upload That Image!</h1>
+                    <h1 class="hennypenny">Let's Upload That Image!</h1>
                     <p>
                         &copy; 2014 <%= link_to 'http://www.fiat-tux.fr' => begin %>Luc Didry<% end %> — 
                         <%=l 'license' %> <%= link_to 'https://www.gnu.org/licenses/agpl-3.0.html' => begin %>AGPL<% end %> — 
