@@ -1,28 +1,112 @@
 # vim:set sw=4 ts=4 sts=4 ft=perl expandtab:
-# See README.md for more explanations
 {
-    hypnotoad => { # Please, really, have a look on README.md for explanations! This is important here!
+    ####################
+    # Hypnotoad settings
+    ####################
+    # see http://mojolicio.us/perldoc/Mojo/Server/Hypnotoad for a full list of settings
+    hypnotoad => {
+        # array of IP addresses and ports you want to listen to
         listen => ['http://127.0.0.1:8080'],
+        # user and group you want for LUTIm to run with
+        # be sure that this user/group have rights on the lutim directory
+        # if you launch lutim from a different user, be sure that this user have the right to su this user/group
+        # => if current_user is not the user that you sets here and is not root, there's chances that it will fail (see https://github.com/ldidry/lutim/issues/25)
         user   => 'www-data',
         group  => 'www-data'
     },
+
+    ################
+    # LUTIm settings
+    ################
+
+    # put a way to contact you here and uncomment it
+    # mandatory
     #contact           => 'John Doe, admin[at]example.com',
-    secrets           => ['fdjsofjoihrei'], # please provide a random string
-    length            => 8, # optional
-    provis_step       => 5, # optional
-    provisioning      => 100, # optional
-    tweet_card_via    => '@framasky', # optional
-    max_file_size     => 10485760,  # optional, size in octets, you can write it 10*1024*1024
-    #piwik_img         => 'https://piwik.example.org/piwik.php?idsite=1&amp;rec=1', # optional, only the piwik image tracker is allowed, no javascript
-    #hosted_by         => 'My super hoster <img src="http://hoster.example.com" alt="Hoster logo">', # optional
-    #https             => 0, # optional, set to 1 if you use Lutim behind a secure web server
-    #stats_day_num     => 365, # optional, number of days shown in /stats page (used with script/lutim cron stats)
-    #keep_ip_during    => 365, # optional, number of days, after that delay, the IP addresses of image creators will be deleted (used with script/lutim cron cleanbdd)
-    #max_total_size    => 10*1024*1024*1024, # optional, maximum total size of the files directory (used with script/lutim cron watch)
-    #policy_when_full  => 'warn', # optional, policy when files directory is over max_total_size. Valid values are 'warn', 'stop-upload' and 'delete'. See README.
-    #broadcast_message => 'Maintenance', #optional, the broadcast_message is displayed on all pages of LUTIm (but no in json response)
-    #allowed_domains   => ['http://1.example.com', 'http://2.example.com'], #optional, array of authorized domains for API calls. If you want to authorize everyone to use the API: ['*']
-    #default_delay     => 0, #optional: what is the default time limit for files? Valid values are 0, 1, 7, 30 and 365.
-    #max_delay         => 0, #optional, if defined, the images will be deleted after that delay (in days), even if they were uploaded with "no delay" (or value superior to max\_delay) option and a warning message will be displayed on homepage.
-    #always_encrypt    => 0, #optional, if set to 1, all the images will be encrypted
+
+    # random string used to encrypt cookies
+    # mandatory
+    secrets           => ['fdjsofjoihrei'],
+
+    # length of the images random URL
+    # optional, default is 8
+    #length            => 8,
+
+    # how many URLs will be provisioned in a batch ?
+    # optional, default is 5
+    #provis_step       => 5,
+
+    # max number of URLs to be provisioned
+    # optional, default is 100
+    #provisioning      => 100,
+
+    # twitter account which will appear on twitter cards
+    # see https://dev.twitter.com/docs/cards/validation/validator to register your LUTIm instance on twitter
+    # optional, default is @framasky
+    #tweet_card_via    => '@framasky',
+
+    # max image size, in octets
+    # you can write it 10*1024*1024
+    # optional, default is 10485760
+    #max_file_size     => 10485760,
+
+    # if you want to have piwik statistics, provide a piwik image tracker
+    # only the image tracker is allowed, no javascript
+    # optional, no default
+    #piwik_img         => 'https://piwik.example.org/piwik.php?idsite=1&amp;rec=1',
+
+    # if you want to include something in the right of the screen, put it here
+    # here's an exemple to put the logo of your hoster
+    # optional, no default
+    #hosted_by         => 'My super hoster <img src="http://hoster.example.com" alt="Hoster logo">',
+
+    # set to 1 if you use Lutim behind a secure web server
+    # secure connection detection will be improved in the future
+    # optional, default is 0
+    #https             => 0,
+
+    # broadcast_message which will displayed on all pages of LUTIm (but no in json response)
+    # optional, no default
+    #broadcast_message => 'Maintenance',
+
+    # array of authorized domains for API calls.
+    # if you want to authorize everyone to use the API: ['*']
+    # optional, no domains allowed by default
+    #allowed_domains   => ['http://1.example.com', 'http://2.example.com'],
+
+    # default time limit for files
+    # valid values are 0, 1, 7, 30 and 365
+    # optional, default is 0 (no limit)
+    #default_delay     => 0,
+
+    # number of days after which the images will be deleted, even if they were uploaded with "no delay" (or value superior to max_delay)
+    # a warning message will be displayed on homepage
+    # optional, default is 0 (no limit)
+    #max_delay         => 0,
+
+    # if set to 1, all the images will be encrypted and the encryption option will no be displayed
+    # optional, default is 0
+    #always_encrypt    => 0,
+
+    ##########################
+    # LUTIm cron jobs settings
+    ##########################
+
+    # number of days shown in /stats page (used with script/lutim cron stats)
+    # optional, default is 365
+    #stats_day_num     => 365,
+
+    # number of days senders' IP addresses are kept in database
+    # after that delay, they will be deleted from database (used with script/lutim cron cleanbdd)
+    # optional, default is 365
+    #keep_ip_during    => 365,
+
+    # max size of the files directory, in octets
+    # used by script/lutim cron watch to trigger an action
+    # optional, no default
+    #max_total_size    => 10*1024*1024*1024,
+
+    # default action when files directory is over max_total_size (used with script/lutim cron watch)
+    # valid values are 'warn', 'stop-upload' and 'delete'
+    # please, see readme
+    #policy_when_full  => 'warn',
 };
