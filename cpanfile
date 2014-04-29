@@ -1,4 +1,5 @@
 requires 'Mojolicious';
+requires 'IO::Socket::SSL';
 requires 'Data::Validate::URI';
 requires 'Mojolicious::Plugin::I18N';
 requires 'ORLite';

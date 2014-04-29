@@ -19,7 +19,7 @@ LUTIm's logo is an adaptation of [Lutin](http://commons.wikimedia.org/wiki/File:
 ![LUTIm's logo](http://lut.im/img/LUTIm_small.png)
 
 ##Dependencies
-* Carton : Perl dependencies manager, it will get what you need, so don't bother for dependencies (but you can read the file `cpanfile` if you want).
+* Carton : Perl dependencies manager, it will get what you need, so don't bother for Perl modules dependencies (but you can read the file `cpanfile` if you want).
 
 ```shell
 sudo cpan Carton
@@ -29,6 +29,12 @@ or
 
 ```shell
 sudo apt-get install carton
+```
+
+* But, on another hand, some modules that Carton will install need to be compiled. So you will need some tools:
+
+```shell
+sudo apt-get install build-essential libssl-dev
 ```
 
 ###Thumbnails dependancy

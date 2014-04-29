@@ -67,12 +67,30 @@ sub add {
                     $filename    = 'uploaded.image' unless (defined($filename));
                     $filename   .= '.image' if (index($filename, '.') == -1);
                     $upload      = Mojo::Upload->new(
-                        asset    => $tx->res->content->asset,
+                        asset    => $res->content->asset,
                         filename => $filename
                     );
                     $c->app->{wait_for_it}->{$c->ip} = time;
+                } elsif ($tx->res->is_limit_exceeded) {
+                    my $msg = $c->l('file_too_big', $tx->res->max_message_size);
+                    if (defined($c->param('format')) && $c->param('format') eq 'json') {
+                        return $c->render(
+                            json => {
+                                success => Mojo::JSON->false,
+                                msg     => {
+                                    filename => $file_url,
+                                    msg      => $msg
+                                }
+                            }
+                        );
+                    } else {
+                        $c->flash(msg      => $msg);
+                        $c->flash(filename => $upload->filename);
+                        return $c->redirect_to('/');
+                    }
                 } else {
                     my $msg = $c->l('download_error');
+                    $c->app->log->warn('[DOWNLOAD ERROR]'.$c->dumper($tx->error));
                     if (defined($c->param('format')) && $c->param('format') eq 'json') {
                         return $c->render(
                             json => {
@@ -121,7 +139,7 @@ sub add {
             mkdir('files', 0700) unless (-d 'files');
 
             if ($c->req->is_limit_exceeded) {
-                $msg = l('file_too_big', $c->req->max_message_size);
+                $msg = $c->l('file_too_big', $c->req->max_message_size);
                 if (defined($c->param('format')) && $c->param('format') eq 'json') {
                     return $c->render(
                         json => {
