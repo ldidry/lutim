@@ -1,64 +1,16 @@
 % # vim:set sts=4 sw=4 ts=4 ft=html.epl expandtab:
-%= javascript 'js/raphael.js'
-%= javascript 'js/raphael.path.methods.js'
-%= javascript 'js/jquery.simplegraph.js'
+%= javascript 'js/raphael-min.js'
+%= javascript 'js/morris-0.4.3.min.js'
+%= javascript 'js/stats.js'
+<h4><%= $total %><%=l 'pushed-images' %></h4>
+<hr>
+
 %= include 'data'
+<h4>Uploaded files by days</h4>
 <div id="evol-holder"></div>
+<hr>
+<h4>Evolution of total files</h4>
 <div id="total-holder"></div>
 <p><small><%=l 'graph-data-once-a-day' %></small></p>
 
-<h4><%= $total %><%=l 'pushed-images' %></h4>
-
 <%= link_to url_for('index') => ( class => "btn btn-primary btn-lg" ) => begin %><%=l 'back-to-index' %><% end%>
-%= javascript begin
-    function graph(stats_data, stats_labels, stats_total) {
-        // Plot the data
-        // - Temperature Graph - adds colour, fill, and a minimum value for the y axis
-        $("#evol-holder").simplegraph(
-            stats_data,
-            stats_labels,
-            {
-                addHover: true,
-                penColor: "#f00",
-                fillUnderLine: true,
-                drawPoints: true,
-                width: document.body.offsetWidth - 50
-            }
-        )
-        $("#total-holder").simplegraph(
-            stats_total,
-            stats_labels,
-            {
-                addHover: true,
-                penColor: "#00f",
-                fillUnderLine: true,
-                drawPoints: true,
-                width: document.body.offsetWidth - 50
-            }
-        );
-    }
-    $(document).ready(function() {
-        // Get the data
-        var stats_labels = [], stats_data = [], stats_total = [];
-        $("#stats-data thead th").each(function () {
-            stats_labels.push($(this).html());
-        });
-        $("#stats-data tbody tr:first-child td").each(function () {
-            stats_data.push($(this).html());
-        });
-        $("#stats-data tbody tr:nth-child(2) td").each(function () {
-            stats_total.push($(this).html());
-        });
-
-        // Hide the data
-        $("#stats-data").hide();
-
-        graph(stats_data, stats_labels, stats_total);
-
-        $(window).resize(function() {
-            $("#evol-holder").empty();
-            $("#total-holder").empty();
-            graph(stats_data, stats_labels, stats_total);
-        }); 
-    });
-% end

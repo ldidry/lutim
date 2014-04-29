@@ -16,7 +16,11 @@
         %= stylesheet 'css/bootstrap.min.css', media => 'screen'
         %= stylesheet 'css/fontello.css'
         %= stylesheet 'css/animation.css'
+% if (current_route 'index') {
         %= stylesheet 'css/uploader.css'
+% } elsif (current_route 'stats') {
+        %= stylesheet 'css/morris-0.4.3.min.css'
+% }
         %= stylesheet 'css/hennypenny.css'
         %= stylesheet begin
             body {

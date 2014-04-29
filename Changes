@@ -2,6 +2,7 @@ Revision history for LUTIm
 
 0.3  2014-
 	- Antiflood protection for the "Download by URL" feature (#29)
+	- Stats page improved
 
 0.2  2014-03-07
 	- Server-side encryption available
