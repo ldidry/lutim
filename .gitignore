@@ -4,3 +4,5 @@ script/hypnotoad.pid
 local/*
 files/*
 templates/data.html.ep
+public/img/rezopole.png
+public/img/rezopole.xcf
