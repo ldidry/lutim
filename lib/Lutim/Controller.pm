@@ -55,7 +55,8 @@ sub add {
         if (defined($file_url) && $file_url) {
             if (is_http_uri($file_url) || is_https_uri($file_url)) {
                 # Anti-flood protection
-                while (defined($c->app->{wait_for_it}->{$c->ip}) && (time - $c->app->{wait_for_it}->{$c->ip}) <= $c->config->{anti_flood_delay} ) {
+                my $ip = $c->ip(1);
+                while (defined($c->app->{wait_for_it}->{$ip}) && (time - $c->app->{wait_for_it}->{$ip}) <= $c->config->{anti_flood_delay} ) {
                     sleep($c->config->{anti_flood_delay});
                 }
                 my $ua = Mojo::UserAgent->new;
@@ -70,7 +71,7 @@ sub add {
                         asset    => $res->content->asset,
                         filename => $filename
                     );
-                    $c->app->{wait_for_it}->{$c->ip} = time;
+                    $c->app->{wait_for_it}->{$ip} = time;
                 } elsif ($tx->res->is_limit_exceeded) {
                     my $msg = $c->l('file_too_big', $tx->res->max_message_size);
                     if (defined($c->param('format')) && $c->param('format') eq 'json') {
@@ -186,7 +187,7 @@ sub add {
                     );
 
                     # Log image creation
-                    $c->app->log->info('[CREATION] '.$c->ip.' pushed '.$filename.' (path: '.$path.')');
+                    $c->app->log->info('[CREATION] '.$ip.' pushed '.$filename.' (path: '.$path.')');
 
                     # Give url to user
                     $short  = $records[0]->short;

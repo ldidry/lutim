@@ -74,14 +74,19 @@ sub startup {
     $self->helper(
         ip => sub {
             my $c  = shift;
+            my $ip_only = shift || 0;
 
             my $proxy = '';
             my @x_forward = $c->req->headers->header('X-Forwarded-For');
             for my $x (@x_forward) {
                 $proxy .= join(', ', @$x);
             }
+
             my $ip = ($proxy) ? $proxy : $c->tx->remote_address;
-            return $ip.' Remote port: '.$c->tx->remote_port;
+
+            my $remote_port = (defined($c->req->headers->header('X-Remote-Port'))) ? $c->req->headers->header('X-Remote-Port') : $c->tx->remote_port;
+
+            return ($ip_only) ? $ip : "$ip remote port:$remote_port";
         }
     );
 
@@ -243,6 +248,8 @@ sub startup {
         before_dispatch => sub {
             my $c = shift;
             $c->stop_upload();
+
+            # API allowed domains
             if (defined($c->config->{allowed_domains})) {
                 if ($c->config->{allowed_domains}->[0] eq '*') {
                     $c->res->headers->header('Access-Control-Allow-Origin' => '*');
