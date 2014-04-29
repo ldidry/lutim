@@ -54,6 +54,10 @@ sub add {
     if(!defined($c->stash('stop_upload'))) {
         if (defined($file_url) && $file_url) {
             if (is_http_uri($file_url) || is_https_uri($file_url)) {
+                # Anti-flood protection
+                while (defined($c->app->{wait_for_it}->{$c->ip}) && (time - $c->app->{wait_for_it}->{$c->ip}) <= $c->config->{anti_flood_delay} ) {
+                    sleep($c->config->{anti_flood_delay});
+                }
                 my $ua = Mojo::UserAgent->new;
                 my $tx = $ua->get($file_url => {DNT => 1});
                 if (my $res = $tx->success) {
@@ -66,6 +70,7 @@ sub add {
                         asset    => $tx->res->content->asset,
                         filename => $filename
                     );
+                    $c->app->{wait_for_it}->{$c->ip} = time;
                 } else {
                     my $msg = $c->l('download_error');
                     if (defined($c->param('format')) && $c->param('format') eq 'json') {

@@ -10,16 +10,19 @@ mkdir($ENV{MOJO_TMPDIR}, 0700) unless (-d $ENV{MOJO_TMPDIR});
 sub startup {
     my $self = shift;
 
+    $self->{wait_for_it} = {};
+
     $self->plugin('I18N');
 
     my $config = $self->plugin('Config');
 
     # Default values
-    $config->{provisioning}   = 100 unless (defined($config->{provisionning}));
-    $config->{provisioning}   = 100 unless (defined($config->{provisioning}));
-    $config->{provis_step}    = 5   unless (defined($config->{provis_step}));
-    $config->{length}         = 8   unless (defined($config->{length}));
-    $config->{always_encrypt} = 0   unless (defined($config->{always_encrypt}));
+    $config->{provisioning}     = 100 unless (defined($config->{provisionning}));
+    $config->{provisioning}     = 100 unless (defined($config->{provisioning}));
+    $config->{provis_step}      = 5   unless (defined($config->{provis_step}));
+    $config->{length}           = 8   unless (defined($config->{length}));
+    $config->{always_encrypt}   = 0   unless (defined($config->{always_encrypt}));
+    $config->{anti_flood_delay} = 5   unless (defined($config->{anti_flood_delay}));
 
     die "You need to provide a contact information in lutim.conf !" unless (defined($config->{contact}));
 
@@ -257,7 +260,12 @@ sub startup {
 
     $self->hook(
         after_dispatch => sub {
-            shift->provisioning();
+            my $c = shift;
+            $c->provisioning();
+
+            # Purge expired anti-flood protection
+            my $wait_for_it = $c->app->{wait_for_it};
+            delete @{$wait_for_it}{grep { time - $wait_for_it->{$_} > $c->config->{anti_flood_delay} } keys %{$wait_for_it}} if (defined($wait_for_it));
         }
     );
 
