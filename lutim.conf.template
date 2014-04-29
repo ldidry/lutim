@@ -64,8 +64,9 @@
     # optional, no default
     #hosted_by         => 'My super hoster <img src="http://hoster.example.com" alt="Hoster logo">',
 
+    # DEPRECATED DEPRECATED DEPRECATED DEPRECATED DEPRECATED DEPRECATED DEPRECATED DEPRECATED DEPRECATED DEPRECATED
+    # LUTIm now checks if the X-Forwarded-Proto header is present and equal to https.
     # set to 1 if you use Lutim behind a secure web server
-    # secure connection detection will be improved in the future
     # optional, default is 0
     #https             => 0,
 

@@ -1,8 +1,7 @@
 % # vim:set sw=4 ts=4 sts=4 ft=html.epl expandtab:
 % use Mojo::Util qw(url_escape);
 % my $twitter_url = 'https://twitter.com/share';
-% my $scheme = (defined(config('https')) && config('https')) ? 'https' : 'http';
-% my $url    = url_for('/')->base->scheme($scheme)->to_abs().'/';
+% my $url    = url_for('/')->to_abs();
 % $twitter_url .= '?url='.url_escape("$url")
 %              .'&via=framasky'
 %              .'&text=Check out this %23LUTIm instance! ';
@@ -108,7 +107,7 @@
                             <h3 class="modal-title">LUTIm</h3>
                         </div>
                         <div class="modal-body">
-                            <%==l 'informations-body', url_for('/')->base->scheme($scheme)->to_abs().'/', config('contact') %>
+                            <%==l 'informations-body', url_for('/')->to_abs(), config('contact') %>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

@@ -262,6 +262,11 @@ sub startup {
                     }
                 }
             }
+
+            # Scheme detection
+            if ((defined($c->req->headers->header('X-Forwarded-Proto')) && $c->req->headers->header('X-Forwarded-Proto') eq 'https') || (defined($c->config->{https}) && $c->config->{https})) {
+                $c->req->url->base->scheme('https');
+            }
         }
     );
 

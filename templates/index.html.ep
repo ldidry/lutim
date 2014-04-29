@@ -1,5 +1,4 @@
 % # vim:set sw=4 ts=4 sts=4 ft=html.epl expandtab:
-% my $scheme = (defined(config('https')) && config('https')) ? 'https' : 'http';
 <div class="messages">
 % if (config('always_encrypt')) {
     <p><%=l 'always_encrypt' %></p>
@@ -12,9 +11,9 @@
         <div>
             <strong><%= stash('filename') %></strong>
             <ul class="list-unstyled">
-                <li><i class="icon icon-eye" title="<%=l 'view-link' %>"></i> <%= link_to url_for('/')->base->scheme($scheme)->to_abs.'/'.stash('short') => begin %><%= url_for('/')->base->scheme($scheme)->to_abs.'/'.stash('short') %><%= end %></li>
-                <li><i class="icon icon-download" title="<%=l 'download-link' %>"></i> <%= link_to url_for('/')->base->scheme($scheme)->to_abs.'/'.stash('short').'?dl' => begin %><%= url_for('/')->base->scheme($scheme)->to_abs.'/'.stash('short').'?dl' %><%= end %></li>
-                <li><i class="icon icon-touiteur" title="<%=l 'twitter-link' %>"></i> <%= link_to url_for('/')->base->scheme($scheme)->to_abs.'/'.stash('short').'?t' => begin %><%= url_for('/')->base->scheme($scheme)->to_abs.'/'.stash('short').'?t' %><%= end %></li>
+                <li><i class="icon icon-eye" title="<%=l 'view-link' %>"></i> <%= link_to url_for('/')->to_abs().stash('short') => begin %><%= url_for('/')->to_abs().stash('short') %><%= end %></li>
+                <li><i class="icon icon-download" title="<%=l 'download-link' %>"></i> <%= link_to url_for('/')->to_abs().stash('short').'?dl' => begin %><%= url_for('/')->to_abs().stash('short').'?dl' %><%= end %></li>
+                <li><i class="icon icon-touiteur" title="<%=l 'twitter-link' %>"></i> <%= link_to url_for('/')->to_abs().stash('short').'?t' => begin %><%= url_for('/')->to_abs().stash('short').'?t' %><%= end %></li>
             </ul>
         </div>
     </div>
@@ -135,7 +134,7 @@
         if (dl !== '') {
             url = url+'?'+dl;
         }
-        return '<a href="<%== url_for('index')->base->scheme($scheme)->to_abs() %>/'+url+'"><%== url_for('index')->base->scheme($scheme)->to_abs() %>/'+url+'</a>';
+        return '<a href="<%== url_for('index')->to_abs() %>'+url+'"><%== url_for('index')->to_abs() %>'+url+'</a>';
     }
     function message(success, msg) {
         if(success) {

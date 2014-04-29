@@ -66,7 +66,7 @@ vi lutim.conf
 * hosted\_by: if someone hosts your LUTIm instance, you can add some HTML (a logo for example) to make it appear on index page ;
 * tweet\_card\_via: a Twitter account which will appear on Twitter cards ;
 * max\_file\_size: well, this is explicit (default is 10Mio = 10485760 octets) ;
-* https: 1 if you want to provide secure images URLs (default is 0) ;
+* https: 1 if you want to provide secure images URLs (default is 0) DEPRECATED, PASS A `X-Forwarded-Proto` HEADER TO LUTIM FROM YOUR REVERSE PROXY INSTEAD ;
 * stats\_day\_num: when you generate statistics with `script/lutim cron stats`, you will have stats for the last `stats_day_num` days (default is 365) ;
 * keep\_ip\_during: when you delete IP addresses of image's senders with `script/lutim cron cleanbdd`, the IP addresses of images older than `keep_ip_during` days will be deleted (default is 365) ;
 * broadcast\_message: put some string (not HTML) here and this message will be displayed on all LUTIm pages (not in JSON responses) ;
