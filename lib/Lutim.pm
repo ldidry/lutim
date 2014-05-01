@@ -14,19 +14,27 @@ sub startup {
 
     $self->plugin('I18N');
 
-    my $config = $self->plugin('Config');
+    my $config = $self->plugin('ConfigHashMerge', {
+        default => {
+            provisioning     => 100,
+            provis_step      => 5,
+            length           => 8,
+            always_encrypt   => 0,
+            anti_flood_delay => 5,
+            tweet_card_via   => '@framasky',
+            max_file_size    => 10*1024*1024,
+            https            => 0,
+            default_delay    => 0,
+            max_delay        => 0,
+        }
+    });
 
     # Default values
-    $config->{provisioning}     = 100 unless (defined($config->{provisionning}));
-    $config->{provisioning}     = 100 unless (defined($config->{provisioning}));
-    $config->{provis_step}      = 5   unless (defined($config->{provis_step}));
-    $config->{length}           = 8   unless (defined($config->{length}));
-    $config->{always_encrypt}   = 0   unless (defined($config->{always_encrypt}));
-    $config->{anti_flood_delay} = 5   unless (defined($config->{anti_flood_delay}));
+    $config->{provisioning}     = $config->{provisionning} if (defined($config->{provisionning}));
 
     die "You need to provide a contact information in lutim.conf !" unless (defined($config->{contact}));
 
-    $ENV{MOJO_MAX_MESSAGE_SIZE} = $config->{max_file_size} if (defined($config->{max_file_size}));
+    $ENV{MOJO_MAX_MESSAGE_SIZE} = $config->{max_file_size};
 
     $self->secrets($config->{secrets});
 
@@ -149,14 +157,9 @@ sub startup {
         max_delay => sub {
             my $c = shift;
 
-            if (defined($c->config->{max_delay})) {
-                my $delay = $c->config->{max_delay};
-                if ($delay >= 0) {
-                    return $delay;
-                } else {
-                    warn "max_delay set to a negative value. Default to 0."
-                }
-            }
+            return $c->config->{max_delay} if ($c->config->{max_delay} >= 0);
+
+            warn "max_delay set to a negative value. Default to 0.";
             return 0;
         }
     );
@@ -165,14 +168,9 @@ sub startup {
         default_delay => sub {
             my $c = shift;
 
-            if (defined($c->config->{default_delay})) {
-                my $delay = $c->config->{default_delay};
-                if ($delay >= 0) {
-                    return $delay;
-                } else {
-                    warn "default_delay set to a negative value. Default to 0."
-                }
-            }
+            return $c->config->{default_delay} if ($c->config->{default_delay} >= 0);
+
+            warn "default_delay set to a negative value. Default to 0.";
             return 0;
         }
     );
@@ -264,7 +262,7 @@ sub startup {
             }
 
             # Scheme detection
-            if ((defined($c->req->headers->header('X-Forwarded-Proto')) && $c->req->headers->header('X-Forwarded-Proto') eq 'https') || (defined($c->config->{https}) && $c->config->{https})) {
+            if ((defined($c->req->headers->header('X-Forwarded-Proto')) && $c->req->headers->header('X-Forwarded-Proto') eq 'https') || $c->config->{https}) {
                 $c->req->url->base->scheme('https');
             }
         }

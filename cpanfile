@@ -2,6 +2,7 @@ requires 'Mojolicious';
 requires 'IO::Socket::SSL';
 requires 'Data::Validate::URI';
 requires 'Mojolicious::Plugin::I18N';
+requires 'Mojolicious::Plugin::ConfigHashMerge';
 requires 'ORLite';
 requires 'File::Type';
 requires 'Text::Unidecode';

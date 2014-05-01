@@ -4,7 +4,6 @@ use LutimModel;
 use Mojo::DOM;
 use Mojo::Util qw(slurp spurt decode);
 use DateTime;
-use Mojolicious::Plugin::Config;
 
 has description => 'Generate statistics about LUTIm.';
 has usage => sub { shift->extract_usage };
@@ -12,8 +11,11 @@ has usage => sub { shift->extract_usage };
 sub run {
     my $c = shift;
 
-    my $config = Mojolicious::Plugin::Config->parse(decode('UTF-8', slurp 'lutim.conf'), 'lutim.conf');
-    $config->{stats_day_num} = (defined($config->{stats_day_num})) ? $config->{stats_day_num} : 365;
+    my $config = $c->app->plugin('ConfigHashMerge', {
+        default => {
+            stats_day_num => 365
+        }
+    });
 
     my $text     = slurp('templates/data.html.ep.template');
     my $dom      = Mojo::DOM->new($text);
