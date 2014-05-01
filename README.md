@@ -56,22 +56,23 @@ vi lutim.conf
 ```
 
 ## Configuration
+The `lutim.conf.template` is self-documented but here is the options that you can set:
 
 * hypnotoad: address and port to listen to, user and group which runs hypnotoad (if you run LUTIm with a different user from what is defined here, be sure that the user which launchs hypnotoad is able to setuid/setgid to the defined user/group, otherwise it will not work and you'll have 100% CPU consumption. Launch hypnotoad with the root user or with the user which is defined here);
 * contact: write something which make people able to contact you (contact form URL, email address, whatever) ;
 * secrets: an array of random string. Used by Mojolicious for encrypting session cookies.
 * piwik\_img: the Piwik image provides you records of visits without javascript (better privacy than js and cookies) ;
 * length: length of the random string part of image's URL (default is 8) ;
-* provis\_step: LUTIm provisions random strings for image's URL per pack of `provis_step` (default is 5) ;
+* provis\_step: LUTIm provisions random strings for image's URL per pack of `provis\_step` (default is 5) ;
 * provisioning: number of random strings to provision (default is 100) ;
 * hosted\_by: if someone hosts your LUTIm instance, you can add some HTML (a logo for example) to make it appear on index page ;
 * tweet\_card\_via: a Twitter account which will appear on Twitter cards ;
 * max\_file\_size: well, this is explicit (default is 10Mio = 10485760 octets) ;
 * https: 1 if you want to provide secure images URLs (default is 0) DEPRECATED, PASS A `X-Forwarded-Proto` HEADER TO LUTIM FROM YOUR REVERSE PROXY INSTEAD ;
-* stats\_day\_num: when you generate statistics with `script/lutim cron stats`, you will have stats for the last `stats_day_num` days (default is 365) ;
-* keep\_ip\_during: when you delete IP addresses of image's senders with `script/lutim cron cleanbdd`, the IP addresses of images older than `keep_ip_during` days will be deleted (default is 365) ;
+* stats\_day\_num: when you generate statistics with `script/lutim cron stats`, you will have stats for the last `stats\_day\_num` days (default is 365) ;
+* keep\_ip\_during: when you delete IP addresses of image's senders with `script/lutim cron cleanbdd`, the IP addresses of images older than `keep\_ip\_during` days will be deleted (default is 365) ;
 * broadcast\_message: put some string (not HTML) here and this message will be displayed on all LUTIm pages (not in JSON responses) ;
-* allowed\_domains: array of authorized domains for API calls. Example: `['http://1.example.com', 'http://2.example.com']`. If you want to authorize everyone to use the API: `['*']`.
+* allowed\_domains: array of authorized domains for API calls. Example: `['http://1.example.com', 'http://2.example.com']`. If you want to authorize everyone to use the API: `['\*']`.
 * default\_delay: what is the default time limit for files? Valid values are 0, 1, 7, 30 and 365;
 * max\_delay: if defined, the images will be deleted after that delay (in days), even if they were uploaded with "no delay" (or value superior to max\_delay) option and a warning message will be displayed on homepage;
 * always\_encrypt: if set to 1, all images will be encrypted.
@@ -151,7 +152,7 @@ carton exec script/lutim cron cleanfiles
 ```
 
 ### Watch the size of the files directory
-To execute an action when the files directory is heavier than `max_total_size`.
+To execute an action when the files directory is heavier than `max\_total\_size`.
 The available actions are `warn` and `stop-upload`:
 * `warn` prints a message on the standard out (which is normally mailed to you by `cron`) ;
 * `stop-upload` prints a message on the standard out and creates the `stop-upload` file which prevents uploading and put a warn on LUTIm interface ;
@@ -164,7 +165,7 @@ carton exec script/lutim cron watch
 ```
 
 ## Broadcast message
-Set a string in the `broadcast_message` option of `lutim.conf` and reload the server with:
+Set a string in the `broadcast\_message` option of `lutim.conf` and reload the server with:
 ```shell
 carton exec hypnotoad script/lutim
 ```
@@ -194,11 +195,11 @@ curl -F "format=json" -F "file=@/tmp/snap0001.jpg" http://lut.im
 ```
 
 You can allow people to use your instance of LUTIm from other domains.
-Add the allowed domains as an array in the `allowed_domains` conf option. Put '`[*]`' if you want to allow all domains.
+Add the allowed domains as an array in the `allowed\_domains` conf option. Put '`[\*]`' if you want to allow all domains.
 
 ## Shutter integration
 See where Shutter (<http://en.wikipedia.org/wiki/Shutter_%28software%29>) keeps its plugins on your computer.
-On my computer, it's in `/usr/share/shutter/resources/system/upload_plugins/upload`.
+On my computer, it's in `/usr/share/shutter/resources/system/upload\_plugins/upload`.
 
 Then:
 ```
