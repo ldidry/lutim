@@ -38,117 +38,107 @@ my $d = Locale::gettext->domain("shutter-upload-plugins");
 $d->dir( $ENV{'SHUTTER_INTL'} );
 
 my %upload_plugin_info = (
-    'module'        => "Lutim",
-	'url'           => "http://lut.im/",
-	'registration'  => "-",
-	'description'   => $d->get( "Upload screenshots to lut.im" ),
-	'supports_anonymous_upload'	 => TRUE,
-	'supports_authorized_upload' => FALSE,
+    'module'                        => "Lutim",
+    'url'                           => "https://lut.im/",
+    'registration'                  => "-",
+    'name'                          => "Lutim",
+    'description'                   => "Upload screenshots to Lutim",
+    'supports_anonymous_upload'     => TRUE,
+    'supports_authorized_upload'    => FALSE,
+    'supports_oauth_upload'         => FALSE,
 );
 
 binmode( STDOUT, ":utf8" );
 if ( exists $upload_plugin_info{$ARGV[ 0 ]} ) {
-	print $upload_plugin_info{$ARGV[ 0 ]};
-	exit;
+    print $upload_plugin_info{$ARGV[ 0 ]};
+    exit;
 }
 
-###################################################
 
+#don't touch this
 sub new {
-	my $class = shift;
+    my $class = shift;
 
-	#call constructor of super class (host, debug_cparam, shutter_root, gettext_object, main_gtk_window, ua)
-	my $self = $class->SUPER::new( shift, shift, shift, shift, shift, shift );
+    #call constructor of super class (host, debug_cparam, shutter_root, gettext_object, main_gtk_window, ua)
+    my $self = $class->SUPER::new( shift, shift, shift, shift, shift, shift );
 
-	bless $self, $class;
-	return $self;
+    bless $self, $class;
+    return $self;
 }
 
+#load some custom modules here (or do other custom stuff)
 sub init {
-	my $self = shift;
+    my $self = shift;
 
-	#do custom stuff here
-	use WWW::Mechanize;
-	use HTTP::Status;
-	use HTTP::Request::Common 'POST';
+    use JSON;
+    use LWP::UserAgent;
+    use HTTP::Request::Common;
 
-	$self->{_mech} = WWW::Mechanize->new( agent => "$self->{_ua}", timeout => 20 );
-	$self->{_http_status} = undef;
-
-	return TRUE;
+    return TRUE;
 }
 
+#handle
 sub upload {
-	my ( $self, $upload_filename, $username, $password ) = @_;
+    my ( $self, $upload_filename, $username, $password ) = @_;
 
-	#store as object vars
-	$self->{_filename} = $upload_filename;
-	$self->{_username} = $username;
-	$self->{_password} = $password;
+    #store as object vars
+    $self->{_filename} = $upload_filename;
+    $self->{_username} = $username;
+    $self->{_password} = $password;
 
-	my $filesize     = -s $upload_filename;
-	my $max_filesize = 15360000;
-	if ( $filesize > $max_filesize ) {
-		$self->{_links}{'status'} = 998;
-		$self->{_links}{'max_filesize'} = sprintf( "%.2f", $max_filesize / 1024 ) . " KB";
-		return %{ $self->{_links} };
-	}
+    utf8::encode $upload_filename;
+    utf8::encode $password;
+    utf8::encode $username;
 
-	utf8::encode $upload_filename;
-	utf8::encode $password;
-	utf8::encode $username;
+    my $json = JSON->new();
 
-	eval{
+    my $browser = LWP::UserAgent->new(
+        'timeout'    => 20,
+        'keep_alive' => 10,
+        'env_proxy'  => 1,
+    );
 
-		my $url = "http://lut.im";
-		$self->{_mech}->get($url);
-		$self->{_http_status} = $self->{_mech}->status();
 
-		if ( is_success( $self->{_http_status} ) ) {
+    #upload the file
+    eval{
 
-			$self->{_mech}->request(POST $url,
-				Content_Type => 'form-data',
-					Content      => [
-						file =>  [$upload_filename],
-						format => 'json'
-					],
-			);
+        my $url     = 'https://lut.im/';
+        my $request = HTTP::Request::Common::POST(
+            $url,
+            Content_Type => 'multipart/form-data',
+            Content      => [
+                file   => [$upload_filename],
+                format => 'json'
+            ]
+        );
 
-			$self->{_http_status} = $self->{_mech}->status();
+        my $response = $browser->request($request);
 
-			if ( is_success( $self->{_http_status} ) ) {
-				my $html_file = $self->{_mech}->content;
+        if ($response->is_success) {
+            my $hash = $json->decode($response->decoded_content);
 
-				my @links = $html_file =~ m/"short":"([^"]+)"/;
-				#my @links = $html_file =~ m{ <textarea>(.*)</textarea> }gx;
+            if ($hash->{success}) {
+                my $link = $url.$hash->{msg}->{short};
+                $self->{_links}->{'view_image'}    = $link;
+                $self->{_links}->{'download_link'} = $link.'?dl';
+                $self->{_links}->{'twitter_link'}  = $link.'?t';
 
-				$self->{_links}{'view_image'} = $url.'/'.$links[0];
-				$self->{_links}{'download_link'} = $url.'/'.$links[0].'?dl';
-				$self->{_links}{'twitter_link'} = $url.'/'.$links[0].'?t';
+                #set success code (200)
+                $self->{_links}{'status'} = 200;
+            } else {
+                $self->{_links}{'status'} = $hash->{msg}->{msg};
 
-				if ( $self->{_debug} ) {
-					print "The following links were returned by http://lut.im:\n";
-					print $self->{_links}{'view_image'},"\n";
-					print $self->{_links}{'download_link'},"\n";
-					print $self->{_links}{'twitter_link'},"\n";
-				}
+            }
+        } else {
+            $self->{_links}{'status'} = $response->status_line;
+        }
+    };
+    if($@){
+        $self->{_links}{'status'} = $@;
+    }
 
-				$self->{_links}{'status'} = $self->{_http_status};
-			} else {
-				$self->{_links}{'status'} = $self->{_http_status};
-			}
-
-		}else{
-			$self->{_links}{'status'} = $self->{_http_status};
-		}
-
-	};
-	if($@){
-		$self->{_links}{'status'} = $@;
-	}
-
-	return %{ $self->{_links} };
-
+    #and return links
+    return %{ $self->{_links} };
 }
 
 1;
