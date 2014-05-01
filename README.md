@@ -1,24 +1,24 @@
-#LUTIm
+# LUTIm
 
-##What LUTIm means?
+## What LUTIm means?
 It means Let's Upload That Image.
 
-##What does it do?
+## What does it do?
 It stores images and allows you to see them or download them.
 Images are indefinitly stored unless you request that they will be deleted at first view or after 24 hours / one week / one month / one year.
 
-##License
+## License
 LUTIm is licensed under the terms of the AGPL. See the LICENSE file.
 
-##Official instance
+## Official instance
 You can see it working at http://lut.im.
 
-##Logo
+## Logo
 LUTIm's logo is an adaptation of [Lutin](http://commons.wikimedia.org/wiki/File:Lutin_by_godo.jpg) by [Godo](http://godoillustrateur.wordpress.com/), licensed under the terms of the CC-BY-SA 3.0 license.
 
 ![LUTIm's logo](http://lut.im/img/LUTIm_small.png)
 
-##Dependencies
+## Dependencies
 * Carton : Perl dependencies manager, it will get what you need, so don't bother for Perl modules dependencies (but you can read the file `cpanfile` if you want).
 
 ```shell
@@ -37,7 +37,7 @@ sudo apt-get install carton
 sudo apt-get install build-essential libssl-dev
 ```
 
-###Thumbnails dependancy
+### Thumbnails dependancy
 If you want to provide thumbnails of uploaded images, you have to install the *ImageMagick* image manipulation software (<http://www.imagemagick.org/>) and the Image::Magick CPAN module.
 
 On Debian, you can do:
@@ -45,7 +45,7 @@ On Debian, you can do:
 sudo apt-get install perlmagick
 ```
 
-##Installation
+## Installation
 After installing Carton :
 ```shell
 git clone https://github.com/ldidry/lutim.git
@@ -55,7 +55,7 @@ cp lutim.conf.template lutim.conf
 vi lutim.conf
 ```
 
-##Configuration
+## Configuration
 * hypnotoad: address and port to listen to, user and group which runs hypnotoad (if you run LUTIm with a different user from what is defined here, be sure that the user which launchs hypnotoad is able to setuid/setgid to the defined user/group, otherwise it will not work and you'll have 100% CPU consumption. Launch hypnotoad with the root user or with the user which is defined here);
 * contact: write something which make people able to contact you (contact form URL, email address, whatever) ;
 * secrets: an array of random string. Used by Mojolicious for encrypting session cookies.
@@ -73,14 +73,14 @@ vi lutim.conf
 * allowed\_domains: array of authorized domains for API calls. Example: `['http://1.example.com', 'http://2.example.com']`. If you want to authorize everyone to use the API: `['*']`.
 * default\_delay: what is the default time limit for files? Valid values are 0, 1, 7, 30 and 365;
 * max\_delay: if defined, the images will be deleted after that delay (in days), even if they were uploaded with "no delay" (or value superior to max\_delay) option and a warning message will be displayed on homepage;
-# always\_encrypt: if set to 1, all images will be encrypted.
+* always\_encrypt: if set to 1, all images will be encrypted.
 
-##Usage
+## Usage
 ```
 carton exec hypnotoad script/lutim
 ```
 
-##Update
+## Update
 ```
 git pull
 carton install
@@ -91,7 +91,7 @@ Yup, that's all (Mojolicious magic), it will listen at "http://127.0.0.1:8080".
 
 For more options (interfaces, user, etc.), change the configuration in `lutim.conf` (have a look at http://mojolicio.us/perldoc/Mojo/Server/Hypnotoad#SETTINGS for the available options).
 
-##Reverse proxy
+## Reverse proxy
 You can use a reverse proxy like Nginx or Varnish (or Apache with the mod\_proxy module). The web is full of tutos.
 
 Here's a valid *Varnish* configuration:
@@ -110,7 +110,7 @@ sub vcl_recv {
 }
 ```
 
-##Cron jobs
+## Cron jobs
 LUTIm have commands which can be used in cron jobs.
 
 To see what commands are available:
@@ -118,25 +118,25 @@ To see what commands are available:
 carton exec script/lutim cron
 ```
 
-###Statistics
+### Statistics
 To generate statistics which can be viewed at the address `/stats` (we need to reload hypnotoad after the stats generation):
 ```shell
 carton exec script/lutim cron stats && carton exec hypnotoad script/lutim
 ```
 
-###Delete IP adresses from database
+### Delete IP adresses from database
 To automatically delete the IP addresses of image's senders after a configurable delay:
 ```shell
 carton exec script/lutim cron cleanbdd
 ```
 
-###Delete expired files
+### Delete expired files
 To automatically delete files which availability delay is over (when you choose that your image will be deleted after 24h / one week / etc.)
 ```shell
 carton exec script/lutim cron cleanfiles
 ```
 
-###Watch the size of the files directory
+### Watch the size of the files directory
 To execute an action when the files directory is heavier than `max_total_size`.
 The available actions are `warn` and `stop-upload`:
 * `warn` prints a message on the standard out (which is normally mailed to you by `cron`) ;
@@ -149,7 +149,7 @@ If the files directory go under quota, the `stop-upload` file is deleted. If you
 carton exec script/lutim cron watch
 ```
 
-##Broadcast message
+## Broadcast message
 Set a string in the `broadcast_message` option of `lutim.conf` and reload the server with:
 ```shell
 carton exec hypnotoad script/lutim
@@ -157,12 +157,12 @@ carton exec hypnotoad script/lutim
 
 It may take a few reloads of page before the message is displayed.
 
-##Encryption
+## Encryption
 LUTIm do encryption on the server if asked to, but does not store the key.
 
 The encryption is made on the server since LUTIm is made to be usable even without javascript. If you want to add client-side encryption for javascript-enabled browsers, patches are welcome.
 
-##API
+## API
 You can add images by using the API. Here's the parameters of the `POST` request to `/` adress:.
 * format: json
     MANDATORY if you want to get a json response, otherwise it will send a web page
@@ -182,7 +182,7 @@ curl -F "format=json" -F "file=@/tmp/snap0001.jpg" http://lut.im
 You can allow people to use your instance of LUTIm from other domains.
 Add the allowed domains as an array in the `allowed_domains` conf option. Put '`[*]`' if you want to allow all domains.
 
-##Shutter integration
+## Shutter integration
 See where Shutter (<http://en.wikipedia.org/wiki/Shutter_%28software%29>) keeps its plugins on your computer.
 On my computer, it's in `/usr/share/shutter/resources/system/upload_plugins/upload`.
 
@@ -195,7 +195,7 @@ And restart Shutter if it was running.
 
 Of course, this plugin is configured for the official instance of LUTIm (<http://lut.im>), feel free to edit it for your own instance.
 
-##Internationalization
+## Internationalization
 LUTIm comes with English and French languages. It will choose the language to display from the browser's settings.
 
 If you want to add more languages, for example German:
@@ -207,10 +207,10 @@ vim de.pm
 
 There's just a few sentences, so it will be quick to translate. Please consider to send me you language file in order to help the other users :smile:.
 
-##Others projects dependancies
+## Others projects dependancies
 LUTIm is written in Perl with the [Mojolicious](http://mojolicio.us) framework, uses the [Twitter bootstrap](http://getbootstrap.com) framework to look not too ugly, [JQuery](http://jquery.com) and [JQuery File Uploader](https://github.com/danielm/uploader/) (slightly modified) to add some modernity, [Raphaël](http://raphaeljs.com/) and [SimpleGraph](http://benaskins.github.io/simplegraph/) for stats graphs.
 
-##Contributors
+## Contributors
 * Luc Didry, aka Sky (<http://www.fiat-tux.fr>), main developer
 * Jean-Bernard Marcon, aka Goofy (<https://github.com/goofy-bz>)
 * Jean-Christophe Bach (<https://github.com/jcb>)
