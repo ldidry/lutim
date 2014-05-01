@@ -1,11 +1,11 @@
-Revision history for LUTIm
+Revision history for Lutim
 
 0.3  2014-
 	- Antiflood protection for the "Download by URL" feature (#29)
 	- Stats page improved
 	- Self-documented configuration template
 	- Remote port detection can now use the X-Remote-Port header if set
-	- LUTIm now uses the X-Forwarded-Proto header to set the scheme to https if needed
+	- Lutim now uses the X-Forwarded-Proto header to set the scheme to https if needed
 	  The "https" option in configuration file is deprecated and will be removed in 0.4
 	- Optionally delete images that are no longer viewed after a configurable delay in order to avoid saturation (#27)
 	- Provide init script

@@ -4,11 +4,11 @@
 % my $url    = url_for('/')->to_abs();
 % $twitter_url .= '?url='.url_escape("$url")
 %              .'&via=framasky'
-%              .'&text=Check out this %23LUTIm instance! ';
+%              .'&text=Check out this %23Lutim instance! ';
 <!DOCTYPE html>
 <html>
     <head>
-        <title>LUTIm</title>
+        <title>Lutim</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta charset="utf-8" />
         <link rel="icon" type="image/png" href="<%= url_for('/') %>img/favicon.png">
@@ -73,7 +73,7 @@
 % }
                 <div>
                     <div class="pull-left hidden-xs logo">
-                        <img src="<%= url_for('/') %>img/LUTIm_small.png" alt="LUTIm logo">
+                        <img src="<%= url_for('/') %>img/Lutim_small.png" alt="Lutim logo">
                     </div>
                     <h1 class="hennypenny">Let's Upload That Image!</h1>
                     <p>
@@ -83,7 +83,7 @@
                         <noscript><%= link_to url_for('about') => begin %><%=l 'informations' %><% end %> — </noscript>
                         <%= link_to 'https://github.com/ldidry/lutim' => (title => l 'fork-me') => begin %><i class="lead icon icon-github-circled"></i><% end %> 
                         <%= link_to $twitter_url                      => (title => l 'share-twitter')   => begin %><i class="lead icon icon-touiteur"></i><% end %> 
-                        <%= link_to 'https://flattr.com/submit/auto?user_id=_SKy_&url='.$url.'&title=LUTIm&category=software' => (title => 'Flattr this') => begin %><i class="lead icon icon-flattr"></i><% end %> 
+                        <%= link_to 'https://flattr.com/submit/auto?user_id=_SKy_&url='.$url.'&title=Lutim&category=software' => (title => 'Flattr this') => begin %><i class="lead icon icon-flattr"></i><% end %> 
                         <%= link_to 'bitcoin:1K3n4MXNRSMHk28oTfXEvDunWFthePvd8v?label=lutim' => (title => 'Give Bitcoins') => begin %><i class="lead icon icon-bitcoin"></i><% end %>
                     </p>
                 </div>
@@ -104,7 +104,7 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            <h3 class="modal-title">LUTIm</h3>
+                            <h3 class="modal-title">Lutim</h3>
                         </div>
                         <div class="modal-body">
                             <%==l 'informations-body', url_for('/')->to_abs(), config('contact') %>

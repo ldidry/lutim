@@ -5,7 +5,7 @@ use Mojo::DOM;
 use Mojo::Util qw(slurp spurt decode);
 use DateTime;
 
-has description => 'Generate statistics about LUTIm.';
+has description => 'Generate statistics about Lutim.';
 has usage => sub { shift->extract_usage };
 
 sub run {

@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html style="height:100%;">
     <head>
-        <title>LUTIm</title>
+        <title>Lutim</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta charset="utf-8" />
         <link rel="icon" type="image/png" href="<%= url_for('/')->to_abs() %>img/favicon.png">
