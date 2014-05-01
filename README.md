@@ -56,6 +56,7 @@ vi lutim.conf
 ```
 
 ## Configuration
+
 * hypnotoad: address and port to listen to, user and group which runs hypnotoad (if you run LUTIm with a different user from what is defined here, be sure that the user which launchs hypnotoad is able to setuid/setgid to the defined user/group, otherwise it will not work and you'll have 100% CPU consumption. Launch hypnotoad with the root user or with the user which is defined here);
 * contact: write something which make people able to contact you (contact form URL, email address, whatever) ;
 * secrets: an array of random string. Used by Mojolicious for encrypting session cookies.
@@ -76,8 +77,21 @@ vi lutim.conf
 * always\_encrypt: if set to 1, all images will be encrypted.
 
 ## Usage
+
+### Command line
 ```
 carton exec hypnotoad script/lutim
+```
+
+### Init script
+```
+cp utilities/lutim.init /etc/init.d/lutim
+cp utilities/lutim.default /etc/default/lutim
+chmod +x /etc/init.d/lutim
+chown root:root /etc/init.d/lutim /etc/default/lutim
+vim /etc/default/lutim
+
+/etc/init.d/lutim start
 ```
 
 ## Update
