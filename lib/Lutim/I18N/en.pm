@@ -4,10 +4,10 @@ use Mojo::Base 'Lutim::I18N';
 my $inf_body = <<EOF;
 <h4>What is Lutim?</h4>
 <p>Lutim is a free (as in free beer) and anonymous image hosting service. It's also the name of the free (as in free speech) software which provides this service.</p>
-<p>The images you post on Lutim can be stored indefinitely or be deleted at first view or after 24 hours.</p>
+<p>The images you post on Lutim can be stored indefinitely or be deleted at first view or after a delay selected from those proposed.</p>
 <h4>How does it work?</h4>
-<p>Drag and drop an image in the appropriate area or use the traditional way to send files and Lutim will provide you two URLs. One to view the image, the other to directly download it.</p>
-<p>You can, optionally, request that the image(s) posted on Lutim to be deleted at first view (or download) or after 24 hours.</p>
+<p>Drag and drop an image in the appropriate area or use the traditional way to send files and Lutim will provide you three URLs. One to view the image, an other to directly download it an a last which you can use in Twitter.</p>
+<p>You can, optionally, request that the image(s) posted on Lutim to be deleted at first view (or download) or after the delay selected from those proposed.</p>
 <h4>Is it really free (as in free beer)?</h4>
 <p>Yes, it is! On the other side, if you want to support the developer, you can do it via <a href="https://flattr.com/submit/auto?user_id=_SKy_&amp;url=[_1]&amp;title=Lutim&amp;category=software">Flattr</a> or with <a href="bitcoin:1K3n4MXNRSMHk28oTfXEvDunWFthePvd8v?label=lutim">BitCoin</a>.</p>
 <h4>Is it really anonymous?</h4>

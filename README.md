@@ -4,7 +4,7 @@
 It means Let's Upload That Image.
 
 ## What does it do?
-It stores images and allows you to see them or download them.
+It stores images and allows you to see them, download them or use them in Twitter.
 Images are indefinitly stored unless you request that they will be deleted at first view or after 24 hours / one week / one month / one year.
 
 ## License
@@ -263,6 +263,6 @@ There's just a few sentences, so it will be quick to translate. Please consider 
 Lutim is written in Perl with the [Mojolicious](http://mojolicio.us) framework, uses the [Twitter bootstrap](http://getbootstrap.com) framework to look not too ugly, [JQuery](http://jquery.com) and [JQuery File Uploader](https://github.com/danielm/uploader/) (slightly modified) to add some modernity, [Raphaël](http://raphaeljs.com/) and [morris.js](http://www.oesmith.co.uk/morris.js/) for stats graphs.
 
 ## Contributors
-* Luc Didry, aka Sky (<http://www.fiat-tux.fr>), main developer
+* Luc Didry, aka Sky (<http://www.fiat-tux.fr>), main developer, [@framasky](https://twitter.com/framasky)
 * Jean-Bernard Marcon, aka Goofy (<https://github.com/goofy-bz>)
 * Jean-Christophe Bach (<https://github.com/jcb>)

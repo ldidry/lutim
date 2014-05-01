@@ -4,10 +4,10 @@ use Mojo::Base 'Lutim::I18N';
 my $inf_body = <<EOF;
 <h4>Qu’est-ce que Lutim ?</h4>
 <p>Lutim est un service gratuit et anonyme d’hébergement d’images. Il s’agit aussi du nom du logiciel (libre) qui fournit ce service.</p>
-<p>Les images déposées sur Lutim peuvent être stockées indéfiniment, ou s’effacer dès le premier affichage ou au bout de 24h.</p>
+<p>Les images déposées sur Lutim peuvent être stockées indéfiniment, ou s’effacer dès le premier affichage ou au bout du délai choisi parmi ceux proposés.</p>
 <h4>Comment ça marche ?</h4>
-<p>Faites glisser des images dans la zone prévue à cet effet ou sélectionnez un fichier de façon classique et Lutim vous fournira deux URLs en retour. Une pour afficher l’image, l’autre pour la télécharger directement.</p>
-<p>Vous pouvez, de façon facultative, demander à ce que la ou les images déposées sur Lutim soient supprimées après leur premier affichage (ou téléchargement) ou au bout de 24 heures.</p>
+<p>Faites glisser des images dans la zone prévue à cet effet ou sélectionnez un fichier de façon classique et Lutim vous fournira troie URLs en retour. Une pour afficher l’image, une autre pour la télécharger directement et une dernière utilisable sur Twitter.</p>
+<p>Vous pouvez, de façon facultative, demander à ce que la ou les images déposées sur Lutim soient supprimées après leur premier affichage (ou téléchargement) ou au bout d'un délai choisi parmi ceux proposés.</p>
 <h4>C’est vraiment gratuit ?</h4>
 <p>Oui, ça l’est ! Par contre, si vous avez envie de soutenir le développeur, vous pouvez faire un microdon avec <a href="https://flattr.com/submit/auto?user_id=_SKy_&amp;url=[_1]&amp;title=Lutim&amp;category=software">Flattr</a> ou en <a href="bitcoin:1K3n4MXNRSMHk28oTfXEvDunWFthePvd8v?label=lutim">BitCoin</a>.</p>
 <h4>C’est vraiment anonyme ?</h4>
