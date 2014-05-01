@@ -110,18 +110,53 @@ For more options (interfaces, user, etc.), change the configuration in `lutim.co
 ## Reverse proxy
 You can use a reverse proxy like Nginx or Varnish (or Apache with the mod\_proxy module). The web is full of tutos.
 
-Here's a valid *Varnish* configuration:
+Here's a valid *Nginx* configuration:
 ```
-backend lutim {
-    .host = "127.0.0.1";
-    .port = "8080";
-}
-sub vcl_recv {
-    if (req.restarts == 0) {
-        set req.http.X-Forwarded-For = client.ip;
+server {
+    listen 80;
+    root /path/to/lutim/public;
+
+    # This is important for user's privacy !
+    access_log off;
+    error_log /var/log/nginx/lutim.error.log;
+
+    # This is important ! Make it OK with your LUTIm configuration
+    client_max_body_size 40M;
+
+    location ~* ^/(img|css|font|js)/ {
+        try_files $uri @lutim;
+        add_header Expires "Thu, 31 Dec 2037 23:55:55 GMT";
+        add_header Cache-Control "public, max-age=315360000";
+
+        # HTTPS only header, improves security
+        #add_header Strict-Transport-Security "max-age=15768000";
     }
-    if (req.http.host == "lut.im") {
-        set req.backend = lutim;
+
+    location / {
+        try_files $uri @lutim;
+
+        # HTTPS only header, improves security
+        #add_header Strict-Transport-Security "max-age=15768000";
+    }
+
+    location @lutim {
+        # Adapt this to your configuration
+        # My advice: put a varnish between nginx and Lutim, it's really useful when images are widely viewed
+        proxy_pass  http://127.0.0.1:8080;
+
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+
+        # If you want to log the remote port of the image senders, you'll need that
+        proxy_set_header X-Remote-Port $remote_port;
+
+        # Lutim reads this header and understands that the current session is actually HTTPS.
+        # Enable it if you run a HTTPS server (in this case, don't forgot to change the listen port above)
+        #proxy_set_header X-Forwarded-Proto https;
+
+        # We expect the downsteam servers to redirect to the right hostname, so don't do any rewrites here.
+        proxy_redirect     off;
     }
 }
 ```
