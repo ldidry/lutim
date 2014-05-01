@@ -16,6 +16,18 @@ sub run {
         $image->update(enabled => 0);
         unlink $image->path();
     }
+
+    my $config = $c->app->plugin('Config');
+
+    if (defined($config->{delete_no_longer_viewed_files}) && $config->{delete_no_longer_viewed_files} > 0) {
+        $time = time() - $config->{delete_no_longer_viewed_files} * 86400;
+        @images = LutimModel::Lutim->select('WHERE enabled = 1 AND last_access_at < ?', $time);
+
+        for my $image (@images) {
+            $image->update(enabled => 0);
+            unlink $image->path();
+        }
+    }
 }
 
 =encoding utf8

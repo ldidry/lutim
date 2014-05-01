@@ -76,6 +76,7 @@ The `lutim.conf.template` is self-documented but here is the options that you ca
 * default\_delay: what is the default time limit for files? Valid values are 0, 1, 7, 30 and 365;
 * max\_delay: if defined, the images will be deleted after that delay (in days), even if they were uploaded with "no delay" (or value superior to max\_delay) option and a warning message will be displayed on homepage;
 * always\_encrypt: if set to 1, all images will be encrypted.
+* delete\_no\_longer\_viewed\_files: if set, the images which have not been viewed since `delete\_no\_longer\_viewed\_files` days will be deleted by the `script/lutim cron cleanfiles` command
 
 ## Usage
 
@@ -147,6 +148,7 @@ carton exec script/lutim cron cleanbdd
 
 ### Delete expired files
 To automatically delete files which availability delay is over (when you choose that your image will be deleted after 24h / one week / etc.)
+If `delete\_no\_longer\_viewed\_files`, the files not viewed since `delete\_no\_longer\_viewed\_files` days will be deleted too.
 ```shell
 carton exec script/lutim cron cleanfiles
 ```

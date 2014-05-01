@@ -119,4 +119,9 @@
     # please, see readme
     # optional, default is 'warn'
     #policy_when_full  => 'warn',
+
+    # images which are not viewed since delete_no_longer_viewed_files days will be deleted by the cron cleanfiles task
+    # if delete_no_longer_viewed_files is not set, the no longer viewed files will NOT be deleted
+    # optional, no default
+    #delete_no_longer_viewed_files => 90
 };
