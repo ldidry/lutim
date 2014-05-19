@@ -266,3 +266,4 @@ Lutim is written in Perl with the [Mojolicious](http://mojolicio.us) framework, 
 * Luc Didry, aka Sky (<http://www.fiat-tux.fr>), main developer, [@framasky](https://twitter.com/framasky)
 * Jean-Bernard Marcon, aka Goofy (<https://github.com/goofy-bz>)
 * Jean-Christophe Bach (<https://github.com/jcb>)
+* Florian Bigard, aka Chocobozzz (<https://github.com/Chocobozzz>)
