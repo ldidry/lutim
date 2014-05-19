@@ -45,7 +45,7 @@
     # anti-flood protection delay, in seconds
     # users won't be able to ask Lutim to download images more than one per anti_flood_delay seconds
     # optional, default is 5
-    #anti_flood_delay  => 5
+    #anti_flood_delay  => 5,
 
     # twitter account which will appear on twitter cards
     # see https://dev.twitter.com/docs/cards/validation/validator to register your Lutim instance on twitter
