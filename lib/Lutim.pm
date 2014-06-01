@@ -86,11 +86,7 @@ sub startup {
             my $c  = shift;
             my $ip_only = shift || 0;
 
-            my $proxy = '';
-            my @x_forward = $c->req->headers->header('X-Forwarded-For');
-            for my $x (@x_forward) {
-                $proxy .= join(', ', @$x);
-            }
+            my $proxy = $c->req->headers->header('X-Forwarded-For');
 
             my $ip = ($proxy) ? $proxy : $c->tx->remote_address;
 

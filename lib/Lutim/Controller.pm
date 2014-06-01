@@ -55,7 +55,7 @@ sub delete {
     if (scalar(@images)) {
         my $image = $images[0];
         my $msg;
-        if ($image->mod_token() ne $token) {
+        if ($image->mod_token() ne $token || $token eq '') {
             $msg = $c->l('invalid_token');
         } elsif ($image->enabled() == 0) {
             $msg = $c->l('already_deleted', $image->filename);
@@ -227,6 +227,11 @@ sub add {
                     # Give url to user
                     $short      = $records[0]->short;
                     $real_short = $short;
+                    if (!defined($records[0]->mod_token)) {
+                        $records[0]->update(
+                            mod_token => $c->shortener($c->config->{token_length})
+                        );
+                    }
                     $token      = $records[0]->mod_token;
                     $short     .= '/'.$key if (defined($key));
                 } else {
