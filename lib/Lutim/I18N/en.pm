@@ -12,7 +12,7 @@ my $inf_body = <<EOF;
 <p>Yes, it is! On the other side, if you want to support the developer, you can do it via <a href="https://flattr.com/submit/auto?user_id=_SKy_&amp;url=[_1]&amp;title=Lutim&amp;category=software">Flattr</a> or with <a href="bitcoin:1K3n4MXNRSMHk28oTfXEvDunWFthePvd8v?label=lutim">BitCoin</a>.</p>
 <h4>Is it really anonymous?</h4>
 <p>Yes, it is! On the other side, for legal reasons, your IP address will be stored when you send an image. Don't panic, it is normally the case of all sites on which you send files!</p>
-<p>The IP address of the image's sender is permanently retained.</p>
+<p>The IP address of the image's sender is retained for a delay which depends of the administrator's choice (for the official instance, which is located in France, it's one year).</p>
 <p>If the files are deleted if you ask it while posting it, their SHA512 footprint are retained.</p>
 <h4>How to report an image?</h4>
 <p>Please contact the administrator: [_2]</p>
@@ -21,9 +21,12 @@ my $inf_body = <<EOF;
 <h4>What about the software which provides the service?</h4>
 <p>The Lutim software is a <a href="http://en.wikipedia.org/wiki/Free_software">free software</a>, which allows you to download and install it on you own server. Have a look at the <a href="https://www.gnu.org/licenses/agpl-3.0.html">AGPL</a> to see what you can do.</p>
 <p>For more details, see the <a href="https://github.com/ldidry/lutim">Github</a> page of the project.</p>
-<h4>Contributors</h4>
+<h4>Core developer</h4>
 <ul>
     <li>Luc Didry, aka Sky (<a href="http://www.fiat-tux.fr">http://www.fiat-tux.fr</a>), main developer</li>
+</ul>
+<h4>Contributors</h4>
+<ul>
     <li>Jean-Bernard Marcon, aka Goofy (<a href="https://github.com/goofy-bz">https://github.com/goofy-bz</a>)</li>
     <li>Jean-Christophe Bach (<a href="https://github.com/jcb">https://github.com/jcb</a>)</li>
     <li>Florian Bigard, aka Chocobozzz (<a href="https://github.com/Chocobozzz">https://github.com/Chocobozzz</a>)</li>
@@ -31,6 +34,7 @@ my $inf_body = <<EOF;
 EOF
 
 our %Lexicon = (
+    'homepage'              => 'Homepage',
     'license'               => 'License:',
     'fork-me'               => 'Fork me on Github !',
     'share-twitter'         => 'Share on Twitter',

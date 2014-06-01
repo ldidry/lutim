@@ -371,13 +371,11 @@
     "progress-bars.less",
     "close.less",
     "component-animations.less",
-    "modals.less",
     "utilities.less",
     "responsive-utilities.less"
   ],
   "js": [
     "alert.js",
-    "modal.js",
     "transition.js"
   ]
 }

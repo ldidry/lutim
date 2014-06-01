@@ -12,7 +12,7 @@ my $inf_body = <<EOF;
 <p>Oui, ça l’est ! Par contre, si vous avez envie de soutenir le développeur, vous pouvez faire un microdon avec <a href="https://flattr.com/submit/auto?user_id=_SKy_&amp;url=[_1]&amp;title=Lutim&amp;category=software">Flattr</a> ou en <a href="bitcoin:1K3n4MXNRSMHk28oTfXEvDunWFthePvd8v?label=lutim">BitCoin</a>.</p>
 <h4>C’est vraiment anonyme ?</h4>
 <p>Oui, ça l’est ! Par contre, pour des raisons légales, votre adresse IP sera enregistrée lorsque vous enverrez une image. Ne vous affolez pas, c’est de toute façon normalement le cas de tous les sites sur lesquels vous envoyez des fichiers !</p>
-<p>L’IP de la personne ayant déposé l’image est stockée de manière définitive.</p>
+<p>L’IP de la personne ayant déposé l’image est stockée pendant un délai dépendant de l'administrateur de l'instance (pour l'instance officielle, dont le serveur est en France, c'est un délai d'un an).</p>
 <p>Si les fichiers sont bien supprimés si vous en avez exprimé le choix, leur empreinte SHA512 est toutefois conservée.</p>
 <h4>Comment peut-on faire pour signaler une image ?</h4>
 <p>Veuillez contacter l’administrateur : [_2]</p>
@@ -21,9 +21,12 @@ my $inf_body = <<EOF;
 <h4>Et à propos du logiciel qui fournit le service ?</h4>
 <p>Le logiciel Lutim est un <a href="https://fr.wikipedia.org/wiki/Logiciel_libre">logiciel libre</a>, ce qui vous permet de le télécharger et de l’installer sur votre propre serveur. Jetez un coup d’œil à l’<a href="https://www.gnu.org/licenses/agpl-3.0.html">AGPL</a> pour voir quels sont vos droits.</p>
 <p>Pour plus de détails, consultez la page <a href="https://github.com/ldidry/lutim">Github</a> du projet.</p>
-<h4>Contributeurs</h4>
+<h4>Développeur de l'application</h4>
 <ul>
     <li>Luc Didry, aka Sky (<a href="http://www.fiat-tux.fr">http://www.fiat-tux.fr</a>), développeur principal</li>
+</ul>
+<h4>Contributeurs</h4>
+<ul>
     <li>Jean-Bernard Marcon, aka Goofy (<a href="https://github.com/goofy-bz">https://github.com/goofy-bz</a>)</li>
     <li>Jean-Christophe Bach (<a href="https://github.com/jcb">https://github.com/jcb</a>)</li>
     <li>Florian Bigard, aka Chocobozzz (<a href="https://github.com/Chocobozzz">https://github.com/Chocobozzz</a>)</li>
@@ -31,6 +34,7 @@ my $inf_body = <<EOF;
 EOF
 
 our %Lexicon = (
+    'homepage'              => 'Accueil',
     'license'               => 'Licence :',
     'fork-me'               => 'Fork me on Github',
     'share-twitter'         => 'Partager sur Twitter',

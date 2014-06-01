@@ -1,5 +1,5 @@
 % # vim:set sw=4 ts=4 sts=4 ft=html.epl expandtab:
-<div class="modal-body">
+<div>
     <%==l 'informations-body', url_for('/')->to_abs(), config('contact') %>
     <%= link_to url_for('index') => ( class => "btn btn-primary btn-lg" ) => begin %><%=l 'back-to-index' %><% end%>
 </div>
