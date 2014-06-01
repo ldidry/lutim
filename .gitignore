@@ -6,3 +6,4 @@ files/*
 templates/data.html.ep
 public/img/rezopole.png
 public/img/rezopole.xcf
+public/packed/*

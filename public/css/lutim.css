@@ -1,0 +1,34 @@
+body {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.container {
+    padding: 15px;
+    margin: 0 auto;
+}
+
+.jsonly {
+    display: none;
+}
+
+.thumbnail {
+    margin-right: 8px;
+}
+
+.hennypenny {
+    font-family: 'Henny_Penny', cursive;
+    font-size: 42px;
+}
+
+.logo {
+    margin-right: 10px;
+}
+label.always-encrypt {
+    display: none;
+}
+.link_nocol,
+.link_nocol:hover{
+    color: #000000;
+    text-decoration: none;
+}

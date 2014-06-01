@@ -13,6 +13,7 @@ sub startup {
     $self->{wait_for_it} = {};
 
     $self->plugin('I18N');
+    $self->plugin('AssetPack');
 
     my $config = $self->plugin('ConfigHashMerge', {
         default => {
@@ -279,6 +280,12 @@ sub startup {
         }
     );
 
+    $self->asset('index.css' => 'css/bootstrap.min.css', 'css/fontello.css', 'css/animation.css', 'css/uploader.css', 'css/hennypenny.css', 'css/lutim.css');
+    $self->asset('stats.css' => 'css/bootstrap.min.css', 'css/fontello.css', 'css/animation.css', 'css/morris-0.4.3.min.css', 'css/hennypenny.css', 'css/lutim.css');
+    $self->asset('about.css' => 'css/bootstrap.min.css', 'css/fontello.css', 'css/animation.css', 'css/hennypenny.css', 'css/lutim.css');
+
+    $self->asset('index.js' => 'js/jquery-2.1.0.min.js', 'js/bootstrap.min.js', 'js/lutim.js', 'js/dmuploader.min.js');
+    $self->asset('stats.js' => 'js/jquery-2.1.0.min.js', 'js/bootstrap.min.js', 'js/lutim.js', 'js/raphael-min.js', 'js/morris-0.4.3.min.js', 'js/stats.js');
 
     $self->defaults(layout => 'default');
 

@@ -54,7 +54,7 @@
             <label>
                 <input type="checkbox" name="first-view"> <%=l 'delete-first' %>
             </label>
-            <label class="always-encrypt">
+            <label <%== (config('always_encrypt')) ? 'class="always-encrypt"' : '' %>>
                 <input type="checkbox" name="crypt"> <%=l 'crypt_image' %>
             </label>
         </div>
@@ -100,7 +100,7 @@
             <label>
                 <input type="checkbox" id="first-view"> <%=l 'delete-first' %>
             </label>
-            <label class="always-encrypt">
+            <label <%== (config('always_encrypt')) ? 'class="always-encrypt"' : '' %>>
                 <input type="checkbox" id="crypt"> <%=l 'crypt_image' %>
             </label>
         </div>
@@ -128,7 +128,6 @@
 </div>
 <!-- /D&D Zone -->
 
-%= javascript 'js/dmuploader.min.js'
 %= javascript begin
     function link(url, dl) {
         if (dl !== '') {

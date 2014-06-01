@@ -107,6 +107,17 @@ Yup, that's all (Mojolicious magic), it will listen at "http://127.0.0.1:8080".
 
 For more options (interfaces, user, etc.), change the configuration in `lutim.conf` (have a look at http://mojolicio.us/perldoc/Mojo/Server/Hypnotoad#SETTINGS for the available options).
 
+***Warning!!!***
+
+If you want to update to Lutim **0.3**, from a previous version, you'll have to modify the database.
+
+```
+sqlite3 lutim.db
+PRAGMA writable_schema = 1;
+UPDATE SQLITE_MASTER SET SQL = 'CREATE TABLE lutim ( short TEXT PRIMARY KEY, path TEXT, footprint TEXT, enabled INTEGER, mediatype TEXT, filename TEXT, counter INTEGER, delete_at_first_view INTEGER, delete_at_day INTEGER, created_at INTEGER, created_by TEXT, last_access_at INTEGER, mod_token TEXT)' WHERE NAME = 'lutim';
+PRAGMA writable_schema = 0;
+```
+
 ## Reverse proxy
 You can use a reverse proxy like Nginx or Varnish (or Apache with the mod\_proxy module). The web is full of tutos.
 

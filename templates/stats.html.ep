@@ -1,7 +1,4 @@
 % # vim:set sts=4 sw=4 ts=4 ft=html.epl expandtab:
-%= javascript 'js/raphael-min.js'
-%= javascript 'js/morris-0.4.3.min.js'
-%= javascript 'js/stats.js'
 <h4><%= $total %><%=l 'pushed-images' %></h4>
 <hr>
 

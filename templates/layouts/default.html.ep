@@ -12,56 +12,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta charset="utf-8" />
         <link rel="icon" type="image/png" href="<%= url_for('/') %>img/favicon.png">
-        %= stylesheet 'css/bootstrap.min.css', media => 'screen'
-        %= stylesheet 'css/fontello.css'
-        %= stylesheet 'css/animation.css'
 % if (current_route 'index') {
-        %= stylesheet 'css/uploader.css'
+        %= asset 'index.css'
 % } elsif (current_route 'stats') {
-        %= stylesheet 'css/morris-0.4.3.min.css'
+        %= asset 'stats.css'
+% } elsif (current_route 'about') {
+        %= asset 'about.css'
 % }
-        %= stylesheet 'css/hennypenny.css'
-        %= stylesheet begin
-            body {
-                padding-top: 40px;
-                padding-bottom: 40px;
-            }
-
-            .container {
-                padding: 15px;
-                margin: 0 auto;
-            }
-
-            .jsonly {
-                display: none;
-            }
-
-            .thumbnail {
-                margin-right: 8px;
-            }
-
-            .hennypenny {
-                font-family: 'Henny_Penny', cursive;
-                font-size: 42px;
-            }
-
-            .logo {
-                margin-right: 10px;
-            }
-
-% if (config('always_encrypt')) {
-            label.always-encrypt {
-                display: none;
-            }
-% }
-        % end
-        %= javascript 'js/jquery-2.1.0.min.js'
-        %= javascript 'js/bootstrap.min.js'
-        %= javascript begin
-            $('document').ready(function() {
-                $('.jsonly').show();
-            });
-        % end
     </head>
     <body>
         <div class="container-fluid">
@@ -97,6 +54,11 @@
             <div class="alert alert-danger">
                 <strong><%= stash('stop_upload') %></strong>
             </div>
+% }
+% if (current_route 'index') {
+        %= asset 'index.js'
+% } elsif (current_route 'stats') {
+        %= asset 'stats.js'
 % }
             <%= content %>
             <div class="modal fade bs-modal-lg"  id="myModal" role="dialog">
