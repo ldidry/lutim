@@ -1,6 +1,6 @@
 Revision history for Lutim
 
-0.3  2014-
+0.3  2014-06-01
 	- Add a delete link to images (#28)
 	- Concatenated css and js with Mojolicious::Plugin::AssetPack
 	- Antiflood protection for the "Download by URL" feature (#29)
