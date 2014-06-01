@@ -12,12 +12,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta charset="utf-8" />
         <link rel="icon" type="image/png" href="<%= url_for('/') %>img/favicon.png">
-% if (current_route 'index') {
-        %= asset 'index.css'
-% } elsif (current_route 'stats') {
+% if (current_route 'stats') {
         %= asset 'stats.css'
 % } elsif (current_route 'about') {
         %= asset 'about.css'
+% } else {
+        %= asset 'index.css'
 % }
     </head>
     <body>
@@ -54,10 +54,10 @@
                 <strong><%= stash('stop_upload') %></strong>
             </div>
 % }
-% if (current_route 'index') {
-        %= asset 'index.js'
-% } elsif (current_route 'stats') {
+% if (current_route 'stats') {
         %= asset 'stats.js'
+% } elsif (!(current_route 'about')) {
+        %= asset 'index.js'
 % }
             <%= content %>
         </div>

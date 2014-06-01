@@ -130,7 +130,7 @@
         <div class="form-group">
             <span class="col-sm-3"><span class="hidden-spin" style="font-size:200%; display:none;" > <i class="icon-spinner animate-spin pull-right"></i></span><label for="lutim-file-url" class="control-label pull-right"><%=l 'upload_image_url' %></label></span>
             <div class="col-sm-9">
-                <input type="url" name="file-url" class="form-control" id="lutim-file-url" placeholder="<%=l 'image_url' %>">
+                <input type="url" name="lutim-file-url" class="form-control" id="lutim-file-url" placeholder="<%=l 'image_url' %>">
             </div>
         </div>
         <a href="#" class="btn btn-default btn-primary pull-right" id="file-url-button"><%=l 'go' %></a>
@@ -243,5 +243,12 @@
         bindddz(firstview, deleteday);
 
         $("#file-url-button").on("click", upload_url);
+        $('#lutim-file-url').keydown( function(e) {
+            var key = e.charCode ? e.charCode : e.keyCode ? e.keyCode : 0;
+            if(key == 13) {
+                e.preventDefault();
+                upload_url();
+            }
+        });
     });
 % end
