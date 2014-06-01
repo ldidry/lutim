@@ -13,8 +13,7 @@ sub run {
     my @images = LutimModel::Lutim->select('WHERE enabled = 1 AND (delete_at_day * 86400) < (? - created_at) AND delete_at_day != 0', $time);
 
     for my $image (@images) {
-        $image->update(enabled => 0);
-        unlink $image->path();
+        $c->app->delete_image($image);
     }
 
     my $config = $c->app->plugin('Config');
@@ -24,8 +23,7 @@ sub run {
         @images = LutimModel::Lutim->select('WHERE enabled = 1 AND last_access_at < ?', $time);
 
         for my $image (@images) {
-            $image->update(enabled => 0);
-            unlink $image->path();
+            $c->app->delete_image($image);
         }
     }
 }

@@ -43,6 +43,7 @@ our %Lexicon = (
     'view-link'             => 'Lien d\'affichage',
     'download-link'         => 'Lien de téléchargement',
     'twitter-link'          => 'Lien pour mettre dans un tweet',
+    'delete-link'           => 'Lien de suppression',
     'some-bad'              => 'Un problème est survenu',
     'delete-first'          => 'Supprimer au premier accès ?',
     'delete-day'            => 'Supprimer après 24 heures ?',
@@ -52,7 +53,7 @@ our %Lexicon = (
     'drag-n-drop'           => 'Déposez vos images ici',
     'or'                    => '-ou-',
     'file-browser'          => 'Cliquez pour utiliser le navigateur de fichier',
-    'image_not_found'       => 'Impossible de trouver l\'image',
+    'image_not_found'       => 'Impossible de trouver l\'image : elle a été supprimée.',
     'no_more_short'         => 'Il n\'y a plus d\'URL disponible. Veuillez réessayer ou contactez l\'administrateur. [_1].',
     'no_valid_file'         => 'Le fichier [_1] n\'est pas une image.',
     'file_too_big'          => 'Le fichier dépasse la limite de taille ([_1])',
@@ -77,6 +78,9 @@ our %Lexicon = (
     'max_delay'             => 'Attention ! Le délai maximal de rétention d\'une image est de [_1] jour(s), même si vous choisissez « pas de limitation de durée ».',
     'crypt_image'           => 'Chiffrer l\'image (Lutim ne stocke pas la clé).',
     'always_encrypt'        => 'Les images sont chiffrées sur le serveur (Lutim ne stocke pas la clé).',
+    'image_deleted'         => 'L\'image [_1] a été supprimée avec succès.',
+    'invalid_token'         => 'Le jeton de suppression est invalide.',
+    'already_deleted'       => 'L\'image [_1] a déjà été supprimée.',
 );
 
 1;

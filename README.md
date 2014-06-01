@@ -59,19 +59,20 @@ vi lutim.conf
 The `lutim.conf.template` is self-documented but here is the options that you can set:
 
 * hypnotoad: address and port to listen to, user and group which runs hypnotoad (if you run Lutim with a different user from what is defined here, be sure that the user which launchs hypnotoad is able to setuid/setgid to the defined user/group, otherwise it will not work and you'll have 100% CPU consumption. Launch hypnotoad with the root user or with the user which is defined here);
-* contact: write something which make people able to contact you (contact form URL, email address, whatever) ;
+* contact: write something which make people able to contact you (contact form URL, email address, whatever);
 * secrets: an array of random string. Used by Mojolicious for encrypting session cookies.
-* piwik_img: the Piwik image provides you records of visits without javascript (better privacy than js and cookies) ;
-* length: length of the random string part of image's URL (default is 8) ;
-* provis_step: Lutim provisions random strings for image's URL per pack of `provis_step` (default is 5) ;
-* provisioning: number of random strings to provision (default is 100) ;
-* hosted_by: if someone hosts your Lutim instance, you can add some HTML (a logo for example) to make it appear on index page ;
-* tweet_card_via: a Twitter account which will appear on Twitter cards ;
-* max_file_size: well, this is explicit (default is 10Mio = 10485760 octets) ;
-* https: 1 if you want to provide secure images URLs (default is 0) DEPRECATED, PASS A `X-Forwarded-Proto` HEADER TO LUTIM FROM YOUR REVERSE PROXY INSTEAD ;
-* stats_day_num: when you generate statistics with `script/lutim cron stats`, you will have stats for the last `stats_day_num` days (default is 365) ;
-* keep_ip_during: when you delete IP addresses of image's senders with `script/lutim cron cleanbdd`, the IP addresses of images older than `keep_ip_during` days will be deleted (default is 365) ;
-* broadcast_message: put some string (not HTML) here and this message will be displayed on all Lutim pages (not in JSON responses) ;
+* piwik_img: the Piwik image provides you records of visits without javascript (better privacy than js and cookies);
+* length: length of the random string part of image's URL (default is 8);
+* provis_step: Lutim provisions random strings for image's URL per pack of `provis_step` (default is 5);
+* provisioning: number of random strings to provision (default is 100);
+* hosted_by: if someone hosts your Lutim instance, you can add some HTML (a logo for example) to make it appear on index page;
+* tweet_card_via: a Twitter account which will appear on Twitter cards;
+* max_file_size: well, this is explicit (default is 10Mio = 10485760 octets);
+* https: 1 if you want to provide secure images URLs (default is 0) DEPRECATED, PASS A `X-Forwarded-Proto` HEADER TO LUTIM FROM YOUR REVERSE PROXY INSTEAD;
+* token_length: length of the secret token used to allow people to delete their images when they want;
+* stats_day_num: when you generate statistics with `script/lutim cron stats`, you will have stats for the last `stats_day_num` days (default is 365);
+* keep_ip_during: when you delete IP addresses of image's senders with `script/lutim cron cleanbdd`, the IP addresses of images older than `keep_ip_during` days will be deleted (default is 365);
+* broadcast_message: put some string (not HTML) here and this message will be displayed on all Lutim pages (not in JSON responses);
 * allowed_domains: array of authorized domains for API calls. Example: `['http://1.example.com', 'http://2.example.com']`. If you want to authorize everyone to use the API: `['\*']`.
 * default_delay: what is the default time limit for files? Valid values are 0, 1, 7, 30 and 365;
 * max_delay: if defined, the images will be deleted after that delay (in days), even if they were uploaded with "no delay" (or value superior to max_delay) option and a warning message will be displayed on homepage;

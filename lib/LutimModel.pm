@@ -20,7 +20,7 @@ use ORLite {
                created_at            INTEGER,
                created_by            TEXT,
                last_access_at        INTEGER,
-               last_access_by        INTEGER)'
+               mod_token             TEXT)'
           );
           return 1;
         }

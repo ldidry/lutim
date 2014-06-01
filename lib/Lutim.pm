@@ -27,6 +27,7 @@ sub startup {
             https            => 0,
             default_delay    => 0,
             max_delay        => 0,
+            token_length     => 24,
         }
     });
 
@@ -117,7 +118,8 @@ sub startup {
                             counter              => 0,
                             enabled              => 1,
                             delete_at_first_view => 0,
-                            delete_at_day        => 0
+                            delete_at_day        => 0,
+                            mod_token            => $c->shortener($c->config->{token_length})
                         );
                         LutimModel->commit;
                     }
@@ -243,6 +245,15 @@ sub startup {
         }
     );
 
+    $self->helper(
+        delete_image => sub {
+            my $c = shift;
+            my $image = shift;
+            unlink $image->path();
+            $image->update(enabled => 0);
+        }
+    );
+
     $self->hook(
         before_dispatch => sub {
             my $c = shift;
@@ -280,9 +291,9 @@ sub startup {
         }
     );
 
-    $self->asset('index.css' => 'css/bootstrap.min.css', 'css/fontello.css', 'css/animation.css', 'css/uploader.css', 'css/hennypenny.css', 'css/lutim.css');
-    $self->asset('stats.css' => 'css/bootstrap.min.css', 'css/fontello.css', 'css/animation.css', 'css/morris-0.4.3.min.css', 'css/hennypenny.css', 'css/lutim.css');
-    $self->asset('about.css' => 'css/bootstrap.min.css', 'css/fontello.css', 'css/animation.css', 'css/hennypenny.css', 'css/lutim.css');
+    $self->asset('index.css' => 'css/bootstrap.min.css', 'css/fontello-embedded.css', 'css/animation.css', 'css/uploader.css', 'css/hennypenny.css', 'css/lutim.css');
+    $self->asset('stats.css' => 'css/bootstrap.min.css', 'css/fontello-embedded.css', 'css/animation.css', 'css/morris-0.4.3.min.css', 'css/hennypenny.css', 'css/lutim.css');
+    $self->asset('about.css' => 'css/bootstrap.min.css', 'css/fontello-embedded.css', 'css/animation.css', 'css/hennypenny.css', 'css/lutim.css');
 
     $self->asset('index.js' => 'js/jquery-2.1.0.min.js', 'js/bootstrap.min.js', 'js/lutim.js', 'js/dmuploader.min.js');
     $self->asset('stats.js' => 'js/jquery-2.1.0.min.js', 'js/bootstrap.min.js', 'js/lutim.js', 'js/raphael-min.js', 'js/morris-0.4.3.min.js', 'js/stats.js');
@@ -315,6 +326,10 @@ sub startup {
     $r->post('/')->
         to('Controller#add')->
         name('add');
+
+    $r->get('/d/:short/:token')->
+        to('Controller#delete')->
+        name('delete');
 
     $r->get('/:short')->
         to('Controller#short')->

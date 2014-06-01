@@ -11,15 +11,25 @@
         <div>
             <strong><%= stash('filename') %></strong>
             <ul class="list-unstyled">
-                <li><i class="icon icon-eye" title="<%=l 'view-link' %>"></i> <%= link_to url_for('/')->to_abs().stash('short') => begin %><%= url_for('/')->to_abs().stash('short') %><%= end %></li>
-                <li><i class="icon icon-download" title="<%=l 'download-link' %>"></i> <%= link_to url_for('/')->to_abs().stash('short').'?dl' => begin %><%= url_for('/')->to_abs().stash('short').'?dl' %><%= end %></li>
-                <li><i class="icon icon-touiteur" title="<%=l 'twitter-link' %>"></i> <%= link_to url_for('/')->to_abs().stash('short').'?t' => begin %><%= url_for('/')->to_abs().stash('short').'?t' %><%= end %></li>
+                % my $url = url_for('/')->to_abs().stash('short');
+                % my $delete_url = url_for('delete', {short => stash('real_short'), token => stash('token')})->to_abs();
+                <li><i class="icon icon-eye"      title =" <%= l 'view-link' %>"></i>     <%= link_to $url        => begin %> <%= $url %>        <%= end %></li>
+                <li><i class="icon icon-download" title =" <%= l 'download-link' %>"></i> <%= link_to $url.'?dl'  => begin %> <%= $url.'?dl' %>  <%= end %></li>
+                <li><i class="icon icon-twitter"  title =" <%= l 'twitter-link' %>"></i>  <%= link_to $url.'?t'   => begin %> <%= $url.'?t' %>   <%= end %></li>
+                <li><i class="icon icon-trash"    title =" <%= l 'delete-link' %>"></i>   <%= link_to $delete_url => begin %> <%= $delete_url %> <%= end %></li>
             </ul>
         </div>
     </div>
 % }
+% if (defined(flash('success'))) {
+    <div class="alert alert-success">
+        <button type="button" class="close jsonly" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <%= flash('success') %>
+    </div>
+% }
 % if (defined(flash('msg'))) {
     <div class="alert alert-danger">
+        <button type="button" class="close jsonly" data-dismiss="alert" aria-hidden="true">&times;</button>
         <strong><%=l 'some-bad' %></strong><br>
         <%= flash('filename') %> <%= flash('msg') %>
     </div>
@@ -129,8 +139,10 @@
 <!-- /D&D Zone -->
 
 %= javascript begin
-    function link(url, dl) {
-        if (dl !== '') {
+    function link(url, dl, token) {
+        if (token !== undefined) {
+            url = 'd/'+url+'/'+token;
+        } else if (dl !== '') {
             url = url+'?'+dl;
         }
         return '<a href="<%== url_for('index')->to_abs() %>'+url+'"><%== url_for('index')->to_abs() %>'+url+'</a>';
@@ -145,10 +157,12 @@
                 +'</strong>'
                 +'<ul class="list-unstyled"><li><i class="icon icon-eye" title="<%=l 'view-link' %>"></i>&nbsp;'
                 +link(msg.short, '')
-                +'</a></li><li><i class="icon icon-download" title="<%=l 'download-link' %>"></i>&nbsp;'
+                +'</li><li><i class="icon icon-download" title="<%=l 'download-link' %>"></i>&nbsp;'
                 +link(msg.short, 'dl')
-                +'</a></li><li><i class="icon icon-touiteur" title="<%=l 'twitter-link' %>"></i>&nbsp;'
+                +'</li><li><i class="icon icon-twitter" title="<%=l 'twitter-link' %>"></i>&nbsp;'
                 +link(msg.short, 't')
+                +'</li><li><i class="icon icon-trash" title="<%=l 'delete-link' %>"></i>&nbsp;'
+                +link(msg.real_short, '', msg.token)
                 +'</li></ul></div>';
         } else {
             return '<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong><%=l 'some-bad' %></strong><br>'

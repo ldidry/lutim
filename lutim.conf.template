@@ -96,6 +96,10 @@
     # optional, default is 0
     #always_encrypt    => 0,
 
+    # length of the image's delete token
+    # optional, default is 24
+    #token_length      => 24,
+
     ##########################
     # Lutim cron jobs settings
     ##########################

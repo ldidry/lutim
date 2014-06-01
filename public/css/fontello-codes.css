@@ -1,8 +1,9 @@
 
-.icon-eye:before { content: '\e806'; } /* '' */
-.icon-download:before { content: '\e804'; } /* '' */
-.icon-bitcoin:before { content: '\e802'; } /* '' */
-.icon-spinner:before { content: '\e805'; } /* '' */
-.icon-github-circled:before { content: '\e800'; } /* '' */
-.icon-touiteur:before { content: '\e801'; } /* '' */
-.icon-flattr:before { content: '\e803'; } /* '' */
+.icon-twitter:before { content: '\e800'; } /* '' */
+.icon-github-circled:before { content: '\e801'; } /* '' */
+.icon-flattr:before { content: '\e802'; } /* '' */
+.icon-bitcoin:before { content: '\e803'; } /* '' */
+.icon-trash:before { content: '\e804'; } /* '' */
+.icon-download:before { content: '\e805'; } /* '' */
+.icon-spinner:before { content: '\e806'; } /* '' */
+.icon-eye:before { content: '\e807'; } /* '' */

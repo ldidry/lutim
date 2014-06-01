@@ -46,6 +46,41 @@ sub stats {
     );
 }
 
+sub delete {
+    my $c     = shift;
+    my $short = $c->param('short');
+    my $token = $c->param('token');
+
+    my @images = LutimModel::Lutim->select('WHERE short = ? AND path IS NOT NULL', $short);
+    if (scalar(@images)) {
+        my $image = $images[0];
+        my $msg;
+        if ($image->mod_token() ne $token) {
+            $msg = $c->l('invalid_token');
+        } elsif ($image->enabled() == 0) {
+            $msg = $c->l('already_deleted', $image->filename);
+        } else {
+            $c->app->log->info('[DELETION] someone made '.$image->filename.' removed with token method (path: '.$image->path.')');
+
+            $c->delete_image($image);
+            $c->flash(
+                success => $c->l('image_deleted', $image->filename)
+            );
+            return $c->redirect_to('/');
+        }
+
+        $c->flash(
+            msg => $msg
+        );
+        return $c->redirect_to('/');
+    } else {
+        $c->app->log->info('[UNSUCCESSFUL] someone tried to delete '.$short.' but it does\'nt exist.');
+
+        # Image never existed
+        $c->render_not_found;
+    }
+}
+
 sub add {
     my $c        = shift;
     my $upload   = $c->param('file');
@@ -133,7 +168,7 @@ sub add {
 
         my $ip = $c->ip;
 
-        my ($msg, $short, $thumb);
+        my ($msg, $short, $real_short, $token, $thumb);
         # Check file type
         if (index($mediatype, 'image/') >= 0) {
             # Create directory if needed
@@ -190,8 +225,10 @@ sub add {
                     $c->app->log->info('[CREATION] '.$ip.' pushed '.$filename.' (path: '.$path.')');
 
                     # Give url to user
-                    $short  = $records[0]->short;
-                    $short .= '/'.$key if (defined($key));
+                    $short      = $records[0]->short;
+                    $real_short = $short;
+                    $token      = $records[0]->mod_token;
+                    $short     .= '/'.$key if (defined($key));
                 } else {
                     # Houston, we have a problem
                     $msg = $c->l('no_more_short', $c->config->{contact});
@@ -205,9 +242,11 @@ sub add {
         if (defined($c->param('format')) && $c->param('format') eq 'json') {
             if (defined($short)) {
                 $msg = {
-                    filename => $upload->filename,
-                    short    => $short,
-                    thumb    => $thumb
+                    filename   => $upload->filename,
+                    short      => $short,
+                    real_short => $real_short,
+                    token      => $token,
+                    thumb      => $thumb
                 };
             } else {
                 $msg = {
@@ -227,9 +266,11 @@ sub add {
                 $c->flash(filename => $upload->filename);
                 return $c->redirect_to('/');
             } else {
-                $c->stash(short    => $short) if (defined($short));
-                $c->stash(thumb    => $thumb);
-                $c->stash(filename => $upload->filename);
+                $c->stash(short      => $short) if (defined($short));
+                $c->stash(real_short => $real_short);
+                $c->stash(token      => $token);
+                $c->stash(thumb      => $thumb);
+                $c->stash(filename   => $upload->filename);
                 return $c->render(
                     template      => 'index',
                     max_file_size => $c->req->max_message_size
@@ -270,8 +311,7 @@ sub short {
             $c->app->log->info('[DELETION] someone tried to view '.$images[0]->filename.' but it has been removed by expiration (path: '.$images[0]->path.')');
 
             # Delete image
-            unlink $images[0]->path();
-            $images[0]->update(enabled => 0);
+            $c->delete_image($images[0]);
 
             # Warn user
             $c->flash(
@@ -318,8 +358,7 @@ sub short {
                     $c->app->log->info('[DELETION] someone made '.$images[0]->filename.' removed (path: '.$images[0]->path.')');
 
                     # Delete image
-                    unlink $images[0]->path();
-                    $images[0]->update(enabled => 0);
+                    $c->delete_image($images[0]);
                 }
             });
         }

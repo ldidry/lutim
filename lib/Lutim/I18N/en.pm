@@ -43,6 +43,7 @@ our %Lexicon = (
     'view-link'             => 'View link',
     'download-link'         => 'Download link',
     'twitter-link'          => 'Link for put in a tweet',
+    'delete-link'           => 'Deletion link',
     'some-bad'              => 'Something bad happened',
     'delete-first'          => 'Delete at first view?',
     'delete-day'            => 'Delete after 24 hours?',
@@ -52,7 +53,7 @@ our %Lexicon = (
     'drag-n-drop'           => 'Drag & drop images here',
     'or'                    => '-or-',
     'file-browser'          => 'Click to open the file browser',
-    'image_not_found'       => 'Unable to find the image',
+    'image_not_found'       => 'Unable to find the image: it has been deleted.',
     'no_more_short'         => 'There is no more available URL. Retry or contact the administrator. [_1]',
     'no_valid_file'         => 'The file [_1] is not an image.',
     'file_too_big'          => 'The file exceed the size limit ([_1])',
@@ -77,6 +78,9 @@ our %Lexicon = (
     'max_delay'             => 'Warning! The maximum time limit for an image is [_1] day(s), even if you choose "no time limit".',
     'crypt_image'           => 'Encrypt the image (Lutim does not keep the key).',
     'always_encrypt'        => 'The images are encrypted on the server (Lutim does not keep the key).',
+    'image_deleted'         => 'The image [_1] has been successfully deleted',
+    'invalid_token'         => 'The delete token is invalid.',
+    'already_deleted'       => 'The image [_1] has already been deleted.',
 );
 
 1;
