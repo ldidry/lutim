@@ -59,7 +59,7 @@ sub startup {
 
             my $headers = Mojo::Headers->new();
             if ($nocache) {
-                $headers->add('Cache-Control'   => 'no-cache, no-store');
+                $headers->add('Cache-Control'   => 'no-cache, no-store, max-age=0, must-revalidate');
             } else {
                 $headers->add('Expires'         => $expires);
             }
