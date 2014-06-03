@@ -107,7 +107,7 @@ sub startup {
                         my $short;
                         do {
                             $short= $c->shortener($c->config->{length});
-                        } while (LutimModel::Lutim->count('WHERE short = ?', $short) || $short eq 'about' || $short eq 'stats');
+                        } while (LutimModel::Lutim->count('WHERE short = ?', $short) || $short eq 'about' || $short eq 'stats' || $short eq 'd');
 
                         LutimModel::Lutim->create(
                             short                => $short,
