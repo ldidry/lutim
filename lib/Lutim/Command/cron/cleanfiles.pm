@@ -1,4 +1,4 @@
-package Mojolicious::Command::cron::cleanfiles;
+package Lutim::Command::cron::cleanfiles;
 use Mojo::Base 'Mojolicious::Command';
 use LutimModel;
 use Mojo::Util qw(slurp decode);
@@ -32,7 +32,7 @@ sub run {
 
 =head1 NAME
 
-Mojolicious::Command::cron::cleanfiles - Delete expired files
+Lutim::Command::cron::cleanfiles - Delete expired files
 
 =head1 SYNOPSIS
 

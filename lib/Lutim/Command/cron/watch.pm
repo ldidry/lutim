@@ -1,4 +1,4 @@
-package Mojolicious::Command::cron::watch;
+package Lutim::Command::cron::watch;
 use Mojo::Base 'Mojolicious::Command';
 use Mojo::Util qw(slurp decode);
 use Filesys::DiskUsage qw/du/;
@@ -56,7 +56,7 @@ sub run {
 
 =head1 NAME
 
-Mojolicious::Command::cron::watch - Delete IP addresses from database after configured delay
+Lutim::Command::cron::watch - Delete IP addresses from database after configured delay
 
 =head1 SYNOPSIS
 

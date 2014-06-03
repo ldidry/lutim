@@ -10,6 +10,8 @@ mkdir($ENV{MOJO_TMPDIR}, 0700) unless (-d $ENV{MOJO_TMPDIR});
 sub startup {
     my $self = shift;
 
+    push @{$self->commands->namespaces}, 'Lutim::Command';
+
     $self->{wait_for_it} = {};
 
     $self->plugin('I18N');

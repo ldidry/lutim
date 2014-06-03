@@ -1,4 +1,4 @@
-package Mojolicious::Command::cron;
+package Lutim::Command::cron;
 use Mojo::Base 'Mojolicious::Commands';
 
 has description => 'Execute tasks.';
@@ -7,7 +7,7 @@ has hint        => <<EOF;
 See 'script/lutim cron help TASK' for more information on a specific task.
 EOF
 has message    => sub { shift->extract_usage . "\nCron tasks:\n" };
-has namespaces => sub { ['Mojolicious::Command::cron'] };
+has namespaces => sub { ['Lutim::Command::cron'] };
 
 sub help { shift->run(@_) }
 
@@ -17,7 +17,7 @@ sub help { shift->run(@_) }
 
 =head1 NAME
 
-Mojolicious::Command::cron - Cron commands
+Lutim::Command::cron - Cron commands
 
 =head1 SYNOPSIS
 

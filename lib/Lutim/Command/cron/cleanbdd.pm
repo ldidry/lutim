@@ -1,4 +1,4 @@
-package Mojolicious::Command::cron::cleanbdd;
+package Lutim::Command::cron::cleanbdd;
 use Mojo::Base 'Mojolicious::Command';
 use LutimModel;
 use Mojo::Util qw(slurp decode);
@@ -28,7 +28,7 @@ sub run {
 
 =head1 NAME
 
-Mojolicious::Command::cron::cleanbdd - Delete IP addresses from database after configured delay
+Lutim::Command::cron::cleanbdd - Delete IP addresses from database after configured delay
 
 =head1 SYNOPSIS
 

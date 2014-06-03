@@ -1,4 +1,4 @@
-package Mojolicious::Command::cron::stats;
+package Lutim::Command::cron::stats;
 use Mojo::Base 'Mojolicious::Command';
 use LutimModel;
 use Mojo::DOM;
@@ -55,7 +55,7 @@ sub run {
 
 =head1 NAME
 
-Mojolicious::Command::cron::stats - Stats generator
+Lutim::Command::cron::stats - Stats generator
 
 =head1 SYNOPSIS
 
