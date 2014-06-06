@@ -122,6 +122,7 @@ sub upload {
                 $self->{_links}->{'view_image'}    = $link;
                 $self->{_links}->{'download_link'} = $link.'?dl';
                 $self->{_links}->{'twitter_link'}  = $link.'?t';
+                $self->{_links}->{'delete_link'}   = $url.'d/'.$hash->{msg}->{real_short}.'/'.$hash->{msg}->{token};
 
                 #set success code (200)
                 $self->{_links}{'status'} = 200;
