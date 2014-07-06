@@ -38,48 +38,48 @@
 
 <noscript>
     <form class="form" role="form" method="POST" action="<%== url_for('add') %>" enctype="multipart/form-data">
-    <div class="form-group form-inline">
-        <select name="delete-day" class="form-control">
-            % for my $delay (qw/0 1 7 30 365/) {
-            %   my $text = ($delay == 7 || $delay == 30) ? l('delay_days', $delay) : l("delay_$delay");
-            %   if (config('max_delay')) {
-            %       if ($delay) {
-            %           if ($delay < config('max_delay')) {
-                            <option value="<%= $delay %>" <%== is_selected($delay) %>><%= $text %></option>
-            %           } elsif ($delay == config('max_delay')) {
-                            <option value="<%= $delay %>" <%== is_selected($delay) %>><%= $text %></option>
-            %               last;
-            %           } else {
-            %               my $text = ($delay == 1) ? l('delay_1') : l('delay_days', $delay);
-                            <option value="<%= config('max_delay') %>" <%== is_selected(config('max_delay')) %>><%=l('delay_days', config('max_delay')) %></option>
-            %               last;
-            %           }
-            %       }
-            %   } else {
-                    <option value="<%= $delay %>" <%== is_selected($delay) %>><%= $text %></option>
-            %   }
-            % }
-        </select>
-        <div class="checkbox">
-            <label>
-                <input type="checkbox" name="first-view"> <%=l 'delete-first' %>
-            </label>
-            <label <%== (config('always_encrypt')) ? 'class="always-encrypt"' : '' %>>
-                <input type="checkbox" name="crypt"> <%=l 'crypt_image' %>
-            </label>
+        <div class="form-group form-inline">
+            <select name="delete-day" class="form-control">
+                % for my $delay (qw/0 1 7 30 365/) {
+                %   my $text = ($delay == 7 || $delay == 30) ? l('delay_days', $delay) : l("delay_$delay");
+                %   if (config('max_delay')) {
+                %       if ($delay) {
+                %           if ($delay < config('max_delay')) {
+                                <option value="<%= $delay %>" <%== is_selected($delay) %>><%= $text %></option>
+                %           } elsif ($delay == config('max_delay')) {
+                                <option value="<%= $delay %>" <%== is_selected($delay) %>><%= $text %></option>
+                %               last;
+                %           } else {
+                %               my $text = ($delay == 1) ? l('delay_1') : l('delay_days', $delay);
+                                <option value="<%= config('max_delay') %>" <%== is_selected(config('max_delay')) %>><%=l('delay_days', config('max_delay')) %></option>
+                %               last;
+                %           }
+                %       }
+                %   } else {
+                        <option value="<%= $delay %>" <%== is_selected($delay) %>><%= $text %></option>
+                %   }
+                % }
+            </select>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="first-view"> <%=l 'delete-first' %>
+                </label>
+                <label <%== (config('always_encrypt')) ? 'class="always-encrypt"' : '' %>>
+                    <input type="checkbox" name="crypt"> <%=l 'crypt_image' %>
+                </label>
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        <label for="lutim-file"><%=l 'upload_image' %></label>
-        <input type="file" name="file" id="lutim-file">
-    </div>
-    <div class="form-group">
-        <label for="lutim-file-url"><%=l 'upload_image_url' %></label>
-        <input type="url" name="lutim-file-url" placeholder="<%=l 'image_url' %>">
+        <div class="form-group">
+            <label for="lutim-file"><%=l 'upload_image' %></label>
+            <input type="file" name="file" id="lutim-file">
+        </div>
+        <div class="form-group">
+            <label for="lutim-file-url"><%=l 'upload_image_url' %></label>
+            <input type="url" name="lutim-file-url" placeholder="<%=l 'image_url' %>">
+        </div>
         <p class="help-block"><%=l 'image-only' %></p>
-    </div>
-    <%= submit_button l('go'), class => 'btn btn-default btn-primary', id => 'submitbutton' %>
-</form>
+        <%= submit_button l('go'), class => 'btn btn-default btn-primary', id => 'submitbutton' %>
+    </form>
 </noscript>
 
 <!-- D&D Zone-->
@@ -128,8 +128,8 @@
     <p class="help-block"><%=l 'image-only' %></p>
     <form class="form-horizontal" role="form" method="POST" action="<%== url_for('add') %>">
         <div class="form-group">
-            <span class="col-sm-3"><span class="hidden-spin" style="font-size:200%; display:none;" > <i class="icon-spinner animate-spin pull-right"></i></span><label for="lutim-file-url" class="control-label pull-right"><%=l 'upload_image_url' %></label></span>
-            <div class="col-sm-9">
+            <span class="col-sm-3 col-xs-12"><span class="hidden-spin" style="font-size:200%; display:none;" > <i class="icon-spinner animate-spin pull-right"></i></span><label for="lutim-file-url" class="control-label pull-right"><%=l 'upload_image_url' %></label></span>
+            <div class="col-sm-9 col-xs-12">
                 <input type="url" name="lutim-file-url" class="form-control" id="lutim-file-url" placeholder="<%=l 'image_url' %>">
             </div>
         </div>
