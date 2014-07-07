@@ -26,6 +26,18 @@
 	padding: 10px;
 }
 
+@media (max-width:768px){
+	.uploader div.browser label {
+		max-width:95%;
+	}
+}
+
+@media (min-width:768px){
+	.uploader div.browser label {
+		width:300px;
+	}
+}
+
 .uploader div.browser label {
 	background-color: #5a7bc2;
 	padding: 5px 15px;
@@ -38,7 +50,6 @@
 	position: relative;
 	overflow: hidden;
 	display: block;
-	width: 300px;
 	margin: 20px auto 0px auto;
 
 	box-shadow: 2px 2px 2px #888888;
