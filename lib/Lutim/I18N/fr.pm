@@ -43,6 +43,7 @@ our %Lexicon = (
     'view-link'             => 'Lien d\'affichage',
     'download-link'         => 'Lien de téléchargement',
     'twitter-link'          => 'Lien pour mettre dans un tweet',
+    'tweet_it'              => 'Tweetez-le !',
     'delete-link'           => 'Lien de suppression',
     'some-bad'              => 'Un problème est survenu',
     'delete-first'          => 'Supprimer au premier accès ?',

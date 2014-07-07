@@ -9,9 +9,10 @@
         <img class="pull-left thumbnail" alt="<%= stash('filename') %> thumbnail" src="<%= stash('thumb') %>">
 %     }
         <div>
+            % my $url = url_for('/')->to_abs().stash('short');
             <strong><%= stash('filename') %></strong>
+            &nbsp;&nbsp;&nbsp;<a target="_blank" class="btn btn-default btn-primary btn-xs" href="https://twitter.com/share?url=<%= $url %>?t"><%=l 'tweet_it' %></a>
             <ul class="list-unstyled">
-                % my $url = url_for('/')->to_abs().stash('short');
                 % my $delete_url = url_for('delete', {short => stash('real_short'), token => stash('token')})->to_abs();
                 <li><i class="icon icon-eye"      title =" <%= l 'view-link' %>"></i>     <%= link_to $url        => begin %> <%= $url %>        <%= end %></li>
                 <li><i class="icon icon-download" title =" <%= l 'download-link' %>"></i> <%= link_to $url.'?dl'  => begin %> <%= $url.'?dl' %>  <%= end %></li>
@@ -147,6 +148,9 @@
         }
         return '<a href="<%== url_for('index')->to_abs() %>'+url+'"><%== url_for('index')->to_abs() %>'+url+'</a>';
     }
+    function tw_url(url) {
+        return '&nbsp;&nbsp;&nbsp;<a target="_blank" class="btn btn-default btn-primary btn-xs" href="https://twitter.com/share?url=<%== url_for('index')->to_abs() %>'+url+'?t"><%=l 'tweet_it' %></a>';
+    }
     function message(success, msg) {
         if(success) {
             var thumb = (msg.thumb !== null) ? '<img class="pull-left thumbnail" alt="'+msg.filename+' thumbnail" src="'+msg.thumb+'">' : ''
@@ -155,6 +159,7 @@
                 +'<div><strong>'
                 +msg.filename
                 +'</strong>'
+                +tw_url(msg.short)
                 +'<ul class="list-unstyled"><li><i class="icon icon-eye" title="<%=l 'view-link' %>"></i>&nbsp;'
                 +link(msg.short, '')
                 +'</li><li><i class="icon icon-download" title="<%=l 'download-link' %>"></i>&nbsp;'
