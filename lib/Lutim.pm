@@ -321,6 +321,10 @@ sub startup {
         to('Controller#stats')->
         name('stats');
 
+    $r->get('/manifest.webapp')->
+        to('Controller#webapp')->
+        name('manifest.webapp');
+
     $r->post('/')->
         to('Controller#add')->
         name('add');

@@ -82,6 +82,7 @@ our %Lexicon = (
     'image_deleted'         => 'The image [_1] has been successfully deleted',
     'invalid_token'         => 'The delete token is invalid.',
     'already_deleted'       => 'The image [_1] has already been deleted.',
+    'install_as_webapp'     => 'Install webapp',
 );
 
 1;

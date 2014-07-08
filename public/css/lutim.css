@@ -1,6 +1,15 @@
-body {
-    padding-top: 40px;
-    padding-bottom: 40px;
+@media (max-width: 767px) {
+    body {
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+}
+
+@media (min-width: 768px) {
+    body {
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
 }
 
 .container {
@@ -31,4 +40,8 @@ label.always-encrypt {
 .link_nocol:hover{
     color: #000000;
     text-decoration: none;
+}
+
+#install-app img {
+    height: 22px;
 }

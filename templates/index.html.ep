@@ -122,7 +122,7 @@
         <div class="browser">
             <label>
                 <span><%=l 'file-browser' %></span>
-                <input type="file" name="files[]" multiple="multiple" title='<%=l 'file-browser' %>'>
+                <input type="file" name="files[]" multiple="multiple" title='<%=l 'file-browser' %>' accept="image/*">
             </label>
         </div>
     </div>
@@ -191,7 +191,6 @@
                 $('#'+id).prop('aria-valuenow', percent);
                 $('#'+id).prop('style', 'width: '+percent+'%;');
                 $('#'+id+'-text').html(percentStr);
-
             },
             onUploadSuccess: function(id, data){
                 $('#'+id+'-div').remove();
@@ -241,6 +240,66 @@
         }
     }
 
+    function fileUpload(file) {
+        var fd = new FormData();
+        fd.append('file', file);
+
+        fd.append('format', 'json');
+        fd.append('first-view', ($("#first-view").prop('checked')) ? 1 : 0);
+        fd.append('crypt', ($("#crypt").prop('checked')) ? 1 : 0);
+        fd.append('delete-day', ($("#delete-day").val()));
+
+        $(".messages").append('<div id="1-div">'+file.name+'<br><div class="progress"><div id="1"class="progress-bar progress-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"><span id="1-text" class="pull-left" style="padding-left: 10px;"> 0%</span></div></div></div>');
+        // Ajax Submit
+        $.ajax({
+            url: '<%== url_for('add') %>',
+            type: 'POST',
+            dataType: 'json',
+            data: fd,
+            cache: false,
+            contentType: false,
+            processData: false,
+            forceSync: false,
+            xhr: function(){
+                var xhrobj = $.ajaxSettings.xhr();
+                if(xhrobj.upload){
+                    xhrobj.upload.addEventListener('progress', function(event) {
+                        var percent = 0;
+                        var position = event.loaded || event.position;
+                        var total = event.total || e.totalSize;
+                        if(event.lengthComputable){
+                          percent = Math.ceil(position / total * 100);
+                        }
+
+                        var percentStr = ' '+percent+'%';
+                        $('#1').prop('aria-valuenow', percent);
+                        $('#1').prop('style', 'width: '+percent+'%;');
+                        $('#1-text').html(percentStr);
+                    }, false);
+                }
+
+                return xhrobj;
+            },
+            success: function (data, message, xhr){
+                $('#1-div').remove();
+                $(".messages").append(message(data.success, data.msg));
+            },
+            error: function (xhr, status, errMsg){
+                $(".messages").append(message(false, ''));
+            },
+        });
+    }
+    window.onload = function() {
+        navigator.mozSetMessageHandler('activity', function handler(activityRequest) {
+            var activityName = activityRequest.source.name;
+            if (activityName == 'share') {
+                activity = activityRequest;
+                blob = activity.source.data.blobs[0];
+                fileUpload(blob);
+                //blob = document.getElementById("lutim-file").value;
+            }
+        });
+    };
     $('document').ready(function() {
         var firstview = ($("#first-view").prop('checked')) ? 1 : 0;
         var deleteday = ($("#delete-day").prop('checked')) ? 1 : 0;

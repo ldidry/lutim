@@ -82,6 +82,7 @@ our %Lexicon = (
     'image_deleted'         => 'L\'image [_1] a été supprimée avec succès.',
     'invalid_token'         => 'Le jeton de suppression est invalide.',
     'already_deleted'       => 'L\'image [_1] a déjà été supprimée.',
+    'install_as_webapp'     => 'Installer la webapp',
 );
 
 1;

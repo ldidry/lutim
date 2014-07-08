@@ -46,6 +46,19 @@ sub stats {
     );
 }
 
+sub webapp {
+    my $c = shift;
+
+    my $headers = Mojo::Headers->new();
+    $headers->add('Content-Type' => 'application/x-web-app-manifest+json');
+    $c->res->content->headers($headers);
+
+    $c->render(
+        template => 'manifest',
+        format   => 'webapp'
+    );
+}
+
 sub delete {
     my $c     = shift;
     my $short = $c->param('short');

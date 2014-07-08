@@ -18,29 +18,6 @@
         %= asset 'about.css'
 % } else {
         %= asset 'index.css'
-	<script>
-	      var manifestUrl = '<%== url_for('manifest.webapp')->to_abs() %>'; 
-	      var request = window.navigator.mozApps.install(manifestUrl);
-	      request.onsuccess = function () {
-	        // Save the App object that is returned
-	        var appRecord = this.result;
-	        alert('Installation successful!');
-	      };
-	      request.onerror = function () {
-	        // Display the error information from the DOMError object
-	        alert('Install failed, error: ' + this.error.name);
-	      };
-        </script>
-	<script>
-		window.onload = function() {
-		  navigator.mozSetMessageHandler('activity', function handler(activityRequest) {
-		    var activityName = activityRequest.source.name;
-		    if (activityName == 'share')
-		      activity = activityRequest;
-		      blob = activity.source.data.blobs[0];
-		      blob = document.getElementById("lutim-file").value;
-		  });
-	</script>
 % }
     </head>
     <body>
@@ -63,7 +40,8 @@
                         <%= link_to 'https://github.com/ldidry/lutim' => (title => l 'fork-me') => begin %><i class="lead icon icon-github-circled"></i><% end %> 
                         <%= link_to $twitter_url                      => (title => l 'share-twitter')   => begin %><i class="lead icon icon-touiteur"></i><% end %> 
                         <%= link_to 'https://flattr.com/submit/auto?user_id=_SKy_&url='.$url.'&title=Lutim&category=software' => (title => 'Flattr this') => begin %><i class="lead icon icon-flattr"></i><% end %> 
-                        <%= link_to 'bitcoin:1K3n4MXNRSMHk28oTfXEvDunWFthePvd8v?label=lutim' => (title => 'Give Bitcoins') => begin %><i class="lead icon icon-bitcoin"></i><% end %>
+                        <%= link_to 'bitcoin:1K3n4MXNRSMHk28oTfXEvDunWFthePvd8v?label=lutim' => (title => 'Give Bitcoins') => begin %><i class="lead icon icon-bitcoin"></i><% end %> 
+                        <a class="btn btn-default btn-xs" href="#" id="install-app"><img src="img/rocket.png" alt="mozilla rocket logo"> <%=l 'install_as_webapp' %></a>
                     </p>
                 </div>
             </div>
@@ -82,6 +60,21 @@
 % } elsif (!(current_route 'about')) {
         %= asset 'index.js'
 % }
+        %= javascript begin
+            $('#install-app').click(function() {
+                var manifestUrl = '<%== url_for('manifest.webapp')->to_abs() %>';
+                var request = window.navigator.mozApps.install(manifestUrl);
+                request.onsuccess = function () {
+                    // Save the App object that is returned
+                    var appRecord = this.result;
+                    //alert('Installation successful!');
+                };
+                request.onerror = function () {
+                    // Display the error information from the DOMError object
+                    alert('Install failed, error: ' + this.error.name);
+                };
+            });
+        % end
             <%= content %>
         </div>
 % if (defined(config('piwik_img'))) {
