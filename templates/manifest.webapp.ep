@@ -1,0 +1,27 @@
+{
+	"name": "Lutim",
+	"description": "Lets Upload That Image.",
+	"launch_path": "<%= url_for('/') %>",
+	"icons": {
+		"128": "<%= url_for('/img/lutim128.png') %>" 
+	},
+	"developer": {
+		"name": "Lutim team !",
+		"url": "https://github.com/ldidry/lutim" 
+	},
+	"default_locale": "en",
+	"locales": {
+		"fr": {
+			"description": "Juste télécharger cette image."
+		}
+	},
+	"activities": {
+	  "share": {
+	    "filters": {
+	      "type": [ "image/*"]
+	    },
+	    "href": "<%= url_for('/') %>",
+	    "disposition": "window"
+	  }
+	}
+}
