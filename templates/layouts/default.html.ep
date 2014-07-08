@@ -18,6 +18,29 @@
         %= asset 'about.css'
 % } else {
         %= asset 'index.css'
+	<script>
+	      var manifestUrl = '<%== url_for('manifest.webapp')->to_abs() %>'; 
+	      var request = window.navigator.mozApps.install(manifestUrl);
+	      request.onsuccess = function () {
+	        // Save the App object that is returned
+	        var appRecord = this.result;
+	        alert('Installation successful!');
+	      };
+	      request.onerror = function () {
+	        // Display the error information from the DOMError object
+	        alert('Install failed, error: ' + this.error.name);
+	      };
+        </script>
+	<script>
+		window.onload = function() {
+		  navigator.mozSetMessageHandler('activity', function handler(activityRequest) {
+		    var activityName = activityRequest.source.name;
+		    if (activityName == 'share')
+		      activity = activityRequest;
+		      blob = activity.source.data.blobs[0];
+		      blob = document.getElementById("lutim-file").value;
+		  });
+	</script>
 % }
     </head>
     <body>

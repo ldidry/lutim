@@ -72,7 +72,7 @@
         </div>
         <div class="form-group">
             <label for="lutim-file"><%=l 'upload_image' %></label>
-            <input type="file" name="file" id="lutim-file">
+            <input type="file" name="file" id="lutim-file" accept="image/*">
         </div>
         <div class="form-group">
             <label for="lutim-file-url"><%=l 'upload_image_url' %></label>
