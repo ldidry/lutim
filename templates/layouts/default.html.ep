@@ -11,7 +11,17 @@
         <title>Lutim</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta charset="utf-8" />
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
         <link rel="icon" type="image/png" href="<%= url_for('/') %>img/favicon.png">
+        <link rel="icon" sizes="128x128" href="<%= url_for('/') %>img/lutim128.png">
+        <link rel="icon" sizes="196x196" href="<%= url_for('/') %>img/lutim196.png">
+        <link rel="apple-touch-icon" href="<%= url_for('/') %>img/lutim60.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="<%= url_for('/') %>img/lutim76.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="<%= url_for('/') %>img/lutim120.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="<%= url_for('/') %>img/lutim152.png">
+        <link rel="apple-touch-icon-precomposed" sizes="128x128" href="<%= url_for('/') %>img/lutim128.png">
 % if (current_route 'stats') {
         %= asset 'stats.css'
 % } elsif (current_route 'about') {
