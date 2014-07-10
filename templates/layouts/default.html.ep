@@ -83,7 +83,8 @@
                         if (installationInstructions) {
                             installationInstructions.style.display = "none";
                         }
-                }
+                    }
+                };
             }
         % end
             <%= content %>
