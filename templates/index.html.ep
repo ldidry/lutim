@@ -290,14 +290,16 @@
         });
     }
     window.onload = function() {
-        navigator.mozSetMessageHandler('activity', function handler(activityRequest) {
-            var activityName = activityRequest.source.name;
-            if (activityName == 'share') {
-                activity = activityRequest;
-                blob = activity.source.data.blobs[0];
-                fileUpload(blob);
-            }
-        });
+        if (navigator.mozSetMessageHandler !== undefined) {
+            navigator.mozSetMessageHandler('activity', function handler(activityRequest) {
+                var activityName = activityRequest.source.name;
+                if (activityName == 'share') {
+                    activity = activityRequest;
+                    blob = activity.source.data.blobs[0];
+                    fileUpload(blob);
+                }
+            });
+        }
     };
     $('document').ready(function() {
         var firstview = ($("#first-view").prop('checked')) ? 1 : 0;

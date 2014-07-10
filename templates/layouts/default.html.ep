@@ -70,47 +70,36 @@
 % } elsif (!(current_route 'about')) {
         %= asset 'index.js'
 % }
-        %= javascript begin
-            $('#install-app').click(function() {
-                var manifestUrl = '<%== url_for('manifest.webapp')->to_abs() %>';
-                var request = window.navigator.mozApps.install(manifestUrl);
-                request.onsuccess = function () {
-                    // Save the App object that is returned
-                    var appRecord = this.result;
-                    //alert('Installation successful!');
-                };
-                request.onerror = function () {
-                    // Display the error information from the DOMError object
-                    alert('Install failed, error: ' + this.error.name);
-                };
-            });
-            //hide app install button when app already install
-            var button = document.getElementById('install-app');
-            var installCheck = navigator.mozApps.checkInstalled(manifestUrl);
-            installCheck.onsuccess = function() {
-                if(installCheck.result) {
-                    button.style.display = "none";
-                }
-            
-            //Hide app install button on the webapp
-            if (navigator.mozApps) {
-                var checkIfInstalled = navigator.mozApps.getSelf();
-                checkIfInstalled.onsuccess = function () {
-                    if (checkIfInstalled.result) {
-                        // Already installed
-                        var installationInstructions = document.querySelector("#install-app");
-                        if (installationInstructions) {
-                            installationInstructions.style.display = "none";
-                        }
-                    }
-                };
-            }
-            
-        % end
             <%= content %>
         </div>
 % if (defined(config('piwik_img'))) {
         <img src="<%== config('piwik_img') %>" style="border:0" alt="" />
 % }
+        %= javascript begin
+            // Are we in a mozilla navigator? (well, are we in a navigator which can handle webapps?)
+            if (navigator.mozApps !== undefined) {
+                var manifestUrl = '<%== url_for('manifest.webapp')->to_abs() %>';
+                var installCheck = navigator.mozApps.checkInstalled(manifestUrl);
+                installCheck.onsuccess = function() {
+                    if(installCheck.result === null) {
+                        var button = $('#install-app');
+                        // Show app install button when app is not installed
+                        button.css('display','inline-block');
+                        button.click(function() {
+                            var request = window.navigator.mozApps.install(manifestUrl);
+                            request.onsuccess = function () {
+                                // Save the App object that is returned
+                                var appRecord = this.result;
+                                button.css('display','none');
+                            };
+                            request.onerror = function () {
+                                // Display the error information from the DOMError object
+                                alert('Install failed, error: ' + this.error.name);
+                            };
+                        });
+                    }
+                }
+            }
+        % end
     </body>
 </html>

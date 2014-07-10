@@ -45,3 +45,6 @@ label.always-encrypt {
 #install-app img {
     height: 22px;
 }
+#install-app {
+    display: none;
+}
