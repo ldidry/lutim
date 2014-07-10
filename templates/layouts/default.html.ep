@@ -74,6 +74,15 @@
                     alert('Install failed, error: ' + this.error.name);
                 };
             });
+            //hide app install button when app already install
+            var button = document.getElementById('install-app');
+            var installCheck = navigator.mozApps.checkInstalled(manifestUrl);
+            installCheck.onsuccess = function() {
+                if(installCheck.result) {
+                    button.style.display = "none";
+                }
+            
+            //Hide app install button on the webapp
             if (navigator.mozApps) {
                 var checkIfInstalled = navigator.mozApps.getSelf();
                 checkIfInstalled.onsuccess = function () {
@@ -86,6 +95,7 @@
                     }
                 };
             }
+            
         % end
             <%= content %>
         </div>
