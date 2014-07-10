@@ -151,7 +151,7 @@
     function tw_url(url) {
         return '&nbsp;&nbsp;&nbsp;<a target="_blank" class="btn btn-default btn-primary btn-xs" href="https://twitter.com/share?url=<%== url_for('index')->to_abs() %>'+url+'?t"><%=l 'tweet_it' %></a>';
     }
-    function message(success, msg) {
+    function build_message(success, msg) {
         if(success) {
             var thumb = (msg.thumb !== null) ? '<img class="pull-left thumbnail" alt="'+msg.filename+' thumbnail" src="'+msg.thumb+'">' : ''
             return '<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'
@@ -194,13 +194,13 @@
             },
             onUploadSuccess: function(id, data){
                 $('#'+id+'-div').remove();
-                $(".messages").append(message(data.success, data.msg));
+                $(".messages").append(build_message(data.success, data.msg));
             },
             onUploadError: function(id, message){
-                $(".messages").append(message(false, ''));
+                $(".messages").append(build_message(false, ''));
             },
             onFileSizeError: function(file){
-                $(".messages").append(message(false, { filename: file.name, msg: '<%= l('file_too_big', $max_file_size) %>'}));
+                $(".messages").append(build_message(false, { filename: file.name, msg: '<%= l('file_too_big', $max_file_size) %>'}));
             }
         });
     }
@@ -222,13 +222,13 @@
                     'delete-day'     : $("#delete-day").val()
                 },
                 success: function(data) {
-                    $(".messages").append(message(data.success, data.msg));
+                    $(".messages").append(build_message(data.success, data.msg));
                     if (data.success) {
                         $("#lutim-file-url").val('');
                     }
                 },
                 error: function() {
-                    $(".messages").append(message(false, ''));
+                    $(".messages").append(build_message(false, ''));
                 },
                 complete: function() {
                     $("#lutim-file-url").prop('disabled', '');
@@ -282,10 +282,10 @@
             },
             success: function (data, message, xhr){
                 $('#1-div').remove();
-                $(".messages").append(message(data.success, data.msg));
+                $(".messages").append(build_message(data.success, data.msg));
             },
             error: function (xhr, status, errMsg){
-                $(".messages").append(message(false, ''));
+                $(".messages").append(build_message(false, ''));
             },
         });
     }
@@ -296,7 +296,6 @@
                 activity = activityRequest;
                 blob = activity.source.data.blobs[0];
                 fileUpload(blob);
-                //blob = document.getElementById("lutim-file").value;
             }
         });
     };
