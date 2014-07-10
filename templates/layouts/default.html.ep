@@ -51,7 +51,7 @@
                         <%= link_to $twitter_url                      => (title => l 'share-twitter')   => begin %><i class="lead icon icon-touiteur"></i><% end %> 
                         <%= link_to 'https://flattr.com/submit/auto?user_id=_SKy_&url='.$url.'&title=Lutim&category=software' => (title => 'Flattr this') => begin %><i class="lead icon icon-flattr"></i><% end %> 
                         <%= link_to 'bitcoin:1K3n4MXNRSMHk28oTfXEvDunWFthePvd8v?label=lutim' => (title => 'Give Bitcoins') => begin %><i class="lead icon icon-bitcoin"></i><% end %> 
-                        <a class="btn btn-default btn-xs" href="#" id="install-app"><img src="img/rocket.png" alt="mozilla rocket logo"> <%=l 'install_as_webapp' %></a>
+                        <a class="btn btn-default btn-xs" href="#" id="install-app"><img src="<%= url_for('/') %>img/rocket.png" alt="mozilla rocket logo"> <%=l 'install_as_webapp' %></a>
                     </p>
                 </div>
             </div>
