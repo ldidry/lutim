@@ -1,27 +1,32 @@
 {
-	"name": "Lutim",
-	"description": "Lets Upload That Image.",
-	"launch_path": "<%= url_for('/') %>",
-	"icons": {
-		"128": "<%= url_for('/img/lutim128.png') %>" 
-	},
-	"developer": {
-		"name": "Lutim team !",
-		"url": "https://github.com/ldidry/lutim" 
-	},
-	"default_locale": "en",
-	"locales": {
-		"fr": {
-			"description": "Juste télécharger cette image."
-		}
-	},
-	"activities": {
-	  "share": {
-	    "filters": {
-	      "type": [ "image/*"]
-	    },
-	    "href": "<%= url_for('/') %>",
-	    "disposition": "window"
-	  }
-	}
+    "name": "Lutim",
+    "description": "Lets Upload That Image!",
+    "launch_path": "<%= url_for('/') %>",
+    "icons": {
+        "32": "<%= url_for('/img/lutim32.png') %>",
+        "60": "<%= url_for('/img/lutim60.png') %>",
+        "90": "<%= url_for('/img/lutim90.png') %>",
+        "120": "<%= url_for('/img/lutim120.png') %>",
+        "128": "<%= url_for('/img/lutim128.png') %>",
+        "256": "<%= url_for('/img/lutim256.png') %>"
+    },
+    "developer": {
+        "name": "Lutim team !",
+        "url": "https://github.com/ldidry/lutim"
+    },
+    "default_locale": "en",
+    "locales": {
+        "fr": {
+            "description": "Envoyons cette image !"
+        }
+    },
+    "activities": {
+        "share": {
+            "filters": {
+                "type": [ "image/*"]
+            },
+            "href": "<%= url_for('/') %>",
+            "disposition": "window"
+        }
+    }
 }
