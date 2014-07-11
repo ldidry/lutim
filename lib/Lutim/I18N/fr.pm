@@ -21,9 +21,10 @@ my $inf_body = <<EOF;
 <h4>Et à propos du logiciel qui fournit le service ?</h4>
 <p>Le logiciel Lutim est un <a href="https://fr.wikipedia.org/wiki/Logiciel_libre">logiciel libre</a>, ce qui vous permet de le télécharger et de l’installer sur votre propre serveur. Jetez un coup d’œil à l’<a href="https://www.gnu.org/licenses/agpl-3.0.html">AGPL</a> pour voir quels sont vos droits.</p>
 <p>Pour plus de détails, consultez la page <a href="https://github.com/ldidry/lutim">Github</a> du projet.</p>
-<h4>Développeur de l'application</h4>
+<h4>Développeurs de l'application</h4>
 <ul>
-    <li>Luc Didry, aka Sky (<a href="http://www.fiat-tux.fr">http://www.fiat-tux.fr</a>), développeur principal</li>
+    <li>Luc Didry, aka Sky (<a href="http://www.fiat-tux.fr">http://www.fiat-tux.fr</a>), développeur principal, <a href="https://twitter.com/framasky">\@framasky</a></li>
+    <li>Dattaz (<a href="http://dattaz.fr">http://dattaz.fr</a>), développeur de la webapp, <a href="https://twitter.com/dat_taz">\@dat_taz</a></li>
 </ul>
 <h4>Contributeurs</h4>
 <ul>

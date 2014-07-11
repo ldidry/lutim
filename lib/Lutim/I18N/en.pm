@@ -21,9 +21,10 @@ my $inf_body = <<EOF;
 <h4>What about the software which provides the service?</h4>
 <p>The Lutim software is a <a href="http://en.wikipedia.org/wiki/Free_software">free software</a>, which allows you to download and install it on you own server. Have a look at the <a href="https://www.gnu.org/licenses/agpl-3.0.html">AGPL</a> to see what you can do.</p>
 <p>For more details, see the <a href="https://github.com/ldidry/lutim">Github</a> page of the project.</p>
-<h4>Core developer</h4>
+<h4>Main developers</h4>
 <ul>
-    <li>Luc Didry, aka Sky (<a href="http://www.fiat-tux.fr">http://www.fiat-tux.fr</a>), main developer</li>
+    <li>Luc Didry, aka Sky (<a href="http://www.fiat-tux.fr">http://www.fiat-tux.fr</a>), core developer, <a href="https://twitter.com/framasky">\@framasky</a></li>
+    <li>Dattaz (<a href="http://dattaz.fr">http://dattaz.fr</a>), webapp developer, <a href="https://twitter.com/dat_taz">\@dat_taz</a></li>
 </ul>
 <h4>Contributors</h4>
 <ul>
