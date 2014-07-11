@@ -148,8 +148,23 @@
         }
         return '<a href="<%== url_for('index')->to_abs() %>'+url+'"><%== url_for('index')->to_abs() %>'+url+'</a>';
     }
+    function share(url) {
+        console.log(url);
+        new MozActivity({
+            name: "share",
+            data: {
+                type: "url",
+                number: 1,
+                url: url
+            }
+        });
+    }
     function tw_url(url) {
-        return '&nbsp;&nbsp;&nbsp;<a target="_blank" class="btn btn-default btn-primary btn-xs" href="https://twitter.com/share?url=<%== url_for('index')->to_abs() %>'+url+'?t"><%=l 'tweet_it' %></a>';
+        var btn = '&nbsp;&nbsp;&nbsp;<a target="_blank" class="btn btn-default btn-primary btn-xs" href="https://twitter.com/share?url=<%== url_for('index')->to_abs() %>'+url+'?t"><%=l 'tweet_it' %></a>';
+        if (navigator.mozSetMessageHandler !== undefined) {
+            btn = btn+'&nbsp;&nbsp;&nbsp;<a target="_blank" class="btn btn-default btn-primary btn-xs" href="" onclick="share(\'<%== url_for('index')->to_abs() %>'+url+'?t\');return false;"><%=l 'share_it' %></a>';
+        }
+        return btn
     }
     function build_message(success, msg) {
         if(success) {
