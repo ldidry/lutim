@@ -45,6 +45,7 @@ our %Lexicon = (
     'download-link'         => 'Download link',
     'twitter-link'          => 'Link for put in a tweet',
     'tweet_it'              => 'Tweet it!',
+    'share_it'              => 'Share it!',
     'delete-link'           => 'Deletion link',
     'some-bad'              => 'Something bad happened',
     'delete-first'          => 'Delete at first view?',
