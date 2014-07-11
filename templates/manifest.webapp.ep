@@ -28,5 +28,6 @@
             "href": "<%= url_for('/') %>",
             "disposition": "window"
         }
-    }
+    },
+    "chrome": { "navigation": true }
 }
