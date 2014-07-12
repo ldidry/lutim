@@ -1,5 +1,10 @@
 Revision history for Lutim
 
+0.4  2014-07-12
+	- Webapp ! Downloadable directly from the Lutim instance
+	- Configure expiration delay after uploading (#12)
+	- Twitter share button in the "upload success" message (#35)
+
 0.3  2014-06-01
 	- Add a delete link to images (#28)
 	- Concatenated css and js with Mojolicious::Plugin::AssetPack
