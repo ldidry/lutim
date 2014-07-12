@@ -1191,6 +1191,14 @@ DISTRIBUTIONS
       base 0
       strict 0
       warnings 0
+  EV-4.17
+    pathname: M/ML/MLEHMANN/EV-4.17.tar.gz
+    provides:
+      EV 4.17
+      EV::MakeMaker undef
+    requirements:
+      ExtUtils::MakeMaker 0
+      common::sense 0
   Exception-Class-1.37
     pathname: D/DR/DROLSKY/Exception-Class-1.37.tar.gz
     provides:
@@ -2060,3 +2068,9 @@ DISTRIBUTIONS
       constant 0
       strict 0
       warnings 0
+  common-sense-3.73
+    pathname: M/ML/MLEHMANN/common-sense-3.73.tar.gz
+    provides:
+      common::sense 3.73
+    requirements:
+      ExtUtils::MakeMaker 0

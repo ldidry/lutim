@@ -1,5 +1,5 @@
 requires 'Mojolicious';
-requires 'IO::Socket::SSL';
+requires 'EV';
 requires 'Data::Validate::URI';
 requires 'Mojolicious::Plugin::I18N';
 requires 'Mojolicious::Plugin::ConfigHashMerge';
