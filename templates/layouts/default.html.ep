@@ -65,6 +65,9 @@
                 <strong><%= stash('stop_upload') %></strong>
             </div>
 % }
+        %= javascript begin
+            var manifestUrl = '<%== url_for('manifest.webapp')->to_abs() %>';
+        % end
 % if (current_route 'stats') {
         %= asset 'stats.js'
 % } elsif (!(current_route 'about')) {
@@ -75,31 +78,5 @@
 % if (defined(config('piwik_img'))) {
         <img src="<%== config('piwik_img') %>" style="border:0" alt="" />
 % }
-        %= javascript begin
-            // Are we in a mozilla navigator? (well, are we in a navigator which can handle webapps?)
-            if (navigator.mozApps !== undefined) {
-                var manifestUrl = '<%== url_for('manifest.webapp')->to_abs() %>';
-                var installCheck = navigator.mozApps.checkInstalled(manifestUrl);
-                installCheck.onsuccess = function() {
-                    if(installCheck.result === null) {
-                        var button = $('#install-app');
-                        // Show app install button when app is not installed
-                        button.css('display','inline-block');
-                        button.click(function() {
-                            var request = window.navigator.mozApps.install(manifestUrl);
-                            request.onsuccess = function () {
-                                // Save the App object that is returned
-                                var appRecord = this.result;
-                                button.css('display','none');
-                            };
-                            request.onerror = function () {
-                                // Display the error information from the DOMError object
-                                alert('Install failed, error: ' + this.error.name);
-                            };
-                        });
-                    }
-                }
-            }
-        % end
     </body>
 </html>
