@@ -112,7 +112,7 @@ sub modify {
         $c->app->log->info('[UNSUCCESSFUL] someone tried to modify '.$short.' but it does\'nt exist.');
 
         # Image never existed
-        my $msg = $c->l('image_not_found', $short);
+        my $msg = $c->l('image_mod_not_found', $short);
         if (defined($c->param('format')) && $c->param('format') eq 'json') {
             return $c->render(
                 json => {
