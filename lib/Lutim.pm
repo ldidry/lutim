@@ -109,7 +109,7 @@ sub startup {
                         my $short;
                         do {
                             $short= $c->shortener($c->config->{length});
-                        } while (LutimModel::Lutim->count('WHERE short = ?', $short) || $short eq 'about' || $short eq 'stats' || $short eq 'd');
+                        } while (LutimModel::Lutim->count('WHERE short = ?', $short) || $short eq 'about' || $short eq 'stats' || $short eq 'd' || $short eq 'm');
 
                         LutimModel::Lutim->create(
                             short                => $short,
@@ -332,6 +332,10 @@ sub startup {
     $r->get('/d/:short/:token')->
         to('Controller#delete')->
         name('delete');
+
+    $r->post('/m/:short/:token')->
+        to('Controller#modify')->
+        name('modify');
 
     $r->get('/:short')->
         to('Controller#short')->

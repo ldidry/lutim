@@ -59,6 +59,76 @@ sub webapp {
     );
 }
 
+sub modify {
+    my $c     = shift;
+    my $short = $c->param('short');
+    my $token = $c->param('token');
+    my $url   = $c->param('url');
+
+    my @images = LutimModel::Lutim->select('WHERE short = ? AND path IS NOT NULL', $short);
+    if (scalar(@images)) {
+        my $image = $images[0];
+        my $msg;
+        if ($image->mod_token() ne $token || $token eq '') {
+            $msg = $c->l('invalid_token');
+        } else {
+            $c->app->log->info('[MODIFICATION] someone modify '.$image->filename.' with token method (path: '.$image->path.')');
+
+            $image->update(
+                delete_at_day        => ($c->param('delete-day') && $c->param('delete-day') <= $c->max_delay) ? $c->param('delete-day') : $c->max_delay,
+                delete_at_first_view => ($c->param('first-view')) ? 1 : 0,
+            );
+            $msg = $c->l('image_delay_modified');
+            if (defined($c->param('format')) && $c->param('format') eq 'json') {
+                return $c->render(
+                    json => {
+                        success => Mojo::JSON->true,
+                        msg     => $msg
+                    }
+                );
+            } else {
+                $msg .= ' (<a href="'.$url.'">'.$url.'</a>)' unless (!defined($url));
+                $c->flash(
+                    success => $msg
+                );
+                return $c->redirect_to('/');
+            }
+        }
+
+        if (defined($c->param('format')) && $c->param('format') eq 'json') {
+            return $c->render(
+                json => {
+                    success => Mojo::JSON->false,
+                    msg     => $msg
+                }
+            );
+        } else {
+            $c->flash(
+                msg => $msg
+            );
+            return $c->redirect_to('/');
+        }
+    } else {
+        $c->app->log->info('[UNSUCCESSFUL] someone tried to modify '.$short.' but it does\'nt exist.');
+
+        # Image never existed
+        my $msg = $c->l('image_not_found', $short);
+        if (defined($c->param('format')) && $c->param('format') eq 'json') {
+            return $c->render(
+                json => {
+                    success => Mojo::JSON->false,
+                    msg     => $msg
+                }
+            );
+        } else {
+            $c->flash(
+                msg => $msg
+            );
+            return $c->redirect_to('/');
+        }
+    }
+}
+
 sub delete {
     my $c     = shift;
     my $short = $c->param('short');
@@ -350,12 +420,26 @@ sub short {
                 filename => $images[0]->filename
             );
         } else {
-            my $expires = ($images[0]->delete_at_day) ? $images[0]->delete_at_day : 360;
-            my $dt = DateTime->from_epoch( epoch => $expires * 86400 + $images[0]->created_at);
-            $dt->set_time_zone('GMT');
-            $expires = $dt->strftime("%a, %d %b %Y %H:%M:%S GMT");
+            # Delete image if needed
+            if ($images[0]->delete_at_first_view && $images[0]->counter >= 1) {
+                # Log deletion
+                $c->app->log->info('[DELETION] someone made '.$images[0]->filename.' removed (path: '.$images[0]->path.')');
 
-            $test = $c->render_file($images[0]->filename, $images[0]->path, $images[0]->mediatype, $dl, $expires, $images[0]->delete_at_first_view, $key);
+                # Delete image
+                $c->delete_image($images[0]);
+
+                $c->flash(
+                    msg => $c->l('image_not_found')
+                );
+                return $c->redirect_to('/');
+            } else {
+                my $expires = ($images[0]->delete_at_day) ? $images[0]->delete_at_day : 360;
+                my $dt = DateTime->from_epoch( epoch => $expires * 86400 + $images[0]->created_at);
+                $dt->set_time_zone('GMT');
+                $expires = $dt->strftime("%a, %d %b %Y %H:%M:%S GMT");
+
+                $test = $c->render_file($images[0]->filename, $images[0]->path, $images[0]->mediatype, $dl, $expires, $images[0]->delete_at_first_view, $key);
+            }
         }
 
         if ($test != 500) {
@@ -385,7 +469,7 @@ sub short {
 
         if (scalar(@images)) {
             # Log access try
-            $c->app->log->info('[NOT FOUND] someone tried to view '.$short.' but it does\'nt exist.');
+            $c->app->log->info('[NOT FOUND] someone tried to view '.$short.' but it does\'nt exist anymore.');
 
             # Warn user
             $c->flash(

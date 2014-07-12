@@ -85,6 +85,9 @@ our %Lexicon = (
     'invalid_token'         => 'The delete token is invalid.',
     'already_deleted'       => 'The image [_1] has already been deleted.',
     'install_as_webapp'     => 'Install webapp',
+    'image_delay_modified'  => 'The image\'s delay has been successfully modified',
+    'image_not_found'       => 'Unable to find the image [_1].',
+    'modify_image_error'    => 'Error while trying to modify the image.',
 );
 
 1;

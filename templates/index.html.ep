@@ -9,6 +9,7 @@
         <img class="pull-left thumbnail" alt="<%= stash('filename') %> thumbnail" src="<%= stash('thumb') %>">
 %     }
         <div>
+% # Display image informations
             % my $url = url_for('/')->to_abs().stash('short');
             <strong><%= stash('filename') %></strong>
             &nbsp;&nbsp;&nbsp;<a target="_blank" class="btn btn-default btn-primary btn-xs" href="https://twitter.com/share?url=<%= $url %>?t"><%=l 'tweet_it' %></a>
@@ -20,12 +21,49 @@
                 <li><i class="icon icon-trash"    title =" <%= l 'delete-link' %>"></i>   <%= link_to $delete_url => begin %> <%= $delete_url %> <%= end %></li>
             </ul>
         </div>
+% # Delay modification form
+        % my $modify_url = url_for('modify', {short => stash('real_short'), token => stash('token')})->to_abs();
+        <form class="form" role="form" method="POST" action="<%== $modify_url %>">
+            <div class="form-group form-inline">
+                <input name="image_url" type="hidden" value="<%= $url %>">
+                <select name="delete-day" class="form-control">
+                    % for my $delay (qw/0 1 7 30 365/) {
+                    %   my $text = ($delay == 7 || $delay == 30) ? l('delay_days', $delay) : l("delay_$delay");
+                    %   if (config('max_delay')) {
+                    %       if ($delay) {
+                    %           if ($delay < config('max_delay')) {
+                                    <option value="<%= $delay %>" <%== is_selected($delay) %>><%= $text %></option>
+                    %           } elsif ($delay == config('max_delay')) {
+                                    <option value="<%= $delay %>" <%== is_selected($delay) %>><%= $text %></option>
+                    %               last;
+                    %           } else {
+                    %               my $text = ($delay == 1) ? l('delay_1') : l('delay_days', $delay);
+                                    <option value="<%= config('max_delay') %>" <%== is_selected(config('max_delay')) %>><%=l('delay_days', config('max_delay')) %></option>
+                    %               last;
+                    %           }
+                    %       }
+                    %   } else {
+                            <option value="<%= $delay %>" <%== is_selected($delay) %>><%= $text %></option>
+                    %   }
+                    % }
+                </select>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="first-view"> <%=l 'delete-first' %>
+                    </label>
+                    <label <%== (config('always_encrypt')) ? 'class="always-encrypt"' : '' %>>
+                        <input type="checkbox" name="crypt"> <%=l 'crypt_image' %>
+                    </label>
+                </div>
+                <%= submit_button l('go'), class => 'btn btn-sm btn-default btn-primary', id => 'submitbutton' %>
+            </div>
+        </form>
     </div>
 % }
 % if (defined(flash('success'))) {
     <div class="alert alert-success">
         <button type="button" class="close jsonly" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <%= flash('success') %>
+        <p><%== flash('success') %></p>
     </div>
 % }
 % if (defined(flash('msg'))) {
@@ -140,9 +178,13 @@
 <!-- /D&D Zone -->
 
 %= javascript begin
-    function link(url, dl, token) {
+    function link(url, dl, token, modify) {
         if (token !== undefined) {
-            url = 'd/'+url+'/'+token;
+            if (modify !== undefined && modify === true) {
+                return  '<%== url_for('index')->to_abs() %>m/'+url+'/'+token;
+            } else {
+                url = 'd/'+url+'/'+token;
+            }
         } else if (dl !== '') {
             url = url+'?'+dl;
         }
@@ -166,6 +208,24 @@
         }
         return btn
     }
+    function modify(url, short) {
+        $.ajax({
+            url  : url,
+            type : "POST",
+            data : {
+                'image_url'      : '<%== url_for('index')->to_abs() %>'+short,
+                'format'         : 'json',
+                'first-view'     : ($("#first-view-"+short).prop('checked')) ? 1 : 0,
+                'delete-day'     : $("#day-"+short).val()
+            },
+            success: function(data) {
+                alert(data.msg);
+            },
+            error: function() {
+                alert('<%=l 'modify_image_error' %>');
+            }
+        });
+    }
     function build_message(success, msg) {
         if(success) {
             var thumb = (msg.thumb !== null) ? '<img class="pull-left thumbnail" alt="'+msg.filename+' thumbnail" src="'+msg.thumb+'">' : ''
@@ -183,7 +243,32 @@
                 +link(msg.short, 't')
                 +'</li><li><i class="icon icon-trash" title="<%=l 'delete-link' %>"></i>&nbsp;'
                 +link(msg.real_short, '', msg.token)
-                +'</li></ul></div>';
+                +'</li></ul><form class="form" role="form" method="POST" action="'
+                +link(msg.real_short, '', msg.token, true)
+                +'"><div class="form-group form-inline"><select id="day-'+msg.real_short+'" name="delete-day" class="form-control">'
+% for my $delay (qw/0 1 7 30 365/) {
+%   my $text = ($delay == 7 || $delay == 30) ? l('delay_days', $delay) : l("delay_$delay");
+%   if (config('max_delay')) {
+%       if ($delay) {
+%           if ($delay < config('max_delay')) {
+                +'<option value="<%= $delay %>" <%== is_selected($delay) %>><%= $text %></option>'
+%           } elsif ($delay == config('max_delay')) {
+                +'<option value="<%= $delay %>" <%== is_selected($delay) %>><%= $text %></option>'
+%               last;
+%           } else {
+%               my $text = ($delay == 1) ? l('delay_1') : l('delay_days', $delay);
+                +'<option value="<%= config('max_delay') %>" <%== is_selected(config('max_delay')) %>><%=l('delay_days', config('max_delay')) %></option>'
+%               last;
+%           }
+%       }
+%   } else {
+                +'<option value="<%= $delay %>" <%== is_selected($delay) %>><%= $text %></option>'
+%   }
+% }
+                +'</select>&nbsp;<div class="checkbox"><label><input id="first-view-'+msg.real_short+'" type="checkbox" name="first-view"> <%=l 'delete-first' %></label>'
+                +'</div>&nbsp;'
+                +'<a href="#" onclick="modify(\''+link(msg.real_short, '', msg.token, true)+'\', \''+msg.real_short+'\');return false;" class="btn btn-sm btn-default btn-primary"><%=l 'go' %></a></div></form>'
+                +'</div>';
         } else {
             return '<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong><%=l 'some-bad' %></strong><br>'
                 +msg.filename
