@@ -56,7 +56,7 @@ sub run {
 
 =head1 NAME
 
-Lutim::Command::cron::watch - Delete IP addresses from database after configured delay
+Lutim::Command::cron::watch - Watch the files directory and take action when over quota
 
 =head1 SYNOPSIS
 
