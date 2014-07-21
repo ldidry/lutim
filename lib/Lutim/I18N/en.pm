@@ -31,6 +31,7 @@ my $inf_body = <<EOF;
     <li>Jean-Bernard Marcon, aka Goofy (<a href="https://github.com/goofy-bz">https://github.com/goofy-bz</a>)</li>
     <li>Jean-Christophe Bach (<a href="https://github.com/jcb">https://github.com/jcb</a>)</li>
     <li>Florian Bigard, aka Chocobozzz (<a href="https://github.com/Chocobozzz">https://github.com/Chocobozzz</a>)</li>
+    <li>Sandro CAZZANIGA, aka Kharec (<a href="http://sandrocazzaniga.fr">http://sandrocazzaniga.fr</a>), <a href="https://twitter.com/Kharec">\@Kharec</a></li>
 </ul>
 EOF
 
