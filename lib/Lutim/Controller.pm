@@ -279,9 +279,13 @@ sub add {
                     my $filename = unidecode($upload->filename);
                     my $ext      = ($filename =~ m/([^.]+)$/)[0];
                     my $path     = 'files/'.$records[0]->short.'.'.$ext;
+
+                    my ($width, $height);
                     if ($im_loaded) {
-                        my $im = Image::Magick->new;
+                        my $im  = Image::Magick->new;
                         $im->BlobToImage($upload->slurp);
+                        $width  = $im->Get('width');
+                        $height = $im->Get('height');
                         $im->Resize(geometry=>'x85');
 
                         $thumb  = 'data:'.$mediatype.';base64,';
@@ -301,7 +305,9 @@ sub add {
                         delete_at_day        => ($c->param('delete-day') && $c->param('delete-day') <= $c->max_delay) ? $c->param('delete-day') : $c->max_delay,
                         delete_at_first_view => ($c->param('first-view')) ? 1 : 0,
                         created_at           => time(),
-                        created_by           => $ip
+                        created_by           => $ip,
+                        width                => $width,
+                        height               => $height
                     );
 
                     # Log image creation
@@ -413,11 +419,31 @@ sub short {
             $test = 1;
             my $short  = $images[0]->short;
                $short .= '/'.$key if (defined($key));
+            my ($width, $height) = (340,340);
+            if ($images[0]->mediatype eq 'image/gif') {
+                if (defined($images[0]->width) && defined($images[0]->height)) {
+                    ($width, $height) = ($images[0]->width, $images[0]->height);
+                } elsif ($im_loaded) {
+                    my $upload = $c->decrypt($key, $images[0]->path);
+                    my $im     = Image::Magick->new;
+                    $im->BlobToImage($upload->slurp);
+                    $width     = $im->Get('width');
+                    $height    = $im->Get('height');
+
+                    $images[0]->update(
+                        width  => $width,
+                        height => $height
+                    );
+                }
+            }
             return $c->render(
                 template => 'twitter',
                 layout   => undef,
                 short    => $short,
-                filename => $images[0]->filename
+                filename => $images[0]->filename,
+                mimetype => ($c->req->url->to_abs()->scheme eq 'https') ? $images[0]->mediatype : '',
+                width    => $width,
+                height   => $height
             );
         } else {
             # Delete image if needed

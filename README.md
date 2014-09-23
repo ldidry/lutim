@@ -4,7 +4,8 @@
 It means Let's Upload That Image.
 
 ## What does it do?
-It stores images and allows you to see them, download them or use them in Twitter.
+It stores images and allows you to see them, download them or use them in Twitter. From version 0.5, the gif images can be displayed as animated gifs in Twitter, but you need a HTTPS server (Twitter requires that. Lutim detects if you have a HTTPS server and displays an static image twitter card if you don't);
+
 Images are indefinitly stored unless you request that they will be deleted at first view or after 24 hours / one week / one month / one year.
 
 ## License
@@ -34,16 +35,20 @@ sudo apt-get install carton
 * But, on another hand, some modules that Carton will install need to be compiled. So you will need some tools:
 
 ```shell
-sudo apt-get install build-essential libssl-dev
+sudo apt-get install build-essential
 ```
 
-### Thumbnails dependancy
-If you want to provide thumbnails of uploaded images, you have to install the *ImageMagick* image manipulation software (<http://www.imagemagick.org/>) and the Image::Magick CPAN module.
+### Thumbnails and animated gifs in Twitter dependancy
+If you want to provide thumbnails of uploaded images or have animated gifs in Twitter, you have to install the *ImageMagick* image manipulation software (<http://www.imagemagick.org/>) and the Image::Magick CPAN module.
 
 On Debian, you can do:
 ```shell
 sudo apt-get install perlmagick
 ```
+
+## Twitter integration
+If you want to share images of your Lutim instance on Twitter, you have to register your site at <https://cards-dev.twitter.com/validator>.
+
 
 ## Installation
 After installing Carton :
@@ -116,6 +121,17 @@ If you want to update to Lutim **0.3**, from a previous version, you'll have to 
 sqlite3 lutim.db
 PRAGMA writable_schema = 1;
 UPDATE SQLITE_MASTER SET SQL = 'CREATE TABLE lutim ( short TEXT PRIMARY KEY, path TEXT, footprint TEXT, enabled INTEGER, mediatype TEXT, filename TEXT, counter INTEGER, delete_at_first_view INTEGER, delete_at_day INTEGER, created_at INTEGER, created_by TEXT, last_access_at INTEGER, mod_token TEXT)' WHERE NAME = 'lutim';
+PRAGMA writable_schema = 0;
+```
+
+***Warning!!!***
+
+If you want to update to Lutim **0.5**, from a previous version, you'll have to modify the database.
+
+```
+sqlite3 lutim.db
+PRAGMA writable_schema = 1;
+UPDATE SQLITE_MASTER SET SQL = 'CREATE TABLE lutim ( short TEXT PRIMARY KEY, path TEXT, footprint TEXT, enabled INTEGER, mediatype TEXT, filename TEXT, counter INTEGER, delete_at_first_view INTEGER, delete_at_day INTEGER, created_at INTEGER, created_by TEXT, last_access_at INTEGER, mod_token TEXT, width INTEGER, height INTEGER)' WHERE NAME = 'lutim';
 PRAGMA writable_schema = 0;
 ```
 

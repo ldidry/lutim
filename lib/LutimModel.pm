@@ -20,7 +20,9 @@ use ORLite {
                created_at            INTEGER,
                created_by            TEXT,
                last_access_at        INTEGER,
-               mod_token             TEXT)'
+               mod_token             TEXT,
+               width                 INTEGER,
+               height                INTEGER)'
           );
           return 1;
         }
