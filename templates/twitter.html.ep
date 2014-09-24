@@ -1,4 +1,5 @@
 % # vim:set sw=4 ts=4 sts=4 ft=html.epl expandtab:
+% my $g = ($mimetype eq 'image/gif') ? 1 : 0;
 <!DOCTYPE html>
 <html style="max-height:100%;">
     <head>
@@ -6,21 +7,28 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta charset="utf-8" />
         <link rel="icon" type="image/png" href="<%= url_for('index')->to_abs() %>img/favicon.png">
-% if ($mimetype eq 'image/gif') {
+        <meta name="twitter:site" content="<%= config('tweet_card_via') %>">
+        <meta name="twitter:image:src" content="<%= url_for('index')->to_abs().$short %>">
+% if ($g) {
         <meta name="twitter:card" content="player">
         <meta name="twitter:image" content="<%= url_for('index')->to_abs().$short %>">
         <meta name="twitter:player" content="<%= url_for('index')->to_abs().$short.'?t' %>">
         <meta name="twitter:title" content="<%= $filename %>">
         <meta name="twitter:player:width" content="<%= $width %>">
         <meta name="twitter:player:height" content="<%= $height %>">
+        %= asset 'freeze.js'
+        %= javascript begin
+            freezeframe_options = {
+                trigger_event: "click",
+                animation_play_duration: 60000
+            }
+        % end
 % } else {
         <meta name="twitter:card" content="photo">
 % }
-        <meta name="twitter:site" content="<%= config('tweet_card_via') %>">
-        <meta name="twitter:image:src" content="<%= url_for('index')->to_abs().$short %>">
     </head>
-    <body style="height: 97%;">
-        <img style="max-width:100%; max-height:100%;" src="<%= url_for('index')->to_abs().$short %>" alt="<%= $filename %>">
+    <body<%= ($g) ? '' : ' style="height: 97%;"' %>>
+        <img<%= ' class="freezeframe"' if ($g) %> style="<%= 'max-' unless ($g) %>width:100%; max-height:100%;" src="<%= url_for('index')->to_abs().$short %><%= '.gif' if ($g) %>" alt="<%= $filename %>">
     </body>
 </html>
 
