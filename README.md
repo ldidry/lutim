@@ -4,7 +4,7 @@
 It means Let's Upload That Image.
 
 ## What does it do?
-It stores images and allows you to see them, download them or use them in Twitter. From version 0.5, the gif images can be displayed as animated gifs in Twitter, but you need a HTTPS server (Twitter requires that. Lutim detects if you have a HTTPS server and displays an static image twitter card if you don't);
+It stores images and allows you to see them, download them or share them on social networks. From version 0.5, the gif images can be displayed as animated gifs in Twitter, but you need a HTTPS server (Twitter requires that. Lutim detects if you have a HTTPS server and displays an static image twitter card if you don't);
 
 Images are indefinitly stored unless you request that they will be deleted at first view or after 24 hours / one week / one month / one year.
 
@@ -49,11 +49,13 @@ sudo apt-get install perlmagick
 ## Twitter integration
 If you want to share images of your Lutim instance on Twitter, you have to register your site at <https://cards-dev.twitter.com/validator>.
 
+## Other social networks integration
+It seems that you only need to put the Lutim' social page link (the one with `?t`) in your post and it will be automatically embedded.
 
 ## Installation
 After installing Carton :
 ```shell
-git clone https://github.com/ldidry/lutim.git
+git clone https://git.framasoft.org/luc/lutim.git
 cd lutim
 carton install
 cp lutim.conf.template lutim.conf
@@ -290,8 +292,10 @@ There's just a few sentences, so it will be quick to translate. Please consider 
 ## Others projects dependancies
 Lutim is written in Perl with the [Mojolicious](http://mojolicio.us) framework, uses the [Twitter bootstrap](http://getbootstrap.com) framework to look not too ugly, [JQuery](http://jquery.com) and [JQuery File Uploader](https://github.com/danielm/uploader/) (slightly modified) to add some modernity, [Raphaël](http://raphaeljs.com/) and [morris.js](http://www.oesmith.co.uk/morris.js/) for stats graphs and [freezeframe.js](http://freezeframe.chrisantonellis.com/) (slightly modified) to be able to freeze animated gifs in twitter card.
 
+Licenses for the icons fonts are in `public/font/LICENSE.txt`.
+
 ## Main developers
-* Luc Didry, aka Sky (<http://www.fiat-tux.fr>), core developer, [@framasky](https://twitter.com/framasky)
+* Luc Didry, aka Sky (<http://www.fiat-tux.fr>), core developer, @framasky on [Twitter](https://twitter.com/framasky) and on [Diaspora*](https://framasphere.org/public/framasky)
 * Dattaz (<http://dattaz.fr>), webapp developer, [@dat_taz](https://twitter.com/dat_taz)
 
 ## Contributors

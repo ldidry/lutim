@@ -17,7 +17,7 @@
                 % my $delete_url = url_for('delete', {short => stash('real_short'), token => stash('token')})->to_abs();
                 <li><i class="icon icon-eye"      title =" <%= l 'view-link' %>"></i>     <%= link_to $url        => begin %> <%= $url %>        <%= end %></li>
                 <li><i class="icon icon-download" title =" <%= l 'download-link' %>"></i> <%= link_to $url.'?dl'  => begin %> <%= $url.'?dl' %>  <%= end %></li>
-                <li><i class="icon icon-twitter"  title =" <%= l 'twitter-link' %>"></i>  <%= link_to $url.'?t'   => begin %> <%= $url.'?t' %>   <%= end %></li>
+                <li><i class="icon icon-share"    title =" <%= l 'share-link' %>"></i>    <%= link_to $url.'?t'   => begin %> <%= $url.'?t' %>   <%= end %></li>
                 <li><i class="icon icon-trash"    title =" <%= l 'delete-link' %>"></i>   <%= link_to $delete_url => begin %> <%= $delete_url %> <%= end %></li>
             </ul>
         </div>
@@ -239,7 +239,7 @@
                 +link(msg.short, '')
                 +'</li><li><i class="icon icon-download" title="<%=l 'download-link' %>"></i>&nbsp;'
                 +link(msg.short, 'dl')
-                +'</li><li><i class="icon icon-twitter" title="<%=l 'twitter-link' %>"></i>&nbsp;'
+                +'</li><li><i class="icon icon-share" title="<%=l 'share-link' %>"></i>&nbsp;'
                 +link(msg.short, 't')
                 +'</li><li><i class="icon icon-trash" title="<%=l 'delete-link' %>"></i>&nbsp;'
                 +link(msg.real_short, '', msg.token)

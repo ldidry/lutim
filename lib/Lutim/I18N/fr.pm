@@ -6,7 +6,7 @@ my $inf_body = <<EOF;
 <p>Lutim est un service gratuit et anonyme d’hébergement d’images. Il s’agit aussi du nom du logiciel (libre) qui fournit ce service.</p>
 <p>Les images déposées sur Lutim peuvent être stockées indéfiniment, ou s’effacer dès le premier affichage ou au bout du délai choisi parmi ceux proposés.</p>
 <h4>Comment ça marche ?</h4>
-<p>Faites glisser des images dans la zone prévue à cet effet ou sélectionnez un fichier de façon classique et Lutim vous fournira troie URLs en retour. Une pour afficher l’image, une autre pour la télécharger directement et une dernière utilisable sur Twitter.</p>
+<p>Faites glisser des images dans la zone prévue à cet effet ou sélectionnez un fichier de façon classique et Lutim vous fournira troie URLs en retour. Une pour afficher l’image, une autre pour la télécharger directement, une pour l'utiliser sur les réseaux sociaux et une dernière pour supprimer votre image quand vous le souhaitez.</p>
 <p>Vous pouvez, de façon facultative, demander à ce que la ou les images déposées sur Lutim soient supprimées après leur premier affichage (ou téléchargement) ou au bout d'un délai choisi parmi ceux proposés.</p>
 <h4>C’est vraiment gratuit ?</h4>
 <p>Oui, ça l’est ! Par contre, si vous avez envie de soutenir le développeur, vous pouvez faire un microdon avec <a href="https://flattr.com/submit/auto?user_id=_SKy_&amp;url=[_1]&amp;title=Lutim&amp;category=software">Flattr</a> ou en <a href="bitcoin:1K3n4MXNRSMHk28oTfXEvDunWFthePvd8v?label=lutim">BitCoin</a>.</p>
@@ -23,7 +23,7 @@ my $inf_body = <<EOF;
 <p>Pour plus de détails, consultez la page <a href="https://github.com/ldidry/lutim">Github</a> du projet.</p>
 <h4>Développeurs de l'application</h4>
 <ul>
-    <li>Luc Didry, aka Sky (<a href="http://www.fiat-tux.fr">http://www.fiat-tux.fr</a>), développeur principal, <a href="https://twitter.com/framasky">\@framasky</a></li>
+    <li>Luc Didry, aka Sky (<a href="http://www.fiat-tux.fr">http://www.fiat-tux.fr</a>), développeur principal, \@framasky sur <a href="https://twitter.com/framasky">Twitter</a> ou sur <a href="https://framasphere.org/public/framasky">Diaspora*</a></li>
     <li>Dattaz (<a href="http://dattaz.fr">http://dattaz.fr</a>), développeur de la webapp, <a href="https://twitter.com/dat_taz">\@dat_taz</a></li>
 </ul>
 <h4>Contributeurs</h4>
@@ -44,7 +44,7 @@ our %Lexicon = (
     'informations-body'     => $inf_body,
     'view-link'             => 'Lien d\'affichage',
     'download-link'         => 'Lien de téléchargement',
-    'twitter-link'          => 'Lien pour mettre dans un tweet',
+    'share-link'            => 'Lien pour partager sur les réseaux sociaux',
     'tweet_it'              => 'Tweetez !',
     'share_it'              => 'Partagez !',
     'delete-link'           => 'Lien de suppression',

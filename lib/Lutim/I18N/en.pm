@@ -6,7 +6,7 @@ my $inf_body = <<EOF;
 <p>Lutim is a free (as in free beer) and anonymous image hosting service. It's also the name of the free (as in free speech) software which provides this service.</p>
 <p>The images you post on Lutim can be stored indefinitely or be deleted at first view or after a delay selected from those proposed.</p>
 <h4>How does it work?</h4>
-<p>Drag and drop an image in the appropriate area or use the traditional way to send files and Lutim will provide you three URLs. One to view the image, an other to directly download it an a last which you can use in Twitter.</p>
+<p>Drag and drop an image in the appropriate area or use the traditional way to send files and Lutim will provide you three URLs. One to view the image, an other to directly download it, one you can use on social networks and a last to delete the image when you want.</p>
 <p>You can, optionally, request that the image(s) posted on Lutim to be deleted at first view (or download) or after the delay selected from those proposed.</p>
 <h4>Is it really free (as in free beer)?</h4>
 <p>Yes, it is! On the other side, if you want to support the developer, you can do it via <a href="https://flattr.com/submit/auto?user_id=_SKy_&amp;url=[_1]&amp;title=Lutim&amp;category=software">Flattr</a> or with <a href="bitcoin:1K3n4MXNRSMHk28oTfXEvDunWFthePvd8v?label=lutim">BitCoin</a>.</p>
@@ -23,7 +23,7 @@ my $inf_body = <<EOF;
 <p>For more details, see the <a href="https://github.com/ldidry/lutim">Github</a> page of the project.</p>
 <h4>Main developers</h4>
 <ul>
-    <li>Luc Didry, aka Sky (<a href="http://www.fiat-tux.fr">http://www.fiat-tux.fr</a>), core developer, <a href="https://twitter.com/framasky">\@framasky</a></li>
+    <li>Luc Didry, aka Sky (<a href="http://www.fiat-tux.fr">http://www.fiat-tux.fr</a>), core developer, \@framasky on <a href="https://twitter.com/framasky">Twitter</a>, or on <a href="https://framasphere.org/public/framasky">Diaspora*</a></li>
     <li>Dattaz (<a href="http://dattaz.fr">http://dattaz.fr</a>), webapp developer, <a href="https://twitter.com/dat_taz">\@dat_taz</a></li>
 </ul>
 <h4>Contributors</h4>
@@ -44,7 +44,7 @@ our %Lexicon = (
     'informations-body'     => $inf_body,
     'view-link'             => 'View link',
     'download-link'         => 'Download link',
-    'twitter-link'          => 'Link for put in a tweet',
+    'share-link'            => 'Link for share on social networks',
     'tweet_it'              => 'Tweet it!',
     'share_it'              => 'Share it!',
     'delete-link'           => 'Deletion link',
