@@ -14,6 +14,9 @@ my $inf_body = <<EOF;
 <p>Oui, ça l’est ! Par contre, pour des raisons légales, votre adresse IP sera enregistrée lorsque vous enverrez une image. Ne vous affolez pas, c’est de toute façon normalement le cas de tous les sites sur lesquels vous envoyez des fichiers !</p>
 <p>L’IP de la personne ayant déposé l’image est stockée pendant un délai dépendant de l'administrateur de l'instance (pour l'instance officielle, dont le serveur est en France, c'est un délai d'un an).</p>
 <p>Si les fichiers sont bien supprimés si vous en avez exprimé le choix, leur empreinte SHA512 est toutefois conservée.</p>
+<h4>Qui possède des droits sur les images envoyées sur Lutim ?</h4>
+<p>Seulement l'envoyeur ! (enfin, seulement s'il possède des droits exclusifs sur les images avant de les envoyer)</p>
+<p>Au contraire de la majorité des services de partages d'image, vous ne cédez aucun droit sur les images envoyées.</p>
 <h4>Comment peut-on faire pour signaler une image ?</h4>
 <p>Veuillez contacter l’administrateur : [_2]</p>
 <h4>Comment doit-on prononcer Lutim ?</h4>

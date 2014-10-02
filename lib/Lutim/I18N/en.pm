@@ -14,6 +14,9 @@ my $inf_body = <<EOF;
 <p>Yes, it is! On the other side, for legal reasons, your IP address will be stored when you send an image. Don't panic, it is normally the case of all sites on which you send files!</p>
 <p>The IP address of the image's sender is retained for a delay which depends of the administrator's choice (for the official instance, which is located in France, it's one year).</p>
 <p>If the files are deleted if you ask it while posting it, their SHA512 footprint are retained.</p>
+<h4>Who owns rights on images uploaded on Lutim?</h4>
+<p>Only the uploader! (well, only if he's the only owner of the images' rights before the upload)</p>
+<p>Unlike many image sharing services, you don't give rights on uploaded images.</p>
 <h4>How to report an image?</h4>
 <p>Please contact the administrator: [_2]</p>
 <h4>How do you pronounce Lutim?</h4>
