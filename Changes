@@ -1,5 +1,10 @@
 Revision history for Lutim
 
+0.6  2014-10-03
+	- Add OpenGraph tags in social page (ex-twitter page)
+	- Update README.md
+	- Update info page
+
 0.5  2014-09-24
 	- Add support for animated gif in Twitter cards (#45)
 	- Update README.md with Twitter integration informations
