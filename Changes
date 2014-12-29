@@ -1,8 +1,9 @@
 Revision history for Lutim
 
-0.7  2015-08-02
+0.7  ?
 	- Use .po files for internationalization
 	- Add spanish translation (thx to Laura Arjona Reina)
+	- Remove deprecated (due to typo) option "provisionning".
 
 0.6  2014-10-03
 	- Add OpenGraph tags in social page (ex-twitter page)

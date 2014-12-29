@@ -33,9 +33,6 @@ sub startup {
         }
     });
 
-    # Default values
-    $config->{provisioning}     = $config->{provisionning} if (defined($config->{provisionning}));
-
     die "You need to provide a contact information in lutim.conf !" unless (defined($config->{contact}));
 
     $ENV{MOJO_MAX_MESSAGE_SIZE} = $config->{max_file_size};

@@ -36,9 +36,6 @@
     #provis_step       => 5,
 
     # max number of URLs to be provisioned
-    # WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING
-    # in the first version, this option was provisionning with two 'n'. While the option with the typo is still valid, it is deprecated.
-    # in the next version (0.4), only provisioning with ine 'n' will be accepted
     # optional, default is 100
     #provisioning      => 100,
 
