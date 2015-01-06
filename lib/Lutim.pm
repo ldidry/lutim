@@ -10,14 +10,12 @@ mkdir($ENV{MOJO_TMPDIR}, 0700) unless (-d $ENV{MOJO_TMPDIR});
 sub startup {
     my $self = shift;
 
-    push @{$self->commands->namespaces}, 'Lutim::Command';
-
     $self->{wait_for_it} = {};
 
     $self->plugin('I18N');
     $self->plugin('AssetPack');
 
-    my $config = $self->plugin('ConfigHashMerge', {
+    my $config = $self->plugin('Config', {
         default => {
             provisioning     => 100,
             provis_step      => 5,
@@ -77,6 +75,19 @@ sub startup {
             $headers->add('Content-Length' => $asset->size);
 
             return $c->rendered(200);
+        }
+    );
+
+    $self->helper(
+        index_url => sub {
+            my $c      = shift;
+            my $to_abs = shift;
+
+            my $url = $c->url_for('index');
+            $url    = $url->to_abs() if (defined($to_abs) && $to_abs);
+
+            $url =~ s#([^/])$#$1/#;
+            return $url;
         }
     );
 

@@ -1,7 +1,7 @@
 % # vim:set sw=4 ts=4 sts=4 ft=html.epl expandtab:
 % use Mojo::Util qw(url_escape);
 % my $twitter_url = 'https://twitter.com/share';
-% my $url    = url_for('/')->to_abs();
+% my $url    = index_url(1);
 % $twitter_url .= '?url='.url_escape("$url")
 %              .'&via=framasky'
 %              .'&text=Check out this %23Lutim instance! ';
@@ -14,14 +14,14 @@
         <meta name="mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
-        <link rel="icon" type="image/png" href="<%= url_for('/') %>img/favicon.png">
-        <link rel="icon" sizes="128x128" href="<%= url_for('/') %>img/lutim128.png">
-        <link rel="icon" sizes="196x196" href="<%= url_for('/') %>img/lutim196.png">
-        <link rel="apple-touch-icon" href="<%= url_for('/') %>img/lutim60.png">
-        <link rel="apple-touch-icon" sizes="76x76" href="<%= url_for('/') %>img/lutim76.png">
-        <link rel="apple-touch-icon" sizes="120x120" href="<%= url_for('/') %>img/lutim120.png">
-        <link rel="apple-touch-icon" sizes="152x152" href="<%= url_for('/') %>img/lutim152.png">
-        <link rel="apple-touch-icon-precomposed" sizes="128x128" href="<%= url_for('/') %>img/lutim128.png">
+        <link rel="icon" type="image/png" href="<%= index_url %>img/favicon.png">
+        <link rel="icon" sizes="128x128" href="<%= index_url %>img/lutim128.png">
+        <link rel="icon" sizes="196x196" href="<%= index_url %>img/lutim196.png">
+        <link rel="apple-touch-icon" href="<%= index_url %>img/lutim60.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="<%= index_url %>img/lutim76.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="<%= index_url %>img/lutim120.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="<%= index_url %>img/lutim152.png">
+        <link rel="apple-touch-icon-precomposed" sizes="128x128" href="<%= index_url %>img/lutim128.png">
 % if (current_route 'stats') {
         %= asset 'stats.css'
 % } elsif (current_route 'about') {
@@ -40,7 +40,7 @@
 % }
                 <div>
                     <div class="pull-left hidden-xs logo">
-                        <img src="<%= url_for('/') %>img/Lutim_small.png" alt="Lutim logo">
+                        <img src="<%= index_url %>img/Lutim_small.png" alt="Lutim logo" width="57" height="75">
                     </div>
                     <a class="link_nocol" href="<%= url_for('/') %>" title="<%= l('Homepage') %>"><h1 class="hennypenny">Let's Upload That Image!</h1></a>
                     <p>

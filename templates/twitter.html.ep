@@ -6,23 +6,23 @@
         <title>Lutim</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta charset="utf-8" />
-        <link rel="icon" type="image/png" href="<%= url_for('index')->to_abs() %>img/favicon.png">
+        <link rel="icon" type="image/png" href="<%= index_url(1) %>img/favicon.png">
         <meta property="og:title" content="Lutim" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="<%= url_for('index')->to_abs().$short %>?t" />
-        <meta property="og:image" content="<%= url_for('index')->to_abs().$short %>" />
-        <meta property="og:image:url" content="<%= url_for('index')->to_abs().$short %>" />
+        <meta property="og:url" content="<%= index_url(1).$short %>?t" />
+        <meta property="og:image" content="<%= index_url(1).$short %>" />
+        <meta property="og:image:url" content="<%= index_url(1).$short %>" />
         <meta property="og:image:type" content="<%= $mimetype %>" />
         <meta name="twitter:site" content="<%= config('tweet_card_via') %>">
-        <meta name="twitter:image:src" content="<%= url_for('index')->to_abs().$short %>">
+        <meta name="twitter:image:src" content="<%= index_url(1).$short %>">
 % if ($g) {
         <meta name="twitter:card" content="player">
-        <meta name="twitter:image" content="<%= url_for('index')->to_abs().$short %>">
-        <meta name="twitter:player" content="<%= url_for('index')->to_abs().$short.'?t' %>">
+        <meta name="twitter:image" content="<%= index_url(1).$short %>">
+        <meta name="twitter:player" content="<%= index_url(1).$short.'?t' %>">
         <meta name="twitter:title" content="<%= $filename %>">
         <meta name="twitter:player:width" content="<%= $width %>">
         <meta name="twitter:player:height" content="<%= $height %>">
-        %= asset 'freeze.js'
+        %= asset 'freeze.js', { inline => 1 }
         %= javascript begin
             freezeframe_options = {
                 trigger_event: "click",
@@ -34,7 +34,7 @@
 % }
     </head>
     <body<%= ($g) ? '' : ' style="height: 97%;"' %>>
-        <img<%= ' class="freezeframe"' if ($g) %> style="<%= 'max-' unless ($g) %>width:100%; max-height:100%;" src="<%= url_for('index')->to_abs().$short %><%= '.gif' if ($g) %>" alt="<%= $filename %>">
+        <img<%= ' class="freezeframe"' if ($g) %> style="<%= 'max-' unless ($g) %>width:100%; max-height:100%;" src="<%= index_url(1).$short %><%= '.gif' if ($g) %>" alt="<%= $filename %>">
     </body>
 </html>
 

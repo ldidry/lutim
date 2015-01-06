@@ -1,13 +1,41 @@
 # carton snapshot format: version 1.0
 DISTRIBUTIONS
-  Algorithm-Diff-1.1902
-    pathname: T/TY/TYEMQ/Algorithm-Diff-1.1902.tar.gz
+  CPAN-Meta-2.143240
+    pathname: D/DA/DAGOLDEN/CPAN-Meta-2.143240.tar.gz
     provides:
-      Algorithm::Diff 1.1902
-      Algorithm::Diff::_impl 1.1902
-      Algorithm::DiffOld 1.1
+      CPAN::Meta 2.143240
+      CPAN::Meta::Converter 2.143240
+      CPAN::Meta::Feature 2.143240
+      CPAN::Meta::History 2.143240
+      CPAN::Meta::Merge 2.143240
+      CPAN::Meta::Prereqs 2.143240
+      CPAN::Meta::Spec 2.143240
+      CPAN::Meta::Validator 2.143240
     requirements:
-      ExtUtils::MakeMaker 0
+      CPAN::Meta::Requirements 2.121
+      CPAN::Meta::YAML 0.008
+      Carp 0
+      ExtUtils::MakeMaker 6.17
+      JSON::PP 2.27200
+      Parse::CPAN::Meta 1.4414
+      Scalar::Util 0
+      perl 5.008
+      strict 0
+      version 0.88
+      warnings 0
+  CPAN-Meta-YAML-0.012
+    pathname: D/DA/DAGOLDEN/CPAN-Meta-YAML-0.012.tar.gz
+    provides:
+      CPAN::Meta::YAML 0.012
+    requirements:
+      B 0
+      Carp 0
+      Exporter 0
+      ExtUtils::MakeMaker 6.17
+      Fcntl 0
+      Scalar::Util 0
+      strict 0
+      warnings 0
   CSS-Minifier-XS-0.09
     pathname: G/GT/GTERMARS/CSS-Minifier-XS-0.09.tar.gz
     provides:
@@ -50,10 +78,9 @@ DISTRIBUTIONS
   Clone-0.36
     pathname: G/GA/GARU/Clone-0.36.tar.gz
     provides:
-      Clone 0.36
+      Class::Singleton 1.5
     requirements:
       ExtUtils::MakeMaker 0
-      Test::More 0
   Crypt-Blowfish-2.14
     pathname: D/DP/DPARIS/Crypt-Blowfish-2.14.tar.gz
     provides:
@@ -67,13 +94,19 @@ DISTRIBUTIONS
     requirements:
       Digest::MD5 2.00
       ExtUtils::MakeMaker 0
-  DBD-SQLite-1.40
-    pathname: I/IS/ISHIGAKI/DBD-SQLite-1.40.tar.gz
+  DBD-SQLite-1.46
+    pathname: I/IS/ISHIGAKI/DBD-SQLite-1.46.tar.gz
     provides:
-      DBD::SQLite 1.40
-      DBD::SQLite::_WriteOnceHash 1.40
-      DBD::SQLite::db 1.40
-      DBD::SQLite::dr 1.40
+      DBD::SQLite 1.46
+      DBD::SQLite::VirtualTable 1.46
+      DBD::SQLite::VirtualTable::Cursor 1.46
+      DBD::SQLite::VirtualTable::FileContent undef
+      DBD::SQLite::VirtualTable::FileContent::Cursor undef
+      DBD::SQLite::VirtualTable::PerlData undef
+      DBD::SQLite::VirtualTable::PerlData::Cursor undef
+      DBD::SQLite::_WriteOnceHash 1.46
+      DBD::SQLite::db 1.46
+      DBD::SQLite::dr 1.46
     requirements:
       DBI 1.57
       ExtUtils::MakeMaker 0
@@ -82,8 +115,8 @@ DISTRIBUTIONS
       Test::More 0.47
       Tie::Hash 0
       perl 5.006
-  DBI-1.631
-    pathname: T/TI/TIMB/DBI-1.631.tar.gz
+  DBI-1.632
+    pathname: T/TI/TIMB/DBI-1.632.tar.gz
     provides:
       Bundle::DBI 12.008696
       DBD::DBM 0.08
@@ -96,15 +129,15 @@ DISTRIBUTIONS
       DBD::ExampleP::db 12.014311
       DBD::ExampleP::dr 12.014311
       DBD::ExampleP::st 12.014311
-      DBD::File 0.42
-      DBD::File::DataSource::File 0.42
-      DBD::File::DataSource::Stream 0.42
-      DBD::File::Statement 0.42
-      DBD::File::Table 0.42
-      DBD::File::TableSource::FileSystem 0.42
-      DBD::File::db 0.42
-      DBD::File::dr 0.42
-      DBD::File::st 0.42
+      DBD::File 0.43
+      DBD::File::DataSource::File 0.43
+      DBD::File::DataSource::Stream 0.43
+      DBD::File::Statement 0.43
+      DBD::File::Table 0.43
+      DBD::File::TableSource::FileSystem 0.43
+      DBD::File::db 0.43
+      DBD::File::dr 0.43
+      DBD::File::st 0.43
       DBD::Gofer 0.015327
       DBD::Gofer::Policy::Base 0.010088
       DBD::Gofer::Policy::classic 0.010088
@@ -132,7 +165,7 @@ DISTRIBUTIONS
       DBD::Sponge::dr 12.010003
       DBD::Sponge::st 12.010003
       DBDI 12.015129
-      DBI 1.631
+      DBI 1.632
       DBI::Const::GetInfo::ANSI 2.008697
       DBI::Const::GetInfo::ODBC 2.011374
       DBI::Const::GetInfoReturn 2.008697
@@ -173,22 +206,11 @@ DISTRIBUTIONS
       DBI::SQL::Nano::Table_ 1.015544
       DBI::Util::CacheMemory 0.010315
       DBI::Util::_accessor 0.009479
-      DBI::common 1.631
+      DBI::common 1.632
     requirements:
       ExtUtils::MakeMaker 6.48
       Test::Simple 0.90
       perl 5.008
-  Data-OptList-0.109
-    pathname: R/RJ/RJBS/Data-OptList-0.109.tar.gz
-    provides:
-      Data::OptList 0.109
-    requirements:
-      ExtUtils::MakeMaker 6.30
-      List::Util 0
-      Params::Util 0
-      Sub::Install 0.921
-      strict 0
-      warnings 0
   Data-Validate-Domain-0.10
     pathname: N/NE/NEELY/Data-Validate-Domain-0.10.tar.gz
     provides:
@@ -197,13 +219,13 @@ DISTRIBUTIONS
       ExtUtils::MakeMaker 0
       Net::Domain::TLD 1.62
       Test::More 0
-  Data-Validate-IP-0.22
-    pathname: D/DR/DROLSKY/Data-Validate-IP-0.22.tar.gz
+  Data-Validate-IP-0.24
+    pathname: D/DR/DROLSKY/Data-Validate-IP-0.24.tar.gz
     provides:
-      Data::Validate::IP 0.22
+      Data::Validate::IP 0.24
     requirements:
       Exporter 0
-      ExtUtils::MakeMaker 6.30
+      ExtUtils::MakeMaker 0
       NetAddr::IP 4
       Scalar::Util 0
       strict 0
@@ -237,6 +259,10 @@ DISTRIBUTIONS
       POSIX 0
       Params::Validate 0.76
       Scalar::Util 0
+      Storable 0
+      Test::Fatal 0
+      Test::More 0.88
+      Test::Warnings 0.005
       Try::Tiny 0
       XSLoader 0
       base 0
@@ -245,6 +271,7 @@ DISTRIBUTIONS
       overload 0
       perl 5.008001
       strict 0
+      utf8 0
       vars 0
       warnings 0
       warnings::register 0
@@ -1108,8 +1135,8 @@ DISTRIBUTIONS
       strict 0
       vars 0
       warnings 0
-  Devel-StackTrace-1.31
-    pathname: D/DR/DROLSKY/Devel-StackTrace-1.31.tar.gz
+  EV-4.18
+    pathname: M/ML/MLEHMANN/EV-4.18.tar.gz
     provides:
       Devel::StackTrace 1.31
       Devel::StackTrace::Frame 1.31
@@ -1141,43 +1168,11 @@ DISTRIBUTIONS
     requirements:
       ExtUtils::MakeMaker 0
       common::sense 0
-  Exception-Class-1.37
-    pathname: D/DR/DROLSKY/Exception-Class-1.37.tar.gz
+  Exporter-Tiny-0.042
+    pathname: T/TO/TOBYINK/Exporter-Tiny-0.042.tar.gz
     provides:
-      Exception::Class 1.37
-      Exception::Class::Base 1.37
-    requirements:
-      Class::Data::Inheritable 0.02
-      Devel::StackTrace 1.20
-      ExtUtils::MakeMaker 6.30
-      File::Spec 0
-      Scalar::Util 0
-      Test::More 0.88
-      base 0
-      overload 0
-      strict 0
-      vars 0
-      warnings 0
-  ExtUtils-Config-0.007
-    pathname: L/LE/LEONT/ExtUtils-Config-0.007.tar.gz
-    provides:
-      ExtUtils::Config 0.007
-    requirements:
-      Config 0
-      Data::Dumper 0
-      ExtUtils::MakeMaker 6.30
-      File::Find 0
-      File::Temp 0
-      Test::More 0.88
-      strict 0
-      warnings 0
-  ExtUtils-Helpers-0.021
-    pathname: L/LE/LEONT/ExtUtils-Helpers-0.021.tar.gz
-    provides:
-      ExtUtils::Helpers 0.021
-      ExtUtils::Helpers::Unix 0.021
-      ExtUtils::Helpers::VMS 0.021
-      ExtUtils::Helpers::Windows 0.021
+      Exporter::Shiny 0.042
+      Exporter::Tiny 0.042
     requirements:
       Carp 0
       Config 0
@@ -1244,7 +1239,7 @@ DISTRIBUTIONS
   Hash-Merge-Simple-0.051
     pathname: R/RO/ROKR/Hash-Merge-Simple-0.051.tar.gz
     provides:
-      Hash::Merge::Simple 0.051
+      IO::Socket::IP 0.34
     requirements:
       Clone 0
       ExtUtils::MakeMaker 6.31
@@ -1264,12 +1259,14 @@ DISTRIBUTIONS
       IO::Socket::SSL::Utils 2.014
     requirements:
       ExtUtils::MakeMaker 0
-      Net::SSLeay 1.46
-      Scalar::Util 0
-  IPC-Run3-0.046
-    pathname: R/RJ/RJBS/IPC-Run3-0.046.tar.gz
+      Test::More 0.31
+      Time::HiRes 0
+  JSON-PP-2.27300
+    pathname: M/MA/MAKAMAKA/JSON-PP-2.27300.tar.gz
     provides:
-      IPC::Run3 0.046
+      JSON::PP 2.27300
+      JSON::PP::Boolean 2.27300
+      JSON::PP::IncrParser 2.27300
     requirements:
       ExtUtils::MakeMaker 0
       Test::More 0.31
@@ -1297,7 +1294,7 @@ DISTRIBUTIONS
   List-MoreUtils-0.33
     pathname: A/AD/ADAMK/List-MoreUtils-0.33.tar.gz
     provides:
-      List::MoreUtils 0.33
+      List::AllUtils 0.09
     requirements:
       ExtUtils::CBuilder 0.27
       ExtUtils::MakeMaker 6.52
@@ -1334,32 +1331,39 @@ DISTRIBUTIONS
   Module-Build-0.4205
     pathname: L/LE/LEONT/Module-Build-0.4205.tar.gz
     provides:
-      Module::Build 0.4205
-      Module::Build::Base 0.4205
-      Module::Build::Compat 0.4205
-      Module::Build::Config 0.4205
-      Module::Build::Cookbook 0.4205
-      Module::Build::Dumper 0.4205
-      Module::Build::ModuleInfo 0.4205
-      Module::Build::Notes 0.4205
-      Module::Build::PPMMaker 0.4205
-      Module::Build::Platform::Default 0.4205
-      Module::Build::Platform::MacOS 0.4205
-      Module::Build::Platform::Unix 0.4205
-      Module::Build::Platform::VMS 0.4205
-      Module::Build::Platform::VOS 0.4205
-      Module::Build::Platform::Windows 0.4205
-      Module::Build::Platform::aix 0.4205
-      Module::Build::Platform::cygwin 0.4205
-      Module::Build::Platform::darwin 0.4205
-      Module::Build::Platform::os2 0.4205
-      Module::Build::PodParser 0.4205
-      Module::Build::Version 0.87
-      Module::Build::YAML 1.41
-      inc::latest 0.4205
-      inc::latest::private 0.4205
+      List::MoreUtils 0.402
+      List::MoreUtils::PP 0.402
+      List::MoreUtils::XS 0.402
     requirements:
-      CPAN::Meta 2.110420
+      Exporter::Tiny 0.038
+      ExtUtils::MakeMaker 0
+      XSLoader 0
+  Module-Build-0.4210
+    pathname: L/LE/LEONT/Module-Build-0.4210.tar.gz
+    provides:
+      Module::Build 0.4210
+      Module::Build::Base 0.4210
+      Module::Build::Compat 0.4210
+      Module::Build::Config 0.4210
+      Module::Build::Cookbook 0.4210
+      Module::Build::Dumper 0.4210
+      Module::Build::Notes 0.4210
+      Module::Build::PPMMaker 0.4210
+      Module::Build::Platform::Default 0.4210
+      Module::Build::Platform::MacOS 0.4210
+      Module::Build::Platform::Unix 0.4210
+      Module::Build::Platform::VMS 0.4210
+      Module::Build::Platform::VOS 0.4210
+      Module::Build::Platform::Windows 0.4210
+      Module::Build::Platform::aix 0.4210
+      Module::Build::Platform::cygwin 0.4210
+      Module::Build::Platform::darwin 0.4210
+      Module::Build::Platform::os2 0.4210
+      Module::Build::PodParser 0.4210
+      inc::latest 0.4210
+      inc::latest::private 0.4210
+    requirements:
+      CPAN::Meta 2.142060
       CPAN::Meta::YAML 0.003
       Cwd 0
       Data::Dumper 0
@@ -1384,10 +1388,10 @@ DISTRIBUTIONS
       Test::More 0.49
       Text::Abbrev 0
       Text::ParseWords 0
-      perl 5.006001
+      perl 5.008000
       version 0.87
-  Module-Build-Tiny-0.035
-    pathname: L/LE/LEONT/Module-Build-Tiny-0.035.tar.gz
+  Module-Implementation-0.09
+    pathname: D/DR/DROLSKY/Module-Implementation-0.09.tar.gz
     provides:
       Module::Build::Tiny 0.035
     requirements:
@@ -1417,7 +1421,7 @@ DISTRIBUTIONS
       Module::Implementation 0.07
     requirements:
       Carp 0
-      ExtUtils::MakeMaker 6.30
+      ExtUtils::MakeMaker 0
       Module::Runtime 0.012
       Try::Tiny 0
       strict 0
@@ -1574,8 +1578,8 @@ DISTRIBUTIONS
       JavaScript::Minifier::XS 0.11
       Mojolicious 5.41
       Test::More 0.88
-  Mojolicious-Plugin-ConfigHashMerge-0.01
-    pathname: D/DO/DOTAN/Mojolicious-Plugin-ConfigHashMerge-0.01.tar.gz
+  Mojolicious-Plugin-I18N-1.4
+    pathname: S/SH/SHARIFULN/Mojolicious-Plugin-I18N-1.4.tar.gz
     provides:
       Mojolicious::Plugin::ConfigHashMerge 0.01
     requirements:
@@ -1592,30 +1596,20 @@ DISTRIBUTIONS
       Mojolicious 5
       Test::More 0
       perl 5.010001
-  Net-Domain-TLD-1.70
-    pathname: A/AL/ALEXP/Net-Domain-TLD-1.70.tar.gz
+  Net-Domain-TLD-1.72
+    pathname: A/AL/ALEXP/Net-Domain-TLD-1.72.tar.gz
     provides:
-      Net::Domain::TLD 1.70
+      Net::Domain::TLD 1.72
     requirements:
       Carp 0
       ExtUtils::MakeMaker 0
       Storable 0
-  Net-SSLeay-1.58
-    pathname: M/MI/MIKEM/Net-SSLeay-1.58.tar.gz
+  NetAddr-IP-4.075
+    pathname: M/MI/MIKER/NetAddr-IP-4.075.tar.gz
     provides:
-      Net::SSLeay 1.58
-      Net::SSLeay::Handle 0.61
-    requirements:
-      ExtUtils::MakeMaker 6.36
-      MIME::Base64 0
-      Test::More 0.60_01
-      perl 5.005
-  NetAddr-IP-4.072
-    pathname: M/MI/MIKER/NetAddr-IP-4.072.tar.gz
-    provides:
-      NetAddr::IP 4.072
+      NetAddr::IP 4.075
       NetAddr::IP::InetBase 0.08
-      NetAddr::IP::Lite 1.52
+      NetAddr::IP::Lite 1.54
       NetAddr::IP::Util 1.51
       NetAddr::IP::UtilPP 1.09
       NetAddr::IP::UtilPolluted 1.51
@@ -1687,8 +1681,8 @@ DISTRIBUTIONS
       Scalar::Util 1.18
       Test::More 0.42
       perl 5.00503
-  Params-Validate-1.08
-    pathname: D/DR/DROLSKY/Params-Validate-1.08.tar.gz
+  Params-Validate-1.13
+    pathname: D/DR/DROLSKY/Params-Validate-1.13.tar.gz
     provides:
       Attribute::Params::Validate 1.08
       Params::Validate 1.08
@@ -1709,6 +1703,19 @@ DISTRIBUTIONS
       strict 0
       vars 0
       warnings 0
+  Parse-CPAN-Meta-1.4414
+    pathname: D/DA/DAGOLDEN/Parse-CPAN-Meta-1.4414.tar.gz
+    provides:
+      Parse::CPAN::Meta 1.4414
+    requirements:
+      CPAN::Meta::YAML 0.011
+      Carp 0
+      Encode 0
+      Exporter 0
+      ExtUtils::MakeMaker 6.30
+      File::Spec 0.80
+      JSON::PP 2.27200
+      strict 0
   Probe-Perl-0.03
     pathname: K/KW/KWILLIAMS/Probe-Perl-0.03.tar.gz
     provides:
@@ -1718,17 +1725,25 @@ DISTRIBUTIONS
       ExtUtils::MakeMaker 6.30
       File::Spec 0
       strict 0
-  Sub-Install-0.927
-    pathname: R/RJ/RJBS/Sub-Install-0.927.tar.gz
+  Scalar-List-Utils-1.41
+    pathname: P/PE/PEVANS/Scalar-List-Utils-1.41.tar.gz
     provides:
-      Sub::Install 0.927
+      List::Util 1.41
+      List::Util::XS 1.41
+      Scalar::Util 1.41
+      Sub::Util 1.41
     requirements:
-      B 0
-      Carp 0
-      ExtUtils::MakeMaker 6.30
-      Scalar::Util 0
-      strict 0
-      warnings 0
+      ExtUtils::MakeMaker 0
+      Test::More 0
+  Socket-2.016
+    pathname: P/PE/PEVANS/Socket-2.016.tar.gz
+    provides:
+      Socket 2.016
+    requirements:
+      ExtUtils::CBuilder 0
+      ExtUtils::Constant 0.23
+      ExtUtils::MakeMaker 0
+      perl 5.006001
   Sub-Uplevel-0.24
     pathname: D/DA/DAGOLDEN/Sub-Uplevel-0.24.tar.gz
     provides:
@@ -1834,11 +1849,11 @@ DISTRIBUTIONS
   Test-Fatal-0.013
     pathname: R/RJ/RJBS/Test-Fatal-0.013.tar.gz
     provides:
-      Test::Fatal 0.013
+      Test::Fatal 0.014
     requirements:
       Carp 0
       Exporter 5.57
-      ExtUtils::MakeMaker 6.30
+      ExtUtils::MakeMaker 0
       Test::Builder 0
       Try::Tiny 0.07
       strict 0
@@ -1846,37 +1861,9 @@ DISTRIBUTIONS
   Test-Most-0.33
     pathname: O/OV/OVID/Test-Most-0.33.tar.gz
     provides:
-      Test::Most 0.33
-      Test::Most::Exception 0.33
+      Test::Requires 0.08
     requirements:
-      Exception::Class 1.14
-      ExtUtils::MakeMaker 0
-      Test::Deep 0.106
-      Test::Differences 0.61
-      Test::Exception 0.31
-      Test::Harness 3.21
-      Test::More 0.88
-      Test::Warn 0.23
-  Test-NoWarnings-1.04
-    pathname: A/AD/ADAMK/Test-NoWarnings-1.04.tar.gz
-    provides:
-      Test::NoWarnings 1.04
-      Test::NoWarnings::Warning 1.04
-    requirements:
-      ExtUtils::MakeMaker 0
-      Test::Builder 0.86
-      Test::More 0.47
-      Test::Tester 0.107
-      perl 5.006
-  Test-Requires-0.07
-    pathname: T/TO/TOKUHIROM/Test-Requires-0.07.tar.gz
-    provides:
-      Test::Requires 0.07
-    requirements:
-      CPAN::Meta 0
-      CPAN::Meta::Prereqs 0
-      ExtUtils::MakeMaker 6.59
-      Module::Build 0.38
+      ExtUtils::MakeMaker 6.64
       Test::Builder::Module 0
       Test::More 0.61
       perl 5.008_001
@@ -1893,16 +1880,6 @@ DISTRIBUTIONS
       Test::Builder::Tester 1.02
       Test::More 0.62
       blib 0
-  Test-Tester-0.109
-    pathname: F/FD/FDALY/Test-Tester-0.109.tar.gz
-    provides:
-      Test::Tester 0.109
-      Test::Tester::Capture undef
-      Test::Tester::CaptureRunner undef
-      Test::Tester::Delegate undef
-    requirements:
-      ExtUtils::MakeMaker 0
-      Test::Builder 0
   Test-Warn-0.30
     pathname: C/CH/CHORNY/Test-Warn-0.30.tar.gz
     provides:
@@ -1917,15 +1894,12 @@ DISTRIBUTIONS
       Test::Builder::Tester 1.02
       Test::More 0
       perl 5.006
-  Text-Diff-1.41
-    pathname: O/OV/OVID/Text-Diff-1.41.tar.gz
+  Test-Warnings-0.019
+    pathname: E/ET/ETHER/Test-Warnings-0.019.tar.gz
     provides:
-      Text::Diff 1.41
-      Text::Diff::Base 1.41
-      Text::Diff::Config 1.41
-      Text::Diff::Table 1.41
+      Test::Warnings 0.019
     requirements:
-      Algorithm::Diff 1.19
+      Carp 0
       Exporter 0
       ExtUtils::MakeMaker 0
   Text-Unidecode-1.23
@@ -1935,10 +1909,10 @@ DISTRIBUTIONS
     requirements:
       ExtUtils::MakeMaker 0
       perl 5.008
-  Try-Tiny-0.19
-    pathname: D/DO/DOY/Try-Tiny-0.19.tar.gz
+  Try-Tiny-0.22
+    pathname: D/DO/DOY/Try-Tiny-0.22.tar.gz
     provides:
-      Try::Tiny 0.19
+      Try::Tiny 0.22
     requirements:
       Carp 0
       Exporter 5.57

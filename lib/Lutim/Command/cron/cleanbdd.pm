@@ -2,6 +2,8 @@ package Lutim::Command::cron::cleanbdd;
 use Mojo::Base 'Mojolicious::Command';
 use LutimModel;
 use Mojo::Util qw(slurp decode);
+use FindBin qw($Bin);
+use File::Spec qw(catfile);
 
 has description => 'Delete IP addresses from database after configured delay.';
 has usage => sub { shift->extract_usage };
@@ -9,7 +11,8 @@ has usage => sub { shift->extract_usage };
 sub run {
     my $c = shift;
 
-    my $config = $c->app->plugin('ConfigHashMerge', {
+    my $config = $c->app->plugin('Config', {
+        file    => File::Spec->catfile($Bin, '..' ,'lutim.conf'),
         default => {
             keep_ip_during => 365,
         }

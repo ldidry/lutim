@@ -4,6 +4,8 @@ use LutimModel;
 use Mojo::DOM;
 use Mojo::Util qw(slurp spurt decode);
 use DateTime;
+use FindBin qw($Bin);
+use File::Spec qw(catfile);
 
 has description => 'Generate statistics about Lutim.';
 has usage => sub { shift->extract_usage };
@@ -11,7 +13,8 @@ has usage => sub { shift->extract_usage };
 sub run {
     my $c = shift;
 
-    my $config = $c->app->plugin('ConfigHashMerge', {
+    my $config = $c->app->plugin('Config', {
+        file    => File::Spec->catfile($Bin, '..' ,'lutim.conf'),
         default => {
             stats_day_num => 365
         }

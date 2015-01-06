@@ -4,6 +4,8 @@ use Mojo::Util qw(slurp decode);
 use Filesys::DiskUsage qw/du/;
 use LutimModel;
 use Switch;
+use FindBin qw($Bin);
+use File::Spec qw(catfile);
 
 has description => 'Watch the files directory and take action when over quota';
 has usage => sub { shift->extract_usage };
@@ -11,7 +13,8 @@ has usage => sub { shift->extract_usage };
 sub run {
     my $c = shift;
 
-    my $config = $c->app->plugin('ConfigHashMerge', {
+    my $config = $c->app->plugin('Config', {
+        file    => File::Spec->catfile($Bin, '..' ,'lutim.conf'),
         default => {
             policy_when_full => 'warn'
         }

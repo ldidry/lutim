@@ -97,6 +97,12 @@
     # optional, default is 24
     #token_length      => 24,
 
+    # URL sub-directory in which you want Lutim to be accessible
+    # example: you want to have Lutim under https://example.org/lutim/
+    # => set url_sub_dir to '/lutim' or to '/lutim/', it doesn't matter
+    # optional, defaut is /
+    #url_sub_dir       => '/',
+
     ##########################
     # Lutim cron jobs settings
     ##########################
