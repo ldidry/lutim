@@ -14,3 +14,5 @@ requires 'Switch';
 requires 'Data::Validate::URI';
 requires 'Crypt::CBC';
 requires 'Crypt::Blowfish';
+requires 'Locale::Maketext';
+requires 'Locale::Maketext::Extract';
