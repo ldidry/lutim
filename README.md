@@ -278,16 +278,11 @@ And restart Shutter if it was running.
 Of course, this plugin is configured for the official instance of Lutim (<http://lut.im>), feel free to edit it for your own instance.
 
 ## Internationalization
-Lutim comes with English and French languages. It will choose the language to display from the browser's settings.
+Lutim comes with English, French and Spanish languages. It will choose the language to display from the browser's settings.
 
-If you want to add more languages, for example German:
-```shell
-cd lib/Lutim/I18N
-cp en.pm de.pm
-vim de.pm
-```
+There is a [project on Transifex](https://www.transifex.com/projects/p/lutim/) if you want to help translating Lutim. There is also the `templates/manifest.webapp.ep` file which contains multiple languages sentences.
 
-There's just a few sentences, so it will be quick to translate. Please consider to send me you language file in order to help the other users :smile:.
+Thank you :smile:
 
 ## Others projects dependancies
 Lutim is written in Perl with the [Mojolicious](http://mojolicio.us) framework, uses the [Twitter bootstrap](http://getbootstrap.com) framework to look not too ugly, [JQuery](http://jquery.com) and [JQuery File Uploader](https://github.com/danielm/uploader/) (slightly modified) to add some modernity, [Raphaël](http://raphaeljs.com/) and [morris.js](http://www.oesmith.co.uk/morris.js/) for stats graphs and [freezeframe.js](http://freezeframe.chrisantonellis.com/) (slightly modified) to be able to freeze animated gifs in twitter card.
@@ -303,3 +298,4 @@ Licenses for the icons fonts are in `public/font/LICENSE.txt`.
 * Jean-Christophe Bach (<https://github.com/jcb>)
 * Florian Bigard, aka Chocobozzz (<https://github.com/Chocobozzz>)
 * Sandro CAZZANIGA, aka Kharec (<http://sandrocazzaniga.fr>), [@Kharec](https://twitter.com/Kharec)
+* Laura Arjona Reina (<https://wiki.debian.org/LauraArjona>), spanish translation

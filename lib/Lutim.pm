@@ -53,7 +53,7 @@ sub startup {
             unless ( -f $path && -r _ ) {
                 $c->app->log->error("Cannot read file [$path]. error [$!]");
                 $c->flash(
-                    msg => $c->l('image_not_found')
+                    msg => $c->l('Unable to find the image: it has been deleted.')
                 );
                 return 500;
             }
@@ -146,7 +146,7 @@ sub startup {
 
             if (-f 'stop-upload' || -f 'stop-upload.manual') {
                 $c->stash(
-                    stop_upload => $c->l('stop_upload', $config->{contact})
+                    stop_upload => $c->l('Uploading is currently disabled, please try later or contact the administrator (%1).', $config->{contact})
                 );
                 return 1;
             }

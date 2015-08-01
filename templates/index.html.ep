@@ -1,7 +1,12 @@
 % # vim:set sw=4 ts=4 sts=4 ft=html.epl expandtab:
+% my %d = (
+%   delay_0   => l('no time limit'),
+%   delay_1   => l('24 hours'),
+%   delay_365 => l('1 year')
+% );
 <div class="messages">
 % if (config('always_encrypt')) {
-    <p><%=l 'always_encrypt' %></p>
+    <p><%= l('The images are encrypted on the server (Lutim does not keep the key).') %></p>
 % }
 % if (defined(stash('short'))) {
     <div class="alert alert-success">
@@ -12,13 +17,13 @@
 % # Display image informations
             % my $url = url_for('/')->to_abs().stash('short');
             <strong><%= stash('filename') %></strong>
-            &nbsp;&nbsp;&nbsp;<a target="_blank" class="btn btn-default btn-primary btn-xs" href="https://twitter.com/share?url=<%= $url %>?t"><%=l 'tweet_it' %></a>
+            &nbsp;&nbsp;&nbsp;<a target="_blank" class="btn btn-default btn-primary btn-xs" href="https://twitter.com/share?url=<%= $url %>?t"><%= l('Tweet it!') %></a>
             <ul class="list-unstyled">
                 % my $delete_url = url_for('delete', {short => stash('real_short'), token => stash('token')})->to_abs();
-                <li><i class="icon icon-eye"      title =" <%= l 'view-link' %>"></i>     <%= link_to $url        => begin %> <%= $url %>        <%= end %></li>
-                <li><i class="icon icon-download" title =" <%= l 'download-link' %>"></i> <%= link_to $url.'?dl'  => begin %> <%= $url.'?dl' %>  <%= end %></li>
-                <li><i class="icon icon-share"    title =" <%= l 'share-link' %>"></i>    <%= link_to $url.'?t'   => begin %> <%= $url.'?t' %>   <%= end %></li>
-                <li><i class="icon icon-trash"    title =" <%= l 'delete-link' %>"></i>   <%= link_to $delete_url => begin %> <%= $delete_url %> <%= end %></li>
+                <li><i class="icon icon-eye"      title =" <%= l('View link') %>"></i>                         <%= link_to $url        => begin %> <%= $url %>        <%= end %></li>
+                <li><i class="icon icon-download" title =" <%= l('Download link') %>"></i>                     <%= link_to $url.'?dl'  => begin %> <%= $url.'?dl' %>  <%= end %></li>
+                <li><i class="icon icon-share"    title =" <%= l('Link for share on social networks') %>"></i> <%= link_to $url.'?t'   => begin %> <%= $url.'?t' %>   <%= end %></li>
+                <li><i class="icon icon-trash"    title =" <%= l('Deletion link') %>"></i>                     <%= link_to $delete_url => begin %> <%= $delete_url %> <%= end %></li>
             </ul>
         </div>
 % # Delay modification form
@@ -28,7 +33,7 @@
                 <input name="image_url" type="hidden" value="<%= $url %>">
                 <select name="delete-day" class="form-control">
                     % for my $delay (qw/0 1 7 30 365/) {
-                    %   my $text = ($delay == 7 || $delay == 30) ? l('delay_days', $delay) : l("delay_$delay");
+                    %   my $text = ($delay == 7 || $delay == 30) ? l('%1 days', $delay) : $d{'delay_'.$delay};
                     %   if (config('max_delay')) {
                     %       if ($delay) {
                     %           if ($delay < config('max_delay')) {
@@ -37,8 +42,8 @@
                                     <option value="<%= $delay %>" <%== is_selected($delay) %>><%= $text %></option>
                     %               last;
                     %           } else {
-                    %               my $text = ($delay == 1) ? l('delay_1') : l('delay_days', $delay);
-                                    <option value="<%= config('max_delay') %>" <%== is_selected(config('max_delay')) %>><%=l('delay_days', config('max_delay')) %></option>
+                    %               my $text = ($delay == 1) ? l('24 hours') : l('%1 days', $delay);
+                                    <option value="<%= config('max_delay') %>" <%== is_selected(config('max_delay')) %>><%= l('%1 days', config('max_delay')) %></option>
                     %               last;
                     %           }
                     %       }
@@ -49,13 +54,13 @@
                 </select>
                 <div class="checkbox">
                     <label>
-                        <input type="checkbox" name="first-view"> <%=l 'delete-first' %>
+                        <input type="checkbox" name="first-view"> <%= l('Delete at first view?') %>
                     </label>
                     <label <%== (config('always_encrypt')) ? 'class="always-encrypt"' : '' %>>
-                        <input type="checkbox" name="crypt"> <%=l 'crypt_image' %>
+                        <input type="checkbox" name="crypt"> <%= l('Encrypt the image (Lutim does not keep the key).') %>
                     </label>
                 </div>
-                <%= submit_button l('go'), class => 'btn btn-sm btn-default btn-primary', id => 'submitbutton' %>
+                <%= submit_button l('Let\'s go!'), class => 'btn btn-sm btn-default btn-primary', id => 'submitbutton' %>
             </div>
         </form>
     </div>
@@ -69,7 +74,7 @@
 % if (defined(flash('msg'))) {
     <div class="alert alert-danger">
         <button type="button" class="close jsonly" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <strong><%=l 'some-bad' %></strong><br>
+        <strong><%= l('Something bad happened') %></strong><br>
         <%= flash('filename') %> <%= flash('msg') %>
     </div>
 % }
@@ -80,7 +85,7 @@
         <div class="form-group form-inline">
             <select name="delete-day" class="form-control">
                 % for my $delay (qw/0 1 7 30 365/) {
-                %   my $text = ($delay == 7 || $delay == 30) ? l('delay_days', $delay) : l("delay_$delay");
+                %   my $text = ($delay == 7 || $delay == 30) ? l('%1 days', $delay) : $d{'delay_'.$delay};
                 %   if (config('max_delay')) {
                 %       if ($delay) {
                 %           if ($delay < config('max_delay')) {
@@ -89,8 +94,8 @@
                                 <option value="<%= $delay %>" <%== is_selected($delay) %>><%= $text %></option>
                 %               last;
                 %           } else {
-                %               my $text = ($delay == 1) ? l('delay_1') : l('delay_days', $delay);
-                                <option value="<%= config('max_delay') %>" <%== is_selected(config('max_delay')) %>><%=l('delay_days', config('max_delay')) %></option>
+                %               my $text = ($delay == 1) ? l('24 hours') : l('%1 days', $delay);
+                                <option value="<%= config('max_delay') %>" <%== is_selected(config('max_delay')) %>><%= l('%1 days', config('max_delay')) %></option>
                 %               last;
                 %           }
                 %       }
@@ -101,23 +106,23 @@
             </select>
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" name="first-view"> <%=l 'delete-first' %>
+                    <input type="checkbox" name="first-view"> <%= l('Delete at first view?') %>
                 </label>
                 <label <%== (config('always_encrypt')) ? 'class="always-encrypt"' : '' %>>
-                    <input type="checkbox" name="crypt"> <%=l 'crypt_image' %>
+                    <input type="checkbox" name="crypt"> <%= l('Encrypt the image (Lutim does not keep the key).') %>
                 </label>
             </div>
         </div>
         <div class="form-group">
-            <label for="lutim-file"><%=l 'upload_image' %></label>
+            <label for="lutim-file"><%= l('Send an image') %></label>
             <input type="file" name="file" id="lutim-file" accept="image/*">
         </div>
         <div class="form-group">
-            <label for="lutim-file-url"><%=l 'upload_image_url' %></label>
-            <input type="url" name="lutim-file-url" placeholder="<%=l 'image_url' %>">
+            <label for="lutim-file-url"><%= l('Upload an image with its URL') %></label>
+            <input type="url" name="lutim-file-url" placeholder="<%= l('Image URL') %>">
         </div>
-        <p class="help-block"><%=l 'image-only' %></p>
-        <%= submit_button l('go'), class => 'btn btn-default btn-primary', id => 'submitbutton' %>
+        <p class="help-block"><%= l('Only images are allowed') %></p>
+        <%= submit_button l('Let\'s go!'), class => 'btn btn-default btn-primary', id => 'submitbutton' %>
     </form>
 </noscript>
 
@@ -126,7 +131,7 @@
     <div class="form-group form-inline">
         <select id="delete-day" class="form-control">
             % for my $delay (qw/0 1 7 30 365/) {
-            %   my $text = ($delay == 7 || $delay == 30) ? l('delay_days', $delay) : l("delay_$delay");
+            %   my $text = ($delay == 7 || $delay == 30) ? l('%1 days', $delay) : $d{'delay_'.$delay};
             %   if (config('max_delay')) {
             %       if ($delay) {
             %           if ($delay < config('max_delay')) {
@@ -135,8 +140,8 @@
                             <option value="<%= $delay %>" <%== is_selected($delay) %>><%= $text %></option>
             %               last;
             %           } else {
-            %               my $text = ($delay == 1) ? l('delay_1') : l('delay_days', $delay);
-                            <option value="<%= config('max_delay') %>" <%== is_selected(config('max_delay')) %>><%=l('delay_days', config('max_delay')) %></option>
+            %               my $text = ($delay == 1) ? l('24 hours') : l('%1 days', $delay);
+                            <option value="<%= config('max_delay') %>" <%== is_selected(config('max_delay')) %>><%= l('%1 days', config('max_delay')) %></option>
             %               last;
             %           }
             %       }
@@ -147,32 +152,32 @@
         </select>
         <div class="checkbox">
             <label>
-                <input type="checkbox" id="first-view"> <%=l 'delete-first' %>
+                <input type="checkbox" id="first-view"> <%= l('Delete at first view?') %>
             </label>
             <label <%== (config('always_encrypt')) ? 'class="always-encrypt"' : '' %>>
-                <input type="checkbox" id="crypt"> <%=l 'crypt_image' %>
+                <input type="checkbox" id="crypt"> <%= l('Encrypt the image (Lutim does not keep the key).') %>
             </label>
         </div>
     </div>
     <div id="drag-and-drop-zone" class="uploader">
-        <div><%=l 'drag-n-drop' %></div>
-        <div class="or"><%=l 'or' %></div>
+        <div><%= l('Drag & drop images here') %></div>
+        <div class="or"><%= l('-or-') %></div>
         <div class="browser">
             <label>
-                <span><%=l 'file-browser' %></span>
-                <input type="file" name="files[]" multiple="multiple" title='<%=l 'file-browser' %>' accept="image/*">
+                <span><%= l('Click to open the file browser') %></span>
+                <input type="file" name="files[]" multiple="multiple" title='<%= l('Click to open the file browser') %>' accept="image/*">
             </label>
         </div>
     </div>
-    <p class="help-block"><%=l 'image-only' %></p>
+    <p class="help-block"><%= l('Only images are allowed') %></p>
     <form class="form-horizontal" role="form" method="POST" action="<%== url_for('add') %>">
         <div class="form-group">
-            <span class="col-sm-3 col-xs-12"><span class="hidden-spin" style="font-size:200%; display:none;" > <i class="icon-spinner animate-spin pull-right"></i></span><label for="lutim-file-url" class="control-label pull-right"><%=l 'upload_image_url' %></label></span>
+            <span class="col-sm-3 col-xs-12"><span class="hidden-spin" style="font-size:200%; display:none;" > <i class="icon-spinner animate-spin pull-right"></i></span><label for="lutim-file-url" class="control-label pull-right"><%= l('Upload an image with its URL') %></label></span>
             <div class="col-sm-9 col-xs-12">
-                <input type="url" name="lutim-file-url" class="form-control" id="lutim-file-url" placeholder="<%=l 'image_url' %>">
+                <input type="url" name="lutim-file-url" class="form-control" id="lutim-file-url" placeholder="<%= l('Image URL') %>">
             </div>
         </div>
-        <a href="#" class="btn btn-default btn-primary pull-right" id="file-url-button"><%=l 'go' %></a>
+        <a href="#" class="btn btn-default btn-primary pull-right" id="file-url-button"><%= l('Let\'s go!') %></a>
     </form>
 </div>
 <!-- /D&D Zone -->
@@ -202,9 +207,9 @@
         });
     }
     function tw_url(url) {
-        var btn = '&nbsp;&nbsp;&nbsp;<a target="_blank" class="btn btn-default btn-primary btn-xs" href="https://twitter.com/share?url=<%== url_for('index')->to_abs() %>'+url+'?t"><%=l 'tweet_it' %></a>';
+        var btn = '&nbsp;&nbsp;&nbsp;<a title="<%= l('Tweet it!') %>" target="_blank" href="https://twitter.com/share?url=<%== url_for('index')->to_abs() %>'+url+'?t"><span class="icon icon-twitter"></span></a>';
         if (navigator.mozSetMessageHandler !== undefined) {
-            btn = btn+'&nbsp;&nbsp;&nbsp;<a target="_blank" class="btn btn-default btn-primary btn-xs" href="" onclick="share(\'<%== url_for('index')->to_abs() %>'+url+'?t\');return false;"><%=l 'share_it' %></a>';
+            btn = btn+'&nbsp;&nbsp;&nbsp;<a title="<%= l('Share it!') %>" target="_blank" href="" onclick="share(\'<%== url_for('index')->to_abs() %>'+url+'?t\');return false;"><span class="icon icon-share"></span></a>';
         }
         return btn
     }
@@ -222,7 +227,7 @@
                 alert(data.msg);
             },
             error: function() {
-                alert('<%=l 'modify_image_error' %>');
+                alert('<%= l('Error while trying to modify the image.') %>');
             }
         });
     }
@@ -235,19 +240,19 @@
                 +msg.filename
                 +'</strong>'
                 +tw_url(msg.short)
-                +'<ul class="list-unstyled"><li><i class="icon icon-eye" title="<%=l 'view-link' %>"></i>&nbsp;'
+                +'<ul class="list-unstyled"><li><i class="icon icon-eye" title="<%= l('View link') %>"></i>&nbsp;'
                 +link(msg.short, '')
-                +'</li><li><i class="icon icon-download" title="<%=l 'download-link' %>"></i>&nbsp;'
+                +'</li><li><i class="icon icon-download" title="<%= l('Download link') %>"></i>&nbsp;'
                 +link(msg.short, 'dl')
-                +'</li><li><i class="icon icon-share" title="<%=l 'share-link' %>"></i>&nbsp;'
+                +'</li><li><i class="icon icon-share" title="<%= l('Link for share on social networks') %>"></i>&nbsp;'
                 +link(msg.short, 't')
-                +'</li><li><i class="icon icon-trash" title="<%=l 'delete-link' %>"></i>&nbsp;'
+                +'</li><li><i class="icon icon-trash" title="<%= l('Deletion link') %>"></i>&nbsp;'
                 +link(msg.real_short, '', msg.token)
                 +'</li></ul><form class="form" role="form" method="POST" action="'
                 +link(msg.real_short, '', msg.token, true)
                 +'"><div class="form-group form-inline"><select id="day-'+msg.real_short+'" name="delete-day" class="form-control">'
 % for my $delay (qw/0 1 7 30 365/) {
-%   my $text = ($delay == 7 || $delay == 30) ? l('delay_days', $delay) : l("delay_$delay");
+%   my $text = ($delay == 7 || $delay == 30) ? l('%1 days', $delay) : $d{'delay_'.$delay};
 %   if (config('max_delay')) {
 %       if ($delay) {
 %           if ($delay < config('max_delay')) {
@@ -256,8 +261,8 @@
                 +'<option value="<%= $delay %>" <%== is_selected($delay) %>><%= $text %></option>'
 %               last;
 %           } else {
-%               my $text = ($delay == 1) ? l('delay_1') : l('delay_days', $delay);
-                +'<option value="<%= config('max_delay') %>" <%== is_selected(config('max_delay')) %>><%=l('delay_days', config('max_delay')) %></option>'
+%               my $text = ($delay == 1) ? l('24 hours') : l('%1 days', $delay);
+                +'<option value="<%= config('max_delay') %>" <%== is_selected(config('max_delay')) %>><%= l('%1 days', config('max_delay')) %></option>'
 %               last;
 %           }
 %       }
@@ -265,12 +270,12 @@
                 +'<option value="<%= $delay %>" <%== is_selected($delay) %>><%= $text %></option>'
 %   }
 % }
-                +'</select>&nbsp;<div class="checkbox"><label><input id="first-view-'+msg.real_short+'" type="checkbox" name="first-view"> <%=l 'delete-first' %></label>'
+                +'</select>&nbsp;<div class="checkbox"><label><input id="first-view-'+msg.real_short+'" type="checkbox" name="first-view"> <%= l('Delete at first view?') %></label>'
                 +'</div>&nbsp;'
-                +'<a href="#" onclick="modify(\''+link(msg.real_short, '', msg.token, true)+'\', \''+msg.real_short+'\');return false;" class="btn btn-sm btn-default btn-primary"><%=l 'go' %></a></div></form>'
+                +'<a href="#" onclick="modify(\''+link(msg.real_short, '', msg.token, true)+'\', \''+msg.real_short+'\');return false;" class="btn btn-sm btn-default btn-primary"><%= l('Let\'s go!') %></a></div></form>'
                 +'</div>';
         } else {
-            return '<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong><%=l 'some-bad' %></strong><br>'
+            return '<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong><%= l('Something bad happened') %></strong><br>'
                 +msg.filename
                 +"<br>"
                 +msg.msg
@@ -300,7 +305,7 @@
                 $(".messages").append(build_message(false, ''));
             },
             onFileSizeError: function(file){
-                $(".messages").append(build_message(false, { filename: file.name, msg: '<%= l('file_too_big', $max_file_size) %>'}));
+                $(".messages").append(build_message(false, { filename: file.name, msg: '<%= l('The file exceed the size limit (%1)', $max_file_size) %>'}));
             }
         });
     }
