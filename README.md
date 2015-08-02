@@ -277,6 +277,15 @@ And restart Shutter if it was running.
 
 Of course, this plugin is configured for the official instance of Lutim (<http://lut.im>), feel free to edit it for your own instance.
 
+## [Screencloud](https://github.com/olav-st/screencloud) integration
+
+`Preferences` -> `Online Services` -> `More services` -> `Install from URL`
+```
+https://github.com/Thor77/screencloud-lutim/archive/master.zip
+```
+Double-click the plugin in `Preferences` -> `Online Services` for configuration!
+Please report issues [here](https://github.com/Thor77/screencloud-lutim/issues).
+
 ## Internationalization
 Lutim comes with English, French and Spanish languages. It will choose the language to display from the browser's settings.
 
