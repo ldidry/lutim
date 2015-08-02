@@ -6,7 +6,6 @@ requires 'Net::Domain::TLD', '>= 1.73'; # Must have the last version to handle (
 requires 'Mojolicious::Plugin::I18N';
 requires 'Mojolicious::Plugin::AssetPack';
 requires 'ORLite';
-requires 'File::Type';
 requires 'Text::Unidecode';
 requires 'DateTime';
 requires 'Filesys::DiskUsage';
@@ -16,3 +15,5 @@ requires 'Crypt::CBC';
 requires 'Crypt::Blowfish';
 requires 'Locale::Maketext';
 requires 'Locale::Maketext::Extract';
+requires 'File::MimeInfo';
+requires 'IO::Scalar';

@@ -3,10 +3,11 @@ package Lutim::Controller;
 use Mojo::Base 'Mojolicious::Controller';
 use Mojo::Util qw(url_unescape b64_encode);
 use DateTime;
-use File::Type;
 use Digest::file qw(digest_file_hex);
 use Text::Unidecode;
 use Data::Validate::URI qw(is_http_uri is_https_uri);
+use File::MimeInfo::Magic;
+use IO::Scalar;
 
 use vars qw($im_loaded);
 BEGIN {
@@ -246,8 +247,8 @@ sub add {
             }
         }
 
-        my $ft = File::Type->new();
-        my $mediatype = $ft->mime_type($upload->slurp());
+        my $io_scalar = new IO::Scalar \$upload->slurp();
+        my $mediatype = mimetype($io_scalar);
 
         my $ip = $c->ip;
 
@@ -281,7 +282,7 @@ sub add {
                     my $path     = 'files/'.$records[0]->short.'.'.$ext;
 
                     my ($width, $height);
-                    if ($im_loaded) {
+                    if ($im_loaded && $mediatype ne 'image/svg+xml') { # ImageMagick don't work in Debian with svg (for now?)
                         my $im  = Image::Magick->new;
                         $im->BlobToImage($upload->slurp);
                         $width  = $im->Get('width');
