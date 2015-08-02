@@ -70,7 +70,7 @@ sub modify {
         my $image = $images[0];
         my $msg;
         if ($image->mod_token() ne $token || $token eq '') {
-            $msg = $c->l('invalid_token');
+            $msg = $c->l('The delete token is invalid.');
         } else {
             $c->app->log->info('[MODIFICATION] someone modify '.$image->filename.' with token method (path: '.$image->path.')');
 
@@ -78,7 +78,7 @@ sub modify {
                 delete_at_day        => ($c->param('delete-day') && $c->param('delete-day') <= $c->max_delay) ? $c->param('delete-day') : $c->max_delay,
                 delete_at_first_view => ($c->param('first-view')) ? 1 : 0,
             );
-            $msg = $c->l('image_delay_modified');
+            $msg = $c->l('The image\'s delay has been successfully modified');
             if (defined($c->param('format')) && $c->param('format') eq 'json') {
                 return $c->render(
                     json => {
@@ -112,7 +112,7 @@ sub modify {
         $c->app->log->info('[UNSUCCESSFUL] someone tried to modify '.$short.' but it does\'nt exist.');
 
         # Image never existed
-        my $msg = $c->l('image_mod_not_found', $short);
+        my $msg = $c->l('Unable to find the image %1.', $short);
         if (defined($c->param('format')) && $c->param('format') eq 'json') {
             return $c->render(
                 json => {
@@ -139,15 +139,15 @@ sub delete {
         my $image = $images[0];
         my $msg;
         if ($image->mod_token() ne $token || $token eq '') {
-            $msg = $c->l('invalid_token');
+            $msg = $c->l('The delete token is invalid.');
         } elsif ($image->enabled() == 0) {
-            $msg = $c->l('already_deleted', $image->filename);
+            $msg = $c->l('The image %1 has already been deleted.', $image->filename);
         } else {
             $c->app->log->info('[DELETION] someone made '.$image->filename.' removed with token method (path: '.$image->path.')');
 
             $c->delete_image($image);
             $c->flash(
-                success => $c->l('image_deleted', $image->filename)
+                success => $c->l('The image %1 has been successfully deleted', $image->filename)
             );
             return $c->redirect_to('/');
         }
@@ -191,7 +191,7 @@ sub add {
                     );
                     $c->app->{wait_for_it}->{$ip} = time;
                 } elsif ($tx->res->is_limit_exceeded) {
-                    my $msg = $c->l('file_too_big', $tx->res->max_message_size);
+                    my $msg = $c->l('The file exceed the size limit (%1)', $tx->res->max_message_size);
                     if (defined($c->param('format')) && $c->param('format') eq 'json') {
                         return $c->render(
                             json => {
@@ -208,7 +208,7 @@ sub add {
                         return $c->redirect_to('/');
                     }
                 } else {
-                    my $msg = $c->l('download_error');
+                    my $msg = $c->l('An error occured while downloading the image.');
                     $c->app->log->warn('[DOWNLOAD ERROR]'.$c->dumper($tx->error));
                     if (defined($c->param('format')) && $c->param('format') eq 'json') {
                         return $c->render(
@@ -227,7 +227,7 @@ sub add {
                     }
                 }
             } else {
-                my $msg = $c->l('no_valid_url');
+                my $msg = $c->l('The URL is not valid.');
                 if (defined($c->param('format')) && $c->param('format') eq 'json') {
                     return $c->render(
                         json => {
@@ -258,7 +258,7 @@ sub add {
             mkdir('files', 0700) unless (-d 'files');
 
             if ($c->req->is_limit_exceeded) {
-                $msg = $c->l('file_too_big', $c->req->max_message_size);
+                $msg = $c->l('The file exceed the size limit (%1)', $c->req->max_message_size);
                 if (defined($c->param('format')) && $c->param('format') eq 'json') {
                     return $c->render(
                         json => {
@@ -325,12 +325,12 @@ sub add {
                     $short     .= '/'.$key if (defined($key));
                 } else {
                     # Houston, we have a problem
-                    $msg = $c->l('no_more_short', $c->config->{contact});
+                    $msg = $c->l('There is no more available URL. Retry or contact the administrator. %1', $c->config->{contact});
                 }
             }
             LutimModel->commit;
         } else {
-            $msg = $c->l('no_valid_file', $upload->filename);
+            $msg = $c->l('The file %1 is not an image.', $upload->filename);
         }
 
         if (defined($c->param('format')) && $c->param('format') eq 'json') {
@@ -409,7 +409,7 @@ sub short {
 
             # Warn user
             $c->flash(
-                msg => $c->l('image_not_found')
+                msg => $c->l('Unable to find the image: it has been deleted.')
             );
             return $c->redirect_to('/');
         }
@@ -455,7 +455,7 @@ sub short {
                 $c->delete_image($images[0]);
 
                 $c->flash(
-                    msg => $c->l('image_not_found')
+                    msg => $c->l('Unable to find the image: it has been deleted.')
                 );
                 return $c->redirect_to('/');
             } else {
@@ -499,7 +499,7 @@ sub short {
 
             # Warn user
             $c->flash(
-                msg => $c->l('image_not_found')
+                msg => $c->l('Unable to find the image: it has been deleted.')
             );
             return $c->redirect_to('/');
         } else {

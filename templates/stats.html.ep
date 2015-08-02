@@ -1,13 +1,13 @@
 % # vim:set sts=4 sw=4 ts=4 ft=html.epl expandtab:
-<h4><%= $total %><%=l 'pushed-images' %></h4>
+<h4><%= l('%1 sent images on this instance from beginning.', $total) %></h4>
 <hr>
 
 %= include 'data'
-<h4>Uploaded files by days</h4>
+<h4><%= l('Uploaded files by days') %></h4>
 <div id="evol-holder"></div>
 <hr>
-<h4>Evolution of total files</h4>
+<h4><%= l('Evolution of total files') %></h4>
 <div id="total-holder"></div>
-<p><small><%=l 'graph-data-once-a-day' %></small></p>
+<p><small><%= l('The graph\'s datas are not updated in real-time.') %></small></p>
 
-<%= link_to url_for('index') => ( class => "btn btn-primary btn-lg" ) => begin %><%=l 'back-to-index' %><% end%>
+<%= link_to url_for('index') => ( class => "btn btn-primary btn-lg" ) => begin %><%= l('Back to homepage') %><% end%>
