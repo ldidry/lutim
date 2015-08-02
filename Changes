@@ -3,7 +3,7 @@ Revision history for Lutim
 0.7  ?
 	- Use .po files for internationalization
 	- Add spanish translation (thx to Laura Arjona Reina)
-	- Allow Lutim to be on a sub-directory (like http://example.org/lutim/) (#46)
+	- Allow Lutim to be on a sub-directory (like http://example.org/lutim/) (#46 and #57)
 	- Remove deprecated (due to typo) option "provisionning".
 
 0.6  2014-10-03
