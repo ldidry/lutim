@@ -10,4 +10,4 @@
 <div id="total-holder"></div>
 <p><small><%= l('The graph\'s datas are not updated in real-time.') %></small></p>
 
-<%= link_to url_for('index') => ( class => "btn btn-primary btn-lg" ) => begin %><%= l('Back to homepage') %><% end%>
+<%= link_to url_for('/') => ( class => "btn btn-primary btn-lg" ) => begin %><%= l('Back to homepage') %><% end%>

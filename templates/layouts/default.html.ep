@@ -1,7 +1,7 @@
 % # vim:set sw=4 ts=4 sts=4 ft=html.epl expandtab:
 % use Mojo::Util qw(url_escape);
 % my $twitter_url = 'https://twitter.com/share';
-% my $url    = index_url(1);
+% my $url    = url_for('/')->to_abs();
 % $twitter_url .= '?url='.url_escape("$url")
 %              .'&via=framasky'
 %              .'&text=Check out this %23Lutim instance! ';
@@ -14,14 +14,14 @@
         <meta name="mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
-        <link rel="icon" type="image/png" href="<%= index_url %>img/favicon.png">
-        <link rel="icon" sizes="128x128" href="<%= index_url %>img/lutim128.png">
-        <link rel="icon" sizes="196x196" href="<%= index_url %>img/lutim196.png">
-        <link rel="apple-touch-icon" href="<%= index_url %>img/lutim60.png">
-        <link rel="apple-touch-icon" sizes="76x76" href="<%= index_url %>img/lutim76.png">
-        <link rel="apple-touch-icon" sizes="120x120" href="<%= index_url %>img/lutim120.png">
-        <link rel="apple-touch-icon" sizes="152x152" href="<%= index_url %>img/lutim152.png">
-        <link rel="apple-touch-icon-precomposed" sizes="128x128" href="<%= index_url %>img/lutim128.png">
+        <link rel="icon" type="image/png" href="<%= url_for('/img/favicon.png') %>">
+        <link rel="icon" sizes="128x128" href="<%= url_for('/img/lutim128.png') %>">
+        <link rel="icon" sizes="196x196" href="<%= url_for('/img/lutim196.png') %>">
+        <link rel="apple-touch-icon" href="<%= url_for('/img/lutim60.png') %>">
+        <link rel="apple-touch-icon" sizes="76x76" href="<%= url_for('/img/lutim76.png') %>">
+        <link rel="apple-touch-icon" sizes="120x120" href="<%= url_for('/img/lutim120.png') %>">
+        <link rel="apple-touch-icon" sizes="152x152" href="<%= url_for('/img/lutim152.png') %>">
+        <link rel="apple-touch-icon-precomposed" sizes="128x128" href="<%= url_for('/img/lutim128.png') %>">
 % if (current_route 'stats') {
         %= asset 'stats.css'
 % } elsif (current_route 'about') {
@@ -40,18 +40,18 @@
 % }
                 <div>
                     <div class="pull-left hidden-xs logo">
-                        <img src="<%= index_url %>img/Lutim_small.png" alt="Lutim logo" width="57" height="75">
+                        <img src="<%= url_for('/img/Lutim_small.png') %>" alt="Lutim logo" width="57" height="75">
                     </div>
                     <a class="link_nocol" href="<%= url_for('/') %>" title="<%= l('Homepage') %>"><h1 class="hennypenny">Let's Upload That Image!</h1></a>
                     <p>
                         &copy; 2014 <%= link_to 'http://www.fiat-tux.fr' => begin %>Luc Didry<% end %> — 
                         <%= l('License:') %> <%= link_to 'https://www.gnu.org/licenses/agpl-3.0.html' => begin %>AGPL<% end %> — 
                         <%= link_to url_for('about') => begin %><%= l('Informations') %><% end %> — 
-                        <%= link_to 'https://github.com/ldidry/lutim' => (title => l('Fork me!')) => begin %><i class="lead icon icon-github-circled"></i><% end %> 
+                        <%= link_to 'https://git.framasoft.org/luc/lutim' => (title => l('Fork me!')) => begin %><i class="lead icon icon-git"></i><% end %> 
                         <%= link_to $twitter_url                      => (title => l('Share on Twitter'))   => begin %><i class="lead icon icon-twitter"></i><% end %> 
                         <%= link_to 'https://flattr.com/submit/auto?user_id=_SKy_&url='.$url.'&title=Lutim&category=software' => (title => 'Flattr this') => begin %><i class="lead icon icon-flattr"></i><% end %> 
-                        <%= link_to 'bitcoin:1K3n4MXNRSMHk28oTfXEvDunWFthePvd8v?label=lutim' => (title => 'Give Bitcoins') => begin %><i class="lead icon icon-bitcoin"></i><% end %> 
-                        <a class="btn btn-default btn-xs" href="#" id="install-app"><img src="<%= url_for('/') %>img/rocket.png" alt="mozilla rocket logo"> <%= l('Install webapp') %></a>
+                        <%= link_to 'bitcoin:1JCEtmx9pyzWfitMQj2pKAk8GNgyix7RmA?label=lutim' => (title => 'Give Bitcoins') => begin %><i class="lead icon icon-bitcoin"></i><% end %> 
+                        <a class="btn btn-default btn-xs" href="#" id="install-app"><img src="<%= url_for('/img/rocket.png') %>" alt="mozilla rocket logo"> <%= l('Install webapp') %></a>
                     </p>
                 </div>
             </div>

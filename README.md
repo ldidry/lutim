@@ -181,15 +181,15 @@ server {
         # If you want to log the remote port of the image senders, you'll need that
         proxy_set_header X-Remote-Port $remote_port;
 
-        # Lutim reads this header and understands that the current session is actually HTTPS.
-        # Enable it if you run a HTTPS server (in this case, don't forgot to change the listen port above)
-        #proxy_set_header X-Forwarded-Proto https;
+        proxy_set_header X-Forwarded-Proto $scheme;
 
         # We expect the downsteam servers to redirect to the right hostname, so don't do any rewrites here.
         proxy_redirect     off;
     }
 }
 ```
+
+If you use Lutim under a subdirectory like `/lutim/`, change the `prefix` configuration option and prefix the nginx locations with `/lutim` (or whatever you choose).
 
 ## Cron jobs
 Lutim have commands which can be used in cron jobs.

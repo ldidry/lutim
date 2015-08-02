@@ -99,9 +99,9 @@
 
     # URL sub-directory in which you want Lutim to be accessible
     # example: you want to have Lutim under https://example.org/lutim/
-    # => set url_sub_dir to '/lutim' or to '/lutim/', it doesn't matter
+    # => set prefix to '/lutim' or to '/lutim/', it doesn't matter
     # optional, defaut is /
-    #url_sub_dir       => '/',
+    #prefix            => '/',
 
     ##########################
     # Lutim cron jobs settings

@@ -65,8 +65,8 @@ sub startup {
             $headers->add('Content-Disposition' => $dl.';filename='.$filename);
             $c->res->content->headers($headers);
 
-            $c->app->log->debug($key);
             if ($key) {
+                $c->app->log->debug($key);
                 $asset = $c->decrypt($key, $path);
             } else {
                 $asset = Mojo::Asset::File->new(path => $path);
@@ -75,19 +75,6 @@ sub startup {
             $headers->add('Content-Length' => $asset->size);
 
             return $c->rendered(200);
-        }
-    );
-
-    $self->helper(
-        index_url => sub {
-            my $c      = shift;
-            my $to_abs = shift;
-
-            my $url = $c->url_for('index');
-            $url    = $url->to_abs() if (defined($to_abs) && $to_abs);
-
-            $url =~ s#([^/])$#$1/#;
-            return $url;
         }
     );
 
