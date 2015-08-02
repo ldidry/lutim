@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lutim\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2015-08-01 22:20+0000\n"
+"PO-Revision-Date: 2015-08-02 11:07+0000\n"
 "Last-Translator: Luc Didry <luc@didry.org>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/lutim/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -49,7 +49,7 @@ msgstr "24 horas"
 
 #: lib/Lutim/Controller.pm:211
 msgid "An error occured while downloading the image."
-msgstr "Ha ocurrido un error al descargar la imagen."
+msgstr "Error al intentar modificar la imagen."
 
 #: templates/about.html.ep:39 templates/stats.html.ep:13
 msgid "Back to homepage"
@@ -86,12 +86,12 @@ msgid ""
 " send files and Lutim will provide you four URLs. One to view the image, an "
 "other to directly download it, one you can use on social networks and a last"
 " to delete the image when you want."
-msgstr "Arrastre y suelte una imagen en el área apropiada, o use el método tradicional para enviar ficheros, y Lutim proporcionará cuatro URL. Una para ver la imagen, otra para descargarla directamente, una que upede usar en redes sociales, y una última para borrar la imagen cuando lo desee."
+msgstr "Arrastre y suelte una imagen en el área apropiada, o use el método tradicional para enviar ficheros, y Lutim proporcionará cuatro URLs. Una para ver la imagen, otra para descargarla directamente, una que upede usar en redes sociales, y una última para borrar la imagen cuando lo desee."
 
 #: templates/index.html.ep:112 templates/index.html.ep:158
 #: templates/index.html.ep:60
 msgid "Encrypt the image (Lutim does not keep the key)."
-msgstr "Cifrar la imagen (Lutim no guarda la clave)."
+msgstr "Las imágenes se cifran en el servidor (Lutim no guarda la clave)."
 
 #: templates/index.html.ep:230
 msgid "Error while trying to modify the image."
@@ -109,7 +109,7 @@ msgstr "Para más detalles, vea la <a href=\"https://git.framasoft.org/luc/lutim
 
 #: templates/layouts/default.html.ep:50
 msgid "Fork me!"
-msgstr "Clóname !"
+msgstr "¡Clóname!"
 
 #: templates/layouts/default.html.ep:45
 msgid "Homepage"
@@ -276,7 +276,7 @@ msgstr "Las imágenes se cifran en el servidor (Lutim no guarda la clave)."
 msgid ""
 "The images you post on Lutim can be stored indefinitely or be deleted at "
 "first view or after a delay selected from those proposed."
-msgstr "Las imágenes publicadas en Lutim pueden almacenarse indefinidamente o borrarse con la primera vista o tras un tiempo seleccionado de entre varios propuestos."
+msgstr "Puede, opcionalmente, solicitar que la imagen publicada en Lutim se elimine con la primera vista (o descarga) o tras un tiempo seleccionado de entre varios propuestos."
 
 #. ($c->config->{contact})
 #: lib/Lutim/Controller.pm:328
@@ -380,4 +380,4 @@ msgstr "traducción al español"
 
 #: templates/about.html.ep:28
 msgid "webapp developer"
-msgstr "webapp desarrollador"
+msgstr "desarrollador de la webapp"
