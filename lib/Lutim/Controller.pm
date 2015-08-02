@@ -2,6 +2,7 @@
 package Lutim::Controller;
 use Mojo::Base 'Mojolicious::Controller';
 use Mojo::Util qw(url_unescape b64_encode);
+use Mojo::Asset::Memory;
 use DateTime;
 use Digest::file qw(digest_file_hex);
 use Text::Unidecode;
@@ -285,6 +286,18 @@ sub add {
                     if ($im_loaded && $mediatype ne 'image/svg+xml') { # ImageMagick don't work in Debian with svg (for now?)
                         my $im  = Image::Magick->new;
                         $im->BlobToImage($upload->slurp);
+
+                        # Automatic rotation from EXIF tag
+                        $im->AutoOrient();
+
+                        # Remove the EXIF tags
+                        $im->Strip();
+
+                        # Update the uploaded file with it's auto-rotated clone
+                        my $asset = Mojo::Asset::Memory->new->add_chunk($im->ImageToBlob());
+                        $upload->asset($asset);
+
+                        # Create the thumbnail
                         $width  = $im->Get('width');
                         $height = $im->Get('height');
                         $im->Resize(geometry=>'x85');
@@ -297,6 +310,7 @@ sub add {
                         ($upload, $key) = $c->crypt($upload, $filename);
                     }
                     $upload->move_to($path);
+
                     $records[0]->update(
                         path                 => $path,
                         filename             => $filename,
