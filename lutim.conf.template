@@ -103,6 +103,12 @@
     # optional, defaut is /
     #prefix            => '/',
 
+    # define a path to the SQLite database
+    # you can define it relative to lutim directory or set an absolute path
+    # remember that it has to be in a directory writable by Lutim user
+    # optional, default is lutim.db
+    #db_path           => 'lutim.db',
+
     ##########################
     # Lutim cron jobs settings
     ##########################

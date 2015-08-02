@@ -6,6 +6,7 @@ Revision history for Lutim
 	- Allow Lutim to be on a sub-directory (like http://example.org/lutim/) (#46 and #57)
 	- Remove deprecated (due to typo) option "provisionning".
 	- Allow to upload svg images (no thumbnail for now, ImageMagick in Debian Jessie don't work with svg) (#47)
+	- Allow to change location of the database (#48)
 
 0.6  2014-10-03
 	- Add OpenGraph tags in social page (ex-twitter page)

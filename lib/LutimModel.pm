@@ -1,10 +1,25 @@
 package LutimModel;
+use Mojolicious;
+use FindBin qw($Bin);
+use File::Spec qw(catfile);
+
+BEGIN {
+    my $m = Mojolicious->new;
+    our $config = $m->plugin('Config' =>
+        {
+            file    => File::Spec->catfile($Bin, '..' ,'lutim.conf'),
+            default => {
+                db_path => 'lutim.db'
+            }
+        }
+    );
+}
 
 # Create database
 use ORLite {
-      file => 'lutim.db',
+      file    => $config->{db_path},
       unicode => 1,
-      create => sub {
+      create  => sub {
           my $dbh = shift;
           $dbh->do(
               'CREATE TABLE lutim (
@@ -25,7 +40,7 @@ use ORLite {
                height                INTEGER)'
           );
           return 1;
-        }
+     }
 };
 
 1;
