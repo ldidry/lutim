@@ -331,3 +331,4 @@ Licenses for the icons fonts are in `public/font/LICENSE.txt`.
 * Florian Bigard, aka Chocobozzz (<https://github.com/Chocobozzz>)
 * Sandro CAZZANIGA, aka Kharec (<http://sandrocazzaniga.fr>), [@Kharec](https://twitter.com/Kharec)
 * Laura Arjona Reina (<https://wiki.debian.org/LauraArjona>), spanish translation
+* Thor77 (<http://thor77.org>)
