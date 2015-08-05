@@ -264,6 +264,29 @@ curl -F "format=json" -F "file=@/tmp/snap0001.jpg" http://lut.im
 You can allow people to use your instance of Lutim from other domains.
 Add the allowed domains as an array in the `allowed_domains` conf option. Put '`[\*]`' if you want to allow all domains.
 
+### Response
+```
+{
+'success': True,
+'msg': {
+    'real_short': 'abc',
+    'short': 'abc/def',
+    'token': 'ghijkl',
+    'thumb': None,
+    'filename': 'myimage.png'
+    }
+}
+```
+| parameter | type         | role    |
+|-----------|--------------|---------|
+|   sucess  | True/False   | upload-status |
+|   msg     | dict         |         |
+|real_short | string       | image identifier|
+| short     | string       | ``real_short`` + encryption key |
+| token     | string       |         |
+| thumb     |              |         |
+| filename  | string       | filename of the uploaded image |
+
 ## Shutter integration
 See where Shutter (<http://en.wikipedia.org/wiki/Shutter_%28software%29>) keeps its plugins on your computer.
 On my computer, it's in `/usr/share/shutter/resources/system/upload_plugins/upload`.
