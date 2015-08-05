@@ -104,6 +104,12 @@ vim /etc/default/lutim
 /etc/init.d/lutim start
 ```
 
+### Starting Lutim with the Upstart script
+* ``cp utilities/lutim_upstart.conf /etc/init/lutim.conf``
+* ``cp utilities/lutim.default /etc/default/lutim``
+* modify path to the Lutim-root in /etc/default/lutim
+* ``start lutim``
+
 ## Update
 ```
 git pull
