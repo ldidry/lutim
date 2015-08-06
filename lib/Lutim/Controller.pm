@@ -77,7 +77,7 @@ sub modify {
             $c->app->log->info('[MODIFICATION] someone modify '.$image->filename.' with token method (path: '.$image->path.')');
 
             $image->update(
-                delete_at_day        => ($c->param('delete-day') && $c->param('delete-day') <= $c->max_delay) ? $c->param('delete-day') : $c->max_delay,
+                delete_at_day        => ($c->param('delete-day') && ($c->param('delete-day') <= $c->max_delay || $c->max_delay == 0)) ? $c->param('delete-day') : $c->max_delay,
                 delete_at_first_view => ($c->param('first-view')) ? 1 : 0,
             );
             $msg = $c->l('The image\'s delay has been successfully modified');
@@ -317,7 +317,7 @@ sub add {
                         mediatype            => $mediatype,
                         footprint            => digest_file_hex($path, 'SHA-512'),
                         enabled              => 1,
-                        delete_at_day        => ($c->param('delete-day') && $c->param('delete-day') <= $c->max_delay) ? $c->param('delete-day') : $c->max_delay,
+                        delete_at_day        => ($c->param('delete-day') && ($c->param('delete-day') <= $c->max_delay || $c->max_delay == 0)) ? $c->param('delete-day') : $c->max_delay,
                         delete_at_first_view => ($c->param('first-view')) ? 1 : 0,
                         created_at           => time(),
                         created_by           => $ip,
