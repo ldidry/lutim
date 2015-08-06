@@ -1483,6 +1483,13 @@ DISTRIBUTIONS
       JavaScript::Minifier::XS 0.11
       Mojolicious 5.41
       Test::More 0.88
+  Mojolicious-Plugin-DebugDumperHelper-0.02
+    pathname: L/LD/LDIDRY/Mojolicious-Plugin-DebugDumperHelper-0.02.tar.gz
+    provides:
+      Mojolicious::Plugin::DebugDumperHelper 0.02
+    requirements:
+      ExtUtils::MakeMaker 0
+      Mojolicious 6.11
   Mojolicious-Plugin-I18N-1.5
     pathname: S/SH/SHARIFULN/Mojolicious-Plugin-I18N-1.5.tar.gz
     provides:

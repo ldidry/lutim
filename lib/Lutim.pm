@@ -14,6 +14,7 @@ sub startup {
 
     $self->plugin('I18N');
     $self->plugin('AssetPack');
+    $self->plugin('DebugDumperHelper');
 
     my $config = $self->plugin('Config', {
         default => {
