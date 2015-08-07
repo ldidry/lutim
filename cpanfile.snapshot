@@ -1123,14 +1123,6 @@ DISTRIBUTIONS
       File::Spec 3.29
       Test::More 0.42
       perl 5.00503
-  File-Type-0.22
-    pathname: P/PM/PMISON/File-Type-0.22.tar.gz
-    provides:
-      File::Type 0.22
-      File::Type::Builder 0.11
-    requirements:
-      IO::File 0.01
-      Test::More 0.01
   File-Which-1.09
     pathname: A/AD/ADAMK/File-Which-1.09.tar.gz
     provides:
@@ -1208,6 +1200,158 @@ DISTRIBUTIONS
       re 0
       strict 0
       warnings 0
+  Image-ExifTool-9.90
+    pathname: E/EX/EXIFTOOL/Image-ExifTool-9.90.tar.gz
+    provides:
+      File::RandomAccess 1.10
+      Image::ExifTool 9.90
+      Image::ExifTool::AES 1.01
+      Image::ExifTool::AFCP 1.06
+      Image::ExifTool::AIFF 1.06
+      Image::ExifTool::APE 1.03
+      Image::ExifTool::APP12 1.12
+      Image::ExifTool::ASF 1.21
+      Image::ExifTool::Apple 1.01
+      Image::ExifTool::BMP 1.08
+      Image::ExifTool::BZZ 1.00
+      Image::ExifTool::BigTIFF 1.06
+      Image::ExifTool::BuildTagLookup 2.81
+      Image::ExifTool::Canon 3.45
+      Image::ExifTool::CanonCustom 1.50
+      Image::ExifTool::CanonRaw 1.57
+      Image::ExifTool::CanonVRD 1.23
+      Image::ExifTool::CaptureOne 1.04
+      Image::ExifTool::Casio 1.36
+      Image::ExifTool::Charset 1.08
+      Image::ExifTool::DICOM 1.19
+      Image::ExifTool::DNG 1.21
+      Image::ExifTool::DPX 1.01
+      Image::ExifTool::DV 1.01
+      Image::ExifTool::DarwinCore 1.01
+      Image::ExifTool::DjVu 1.05
+      Image::ExifTool::EXE 1.08
+      Image::ExifTool::Exif 3.68
+      Image::ExifTool::FLAC 1.06
+      Image::ExifTool::FLIR 1.12
+      Image::ExifTool::Fixup 1.05
+      Image::ExifTool::Flash 1.11
+      Image::ExifTool::FlashPix 1.25
+      Image::ExifTool::Font 1.07
+      Image::ExifTool::FotoStation 1.02
+      Image::ExifTool::FujiFilm 1.49
+      Image::ExifTool::GE 1.00
+      Image::ExifTool::GIF 1.11
+      Image::ExifTool::GIMP 1.02
+      Image::ExifTool::GPS 1.42
+      Image::ExifTool::GeoTiff 1.11
+      Image::ExifTool::Geotag 1.45
+      Image::ExifTool::H264 1.12
+      Image::ExifTool::HP 1.03
+      Image::ExifTool::HTML 1.15
+      Image::ExifTool::HtmlDump 1.32
+      Image::ExifTool::ICC_Profile 1.29
+      Image::ExifTool::ID3 1.43
+      Image::ExifTool::IPTC 1.52
+      Image::ExifTool::ITC 1.02
+      Image::ExifTool::Import 1.05
+      Image::ExifTool::InDesign 1.04
+      Image::ExifTool::JPEG 1.24
+      Image::ExifTool::JPEGDigest 1.04
+      Image::ExifTool::JVC 1.03
+      Image::ExifTool::Jpeg2000 1.23
+      Image::ExifTool::Kodak 1.39
+      Image::ExifTool::KyoceraRaw 1.03
+      Image::ExifTool::LNK 1.07
+      Image::ExifTool::Lang::cs 1.07
+      Image::ExifTool::Lang::de 1.30
+      Image::ExifTool::Lang::en_ca 1.09
+      Image::ExifTool::Lang::en_gb 1.09
+      Image::ExifTool::Lang::es 1.13
+      Image::ExifTool::Lang::fi 1.01
+      Image::ExifTool::Lang::fr 1.30
+      Image::ExifTool::Lang::it 1.11
+      Image::ExifTool::Lang::ja 1.22
+      Image::ExifTool::Lang::ko 1.06
+      Image::ExifTool::Lang::nl 1.11
+      Image::ExifTool::Lang::pl 1.10
+      Image::ExifTool::Lang::ru 1.04
+      Image::ExifTool::Lang::sv 1.05
+      Image::ExifTool::Lang::tr 1.04
+      Image::ExifTool::Lang::zh_cn 1.08
+      Image::ExifTool::Lang::zh_tw 1.06
+      Image::ExifTool::Leaf 1.05
+      Image::ExifTool::Lytro 1.01
+      Image::ExifTool::M2TS 1.11
+      Image::ExifTool::MIE 1.42
+      Image::ExifTool::MIFF 1.07
+      Image::ExifTool::MNG 1.00
+      Image::ExifTool::MOI 1.01
+      Image::ExifTool::MPC 1.01
+      Image::ExifTool::MPEG 1.15
+      Image::ExifTool::MPF 1.09
+      Image::ExifTool::MWG 1.14
+      Image::ExifTool::MXF 1.06
+      Image::ExifTool::MakerNotes 1.95
+      Image::ExifTool::Matroska 1.05
+      Image::ExifTool::Microsoft 1.15
+      Image::ExifTool::Minolta 2.22
+      Image::ExifTool::MinoltaRaw 1.14
+      Image::ExifTool::Nikon 3.03
+      Image::ExifTool::NikonCapture 1.13
+      Image::ExifTool::NikonCustom 1.12
+      Image::ExifTool::Nintendo 1.00
+      Image::ExifTool::OOXML 1.07
+      Image::ExifTool::Ogg 1.01
+      Image::ExifTool::Olympus 2.28
+      Image::ExifTool::OpenEXR 1.01
+      Image::ExifTool::PDF 1.37
+      Image::ExifTool::PGF 1.02
+      Image::ExifTool::PICT 1.05
+      Image::ExifTool::PLIST 1.05
+      Image::ExifTool::PNG 1.34
+      Image::ExifTool::PPM 1.07
+      Image::ExifTool::PSP 1.04
+      Image::ExifTool::Palm 1.00
+      Image::ExifTool::Panasonic 1.90
+      Image::ExifTool::PanasonicRaw 1.08
+      Image::ExifTool::Pentax 2.89
+      Image::ExifTool::PhaseOne 1.02
+      Image::ExifTool::PhotoCD 1.01
+      Image::ExifTool::PhotoMechanic 1.04
+      Image::ExifTool::Photoshop 1.46
+      Image::ExifTool::PostScript 1.38
+      Image::ExifTool::PrintIM 1.07
+      Image::ExifTool::Qualcomm 1.01
+      Image::ExifTool::QuickTime 1.88
+      Image::ExifTool::RIFF 1.38
+      Image::ExifTool::RSRC 1.08
+      Image::ExifTool::RTF 1.02
+      Image::ExifTool::Radiance 1.01
+      Image::ExifTool::Rawzor 1.03
+      Image::ExifTool::Real 1.05
+      Image::ExifTool::Reconyx 1.04
+      Image::ExifTool::Ricoh 1.28
+      Image::ExifTool::Samsung 1.29
+      Image::ExifTool::Sanyo 1.15
+      Image::ExifTool::Scalado 1.01
+      Image::ExifTool::Shortcuts 1.53
+      Image::ExifTool::Sigma 1.16
+      Image::ExifTool::SigmaRaw 1.23
+      Image::ExifTool::Sony 2.19
+      Image::ExifTool::SonyIDC 1.03
+      Image::ExifTool::Stim 1.01
+      Image::ExifTool::TagInfoXML 1.27
+      Image::ExifTool::TagLookup 1.12
+      Image::ExifTool::Theora 1.00
+      Image::ExifTool::Torrent 1.03
+      Image::ExifTool::Unknown 1.13
+      Image::ExifTool::Vorbis 1.07
+      Image::ExifTool::XMP 2.82
+      Image::ExifTool::ZIP 1.18
+      Image::ExifTool::iWork 1.04
+    requirements:
+      ExtUtils::MakeMaker 0
+      perl 5.004
   JavaScript-Minifier-XS-0.11
     pathname: G/GT/GTERMARS/JavaScript-Minifier-XS-0.11.tar.gz
     provides:

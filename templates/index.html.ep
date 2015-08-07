@@ -111,6 +111,9 @@
                 <label <%== (config('always_encrypt')) ? 'class="always-encrypt"' : '' %>>
                     <input type="checkbox" name="crypt"> <%= l('Encrypt the image (Lutim does not keep the key).') %>
                 </label>
+                <label>
+                    <input type="checkbox" name="keep-exif"> <%= l('Keep EXIF tags') %>
+                <label>
             </div>
         </div>
         <div class="form-group">
@@ -157,6 +160,9 @@
             <label <%== (config('always_encrypt')) ? 'class="always-encrypt"' : '' %>>
                 <input type="checkbox" id="crypt"> <%= l('Encrypt the image (Lutim does not keep the key).') %>
             </label>
+            <label>
+                <input type="checkbox" id="keep-exif"> <%= l('Keep EXIF tags') %>
+            <label>
         </div>
     </div>
     <div id="drag-and-drop-zone" class="uploader">

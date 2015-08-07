@@ -9,6 +9,7 @@ use Text::Unidecode;
 use Data::Validate::URI qw(is_http_uri is_https_uri);
 use File::MimeInfo::Magic;
 use IO::Scalar;
+use Image::ExifTool;
 
 use vars qw($im_loaded);
 BEGIN {
@@ -167,9 +168,10 @@ sub delete {
 }
 
 sub add {
-    my $c        = shift;
-    my $upload   = $c->param('file');
-    my $file_url = $c->param('lutim-file-url');
+    my $c         = shift;
+    my $upload    = $c->param('file');
+    my $file_url  = $c->param('lutim-file-url');
+    my $keep_exif = $c->param('keep-exif');
 
     if(!defined($c->stash('stop_upload'))) {
         if (defined($file_url) && $file_url) {
@@ -290,9 +292,6 @@ sub add {
                         # Automatic rotation from EXIF tag
                         $im->AutoOrient();
 
-                        # Remove the EXIF tags
-                        $im->Strip();
-
                         # Update the uploaded file with it's auto-rotated clone
                         my $asset = Mojo::Asset::Memory->new->add_chunk($im->ImageToBlob());
                         $upload->asset($asset);
@@ -305,6 +304,27 @@ sub add {
                         $thumb  = 'data:'.$mediatype.';base64,';
                         $thumb .= b64_encode $im->ImageToBlob();
                     }
+
+                    unless (defined($keep_exif) && $keep_exif) {
+                        # Remove the EXIF tags
+                        my $data = new IO::Scalar \$upload->slurp();
+                        my $et   = new Image::ExifTool;
+
+                        # Use $data in Image::ExifTool object
+                        $et->ExtractInfo($data);
+                        # Remove all metadata
+                        $et->SetNewValue('*', undef);
+
+                        # Create a temporary IO::Scalar to write into
+                        my $temp;
+                        my $a = new IO::Scalar \$temp;
+                        $et->WriteInfo($data, $a);
+
+                        # Update the uploaded file with it's no-tags clone
+                        $data = Mojo::Asset::Memory->new->add_chunk($temp);
+                        $upload->asset($data);
+                    }
+
                     my $key;
                     if ($c->param('crypt') || $c->config->{always_encrypt}) {
                         ($upload, $key) = $c->crypt($upload, $filename);

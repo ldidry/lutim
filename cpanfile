@@ -18,3 +18,4 @@ requires 'Locale::Maketext';
 requires 'Locale::Maketext::Extract';
 requires 'File::MimeInfo';
 requires 'IO::Scalar';
+requires 'Image::ExifTool';
