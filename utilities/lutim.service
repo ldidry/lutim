@@ -1,0 +1,16 @@
+[Unit]
+Description=Image hosting and sharing service
+Documentation=https://git.framasoft.org/luc/lutim
+Requires=network.target
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/var/www/lutim/
+PIDFile=/var/www/lutim/script/hypnotoad.pid
+ExecStart=/usr/local/bin/carton exec hypnotoad -f script/lutim
+ExecStop=/usr/local/bin/carton exec hypnotoad -s script/lutim
+ExecReload=/usr/local/bin/carton exec hypnotoad script/lutim
+
+[Install]
+WantedBy=multi-user.target

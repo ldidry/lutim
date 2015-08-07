@@ -104,6 +104,14 @@ vim /etc/default/lutim
 /etc/init.d/lutim start
 ```
 
+### Starting Lutim with systemd
+```
+cp utilities/lutim.service /etc/systemd/system/
+vi /etc/systemd/system/lutim.service
+systemctl daemon-reload
+systemctl start lutim.service
+```
+
 ### Starting Lutim with the Upstart script
 * ``cp utilities/lutim_upstart.conf /etc/init/lutim.conf``
 * ``cp utilities/lutim.default /etc/default/lutim``
