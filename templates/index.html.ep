@@ -32,32 +32,11 @@
             <div class="form-group form-inline">
                 <input name="image_url" type="hidden" value="<%= $url %>">
                 <select name="delete-day" class="form-control">
-                    % for my $delay (qw/0 1 7 30 365/) {
-                    %   my $text = ($delay == 7 || $delay == 30) ? l('%1 days', $delay) : $d{'delay_'.$delay};
-                    %   if (config('max_delay')) {
-                    %       if ($delay) {
-                    %           if ($delay < config('max_delay')) {
-                                    <option value="<%= $delay %>" <%== is_selected($delay) %>><%= $text %></option>
-                    %           } elsif ($delay == config('max_delay')) {
-                                    <option value="<%= $delay %>" <%== is_selected($delay) %>><%= $text %></option>
-                    %               last;
-                    %           } else {
-                    %               my $text = ($delay == 1) ? l('24 hours') : l('%1 days', $delay);
-                                    <option value="<%= config('max_delay') %>" <%== is_selected(config('max_delay')) %>><%= l('%1 days', config('max_delay')) %></option>
-                    %               last;
-                    %           }
-                    %       }
-                    %   } else {
-                            <option value="<%= $delay %>" <%== is_selected($delay) %>><%= $text %></option>
-                    %   }
-                    % }
+                    %= include 'partial/for_my_delay', d => \%d
                 </select>
                 <div class="checkbox">
                     <label>
                         <input type="checkbox" name="first-view"> <%= l('Delete at first view?') %>
-                    </label>
-                    <label <%== (config('always_encrypt')) ? 'class="always-encrypt"' : '' %>>
-                        <input type="checkbox" name="crypt"> <%= l('Encrypt the image (Lutim does not keep the key).') %>
                     </label>
                 </div>
                 <%= submit_button l('Let\'s go!'), class => 'btn btn-sm btn-default btn-primary', id => 'submitbutton' %>
@@ -84,25 +63,7 @@
     <form class="form" role="form" method="POST" action="<%= url_for('/') %>" enctype="multipart/form-data">
         <div class="form-group form-inline">
             <select name="delete-day" class="form-control">
-                % for my $delay (qw/0 1 7 30 365/) {
-                %   my $text = ($delay == 7 || $delay == 30) ? l('%1 days', $delay) : $d{'delay_'.$delay};
-                %   if (config('max_delay')) {
-                %       if ($delay) {
-                %           if ($delay < config('max_delay')) {
-                                <option value="<%= $delay %>" <%== is_selected($delay) %>><%= $text %></option>
-                %           } elsif ($delay == config('max_delay')) {
-                                <option value="<%= $delay %>" <%== is_selected($delay) %>><%= $text %></option>
-                %               last;
-                %           } else {
-                %               my $text = ($delay == 1) ? l('24 hours') : l('%1 days', $delay);
-                                <option value="<%= config('max_delay') %>" <%== is_selected(config('max_delay')) %>><%= l('%1 days', config('max_delay')) %></option>
-                %               last;
-                %           }
-                %       }
-                %   } else {
-                        <option value="<%= $delay %>" <%== is_selected($delay) %>><%= $text %></option>
-                %   }
-                % }
+                %= include 'partial/for_my_delay', d => \%d
             </select>
             <div class="checkbox">
                 <label>
@@ -133,25 +94,7 @@
 <div class="jsonly">
     <div class="form-group form-inline">
         <select id="delete-day" class="form-control">
-            % for my $delay (qw/0 1 7 30 365/) {
-            %   my $text = ($delay == 7 || $delay == 30) ? l('%1 days', $delay) : $d{'delay_'.$delay};
-            %   if (config('max_delay')) {
-            %       if ($delay) {
-            %           if ($delay < config('max_delay')) {
-                            <option value="<%= $delay %>" <%== is_selected($delay) %>><%= $text %></option>
-            %           } elsif ($delay == config('max_delay')) {
-                            <option value="<%= $delay %>" <%== is_selected($delay) %>><%= $text %></option>
-            %               last;
-            %           } else {
-            %               my $text = ($delay == 1) ? l('24 hours') : l('%1 days', $delay);
-                            <option value="<%= config('max_delay') %>" <%== is_selected(config('max_delay')) %>><%= l('%1 days', config('max_delay')) %></option>
-            %               last;
-            %           }
-            %       }
-            %   } else {
-                    <option value="<%= $delay %>" <%== is_selected($delay) %>><%= $text %></option>
-            %   }
-            % }
+            %= include 'partial/for_my_delay', d => \%d
         </select>
         <div class="checkbox">
             <label>
