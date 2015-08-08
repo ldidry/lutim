@@ -260,14 +260,13 @@ The encryption is made on the server since Lutim is made to be usable even witho
 
 ## API
 You can add images by using the API. Here's the parameters of the `POST` request to `/` adress:.
-* format: json
-    MANDATORY if you want to get a json response, otherwise it will send a web page
-* file: the image file
-    MANDATORY
-* delete-day: number of days you want the image to stay
-    OPTIONAL if 0, it will be available undefinitely
-* first-view: 1
-    OPTIONAL if not 0, the image will be deleted at first view
+
+|name|type|description|optional/default|
+|----|----|-----------|--------|
+|format|string|`json` if you want to get a json response, otherwise it will send a web page||
+|file|file|the image file||
+|delete-day|int|number of days you want the image to stay|0 (undefinitely)|
+|first-view|int|if not 0, the image will be deleted at first view|0|
 
 
 Exemple with curl:
