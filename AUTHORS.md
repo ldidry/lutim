@@ -10,6 +10,6 @@
 * Jean-Bernard Marcon, aka Goofy (<https://github.com/goofy-bz>)
 * Jean-Christophe Bach (<https://github.com/jcb>)
 * Florian Bigard, aka Chocobozzz (<https://github.com/Chocobozzz>)
-* Sandro CAZZANIGA, aka Kharec (<http://sandrocazzaniga.fr>), [@Kharec](https://twitter.com/Kharec)
+* Sandro Cazzaniga, aka Kharec (<http://sandrocazzaniga.fr>), [@Kharec](https://twitter.com/Kharec)
 * Laura Arjona Reina (<https://wiki.debian.org/LauraArjona>), spanish translation
 * Thor77 (<http://thor77.org>)
