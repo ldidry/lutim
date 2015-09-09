@@ -213,6 +213,13 @@ To see what commands are available:
 carton exec script/lutim cron
 ```
 
+It is recommended to execute the cron tasks once a day:
+
+* the statistics task takes a little bit of resources
+* the delete IP task can be executed less than once a day. Or more. It exists for legal reasons, so you need to know when you have to delete the sender's IP addresses
+* the delete expired files task is here to delete expired files. You can execute it less than once a day: if one asks for an expired image, the image is deleted. This task exists for images that are expired which no one wants to see
+* the watch directory's file can be executed more than once a day if you're short on storage.
+
 ### Statistics
 To generate statistics which can be viewed at the address `/stats` (we need to reload hypnotoad after the stats generation):
 ```shell
