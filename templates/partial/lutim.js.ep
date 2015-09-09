@@ -59,6 +59,7 @@
                 +tw_url(msg.short)
                 +'<ul class="list-unstyled"><li><i class="icon icon-eye" title="<%= l('View link') %>"></i>&nbsp;'
                 +link(msg.short, '')
+                +'</li><li><i class="markdown-mark-solid" title="<%= l('Markdown syntax') %>"></i>&nbsp;![](<%== url_for('/')->to_abs() %>'+msg.short+')'
                 +'</li><li><i class="icon icon-download" title="<%= l('Download link') %>"></i>&nbsp;'
                 +link(msg.short, 'dl')
                 +'</li><li><i class="icon icon-share" title="<%= l('Link for share on social networks') %>"></i>&nbsp;'

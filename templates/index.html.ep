@@ -20,10 +20,11 @@
             &nbsp;&nbsp;&nbsp;<a title="<%= l('Tweet it!') %>" target="_blank" href="https://twitter.com/share?url=<%= $url %>?t"><span class="icon icon-twitter"></span></a>
             <ul class="list-unstyled">
                 % my $delete_url = url_for('delete', {short => stash('real_short'), token => stash('token')})->to_abs();
-                <li><i class="icon icon-eye"      title =" <%= l('View link') %>"></i>                         <%= link_to $url        => begin %> <%= $url %>        <%= end %></li>
-                <li><i class="icon icon-download" title =" <%= l('Download link') %>"></i>                     <%= link_to $url.'?dl'  => begin %> <%= $url.'?dl' %>  <%= end %></li>
-                <li><i class="icon icon-share"    title =" <%= l('Link for share on social networks') %>"></i> <%= link_to $url.'?t'   => begin %> <%= $url.'?t' %>   <%= end %></li>
-                <li><i class="icon icon-trash"    title =" <%= l('Deletion link') %>"></i>                     <%= link_to $delete_url => begin %> <%= $delete_url %> <%= end %></li>
+                <li><i class="icon icon-eye"       title =" <%= l('View link') %>"></i>                         <%= link_to $url        => begin %> <%= $url %>        <%= end %></li>
+                <li><i class="markdown-mark-solid" title =" <%= l('Markdown syntax') %>"></i>                   ![](<%= $url %>)</li>
+                <li><i class="icon icon-download"  title =" <%= l('Download link') %>"></i>                     <%= link_to $url.'?dl'  => begin %> <%= $url.'?dl' %>  <%= end %></li>
+                <li><i class="icon icon-share"     title =" <%= l('Link for share on social networks') %>"></i> <%= link_to $url.'?t'   => begin %> <%= $url.'?t' %>   <%= end %></li>
+                <li><i class="icon icon-trash"     title =" <%= l('Deletion link') %>"></i>                     <%= link_to $delete_url => begin %> <%= $delete_url %> <%= end %></li>
             </ul>
         </div>
 % # Delay modification form
