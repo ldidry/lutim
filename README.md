@@ -216,20 +216,20 @@ carton exec script/lutim cron
 ### Statistics
 To generate statistics which can be viewed at the address `/stats` (we need to reload hypnotoad after the stats generation):
 ```shell
-carton exec script/lutim cron stats && carton exec hypnotoad script/lutim
+carton exec script/lutim cron stats --mode production && carton exec hypnotoad script/lutim
 ```
 
 ### Delete IP adresses from database
 To automatically delete the IP addresses of image's senders after a configurable delay:
 ```shell
-carton exec script/lutim cron cleanbdd
+carton exec script/lutim cron cleanbdd --mode production
 ```
 
 ### Delete expired files
 To automatically delete files which availability delay is over (when you choose that your image will be deleted after 24h / one week / etc.)
 If `delete_no_longer_viewed_files`, the files not viewed since `delete_no_longer_viewed_files` days will be deleted too.
 ```shell
-carton exec script/lutim cron cleanfiles
+carton exec script/lutim cron cleanfiles --mode production
 ```
 
 ### Watch the size of the files directory
@@ -242,7 +242,7 @@ The available actions are `warn` and `stop-upload`:
 If the files directory go under quota, the `stop-upload` file is deleted. If you want to manually prevents uploading, create a file named `stop-upload.manual`.
 
 ```shell
-carton exec script/lutim cron watch
+carton exec script/lutim cron watch --mode production
 ```
 
 ## Broadcast message
