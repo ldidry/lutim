@@ -67,7 +67,6 @@ sub startup {
             $c->res->content->headers($headers);
 
             if ($key) {
-                $c->app->log->debug($key);
                 $asset = $c->decrypt($key, $path);
             } else {
                 $asset = Mojo::Asset::File->new(path => $path);
