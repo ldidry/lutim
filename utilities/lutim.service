@@ -5,10 +5,12 @@ Requires=network.target
 After=network.target
 
 [Service]
-Type=simple
+Type=forking
+User=www-data
+RemainAfterExit=yes
 WorkingDirectory=/var/www/lutim/
 PIDFile=/var/www/lutim/script/hypnotoad.pid
-ExecStart=/usr/local/bin/carton exec hypnotoad -f script/lutim
+ExecStart=/usr/local/bin/carton exec hypnotoad script/lutim
 ExecStop=/usr/local/bin/carton exec hypnotoad -s script/lutim
 ExecReload=/usr/local/bin/carton exec hypnotoad script/lutim
 
