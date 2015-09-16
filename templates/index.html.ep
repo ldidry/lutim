@@ -29,7 +29,7 @@
                         <label class="sr-only" for="view"><%= l('View link') %></label>
                         <div class="input-group col-sm-6">
                             <div class="input-group-addon"><span class="icon icon-eye"         title =" <%= l('View link') %>"></span></div>
-                            <input type="text" class="form-control" id="view" value="<%= $url %>" readonly>
+                            <input type="text" class="form-control" id="view" value="<%= $url.'.'.stash('ext') %>" readonly>
                             <a href="#" onClick="copyToClipboard($(this));" class="input-group-addon jsonly" title="<%= l('Copy to clipboard') %>"><span class="icon icon-clipboard"></span></a>
                         </div>
                     </div>

@@ -7,7 +7,7 @@ use DateTime;
 use Digest::file qw(digest_file_hex);
 use Text::Unidecode;
 use Data::Validate::URI qw(is_http_uri is_https_uri);
-use File::MimeInfo::Magic;
+use File::MimeInfo::Magic qw(mimetype extensions);
 use IO::Scalar;
 use Image::ExifTool;
 
@@ -253,6 +253,8 @@ sub add {
         my $io_scalar = new IO::Scalar \$upload->slurp();
         my $mediatype = mimetype($io_scalar);
 
+        my ($ext) = ($upload->filename =~ m/.*\.(.*)$/);
+
         my $ip = $c->ip;
 
         my ($msg, $short, $real_short, $token, $thumb);
@@ -375,6 +377,7 @@ sub add {
                     short      => $short,
                     real_short => $real_short,
                     token      => $token,
+                    ext        => $ext || extensions($mediatype),
                     thumb      => $thumb
                 };
             } else {
@@ -398,6 +401,7 @@ sub add {
                 $c->stash(short      => $short) if (defined($short));
                 $c->stash(real_short => $real_short);
                 $c->stash(token      => $token);
+                $c->stash(ext        => $ext || extensions($mediatype));
                 $c->stash(thumb      => $thumb);
                 $c->stash(filename   => $upload->filename);
                 return $c->render(

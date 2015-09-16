@@ -333,10 +333,14 @@ sub startup {
         to('Controller#modify')->
         name('modify');
 
-    $r->get('/:short')->
+    $r->get('/(:short).(:f)')->
         to('Controller#short')->
         name('short');
+    $r->get('/:short')->
+        to('Controller#short');
 
+    $r->get('/:short/(:key).(:f)')->
+        to('Controller#short');
     $r->get('/:short/:key')->
         to('Controller#short');
 }
