@@ -11,6 +11,9 @@ Revision history for Lutim
 	- Purge images from their EXIF tags (for more privacy)
 	- Provide markdown syntax at upload for using lutim's hosted images
 	- Now using a wiki: makes README lighter (https://git.framasoft.org/luc/lutim/wikis/home)
+	- Update twitter bootstrap
+	- Add "Copy to clipboard" buttons to each link
+	- Add "Copy all links" button
 	- bugfixes
 
 0.6  2014-10-03

@@ -10,39 +10,79 @@
 % }
 % if (defined(stash('short'))) {
     <div class="alert alert-success">
+        <div class="row">
 %     if (defined(stash('short'))) {
-        <img class="pull-left thumbnail" alt="<%= stash('filename') %> thumbnail" src="<%= stash('thumb') %>">
-%     }
-        <div>
-% # Display image informations
-            % my $url = url_for('/'.stash('short'))->to_abs();
-            <strong><%= stash('filename') %></strong>
-            &nbsp;&nbsp;&nbsp;<a title="<%= l('Tweet it!') %>" target="_blank" href="https://twitter.com/share?url=<%= $url %>?t"><span class="icon icon-twitter"></span></a>
-            <ul class="list-unstyled">
-                % my $delete_url = url_for('delete', {short => stash('real_short'), token => stash('token')})->to_abs();
-                <li><i class="icon icon-eye"       title =" <%= l('View link') %>"></i>                         <%= link_to $url        => begin %> <%= $url %>        <%= end %></li>
-                <li><i class="markdown-mark-solid" title =" <%= l('Markdown syntax') %>"></i>                   ![](<%= $url %>)</li>
-                <li><i class="icon icon-download"  title =" <%= l('Download link') %>"></i>                     <%= link_to $url.'?dl'  => begin %> <%= $url.'?dl' %>  <%= end %></li>
-                <li><i class="icon icon-share"     title =" <%= l('Link for share on social networks') %>"></i> <%= link_to $url.'?t'   => begin %> <%= $url.'?t' %>   <%= end %></li>
-                <li><i class="icon icon-trash"     title =" <%= l('Deletion link') %>"></i>                     <%= link_to $delete_url => begin %> <%= $delete_url %> <%= end %></li>
-            </ul>
-        </div>
-% # Delay modification form
-        % my $modify_url = url_for('modify', {short => stash('real_short'), token => stash('token')})->to_abs();
-        <form class="form" role="form" method="POST" action="<%== $modify_url %>">
-            <div class="form-group form-inline">
-                <input name="image_url" type="hidden" value="<%= $url %>">
-                <select name="delete-day" class="form-control">
-                    %= include 'partial/for_my_delay', d => \%d
-                </select>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" name="first-view"> <%= l('Delete at first view?') %>
-                    </label>
-                </div>
-                <%= submit_button l('Let\'s go!'), class => 'btn btn-sm btn-default btn-primary', id => 'submitbutton' %>
+            <div class="col-sm-1">
+                <img class="thumbnail img-responsive" alt="<%= stash('filename') %> thumbnail" src="<%= stash('thumb') %>">
             </div>
-        </form>
+%     }
+            <div class="col-sm-11">
+% # Display image informations
+                % my $url = url_for('/'.stash('short'))->to_abs();
+                <h4>
+                    <%= stash('filename') %>
+                    &nbsp;&nbsp;&nbsp;<a title="<%= l('Tweet it!') %>" target="_blank" href="https://twitter.com/share?url=<%= $url %>?t"><span class="icon icon-twitter"></span></a>
+                </h4>
+                % my $delete_url = url_for('delete', {short => stash('real_short'), token => stash('token')})->to_abs();
+                <form class="form">
+                    <div class="form-group">
+                        <label class="sr-only" for="view"><%= l('View link') %></label>
+                        <div class="input-group col-sm-6">
+                            <div class="input-group-addon"><span class="icon icon-eye"         title =" <%= l('View link') %>"></span></div>
+                            <input type="text" class="form-control" id="view" value="<%= $url %>" readonly>
+                            <a href="#" onClick="copyToClipboard($(this));" class="input-group-addon jsonly" title="<%= l('Copy to clipboard') %>"><span class="icon icon-clipboard"></span></a>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="sr-only" for="markdown"><%= l('Markdown syntax') %></label>
+                        <div class="input-group col-sm-6">
+                            <div class="input-group-addon"><span class="markdown-mark-solid"   title ="<%= l('Markdown syntax') %>"></span></div>
+                            <input type="text" class="form-control" id="markdown" value="![](<%= $url %>)" readonly>
+                            <a href="#" onClick="copyToClipboard($(this));" class="input-group-addon jsonly" title="<%= l('Copy to clipboard') %>"><span class="icon icon-clipboard"></span></a>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="sr-only" for="download"><%= l('Download link') %></label>
+                        <div class="input-group col-sm-6">
+                            <div class="input-group-addon"><span class="icon icon-download"    title ="<%= l('Download link') %>"></span></div>
+                            <input type="text" class="form-control" id="download" value="<%= $url %>?dl" readonly>
+                            <a href="#" onClick="copyToClipboard($(this));" class="input-group-addon jsonly" title="<%= l('Copy to clipboard') %>"><span class="icon icon-clipboard"></span></a>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="sr-only" for="share"><%= l('Link for share on social networks') %></label>
+                        <div class="input-group col-sm-6">
+                            <div class="input-group-addon"><span class="icon icon-share"       title ="<%= l('Link for share on social networks') %>"></span></div>
+                            <input type="text" class="form-control" id="share" value="<%= $url %>?t" readonly>
+                            <a href="#" onClick="copyToClipboard($(this));" class="input-group-addon jsonly" title="<%= l('Copy to clipboard') %>"><span class="icon icon-clipboard"></span></a>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group col-sm-6 col-xs-12">
+                            <span class="form-control-static"><%= link_to $delete_url => ( class => "btn btn-default col-xs-12 text-left", title => l('Deletion link') ) => begin %><span class="icon icon-trash"></span> <%= $delete_url %> <%= end %></span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+% # Delay modification form
+            % my $modify_url = url_for('modify', {short => stash('real_short'), token => stash('token')})->to_abs();
+            <form class="form col-sm-11 col-sm-offset-1" method="POST" action="<%== $modify_url %>">
+                <div class="form-group form-inline">
+                    <input name="image_url" type="hidden" value="<%= $url %>">
+                    <select name="delete-day" class="form-control">
+                        %= include 'partial/for_my_delay', d => \%d
+                    </select>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" name="first-view"> <%= l('Delete at first view?') %>
+                        </label>
+                    </div>
+                    <%= submit_button l('Let\'s go!'), class => 'btn btn-sm btn-default btn-primary', id => 'submitmodbutton' %>
+                </div>
+            </form>
+        </div>
     </div>
 % }
 % if (defined(flash('success'))) {
@@ -61,7 +101,7 @@
 </div>
 
 <noscript>
-    <form class="form" role="form" method="POST" action="<%= url_for('/') %>" enctype="multipart/form-data">
+    <form class="form" method="POST" action="<%= url_for('/') %>" enctype="multipart/form-data">
         <div class="form-group form-inline">
             <select name="delete-day" class="form-control">
                 %= include 'partial/for_my_delay', d => \%d
@@ -75,7 +115,7 @@
                 </label>
                 <label>
                     <input type="checkbox" name="keep-exif"> <%= l('Keep EXIF tags') %>
-                <label>
+                </label>
             </div>
         </div>
         <div class="form-group">
@@ -106,7 +146,7 @@
             </label>
             <label>
                 <input type="checkbox" id="keep-exif"> <%= l('Keep EXIF tags') %>
-            <label>
+            </label>
         </div>
     </div>
     <div id="drag-and-drop-zone" class="uploader">
@@ -120,9 +160,9 @@
         </div>
     </div>
     <p class="help-block"><%= l('Only images are allowed') %></p>
-    <form class="form-horizontal" role="form" method="POST" action="<%== url_for('add') %>">
+    <form class="form-horizontal" method="POST" action="<%== url_for('add') %>">
         <div class="form-group">
-            <span class="col-sm-3 col-xs-12"><span class="hidden-spin" style="font-size:200%; display:none;" > <i class="icon-spinner animate-spin pull-right"></i></span><label for="lutim-file-url" class="control-label pull-right"><%= l('Upload an image with its URL') %></label></span>
+            <span class="col-sm-3 col-xs-12"><span class="hidden-spin" style="font-size:200%; display:none;" > <span class="icon-spinner animate-spin pull-right"></span></span><label for="lutim-file-url" class="control-label pull-right"><%= l('Upload an image with its URL') %></label></span>
             <div class="col-sm-9 col-xs-12">
                 <input type="url" name="lutim-file-url" class="form-control" id="lutim-file-url" placeholder="<%= l('Image URL') %>">
             </div>

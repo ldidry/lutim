@@ -48,3 +48,6 @@ label.always-encrypt {
 #install-app {
     display: none;
 }
+.form-control[readonly] {
+    background-color: #FFFFFF;
+}

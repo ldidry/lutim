@@ -49,6 +49,12 @@
       "src": "fontawesome"
     },
     {
+      "uid": "1a27e6346cdf0480c9c22351378bebbb",
+      "css": "clipboard",
+      "code": 59401,
+      "src": "typicons"
+    },
+    {
       "uid": "fccd3ea0efb711b849045bee686b1ceb",
       "css": "spinner",
       "code": 59398,

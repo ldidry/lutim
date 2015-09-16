@@ -1,3 +1,4 @@
+*.swp
 lutim.conf
 lutim.db
 script/hypnotoad.pid

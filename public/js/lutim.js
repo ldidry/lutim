@@ -1,5 +1,6 @@
 $('document').ready(function() {
     $('.jsonly').show();
+    $('.input-group-addon.jsonly').css('display', 'table-cell');
     // Are we in a mozilla navigator? (well, are we in a navigator which can handle webapps?)
     if (navigator.mozApps !== undefined) {
         var installCheck = navigator.mozApps.checkInstalled(manifestUrl);
