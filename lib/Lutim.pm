@@ -317,6 +317,12 @@ sub startup {
         to('Controller#stats')->
         name('stats');
 
+    $r->get('/myfiles' => sub {
+        shift->render(
+            template => 'myfiles'
+        );
+    })->name('myfiles');
+
     $r->get('/manifest.webapp')->
         to('Controller#webapp')->
         name('manifest.webapp');
@@ -332,6 +338,10 @@ sub startup {
     $r->post('/m/:short/:token')->
         to('Controller#modify')->
         name('modify');
+
+    $r->post('/c')->
+        to('Controller#get_counter')->
+        name('counter');
 
     $r->get('/(:short).(:f)')->
         to('Controller#short')->

@@ -1,17 +1,5 @@
 % # vim:set sw=4 ts=4 sts=4 ft=javascript expandtab:
 %= javascript begin
-    function link(url, dl, token, modify) {
-        if (token !== undefined) {
-            if (modify !== undefined && modify === true) {
-                return  '<%== url_for('/m/')->to_abs() %>'+url+'/'+token;
-            }
-            url = 'd/'+url+'/'+token;
-            return '<a class="btn btn-default col-xs-12 text-left" href="<%== url_for('/')->to_abs() %>'+url+'" title="<%= l('Deletion link') %>"><span class="icon icon-trash"></span> <%== url_for('/')->to_abs() %>'+url+'</a>';
-        } else if (dl !== '') {
-            url = url+'?'+dl;
-        }
-        return '<%== url_for('/')->to_abs() %>'+url;
-    }
     function tw_url(url) {
         var btn = '&nbsp;&nbsp;&nbsp;<a title="<%= l('Tweet it!') %>" target="_blank" href="https://twitter.com/share?url=<%== url_for('/')->to_abs() %>'+url+'?t"><span class="icon icon-twitter"></span></a>';
         if (navigator.mozSetMessageHandler !== undefined) {
@@ -176,8 +164,11 @@
                     $('.messages').prepend('<div class="col-xs-12 col-sm-11 col-sm-offset-1"><a id="copy-all" href="#" class="btn btn-info" onClick="copyAllToClipboard();"><%= l('Copy all view links to clipboard') %></a></div>');
                 }
                 $('.messages').append(buildMessage(data.success, data.msg));
-                $('.close').unbind('click', evaluateCopyAll);
-                $('.close').on('click', evaluateCopyAll);
+                if (data.success) {
+                    $('.close').unbind('click', evaluateCopyAll);
+                    $('.close').on('click', evaluateCopyAll);
+                    addItem(data.msg);
+                }
             },
             onUploadError: function(id, message){
                 $('.messages').append(buildMessage(false, ''));
@@ -212,6 +203,7 @@
                         $('#lutim-file-url').val('');
                         $('.close').unbind('click', evaluateCopyAll);
                         $('.close').on('click', evaluateCopyAll);
+                        addItem(data.msg);
                     }
                 },
                 error: function() {
@@ -267,7 +259,15 @@
             },
             success: function (data, message, xhr){
                 $('#1-div').remove();
+                if ($('#copy-all').length === 0 && data.success) {
+                    $('.messages').prepend('<div class="col-xs-12 col-sm-11 col-sm-offset-1"><a id="copy-all" href="#" class="btn btn-info" onClick="copyAllToClipboard();"><%= l('Copy all view links to clipboard') %></a></div>');
+                }
                 $('.messages').append(buildMessage(data.success, data.msg));
+                if (data.success) {
+                    $('.close').unbind('click', evaluateCopyAll);
+                    $('.close').on('click', evaluateCopyAll);
+                    addItem(data.msg);
+                }
             },
             error: function (xhr, status, errMsg){
                 $('.messages').append(buildMessage(false, ''));

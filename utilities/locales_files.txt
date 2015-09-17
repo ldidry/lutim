@@ -1,7 +1,9 @@
 templates/about.html.ep
 templates/index.html.ep
 templates/stats.html.ep
+templates/myfiles.html.ep
 templates/layouts/default.html.ep
+templates/partial/common.js.ep
 templates/partial/lutim.js.ep
 lib/Lutim.pm
 lib/Lutim/Controller.pm

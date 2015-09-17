@@ -172,4 +172,5 @@
 </div>
 <!-- /D&D Zone -->
 
+%= include 'partial/common', format => 'js'
 %= include 'partial/lutim', format => 'js', d => \%d

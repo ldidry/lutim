@@ -3,6 +3,7 @@ package Lutim::Controller;
 use Mojo::Base 'Mojolicious::Controller';
 use Mojo::Util qw(url_unescape b64_encode);
 use Mojo::Asset::Memory;
+use Mojo::JSON qw(true false);
 use DateTime;
 use Digest::file qw(digest_file_hex);
 use Text::Unidecode;
@@ -59,6 +60,28 @@ sub webapp {
     $c->render(
         template => 'manifest',
         format   => 'webapp'
+    );
+}
+
+sub get_counter {
+    my $c     = shift;
+    my $short = $c->param('short');
+    my $token = $c->param('token');
+
+    my @images = LutimModel::Lutim->select('WHERE short = ? AND path IS NOT NULL AND mod_token = ?', ($short, $token));
+    if (scalar(@images)) {
+        return $c->render(
+            json => {
+                success => true,
+                counter => $images[0]->counter
+            }
+        );
+    }
+    $c->render(
+        json => {
+            success => false,
+            msg     => $c->l('Unable to get counter')
+        }
     );
 }
 
@@ -257,7 +280,7 @@ sub add {
 
         my $ip = $c->ip;
 
-        my ($msg, $short, $real_short, $token, $thumb);
+        my ($msg, $short, $real_short, $token, $thumb, $limit, $created);
         # Check file type
         if (index($mediatype, 'image/') >= 0) {
             # Create directory if needed
@@ -360,6 +383,9 @@ sub add {
                     }
                     $token      = $records[0]->mod_token;
                     $short     .= '/'.$key if (defined($key));
+
+                    $limit   = $records[0]->delete_at_day;
+                    $created = $records[0]->created_at;
                 } else {
                     # Houston, we have a problem
                     $msg = $c->l('There is no more available URL. Retry or contact the administrator. %1', $c->config->{contact});
@@ -373,12 +399,15 @@ sub add {
         if (defined($c->param('format')) && $c->param('format') eq 'json') {
             if (defined($short)) {
                 $msg = {
-                    filename   => $upload->filename,
-                    short      => $short,
-                    real_short => $real_short,
-                    token      => $token,
-                    ext        => $ext || extensions($mediatype),
-                    thumb      => $thumb
+                    filename    => $upload->filename,
+                    short       => $short,
+                    real_short  => $real_short,
+                    token       => $token,
+                    ext         => $ext || extensions($mediatype),
+                    thumb       => $thumb,
+                    del_at_view => ($c->param('first-view')) ? true : false,
+                    limit       => $limit,
+                    created_at  => $created
                 };
             } else {
                 $msg = {

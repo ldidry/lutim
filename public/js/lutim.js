@@ -5,6 +5,7 @@ function addItem(item) {
     } else {
         files = JSON.parse(files);
     }
+    delete item['thumb'];
     files.push(item);
     localStorage.setItem('images', JSON.stringify(files));
 }
@@ -63,17 +64,21 @@ $('document').ready(function() {
             }
         }
     }
-    var firstview = ($('#first-view').prop('checked')) ? 1 : 0;
-    var deleteday = ($('#delete-day').prop('checked')) ? 1 : 0;
+    if ($('#first-view').length !== 0) {
+        var firstview = ($('#first-view').prop('checked')) ? 1 : 0;
+        var deleteday = ($('#delete-day').prop('checked')) ? 1 : 0;
 
-    bindddz(firstview, deleteday);
+        bindddz(firstview, deleteday);
 
-    $('#file-url-button').on('click', upload_url);
-    $('#lutim-file-url').keydown( function(e) {
-        var key = e.charCode ? e.charCode : e.keyCode ? e.keyCode : 0;
-        if(key == 13) {
-            e.preventDefault();
-            upload_url();
-        }
-    });
+        $('#file-url-button').on('click', upload_url);
+        $('#lutim-file-url').keydown( function(e) {
+            var key = e.charCode ? e.charCode : e.keyCode ? e.keyCode : 0;
+            if(key == 13) {
+                e.preventDefault();
+                upload_url();
+            }
+        });
+    } else if ($('#myfiles').length !== 0) {
+        populateFilesTable();
+    }
 });

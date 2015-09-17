@@ -1,0 +1,18 @@
+% # vim:set sw=4 ts=4 sts=4 ft=javascript expandtab:
+%= javascript begin
+    function link(url, dl, token, modify, only_url) {
+        if (token !== undefined) {
+            if (modify !== undefined && modify === true) {
+                return  '<%== url_for('/m/')->to_abs() %>'+url+'/'+token;
+            }
+            url = '<%== url_for('/')->to_abs() %>d/'+url+'/'+token;
+            if (only_url !== undefined && only_url === true) {
+                return url;
+            }
+            return '<a class="btn btn-default col-xs-12 text-left" href="'+url+'" title="<%= l('Deletion link') %>"><span class="icon icon-trash"></span> '+url+'</a>';
+        } else if (dl !== '') {
+            url = url+'?'+dl;
+        }
+        return '<%== url_for('/')->to_abs() %>'+url;
+    }
+% end

@@ -1,0 +1,78 @@
+% # vim:set sts=4 sw=4 ts=4 ft=html.epl expandtab:
+<h4><%= l('My images') %></h4>
+<hr>
+
+<p>
+    <%= l('Only the images sent with this browser will be listed here. The informations are stored in localStorage: if you delete your localStorage data, you\'ll loose this informations.') %>
+</p>
+
+<div class="table-responsive">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th class="text-center"><%= l('File name') %></th>
+                <th class="text-center"><%= l('View link') %></th>
+                <th class="text-center"><%= l('Counter') %></th>
+                <th class="text-center"><%= l('Delete at first view?') %></th>
+                <th class="text-center"><%= l('Uploaded at') %></th>
+                <th class="text-center"><%= l('Expires at') %></th>
+                <th class="text-center"><%= l('Deletion link') %></th>
+            </tr>
+        </thead>
+        <tbody id="myfiles">
+        </tbody>
+    </table>
+</div>
+
+<%= link_to url_for('/') => ( class => "btn btn-primary btn-lg" ) => begin %><%= l('Back to homepage') %><% end%>
+
+%= include 'partial/common', format => 'js'
+%= javascript begin
+    function populateFilesTable() {
+        var files = JSON.parse(localStorage.getItem('images'));
+        files.reverse();
+        files.forEach(function(element, index, array) {
+            var vlink      = link(element.short+'.'+element.ext, '');
+            var del_view   = (element.del_at_view) ? '<span class="icon icon-ok"></span>' : '<span class="icon icon-cancel"></span>';
+            var dlink      = link(element.short, 'dl', element.token, false, true);
+            var limit      = (element.limit === 0) ? '<%= l('No limit') %>' : moment.unix(element.limit * 86400 + element.created_at).locale(window.navigator.language).format('LLLL');
+            var created_at = moment.unix(element.created_at).locale(window.navigator.language).format('LLLL');
+
+            var tr = '<tr><td>'
+                +element.filename
+                +'</td><td>'
+                +'<a href="'+vlink+'">'+vlink+'</a>'
+                +'</td><td id="count-'+element.real_short+'" class="text-center">'
+                +'</td><td class="text-center">'
+                +del_view
+                +'</td><td>'
+                +created_at
+                +'</td><td>'
+                +limit
+                +'</td><td>'
+                +'<a href="'+dlink+'">'+dlink+'</a>'
+                +'</td></tr>';
+            $('#myfiles').append(tr);
+
+            $.ajax({
+                url  : '<%== url_for('counter') %>',
+                type : 'POST',
+                data : {
+                    'short': element.real_short,
+                    'token': element.token
+                },
+                success: function(data) {
+                    if (data.success) {
+                        $('#count-'+element.real_short).text(data.counter);
+                    } else {
+                        alert(data.msg);
+                    }
+                },
+                error: function() {
+                    alert(element.filename+'<%= l(': Error while trying to get the counter.') %>');
+                }
+            });
+        });
+    }
+% end
+%= javascript '/js/moment-with-locales.min.js'

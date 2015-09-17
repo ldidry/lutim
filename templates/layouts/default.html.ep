@@ -50,7 +50,8 @@
                         <%= link_to 'https://git.framasoft.org/luc/lutim' => (title => l('Fork me!')) => begin %><i class="lead icon icon-git"></i><% end %> 
                         <%= link_to $twitter_url                      => (title => l('Share on Twitter'))   => begin %><i class="lead icon icon-twitter"></i><% end %> 
                         <%= link_to 'https://flattr.com/submit/auto?user_id=_SKy_&url='.$url.'&title=Lutim&category=software' => (title => 'Flattr this') => begin %><i class="lead icon icon-flattr"></i><% end %> 
-                        <%= link_to 'bitcoin:1JCEtmx9pyzWfitMQj2pKAk8GNgyix7RmA?label=lutim' => (title => 'Give Bitcoins') => begin %><i class="lead icon icon-bitcoin"></i><% end %> 
+                        <%= link_to 'bitcoin:1JCEtmx9pyzWfitMQj2pKAk8GNgyix7RmA?label=lutim' => (title => 'Give Bitcoins') => begin %><i class="lead icon icon-bitcoin"></i><% end %> — 
+                        <%= link_to url_for('myfiles') => begin %><%= l('My images') %><% end %> — 
                         <a class="btn btn-default btn-xs" href="#" id="install-app"><img src="<%= url_for('/img/rocket.png') %>" alt="mozilla rocket logo"> <%= l('Install webapp') %></a>
                     </p>
                 </div>

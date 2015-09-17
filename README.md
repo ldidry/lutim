@@ -50,7 +50,15 @@ The details on how to contribute are on the [wiki](https://git.framasoft.org/luc
 
 ## Others projects dependancies
 
-Lutim is written in Perl with the [Mojolicious](http://mojolicio.us) framework, uses the [Twitter bootstrap](http://getbootstrap.com) framework to look not too ugly, [JQuery](http://jquery.com) and [JQuery File Uploader](https://github.com/danielm/uploader/) (slightly modified) to add some modernity, [Raphaël](http://raphaeljs.com/) and [morris.js](http://www.oesmith.co.uk/morris.js/) for stats graphs and [freezeframe.js](http://freezeframe.chrisantonellis.com/) (slightly modified) to be able to freeze animated gifs in twitter card.
+Lutim is written in Perl with the [Mojolicious](http://mojolicio.us) framework.
 
-Licenses for the icons fonts are in `public/font/LICENSE.txt` except for the [markdown font](https://github.com/dcurtis/markdown-mark/).
+It uses:
+
+* [Twitter bootstrap](http://getbootstrap.com) framework to look not too ugly
+* [JQuery](http://jquery.com) and [JQuery File Uploader](https://github.com/danielm/uploader/) (slightly modified) to add some modernity
+* [Raphaël](http://raphaeljs.com/) and [morris.js](http://www.oesmith.co.uk/morris.js/) for stats graphs
+* [freezeframe.js](http://freezeframe.chrisantonellis.com/) (slightly modified) to be able to freeze animated gifs in twitter card
+* [Moment.js](http://momentjs.com/) for displaying real dates instead of unix timestamps.
+* [Fontello](http://fontello.com/) and the [markdown font](https://github.com/dcurtis/markdown-mark/) for the icons, licenses for the fontello icons fonts are in `public/font/LICENSE.txt`
+* [Henny Penny](https://www.google.com/fonts/specimen/Henny+Penny) font designed by Olga Umpeleva for [Brownfox](http://brownfox.org)
 

@@ -7,6 +7,12 @@
   "ascent": 850,
   "glyphs": [
     {
+      "uid": "12f4ece88e46abd864e40b35e05b11cd",
+      "css": "ok",
+      "code": 59402,
+      "src": "fontawesome"
+    },
+    {
       "uid": "c5fd349cbd3d23e4ade333789c29c729",
       "css": "eye",
       "code": 59399,
@@ -65,6 +71,12 @@
       "css": "flattr",
       "code": 59394,
       "src": "zocial"
+    },
+    {
+      "uid": "499b745a2e2485bdd059c3a53d048e5f",
+      "css": "cancel",
+      "code": 59403,
+      "src": "elusive"
     }
   ]
 }
