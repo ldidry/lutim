@@ -12,16 +12,6 @@
         }
         return '<%== url_for('/')->to_abs() %>'+url;
     }
-    function share(url) {
-        new MozActivity({
-            name: 'share',
-            data: {
-                type: 'url',
-                number: 1,
-                url: url
-            }
-        });
-    }
     function tw_url(url) {
         var btn = '&nbsp;&nbsp;&nbsp;<a title="<%= l('Tweet it!') %>" target="_blank" href="https://twitter.com/share?url=<%== url_for('/')->to_abs() %>'+url+'?t"><span class="icon icon-twitter"></span></a>';
         if (navigator.mozSetMessageHandler !== undefined) {
@@ -111,13 +101,6 @@
         }
 
         document.body.removeChild(textArea);
-    }
-    function evaluateCopyAll() {
-        setTimeout(function() {
-            if ($('.view-link-input').length === 0) {
-                $('#copy-all').parent().remove();
-            }
-        }, 5);
     }
     function buildMessage(success, msg) {
         if(success) {
@@ -291,31 +274,4 @@
             },
         });
     }
-    window.onload = function() {
-        if (navigator.mozSetMessageHandler !== undefined) {
-            navigator.mozSetMessageHandler('activity', function handler(activityRequest) {
-                var activityName = activityRequest.source.name;
-                if (activityName == 'share') {
-                    activity = activityRequest;
-                    blob = activity.source.data.blobs[0];
-                    fileUpload(blob);
-                }
-            });
-        }
-    };
-    $('document').ready(function() {
-        var firstview = ($('#first-view').prop('checked')) ? 1 : 0;
-        var deleteday = ($('#delete-day').prop('checked')) ? 1 : 0;
-
-        bindddz(firstview, deleteday);
-
-        $('#file-url-button').on('click', upload_url);
-        $('#lutim-file-url').keydown( function(e) {
-            var key = e.charCode ? e.charCode : e.keyCode ? e.keyCode : 0;
-            if(key == 13) {
-                e.preventDefault();
-                upload_url();
-            }
-        });
-    });
 % end
