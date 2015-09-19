@@ -28,7 +28,7 @@
                     <div class="form-group">
                         <label class="sr-only" for="view"><%= l('View link') %></label>
                         <div class="input-group col-sm-6">
-                            <div class="input-group-addon"><span class="icon icon-eye"         title =" <%= l('View link') %>"></span></div>
+                            <div class="input-group-addon"><a href="<%= $url.'.'.stash('ext') %>" target="_blank"><span class="icon icon-eye" title =" <%= l('View link') %>"></span></a></div>
                             <input type="text" class="form-control" id="view" value="<%= $url.'.'.stash('ext') %>" readonly>
                             <a href="#" onClick="copyToClipboard($(this));" class="input-group-addon jsonly" title="<%= l('Copy to clipboard') %>"><span class="icon icon-clipboard"></span></a>
                         </div>
@@ -36,7 +36,7 @@
                     <div class="form-group">
                         <label class="sr-only" for="markdown"><%= l('Markdown syntax') %></label>
                         <div class="input-group col-sm-6">
-                            <div class="input-group-addon"><span class="markdown-mark-solid"   title ="<%= l('Markdown syntax') %>"></span></div>
+                            <div class="input-group-addon"><span class="markdown-mark-solid" title ="<%= l('Markdown syntax') %>"></span></div>
                             <input type="text" class="form-control" id="markdown" value="![](<%= $url %>)" readonly>
                             <a href="#" onClick="copyToClipboard($(this));" class="input-group-addon jsonly" title="<%= l('Copy to clipboard') %>"><span class="icon icon-clipboard"></span></a>
                         </div>
@@ -44,7 +44,7 @@
                     <div class="form-group">
                         <label class="sr-only" for="download"><%= l('Download link') %></label>
                         <div class="input-group col-sm-6">
-                            <div class="input-group-addon"><span class="icon icon-download"    title ="<%= l('Download link') %>"></span></div>
+                            <div class="input-group-addon"><a href="<%= $url %>?dl"><span class="icon icon-download" title ="<%= l('Download link') %>"></span></a></div>
                             <input type="text" class="form-control" id="download" value="<%= $url %>?dl" readonly>
                             <a href="#" onClick="copyToClipboard($(this));" class="input-group-addon jsonly" title="<%= l('Copy to clipboard') %>"><span class="icon icon-clipboard"></span></a>
                         </div>
@@ -52,7 +52,7 @@
                     <div class="form-group">
                         <label class="sr-only" for="share"><%= l('Link for share on social networks') %></label>
                         <div class="input-group col-sm-6">
-                            <div class="input-group-addon"><span class="icon icon-share"       title ="<%= l('Link for share on social networks') %>"></span></div>
+                            <div class="input-group-addon"><a href="<%= $url %>?t" target="_blank"><span class="icon icon-share" title ="<%= l('Link for share on social networks') %>"></span></a></div>
                             <input type="text" class="form-control" id="share" value="<%= $url %>?t" readonly>
                             <a href="#" onClick="copyToClipboard($(this));" class="input-group-addon jsonly" title="<%= l('Copy to clipboard') %>"><span class="icon icon-clipboard"></span></a>
                         </div>
