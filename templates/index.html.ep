@@ -9,18 +9,18 @@
     <p><%= l('The images are encrypted on the server (Lutim does not keep the key).') %></p>
 % }
 % if (defined(stash('short'))) {
+    % my $url = url_for('/'.stash('short'))->to_abs();
     <div class="alert alert-success">
         <div class="row">
-%     if (defined(stash('short'))) {
+%     if (defined(stash('thumb'))) {
             <div class="col-sm-1">
-                <img class="thumbnail img-responsive" alt="<%= stash('filename') %> thumbnail" src="<%= stash('thumb') %>">
+                <a href="<%= $url.'.'.stash('ext') %>" target="_blank"><img class="thumbnail img-responsive" alt="<%= stash('filename') %> thumbnail" src="<%= stash('thumb') %>"></a>
             </div>
 %     }
             <div class="col-sm-11">
 % # Display image informations
-                % my $url = url_for('/'.stash('short'))->to_abs();
                 <h4>
-                    <%= stash('filename') %>
+                    <a href="<%= $url.'.'.stash('ext') %>" target="_blank"><%= stash('filename') %></a>
                     &nbsp;&nbsp;&nbsp;<a title="<%= l('Tweet it!') %>" target="_blank" href="https://twitter.com/share?url=<%= $url %>?t"><span class="icon icon-twitter"></span></a>
                 </h4>
                 % my $delete_url = url_for('delete', {short => stash('real_short'), token => stash('token')})->to_abs();

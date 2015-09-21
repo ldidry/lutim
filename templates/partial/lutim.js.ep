@@ -92,15 +92,18 @@
     }
     function buildMessage(success, msg) {
         if(success) {
-            var thumb = (msg.thumb !== null) ? '<div class="col-sm-1"><img class="thumbnail img-responsive" alt="'+msg.filename+' thumbnail" src="'+msg.thumb+'"></div>' : ''
+            var s_url = link(msg.short+'.'+msg.ext, '');
+            var thumb = (msg.thumb !== null) ? '<div class="col-sm-1"><a href="'+s_url+'" target="_blank"><img class="thumbnail img-responsive" alt="'+msg.filename+' thumbnail" src="'+msg.thumb+'"></a></div>' : ''
             return '<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><div class="row">'
                 +thumb
                 +'<div class="col-sm-11"><h4>'
+                +'<a href="'+s_url+'" target="_blank">'
                 +msg.filename
+                +'</a>'
                 +tw_url(msg.short)
                 +'</h4>'
-                +'<form class="form"><div class="form-group"><label class="sr-only" for="view'+msg.real_short+'"><%= l('View link') %></label><div class="input-group col-sm-6"><div class="input-group-addon"><a href="'+link(msg.short+'.'+msg.ext, '')+'" target="_blank"><span class="icon icon-eye" title =" <%= l('View link') %>"></span></a></div><input type="text" class="form-control view-link-input" id="view'+msg.real_short+'" value="'
-                +link(msg.short+'.'+msg.ext, '')
+                +'<form class="form"><div class="form-group"><label class="sr-only" for="view'+msg.real_short+'"><%= l('View link') %></label><div class="input-group col-sm-6"><div class="input-group-addon"><a href="'+s_url+'" target="_blank"><span class="icon icon-eye" title =" <%= l('View link') %>"></span></a></div><input type="text" class="form-control view-link-input" id="view'+msg.real_short+'" value="'
+                +s_url
                 +'" readonly><a href="#" onClick="copyToClipboard($(this));" class="input-group-addon" title="<%= l('Copy to clipboard') %>"><span class="icon icon-clipboard"></span></a></div></div><div class="form-group"><label class="sr-only" for="markdown'+msg.real_short+'"><%= l('Markdown syntax') %></label><div class="input-group col-sm-6"><div class="input-group-addon"><span class="markdown-mark-solid" title ="<%= l('Markdown syntax') %>"></span></div><input type="text" class="form-control" id="markdown'+msg.real_short+'" value="![]('
                 +link(msg.short, '')
                 +')" readonly><a href="#" onClick="copyToClipboard($(this));" class="input-group-addon" title="<%= l('Copy to clipboard') %>"><span class="icon icon-clipboard"></span></a></div></div><div class="form-group"><label class="sr-only" for="download'+msg.real_short+'"><%= l('Download link') %></label><div class="input-group col-sm-6"><div class="input-group-addon"><a href="'+link(msg.short, 'dl')+'"><span class="icon icon-download" title ="<%= l('Download link') %>"></span></a></div><input type="text" class="form-control" id="download'+msg.real_short+'" value="'
