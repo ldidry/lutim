@@ -51,3 +51,9 @@ label.always-encrypt {
 .form-control[readonly] {
     background-color: #FFFFFF;
 }
+.alert .form-group {
+    margin-bottom: 5px;
+}
+#copy-all {
+    margin-bottom: 8px;
+}
