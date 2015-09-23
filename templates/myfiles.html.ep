@@ -34,7 +34,7 @@
         files.forEach(function(element, index, array) {
             var vlink      = link(element.short+'.'+element.ext, '');
             var del_view   = (element.del_at_view) ? '<span class="icon icon-ok"></span>' : '<span class="icon icon-cancel"></span>';
-            var dlink      = link(element.short, 'dl', element.token, false, true);
+            var dlink      = link(element.real_short, 'dl', element.token, false, true);
             var limit      = (element.limit === 0) ? '<%= l('No limit') %>' : moment.unix(element.limit * 86400 + element.created_at).locale(window.navigator.language).format('LLLL');
             var created_at = moment.unix(element.created_at).locale(window.navigator.language).format('LLLL');
 
