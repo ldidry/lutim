@@ -9,6 +9,21 @@ function addItem(item) {
     files.push(item);
     localStorage.setItem('images', JSON.stringify(files));
 }
+function delItem(short) {
+    var files = localStorage.getItem('images');
+    if (files === null) {
+        files = new Array();
+    } else {
+        files = JSON.parse(files);
+    }
+    $(files).each(function(index) {
+        if (files[index].real_short === short) {
+            files.splice(index, 1);
+            return false;
+        }
+    });
+    localStorage.setItem('images', JSON.stringify(files));
+}
 function share(url) {
     new MozActivity({
         name: 'share',

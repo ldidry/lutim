@@ -94,7 +94,7 @@
         if(success) {
             var s_url = link(msg.short+'.'+msg.ext, '');
             var thumb = (msg.thumb !== null) ? '<div class="col-sm-1"><a href="'+s_url+'" target="_blank"><img class="thumbnail img-responsive" alt="'+msg.filename+' thumbnail" src="'+msg.thumb+'"></a></div>' : ''
-            return '<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><div class="row">'
+            return '<div class="alert alert-success" id="alert-'+msg.real_short+'"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><div class="row">'
                 +thumb
                 +'<div class="col-sm-11"><h4>'
                 +'<a href="'+s_url+'" target="_blank">'
@@ -167,6 +167,7 @@
                     $('.messages').prepend('<div class="col-xs-12 col-sm-11 col-sm-offset-1"><a id="copy-all" href="#" class="btn btn-info" onClick="copyAllToClipboard();"><%= l('Copy all view links to clipboard') %></a></div>');
                 }
                 $('.messages').append(buildMessage(data.success, data.msg));
+                $('#del-'+data.msg.real_short).on('click', delImage);
                 if (data.success) {
                     $('.close').unbind('click', evaluateCopyAll);
                     $('.close').on('click', evaluateCopyAll);

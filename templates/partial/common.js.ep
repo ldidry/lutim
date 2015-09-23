@@ -1,15 +1,39 @@
 % # vim:set sw=4 ts=4 sts=4 ft=javascript expandtab:
 %= javascript begin
+    function delImage() {
+        var short = $(this).attr('data-short');
+        var token = $(this).attr('data-token');
+        $.ajax({
+            url: '<%= url_for('/') %>d/'+short+'/'+token,
+            method: 'GET',
+            data: {
+                format: 'json'
+            },
+            success: function(data) {
+                if (data.success) {
+                    $('#alert-'+short).remove();
+                    evaluateCopyAll();
+                    delItem(short);
+                } else {
+                    alert(data.msg);
+                }
+            },
+            error: function() {
+            },
+            complete: function() {
+            }
+        });
+    }
     function link(url, dl, token, modify, only_url) {
         if (token !== undefined) {
             if (modify !== undefined && modify === true) {
                 return  '<%== url_for('/m/')->to_abs() %>'+url+'/'+token;
             }
-            url = '<%== url_for('/')->to_abs() %>d/'+url+'/'+token;
+            var link = '<%== url_for('/')->to_abs() %>d/'+url+'/'+token;
             if (only_url !== undefined && only_url === true) {
-                return url;
+                return link;
             }
-            return '<a class="btn btn-default col-xs-12 text-left" href="'+url+'" title="<%= l('Deletion link') %>"><span class="icon icon-trash"></span> '+url+'</a>';
+            return '<a class="btn btn-default col-xs-12 text-left" href="#" title="<%= l('Deletion link') %>" id="del-'+url+'" data-short="'+url+'" data-token="'+token+'"><span class="icon icon-trash"></span> '+link+'</a>';
         } else if (dl !== '') {
             url = url+'?'+dl;
         }

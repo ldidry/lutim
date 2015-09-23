@@ -73,7 +73,8 @@ sub get_counter {
         return $c->render(
             json => {
                 success => true,
-                counter => $images[0]->counter
+                counter => $images[0]->counter,
+                enabled => ($images[0]->enabled) ? true : false
             }
         );
     }
@@ -172,21 +173,51 @@ sub delete {
             $c->app->log->info('[DELETION] someone made '.$image->filename.' removed with token method (path: '.$image->path.')');
 
             $c->delete_image($image);
-            $c->flash(
-                success => $c->l('The image %1 has been successfully deleted', $image->filename)
+            return $c->respond_to(
+                json => {
+                    json => {
+                        success => true,
+                        msg     => $c->l('The image %1 has been successfully deleted', $image->filename)
+                    }
+                },
+                any => sub {
+                    $c->flash(
+                        success => $c->l('The image %1 has been successfully deleted', $image->filename)
+                    );
+                    return $c->redirect_to('/');
+                }
             );
-            return $c->redirect_to('/');
         }
 
-        $c->flash(
-            msg => $msg
+        return $c->respond_to(
+            json => {
+                json => {
+                    success => false,
+                    msg     => $msg
+                }
+            },
+            any => sub {
+                $c->flash(
+                    msg => $msg
+                );
+                return $c->redirect_to('/');
+            }
         );
-        return $c->redirect_to('/');
     } else {
         $c->app->log->info('[UNSUCCESSFUL] someone tried to delete '.$short.' but it does\'nt exist.');
 
         # Image never existed
-        $c->render_not_found;
+        return $c->respond_to(
+            json => {
+                json => {
+                    success => false,
+                    msg     => $c->l('Unable to find the image %1.', $short)
+                }
+            },
+            any => sub {
+                shift->render_not_found;
+            }
+        );
     }
 }
 
