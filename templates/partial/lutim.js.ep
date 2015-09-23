@@ -1,5 +1,8 @@
 % # vim:set sw=4 ts=4 sts=4 ft=javascript expandtab:
 %= javascript begin
+    function selectInput() {
+        $(this).select();
+    }
     function tw_url(url) {
         var btn = '&nbsp;&nbsp;&nbsp;<a title="<%= l('Tweet it!') %>" target="_blank" href="https://twitter.com/share?url=<%== url_for('/')->to_abs() %>'+url+'?t"><span class="icon icon-twitter"></span></a>';
         if (navigator.mozSetMessageHandler !== undefined) {
@@ -171,6 +174,8 @@
                 if (data.success) {
                     $('.close').unbind('click', evaluateCopyAll);
                     $('.close').on('click', evaluateCopyAll);
+                    $('input[type=\'text\']').unbind("click", selectInput);
+                    $('input[type=\'text\']').on("click", selectInput);
                     addItem(data.msg);
                 }
             },
