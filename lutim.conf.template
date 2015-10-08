@@ -25,6 +25,10 @@
     # optional, default is 8
     #length            => 8,
 
+    # length of the encryption key
+    # optional, default is 8
+    #crypto_key_length => 8,
+
     # how many URLs will be provisioned in a batch ?
     # optional, default is 5
     #provis_step       => 5,

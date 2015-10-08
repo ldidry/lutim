@@ -19,17 +19,18 @@ sub startup {
 
     my $config = $self->plugin('Config', {
         default => {
-            provisioning     => 100,
-            provis_step      => 5,
-            length           => 8,
-            always_encrypt   => 0,
-            anti_flood_delay => 5,
-            tweet_card_via   => '@framasky',
-            max_file_size    => 10*1024*1024,
-            https            => 0,
-            default_delay    => 0,
-            max_delay        => 0,
-            token_length     => 24,
+            provisioning      => 100,
+            provis_step       => 5,
+            length            => 8,
+            always_encrypt    => 0,
+            anti_flood_delay  => 5,
+            tweet_card_via    => '@framasky',
+            max_file_size     => 10*1024*1024,
+            https             => 0,
+            default_delay     => 0,
+            max_delay         => 0,
+            token_length      => 24,
+            crypto_key_length => 8,
         }
     });
 
@@ -187,7 +188,7 @@ sub startup {
             my $upload   = shift;
             my $filename = shift;
 
-            my $key   = $c->shortener(8);
+            my $key   = $c->shortener($c->config('crypto_key_length'));
 
             my $cipher = Crypt::CBC->new(
                 -key    => $key,
