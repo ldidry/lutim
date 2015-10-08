@@ -16,7 +16,7 @@
     <p><%= l('Only the uploader! (well, only if he\'s the only owner of the images\' rights before the upload)') %></p>
     <p><%= l('Unlike many image sharing services, you don\'t give us rights on uploaded images.') %></p>
     <h4><%= l('How to report an image?') %></h4>
-    <p><%= l('Please contact the administrator: %1') %></p>
+    <p><%= l('Please contact the administrator: %1', config('contact')) %></p>
     <h4><%= l('How do you pronounce Lutim?') %></h4>
     <p><%== l('Juste like you pronounce the French word <a href="https://fr.wikipedia.org/wiki/Lutin">lutin</a> (/ly.tɛ̃/).') %></p>
     <h4><%= l('What about the software which provides the service?') %></h4>

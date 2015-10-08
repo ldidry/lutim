@@ -3,6 +3,7 @@ use Mojo::Base 'Mojolicious';
 use Mojo::Util qw(quote);
 use LutimModel;
 use Crypt::CBC;
+use Data::Entropy qw(entropy_source);
 
 $ENV{MOJO_TMPDIR} = 'tmp';
 mkdir($ENV{MOJO_TMPDIR}, 0700) unless (-d $ENV{MOJO_TMPDIR});
@@ -129,7 +130,7 @@ sub startup {
             my @chars  = ('a'..'z','A'..'Z','0'..'9');
             my $result = '';
             foreach (1..$length) {
-                $result .= $chars[rand scalar(@chars)];
+                $result .= $chars[entropy_source->get_int(scalar(@chars))];
             }
             return $result;
         }
