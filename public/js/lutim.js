@@ -54,6 +54,7 @@ window.onload = function() {
     }
 };
 $('document').ready(function() {
+
     $('.jsonly').show();
     $('.input-group-addon.jsonly').css('display', 'table-cell');
     // Are we in a mozilla navigator? (well, are we in a navigator which can handle webapps?)
@@ -84,6 +85,7 @@ $('document').ready(function() {
         var deleteday = ($('#delete-day').prop('checked')) ? 1 : 0;
 
         bindddz(firstview, deleteday);
+        initPaste();
 
         $('#file-url-button').on('click', upload_url);
         $('#lutim-file-url').keydown( function(e) {
