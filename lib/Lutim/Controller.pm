@@ -239,7 +239,7 @@ sub add {
                 my $tx = $ua->get($file_url => {DNT => 1});
                 if (my $res = $tx->success) {
                     $file_url    = url_unescape $file_url;
-                    $file_url    =~ m#^.*/([^/]*)$#;
+                    $file_url    =~ m#^.*/([^/?]*)\??.*$#;
                     my $filename = $1;
                     $filename    = 'uploaded.image' unless (defined($filename));
                     $filename   .= '.image' if (index($filename, '.') == -1);
