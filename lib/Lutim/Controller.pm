@@ -361,7 +361,7 @@ sub add {
                         $thumb .= b64_encode $im->ImageToBlob();
                     }
 
-                    unless (defined($keep_exif) && $keep_exif) {
+                    unless ((defined($keep_exif) && $keep_exif) || $mediatype eq 'image/svg+xml') {
                         # Remove the EXIF tags
                         my $data = new IO::Scalar \$upload->slurp();
                         my $et   = new Image::ExifTool;
