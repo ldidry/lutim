@@ -21,10 +21,10 @@ Lutim's logo is an adaptation of [Lutin](http://commons.wikimedia.org/wiki/File:
 
 ## Wiki
 
-The official wiki contains all what you need to know about Lutim (installation, API, etc). Go to <https://git.framasoft.org/luc/lutim/wikis/home> or clone it:
+The official wiki contains all what you need to know about Lutim (installation, API, etc). Go to <https://framagit.org/luc/lutim/wikis/home> or clone it:
 
 ```
-git clone https://git.framasoft.org/luc/lutim.wiki.git
+git clone https://framagit.org/luc/lutim.wiki.git
 ```
 
 ## Encryption
@@ -44,9 +44,9 @@ See [AUTHORS.md](AUTHORS.md) file.
 
 ## Contribute!
 
-Please consider contributing, either by [reporting issues](https://git.framasoft.org/luc/lutim/issues) or by helping the [internationalization](https://pootle.framasoft.org/projects/lutim/). And of course, code contribution are welcome!
+Please consider contributing, either by [reporting issues](https://framagit.org/luc/lutim/issues) or by helping the [internationalization](https://pootle.framasoft.org/projects/lutim/). And of course, code contribution are welcome!
 
-The details on how to contribute are on the [wiki](https://git.framasoft.org/luc/lutim/wikis/contribute).
+The details on how to contribute are on the [wiki](https://framagit.org/luc/lutim/wikis/contribute).
 
 ## Others projects dependancies
 

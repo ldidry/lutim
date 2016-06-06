@@ -130,8 +130,8 @@ msgstr "Nombre de archivo"
 #: templates/about.html.ep:24
 msgid ""
 "For more details, see the <a "
-"href=\"https://git.framasoft.org/luc/lutim\">homepage of the project</a>."
-msgstr "Para más detalles, vea la <a href=\"https://git.framasoft.org/luc/lutim\">página del proyecto</a>."
+"href=\"https://framagit.org/luc/lutim\">homepage of the project</a>."
+msgstr "Para más detalles, vea la <a href=\"https://framagit.org/luc/lutim\">página del proyecto</a>."
 
 #: templates/layouts/default.html.ep:50
 msgid "Fork me!"

@@ -21,7 +21,7 @@
     <p><%== l('Juste like you pronounce the French word <a href="https://fr.wikipedia.org/wiki/Lutin">lutin</a> (/ly.tɛ̃/).') %></p>
     <h4><%= l('What about the software which provides the service?') %></h4>
     <p><%== l('The Lutim software is a <a href="http://en.wikipedia.org/wiki/Free_software">free software</a>, which allows you to download and install it on you own server. Have a look at the <a href="https://www.gnu.org/licenses/agpl-3.0.html">AGPL</a> to see what you can do.') %></p>
-    <p><%== l('For more details, see the <a href="https://git.framasoft.org/luc/lutim">homepage of the project</a>.') %></p>
+    <p><%== l('For more details, see the <a href="https://framagit.org/luc/lutim">homepage of the project</a>.') %></p>
     <h4><%= l('Main developers') %></h4>
     <ul>
         <li>Luc Didry, aka Sky (<a href="https://fiat-tux.fr">https://fiat-tux.fr</a>), <%= l('core developer') %>, @framasky <%= l('on') %> <a href="https://framasphere.org/people/b13eb6b0beac0131e7e32a0000053625">Diaspora*</a> <%= l('and on') %> <a href="https://twitter.com/framasky">Twitter</a></li>

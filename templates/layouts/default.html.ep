@@ -47,7 +47,7 @@
                         &copy; 2014 <%= link_to 'http://www.fiat-tux.fr' => begin %>Luc Didry<% end %> — 
                         <%= l('License:') %> <%= link_to 'https://www.gnu.org/licenses/agpl-3.0.html' => begin %>AGPL<% end %> — 
                         <%= link_to url_for('about') => begin %><%= l('Informations') %><% end %> — 
-                        <%= link_to 'https://git.framasoft.org/luc/lutim' => (title => l('Fork me!')) => begin %><i class="lead icon icon-git"></i><% end %> 
+                        <%= link_to 'https://framagit.org/luc/lutim' => (title => l('Fork me!')) => begin %><i class="lead icon icon-git"></i><% end %> 
                         <%= link_to $twitter_url                      => (title => l('Share on Twitter'))   => begin %><i class="lead icon icon-twitter"></i><% end %> 
                         <%= link_to 'https://flattr.com/submit/auto?user_id=_SKy_&url='.$url.'&title=Lutim&category=software' => (title => 'Flattr this') => begin %><i class="lead icon icon-flattr"></i><% end %> 
                         <%= link_to 'bitcoin:1JCEtmx9pyzWfitMQj2pKAk8GNgyix7RmA?label=lutim' => (title => 'Give Bitcoins') => begin %><i class="lead icon icon-bitcoin"></i><% end %> — 
