@@ -358,7 +358,12 @@ sub add {
                         $im->Resize(geometry=>'x85');
 
                         $thumb  = 'data:'.$mediatype.';base64,';
-                        $thumb .= b64_encode $im->ImageToBlob();
+                        if ($mediatype eq 'image/gif') {
+                            $thumb .= b64_encode $im->[0]->ImageToBlob();
+                        } else {
+                            $thumb .= b64_encode $im->ImageToBlob();
+                        }
+
                     }
 
                     unless ((defined($keep_exif) && $keep_exif) || $mediatype eq 'image/svg+xml') {
