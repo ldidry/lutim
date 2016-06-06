@@ -11,3 +11,6 @@ locales:
 dev:
 	rm public/packed/*
 	$(CARTON) morbo $(LUTIM) --listen http://0.0.0.0:3000
+
+devlog:
+	multitail log/development.log

@@ -319,6 +319,12 @@ sub startup {
         to('Controller#stats')->
         name('stats');
 
+    $r->get('/gallery' => sub {
+        shift->render(
+            template => 'gallery',
+        );
+    })->name('gallery');
+
     $r->get('/myfiles' => sub {
         shift->render(
             template => 'myfiles'

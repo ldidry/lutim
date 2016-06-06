@@ -1,0 +1,35 @@
+% # vim:set sw=4 ts=4 sts=4 ft=html.epl expandtab:
+<div class="container">
+    <div id="gallery" style="display:none;">
+    </div>
+</div>
+%= stylesheet 'gallery/css/unite-gallery.css'
+%= stylesheet 'gallery/themes/default/ug-theme-default.css'
+%= javascript 'gallery/js/unitegallery.js'
+%= javascript 'gallery/themes/tiles/ug-theme-tiles.js'
+%= javascript begin
+$(document).ready(function() {
+    var absUrl = '<%= url_for('/') %>';
+
+    var key = window.location.hash.substring(1);  // Get key
+    // First, strip everything after the equal sign (=) which signals end of base64 string.
+    i = key.indexOf('='); if (i>-1) { key = key.substring(0,i+1); }
+    // If the equal sign was not present, some parameters may remain:
+    i = key.indexOf('&'); if (i>-1) { key = key.substring(0,i); }
+
+    var keys = key.split(',');
+
+    var items = [];
+    keys.forEach(function(element, index, array) {
+        $('#gallery').append(
+            [
+                '<img src="', absUrl+element, '" data-image="', absUrl+element, '" data-description="" alt="">'
+            ].join('')
+        );
+    });
+    var api = $("#gallery").unitegallery({
+        gallery_theme:     "tiles",
+        tiles_max_columns: 4,
+    });
+});
+% end

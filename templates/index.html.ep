@@ -4,6 +4,24 @@
 %   delay_1   => l('24 hours'),
 %   delay_365 => l('1 year')
 % );
+<div id="gallery-url" class="hidden row">
+    <form class="form col-sm-12">
+        <div class="form-group">
+            <label for="gallery-url-input"><%= l('Gallery link') %></label>
+            <div class="input-group">
+                <div class="input-group-addon">
+                    <a id="gallery-url-link" href="#" target="_blank" title="<%= l('Gallery link') %>">
+                        <span class="icon icon-picture"></span>
+                    </a>
+                </div>
+                <input class="form-control" name="gallery-url-input" type="text" id="gallery-url-input" readonly></input>
+                <a href="#" onClick="copyToClipboard($(this));" class="input-group-addon jsonly" title="<%= l('Copy to clipboard') %>">
+                    <span class="icon icon-clipboard"></span>
+                </a>
+            </div>
+        </div>
+    </form>
+</div>
 <div class="messages">
 % if (config('always_encrypt')) {
     <p><%= l('The images are encrypted on the server (Lutim does not keep the key).') %></p>

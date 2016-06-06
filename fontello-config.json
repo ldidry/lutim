@@ -77,6 +77,12 @@
       "css": "cancel",
       "code": 59403,
       "src": "elusive"
+    },
+    {
+      "uid": "baa375529925294ea0a2bc889c93ba2d",
+      "css": "picture",
+      "code": 59405,
+      "src": "websymbols"
     }
   ]
 }

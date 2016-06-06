@@ -1,5 +1,24 @@
 % # vim:set sw=4 ts=4 sts=4 ft=javascript expandtab:
 %= javascript begin
+    window.gallery_url = '<%= url_for('gallery')->to_abs %>#';
+    window.short_hash = {};
+    function addToShortHash(short) {
+        window.short_hash[short] = 1;
+        console.dir(window.short_hash);
+        if (Object.keys(window.short_hash).length > 0) {
+            $('#gallery-url').removeClass('hidden');
+            $('#gallery-url-input').val(window.gallery_url+Object.keys(window.short_hash).join(','));
+            $('#gallery-url-link').attr('href', window.gallery_url+Object.keys(window.short_hash).join(','));
+        }
+    }
+    function rmFromShortHash(short) {
+        delete window.short_hash[short];
+        $('#gallery-url-input').val(window.gallery_url+Object.keys(window.short_hash).join(','));
+        $('#gallery-url-link').attr('href', window.gallery_url+Object.keys(window.short_hash).join(','));
+        if (Object.keys(window.short_hash).length === 0) {
+            $('#gallery-url').addClass('hidden');
+        }
+    }
     function selectInput() {
         $(this).select();
     }
@@ -97,7 +116,7 @@
         if(success) {
             var s_url = link(msg.short+'.'+msg.ext, '');
             var thumb = (msg.thumb !== null) ? '<div class="col-sm-1"><a href="'+s_url+'" target="_blank"><img class="thumbnail img-responsive" alt="'+msg.filename+' thumbnail" src="'+msg.thumb+'"></a></div>' : ''
-            return '<div class="alert alert-success" id="alert-'+msg.real_short+'"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><div class="row">'
+            return '<div class="alert alert-success" id="alert-'+msg.real_short+'"><button type="button" class="close" data-dismiss="alert" aria-hidden="true" onclick="rmFromShortHash(\''+msg.real_short+'\');">&times;</button><div class="row">'
                 +thumb
                 +'<div class="col-sm-11"><h4>'
                 +'<a href="'+s_url+'" target="_blank">'
@@ -167,11 +186,20 @@
             onUploadSuccess: function(id, data){
                 $('#'+id+'-div').remove();
                 if ($('#copy-all').length === 0 && data.success) {
-                    $('.messages').prepend('<div class="col-xs-12 col-sm-11 col-sm-offset-1"><a id="copy-all" href="#" class="btn btn-info" onClick="copyAllToClipboard();"><%= l('Copy all view links to clipboard') %></a></div>');
+                    $('.messages').prepend(
+                        [
+                            '<div class="col-xs-12 col-sm-11 col-sm-offset-1">',
+                            '    <a id="copy-all" href="#" class="btn btn-info" onClick="copyAllToClipboard();">',
+                            '        <%= l('Copy all view links to clipboard') %>',
+                            '    </a>',
+                            '</div>'
+                        ].join('')
+                    );
                 }
                 $('.messages').append(buildMessage(data.success, data.msg));
                 $('#del-'+data.msg.real_short).on('click', delImage);
                 if (data.success) {
+                    addToShortHash(data.msg.short);
                     $('.close').unbind('click', evaluateCopyAll);
                     $('.close').on('click', evaluateCopyAll);
                     $('input[type=\'text\']').unbind("click", selectInput);
@@ -210,6 +238,7 @@
                             $('.messages').prepend('<div class="col-xs-12 col-sm-11 col-sm-offset-1"><a id="copy-all" href="#" class="btn btn-info" onClick="copyAllToClipboard();"><%= l('Copy all view links to clipboard') %></a></div>');
                         }
                         $('#lutim-file-url').val('');
+                        addToShortHash(data.msg.short);
                         $('.close').unbind('click', evaluateCopyAll);
                         $('.close').on('click', evaluateCopyAll);
                         addItem(data.msg);
