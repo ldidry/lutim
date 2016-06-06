@@ -18,6 +18,7 @@ Revision history for Lutim
 	- Add list of user's images in localStorage and a page to list the user's images
 	- Use cryptographically secure random generator
 	- Allow to set the encryption length in lutim.conf
+	- Add the possibility of displaying images in a gallery
 	- bugfixes
 
 0.6  2014-10-03
