@@ -110,7 +110,7 @@
     # optional, default is lutim.db
     #db_path           => 'lutim.db',
 
-    # define the heigth of the thumbnails generated at users' will
+    # define the height of the thumbnails generated at users' will
     # this is not the height of the thumbnails send after upload,
     # we're talking about thumbnails generated when someone asked for
     # https://example.org/lutim/tesrinp?thumb
