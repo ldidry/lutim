@@ -116,7 +116,7 @@
         if(success) {
             var s_url = link(msg.short+'.'+msg.ext, '');
             var thumb = (msg.thumb !== null) ? '<div class="col-sm-1"><a href="'+s_url+'" target="_blank"><img class="thumbnail img-responsive" alt="'+msg.filename+' thumbnail" src="'+msg.thumb+'"></a></div>' : ''
-            return '<div class="alert alert-success" id="alert-'+msg.real_short+'"><button type="button" class="close" data-dismiss="alert" aria-hidden="true" onclick="rmFromShortHash(\''+msg.real_short+'\');">&times;</button><div class="row">'
+            return '<div class="alert alert-success" id="alert-'+msg.real_short+'"><button type="button" class="close" data-dismiss="alert" aria-hidden="true" onclick="rmFromShortHash(\''+msg.short+'\');">&times;</button><div class="row">'
                 +thumb
                 +'<div class="col-sm-11"><h4>'
                 +'<a href="'+s_url+'" target="_blank">'
