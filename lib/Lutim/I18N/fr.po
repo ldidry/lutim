@@ -149,7 +149,7 @@ msgstr "Créez un fork !"
 #: templates/index.html.ep:10
 #: templates/index.html.ep:13
 msgid "Gallery link"
-msgstr "Lien vers la gallerie"
+msgstr "Lien vers la galerie"
 
 #: templates/partial/lutim.js.ep:110
 #: templates/partial/lutim.js.ep:76
