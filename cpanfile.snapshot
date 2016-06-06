@@ -211,32 +211,31 @@ DISTRIBUTIONS
       Scalar::Util 0
       strict 0
       warnings 0
-  Data-Validate-URI-0.06
-    pathname: S/SO/SONNEN/Data-Validate-URI-0.06.tar.gz
+  Data-Validate-URI-0.07
+    pathname: S/SO/SONNEN/Data-Validate-URI-0.07.tar.gz
     provides:
-      Data::Validate::URI 0.06
+      Data::Validate::URI 0.07
     requirements:
       Data::Validate::Domain 0
       Data::Validate::IP 0
       ExtUtils::MakeMaker 0
-  DateTime-1.20
-    pathname: D/DR/DROLSKY/DateTime-1.20.tar.gz
+  DateTime-1.28
+    pathname: D/DR/DROLSKY/DateTime-1.28.tar.gz
     provides:
-      DateTime 1.20
-      DateTime::Duration 1.20
-      DateTime::Helpers 1.20
-      DateTime::Infinite 1.20
-      DateTime::Infinite::Future 1.20
-      DateTime::Infinite::Past 1.20
-      DateTime::LeapSecond 1.20
-      DateTime::PP 1.20
-      DateTime::PPExtra 1.20
+      DateTime 1.28
+      DateTime::Duration 1.28
+      DateTime::Helpers 1.28
+      DateTime::Infinite 1.28
+      DateTime::Infinite::Future 1.28
+      DateTime::Infinite::Past 1.28
+      DateTime::LeapSecond 1.28
+      DateTime::PP 1.28
+      DateTime::PPExtra 1.28
     requirements:
       Carp 0
       DateTime::Locale 0.41
       DateTime::TimeZone 1.74
-      ExtUtils::CBuilder 0
-      Module::Build 0.28
+      ExtUtils::MakeMaker 0
       POSIX 0
       Params::Validate 1.03
       Scalar::Util 0
@@ -1111,10 +1110,10 @@ DISTRIBUTIONS
       strict 0
       vars 0
       warnings 0
-  EV-4.21
-    pathname: M/ML/MLEHMANN/EV-4.21.tar.gz
+  EV-4.22
+    pathname: M/ML/MLEHMANN/EV-4.22.tar.gz
     provides:
-      EV 4.21
+      EV 4.22
       EV::MakeMaker undef
     requirements:
       Canary::Stability 0
@@ -1180,17 +1179,13 @@ DISTRIBUTIONS
       File::Spec 3.29
       Test::More 0.42
       perl 5.00503
-  File-Which-1.09
-    pathname: A/AD/ADAMK/File-Which-1.09.tar.gz
+  File-Which-1.21
+    pathname: P/PL/PLICEASE/File-Which-1.21.tar.gz
     provides:
-      File::Which 1.09
+      File::Which 1.21
     requirements:
-      Exporter 0
       ExtUtils::MakeMaker 0
-      File::Spec 0.60
-      Getopt::Std 0
-      Test::More 0.80
-      Test::Script 1.05
+      perl 5.006
   Filesys-DiskUsage-0.08
     pathname: S/SZ/SZABGAB/Filesys-DiskUsage-0.08.tar.gz
     provides:
@@ -1213,17 +1208,25 @@ DISTRIBUTIONS
       perl 5.005
       strict 0
       warnings 0
-  IO-Socket-SSL-2.019
-    pathname: S/SU/SULLR/IO-Socket-SSL-2.019.tar.gz
+  IO-Socket-IP-0.37
+    pathname: P/PE/PEVANS/IO-Socket-IP-0.37.tar.gz
     provides:
-      IO::Socket::SSL 2.019
+      IO::Socket::IP 0.37
+    requirements:
+      IO::Socket 0
+      Socket 1.97
+      Test::More 0.88
+  IO-Socket-SSL-2.027
+    pathname: S/SU/SULLR/IO-Socket-SSL-2.027.tar.gz
+    provides:
+      IO::Socket::SSL 2.027
       IO::Socket::SSL::Intercept 2.014
-      IO::Socket::SSL::OCSP_Cache 2.019
-      IO::Socket::SSL::OCSP_Resolver 2.019
+      IO::Socket::SSL::OCSP_Cache 2.027
+      IO::Socket::SSL::OCSP_Resolver 2.027
       IO::Socket::SSL::PublicSuffix undef
-      IO::Socket::SSL::SSL_Context 2.019
-      IO::Socket::SSL::SSL_HANDLE 2.019
-      IO::Socket::SSL::Session_Cache 2.019
+      IO::Socket::SSL::SSL_Context 2.027
+      IO::Socket::SSL::SSL_HANDLE 2.027
+      IO::Socket::SSL::Session_Cache 2.027
       IO::Socket::SSL::Utils 2.014
     requirements:
       ExtUtils::MakeMaker 0
@@ -1245,10 +1248,10 @@ DISTRIBUTIONS
       IO::WrapTie::Slave 2.111
     requirements:
       ExtUtils::MakeMaker 0
-  IPC-Run3-0.046
-    pathname: R/RJ/RJBS/IPC-Run3-0.046.tar.gz
+  IPC-Run3-0.048
+    pathname: R/RJ/RJBS/IPC-Run3-0.048.tar.gz
     provides:
-      IPC::Run3 0.046
+      IPC::Run3 0.048
     requirements:
       ExtUtils::MakeMaker 0
       Test::More 0.31
@@ -1268,73 +1271,74 @@ DISTRIBUTIONS
       re 0
       strict 0
       warnings 0
-  Image-ExifTool-10.00
-    pathname: E/EX/EXIFTOOL/Image-ExifTool-10.00.tar.gz
+  Image-ExifTool-10.15
+    pathname: E/EX/EXIFTOOL/Image-ExifTool-10.15.tar.gz
     provides:
       File::RandomAccess 1.10
-      Image::ExifTool 10.00
+      Image::ExifTool 10.15
       Image::ExifTool::AES 1.01
       Image::ExifTool::AFCP 1.07
       Image::ExifTool::AIFF 1.07
-      Image::ExifTool::APE 1.04
-      Image::ExifTool::APP12 1.12
+      Image::ExifTool::APE 1.05
+      Image::ExifTool::APP12 1.13
       Image::ExifTool::ASF 1.23
       Image::ExifTool::Apple 1.02
       Image::ExifTool::Audible 1.02
       Image::ExifTool::BMP 1.08
       Image::ExifTool::BZZ 1.00
       Image::ExifTool::BigTIFF 1.06
-      Image::ExifTool::BuildTagLookup 2.89
-      Image::ExifTool::Canon 3.51
-      Image::ExifTool::CanonCustom 1.50
+      Image::ExifTool::BuildTagLookup 2.95
+      Image::ExifTool::Canon 3.61
+      Image::ExifTool::CanonCustom 1.53
       Image::ExifTool::CanonRaw 1.58
-      Image::ExifTool::CanonVRD 1.25
+      Image::ExifTool::CanonVRD 1.28
       Image::ExifTool::CaptureOne 1.04
       Image::ExifTool::Casio 1.37
-      Image::ExifTool::Charset 1.08
+      Image::ExifTool::Charset 1.09
       Image::ExifTool::DICOM 1.19
-      Image::ExifTool::DNG 1.21
+      Image::ExifTool::DNG 1.22
       Image::ExifTool::DPX 1.02
       Image::ExifTool::DV 1.01
       Image::ExifTool::DarwinCore 1.01
       Image::ExifTool::DjVu 1.05
-      Image::ExifTool::EXE 1.11
-      Image::ExifTool::Exif 3.74
+      Image::ExifTool::EXE 1.13
+      Image::ExifTool::Exif 3.79
       Image::ExifTool::FLAC 1.07
-      Image::ExifTool::FLIR 1.13
+      Image::ExifTool::FLIR 1.14
       Image::ExifTool::Fixup 1.05
       Image::ExifTool::Flash 1.12
       Image::ExifTool::FlashPix 1.26
       Image::ExifTool::Font 1.08
-      Image::ExifTool::FotoStation 1.03
-      Image::ExifTool::FujiFilm 1.51
+      Image::ExifTool::FotoStation 1.04
+      Image::ExifTool::FujiFilm 1.53
       Image::ExifTool::GE 1.00
-      Image::ExifTool::GIF 1.11
+      Image::ExifTool::GIF 1.12
       Image::ExifTool::GIMP 1.02
       Image::ExifTool::GPS 1.44
       Image::ExifTool::GeoTiff 1.11
-      Image::ExifTool::Geotag 1.47
-      Image::ExifTool::H264 1.12
+      Image::ExifTool::Geotag 1.48
+      Image::ExifTool::H264 1.14
       Image::ExifTool::HP 1.04
       Image::ExifTool::HTML 1.15
-      Image::ExifTool::HtmlDump 1.32
-      Image::ExifTool::ICC_Profile 1.29
-      Image::ExifTool::ID3 1.46
+      Image::ExifTool::HtmlDump 1.33
+      Image::ExifTool::ICC_Profile 1.30
+      Image::ExifTool::ID3 1.47
       Image::ExifTool::IPTC 1.53
+      Image::ExifTool::ISO 1.01
       Image::ExifTool::ITC 1.02
       Image::ExifTool::Import 1.05
       Image::ExifTool::InDesign 1.04
       Image::ExifTool::JPEG 1.25
-      Image::ExifTool::JPEGDigest 1.04
+      Image::ExifTool::JPEGDigest 1.05
       Image::ExifTool::JVC 1.03
-      Image::ExifTool::Jpeg2000 1.23
+      Image::ExifTool::Jpeg2000 1.25
       Image::ExifTool::Kodak 1.41
       Image::ExifTool::KyoceraRaw 1.03
       Image::ExifTool::LNK 1.07
       Image::ExifTool::Lang::cs 1.07
       Image::ExifTool::Lang::de 1.30
-      Image::ExifTool::Lang::en_ca 1.09
-      Image::ExifTool::Lang::en_gb 1.09
+      Image::ExifTool::Lang::en_ca 1.10
+      Image::ExifTool::Lang::en_gb 1.11
       Image::ExifTool::Lang::es 1.14
       Image::ExifTool::Lang::fi 1.02
       Image::ExifTool::Lang::fr 1.30
@@ -1350,48 +1354,49 @@ DISTRIBUTIONS
       Image::ExifTool::Lang::zh_tw 1.06
       Image::ExifTool::Leaf 1.06
       Image::ExifTool::Lytro 1.02
-      Image::ExifTool::M2TS 1.11
-      Image::ExifTool::MIE 1.44
+      Image::ExifTool::M2TS 1.12
+      Image::ExifTool::MIE 1.45
       Image::ExifTool::MIFF 1.07
       Image::ExifTool::MNG 1.00
       Image::ExifTool::MOI 1.02
       Image::ExifTool::MPC 1.01
       Image::ExifTool::MPEG 1.15
-      Image::ExifTool::MPF 1.11
+      Image::ExifTool::MPF 1.12
       Image::ExifTool::MWG 1.16
-      Image::ExifTool::MXF 1.07
-      Image::ExifTool::MakerNotes 1.96
+      Image::ExifTool::MXF 1.08
+      Image::ExifTool::MakerNotes 1.97
       Image::ExifTool::Matroska 1.07
-      Image::ExifTool::Microsoft 1.16
-      Image::ExifTool::Minolta 2.26
+      Image::ExifTool::Microsoft 1.17
+      Image::ExifTool::Minolta 2.32
       Image::ExifTool::MinoltaRaw 1.14
-      Image::ExifTool::Nikon 3.08
-      Image::ExifTool::NikonCapture 1.13
+      Image::ExifTool::Motorola 1.00
+      Image::ExifTool::Nikon 3.17
+      Image::ExifTool::NikonCapture 1.14
       Image::ExifTool::NikonCustom 1.12
       Image::ExifTool::Nintendo 1.00
       Image::ExifTool::OOXML 1.07
       Image::ExifTool::Ogg 1.01
-      Image::ExifTool::Olympus 2.34
-      Image::ExifTool::OpenEXR 1.01
-      Image::ExifTool::PDF 1.38
+      Image::ExifTool::Olympus 2.40
+      Image::ExifTool::OpenEXR 1.02
+      Image::ExifTool::PDF 1.41
       Image::ExifTool::PGF 1.02
       Image::ExifTool::PICT 1.05
-      Image::ExifTool::PLIST 1.05
-      Image::ExifTool::PNG 1.34
-      Image::ExifTool::PPM 1.07
+      Image::ExifTool::PLIST 1.06
+      Image::ExifTool::PNG 1.36
+      Image::ExifTool::PPM 1.08
       Image::ExifTool::PSP 1.05
       Image::ExifTool::Palm 1.00
       Image::ExifTool::Panasonic 1.91
       Image::ExifTool::PanasonicRaw 1.09
-      Image::ExifTool::Pentax 2.93
-      Image::ExifTool::PhaseOne 1.02
+      Image::ExifTool::Pentax 3.02
+      Image::ExifTool::PhaseOne 1.03
       Image::ExifTool::PhotoCD 1.01
       Image::ExifTool::PhotoMechanic 1.04
-      Image::ExifTool::Photoshop 1.47
-      Image::ExifTool::PostScript 1.40
+      Image::ExifTool::Photoshop 1.49
+      Image::ExifTool::PostScript 1.41
       Image::ExifTool::PrintIM 1.07
       Image::ExifTool::Qualcomm 1.01
-      Image::ExifTool::QuickTime 1.91
+      Image::ExifTool::QuickTime 1.96
       Image::ExifTool::RIFF 1.41
       Image::ExifTool::RSRC 1.08
       Image::ExifTool::RTF 1.02
@@ -1399,24 +1404,24 @@ DISTRIBUTIONS
       Image::ExifTool::Rawzor 1.04
       Image::ExifTool::Real 1.06
       Image::ExifTool::Reconyx 1.04
-      Image::ExifTool::Ricoh 1.30
-      Image::ExifTool::Samsung 1.31
+      Image::ExifTool::Ricoh 1.31
+      Image::ExifTool::Samsung 1.32
       Image::ExifTool::Sanyo 1.16
       Image::ExifTool::Scalado 1.01
-      Image::ExifTool::Shortcuts 1.55
+      Image::ExifTool::Shortcuts 1.57
       Image::ExifTool::Sigma 1.17
       Image::ExifTool::SigmaRaw 1.24
-      Image::ExifTool::Sony 2.23
-      Image::ExifTool::SonyIDC 1.04
+      Image::ExifTool::Sony 2.34
+      Image::ExifTool::SonyIDC 1.05
       Image::ExifTool::Stim 1.01
-      Image::ExifTool::TagInfoXML 1.27
-      Image::ExifTool::TagLookup 1.12
+      Image::ExifTool::TagInfoXML 1.28
+      Image::ExifTool::TagLookup 1.13
       Image::ExifTool::Theora 1.00
       Image::ExifTool::Torrent 1.03
       Image::ExifTool::Unknown 1.13
       Image::ExifTool::VCard 1.04
       Image::ExifTool::Vorbis 1.08
-      Image::ExifTool::XMP 2.88
+      Image::ExifTool::XMP 2.91
       Image::ExifTool::ZIP 1.18
       Image::ExifTool::iWork 1.04
     requirements:
@@ -1563,8 +1568,8 @@ DISTRIBUTIONS
       perl 5.006
       strict 0
       warnings 0
-  Mojolicious-6.18
-    pathname: S/SR/SRI/Mojolicious-6.18.tar.gz
+  Mojolicious-6.63
+    pathname: S/SR/SRI/Mojolicious-6.63.tar.gz
     provides:
       Mojo undef
       Mojo::Asset undef
@@ -1596,7 +1601,6 @@ DISTRIBUTIONS
       Mojo::IOLoop::Stream undef
       Mojo::JSON undef
       Mojo::JSON::Pointer undef
-      Mojo::JSON::_Bool undef
       Mojo::Loader undef
       Mojo::Log undef
       Mojo::Message undef
@@ -1627,7 +1631,8 @@ DISTRIBUTIONS
       Mojo::UserAgent::Server undef
       Mojo::UserAgent::Transactor undef
       Mojo::Util undef
-      Mojolicious 6.18
+      Mojo::WebSocket undef
+      Mojolicious 6.63
       Mojolicious::Command undef
       Mojolicious::Command::cgi undef
       Mojolicious::Command::cpanify undef
@@ -1675,17 +1680,33 @@ DISTRIBUTIONS
       ojo undef
     requirements:
       ExtUtils::MakeMaker 0
-      IO::Socket::IP 0.26
+      IO::Socket::IP 0.37
+      JSON::PP 2.27103
       Pod::Simple 3.09
       Time::Local 1.2
-  Mojolicious-Plugin-AssetPack-0.63
-    pathname: J/JH/JHTHORSEN/Mojolicious-Plugin-AssetPack-0.63.tar.gz
+  Mojolicious-Plugin-AssetPack-1.13
+    pathname: J/JH/JHTHORSEN/Mojolicious-Plugin-AssetPack-1.13.tar.gz
     provides:
-      Mojolicious::Plugin::AssetPack 0.63
+      Mojolicious::Plugin::AssetPack 1.13
       Mojolicious::Plugin::AssetPack::Asset undef
+      Mojolicious::Plugin::AssetPack::Asset::Null undef
+      Mojolicious::Plugin::AssetPack::Backcompat undef
+      Mojolicious::Plugin::AssetPack::Backcompat::Asset undef
       Mojolicious::Plugin::AssetPack::Handler::Http undef
       Mojolicious::Plugin::AssetPack::Handler::Https undef
       Mojolicious::Plugin::AssetPack::Handler::Sprites undef
+      Mojolicious::Plugin::AssetPack::Pipe undef
+      Mojolicious::Plugin::AssetPack::Pipe::CoffeeScript undef
+      Mojolicious::Plugin::AssetPack::Pipe::Combine undef
+      Mojolicious::Plugin::AssetPack::Pipe::Css undef
+      Mojolicious::Plugin::AssetPack::Pipe::Fetch undef
+      Mojolicious::Plugin::AssetPack::Pipe::JavaScript undef
+      Mojolicious::Plugin::AssetPack::Pipe::Jpeg undef
+      Mojolicious::Plugin::AssetPack::Pipe::Less undef
+      Mojolicious::Plugin::AssetPack::Pipe::Png undef
+      Mojolicious::Plugin::AssetPack::Pipe::Reloader undef
+      Mojolicious::Plugin::AssetPack::Pipe::Riotjs undef
+      Mojolicious::Plugin::AssetPack::Pipe::Sass undef
       Mojolicious::Plugin::AssetPack::Preprocessor undef
       Mojolicious::Plugin::AssetPack::Preprocessor::CoffeeScript undef
       Mojolicious::Plugin::AssetPack::Preprocessor::Css undef
@@ -1697,18 +1718,19 @@ DISTRIBUTIONS
       Mojolicious::Plugin::AssetPack::Preprocessor::Scss undef
       Mojolicious::Plugin::AssetPack::Preprocessors 0.01
       Mojolicious::Plugin::AssetPack::Preprocessors::CWD 0.01
+      Mojolicious::Plugin::AssetPack::Store undef
+      Mojolicious::Plugin::AssetPack::Util undef
+      Mojolicious::Plugin::AssetPack::Util::_chdir undef
     requirements:
-      CSS::Minifier::XS 0.01
       ExtUtils::MakeMaker 0
-      File::Which 1.00
-      IPC::Run3 0.04
-      JavaScript::Minifier::XS 0.11
-      Mojolicious 5.41
+      File::Which 1.21
+      IPC::Run3 0.048
+      Mojolicious 6.50
       Test::More 0.88
-  Mojolicious-Plugin-DebugDumperHelper-0.02
-    pathname: L/LD/LDIDRY/Mojolicious-Plugin-DebugDumperHelper-0.02.tar.gz
+  Mojolicious-Plugin-DebugDumperHelper-0.03
+    pathname: L/LD/LDIDRY/Mojolicious-Plugin-DebugDumperHelper-0.03.tar.gz
     provides:
-      Mojolicious::Plugin::DebugDumperHelper 0.02
+      Mojolicious::Plugin::DebugDumperHelper 0.03
     requirements:
       ExtUtils::MakeMaker 0
       Mojolicious 6.11
@@ -1722,10 +1744,10 @@ DISTRIBUTIONS
       Mojolicious 5
       Test::More 0
       perl 5.010001
-  Net-Domain-TLD-1.73
-    pathname: A/AL/ALEXP/Net-Domain-TLD-1.73.tar.gz
+  Net-Domain-TLD-1.74
+    pathname: A/AL/ALEXP/Net-Domain-TLD-1.74.tar.gz
     provides:
-      Net::Domain::TLD 1.73
+      Net::Domain::TLD 1.74
     requirements:
       Carp 0
       ExtUtils::MakeMaker 0
@@ -1876,10 +1898,10 @@ DISTRIBUTIONS
       Test::Builder::Tester 1.02
       Test::More 0
       perl 5.006
-  Text-Unidecode-1.24
-    pathname: S/SB/SBURKE/Text-Unidecode-1.24.tar.gz
+  Text-Unidecode-1.27
+    pathname: S/SB/SBURKE/Text-Unidecode-1.27.tar.gz
     provides:
-      Text::Unidecode 1.24
+      Text::Unidecode 1.27
     requirements:
       ExtUtils::MakeMaker 0
       perl 5.008
