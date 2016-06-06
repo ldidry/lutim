@@ -499,6 +499,7 @@ sub short {
     my $short = $c->param('short');
     my $touit = $c->param('t');
     my $key   = $c->param('key');
+    my $thumb = $c->param('thumb');
     my $dl    = (defined($c->param('dl'))) ? 'attachment' : 'inline';
 
     my @images = LutimModel::Lutim->select('WHERE short = ? AND ENABLED = 1 AND path IS NOT NULL', $short);
@@ -568,7 +569,7 @@ sub short {
                 $dt->set_time_zone('GMT');
                 $expires = $dt->strftime("%a, %d %b %Y %H:%M:%S GMT");
 
-                $test = $c->render_file($images[0]->filename, $images[0]->path, $images[0]->mediatype, $dl, $expires, $images[0]->delete_at_first_view, $key);
+                $test = $c->render_file($images[0]->filename, $images[0]->path, $images[0]->mediatype, $dl, $expires, $images[0]->delete_at_first_view, $key, $thumb);
             }
         }
 

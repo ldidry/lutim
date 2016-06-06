@@ -7,6 +7,9 @@
     hypnotoad => {
         # array of IP addresses and ports you want to listen to
         listen => ['http://127.0.0.1:8080'],
+        # if you use Lutim behind a reverse proxy like Nginx, you want to set proxy to 1
+        # if you use Lutim directly, let it commented
+        #proxy  => 1,
     },
 
     ################
@@ -106,6 +109,14 @@
     # remember that it has to be in a directory writable by Lutim user
     # optional, default is lutim.db
     #db_path           => 'lutim.db',
+
+    # define the heigth of the thumbnails generated at users' will
+    # this is not the height of the thumbnails send after upload,
+    # we're talking about thumbnails generated when someone asked for
+    # https://example.org/lutim/tesrinp?thumb
+    # this works only if you have ImageMagick
+    # optional, default is 100 (pixels)
+    #thumbnail_size => 100,
 
     ##########################
     # Lutim cron jobs settings

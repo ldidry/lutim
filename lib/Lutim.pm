@@ -5,6 +5,17 @@ use LutimModel;
 use Crypt::CBC;
 use Data::Entropy qw(entropy_source);
 
+use vars qw($im_loaded);
+BEGIN {
+    eval "use Image::Magick";
+    if ($@) {
+        warn "You don't have Image::Magick installed so you won't have thumbnails.";
+        $im_loaded = 0;
+    } else {
+        $im_loaded = 1;
+    }
+}
+
 $ENV{MOJO_TMPDIR} = 'tmp';
 mkdir($ENV{MOJO_TMPDIR}, 0700) unless (-d $ENV{MOJO_TMPDIR});
 # This method will run once at server start
@@ -31,6 +42,7 @@ sub startup {
             max_delay         => 0,
             token_length      => 24,
             crypto_key_length => 8,
+            thumbnail_size    => 100,
         }
     });
 
@@ -43,7 +55,7 @@ sub startup {
     $self->helper(
         render_file => sub {
             my $c = shift;
-            my ($filename, $path, $mediatype, $dl, $expires, $nocache, $key) = @_;
+            my ($filename, $path, $mediatype, $dl, $expires, $nocache, $key, $thumb) = @_;
 
             $filename = quote($filename);
 
@@ -73,6 +85,18 @@ sub startup {
             } else {
                 $asset = Mojo::Asset::File->new(path => $path);
             }
+
+            if (defined $thumb && $im_loaded && $mediatype ne 'image/svg+xml') { # ImageMagick don't work in Debian with svg (for now?)
+                my $im  = Image::Magick->new;
+                $im->BlobToImage($asset->slurp);
+
+                # Create the thumbnail
+                $im->Resize(geometry=>'x'.$c->config('thumbnail_size'));
+
+                # Replace the asset with the thumbnail
+                $asset = Mojo::Asset::Memory->new->add_chunk($im->ImageToBlob());
+            }
+
             $c->res->content->asset($asset);
             $headers->add('Content-Length' => $asset->size);
 
