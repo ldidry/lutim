@@ -1120,6 +1120,14 @@ DISTRIBUTIONS
       Canary::Stability 0
       ExtUtils::MakeMaker 6.52
       common::sense 0
+  Exporter-Tiny-0.042
+    pathname: T/TO/TOBYINK/Exporter-Tiny-0.042.tar.gz
+    provides:
+      Exporter::Shiny 0.042
+      Exporter::Tiny 0.042
+    requirements:
+      ExtUtils::MakeMaker 6.17
+      perl 5.006001
   File-BaseDir-0.07
     pathname: K/KI/KIMRYAN/File-BaseDir-0.07.tar.gz
     provides:
@@ -1434,15 +1442,23 @@ DISTRIBUTIONS
       base 0
       strict 0
       warnings 0
-  List-MoreUtils-0.33
-    pathname: A/AD/ADAMK/List-MoreUtils-0.33.tar.gz
+  List-MoreUtils-0.415
+    pathname: R/RE/REHSACK/List-MoreUtils-0.415.tar.gz
     provides:
-      List::MoreUtils 0.33
+      List::MoreUtils 0.415
+      List::MoreUtils::PP 0.415
+      List::MoreUtils::XS 0.415
     requirements:
-      ExtUtils::CBuilder 0.27
-      ExtUtils::MakeMaker 6.52
-      Test::More 0.82
-      perl 5.00503
+      Carp 0
+      Exporter::Tiny 0.038
+      ExtUtils::MakeMaker 0
+      File::Basename 0
+      File::Copy 0
+      File::Path 0
+      File::Spec 0
+      IPC::Cmd 0
+      XSLoader 0
+      base 0
   Locale-Maketext-Lexicon-1.00
     pathname: D/DR/DRTECH/Locale-Maketext-Lexicon-1.00.tar.gz
     provides:
