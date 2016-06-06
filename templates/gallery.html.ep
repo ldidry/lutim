@@ -30,6 +30,7 @@ $(document).ready(function() {
     var api = $("#gallery").unitegallery({
         gallery_theme:     "tiles",
         tiles_max_columns: 4,
+        lightbox_overlay_color: "#444"
     });
 });
 % end
