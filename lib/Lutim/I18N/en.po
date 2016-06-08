@@ -101,6 +101,11 @@ msgstr "Delete at first view?"
 msgid "Deletion link"
 msgstr "Deletion link"
 
+#: templates/gallery.html.ep:6
+#: templates/gallery.html.ep:63
+msgid "Download all images"
+msgstr ""
+
 #: templates/index.html.ep:63
 #: templates/index.html.ep:65
 #: templates/partial/lutim.js.ep:131
@@ -262,6 +267,10 @@ msgstr "Only the uploader! (well, only if he's the only owner of the images' rig
 msgid "Please contact the administrator: %1"
 msgstr "Please contact the administrator: %1"
 
+#: templates/gallery.html.ep:51
+msgid "Please wait"
+msgstr ""
+
 #: templates/index.html.ep:140
 msgid "Send an image"
 msgstr "Send an image"
@@ -297,7 +306,7 @@ msgid "The delete token is invalid."
 msgstr "The delete token is invalid."
 
 #. ($upload->filename)
-#: lib/Lutim/Controller.pm:427
+#: lib/Lutim/Controller.pm:432
 msgid "The file %1 is not an image."
 msgstr "The file %1 is not an image."
 
@@ -338,7 +347,7 @@ msgid "The images you post on Lutim can be stored indefinitely or be deleted at 
 msgstr "The images you post on Lutim can be stored indefinitely or be deleted at first view or after a delay selected from those proposed."
 
 #. ($c->config->{contact})
-#: lib/Lutim/Controller.pm:422
+#: lib/Lutim/Controller.pm:427
 msgid "There is no more available URL. Retry or contact the administrator. %1"
 msgstr "There is no more available URL. Retry or contact the administrator. %1"
 
@@ -353,10 +362,10 @@ msgstr "Tweet it!"
 msgid "Unable to find the image %1."
 msgstr "Unable to find the image %1."
 
-#: lib/Lutim.pm:54
-#: lib/Lutim/Controller.pm:511
-#: lib/Lutim/Controller.pm:557
-#: lib/Lutim/Controller.pm:601
+#: lib/Lutim.pm:66
+#: lib/Lutim/Controller.pm:517
+#: lib/Lutim/Controller.pm:563
+#: lib/Lutim/Controller.pm:607
 msgid "Unable to find the image: it has been deleted."
 msgstr "Unable to find the image: it has been deleted."
 
@@ -382,7 +391,7 @@ msgid "Uploaded files by days"
 msgstr "Uploaded files by days"
 
 #. ($config->{contact})
-#: lib/Lutim.pm:146
+#: lib/Lutim.pm:170
 msgid "Uploading is currently disabled, please try later or contact the administrator (%1)."
 msgstr "Uploading is currently disabled, please try later or contact the administrator (%1)."
 

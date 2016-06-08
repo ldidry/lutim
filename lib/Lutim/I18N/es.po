@@ -103,6 +103,11 @@ msgstr "¿Borrar en la primera vista?"
 msgid "Deletion link"
 msgstr "Enlace para borrar"
 
+#: templates/gallery.html.ep:6
+#: templates/gallery.html.ep:63
+msgid "Download all images"
+msgstr "Descargar todas las imágenes"
+
 #: templates/index.html.ep:63
 #: templates/index.html.ep:65
 #: templates/partial/lutim.js.ep:131
@@ -264,6 +269,10 @@ msgstr "¡Sólo el usuario! (bueno, sólo si él/ela es el único titular de los
 msgid "Please contact the administrator: %1"
 msgstr "Por favor, contacte con el administrador: %1"
 
+#: templates/gallery.html.ep:51
+msgid "Please wait"
+msgstr "Por favor espera"
+
 #: templates/index.html.ep:140
 msgid "Send an image"
 msgstr "Enviar una imagen"
@@ -299,7 +308,7 @@ msgid "The delete token is invalid."
 msgstr "El código de borrado no es válido."
 
 #. ($upload->filename)
-#: lib/Lutim/Controller.pm:427
+#: lib/Lutim/Controller.pm:432
 msgid "The file %1 is not an image."
 msgstr "El archivo %1 no es una imagen."
 
@@ -340,7 +349,7 @@ msgid "The images you post on Lutim can be stored indefinitely or be deleted at 
 msgstr "Puede, opcionalmente, solicitar que la imagen publicada en Lutim se elimine con la primera vista (o descarga) o tras un tiempo seleccionado de entre varios propuestos."
 
 #. ($c->config->{contact})
-#: lib/Lutim/Controller.pm:422
+#: lib/Lutim/Controller.pm:427
 msgid "There is no more available URL. Retry or contact the administrator. %1"
 msgstr "No más URL disponibles. Inténtelo de nuevo o contacte con el administrador. %1"
 
@@ -355,10 +364,10 @@ msgstr "¡Tuitéalo!"
 msgid "Unable to find the image %1."
 msgstr "No se ha podido encontrar la imagen %1."
 
-#: lib/Lutim.pm:54
-#: lib/Lutim/Controller.pm:511
-#: lib/Lutim/Controller.pm:557
-#: lib/Lutim/Controller.pm:601
+#: lib/Lutim.pm:66
+#: lib/Lutim/Controller.pm:517
+#: lib/Lutim/Controller.pm:563
+#: lib/Lutim/Controller.pm:607
 msgid "Unable to find the image: it has been deleted."
 msgstr "No se ha podido encontrar la imagen: ha sido borrada."
 
@@ -384,7 +393,7 @@ msgid "Uploaded files by days"
 msgstr "Archivos enviados por día"
 
 #. ($config->{contact})
-#: lib/Lutim.pm:146
+#: lib/Lutim.pm:170
 msgid "Uploading is currently disabled, please try later or contact the administrator (%1)."
 msgstr "La carga está deshabilitada en estos momentos, por favor inténtelo más tarde o contacte con el administrador (%1)."
 
