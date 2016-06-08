@@ -341,7 +341,7 @@ sub add {
                     my $path     = 'files/'.$records[0]->short.'.'.$ext;
 
                     my ($width, $height);
-                    if ($im_loaded && $mediatype ne 'image/svg+xml') { # ImageMagick don't work in Debian with svg (for now?)
+                    if ($im_loaded && $mediatype ne 'image/svg+xml' && $mediatype !~ m#image/(x-)?xcf#) { # ImageMagick don't work in Debian with svg (for now?)
                         my $im  = Image::Magick->new;
                         $im->BlobToImage($upload->slurp);
 

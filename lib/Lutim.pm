@@ -86,7 +86,7 @@ sub startup {
                 $asset = Mojo::Asset::File->new(path => $path);
             }
 
-            if (defined $thumb && $im_loaded && $mediatype ne 'image/svg+xml') { # ImageMagick don't work in Debian with svg (for now?)
+            if (defined $thumb && $im_loaded && $mediatype ne 'image/svg+xml' && $mediatype !~ m#image/(x-)?xcf#) { # ImageMagick don't work in Debian with svg (for now?)
                 my $im  = Image::Magick->new;
                 $im->BlobToImage($asset->slurp);
 
