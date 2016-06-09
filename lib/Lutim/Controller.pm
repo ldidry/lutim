@@ -366,7 +366,7 @@ sub add {
 
                     }
 
-                    unless ((defined($keep_exif) && $keep_exif) || $mediatype eq 'image/svg+xml') {
+                    unless ((defined($keep_exif) && $keep_exif) || $mediatype eq 'image/svg+xml' || $mediatype !~ m#image/(x-)?xcf# || $mediatype ne 'image/webp') {
                         # Remove the EXIF tags
                         my $data = new IO::Scalar \$upload->slurp();
                         my $et   = new Image::ExifTool;
