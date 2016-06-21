@@ -5,6 +5,7 @@ requires 'Data::Validate::URI';
 requires 'Net::Domain::TLD', '>= 1.73'; # Must have the last version to handle (at least) .xyz and .link
 requires 'Mojolicious::Plugin::I18N';
 requires 'Mojolicious::Plugin::AssetPack';
+requires 'CSS::Minifier::XS';
 requires 'Mojolicious::Plugin::DebugDumperHelper';
 requires 'ORLite';
 requires 'Text::Unidecode';
