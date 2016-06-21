@@ -1,10 +1,12 @@
 % # vim:set sw=4 ts=4 sts=4 ft=javascript expandtab:
 %= javascript begin
     window.gallery_url = '<%= url_for('gallery')->to_abs %>#';
+    window.zip_url = '<%= url_for('zip')->to_abs %>?i=';
     window.short_hash = {};
+    window.zip_hash = {};
     function addToShortHash(short) {
         window.short_hash[short] = 1;
-        console.dir(window.short_hash);
+        console.debug(window.short_hash);
         if (Object.keys(window.short_hash).length > 0) {
             $('#gallery-url').removeClass('hidden');
             $('#gallery-url-input').val(window.gallery_url+Object.keys(window.short_hash).join(','));
@@ -19,13 +21,39 @@
             $('#gallery-url').addClass('hidden');
         }
     }
+    function addToZipHash(short) {
+        window.zip_hash[short] = 1;
+        if (Object.keys(window.zip_hash).length > 0) {
+            $('#zip-url').removeClass('hidden');
+            $('#zip-url-input').val(window.zip_url+Object.keys(window.zip_hash).join('&i='));
+            $('#zip-url-link').attr('href', window.zip_url+Object.keys(window.zip_hash).join('&i='));
+        }
+    }
+    function rmFromZipHash(short) {
+        delete window.zip_hash[short];
+        $('#zip-url-input').val(window.zip_url+Object.keys(window.zip_hash).join('&i='));
+        $('#zip-url-link').attr('href', window.zip_url+Object.keys(window.zip_hash).join('&i='));
+        if (Object.keys(window.zip_hash).length === 0) {
+            $('#zip-url').addClass('hidden');
+        }
+    }
     function selectInput() {
         $(this).select();
     }
     function tw_url(url) {
-        var btn = '&nbsp;&nbsp;&nbsp;<a title="<%= l('Tweet it!') %>" target="_blank" href="https://twitter.com/share?url=<%== url_for('/')->to_abs() %>'+url+'?t"><span class="icon icon-twitter"></span></a>';
+        var btn = [
+            '&nbsp;&nbsp;&nbsp;',
+            '<a title="<%= l('Tweet it!') %>" target="_blank" href="https://twitter.com/share?url=<%== url_for('/')->to_abs() %>', url, '?t">',
+               '<span class="icon icon-twitter"></span>',
+            '</a>'
+        ].join('');
         if (navigator.mozSetMessageHandler !== undefined) {
-            btn = btn+'&nbsp;&nbsp;&nbsp;<a title="<%= l('Share it!') %>" target="_blank" href="" onclick="share(\'<%== url_for('/')->to_abs() %>'+url+'?t\');return false;"><span class="icon icon-share"></span></a>';
+            btn = btn+[
+                '&nbsp;&nbsp;&nbsp;',
+                '<a title="<%= l('Share it!') %>" target="_blank" href="" onclick="share(\'<%== url_for('/')->to_abs() %>', url, '?t\');return false;">',
+                   '<span class="icon icon-share"></span>',
+                '</a>'
+            ].join('');
         }
         return btn
     }
@@ -47,125 +75,208 @@
             }
         });
     }
+
+    /* Stolen from https://github.com/mozilla-services/push-dev-dashboard/blob/3ad4de737380d0842f40c82301d1f748c1b20f2b/push/static/js/validation.js */
+    function createNode(text) {
+        var node = document.createElement('pre');
+        node.style.width = '1px';
+        node.style.height = '1px';
+        node.style.position = 'fixed';
+        node.style.top = '5px';
+        node.textContent = text;
+        return node;
+    }
+
+    function copyNode(node) {
+        var selection = getSelection();
+        selection.removeAllRanges();
+
+        var range = document.createRange();
+        range.selectNodeContents(node);
+        selection.addRange(range);
+
+        var success = document.execCommand('copy');
+        selection.removeAllRanges();
+        return success;
+    }
+
+    function copyText(text) {
+        var node = createNode(text);
+        document.body.appendChild(node);
+        var success = copyNode(node);
+        document.body.removeChild(node);
+        return success;
+    }
+
+    function copyInput(node) {
+        node.select();
+        var success = document.execCommand('copy');
+        getSelection().removeAllRanges();
+        return success;
+    }
     function copyToClipboard(el) {
         el = el.siblings('input');
-        var textArea              = document.createElement('textarea');
-        textArea.style.position   = 'fixed';
-        textArea.style.top        = 0;
-        textArea.style.left       = 0;
-        textArea.style.width      = '2em';
-        textArea.style.height     = '2em';
-        textArea.style.padding    = 0;
-        textArea.style.border     = 'none';
-        textArea.style.outline    = 'none';
-        textArea.style.boxShadow  = 'none';
-        textArea.style.background = 'transparent';
-        textArea.value            = el.val();
-
-        document.body.appendChild(textArea);
-        textArea.select();
-
         try {
-            var successful = document.execCommand('copy');
+            var successful = copyInput(el);
             var msg = successful ? 'successful' : 'unsuccessful';
-            console.log('Copying text command was ' + msg);
+            console.debug('Copying text command was ' + msg);
+            if (!successful) {
+                throw new Error('Copying text command was ' + msg);
+            }
         } catch (err) {
-            el.focus();
-            var len = el.val().length * 2;
-            el.setSelectionRange(len, len);
-            alert('<%= l('Hit Enter, then Ctrl+C to copy the short link') %>');
+            prompt('<%= l('Hit Enter, then Ctrl+C to copy the short link') %>', el.val());
         }
-
-        document.body.removeChild(textArea);
     }
     function copyAllToClipboard() {
         var text = new Array();
         $('.view-link-input').each(function(index) {
             text.push($(this).val());
         });
-        var textArea              = document.createElement('textarea');
-        textArea.style.position   = 'fixed';
-        textArea.style.top        = 0;
-        textArea.style.left       = 0;
-        textArea.style.width      = '2em';
-        textArea.style.height     = '2em';
-        textArea.style.padding    = 0;
-        textArea.style.border     = 'none';
-        textArea.style.outline    = 'none';
-        textArea.style.boxShadow  = 'none';
-        textArea.style.background = 'transparent';
-        textArea.value            = text.join("\n");
-
-        document.body.appendChild(textArea);
-        textArea.select();
 
         try {
-            var successful = document.execCommand('copy');
+            var successful = copyText(text.join("\n"));
             var msg = successful ? 'successful' : 'unsuccessful';
-            console.log('Copying text command was ' + msg);
+            console.debug('Copying text command was ' + msg);
+            throw new Error('Prout');
+            if (!successful) {
+                throw new Error('Copying text command was ' + msg);
+            }
         } catch (err) {
-            textArea.style.width      = '';
-            textArea.style.height     = '';
-            textArea.style.background = '#FFFFFF';
-            alert('<%= l('Hit Enter, then Ctrl+C to copy the short link') %>');
+            prompt('<%= l('Hit Enter, then Ctrl+C to copy the short link') %>', text.join(" "));
         }
 
-        document.body.removeChild(textArea);
     }
     function buildMessage(success, msg) {
         if(success) {
-            var s_url = link(msg.short+'.'+msg.ext, '');
-            var thumb = (msg.thumb !== null) ? '<div class="col-sm-1"><a href="'+s_url+'" target="_blank"><img class="thumbnail img-responsive" alt="'+msg.filename+' thumbnail" src="'+msg.thumb+'"></a></div>' : ''
-            return '<div class="alert alert-success" id="alert-'+msg.real_short+'"><button type="button" class="close" data-dismiss="alert" aria-hidden="true" onclick="rmFromShortHash(\''+msg.short+'.'+msg.ext+'\');">&times;</button><div class="row">'
-                +thumb
-                +'<div class="col-sm-11"><h4>'
-                +'<a href="'+s_url+'" target="_blank">'
-                +msg.filename
-                +'</a>'
-                +tw_url(msg.short)
-                +'</h4>'
-                +'<form class="form"><div class="form-group"><label class="sr-only" for="view'+msg.real_short+'"><%= l('View link') %></label><div class="input-group col-sm-6"><div class="input-group-addon"><a href="'+s_url+'" target="_blank"><span class="icon icon-eye" title =" <%= l('View link') %>"></span></a></div><input type="text" class="form-control view-link-input" id="view'+msg.real_short+'" value="'
-                +s_url
-                +'" readonly><a href="#" onClick="copyToClipboard($(this));" class="input-group-addon" title="<%= l('Copy to clipboard') %>"><span class="icon icon-clipboard"></span></a></div></div><div class="form-group"><label class="sr-only" for="markdown'+msg.real_short+'"><%= l('Markdown syntax') %></label><div class="input-group col-sm-6"><div class="input-group-addon"><span class="markdown-mark-solid" title ="<%= l('Markdown syntax') %>"></span></div><input type="text" class="form-control" id="markdown'+msg.real_short+'" value="![]('
-                +link(msg.short, '')
-                +')" readonly><a href="#" onClick="copyToClipboard($(this));" class="input-group-addon" title="<%= l('Copy to clipboard') %>"><span class="icon icon-clipboard"></span></a></div></div><div class="form-group"><label class="sr-only" for="download'+msg.real_short+'"><%= l('Download link') %></label><div class="input-group col-sm-6"><div class="input-group-addon"><a href="'+link(msg.short, 'dl')+'"><span class="icon icon-download" title ="<%= l('Download link') %>"></span></a></div><input type="text" class="form-control" id="download'+msg.real_short+'" value="'
-                +link(msg.short, 'dl')
-                +'" readonly><a href="#" onClick="copyToClipboard($(this));" class="input-group-addon" title="<%= l('Copy to clipboard') %>"><span class="icon icon-clipboard"></span></a></div></div><div class="form-group"><label class="sr-only" for="share'+msg.real_short+'"><%= l('Link for share on social networks') %></label><div class="input-group col-sm-6"><div class="input-group-addon"><a href="'+link(msg.short, 't')+'" target="_blank"><span class="icon icon-share" title ="<%= l('Link for share on social networks') %>"></span></a></div><input type="text" class="form-control" id="share'+msg.real_short+'" value="'
-                +link(msg.short, 't')
-                +'" readonly><a href="#" onClick="copyToClipboard($(this));" class="input-group-addon" title="<%= l('Copy to clipboard') %>"><span class="icon icon-clipboard"></span></a></div></div><div class="form-group"><div class="input-group col-sm-6 col-xs-12"><span class="form-control-static">'
-                +link(msg.real_short, '', msg.token)
-                +'</span></div></div></form></div></div><div class="row"><form class="form col-sm-11 col-sm-offset-1" role="form" method="POST" action="'
-                +link(msg.real_short, '', msg.token, true)
-                +'"><div class="form-group form-inline"><select id="day-'+msg.real_short+'" name="delete-day" class="form-control">'
+            var s_url = link([msg.short, '.', msg.ext].join(''), '');
+            var thumb = (msg.thumb !== null) ? [
+                '<div class="col-sm-1">',
+                '   <a href="', s_url, '" target="_blank">',
+                '       <img class="thumbnail img-responsive" alt="', msg.filename, ' thumbnail" src="', msg.thumb, '">',
+                '   </a>',
+                '</div>'
+            ].join('') : ''
+            return [
+                '<div class="alert alert-success" id="alert-', msg.real_short, '">',
+                '   <button type="button" class="close" data-dismiss="alert" aria-hidden="true" onclick="rmFromShortHash(\'', msg.short, '.', msg.ext, '\');rmFromZipHash(\'', msg.short, '\');">&times;</button>',
+                '    <div class="row">', thumb,
+                '        <div class="col-sm-11">',
+                '           <h4>',
+                '               <a href="', s_url, '" target="_blank">',
+                                    msg.filename,
+                               '</a>',
+                                tw_url(msg.short),
+                '           </h4>',
+                '           <form class="form">',
+                '               <div class="form-group">',
+                '                   <label class="sr-only" for="view', msg.real_short, '"><%= l('View link') %></label>',
+                '                   <div class="input-group col-sm-6">',
+                '                       <div class="input-group-addon">',
+                '                           <a href="', s_url, '" target="_blank">',
+                '                               <span class="icon icon-eye" title =" <%= l('View link') %>"></span>',
+                '                           </a>',
+                '                       </div>',
+                '                       <input type="text" class="form-control view-link-input" id="view', msg.real_short, '" value="', s_url, '" readonly>',
+                '                       <a href="#" onClick="copyToClipboard($(this));" class="input-group-addon" title="<%= l('Copy to clipboard') %>">',
+                '                           <span class="icon icon-clipboard"></span>',
+                '                       </a>',
+                '                   </div>',
+                '               </div>',
+                '               <div class="form-group">',
+                '                   <label class="sr-only" for="markdown', msg.real_short, '"><%= l('Markdown syntax') %></label>',
+                '                   <div class="input-group col-sm-6">',
+                '                       <div class="input-group-addon">',
+                '                           <span class="markdown-mark-solid" title ="<%= l('Markdown syntax') %>"></span>',
+                '                       </div>',
+                '                       <input type="text" class="form-control" id="markdown', msg.real_short, '" value="![](', link(msg.short, ''), ')" readonly>',
+                '                       <a href="#" onClick="copyToClipboard($(this));" class="input-group-addon" title="<%= l('Copy to clipboard') %>">',
+                '                          <span class="icon icon-clipboard"></span>',
+                '                       </a>',
+                '                   </div>',
+                '               </div>',
+                '               <div class="form-group">',
+                '                   <label class="sr-only" for="download', msg.real_short, '"><%= l('Download link') %></label>',
+                '                   <div class="input-group col-sm-6">',
+                '                       <div class="input-group-addon">',
+                '                           <a href="', link(msg.short, 'dl'), '">',
+                '                               <span class="icon icon-download" title ="<%= l('Download link') %>"></span>',
+                '                           </a>',
+                '                       </div>',
+                '                       <input type="text" class="form-control" id="download', msg.real_short, '" value="', link(msg.short, 'dl'), '" readonly>',
+                '                       <a href="#" onClick="copyToClipboard($(this));" class="input-group-addon" title="<%= l('Copy to clipboard') %>">',
+                '                           <span class="icon icon-clipboard"></span>',
+                '                       </a>',
+                '                   </div>',
+                '               </div>',
+                '               <div class="form-group">',
+                '                   <label class="sr-only" for="share', msg.real_short, '"><%= l('Link for share on social networks') %></label>',
+                '                   <div class="input-group col-sm-6">',
+                '                       <div class="input-group-addon">',
+                '                           <a href="', link(msg.short, 't'), '" target="_blank">',
+                '                               <span class="icon icon-share" title ="<%= l('Link for share on social networks') %>"></span>',
+                '                           </a>',
+                '                       </div>',
+                '                       <input type="text" class="form-control" id="share', msg.real_short, '" value="', link(msg.short, 't'), '" readonly>',
+                '                       <a href="#" onClick="copyToClipboard($(this));" class="input-group-addon" title="<%= l('Copy to clipboard') %>">',
+                '                           <span class="icon icon-clipboard"></span>',
+                '                       </a>',
+                '                   </div>',
+                '               </div>',
+                '               <div class="form-group">',
+                '                   <div class="input-group col-sm-6 col-xs-12">',
+                '                       <span class="form-control-static">', link(msg.real_short, '', msg.token), '</span>',
+                '                   </div>',
+                '               </div>',
+                '           </form>',
+                '        </div>',
+                '    </div>',
+                '    <div class="row">',
+                '        <form class="form col-sm-11 col-sm-offset-1" role="form" method="POST" action="', link(msg.real_short, '', msg.token, true), '">',
+                '           <div class="form-group form-inline">',
+                '               <select id="day-', msg.real_short, '" name="delete-day" class="form-control">',
 % for my $delay (qw/0 1 7 30 365/) {
 %   my $text = ($delay == 7 || $delay == 30) ? l('%1 days', $delay) : $d->{'delay_'.$delay};
 %   if (config('max_delay')) {
 %       if ($delay) {
 %           if ($delay < config('max_delay')) {
-                +'<option value="<%= $delay %>" <%== is_selected($delay) %>><%= $text %></option>'
+                '                   <option value="<%= $delay %>" <%== is_selected($delay) %>><%= $text %></option>',
 %           } elsif ($delay == config('max_delay')) {
-                +'<option value="<%= $delay %>" <%== is_selected($delay) %>><%= $text %></option>'
+                '                   <option value="<%= $delay %>" <%== is_selected($delay) %>><%= $text %></option>',
 %               last;
 %           } else {
 %               my $text = ($delay == 1) ? l('24 hours') : l('%1 days', $delay);
-                +'<option value="<%= config('max_delay') %>" <%== is_selected(config('max_delay')) %>><%= l('%1 days', config('max_delay')) %></option>'
+                '                   <option value="<%= config('max_delay') %>" <%== is_selected(config('max_delay')) %>><%= l('%1 days', config('max_delay')) %></option>',
 %               last;
 %           }
 %       }
 %   } else {
-                +'<option value="<%= $delay %>" <%== is_selected($delay) %>><%= $text %></option>'
+                '                   <option value="<%= $delay %>" <%== is_selected($delay) %>><%= $text %></option>',
 %   }
 % }
-                +'</select>&nbsp;<div class="checkbox"><label><input id="first-view-'+msg.real_short+'" type="checkbox" name="first-view"> <%= l('Delete at first view?') %></label>'
-                +'</div>&nbsp;'
-                +'<a href="#" onclick="modify(\''+link(msg.real_short, '', msg.token, true)+'\', \''+msg.real_short+'\');return false;" class="btn btn-sm btn-default btn-primary"><%= l('Let\'s go!') %></a></div></form>'
-                +'</div></div>';
+                '               </select>&nbsp;',
+                '               <div class="checkbox">',
+                '                   <label>',
+                '                       <input id="first-view-', msg.real_short, '" type="checkbox" name="first-view"> <%= l('Delete at first view?') %>',
+                '                   </label>',
+                '               </div>&nbsp;',
+                '               <a href="#" onclick="modify(\'', link(msg.real_short, '', msg.token, true), '\', \'', msg.real_short, '\');return false;" class="btn btn-sm btn-default btn-primary">',
+                '                   <%= l('Let\'s go!') %>',
+                '               </a>',
+                '           </div>',
+                '       </form>',
+                '   </div>',
+                '</div>'
+            ].join('');
         } else {
-            return '<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong><%= l('Something bad happened') %></strong><br>'
-                +msg.filename
-                +'<br>'
-                +msg.msg
-                +'</div>';
+            return [
+                '<div class="alert alert-danger">',
+                '   <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>',
+                '   <strong><%= l('Something bad happened') %></strong><br>',
+                    msg.filename,
+                '   <br>',
+                    msg.msg,
+                '</div>'
+            ].join('');
         }
     }
     function bindddz(firstview, deleteday) {
@@ -175,7 +286,16 @@
             allowedTypes: 'image/*',
             maxFileSize: <%= $max_file_size %>,
             onNewFile: function(id, file){
-                $('.messages').append('<div id="'+id+'-div">'+file.name+'<br><div class="progress"><div id="'+id+'"class="progress-bar progress-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"><span id="'+id+'-text" class="pull-left" style="padding-left: 10px;"> 0%</span></div></div></div>');
+                $('.messages').append([
+                    '<div id="', id, '-div">',
+                        file.name, '<br>',
+                    '   <div class="progress">',
+                    '       <div id="', id, '"class="progress-bar progress-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">',
+                    '           <span id="', id, '-text" class="pull-left" style="padding-left: 10px;"> 0%</span>',
+                    '       </div>',
+                    '   </div>',
+                    '</div>'
+                ].join(''));
             },
             onUploadProgress: function(id, percent){
                 var percentStr = ' '+percent+'%';
@@ -199,9 +319,8 @@
                 $('.messages').append(buildMessage(data.success, data.msg));
                 $('#del-'+data.msg.real_short).on('click', delImage);
                 if (data.success) {
-                    if (data.msg.ext !== 'xcf') {
-                        addToShortHash(data.msg.short+'.'+data.msg.ext);
-                    }
+                    addToShortHash(data.msg.short+'.'+data.msg.ext);
+                    addToZipHash(data.msg.short);
                     $('.close').unbind('click', evaluateCopyAll);
                     $('.close').on('click', evaluateCopyAll);
                     $('input[type=\'text\']').unbind("click", selectInput);
@@ -240,9 +359,8 @@
                             $('.messages').prepend('<div class="col-xs-12 col-sm-11 col-sm-offset-1"><a id="copy-all" href="#" class="btn btn-info" onClick="copyAllToClipboard();"><%= l('Copy all view links to clipboard') %></a></div>');
                         }
                         $('#lutim-file-url').val('');
-                        if (data.msg.ext !== 'xcf') {
-                            addToShortHash(data.msg.short+'.'+data.msg.ext);
-                        }
+                        addToShortHash(data.msg.short+'.'+data.msg.ext);
+                        addToZipHash(data.msg.short);
                         $('.close').unbind('click', evaluateCopyAll);
                         $('.close').on('click', evaluateCopyAll);
                         addItem(data.msg);
@@ -268,7 +386,15 @@
         fd.append('crypt', ($('#crypt').prop('checked')) ? 1 : 0);
         fd.append('delete-day', ($('#delete-day').val()));
 
-        $('.messages').append('<div id="1-div">'+file.name+'<br><div class="progress"><div id="1"class="progress-bar progress-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"><span id="1-text" class="pull-left" style="padding-left: 10px;"> 0%</span></div></div></div>');
+        $('.messages').append([
+            '<div id="1-div">', file.name, '<br>',
+            '   <div class="progress">',
+            '       <div id="1"class="progress-bar progress-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">',
+            '           <span id="1-text" class="pull-left" style="padding-left: 10px;"> 0%</span>',
+            '       </div>',
+            '   </div>',
+            '</div>'
+        ].join(''));
         // Ajax Submit
         $.ajax({
             url: '<%== url_for('/') %>',

@@ -9,25 +9,25 @@
     {
       "uid": "12f4ece88e46abd864e40b35e05b11cd",
       "css": "ok",
-      "code": 59402,
+      "code": 59392,
       "src": "fontawesome"
     },
     {
       "uid": "c5fd349cbd3d23e4ade333789c29c729",
       "css": "eye",
-      "code": 59399,
+      "code": 59393,
       "src": "fontawesome"
     },
     {
       "uid": "9a76bc135eac17d2c8b8ad4a5774fc87",
       "css": "download",
-      "code": 59397,
+      "code": 59394,
       "src": "fontawesome"
     },
     {
       "uid": "4aad6bb50b02c18508aae9cbe14e784e",
       "css": "share",
-      "code": 59400,
+      "code": 59395,
       "src": "fontawesome"
     },
     {
@@ -39,37 +39,37 @@
     {
       "uid": "2cb15eb2b295ee3c33fab1530e18a924",
       "css": "bitcoin",
-      "code": 59395,
+      "code": 59397,
       "src": "fontawesome"
     },
     {
       "uid": "e7cb72a17f3b21e3576f35c3f0a7639b",
       "css": "git",
-      "code": 59393,
+      "code": 59398,
       "src": "fontawesome"
     },
     {
       "uid": "627abcdb627cb1789e009c08e2678ef9",
       "css": "twitter",
-      "code": 59392,
+      "code": 59399,
       "src": "fontawesome"
     },
     {
       "uid": "1a27e6346cdf0480c9c22351378bebbb",
       "css": "clipboard",
-      "code": 59401,
+      "code": 59400,
       "src": "typicons"
     },
     {
       "uid": "fccd3ea0efb711b849045bee686b1ceb",
       "css": "spinner",
-      "code": 59398,
+      "code": 59401,
       "src": "mfglabs"
     },
     {
       "uid": "c71d7db10ede1349b3a8ae0293b1dbf8",
       "css": "flattr",
-      "code": 59394,
+      "code": 59402,
       "src": "zocial"
     },
     {
@@ -81,8 +81,14 @@
     {
       "uid": "baa375529925294ea0a2bc889c93ba2d",
       "css": "picture",
-      "code": 59405,
+      "code": 59404,
       "src": "websymbols"
+    },
+    {
+      "uid": "e80ae555c1413a4ec18b33fb348b4049",
+      "css": "file-archive",
+      "code": 59405,
+      "src": "fontawesome"
     }
   ]
 }

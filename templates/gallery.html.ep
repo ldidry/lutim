@@ -2,9 +2,9 @@
 <div class="container">
     <div>
         <p>
-            <button id="download-all" class="btn btn-info col-sm-12">
+            <a href="<%= url_for('/zip?i=') %>" id="download-all" class="btn btn-info col-sm-12">
                 <%= l('Download all images') %>
-            </button>
+            </a>
         </p>
     </div>
 </div>
@@ -20,8 +20,6 @@
 %= javascript '/js/FileSaver.min.js'
 %= javascript begin
 $(document).ready(function() {
-    $('#download-all').click(downloadAll);
-
     var absUrl = '<%= url_for('/') %>';
 
     var key = window.location.hash.substring(1);  // Get key
@@ -32,13 +30,17 @@ $(document).ready(function() {
 
     var keys = key.split(',');
 
+    $('#download-all').attr('href', $('#download-all').attr('href')+keys.join('&i='));
+
     var items = [];
     keys.forEach(function(element, index, array) {
-        $('#gallery').append(
-            [
-                '<img src="', absUrl+element, '" data-image="', absUrl+element, '" data-description="" alt="">'
-            ].join('')
-        );
+        if (!element.match('xcf')) {
+            $('#gallery').append(
+                [
+                    '<img src="', absUrl+element, '" data-image="', absUrl+element, '" data-description="" alt="">'
+                ].join('')
+            );
+        }
     });
     var api = $("#gallery").unitegallery({
         gallery_theme:     "tiles",
@@ -46,39 +48,4 @@ $(document).ready(function() {
         lightbox_overlay_color: "#DDD"
     });
 });
-function downloadAll() {
-    $('#download-all').attr('disabled', 'disabled');
-    $('#download-all').text('<%= l('Please wait') %>');
-    var zip = new JSZip();
-    $('.ug-thumb-wrapper img.ug-thumb-image').each(function(index) {
-        var url = $(this).prop('src');
-        var name = url.replace(/.*\/([^\/]+)$/, '$1');
-        zip.file(name, getBase64Image(this), {base64: true});
-    });
-    zip.generateAsync({type:"blob"})
-    .then(function(content) {
-        // see FileSaver.js
-        saveAs(content, "images.zip");
-
-        $('#download-all').text('<%= l('Download all images') %>');
-        $('#download-all').removeAttr('disabled');
-    });
-}
-function getBase64Image(img) {
-    // Create an empty canvas element
-    var canvas = document.createElement("canvas");
-    canvas.width = img.width;
-    canvas.height = img.height;
-
-    // Copy the image contents to the canvas
-    var ctx = canvas.getContext("2d");
-    ctx.drawImage(img, 0, 0);
-
-    // Get the data-URL formatted image
-    // Firefox supports PNG and JPEG. You could check img.src to
-    // guess the original format, but be aware the using "image/jpg"
-    // will re-encode the image.
-    var dataURL = canvas.toDataURL("image/png");
-    return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
-}
 % end

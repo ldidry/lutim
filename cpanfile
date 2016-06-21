@@ -21,3 +21,4 @@ requires 'IO::Scalar';
 requires 'Image::ExifTool';
 requires 'Data::Entropy';
 requires 'List::MoreUtils', '> 0.33';
+requires 'Archive::Zip';

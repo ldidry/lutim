@@ -60,7 +60,7 @@ sub startup {
             $filename = quote($filename);
 
             my $asset;
-            unless ( -f $path && -r _ ) {
+            unless (-f $path && -r $path) {
                 $c->app->log->error("Cannot read file [$path]. error [$!]");
                 $c->flash(
                     msg => $c->l('Unable to find the image: it has been deleted.')
@@ -130,7 +130,7 @@ sub startup {
                         my $short;
                         do {
                             $short= $c->shortener($c->config->{length});
-                        } while (LutimModel::Lutim->count('WHERE short = ?', $short) || $short eq 'about' || $short eq 'stats' || $short eq 'd' || $short eq 'm' || $short eq 'gallery');
+                        } while (LutimModel::Lutim->count('WHERE short = ?', $short) || $short eq 'about' || $short eq 'stats' || $short eq 'd' || $short eq 'm' || $short eq 'gallery' || $short eq 'zip');
 
                         LutimModel::Lutim->create(
                             short                => $short,
@@ -358,6 +358,10 @@ sub startup {
     $r->get('/manifest.webapp')->
         to('Controller#webapp')->
         name('manifest.webapp');
+
+    $r->get('/zip')
+        ->to('Controller#zip')
+        ->name('zip');
 
     $r->post('/')->
         to('Controller#add')->

@@ -22,6 +22,24 @@
         </div>
     </form>
 </div>
+<div id="zip-url" class="hidden row">
+    <form class="form col-sm-12">
+        <div class="form-group">
+            <label for="zip-url-input"><%= l('Download zip link') %></label>
+            <div class="input-group">
+                <div class="input-group-addon">
+                    <a id="zip-url-link" href="#" target="_blank" title="<%= l('Download zip link') %>">
+                        <span class="icon icon-file-archive"></span>
+                    </a>
+                </div>
+                <input class="form-control" name="zip-url-input" type="text" id="zip-url-input" readonly></input>
+                <a href="#" onClick="copyToClipboard($(this));" class="input-group-addon jsonly" title="<%= l('Copy to clipboard') %>">
+                    <span class="icon icon-clipboard"></span>
+                </a>
+            </div>
+        </div>
+    </form>
+</div>
 <div class="messages">
 % if (config('always_encrypt')) {
     <p><%= l('The images are encrypted on the server (Lutim does not keep the key).') %></p>

@@ -10,13 +10,13 @@ Font license info
    Homepage:  http://fortawesome.github.com/Font-Awesome/
 
 
-## Zocial
+## Typicons
 
-   Copyright (C) 2012 by Sam Collins
+   (c) Stephen Hutchings 2012
 
-   Author:    Sam Collins
-   License:   MIT (http://opensource.org/licenses/mit-license.php)
-   Homepage:  http://zocial.smcllns.com/
+   Author:    Stephen Hutchings
+   License:   SIL (http://scripts.sil.org/OFL)
+   Homepage:  http://typicons.com/
 
 
 ## MFG Labs
@@ -28,13 +28,13 @@ Font license info
    Homepage:  http://www.mfglabs.com/
 
 
-## Typicons
+## Zocial
 
-   (c) Stephen Hutchings 2012
+   Copyright (C) 2012 by Sam Collins
 
-   Author:    Stephen Hutchings
-   License:   SIL (http://scripts.sil.org/OFL)
-   Homepage:  http://typicons.com/
+   Author:    Sam Collins
+   License:   MIT (http://opensource.org/licenses/mit-license.php)
+   Homepage:  http://zocial.smcllns.com/
 
 
 ## Elusive

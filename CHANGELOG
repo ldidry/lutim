@@ -1,6 +1,6 @@
 Revision history for Lutim
 
-0.7  ?
+0.7  2016-06-21
 	- Use .po files for internationalization
 	- Add spanish translation (thx to Laura Arjona Reina)
 	- Allow Lutim to be on a sub-directory (like http://example.org/lutim/) (#46 and #57)
@@ -19,6 +19,7 @@ Revision history for Lutim
 	- Use cryptographically secure random generator
 	- Allow to set the encryption length in lutim.conf
 	- Add the possibility of displaying images in a gallery
+	- Add the possibility to download a zip file
 	- bugfixes
 
 0.6  2014-10-03

@@ -1,5 +1,36 @@
 # carton snapshot format: version 1.0
 DISTRIBUTIONS
+  Archive-Zip-1.57
+    pathname: P/PH/PHRED/Archive-Zip-1.57.tar.gz
+    provides:
+      Archive::Zip 1.57
+      Archive::Zip::Archive 1.57
+      Archive::Zip::BufferedFileHandle 1.57
+      Archive::Zip::DirectoryMember 1.57
+      Archive::Zip::FileMember 1.57
+      Archive::Zip::Member 1.57
+      Archive::Zip::MemberRead 1.57
+      Archive::Zip::MockFileHandle 1.57
+      Archive::Zip::NewFileMember 1.57
+      Archive::Zip::StringMember 1.57
+      Archive::Zip::Tree 1.57
+      Archive::Zip::ZipFileMember 1.57
+    requirements:
+      Compress::Raw::Zlib 2.017
+      ExtUtils::MakeMaker 0
+      File::Basename 0
+      File::Copy 0
+      File::Find 0
+      File::Path 0
+      File::Spec 0.80
+      File::Temp 0
+      IO::File 0
+      IO::Handle 0
+      IO::Seekable 0
+      Test::MockModule 0
+      Test::More 0.88
+      Time::Local 0
+      perl 5.006
   CSS-Minifier-XS-0.09
     pathname: G/GT/GTERMARS/CSS-Minifier-XS-0.09.tar.gz
     provides:
@@ -1847,6 +1878,22 @@ DISTRIBUTIONS
       ExtUtils::MakeMaker 6.30
       File::Spec 0
       strict 0
+  SUPER-1.20141117
+    pathname: C/CH/CHROMATIC/SUPER-1.20141117.tar.gz
+    provides:
+      SUPER 1.20141117
+    requirements:
+      Scalar::Util 1.20
+      Sub::Identify 0.03
+      Test::Simple 0.61
+      perl v5.6.2
+  Sub-Identify-0.12
+    pathname: R/RG/RGARCIA/Sub-Identify-0.12.tar.gz
+    provides:
+      Sub::Identify 0.12
+    requirements:
+      ExtUtils::MakeMaker 0
+      Test::More 0
   Sub-Uplevel-0.24
     pathname: D/DA/DAGOLDEN/Sub-Uplevel-0.24.tar.gz
     provides:
@@ -1871,6 +1918,17 @@ DISTRIBUTIONS
       Text::Balanced 2
       if 0
       perl 5.005
+  Test-MockModule-0.11
+    pathname: G/GF/GFRANKS/Test-MockModule-0.11.tar.gz
+    provides:
+      Test::MockModule 0.11
+    requirements:
+      Carp 0
+      Module::Build 0.38
+      SUPER 0
+      Scalar::Util 0
+      Test::More 0.45
+      perl 5.006
   Test-Script-1.07
     pathname: A/AD/ADAMK/Test-Script-1.07.tar.gz
     provides:
