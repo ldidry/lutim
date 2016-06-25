@@ -6,6 +6,7 @@ requires 'Net::Domain::TLD', '>= 1.73'; # Must have the last version to handle (
 requires 'Mojolicious::Plugin::I18N';
 requires 'Mojolicious::Plugin::AssetPack';
 requires 'CSS::Minifier::XS';
+requires 'JavaScript::Minifier::XS';
 requires 'Mojolicious::Plugin::DebugDumperHelper';
 requires 'ORLite';
 requires 'Text::Unidecode';
