@@ -24,8 +24,6 @@ sub startup {
 
     $self->{wait_for_it} = {};
 
-    $self->plugin('I18N');
-    $self->plugin('AssetPack');
     $self->plugin('DebugDumperHelper');
 
     my $config = $self->plugin('Config', {
@@ -43,6 +41,7 @@ sub startup {
             token_length      => 24,
             crypto_key_length => 8,
             thumbnail_size    => 100,
+            theme             => 'default',
         }
     });
 
@@ -52,6 +51,25 @@ sub startup {
 
     $self->secrets($config->{secrets});
 
+    # Themes handling
+    shift @{$self->renderer->paths};
+    shift @{$self->static->paths};
+    if ($config->{theme} ne 'default') {
+        my $theme = $self->home->rel_dir('themes/'.$config->{theme});
+        push @{$self->renderer->paths}, $theme.'/templates' if -d $theme.'/templates';
+        push @{$self->static->paths}, $theme.'/public' if -d $theme.'/public';
+    }
+    push @{$self->renderer->paths}, $self->home->rel_dir('themes/default/templates');
+    push @{$self->static->paths}, $self->home->rel_dir('themes/default/public');
+    # Internationalization
+    my $lib = $self->home->rel_dir('themes/'.$config->{theme}.'/lib');
+    eval qq(use lib "$lib");
+    $self->plugin('I18N');
+
+    # Compressed assets
+    $self->plugin('AssetPack');
+
+    # Helpers
     $self->helper(
         render_file => sub {
             my $c = shift;

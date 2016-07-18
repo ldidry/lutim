@@ -623,7 +623,7 @@ sub zip {
 
     # We HAVE to add a png file at the beginning, otherwise the $zip
     # could use the mimetype of an SVG file if it's the first file asked.
-    $zip->addFile('public/img/favicon.png', 'hosted_with_lutim.png');
+    $zip->addFile('themes/default/public/img/favicon.png', 'hosted_with_lutim.png');
 
     $zip->addDirectory('images/');
     for my $img (@{$imgs}) {

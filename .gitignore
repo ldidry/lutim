@@ -4,7 +4,9 @@ lutim.db
 script/hypnotoad.pid
 local/*
 files/*
-templates/data.html.ep
-public/img/rezopole.png
-public/img/rezopole.xcf
-public/packed/*
+stop-upload
+themes/*
+!themes/default
+!themes/default/*
+themes/default/templates/data.html.ep
+themes/default/public/packed/*
