@@ -7,7 +7,7 @@
     <p><%= l('Drag and drop an image in the appropriate area or use the traditional way to send files and Lutim will provide you four URLs. One to view the image, an other to directly download it, one you can use on social networks and a last to delete the image when you want.') %></p>
     <p><%= l('You can, optionally, request that the image(s) posted on Lutim to be deleted at first view (or download) or after the delay selected from those proposed.') %></p>
     <h4><%= l('Is it really free (as in free beer)?') %></h4>
-    <p><%== l('Yes, it is! On the other side, if you want to support the developer, you can do it via <a href="https://flattr.com/submit/auto?user_id=_SKy_&amp;url=%1&amp;title=Lutim&amp;category=software">Flattr</a> or with <a href="bitcoin:1JCEtmx9pyzWfitMQj2pKAk8GNgyix7RmA?label=lutim">BitCoin</a>.', url_for('/')->to_abs()) %></p>
+    <p><%== l('Yes, it is! On the other side, if you want to support the developer, you can do it via <a href="https://www.tipeee.com/fiat-tux">Tipeee</a> or via <a href="https://liberapay.com/sky/">Liberapay</a>.') %></p>
     <h4><%= l('Is it really anonymous?') %></h4>
     <p><%= l('Yes, it is! On the other side, for legal reasons, your IP address will be stored when you send an image. Don\'t panic, it is normally the case of all sites on which you send files!') %></p>
     <p><%= l('The IP address of the image\'s sender is retained for a delay which depends of the administrator\'s choice (for the official instance, which is located in France, it\'s one year).') %></p>

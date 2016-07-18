@@ -48,6 +48,10 @@ Please consider contributing, either by [reporting issues](https://framagit.org/
 
 The details on how to contribute are on the [wiki](https://framagit.org/luc/lutim/wikis/contribute).
 
+## Make a donation
+
+You can make a donation to the author on [Tipeee](https://www.tipeee.com/fiat-tux) or on [Liberapay](https://liberapay.com/sky/).
+
 ## Others projects dependancies
 
 Lutim is written in Perl with the [Mojolicious](http://mojolicio.us) framework.

@@ -441,10 +441,9 @@ msgstr "¿Quién posee los derechos de las imágenes que se suben a Lutim?"
 msgid "Yes, it is! On the other side, for legal reasons, your IP address will be stored when you send an image. Don't panic, it is normally the case of all sites on which you send files!"
 msgstr "¡Sí, lo es! Por otro lado, por razones legales, se almacena la dirección IP cuando se envía una imagen. Que no cunda el pánico, ¡es el caso habitual para todos los sitios a los cuales se envían ficheros!"
 
-#. (url_for('/')
 #: themes/default/templates/about.html.ep:10
-msgid "Yes, it is! On the other side, if you want to support the developer, you can do it via <a href=\"https://flattr.com/submit/auto?user_id=_SKy_&amp;url=%1&amp;title=Lutim&amp;category=software\">Flattr</a> or with <a href=\"bitcoin:1JCEtmx9pyzWfitMQj2pKAk8GNgyix7RmA?label=lutim\">BitCoin</a>."
-msgstr "¡Sí, lo es! Por otro lado, si quiere ayudar a apoyar al desarrollador, puede hacerlo vía <a href=\"https://flattr.com/submit/auto?user_id=_SKy_&amp;url=%1&amp;title=Lutim&amp;category=software\">Flattr</a> o con <a href=\"bitcoin:1JCEtmx9pyzWfitMQj2pKAk8GNgyix7RmA?label=lutim\">BitCoin</a>."
+msgid "Yes, it is! On the other side, if you want to support the developer, you can do it via <a href=\"https://www.tipeee.com/fiat-tux\">Tipeee</a> or via <a href=\"https://liberapay.com/sky/\">Liberapay</a>."
+msgstr "¡Sí, lo es! Por otro lado, si quiere ayudar a apoyar al desarrollador, puede hacerlo vía <a href=\"https://www.tipeee.com/fiat-tux\">Tipeee</a> o con <a href=\"https://liberapay.com/sky/\">Liberapay</a>."
 
 #: themes/default/templates/about.html.ep:8
 msgid "You can, optionally, request that the image(s) posted on Lutim to be deleted at first view (or download) or after the delay selected from those proposed."
