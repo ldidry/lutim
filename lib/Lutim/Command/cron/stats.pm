@@ -15,12 +15,18 @@ sub run {
 
     my $config = $c->app->plugin('Config', {
         file    => File::Spec->catfile($Bin, '..' ,'lutim.conf'),
+        theme   => 'default',
         default => {
             stats_day_num => 365
         }
     });
 
-    my $text     = slurp('templates/data.html.ep.template');
+    my $template = 'themes/'.$config->{theme}.'/templates/data.html.ep.template';
+    unless (-e $template) {
+        $config->{theme} = 'default';
+        $template = 'themes/'.$config->{theme}.'/templates/data.html.ep.template';
+    }
+    my $text     = slurp($template);
     my $dom      = Mojo::DOM->new($text);
     my $thead_tr = $dom->at('table thead tr');
     my $tbody_tr = $dom->at('table tbody tr');
@@ -51,7 +57,7 @@ sub run {
             }
         }
     }
-    spurt $dom, 'templates/data.html.ep';
+    spurt $dom, 'themes/'.$config->{theme}.'/templates/data.html.ep';
 }
 
 =encoding utf8

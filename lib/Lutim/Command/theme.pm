@@ -86,7 +86,7 @@ EOF
         print $f $makefile;
         close $f;
         open $f, '>', File::Spec->catfile($home, '.gitignore') or die "Unable to open $home/.gitignore: $!";
-        print $f 'public/packed/';
+        print $f "public/packed/\ntemplates/data.html.ep";
         close $f;
     } else {
         say "$name theme already exists. Aborting.";
