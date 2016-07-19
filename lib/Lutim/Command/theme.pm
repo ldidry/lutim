@@ -85,6 +85,9 @@ EOF
         open $f, '>', File::Spec->catfile($home, 'Makefile') or die "Unable to open $home/Makefile: $!";
         print $f $makefile;
         close $f;
+        open $f, '>', File::Spec->catfile($home, '.gitignore') or die "Unable to open $home/.gitignore: $!";
+        print $f 'public/packed/';
+        close $f;
     } else {
         say "$name theme already exists. Aborting.";
         exit 1;

@@ -378,6 +378,7 @@
     "@blockquote-border-color": "@gray-lighter",
     "@page-header-border-color": "@gray-lighter",
     "@dl-horizontal-offset": "@component-offset-horizontal",
+    "@dl-horizontal-breakpoint": "@grid-float-breakpoint",
     "@hr-border": "@gray-lighter"
   },
   "css": [
@@ -388,6 +389,7 @@
     "forms.less",
     "buttons.less",
     "responsive-utilities.less",
+    "button-groups.less",
     "input-groups.less",
     "alerts.less",
     "progress-bars.less",
@@ -398,5 +400,5 @@
     "alert.js",
     "transition.js"
   ],
-  "customizerUrl": "http://getbootstrap.com/customize/?id=1ae09bdf270195e14997"
+  "customizerUrl": "http://getbootstrap.com/customize/?id=a3e981920dd6bd53664e6b133bd0d53f"
 }

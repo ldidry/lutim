@@ -33,7 +33,20 @@
             if (only_url !== undefined && only_url === true) {
                 return link;
             }
-            return '<a class="btn btn-default col-xs-12 text-left" href="#" title="<%= l('Deletion link') %>" id="del-'+url+'" data-short="'+url+'" data-token="'+token+'"><span class="icon icon-trash"></span> '+link+'</a>';
+            return [
+                '<label class="sr-only" for="link-del-', url, '"><%= l('Deletion link') %></label>',
+                '<div class="input-group input-group-sm">',
+                    '<div class="input-group-btn">',
+                        '<a class="btn btn-default text-danger" href="#" title="<%= l('Deletion link') %>" id="del-', url, '" data-short="', url, '" data-token="', token, '">',
+                            '<span class="icon icon-trash"></span> ',
+                        '</a>',
+                    '</div>',
+                    '<input type="text" class="form-control" id="link-del-', url, '" value="', link, '" readonly>',
+                    '<a href="#" onClick="event.preventDefault();copyToClipboard($(this));" class="input-group-addon" title="<%= l('Copy to clipboard') %>">',
+                        '<span class="icon icon-clipboard"></span>',
+                    '</a>',
+                '</div>'
+            ].join('');
         } else if (dl !== '') {
             url = url+'?'+dl;
         }

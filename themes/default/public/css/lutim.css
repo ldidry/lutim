@@ -60,3 +60,9 @@ label.always-encrypt {
 #gallery-url {
     margin-bottom: 10px;
 }
+.adjust-addon {
+    width: 42px;
+}
+.adjust-addon .btn {
+    width: 43px;
+}
