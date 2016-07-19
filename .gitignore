@@ -10,3 +10,4 @@ themes/*
 !themes/default/*
 themes/default/templates/data.html.ep
 themes/default/public/packed/*
+tmp/
