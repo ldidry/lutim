@@ -162,7 +162,7 @@ msgstr ""
 
 #: themes/default/templates/partial/lutim.js.ep:127
 #: themes/default/templates/partial/lutim.js.ep:145
-msgid "Hit Enter, then Ctrl+C to copy the short link"
+msgid "Hit Ctrl+C, then Enter to copy the short link"
 msgstr ""
 
 #: themes/default/templates/layouts/default.html.ep:45

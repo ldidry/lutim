@@ -124,7 +124,7 @@
                 throw new Error('Copying text command was ' + msg);
             }
         } catch (err) {
-            prompt('<%= l('Hit Enter, then Ctrl+C to copy the short link') %>', el.val());
+            prompt('<%= l('Hit Ctrl+C, then Enter to copy the short link') %>', el.val());
         }
     }
     function copyAllToClipboard() {
@@ -142,7 +142,7 @@
                 throw new Error('Copying text command was ' + msg);
             }
         } catch (err) {
-            prompt('<%= l('Hit Enter, then Ctrl+C to copy the short link') %>', text.join(" "));
+            prompt('<%= l('Hit Ctrl+C, then Enter to copy the short link') %>', text.join(" "));
         }
 
     }

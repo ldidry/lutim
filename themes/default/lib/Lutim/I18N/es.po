@@ -164,8 +164,8 @@ msgstr "Enlace a la galería"
 
 #: themes/default/templates/partial/lutim.js.ep:127
 #: themes/default/templates/partial/lutim.js.ep:145
-msgid "Hit Enter, then Ctrl+C to copy the short link"
-msgstr "Presione Ingresar, entonces Ctrl + C para copiar el enlace"
+msgid "Hit Ctrl+C, then Enter to copy the short link"
+msgstr "Presione Ctrl + C, entonces Ingresar para copiar el enlace"
 
 #: themes/default/templates/layouts/default.html.ep:45
 msgid "Homepage"
