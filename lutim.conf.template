@@ -65,7 +65,7 @@
     #piwik_img         => 'https://piwik.example.org/piwik.php?idsite=1&amp;rec=1',
 
     # if you want to include something in the right of the screen, put it here
-    # here's an exemple to put the logo of your hoster
+    # here's an example to put the logo of your hoster
     # optional, no default
     #hosted_by         => 'My super hoster <img src="http://hoster.example.com" alt="Hoster logo">',
 

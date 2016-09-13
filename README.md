@@ -4,9 +4,9 @@
 It means Let's Upload That Image.
 
 ## What does it do?
-It stores images and allows you to see them, download them or share them on social networks. From version 0.5, the gif images can be displayed as animated gifs in Twitter, but you need a HTTPS server (Twitter requires that. Lutim detects if you have a HTTPS server and displays an static image twitter card if you don't);
+It stores images and allows you to see them, download them or share them on social networks. From version 0.5, the gif images can be displayed as animated gifs in Twitter, but you need an HTTPS server (Twitter requires that. Lutim detects if you have a HTTPS server and displays a static image twitter card if you don't);
 
-Images are indefinitly stored unless you request that they will be deleted at first view or after 24 hours / one week / one month / one year.
+Images are indefinitely stored unless you request that they will be deleted at first view or after 24 hours / one week / one month / one year.
 
 ## License
 Lutim is licensed under the terms of the AGPL. See the LICENSE file.
@@ -21,7 +21,7 @@ Lutim's logo is an adaptation of [Lutin](http://commons.wikimedia.org/wiki/File:
 
 ## Wiki
 
-The official wiki contains all what you need to know about Lutim (installation, API, etc). Go to <https://framagit.org/luc/lutim/wikis/home> or clone it:
+The official wiki contains all you need to know about Lutim (installation, API, etc.). Go to <https://framagit.org/luc/lutim/wikis/home> or clone it:
 
 ```
 git clone https://framagit.org/luc/lutim.wiki.git
@@ -31,12 +31,11 @@ git clone https://framagit.org/luc/lutim.wiki.git
 
 Lutim does encryption on the server if asked to, but does not store the key.
 
-The encryption is made on the server since Lutim is made to be usable even without javascript. If you want to add client-side encryption for javascript-enabled browsers, patches are welcome.
+The encryption is done on the server since Lutim is made to be usable even without javascript. If you want to add client-side encryption for javascript-enabled browsers, patches are welcome.
 
 ## Internationalization
 
 Lutim comes with English, French and Spanish languages. It will choose the language to display from the browser's settings.
-
 
 ## Authors
 
@@ -52,7 +51,7 @@ The details on how to contribute are on the [wiki](https://framagit.org/luc/luti
 
 You can make a donation to the author on [Tipeee](https://www.tipeee.com/fiat-tux) or on [Liberapay](https://liberapay.com/sky/).
 
-## Others projects dependancies
+## Others projects dependencies
 
 Lutim is written in Perl with the [Mojolicious](http://mojolicio.us) framework.
 
