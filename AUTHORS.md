@@ -13,3 +13,4 @@
 * Sandro Cazzaniga, aka Kharec (<http://sandrocazzaniga.fr>), [@Kharec](https://twitter.com/Kharec)
 * Laura Arjona Reina (<https://wiki.debian.org/LauraArjona>), spanish translation
 * Thor77 (<http://thor77.org>), german translation, among other things
+* Quentin Pagès, occitan translation

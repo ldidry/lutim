@@ -35,6 +35,7 @@
         <li>Sandro CAZZANIGA, aka Kharec (<a href="http://sandrocazzaniga.fr">http://sandrocazzaniga.fr</a>), <a href="https://twitter.com/Kharec">@Kharec</a></li>
         <li>Laura Arjona Reina (<a href="https://wiki.debian.org/LauraArjona">https://wiki.debian.org/LauraArjona</a>), <%= l('spanish translation') %>
         <li>Thor77 (<a href="http://thor77.org">http://thor77.org</a>)</li>
+        <li>Quentin Pagès, <%= l('occitan translation') %></li>
     </ul>
 
     <%= link_to url_for('/') => ( class => "btn btn-primary btn-lg" ) => begin %><%= l('Back to homepage') %><% end%>

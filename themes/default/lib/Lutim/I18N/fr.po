@@ -1,6 +1,6 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
+# Lutim language file
+# Copyright (C) 2014 Luc Didry
+# This file is distributed under the same license as the Lutim package.
 # 
 # Translators:
 # Translators:
@@ -52,7 +52,7 @@ msgstr " : Erreur en essayant de récupérer le compteur."
 msgid "An error occured while downloading the image."
 msgstr "Une erreur est survenue lors du téléchargement de l'image."
 
-#: themes/default/templates/about.html.ep:40
+#: themes/default/templates/about.html.ep:41
 #: themes/default/templates/myfiles.html.ep:27
 #: themes/default/templates/stats.html.ep:13
 msgid "Back to homepage"
@@ -283,9 +283,6 @@ msgstr "Seulement l'envoyeur ! (enfin, seulement s'il possède des droits exclus
 msgid "Please contact the administrator: %1"
 msgstr "Veuillez contacter l’administrateur : %1"
 
-msgid "Please wait"
-msgstr "Veuillez patienter"
-
 #: themes/default/templates/index.html.ep:158
 msgid "Send an image"
 msgstr "Envoyer une image"
@@ -464,6 +461,10 @@ msgstr "développeur principal"
 #: themes/default/templates/index.html.ep:3
 msgid "no time limit"
 msgstr "Pas de limitation de durée"
+
+#: themes/default/templates/about.html.ep:38
+msgid "occitan translation"
+msgstr "traduction occitane"
 
 #: themes/default/templates/about.html.ep:27
 msgid "on"

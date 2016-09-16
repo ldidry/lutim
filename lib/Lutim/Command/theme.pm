@@ -57,6 +57,7 @@ EN=lib/Lutim/I18N/en.po
 FR=lib/Lutim/I18N/fr.po
 DE=lib/Lutim/I18N/de.po
 ES=lib/Lutim/I18N/es.po
+OC=lib/Lutim/I18N/oc.po
 SEDOPTS=-e "s\@SOME DESCRIPTIVE TITLE\@Lutim language file\@" \\
 		-e "s\@YEAR THE PACKAGE'S COPYRIGHT HOLDER\@2015 Luc Didry\@" \\
 		-e "s\@CHARSET\@utf8\@" \\
@@ -72,6 +73,7 @@ locales:
 		\$(XGETTEXT) -D templates -D ../default/templates -o \$(FR) 2>/dev/null
 		\$(XGETTEXT) -D templates -D ../default/templates -o \$(DE) 2>/dev/null
 		\$(XGETTEXT) -D templates -D ../default/templates -o \$(ES) 2>/dev/null
+		\$(XGETTEXT) -D templates -D ../default/templates -o \$(OC) 2>/dev/null
 		sed \$(SEDOPTS) -i \$(EN)
 		sed \$(SEDOPTS2) -i \$(EN)
 		sed \$(SEDOPTS) -i \$(FR)
@@ -80,6 +82,8 @@ locales:
 		sed \$(SEDOPTS2) -i \$(DE)
 		sed \$(SEDOPTS) -i \$(ES)
 		sed \$(SEDOPTS2) -i \$(ES)
+		sed \$(SEDOPTS) -i \$(OC)
+		sed \$(SEDOPTS2) -i \$(OC)
 EOF
 
         open $f, '>', File::Spec->catfile($home, 'Makefile') or die "Unable to open $home/Makefile: $!";

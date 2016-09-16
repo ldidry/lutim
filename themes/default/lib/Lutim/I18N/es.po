@@ -1,6 +1,6 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
+# Lutim language file
+# Copyright (C) 2014 Luc Didry
+# This file is distributed under the same license as the Lutim package.
 # 
 # Translators:
 # Translators:
@@ -52,7 +52,7 @@ msgstr ": Error al intentar obtener el contador."
 msgid "An error occured while downloading the image."
 msgstr "Error al intentar modificar la imagen."
 
-#: themes/default/templates/about.html.ep:40
+#: themes/default/templates/about.html.ep:41
 #: themes/default/templates/myfiles.html.ep:27
 #: themes/default/templates/stats.html.ep:13
 msgid "Back to homepage"
@@ -272,7 +272,7 @@ msgstr "Sólo se admiten imágenes"
 
 #: themes/default/templates/myfiles.html.ep:6
 msgid "Only the images sent with this browser will be listed here. The informations are stored in localStorage: if you delete your localStorage data, you'll loose this informations."
-msgstr ""
+msgstr "Sólo se enumeran aquí las imágenes enviadas con este navegador. Las informaciones se almacenan en localStorage: si elimina sus datos localStorage, perderás esta información."
 
 #: themes/default/templates/about.html.ep:16
 msgid "Only the uploader! (well, only if he's the only owner of the images' rights before the upload)"
@@ -282,9 +282,6 @@ msgstr "¡Sólo el usuario! (bueno, sólo si él/ela es el único titular de los
 #: themes/default/templates/about.html.ep:19
 msgid "Please contact the administrator: %1"
 msgstr "Por favor, contacte con el administrador: %1"
-
-msgid "Please wait"
-msgstr "Por favor espera"
 
 #: themes/default/templates/index.html.ep:158
 msgid "Send an image"
@@ -462,6 +459,10 @@ msgstr "desarrollador principal"
 #: themes/default/templates/index.html.ep:3
 msgid "no time limit"
 msgstr "Sin tiempo límite"
+
+#: themes/default/templates/about.html.ep:38
+msgid "occitan translation"
+msgstr "traducción al occitano"
 
 #: themes/default/templates/about.html.ep:27
 msgid "on"
