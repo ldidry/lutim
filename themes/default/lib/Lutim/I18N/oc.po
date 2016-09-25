@@ -60,7 +60,7 @@ msgstr "Tornar a la pagina d'acuèlh"
 #: themes/default/templates/index.html.ep:193
 #: themes/default/templates/index.html.ep:194
 msgid "Click to open the file browser"
-msgstr "Clicatz per utilizar lo navegador de fichièr"
+msgstr "Clicatz per utilizar lo navigador de fichièr"
 
 #: themes/default/templates/about.html.ep:30
 msgid "Contributors"
@@ -123,7 +123,7 @@ msgstr "Ligam de telecargament de l'archiu dels imatges"
 
 #: themes/default/templates/index.html.ep:189
 msgid "Drag & drop images here"
-msgstr "Lisar-depausar vòstres imatges aquí"
+msgstr "Lisatz e depausatz vòstres imatges aquí"
 
 #: themes/default/templates/about.html.ep:7
 msgid "Drag and drop an image in the appropriate area or use the traditional way to send files and Lutim will provide you four URLs. One to view the image, an other to directly download it, one you can use on social networks and a last to delete the image when you want."
@@ -271,7 +271,7 @@ msgstr "Solament son acceptats los imatges"
 
 #: themes/default/templates/myfiles.html.ep:6
 msgid "Only the images sent with this browser will be listed here. The informations are stored in localStorage: if you delete your localStorage data, you'll loose this informations."
-msgstr "Solament los imatges mandats amb aqueste navegador seràn listats aquí. Las informacions son gardadas en localStorage : se escafatz vòstras donadas localStorage, perdretz aquelas informacions."
+msgstr "Solament los imatges mandats amb aqueste navigador seràn listats aquí. Las informacions son gardadas en localStorage : se escafatz vòstras donadas localStorage, perdretz aquelas informacions."
 
 #: themes/default/templates/about.html.ep:16
 msgid "Only the uploader! (well, only if he's the only owner of the images' rights before the upload)"
