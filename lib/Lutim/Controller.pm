@@ -51,6 +51,22 @@ sub stats {
     );
 }
 
+sub infos {
+    my $c = shift;
+
+    $c->render(
+        json => {
+            broadcast_message => $c->config('broadcast_message'),
+            image_magick      => ($im_loaded) ? true : false,
+            contact           => $c->config('contact'),
+            max_file_size     => $c->config('max_file_size'),
+            default_delay     => $c->config('default_delay'),
+            max_delay         => $c->config('max_delay'),
+            always_encrypt    => ($c->config('always_encrypt')) ? true : false,
+        }
+    );
+}
+
 sub webapp {
     my $c = shift;
 
