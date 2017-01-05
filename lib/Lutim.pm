@@ -67,7 +67,7 @@ sub startup {
     $self->plugin('I18N');
 
     # Compressed assets
-    $self->plugin('AssetPack');
+    $self->plugin('AssetPack' => { pipes => [qw(Combine)] });
 
     # Helpers
     $self->helper(
@@ -328,13 +328,14 @@ sub startup {
         }
     );
 
-    $self->asset('index.css' => 'css/bootstrap.min.css', 'css/fontello-embedded.css', 'css/animation.css', 'css/uploader.css', 'css/hennypenny.css', 'css/lutim.css', 'css/markdown.css');
-    $self->asset('stats.css' => 'css/bootstrap.min.css', 'css/fontello-embedded.css', 'css/morris-0.4.3.min.css', 'css/hennypenny.css', 'css/lutim.css');
-    $self->asset('about.css' => 'css/bootstrap.min.css', 'css/fontello-embedded.css', 'css/hennypenny.css', 'css/lutim.css');
+    $self->asset->store->paths($self->static->paths);
+    $self->asset->process('index.css' => ('css/bootstrap.min.css', 'css/fontello-embedded.css', 'css/animation.css', 'css/uploader.css', 'css/hennypenny.css', 'css/lutim.css', 'css/markdown.css'));
+    $self->asset->process('stats.css' => ('css/bootstrap.min.css', 'css/fontello-embedded.css', 'css/morris-0.4.3.min.css', 'css/hennypenny.css', 'css/lutim.css'));
+    $self->asset->process('about.css' => ('css/bootstrap.min.css', 'css/fontello-embedded.css', 'css/hennypenny.css', 'css/lutim.css'));
 
-    $self->asset('index.js'  => 'js/jquery-2.1.0.min.js', 'js/bootstrap.min.js', 'js/lutim.js', 'js/dmuploader.min.js');
-    $self->asset('stats.js'  => 'js/jquery-2.1.0.min.js', 'js/bootstrap.min.js', 'js/lutim.js', 'js/raphael-min.js', 'js/morris-0.4.3.min.js', 'js/stats.js');
-    $self->asset('freeze.js' => 'js/jquery-2.1.0.min.js', 'js/freezeframe.min.js');
+    $self->asset->process('index.js'  => ('js/jquery-2.1.0.min.js', 'js/bootstrap.min.js', 'js/lutim.js', 'js/dmuploader.min.js'));
+    $self->asset->process('stats.js'  => ('js/jquery-2.1.0.min.js', 'js/bootstrap.min.js', 'js/lutim.js', 'js/raphael-min.js', 'js/morris-0.4.3.min.js', 'js/stats.js'));
+    $self->asset->process('freeze.js' => ('js/jquery-2.1.0.min.js', 'js/freezeframe.min.js'));
 
     $self->defaults(layout => 'default');
 
