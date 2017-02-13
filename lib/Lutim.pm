@@ -75,6 +75,7 @@ sub startup {
             my $c = shift;
             my ($filename, $path, $mediatype, $dl, $expires, $nocache, $key, $thumb) = @_;
 
+            $dl       = 'attachment' if ($mediatype =~ m/svg/);
             $filename = quote($filename);
 
             my $asset;
