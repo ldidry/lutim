@@ -8,3 +8,4 @@ themes/default/templates/partial/common.js.ep
 themes/default/templates/partial/lutim.js.ep
 lib/Lutim.pm
 lib/Lutim/Controller.pm
+lib/Lutim/Command/cron/stats.pm

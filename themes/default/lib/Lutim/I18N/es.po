@@ -20,6 +20,14 @@ msgstr ""
 
 #. ($delay)
 #. (config('max_delay')
+#. (7)
+#. (30)
+#: lib/Lutim/Command/cron/stats.pm:100
+#: lib/Lutim/Command/cron/stats.pm:110
+#: lib/Lutim/Command/cron/stats.pm:111
+#: lib/Lutim/Command/cron/stats.pm:127
+#: lib/Lutim/Command/cron/stats.pm:128
+#: lib/Lutim/Command/cron/stats.pm:99
 #: themes/default/templates/partial/lutim.js.ep:235
 #: themes/default/templates/partial/lutim.js.ep:244
 #: themes/default/templates/partial/lutim.js.ep:245
@@ -35,10 +43,16 @@ msgstr "%1 imágenes enviadas a esta instancia desde el inicio."
 msgid "-or-"
 msgstr "-o-"
 
+#: lib/Lutim/Command/cron/stats.pm:101
+#: lib/Lutim/Command/cron/stats.pm:112
+#: lib/Lutim/Command/cron/stats.pm:129
 #: themes/default/templates/index.html.ep:5
 msgid "1 year"
 msgstr "1 año"
 
+#: lib/Lutim/Command/cron/stats.pm:109
+#: lib/Lutim/Command/cron/stats.pm:126
+#: lib/Lutim/Command/cron/stats.pm:98
 #: themes/default/templates/index.html.ep:4
 #: themes/default/templates/partial/lutim.js.ep:244
 msgid "24 hours"
@@ -47,6 +61,10 @@ msgstr "24 horas"
 #: themes/default/templates/myfiles.html.ep:79
 msgid ": Error while trying to get the counter."
 msgstr ": Error al intentar obtener el contador."
+
+#: lib/Lutim/Command/cron/stats.pm:94
+msgid "Active images"
+msgstr ""
 
 #: lib/Lutim/Controller.pm:286
 msgid "An error occured while downloading the image."
@@ -106,6 +124,14 @@ msgstr ""
 #: themes/default/templates/partial/lutim.js.ep:256
 msgid "Delete at first view?"
 msgstr "¿Borrar en la primera vista?"
+
+#: lib/Lutim/Command/cron/stats.pm:95
+msgid "Deleted images"
+msgstr ""
+
+#: lib/Lutim/Command/cron/stats.pm:96
+msgid "Deleted images in 30 days"
+msgstr ""
 
 #: themes/default/templates/index.html.ep:98
 #: themes/default/templates/myfiles.html.ep:19
@@ -201,6 +227,10 @@ msgstr "Si los ficheros se borran por haberlo solicitado al enviarlos, se retien
 #: themes/default/templates/index.html.ep:203
 msgid "Image URL"
 msgstr "URL de la imagen"
+
+#: lib/Lutim/Command/cron/stats.pm:93
+msgid "Image delay"
+msgstr ""
 
 #: lib/Lutim/Controller.pm:715
 msgid "Image not found."
@@ -380,6 +410,10 @@ msgstr "Puede, opcionalmente, solicitar que la imagen publicada en Lutim se elim
 msgid "There is no more available URL. Retry or contact the administrator. %1"
 msgstr "No más URL disponibles. Inténtelo de nuevo o contacte con el administrador. %1"
 
+#: lib/Lutim/Command/cron/stats.pm:102
+msgid "Total"
+msgstr ""
+
 #: themes/default/templates/index.html.ep:60
 #: themes/default/templates/partial/lutim.js.ep:45
 msgid "Tweet it!"
@@ -468,6 +502,9 @@ msgstr "y en"
 msgid "core developer"
 msgstr "desarrollador principal"
 
+#: lib/Lutim/Command/cron/stats.pm:108
+#: lib/Lutim/Command/cron/stats.pm:125
+#: lib/Lutim/Command/cron/stats.pm:97
 #: themes/default/templates/index.html.ep:3
 msgid "no time limit"
 msgstr "Sin tiempo límite"

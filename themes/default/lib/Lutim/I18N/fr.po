@@ -20,6 +20,14 @@ msgstr ""
 
 #. ($delay)
 #. (config('max_delay')
+#. (7)
+#. (30)
+#: lib/Lutim/Command/cron/stats.pm:100
+#: lib/Lutim/Command/cron/stats.pm:110
+#: lib/Lutim/Command/cron/stats.pm:111
+#: lib/Lutim/Command/cron/stats.pm:127
+#: lib/Lutim/Command/cron/stats.pm:128
+#: lib/Lutim/Command/cron/stats.pm:99
 #: themes/default/templates/partial/lutim.js.ep:235
 #: themes/default/templates/partial/lutim.js.ep:244
 #: themes/default/templates/partial/lutim.js.ep:245
@@ -35,10 +43,16 @@ msgstr "%1 images envoyées sur cette instance depuis le début."
 msgid "-or-"
 msgstr "-ou-"
 
+#: lib/Lutim/Command/cron/stats.pm:101
+#: lib/Lutim/Command/cron/stats.pm:112
+#: lib/Lutim/Command/cron/stats.pm:129
 #: themes/default/templates/index.html.ep:5
 msgid "1 year"
 msgstr "1 an"
 
+#: lib/Lutim/Command/cron/stats.pm:109
+#: lib/Lutim/Command/cron/stats.pm:126
+#: lib/Lutim/Command/cron/stats.pm:98
 #: themes/default/templates/index.html.ep:4
 #: themes/default/templates/partial/lutim.js.ep:244
 msgid "24 hours"
@@ -47,6 +61,10 @@ msgstr "24 heures"
 #: themes/default/templates/myfiles.html.ep:79
 msgid ": Error while trying to get the counter."
 msgstr " : Erreur en essayant de récupérer le compteur."
+
+#: lib/Lutim/Command/cron/stats.pm:94
+msgid "Active images"
+msgstr "Images actives"
 
 #: lib/Lutim/Controller.pm:286
 msgid "An error occured while downloading the image."
@@ -91,7 +109,6 @@ msgstr "Copier dans le presse-papier"
 msgid "Counter"
 msgstr "Compteur"
 
-
 #: themes/default/templates/stats.html.ep:18
 msgid "Delay repartition chart for disabled images"
 msgstr "Graphe de répartition des délais pour les images supprimées"
@@ -107,6 +124,14 @@ msgstr "Graphe de répartition des délais pour les images actives"
 #: themes/default/templates/partial/lutim.js.ep:256
 msgid "Delete at first view?"
 msgstr "Supprimer au premier accès ?"
+
+#: lib/Lutim/Command/cron/stats.pm:95
+msgid "Deleted images"
+msgstr "Images supprimées"
+
+#: lib/Lutim/Command/cron/stats.pm:96
+msgid "Deleted images in 30 days"
+msgstr "Images supprimées dans 30 jours"
 
 #: themes/default/templates/index.html.ep:98
 #: themes/default/templates/myfiles.html.ep:19
@@ -202,6 +227,10 @@ msgstr "Si les fichiers sont bien supprimés si vous en avez exprimé le choix, 
 #: themes/default/templates/index.html.ep:203
 msgid "Image URL"
 msgstr "URL de l’image"
+
+#: lib/Lutim/Command/cron/stats.pm:93
+msgid "Image delay"
+msgstr "Durée de rétention de l’image"
 
 #: lib/Lutim/Controller.pm:715
 msgid "Image not found."
@@ -383,6 +412,10 @@ msgstr "Les images déposées sur Lutim peuvent être stockées indéfiniment, o
 msgid "There is no more available URL. Retry or contact the administrator. %1"
 msgstr "Il n’y a plus d’URL disponible. Veuillez réessayer ou contacter l’administrateur. %1."
 
+#: lib/Lutim/Command/cron/stats.pm:102
+msgid "Total"
+msgstr "Total"
+
 #: themes/default/templates/index.html.ep:60
 #: themes/default/templates/partial/lutim.js.ep:45
 msgid "Tweet it!"
@@ -471,6 +504,9 @@ msgstr "et sur"
 msgid "core developer"
 msgstr "développeur principal"
 
+#: lib/Lutim/Command/cron/stats.pm:108
+#: lib/Lutim/Command/cron/stats.pm:125
+#: lib/Lutim/Command/cron/stats.pm:97
 #: themes/default/templates/index.html.ep:3
 msgid "no time limit"
 msgstr "Pas de limitation de durée"

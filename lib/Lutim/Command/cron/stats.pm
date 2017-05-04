@@ -91,9 +91,9 @@ sub run {
     $dom2 = <<EOF;
 % my \@raw = (
 %     l('Image delay'),
-%     l('Enabled'),
-%     l('Disabled'),
-%     l('Disabled in 30 days'),
+%     l('Active images'),
+%     l('Deleted images'),
+%     l('Deleted images in 30 days'),
 %     l('no time limit'),
 %     l('24 hours'),
 %     l('%1 days', 7),
