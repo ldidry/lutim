@@ -1,0 +1,14 @@
+<table id="raw-stats" class="table table-striped">
+    <thead>
+        <tr>
+            <th><%= $raw[0] %></th>
+            <th><%= $raw[1] %></th>
+            <th><%= $raw[2] %></th>
+            <th><%= $raw[3] %></th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+    <tfoot>
+    </tfoot>
+</table>

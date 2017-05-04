@@ -6,8 +6,20 @@
 <h4><%= l('Uploaded files by days') %></h4>
 <div id="evol-holder"></div>
 <hr>
+
 <h4><%= l('Evolution of total files') %></h4>
 <div id="total-holder"></div>
 <p><small><%= l('The graph\'s datas are not updated in real-time.') %></small></p>
+<hr>
+
+<h4><%= l('Delay repartition chart for enabled images') %></h4>
+<div id="raw-enabled-holder"></div>
+
+<h4><%= l('Delay repartition chart for disabled images') %></h4>
+<div id="raw-disabled-holder"></div>
+<hr>
+
+<h4><%= l('Raw stats') %></h4>
+%= include 'raw'
 
 <%= link_to url_for('/') => ( class => "btn btn-primary btn-lg" ) => begin %><%= l('Back to homepage') %><% end%>

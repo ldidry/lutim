@@ -48,15 +48,15 @@ msgstr "24 heures"
 msgid ": Error while trying to get the counter."
 msgstr " : Erreur en essayant de récupérer le compteur."
 
-#: lib/Lutim/Controller.pm:270
+#: lib/Lutim/Controller.pm:286
 msgid "An error occured while downloading the image."
-msgstr "Une erreur est survenue lors du téléchargement de l'image."
+msgstr "Une erreur est survenue lors du téléchargement de l’image."
 
 #: themes/default/templates/about.html.ep:41
 #: themes/default/templates/myfiles.html.ep:27
-#: themes/default/templates/stats.html.ep:13
+#: themes/default/templates/stats.html.ep:25
 msgid "Back to homepage"
-msgstr "Retour à la page d'accueil"
+msgstr "Retour à la page d’accueil"
 
 #: themes/default/templates/index.html.ep:193
 #: themes/default/templates/index.html.ep:194
@@ -91,6 +91,15 @@ msgstr "Copier dans le presse-papier"
 msgid "Counter"
 msgstr "Compteur"
 
+
+#: themes/default/templates/stats.html.ep:18
+msgid "Delay repartition chart for disabled images"
+msgstr "Graphe de répartition des délais pour les images supprimées"
+
+#: themes/default/templates/stats.html.ep:15
+msgid "Delay repartition chart for enabled images"
+msgstr "Graphe de répartition des délais pour les images actives"
+
 #: themes/default/templates/index.html.ep:115
 #: themes/default/templates/index.html.ep:147
 #: themes/default/templates/index.html.ep:178
@@ -120,7 +129,7 @@ msgstr "Lien de téléchargement"
 #: themes/default/templates/index.html.ep:28
 #: themes/default/templates/index.html.ep:31
 msgid "Download zip link"
-msgstr "Lien de téléchargement de l'archive des images"
+msgstr "Lien de téléchargement de l’archive des images"
 
 #: themes/default/templates/index.html.ep:189
 msgid "Drag & drop images here"
@@ -128,18 +137,18 @@ msgstr "Déposez vos images ici"
 
 #: themes/default/templates/about.html.ep:7
 msgid "Drag and drop an image in the appropriate area or use the traditional way to send files and Lutim will provide you four URLs. One to view the image, an other to directly download it, one you can use on social networks and a last to delete the image when you want."
-msgstr "Faites glisser des images dans la zone prévue à cet effet ou sélectionnez un fichier de façon classique et Lutim vous fournira quatre URLs en retour. Une pour afficher l’image, une autre pour la télécharger directement, une pour l'utiliser sur les réseaux sociaux et une dernière pour supprimer votre image quand vous le souhaitez"
+msgstr "Faites glisser des images dans la zone prévue à cet effet ou sélectionnez un fichier de façon classique et Lutim vous fournira quatre URLs en retour. Une pour afficher l’image, une autre pour la télécharger directement, une pour l’utiliser sur les réseaux sociaux et une dernière pour supprimer votre image quand vous le souhaitez"
 
 #: themes/default/templates/index.html.ep:150
 #: themes/default/templates/index.html.ep:181
 msgid "Encrypt the image (Lutim does not keep the key)."
-msgstr "Chiffrer l'image (Lutim ne stocke pas la clé)."
+msgstr "Chiffrer l’image (Lutim ne stocke pas la clé)."
 
 #: themes/default/templates/partial/lutim.js.ep:72
 msgid "Error while trying to modify the image."
-msgstr "Une erreur est survenue en essayant de modifier l'image."
+msgstr "Une erreur est survenue en essayant de modifier l’image."
 
-#: themes/default/templates/stats.html.ep:9
+#: themes/default/templates/stats.html.ep:10
 msgid "Evolution of total files"
 msgstr "Évolution du nombre total de fichiers"
 
@@ -192,9 +201,9 @@ msgstr "Si les fichiers sont bien supprimés si vous en avez exprimé le choix, 
 #: themes/default/templates/index.html.ep:163
 #: themes/default/templates/index.html.ep:203
 msgid "Image URL"
-msgstr "URL de l'image"
+msgstr "URL de l’image"
 
-#: lib/Lutim/Controller.pm:699
+#: lib/Lutim/Controller.pm:715
 msgid "Image not found."
 msgstr "Image non trouvée."
 
@@ -247,7 +256,7 @@ msgstr "Lutim est un service gratuit et anonyme d’hébergement d’images. Il 
 
 #: themes/default/templates/about.html.ep:25
 msgid "Main developers"
-msgstr "Développeurs de l'application"
+msgstr "Développeurs de l’application"
 
 #: themes/default/templates/index.html.ep:73
 #: themes/default/templates/index.html.ep:75
@@ -263,7 +272,7 @@ msgstr "Mes images"
 
 #: themes/default/templates/myfiles.html.ep:39
 msgid "No limit"
-msgstr "Pas de date d'expiration"
+msgstr "Pas de date d’expiration"
 
 #: themes/default/templates/index.html.ep:165
 #: themes/default/templates/index.html.ep:198
@@ -276,12 +285,16 @@ msgstr "Seules les images envoyées avec ce navigateur seront listées ici. Les 
 
 #: themes/default/templates/about.html.ep:16
 msgid "Only the uploader! (well, only if he's the only owner of the images' rights before the upload)"
-msgstr "Seulement l'envoyeur ! (enfin, seulement s'il possède des droits exclusifs sur les images avant de les envoyer)"
+msgstr "Seulement l’envoyeur ! (enfin, seulement s’il possède des droits exclusifs sur les images avant de les envoyer)"
 
 #. (config('contact')
 #: themes/default/templates/about.html.ep:19
 msgid "Please contact the administrator: %1"
 msgstr "Veuillez contacter l’administrateur : %1"
+
+#: themes/default/templates/stats.html.ep:22
+msgid "Raw stats"
+msgstr "Statistiques brutes"
 
 #: themes/default/templates/index.html.ep:158
 msgid "Send an image"
@@ -301,61 +314,61 @@ msgid "Something bad happened"
 msgstr "Un problème est survenu"
 
 #. ($c->config('contact')
-#: lib/Lutim/Controller.pm:707
+#: lib/Lutim/Controller.pm:723
 msgid "Something went wrong when creating the zip file. Try again later or contact the administrator (%1)."
-msgstr "Quelque chose s'est mal passé lors de la création de l'archive. Veuillez réessayer plus tard ou contactez l'administrateur (%1)."
+msgstr "Quelque chose s’est mal passé lors de la création de l’archive. Veuillez réessayer plus tard ou contactez l’administrateur (%1)."
 
 #: themes/default/templates/about.html.ep:13
 msgid "The IP address of the image's sender is retained for a delay which depends of the administrator's choice (for the official instance, which is located in France, it's one year)."
 msgstr ""
-"L’IP de la personne ayant déposé l’image est stockée pendant un délai dépendant de l'administrateur de l'instance (pour l'instance officielle, dont le serveur est en France, c'est un délai\n"
-" d'un an)."
+"L’IP de la personne ayant déposé l’image est stockée pendant un délai dépendant de l’administrateur de l’instance (pour l’instance officielle, dont le serveur est en France, c’est un délai\n"
+" d’un an)."
 
 #: themes/default/templates/about.html.ep:23
 msgid "The Lutim software is a <a href=\"http://en.wikipedia.org/wiki/Free_software\">free software</a>, which allows you to download and install it on you own server. Have a look at the <a href=\"https://www.gnu.org/licenses/agpl-3.0.html\">AGPL</a> to see what you can do."
 msgstr "Le logiciel Lutim est un <a href=\"https://fr.wikipedia.org/wiki/Logiciel_libre\">logiciel libre</a>, ce qui vous permet de le télécharger et de l’installer sur votre propre serveur. Jetez un coup d’œil à l’<a href=\"https://www.gnu.org/licenses/agpl-3.0.html\">AGPL</a> pour voir quels sont vos droits"
 
-#: lib/Lutim/Controller.pm:289
+#: lib/Lutim/Controller.pm:305
 msgid "The URL is not valid."
-msgstr "L'URL n'est pas valide."
+msgstr "L’URL n’est pas valide."
 
-#: lib/Lutim/Controller.pm:101
-#: lib/Lutim/Controller.pm:170
+#: lib/Lutim/Controller.pm:117
+#: lib/Lutim/Controller.pm:186
 msgid "The delete token is invalid."
 msgstr "Le jeton de suppression est invalide."
 
 #. ($upload->filename)
-#: lib/Lutim/Controller.pm:433
+#: lib/Lutim/Controller.pm:449
 msgid "The file %1 is not an image."
-msgstr "Le fichier %1 n'est pas une image."
+msgstr "Le fichier %1 n’est pas une image."
 
 #. ($max_file_size)
 #. ($tx->res->max_message_size)
 #. ($c->req->max_message_size)
-#: lib/Lutim/Controller.pm:253
-#: lib/Lutim/Controller.pm:322
+#: lib/Lutim/Controller.pm:269
+#: lib/Lutim/Controller.pm:338
 #: themes/default/templates/partial/lutim.js.ep:332
 msgid "The file exceed the size limit (%1)"
 msgstr "Le fichier dépasse la limite de taille (%1)"
 
-#: themes/default/templates/stats.html.ep:11
+#: themes/default/templates/stats.html.ep:12
 msgid "The graph's datas are not updated in real-time."
 msgstr "Les données du graphique ne sont pas mises à jour en temps réél."
 
 #. ($image->filename)
-#: lib/Lutim/Controller.pm:172
+#: lib/Lutim/Controller.pm:188
 msgid "The image %1 has already been deleted."
-msgstr "L'image %1 a déjà été supprimée."
+msgstr "L’image %1 a déjà été supprimée."
 
 #. ($image->filename)
-#: lib/Lutim/Controller.pm:181
-#: lib/Lutim/Controller.pm:186
+#: lib/Lutim/Controller.pm:197
+#: lib/Lutim/Controller.pm:202
 msgid "The image %1 has been successfully deleted"
-msgstr "L'image %1 a été supprimée avec succès."
+msgstr "L’image %1 a été supprimée avec succès."
 
-#: lib/Lutim/Controller.pm:109
+#: lib/Lutim/Controller.pm:125
 msgid "The image's delay has been successfully modified"
-msgstr "Le délai de l'image a été modifié avec succès."
+msgstr "Le délai de l’image a été modifié avec succès."
 
 #: themes/default/templates/index.html.ep:45
 msgid "The images are encrypted on the server (Lutim does not keep the key)."
@@ -366,9 +379,9 @@ msgid "The images you post on Lutim can be stored indefinitely or be deleted at 
 msgstr "Les images déposées sur Lutim peuvent être stockées indéfiniment, ou s’effacer dès le premier affichage ou au bout du délai choisi parmi ceux proposés."
 
 #. ($c->config->{contact})
-#: lib/Lutim/Controller.pm:428
+#: lib/Lutim/Controller.pm:444
 msgid "There is no more available URL. Retry or contact the administrator. %1"
-msgstr "Il n'y a plus d'URL disponible. Veuillez réessayer ou contacter l'administrateur. %1."
+msgstr "Il n’y a plus d’URL disponible. Veuillez réessayer ou contacter l’administrateur. %1."
 
 #: themes/default/templates/index.html.ep:60
 #: themes/default/templates/partial/lutim.js.ep:45
@@ -376,29 +389,29 @@ msgid "Tweet it!"
 msgstr "Tweetez !"
 
 #. ($short)
-#: lib/Lutim/Controller.pm:143
-#: lib/Lutim/Controller.pm:215
+#: lib/Lutim/Controller.pm:159
+#: lib/Lutim/Controller.pm:231
 msgid "Unable to find the image %1."
-msgstr "Impossible de trouver l'image %1."
+msgstr "Impossible de trouver l’image %1."
 
-#: lib/Lutim.pm:84
-#: lib/Lutim/Controller.pm:518
-#: lib/Lutim/Controller.pm:564
-#: lib/Lutim/Controller.pm:608
-#: lib/Lutim/Controller.pm:648
-#: lib/Lutim/Controller.pm:660
-#: lib/Lutim/Controller.pm:671
-#: lib/Lutim/Controller.pm:696
+#: lib/Lutim.pm:85
+#: lib/Lutim/Controller.pm:534
+#: lib/Lutim/Controller.pm:580
+#: lib/Lutim/Controller.pm:624
+#: lib/Lutim/Controller.pm:664
+#: lib/Lutim/Controller.pm:676
+#: lib/Lutim/Controller.pm:687
+#: lib/Lutim/Controller.pm:712
 msgid "Unable to find the image: it has been deleted."
-msgstr "Impossible de trouver l'image : elle a été supprimée."
+msgstr "Impossible de trouver l’image : elle a été supprimée."
 
-#: lib/Lutim/Controller.pm:85
+#: lib/Lutim/Controller.pm:101
 msgid "Unable to get counter"
 msgstr "Impossible de récupérer le compteur"
 
 #: themes/default/templates/about.html.ep:17
 msgid "Unlike many image sharing services, you don't give us rights on uploaded images."
-msgstr "Au contraire de la majorité des services de partages d'image, vous ne nous cédez aucun droit sur les images envoyées."
+msgstr "Au contraire de la majorité des services de partages d’image, vous ne nous cédez aucun droit sur les images envoyées."
 
 #: themes/default/templates/index.html.ep:162
 #: themes/default/templates/index.html.ep:201
@@ -414,9 +427,9 @@ msgid "Uploaded files by days"
 msgstr "Fichiers envoyés, par jour"
 
 #. ($config->{contact})
-#: lib/Lutim.pm:188
+#: lib/Lutim.pm:189
 msgid "Uploading is currently disabled, please try later or contact the administrator (%1)."
-msgstr "L'envoi d'images est actuellement désactivé, veuillez réessayer plus tard ou contacter l'administrateur (%1)."
+msgstr "L’envoi d’images est actuellement désactivé, veuillez réessayer plus tard ou contacter l’administrateur (%1)."
 
 #: themes/default/templates/index.html.ep:65
 #: themes/default/templates/index.html.ep:67
@@ -424,7 +437,7 @@ msgstr "L'envoi d'images est actuellement désactivé, veuillez réessayer plus 
 #: themes/default/templates/partial/lutim.js.ep:168
 #: themes/default/templates/partial/lutim.js.ep:172
 msgid "View link"
-msgstr "Lien d'affichage"
+msgstr "Lien d’affichage"
 
 #: themes/default/templates/about.html.ep:22
 msgid "What about the software which provides the service?"
@@ -448,7 +461,7 @@ msgstr "Oui, ça l’est ! Par contre, si vous avez envie de soutenir le dével
 
 #: themes/default/templates/about.html.ep:8
 msgid "You can, optionally, request that the image(s) posted on Lutim to be deleted at first view (or download) or after the delay selected from those proposed."
-msgstr "Vous pouvez, de façon facultative, demander à ce que la ou les images déposées sur Lutim soient supprimées après leur premier affichage (ou téléchargement) ou au bout d'un délai choisi parmi ceux proposés."
+msgstr "Vous pouvez, de façon facultative, demander à ce que la ou les images déposées sur Lutim soient supprimées après leur premier affichage (ou téléchargement) ou au bout d’un délai choisi parmi ceux proposés."
 
 #: themes/default/templates/about.html.ep:27
 msgid "and on"
