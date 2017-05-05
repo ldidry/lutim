@@ -63,7 +63,7 @@ msgstr " : Error al moment de recuperar lo comptador."
 
 #: lib/Lutim/Command/cron/stats.pm:94
 msgid "Active images"
-msgstr ""
+msgstr "Imatges actius"
 
 #: lib/Lutim/Controller.pm:286
 msgid "An error occured while downloading the image."
@@ -110,11 +110,11 @@ msgstr "Comptador"
 
 #: themes/default/templates/stats.html.ep:18
 msgid "Delay repartition chart for disabled images"
-msgstr ""
+msgstr "Grafic de despartiment dels delais pels imatges desactivats"
 
 #: themes/default/templates/stats.html.ep:15
 msgid "Delay repartition chart for enabled images"
-msgstr ""
+msgstr "Grafic de despartiment dels delais pels imatges activats"
 
 #: themes/default/templates/index.html.ep:115
 #: themes/default/templates/index.html.ep:147
@@ -126,11 +126,11 @@ msgstr "Suprimir al primièr accès ?"
 
 #: lib/Lutim/Command/cron/stats.pm:95
 msgid "Deleted images"
-msgstr ""
+msgstr "Imatges suprimits"
 
 #: lib/Lutim/Command/cron/stats.pm:96
 msgid "Deleted images in 30 days"
-msgstr ""
+msgstr "Imatges per èsser suprimits dins 30 jorns"
 
 #: themes/default/templates/index.html.ep:98
 #: themes/default/templates/myfiles.html.ep:19
@@ -229,7 +229,7 @@ msgstr "URL de l'imatge"
 
 #: lib/Lutim/Command/cron/stats.pm:93
 msgid "Image delay"
-msgstr ""
+msgstr "Delai de l'imatge"
 
 #: lib/Lutim/Controller.pm:715
 msgid "Image not found."
@@ -322,7 +322,7 @@ msgstr "Mercés de contactar l'administrator : %1"
 
 #: themes/default/templates/stats.html.ep:22
 msgid "Raw stats"
-msgstr ""
+msgstr "Estatisticas bruts"
 
 #: themes/default/templates/index.html.ep:158
 msgid "Send an image"
@@ -411,7 +411,7 @@ msgstr "I a pas mai d'URL disponibla. Mercés de tornar ensajar o de contactar l
 
 #: lib/Lutim/Command/cron/stats.pm:102
 msgid "Total"
-msgstr ""
+msgstr "Total"
 
 #: themes/default/templates/index.html.ep:60
 #: themes/default/templates/partial/lutim.js.ep:45
@@ -454,7 +454,7 @@ msgstr "Mandat lo"
 
 #: themes/default/templates/stats.html.ep:6
 msgid "Uploaded files by days"
-msgstr "Fichièrs mandats, per jorn"
+msgstr "Fichièrs mandats per jorn"
 
 #. ($config->{contact})
 #: lib/Lutim.pm:189
@@ -499,7 +499,7 @@ msgstr "e sus"
 
 #: themes/default/templates/about.html.ep:27
 msgid "core developer"
-msgstr "desvolopaire principal"
+msgstr "desvolopaire màger"
 
 #: lib/Lutim/Command/cron/stats.pm:108
 #: lib/Lutim/Command/cron/stats.pm:125
