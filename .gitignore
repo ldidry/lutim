@@ -1,6 +1,8 @@
 *.swp
 lutim.conf
 lutim.db
+*.db-shm
+*.db-wal
 script/hypnotoad.pid
 local/*
 files/*

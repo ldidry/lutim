@@ -1,7 +1,7 @@
 package Lutim;
 use Mojo::Base 'Mojolicious';
 use Mojo::Util qw(quote);
-use LutimModel;
+use Lutim::DB::Image;
 use Crypt::CBC;
 use Data::Entropy qw(entropy_source);
 
@@ -42,6 +42,7 @@ sub startup {
             crypto_key_length => 8,
             thumbnail_size    => 100,
             theme             => 'default',
+            dbtype            => 'sqlite',
         }
     });
 
@@ -285,10 +286,10 @@ sub startup {
 
     $self->helper(
         delete_image => sub {
-            my $c = shift;
-            my $image = shift;
-            unlink $image->path();
-            $image->update(enabled => 0);
+            my $c   = shift;
+            my $img = shift;
+            unlink $img->path or warn "Could not unlink ".$img->path.": $!";
+            $img->disable();
         }
     );
 

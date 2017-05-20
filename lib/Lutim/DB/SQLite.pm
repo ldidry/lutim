@@ -1,13 +1,14 @@
-package LutimModel;
+# vim:set sw=4 ts=4 sts=4 ft=perl expandtab:
+package Lutim::DB::SQLite;
 use Mojolicious;
+use Mojo::File;
 use FindBin qw($Bin);
-use File::Spec qw(catfile);
 
 BEGIN {
     my $m = Mojolicious->new;
     our $config = $m->plugin('Config' =>
         {
-            file    => File::Spec->catfile($Bin, '..' ,'lutim.conf'),
+            file    => Mojo::File->new($Bin, '..' ,'lutim.conf')->to_abs->to_string,
             default => {
                 db_path => 'lutim.db'
             }
