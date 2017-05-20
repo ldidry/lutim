@@ -32,7 +32,7 @@ sub get_no_longer_viewed_files {
 
     my @images;
 
-    my @records = c(LutimModel::Lutim->select('WHERE enabled = 1 AND last_access_at < ?', $time));
+    my @records = c(Lutim::DB::SQLite::Lutim->select('WHERE enabled = 1 AND last_access_at < ?', $time));
 
     for my $e (@records) {
         my $i = Lutim::DB::Image->new(app => $c->app);
@@ -50,7 +50,7 @@ sub get_images_to_clean {
 
     my @images;
 
-    my @records = c(LutimModel::Lutim->select('WHERE enabled = 1 AND (delete_at_day * 86400) < (? - created_at) AND delete_at_day != 0', time()));
+    my @records = c(Lutim::DB::SQLite::Lutim->select('WHERE enabled = 1 AND (delete_at_day * 86400) < (? - created_at) AND delete_at_day != 0', time()));
 
     for my $e (@records) {
         my $i = Lutim::DB::Image->new(app => $c->app);
