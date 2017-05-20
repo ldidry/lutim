@@ -15,7 +15,7 @@ sub run {
     my $config = $c->app->plugin('Config', {
         file    => File::Spec->catfile($Bin, '..' ,'lutim.conf'),
         default => {
-            dbtype           => 'sqlite',
+            dbtype => 'sqlite',
         }
     });
 

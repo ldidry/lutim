@@ -13,6 +13,19 @@ sub new {
     return $c;
 }
 
+sub clean_ips_until {
+    my $c    = shift;
+    my $time = shift;
+
+    Lutim::DB::SQLite->do(
+        'UPDATE lutim SET created_by = "" WHERE path IS NOT NULL AND created_at < ?',
+        {},
+        $time
+    );
+
+    return $c;
+}
+
 sub get_no_longer_viewed_files {
     my $c    = shift;
     my $time = shift;

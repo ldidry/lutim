@@ -129,6 +129,20 @@ sub to_hash {
     };
 }
 
+=head2 clean_ips_until
+
+=over 1
+
+=item B<Usage>     : C<$c-E<gt>clean_ips_until($time)>
+
+=item B<Arguments> : unix timestamp
+
+=item B<Purpose>   : remove the image's sender information on images created before the given timestamp
+
+=item B<Returns>   : the db accessor object
+
+=back
+
 =head2 get_no_longer_viewed_files
 
 =over 1
