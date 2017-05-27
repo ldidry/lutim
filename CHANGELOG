@@ -2,6 +2,8 @@ Revision history for Lutim
 
 0.8  2017-?
 	- Improve statistics page
+	- Add database abstraction layer (#42)
+	- Asks for Mojolicious 7.31 minimum (to install it: `carton update`)
 
 0.7.1  2016-06-21
 	- Fix dependency bug
