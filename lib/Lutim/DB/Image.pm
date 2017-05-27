@@ -98,9 +98,9 @@ sub new {
         if ($dbtype eq 'sqlite') {
             use Lutim::DB::Image::SQLite;
             $c = Lutim::DB::Image::SQLite->new(@_);
-        } elsif ($dbtype eq 'postgresql') {
-            use Lutim::DB::Image::Pg;
-            $c = Lutim::DB::Image::Pg->new(@_);
+        #} elsif ($dbtype eq 'postgresql') {
+        #    use Lutim::DB::Image::Pg;
+        #    $c = Lutim::DB::Image::Pg->new(@_);
         }
     }
 
@@ -128,6 +128,120 @@ sub to_hash {
         height               => $c->height
     };
 }
+
+=head2 count_delete_at_day_endis
+
+=over 1
+
+=item B<Usage>     : C<$c-E<gt>count_delete_at_day_endis($delete_at_day, $enabled[, $time])>
+
+=item B<Arguments> : two mandatory parameters: one integer, the delete_at_day attribute, a boolean (0 or 1), the enabled attribute
+                     an optional parameter: an unix timestamp
+
+=item B<Purpose>   : count how many images there is with the given delete_at_day attribute, and enabled or disabled, depending on the given enabled attribute
+                     if the optional parameter is given, count only images according to the given mandatory parameters that were created before the timestamp
+
+=item B<Returns>   : integer
+
+=back
+
+=head2 count_created_before
+
+=over 1
+
+=item B<Usage>     : C<$c-E<gt>count_created_before($time)>
+
+=item B<Arguments> : an unix timestamp
+
+=item B<Purpose>   : count how many images have been created before the given timestamp
+
+=item B<Returns>   : integer
+
+=back
+
+=head2 select_created_after
+
+=over 1
+
+=item B<Usage>     : C<$c-E<gt>select_created_after($time)>
+
+=item B<Arguments> : an unix timestamp
+
+=item B<Purpose>   : select images created after the given timestamp
+
+=item B<Returns>   : a Mojo::Collection object containing the images created after the given timestamp
+
+=back
+
+=head2 select_empty
+
+=over 1
+
+=item B<Usage>     : C<$c-E<gt>select_empty>
+
+=item B<Arguments> : none
+
+=item B<Purpose>   : select a ready-to-use empty record
+
+=item B<Returns>   : a db accessor object
+
+=back
+
+=head2 write
+
+=over 1
+
+=item B<Usage>     : C<$c-E<gt>write>
+
+=item B<Arguments> : none
+
+=item B<Purpose>   : create or update a record in the database, with the values of the object's attributes
+
+=item B<Returns>   : the db accessor object
+
+=back
+
+=head2 count_short
+
+=over 1
+
+=item B<Usage>     : C<$c-E<gt>count_short($short)>
+
+=item B<Arguments> : a random string, unique image identifier in the database
+
+=item B<Purpose>   : checks that an identifier isn't already used
+
+=item B<Returns>   : integer, number of records having this identifier (should be 0 or 1)
+
+=back
+
+=head2 count_empty
+
+=over 1
+
+=item B<Usage>     : C<$c-E<gt>count_empty>
+
+=item B<Arguments> : none
+
+=item B<Purpose>   : counts the number of record which path is null
+
+=item B<Returns>   : integer
+
+=back
+
+=head2 count_not_empty
+
+=over 1
+
+=item B<Usage>     : C<$c-E<gt>count_not_empty>
+
+=item B<Arguments> : none
+
+=item B<Purpose>   : counts the number of record which path is not null
+
+=item B<Returns>   : integer
+
+=back
 
 =head2 clean_ips_until
 

@@ -144,24 +144,23 @@ sub startup {
             my $c = shift;
 
             # Create some short patterns for provisioning
-            if (LutimModel::Lutim->count('WHERE path IS NULL') < $c->config->{provisioning}) {
+            my $img = Lutim::DB::Image->new(app => $c->app);
+            if ($img->count_empty < $c->config->{provisioning}) {
                 for (my $i = 0; $i < $c->config->{provis_step}; $i++) {
-                    if (LutimModel->begin) {
-                        my $short;
-                        do {
-                            $short= $c->shortener($c->config->{length});
-                        } while (LutimModel::Lutim->count('WHERE short = ?', $short) || $short eq 'about' || $short eq 'stats' || $short eq 'd' || $short eq 'm' || $short eq 'gallery' || $short eq 'zip' || $short eq 'infos');
+                    my $short;
+                    do {
+                        $short = $c->shortener($c->config->{length});
+                    } while ($img->count_short($short) || $short eq 'about' || $short eq 'stats' || $short eq 'd' || $short eq 'm' || $short eq 'gallery' || $short eq 'zip' || $short eq 'infos');
 
-                        LutimModel::Lutim->create(
-                            short                => $short,
-                            counter              => 0,
-                            enabled              => 1,
-                            delete_at_first_view => 0,
-                            delete_at_day        => 0,
-                            mod_token            => $c->shortener($c->config->{token_length})
-                        );
-                        LutimModel->commit;
-                    }
+                    $img->short($short)
+                        ->counter(0)
+                        ->enabled(1)
+                        ->delete_at_first_view(0)
+                        ->delete_at_day(0)
+                        ->mod_token($c->shortener($c->config->{token_length}))
+                        ->write;
+
+                    $img = Lutim::DB::Image->new(app => $c->app);
                 }
             }
         }
