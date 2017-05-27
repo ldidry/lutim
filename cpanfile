@@ -1,4 +1,4 @@
-requires 'Mojolicious';
+requires 'Mojolicious', '>= 7.31';
 requires 'EV';
 requires 'IO::Socket::SSL';
 requires 'Data::Validate::URI';
