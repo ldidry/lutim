@@ -1,7 +1,6 @@
 package Lutim::Command::cron::cleanbdd;
 use Mojo::Base 'Mojolicious::Command';
-use LutimModel;
-use Mojo::Util qw(slurp decode);
+use Lutim::DB::Image;
 use FindBin qw($Bin);
 use File::Spec qw(catfile);
 
@@ -15,16 +14,15 @@ sub run {
         file    => File::Spec->catfile($Bin, '..' ,'lutim.conf'),
         default => {
             keep_ip_during => 365,
+            dbtype         => 'sqlite',
         }
     });
 
     my $separation = time() - $config->{keep_ip_during} * 86400;
 
-    LutimModel->do(
-        'UPDATE lutim SET created_by = "" WHERE path IS NOT NULL AND created_at < ?',
-        {},
-        $separation
-    );
+    my $dbi = Lutim::DB::Image->new(app => $c->app);
+
+    $dbi->clean_ips_until($separation);
 }
 
 =encoding utf8

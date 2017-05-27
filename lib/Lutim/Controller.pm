@@ -4,6 +4,7 @@ use Mojo::Base 'Mojolicious::Controller';
 use Mojo::Util qw(url_unescape b64_encode);
 use Mojo::Asset::Memory;
 use Mojo::JSON qw(true false);
+use Lutim::DB::Image;
 use DateTime;
 use Digest::file qw(digest_file_hex);
 use Text::Unidecode;
@@ -45,9 +46,12 @@ sub about {
 }
 
 sub stats {
-    shift->render(
+    my $c = shift;
+
+    my $img = Lutim::DB::Image->new(app => $c);
+    $c->render(
         template => 'stats',
-        total    =>  LutimModel::Lutim->count('WHERE path IS NOT NULL')
+        total    =>  $img->count_not_empty
     );
 }
 
@@ -85,13 +89,13 @@ sub get_counter {
     my $short = $c->param('short');
     my $token = $c->param('token');
 
-    my @images = LutimModel::Lutim->select('WHERE short = ? AND path IS NOT NULL AND mod_token = ?', ($short, $token));
-    if (scalar(@images)) {
+    my $img = Lutim::DB::Image->new(app => $c->app, short => $short);
+    if (defined($img->mod_token) && $img->mod_token eq $token) {
         return $c->render(
             json => {
                 success => true,
-                counter => $images[0]->counter,
-                enabled => ($images[0]->enabled) ? true : false
+                counter => $img->counter,
+                enabled => ($img->enabled) ? true : false
             }
         );
     }
@@ -109,11 +113,10 @@ sub modify {
     my $token = $c->param('token');
     my $url   = $c->param('url');
 
-    my @images = LutimModel::Lutim->select('WHERE short = ? AND path IS NOT NULL', $short);
-    if (scalar(@images)) {
-        my $image = $images[0];
+    my $image = Lutim::DB::Image->new(app => $c->app, short => $short);
+    if ($image->path) {
         my $msg;
-        if ($image->mod_token() ne $token || $token eq '') {
+        if ($image->mod_token ne $token || $token eq '') {
             $msg = $c->l('The delete token is invalid.');
         } else {
             $c->app->log->info('[MODIFICATION] someone modify '.$image->filename.' with token method (path: '.$image->path.')');
@@ -178,11 +181,10 @@ sub delete {
     my $short = $c->param('short');
     my $token = $c->param('token');
 
-    my @images = LutimModel::Lutim->select('WHERE short = ? AND path IS NOT NULL', $short);
-    if (scalar(@images)) {
-        my $image = $images[0];
+    my $image = Lutim::DB::Image->new(app => $c->app, short => $short);
+    if ($image->path) {
         my $msg;
-        if ($image->mod_token() ne $token || $token eq '') {
+        if ($image->mod_token ne $token || $token eq '') {
             $msg = $c->l('The delete token is invalid.');
         } elsif ($image->enabled() == 0) {
             $msg = $c->l('The image %1 has already been deleted.', $image->filename);
@@ -349,102 +351,96 @@ sub add {
                     return $c->redirect_to('/');
                 }
             }
-            if(LutimModel->begin) {
-                my @records = LutimModel::Lutim->select('WHERE path IS NULL LIMIT 1');
-                if (scalar(@records)) {
-                    # Save file and create record
-                    my $filename = unidecode($upload->filename);
-                    my $ext      = ($filename =~ m/([^.]+)$/)[0];
-                    my $path     = 'files/'.$records[0]->short.'.'.$ext;
+            my $record  = Lutim::DB::Image->new(app => $c->app)->select_empty;
+            if ($record->short) {
+                # Save file and create record
+                my $filename = unidecode($upload->filename);
+                my $ext      = ($filename =~ m/([^.]+)$/)[0];
+                my $path     = 'files/'.$record->short.'.'.$ext;
 
-                    my ($width, $height);
-                    if ($im_loaded && $mediatype ne 'image/svg+xml' && $mediatype !~ m#image/(x-)?xcf# && $mediatype ne 'image/webp') { # ImageMagick don't work in Debian with svg (for now?)
-                        my $im  = Image::Magick->new;
-                        $im->BlobToImage($upload->slurp);
+                my ($width, $height);
+                if ($im_loaded && $mediatype ne 'image/svg+xml' && $mediatype !~ m#image/(x-)?xcf# && $mediatype ne 'image/webp') { # ImageMagick don't work in Debian with svg (for now?)
+                    my $im  = Image::Magick->new;
+                    $im->BlobToImage($upload->slurp);
 
-                        # Automatic rotation from EXIF tag
-                        $im->AutoOrient();
+                    # Automatic rotation from EXIF tag
+                    $im->AutoOrient();
 
-                        # Update the uploaded file with it's auto-rotated clone
-                        my $asset = Mojo::Asset::Memory->new->add_chunk($im->ImageToBlob());
-                        $upload->asset($asset);
+                    # Update the uploaded file with it's auto-rotated clone
+                    my $asset = Mojo::Asset::Memory->new->add_chunk($im->ImageToBlob());
+                    $upload->asset($asset);
 
-                        # Create the thumbnail
-                        $width  = $im->Get('width');
-                        $height = $im->Get('height');
-                        $im->Resize(geometry=>'x85');
+                    # Create the thumbnail
+                    $width  = $im->Get('width');
+                    $height = $im->Get('height');
+                    $im->Resize(geometry=>'x85');
 
-                        $thumb  = 'data:'.$mediatype.';base64,';
-                        if ($mediatype eq 'image/gif') {
-                            $thumb .= b64_encode $im->[0]->ImageToBlob();
-                        } else {
-                            $thumb .= b64_encode $im->ImageToBlob();
-                        }
-
+                    $thumb  = 'data:'.$mediatype.';base64,';
+                    if ($mediatype eq 'image/gif') {
+                        $thumb .= b64_encode $im->[0]->ImageToBlob();
+                    } else {
+                        $thumb .= b64_encode $im->ImageToBlob();
                     }
 
-                    unless ((defined($keep_exif) && $keep_exif) || $mediatype eq 'image/svg+xml' || $mediatype !~ m#image/(x-)?xcf# || $mediatype ne 'image/webp') {
-                        # Remove the EXIF tags
-                        my $data = new IO::Scalar \$upload->slurp();
-                        my $et   = new Image::ExifTool;
-
-                        # Use $data in Image::ExifTool object
-                        $et->ExtractInfo($data);
-                        # Remove all metadata
-                        $et->SetNewValue('*', undef);
-
-                        # Create a temporary IO::Scalar to write into
-                        my $temp;
-                        my $a = new IO::Scalar \$temp;
-                        $et->WriteInfo($data, $a);
-
-                        # Update the uploaded file with it's no-tags clone
-                        $data = Mojo::Asset::Memory->new->add_chunk($temp);
-                        $upload->asset($data);
-                    }
-
-                    my $key;
-                    if ($c->param('crypt') || $c->config->{always_encrypt}) {
-                        ($upload, $key) = $c->crypt($upload, $filename);
-                    }
-                    $upload->move_to($path);
-
-                    $records[0]->update(
-                        path                 => $path,
-                        filename             => $filename,
-                        mediatype            => $mediatype,
-                        footprint            => digest_file_hex($path, 'SHA-512'),
-                        enabled              => 1,
-                        delete_at_day        => ($c->param('delete-day') && ($c->param('delete-day') <= $c->max_delay || $c->max_delay == 0)) ? $c->param('delete-day') : $c->max_delay,
-                        delete_at_first_view => ($c->param('first-view')) ? 1 : 0,
-                        created_at           => time(),
-                        created_by           => $ip,
-                        width                => $width,
-                        height               => $height
-                    );
-
-                    # Log image creation
-                    $c->app->log->info('[CREATION] '.$ip.' pushed '.$filename.' (path: '.$path.')');
-
-                    # Give url to user
-                    $short      = $records[0]->short;
-                    $real_short = $short;
-                    if (!defined($records[0]->mod_token)) {
-                        $records[0]->update(
-                            mod_token => $c->shortener($c->config->{token_length})
-                        );
-                    }
-                    $token      = $records[0]->mod_token;
-                    $short     .= '/'.$key if (defined($key));
-
-                    $limit   = $records[0]->delete_at_day;
-                    $created = $records[0]->created_at;
-                } else {
-                    # Houston, we have a problem
-                    $msg = $c->l('There is no more available URL. Retry or contact the administrator. %1', $c->config->{contact});
                 }
+
+                unless ((defined($keep_exif) && $keep_exif) || $mediatype eq 'image/svg+xml' || $mediatype !~ m#image/(x-)?xcf# || $mediatype ne 'image/webp') {
+                    # Remove the EXIF tags
+                    my $data = new IO::Scalar \$upload->slurp();
+                    my $et   = new Image::ExifTool;
+
+                    # Use $data in Image::ExifTool object
+                    $et->ExtractInfo($data);
+                    # Remove all metadata
+                    $et->SetNewValue('*', undef);
+
+                    # Create a temporary IO::Scalar to write into
+                    my $temp;
+                    my $a = new IO::Scalar \$temp;
+                    $et->WriteInfo($data, $a);
+
+                    # Update the uploaded file with it's no-tags clone
+                    $data = Mojo::Asset::Memory->new->add_chunk($temp);
+                    $upload->asset($data);
+                }
+
+                my $key;
+                if ($c->param('crypt') || $c->config->{always_encrypt}) {
+                    ($upload, $key) = $c->crypt($upload, $filename);
+                }
+                $upload->move_to($path);
+
+                $record->path($path)
+                       ->filename($filename)
+                       ->mediatype($mediatype)
+                       ->footprint(digest_file_hex($path, 'SHA-512'))
+                       ->enabled(1)
+                       ->delete_at_day(($c->param('delete-day') && ($c->param('delete-day') <= $c->max_delay || $c->max_delay == 0)) ? $c->param('delete-day') : $c->max_delay)
+                       ->delete_at_first_view(($c->param('first-view'))? 1 : 0)
+                       ->created_at(time())
+                       ->created_by($ip)
+                       ->width($width)
+                       ->height($height)
+                       ->write;
+
+                # Log image creation
+                $c->app->log->info('[CREATION] '.$ip.' pushed '.$filename.' (path: '.$path.')');
+
+                # Give url to user
+                $short      = $record->short;
+                $real_short = $short;
+                if (!defined($record->mod_token)) {
+                    $record->mod_token($c->shortener($c->config->{token_length}))->write;
+                }
+                $token      = $record->mod_token;
+                $short     .= '/'.$key if (defined($key));
+
+                $limit   = $record->delete_at_day;
+                $created = $record->created_at;
+            } else {
+                # Houston, we have a problem
+                $msg = $c->l('There is no more available URL. Retry or contact the administrator. %1', $c->config->{contact});
             }
-            LutimModel->commit;
         } else {
             $msg = $c->l('The file %1 is not an image.', $upload->filename);
         }
@@ -519,15 +515,14 @@ sub short {
     my $thumb = $c->param('thumb');
     my $dl    = (defined($c->param('dl'))) ? 'attachment' : 'inline';
 
-    my @images = LutimModel::Lutim->select('WHERE short = ? AND ENABLED = 1 AND path IS NOT NULL', $short);
-
-    if (scalar(@images)) {
-        if($images[0]->delete_at_day && $images[0]->created_at + $images[0]->delete_at_day * 86400 <= time()) {
+    my $image = Lutim::DB::Image->new(app => $c->app, short => $short);
+    if ($image->enabled && $image->path) {
+        if($image->delete_at_day && $image->created_at + $image->delete_at_day * 86400 <= time()) {
             # Log deletion
-            $c->app->log->info('[DELETION] someone tried to view '.$images[0]->filename.' but it has been removed by expiration (path: '.$images[0]->path.')');
+            $c->app->log->info('[DELETION] someone tried to view '.$image->filename.' but it has been removed by expiration (path: '.$image->path.')');
 
             # Delete image
-            $c->delete_image($images[0]);
+            $c->delete_image($image);
 
             # Warn user
             $c->flash(
@@ -539,54 +534,53 @@ sub short {
         my $test;
         if (defined($touit)) {
             $test = 1;
-            my $short  = $images[0]->short;
+            my $short  = $image->short;
                $short .= '/'.$key if (defined($key));
             my ($width, $height) = (340,340);
-            if ($images[0]->mediatype eq 'image/gif') {
-                if (defined($images[0]->width) && defined($images[0]->height)) {
-                    ($width, $height) = ($images[0]->width, $images[0]->height);
+            if ($image->mediatype eq 'image/gif') {
+                if (defined($image->width) && defined($image->height)) {
+                    ($width, $height) = ($image->width, $image->height);
                 } elsif ($im_loaded) {
-                    my $upload = $c->decrypt($key, $images[0]->path);
+                    my $upload = $c->decrypt($key, $image->path);
                     my $im     = Image::Magick->new;
                     $im->BlobToImage($upload->slurp);
                     $width     = $im->Get('width');
                     $height    = $im->Get('height');
 
-                    $images[0]->update(
-                        width  => $width,
-                        height => $height
-                    );
+                    $image->width($width)
+                          ->height($height)
+                          ->write;
                 }
             }
             return $c->render(
                 template => 'twitter',
                 layout   => undef,
                 short    => $short,
-                filename => $images[0]->filename,
-                mimetype => ($c->req->url->to_abs()->scheme eq 'https') ? $images[0]->mediatype : '',
+                filename => $image->filename,
+                mimetype => ($c->req->url->to_abs()->scheme eq 'https') ? $image->mediatype : '',
                 width    => $width,
                 height   => $height
             );
         } else {
             # Delete image if needed
-            if ($images[0]->delete_at_first_view && $images[0]->counter >= 1) {
+            if ($image->delete_at_first_view && $image->counter >= 1) {
                 # Log deletion
-                $c->app->log->info('[DELETION] someone made '.$images[0]->filename.' removed (path: '.$images[0]->path.')');
+                $c->app->log->info('[DELETION] someone made '.$image->filename.' removed (path: '.$image->path.')');
 
                 # Delete image
-                $c->delete_image($images[0]);
+                $c->delete_image($image);
 
                 $c->flash(
                     msg => $c->l('Unable to find the image: it has been deleted.')
                 );
                 return $c->redirect_to('/');
             } else {
-                my $expires = ($images[0]->delete_at_day) ? $images[0]->delete_at_day : 360;
-                my $dt = DateTime->from_epoch( epoch => $expires * 86400 + $images[0]->created_at);
+                my $expires = ($image->delete_at_day) ? $image->delete_at_day : 360;
+                my $dt = DateTime->from_epoch( epoch => $expires * 86400 + $image->created_at);
                 $dt->set_time_zone('GMT');
                 $expires = $dt->strftime("%a, %d %b %Y %H:%M:%S GMT");
 
-                $test = $c->render_file($images[0]->filename, $images[0]->path, $images[0]->mediatype, $dl, $expires, $images[0]->delete_at_first_view, $key, $thumb);
+                $test = $c->render_file($image->filename, $image->path, $image->mediatype, $dl, $expires, $image->delete_at_first_view, $key, $thumb);
             }
         }
 
@@ -594,40 +588,36 @@ sub short {
             # Update counter
             $c->on(finish => sub {
                 # Log access
-                $c->app->log->info('[VIEW] someone viewed '.$images[0]->filename.' (path: '.$images[0]->path.')');
+                $c->app->log->info('[VIEW] someone viewed '.$image->filename.' (path: '.$image->path.')');
 
                 # Update record
-                my $counter = $images[0]->counter + 1;
-                $images[0]->update(counter => $counter);
-
-                $images[0]->update(last_access_at => time());
+                my $counter = $image->counter + 1;
+                $image->counter($counter)
+                      ->last_access_at(time)
+                      ->write;
 
                 # Delete image if needed
-                if ($images[0]->delete_at_first_view) {
+                if ($image->delete_at_first_view) {
                     # Log deletion
-                    $c->app->log->info('[DELETION] someone made '.$images[0]->filename.' removed (path: '.$images[0]->path.')');
+                    $c->app->log->info('[DELETION] someone made '.$image->filename.' removed (path: '.$image->path.')');
 
                     # Delete image
-                    $c->delete_image($images[0]);
+                    $c->delete_image($image);
                 }
             });
         }
+    } elsif ($image->path && !$image->enabled) {
+        # Log access try
+        $c->app->log->info('[NOT FOUND] someone tried to view '.$short.' but it does\'nt exist anymore.');
+
+        # Warn user
+        $c->flash(
+            msg => $c->l('Unable to find the image: it has been deleted.')
+        );
+        return $c->redirect_to('/');
     } else {
-        @images = LutimModel::Lutim->select('WHERE short = ? AND ENABLED = 0 AND path IS NOT NULL', $short);
-
-        if (scalar(@images)) {
-            # Log access try
-            $c->app->log->info('[NOT FOUND] someone tried to view '.$short.' but it does\'nt exist anymore.');
-
-            # Warn user
-            $c->flash(
-                msg => $c->l('Unable to find the image: it has been deleted.')
-            );
-            return $c->redirect_to('/');
-        } else {
-            # Image never existed
-            $c->render_not_found;
-        }
+        # Image never existed
+        $c->render_not_found;
     }
 }
 
@@ -649,16 +639,16 @@ sub zip {
         } else {
             $short =~ s/\.[^.]*//;
         }
-        my @images = LutimModel::Lutim->select('WHERE short = ? AND ENABLED = 1 AND path IS NOT NULL', $short);
+        my $image = Lutim::DB::Image->new(app => $c->app, short => $short);
 
-        if (scalar(@images)) {
-            my $filename = $images[0]->filename;
-            if($images[0]->delete_at_day && $images[0]->created_at + $images[0]->delete_at_day * 86400 <= time()) {
+        if ($image->enabled && $image->path) {
+            my $filename = $image->filename;
+            if($image->delete_at_day && $image->created_at + $image->delete_at_day * 86400 <= time()) {
                 # Log deletion
-                $c->app->log->info('[DELETION] someone tried to view '.$images[0]->filename.' but it has been removed by expiration (path: '.$images[0]->path.')');
+                $c->app->log->info('[DELETION] someone tried to view '.$image->filename.' but it has been removed by expiration (path: '.$image->path.')');
 
                 # Delete image
-                $c->delete_image($images[0]);
+                $c->delete_image($image);
 
                 # Warn user
                 $zip->addString($c->l('Unable to find the image: it has been deleted.'), 'images/'.$filename.'.txt');
@@ -666,22 +656,22 @@ sub zip {
             }
 
             # Delete image if needed
-            if ($images[0]->delete_at_first_view && $images[0]->counter >= 1) {
+            if ($image->delete_at_first_view && $image->counter >= 1) {
                 # Log deletion
-                $c->app->log->info('[DELETION] someone made '.$images[0]->filename.' removed (path: '.$images[0]->path.')');
+                $c->app->log->info('[DELETION] someone made '.$image->filename.' removed (path: '.$image->path.')');
 
                 # Delete image
-                $c->delete_image($images[0]);
+                $c->delete_image($image);
 
                 $zip->addString($c->l('Unable to find the image: it has been deleted.'), 'images/'.$filename.'.txt');
                 next;
             } else {
-                my $expires = ($images[0]->delete_at_day) ? $images[0]->delete_at_day : 360;
-                my $dt = DateTime->from_epoch( epoch => $expires * 86400 + $images[0]->created_at);
+                my $expires = ($image->delete_at_day) ? $image->delete_at_day : 360;
+                my $dt = DateTime->from_epoch( epoch => $expires * 86400 + $image->created_at);
                 $dt->set_time_zone('GMT');
                 $expires = $dt->strftime("%a, %d %b %Y %H:%M:%S GMT");
 
-                my $path = $images[0]->path;
+                my $path = $image->path;
                 unless ( -f $path && -r $path ) {
                     $c->app->log->error("Cannot read file [$path]. error [$!]");
                     $zip->addString($c->l('Unable to find the image: it has been deleted.'), 'images/'.$filename.'.txt');
@@ -695,26 +685,22 @@ sub zip {
                 }
 
                 # Log access
-                $c->app->log->info('[VIEW] someone viewed '.$images[0]->filename.' (path: '.$images[0]->path.')');
-                # Update counter
-                $images[0]->update(counter => $images[0]->counter + 1);
-                # Update record
-                $images[0]->update(last_access_at => time());
+                $c->app->log->info('[VIEW] someone viewed '.$image->filename.' (path: '.$image->path.')');
+                # Update counter and record
+                $image->counter($image->counter + 1)
+                      ->last_access_at(time)
+                      ->write;
             }
+        } elsif ($image->path && !$image->enabled) {
+            # Log access try
+            $c->app->log->info('[NOT FOUND] someone tried to view '.$short.' but it does\'nt exist anymore.');
+
+            # Warn user
+            $zip->addString($c->l('Unable to find the image: it has been deleted.'), 'images/'.$image->filename.'.txt');
+            next;
         } else {
-            @images = LutimModel::Lutim->select('WHERE short = ? AND ENABLED = 0 AND path IS NOT NULL', $short);
-
-            if (scalar(@images)) {
-                # Log access try
-                $c->app->log->info('[NOT FOUND] someone tried to view '.$short.' but it does\'nt exist anymore.');
-
-                # Warn user
-                $zip->addString($c->l('Unable to find the image: it has been deleted.'), 'images/'.$images[0]->filename.'.txt');
-                next;
-            } else {
-                $zip->addString($c->l('Image not found.'), 'images/'.$short.'.txt');
-                next;
-            }
+            $zip->addString($c->l('Image not found.'), 'images/'.$short.'.txt');
+            next;
         }
     }
     my ($fh, $zipfile) = Archive::Zip::tempFile();

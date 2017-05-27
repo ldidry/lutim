@@ -1,8 +1,9 @@
 package Lutim::Command::cron::stats;
 use Mojo::Base 'Mojolicious::Command';
-use LutimModel;
+use Lutim::DB::Image;
 use Mojo::DOM;
-use Mojo::Util qw(slurp spurt encode);
+use Mojo::Util qw(encode);
+use Mojo::File;
 use DateTime;
 use FindBin qw($Bin);
 use File::Spec qw(catfile);
@@ -17,7 +18,8 @@ sub run {
         file    => File::Spec->catfile($Bin, '..' ,'lutim.conf'),
         theme   => 'default',
         default => {
-            stats_day_num => 365
+            stats_day_num => 365,
+            dbtype        => 'sqlite'
         }
     });
 
@@ -26,7 +28,7 @@ sub run {
         $config->{theme} = 'default';
         $template = 'themes/'.$config->{theme}.'/templates/data.html.ep.template';
     }
-    my $text     = slurp($template);
+    my $text     = Mojo::File->new($template)->slurp;
     my $dom      = Mojo::DOM->new($text);
     my $thead_tr = $dom->at('table thead tr');
     my $tbody_tr = $dom->at('table tbody tr');
@@ -35,18 +37,22 @@ sub run {
     my $separation = time() - $config->{stats_day_num} * 86400;
 
     my %data;
-    for my $img (LutimModel::Lutim->select('WHERE path IS NOT NULL AND created_at >= ?', $separation)) {
-        my $time                 = DateTime->from_epoch(epoch => $img->created_at);
-        my ($year, $month, $day) = ($time->year(), $time->month(), $time->day());
+    my $img = Lutim::DB::Image->new(app => $c->app);
+    $img->select_created_after($separation)->each(
+        sub {
+            my ($e, $num) = @_;
+            my $time                 = DateTime->from_epoch(epoch => $e->created_at);
+            my ($year, $month, $day) = ($time->year(), $time->month(), $time->day());
 
-        if (defined($data{$year}->{$month}->{$day})) {
-            $data{$year}->{$month}->{$day} += 1;
-        } else {
-            $data{$year}->{$month}->{$day} = 1;
+            if (defined($data{$year}->{$month}->{$day})) {
+                $data{$year}->{$month}->{$day} += 1;
+            } else {
+                $data{$year}->{$month}->{$day} = 1;
+            }
         }
-    }
+    );
 
-    my $total = LutimModel::Lutim->count('WHERE path IS NOT NULL AND created_at < ?', $separation);
+    my $total = $img->count_created_before($separation);
     for my $year (sort {$a <=> $b} keys %data) {
         for my $month (sort {$a <=> $b} keys %{$data{$year}}) {
             for my $day (sort {$a <=> $b} keys %{$data{$year}->{$month}}) {
@@ -64,27 +70,29 @@ sub run {
         $config->{theme} = 'default';
         $template = 'themes/'.$config->{theme}.'/templates/raw.html.ep.template';
     }
-    my $text2    = slurp($template2);
+    my $text2    = Mojo::File->new($template2)->slurp;
     my $dom2     = Mojo::DOM->new($text2);
     my $raw      = $dom2->at('table tbody');
     my $raw_foot = $dom2->at('table tfoot');
-    my $unlimited_enabled      = LutimModel::Lutim->count('WHERE path IS NOT NULL AND delete_at_day = 0   AND enabled = 1');
-    my $unlimited_disabled     = LutimModel::Lutim->count('WHERE path IS NOT NULL AND delete_at_day = 0   AND enabled = 0');
-    my $day_enabled            = LutimModel::Lutim->count('WHERE path IS NOT NULL AND delete_at_day = 1   AND enabled = 1');
-    my $day_disabled           = LutimModel::Lutim->count('WHERE path IS NOT NULL AND delete_at_day = 1   AND enabled = 0');
-    my $week_enabled           = LutimModel::Lutim->count('WHERE path IS NOT NULL AND delete_at_day = 7   AND enabled = 1');
-    my $week_disabled          = LutimModel::Lutim->count('WHERE path IS NOT NULL AND delete_at_day = 7   AND enabled = 0');
-    my $month_enabled          = LutimModel::Lutim->count('WHERE path IS NOT NULL AND delete_at_day = 30  AND enabled = 1');
-    my $month_disabled         = LutimModel::Lutim->count('WHERE path IS NOT NULL AND delete_at_day = 30  AND enabled = 0');
-    my $year_enabled           = LutimModel::Lutim->count('WHERE path IS NOT NULL AND delete_at_day = 365 AND enabled = 1');
-    my $year_disabled          = LutimModel::Lutim->count('WHERE path IS NOT NULL AND delete_at_day = 365 AND enabled = 0');
-    my $year_disabled_in_month = LutimModel::Lutim->count('WHERE path IS NOT NULL AND delete_at_day = 365 AND enabled = 0 AND created_at < ?', time - 30 * 86400);
+    my $unlimited_enabled      = $img->count_delete_at_day_endis(0,   1);
+    my $unlimited_disabled     = $img->count_delete_at_day_endis(0,   0);
+    my $day_enabled            = $img->count_delete_at_day_endis(1,   1);
+    my $day_disabled           = $img->count_delete_at_day_endis(1,   0);
+    my $week_enabled           = $img->count_delete_at_day_endis(7,   1);
+    my $week_disabled          = $img->count_delete_at_day_endis(7,   0);
+    my $month_enabled          = $img->count_delete_at_day_endis(30,  1);
+    my $month_disabled         = $img->count_delete_at_day_endis(30,  0);
+    my $year_enabled           = $img->count_delete_at_day_endis(365, 1);
+    my $year_disabled          = $img->count_delete_at_day_endis(365, 0);
+    my $year_disabled_in_month = $img->count_delete_at_day_endis(365, 1, time - 335 * 86400);
+
+    my $year_disabled_in_month_pct = ($year_enabled != 0) ? " (".sprintf('%.2f', $year_disabled_in_month/$year_enabled)."%)" : '';
 
     $raw->append_content("\n<tr><td><%= \$raw[4] %></td><td>".$unlimited_enabled."</td><td>".$unlimited_disabled."</td><td>ø</td></tr>\n");
     $raw->append_content("<tr><td><%= \$raw[5] %></td><td>".$day_enabled."</td><td>".$day_disabled."</td><td>".$day_enabled." (100%)</td></tr>\n");
     $raw->append_content("<tr><td><%= \$raw[6] %></td><td>".$week_enabled."</td><td>".$week_disabled."</td><td>".$week_enabled." (100%)</td></tr>\n");
     $raw->append_content("<tr><td><%= \$raw[7] %></td><td>".$month_enabled."</td><td>".$month_disabled."</td><td>".$month_enabled." (100%)</td></tr>\n");
-    $raw->append_content("<tr><td><%= \$raw[8] %></td><td>".$year_enabled."</td><td>".$year_disabled."</td><td>".$year_disabled_in_month." (".sprintf('%.2f', $year_disabled_in_month/$year_enabled)."%)</td></tr>\n");
+    $raw->append_content("<tr><td><%= \$raw[8] %></td><td>".$year_enabled."</td><td>".$year_disabled."</td><td>".$year_disabled_in_month.$year_disabled_in_month_pct."</td></tr>\n");
 
     $raw_foot->append_content("\n<tr><td><%= \$raw[9] %></td><td>".($unlimited_enabled + $day_enabled + $week_enabled + $month_enabled + $year_enabled)."</td><td>".($unlimited_disabled + $day_disabled + $week_disabled + $month_disabled + $year_disabled)."</td><td>".($day_enabled + $week_enabled + $month_enabled + $year_disabled_in_month)."</td></tr>\n");
 
@@ -140,8 +148,8 @@ Morris.Donut({
 $dom2
 EOF
 
-    spurt $dom, 'themes/'.$config->{theme}.'/templates/data.html.ep';
-    spurt encode('UTF-8', $dom2), 'themes/'.$config->{theme}.'/templates/raw.html.ep';
+    Mojo::File->new('themes/'.$config->{theme}.'/templates/data.html.ep')->spurt($dom);
+    Mojo::File->new('themes/'.$config->{theme}.'/templates/raw.html.ep')->spurt(encode('UTF-8', $dom2));
 }
 
 =encoding utf8
