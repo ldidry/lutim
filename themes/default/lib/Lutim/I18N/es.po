@@ -22,12 +22,12 @@ msgstr ""
 #. (config('max_delay')
 #. (7)
 #. (30)
-#: lib/Lutim/Command/cron/stats.pm:100
-#: lib/Lutim/Command/cron/stats.pm:110
-#: lib/Lutim/Command/cron/stats.pm:111
-#: lib/Lutim/Command/cron/stats.pm:127
-#: lib/Lutim/Command/cron/stats.pm:128
-#: lib/Lutim/Command/cron/stats.pm:99
+#: lib/Lutim/Command/cron/stats.pm:107
+#: lib/Lutim/Command/cron/stats.pm:108
+#: lib/Lutim/Command/cron/stats.pm:118
+#: lib/Lutim/Command/cron/stats.pm:119
+#: lib/Lutim/Command/cron/stats.pm:135
+#: lib/Lutim/Command/cron/stats.pm:136
 #: themes/default/templates/partial/lutim.js.ep:235
 #: themes/default/templates/partial/lutim.js.ep:244
 #: themes/default/templates/partial/lutim.js.ep:245
@@ -43,16 +43,16 @@ msgstr "%1 imágenes enviadas a esta instancia desde el inicio."
 msgid "-or-"
 msgstr "-o-"
 
-#: lib/Lutim/Command/cron/stats.pm:101
-#: lib/Lutim/Command/cron/stats.pm:112
-#: lib/Lutim/Command/cron/stats.pm:129
+#: lib/Lutim/Command/cron/stats.pm:109
+#: lib/Lutim/Command/cron/stats.pm:120
+#: lib/Lutim/Command/cron/stats.pm:137
 #: themes/default/templates/index.html.ep:5
 msgid "1 year"
 msgstr "1 año"
 
-#: lib/Lutim/Command/cron/stats.pm:109
-#: lib/Lutim/Command/cron/stats.pm:126
-#: lib/Lutim/Command/cron/stats.pm:98
+#: lib/Lutim/Command/cron/stats.pm:106
+#: lib/Lutim/Command/cron/stats.pm:117
+#: lib/Lutim/Command/cron/stats.pm:134
 #: themes/default/templates/index.html.ep:4
 #: themes/default/templates/partial/lutim.js.ep:244
 msgid "24 hours"
@@ -62,11 +62,11 @@ msgstr "24 horas"
 msgid ": Error while trying to get the counter."
 msgstr ": Error al intentar obtener el contador."
 
-#: lib/Lutim/Command/cron/stats.pm:94
+#: lib/Lutim/Command/cron/stats.pm:102
 msgid "Active images"
 msgstr ""
 
-#: lib/Lutim/Controller.pm:286
+#: lib/Lutim/Controller.pm:288
 msgid "An error occured while downloading the image."
 msgstr "Error al intentar modificar la imagen."
 
@@ -125,11 +125,11 @@ msgstr ""
 msgid "Delete at first view?"
 msgstr "¿Borrar en la primera vista?"
 
-#: lib/Lutim/Command/cron/stats.pm:95
+#: lib/Lutim/Command/cron/stats.pm:103
 msgid "Deleted images"
 msgstr ""
 
-#: lib/Lutim/Command/cron/stats.pm:96
+#: lib/Lutim/Command/cron/stats.pm:104
 msgid "Deleted images in 30 days"
 msgstr ""
 
@@ -189,7 +189,7 @@ msgstr "Nombre de archivo"
 msgid "For more details, see the <a href=\"https://framagit.org/luc/lutim\">homepage of the project</a>."
 msgstr "Para más detalles, vea la <a href=\"https://framagit.org/luc/lutim\">página del proyecto</a>."
 
-#: themes/default/templates/layouts/default.html.ep:50
+#: themes/default/templates/layouts/default.html.ep:49
 msgid "Fork me!"
 msgstr "¡Clóname!"
 
@@ -203,7 +203,7 @@ msgstr "Enlace a la galería"
 msgid "Hit Ctrl+C, then Enter to copy the short link"
 msgstr "Presione Ctrl + C, entonces Ingresar para copiar el enlace"
 
-#: themes/default/templates/layouts/default.html.ep:45
+#: themes/default/templates/layouts/default.html.ep:44
 msgid "Homepage"
 msgstr "Página inicial"
 
@@ -228,21 +228,25 @@ msgstr "Si los ficheros se borran por haberlo solicitado al enviarlos, se retien
 msgid "Image URL"
 msgstr "URL de la imagen"
 
-#: lib/Lutim/Command/cron/stats.pm:93
+#: lib/Lutim/Command/cron/stats.pm:101
 msgid "Image delay"
 msgstr ""
 
-#: lib/Lutim/Controller.pm:715
+#: lib/Lutim/Controller.pm:702
 msgid "Image not found."
 msgstr "Imagen no encontrada."
 
-#: themes/default/templates/layouts/default.html.ep:49
+#: themes/default/templates/layouts/default.html.ep:48
 msgid "Informations"
 msgstr "Informaciones"
 
-#: themes/default/templates/layouts/default.html.ep:55
+#: themes/default/templates/layouts/default.html.ep:56
 msgid "Install webapp"
 msgstr "Instalar webapp"
+
+#: themes/default/templates/layouts/default.html.ep:55
+msgid "Instance's statistics"
+msgstr ""
 
 #: themes/default/templates/about.html.ep:11
 msgid "Is it really anonymous?"
@@ -268,7 +272,11 @@ msgstr "Mantener las etiquetas EXIF"
 msgid "Let's go!"
 msgstr "¡Vamos allá!"
 
-#: themes/default/templates/layouts/default.html.ep:48
+#: themes/default/templates/layouts/default.html.ep:52
+msgid "Liberapay button"
+msgstr ""
+
+#: themes/default/templates/layouts/default.html.ep:47
 msgid "License:"
 msgstr "Licencia:"
 
@@ -333,7 +341,7 @@ msgstr "Enviar una imagen"
 msgid "Share it!"
 msgstr "¡Compártelo!"
 
-#: themes/default/templates/layouts/default.html.ep:51
+#: themes/default/templates/layouts/default.html.ep:50
 msgid "Share on Twitter"
 msgstr "Compartir en Twitter"
 
@@ -343,9 +351,17 @@ msgid "Something bad happened"
 msgstr "Algo malo ha pasado"
 
 #. ($c->config('contact')
-#: lib/Lutim/Controller.pm:723
+#: lib/Lutim/Controller.pm:709
 msgid "Something went wrong when creating the zip file. Try again later or contact the administrator (%1)."
 msgstr "Algo malo ha pasado. Inténtelo de nuevo más tarde o contacte con el administrador (%1)."
+
+#: themes/default/templates/layouts/default.html.ep:52
+msgid "Support the author on Liberapay"
+msgstr ""
+
+#: themes/default/templates/layouts/default.html.ep:51
+msgid "Support the author on Tipeee"
+msgstr ""
 
 #: themes/default/templates/about.html.ep:13
 msgid "The IP address of the image's sender is retained for a delay which depends of the administrator's choice (for the official instance, which is located in France, it's one year)."
@@ -355,25 +371,25 @@ msgstr "La dirección IP del remitente de la imagen se retiene durante un tiempo
 msgid "The Lutim software is a <a href=\"http://en.wikipedia.org/wiki/Free_software\">free software</a>, which allows you to download and install it on you own server. Have a look at the <a href=\"https://www.gnu.org/licenses/agpl-3.0.html\">AGPL</a> to see what you can do."
 msgstr "El software Lutim es <a href=\"http://es.wikipedia.org/wiki/Software_libre\">software libre</a>, lo que le permite descargarlo e instalarlo en su propio servidor. Eche un vistazo a la licencia <a href=\"https://www.gnu.org/licenses/agpl-3.0.html\">AGPL</a> para ver qué puede hacer."
 
-#: lib/Lutim/Controller.pm:305
+#: lib/Lutim/Controller.pm:307
 msgid "The URL is not valid."
 msgstr "La URL no es válida."
 
-#: lib/Lutim/Controller.pm:117
-#: lib/Lutim/Controller.pm:186
+#: lib/Lutim/Controller.pm:120
+#: lib/Lutim/Controller.pm:188
 msgid "The delete token is invalid."
 msgstr "El código de borrado no es válido."
 
 #. ($upload->filename)
-#: lib/Lutim/Controller.pm:449
+#: lib/Lutim/Controller.pm:445
 msgid "The file %1 is not an image."
 msgstr "El archivo %1 no es una imagen."
 
 #. ($max_file_size)
 #. ($tx->res->max_message_size)
 #. ($c->req->max_message_size)
-#: lib/Lutim/Controller.pm:269
-#: lib/Lutim/Controller.pm:338
+#: lib/Lutim/Controller.pm:271
+#: lib/Lutim/Controller.pm:340
 #: themes/default/templates/partial/lutim.js.ep:332
 msgid "The file exceed the size limit (%1)"
 msgstr "El archivo supera el límite de tamaño (%1)"
@@ -383,17 +399,17 @@ msgid "The graph's datas are not updated in real-time."
 msgstr "Los datos del gráfico no se actualizan en tiempo real."
 
 #. ($image->filename)
-#: lib/Lutim/Controller.pm:188
+#: lib/Lutim/Controller.pm:190
 msgid "The image %1 has already been deleted."
 msgstr "La imagen %1 ya se ha borrado."
 
 #. ($image->filename)
-#: lib/Lutim/Controller.pm:197
-#: lib/Lutim/Controller.pm:202
+#: lib/Lutim/Controller.pm:199
+#: lib/Lutim/Controller.pm:204
 msgid "The image %1 has been successfully deleted"
 msgstr "La imagen %1 se ha borrado correctamente"
 
-#: lib/Lutim/Controller.pm:125
+#: lib/Lutim/Controller.pm:128
 msgid "The image's delay has been successfully modified"
 msgstr "Se ha modificado correctamente el tiempo de la imagen"
 
@@ -406,11 +422,15 @@ msgid "The images you post on Lutim can be stored indefinitely or be deleted at 
 msgstr "Puede, opcionalmente, solicitar que la imagen publicada en Lutim se elimine con la primera vista (o descarga) o tras un tiempo seleccionado de entre varios propuestos."
 
 #. ($c->config->{contact})
-#: lib/Lutim/Controller.pm:444
+#: lib/Lutim/Controller.pm:442
 msgid "There is no more available URL. Retry or contact the administrator. %1"
 msgstr "No más URL disponibles. Inténtelo de nuevo o contacte con el administrador. %1"
 
-#: lib/Lutim/Command/cron/stats.pm:102
+#: themes/default/templates/layouts/default.html.ep:51
+msgid "Tipeee button"
+msgstr ""
+
+#: lib/Lutim/Command/cron/stats.pm:110
 msgid "Total"
 msgstr ""
 
@@ -420,23 +440,23 @@ msgid "Tweet it!"
 msgstr "¡Tuitéalo!"
 
 #. ($short)
-#: lib/Lutim/Controller.pm:159
-#: lib/Lutim/Controller.pm:231
+#: lib/Lutim/Controller.pm:162
+#: lib/Lutim/Controller.pm:233
 msgid "Unable to find the image %1."
 msgstr "No se ha podido encontrar la imagen %1."
 
-#: lib/Lutim.pm:85
-#: lib/Lutim/Controller.pm:534
-#: lib/Lutim/Controller.pm:580
-#: lib/Lutim/Controller.pm:624
-#: lib/Lutim/Controller.pm:664
-#: lib/Lutim/Controller.pm:676
-#: lib/Lutim/Controller.pm:687
-#: lib/Lutim/Controller.pm:712
+#: lib/Lutim.pm:86
+#: lib/Lutim/Controller.pm:529
+#: lib/Lutim/Controller.pm:574
+#: lib/Lutim/Controller.pm:615
+#: lib/Lutim/Controller.pm:654
+#: lib/Lutim/Controller.pm:666
+#: lib/Lutim/Controller.pm:677
+#: lib/Lutim/Controller.pm:699
 msgid "Unable to find the image: it has been deleted."
 msgstr "No se ha podido encontrar la imagen: ha sido borrada."
 
-#: lib/Lutim/Controller.pm:101
+#: lib/Lutim/Controller.pm:105
 msgid "Unable to get counter"
 msgstr "Imposible recuperar el contador"
 
@@ -502,9 +522,9 @@ msgstr "y en"
 msgid "core developer"
 msgstr "desarrollador principal"
 
-#: lib/Lutim/Command/cron/stats.pm:108
-#: lib/Lutim/Command/cron/stats.pm:125
-#: lib/Lutim/Command/cron/stats.pm:97
+#: lib/Lutim/Command/cron/stats.pm:105
+#: lib/Lutim/Command/cron/stats.pm:116
+#: lib/Lutim/Command/cron/stats.pm:133
 #: themes/default/templates/index.html.ep:3
 msgid "no time limit"
 msgstr "Sin tiempo límite"
