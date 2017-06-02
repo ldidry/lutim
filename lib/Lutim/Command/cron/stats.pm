@@ -1,3 +1,4 @@
+# vim:set sw=4 ts=4 sts=4 ft=perl expandtab:
 package Lutim::Command::cron::stats;
 use Mojo::Base 'Mojolicious::Command';
 use Lutim::DB::Image;

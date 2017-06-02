@@ -1,3 +1,4 @@
+# vim:set sw=4 ts=4 sts=4 ft=perl expandtab:
 package Mounter;
 use Mojo::Base 'Mojolicious';
 use FindBin qw($Bin);
