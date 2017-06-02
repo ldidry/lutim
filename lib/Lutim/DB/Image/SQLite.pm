@@ -8,8 +8,10 @@ has 'record';
 
 sub new {
     my $c = shift;
+
     $c = $c->SUPER::new(@_);
     $c = $c->_slurp if ($c->short);
+
     return $c;
 }
 
@@ -146,7 +148,7 @@ sub get_no_longer_viewed_files {
 
     my @images;
 
-    my @records = c(Lutim::DB::SQLite::Lutim->select('WHERE enabled = 1 AND last_access_at < ?', $time));
+    my @records = Lutim::DB::SQLite::Lutim->select('WHERE enabled = 1 AND last_access_at < ?', $time);
 
     for my $e (@records) {
         my $i = Lutim::DB::Image->new(app => $c->app);
