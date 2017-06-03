@@ -1,7 +1,7 @@
 # vim:set sw=4 ts=4 sts=4 ft=perl expandtab:
 package Lutim::DB::Image::Pg;
 use Mojo::Base 'Lutim::DB::Image';
-use Mojolicious::Collection 'c';
+use Mojo::Collection 'c';
 
 has 'record' => 0;
 
@@ -71,9 +71,9 @@ sub write {
     my $c = shift;
 
     if ($c->record) {
-        $c->app->pg->db->query('UPDATE lutim SET counter = ?, created_at = ?, created_by = ?, delete_at_day = ?, delete_at_first_view = ?, enabled = ?, filename = ?, footprint = ?, height = ?, last_access_at = ?, mediatype = ?, mod_token = ?, path = ?, short = ?, width = ? WHERE short = ?' $c->counter, $c->created_at, $c->created_by, $c->delete_at_day, $c->delete_at_first_view, $c->enabled, $c->filename, $c->footprint, $c->height, $c->last_access_at, $c->mediatype, $c->mod_token, $c->path, $c->short, $c->width, $c->short);
+        $c->app->pg->db->query('UPDATE lutim SET counter = ?, created_at = ?, created_by = ?, delete_at_day = ?, delete_at_first_view = ?, enabled = ?, filename = ?, footprint = ?, height = ?, last_access_at = ?, mediatype = ?, mod_token = ?, path = ?, short = ?, width = ? WHERE short = ?', $c->counter, $c->created_at, $c->created_by, $c->delete_at_day, $c->delete_at_first_view, $c->enabled, $c->filename, $c->footprint, $c->height, $c->last_access_at, $c->mediatype, $c->mod_token, $c->path, $c->short, $c->width, $c->short);
     } else {
-        $c->app->pg->db->query('INSERT INTO lutim (counter, created_at, created_by, delete_at_day, delete_at_first_view, enabled, filename, footprint, height, last_access_at, mediatype, mod_token, path, short, width) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);' $c->counter, $c->created_at, $c->created_by, $c->delete_at_day, $c->delete_at_first_view, $c->enabled, $c->filename, $c->footprint, $c->height, $c->last_access_at, $c->mediatype, $c->mod_token, $c->path, $c->short, $c->width);
+        $c->app->pg->db->query('INSERT INTO lutim (counter, created_at, created_by, delete_at_day, delete_at_first_view, enabled, filename, footprint, height, last_access_at, mediatype, mod_token, path, short, width) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', $c->counter, $c->created_at, $c->created_by, $c->delete_at_day, $c->delete_at_first_view, $c->enabled, $c->filename, $c->footprint, $c->height, $c->last_access_at, $c->mediatype, $c->mod_token, $c->path, $c->short, $c->width);
         $c->record(1);
     }
 

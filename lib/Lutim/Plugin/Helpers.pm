@@ -38,18 +38,18 @@ sub _pg {
     my $c     = shift;
 
     my $addr  = 'postgresql://';
-    $addr    .= $c->config->{pgdb}->{host};
-    $addr    .= ':'.$c->config->{pgdb}->{port} if defined $c->config->{pgdb}->{port};
-    $addr    .= '/'.$c->config->{pgdb}->{database};
+    $addr    .= $c->app->config('pgdb')->{host};
+    $addr    .= ':'.$c->app->config('pgdb')->{port} if defined $c->app->config('pgdb')->{port};
+    $addr    .= '/'.$c->app->config('pgdb')->{database};
     state $pg = Mojo::Pg->new($addr);
-    $pg->password($c->config->{pgdb}->{pwd});
-    $pg->username($c->config->{pgdb}->{user});
+    $pg->password($c->app->config('pgdb')->{pwd});
+    $pg->username($c->app->config('pgdb')->{user});
     return $pg;
 }
 
 sub _render_file {
     my $c = shift;
-    my ($filename, $path, $mediatype, $dl, $expires, $nocache, $key, $thumb) = @_;
+    my ($im_loaded, $filename, $path, $mediatype, $dl, $expires, $nocache, $key, $thumb) = @_;
 
     $dl       = 'attachment' if ($mediatype =~ m/svg/);
     $filename = quote($filename);
@@ -116,11 +116,11 @@ sub _provisioning {
 
     # Create some short patterns for provisioning
     my $img = Lutim::DB::Image->new(app => $c->app);
-    if ($img->count_empty < $c->config->{provisioning}) {
-        for (my $i = 0; $i < $c->config->{provis_step}; $i++) {
+    if ($img->count_empty < $c->app->config('provisioning')) {
+        for (my $i = 0; $i < $c->app->config('provis_step'); $i++) {
             my $short;
             do {
-                $short = $c->shortener($c->config->{length});
+                $short = $c->shortener($c->app->config('length'));
             } while ($img->count_short($short) || $short eq 'about' || $short eq 'stats' || $short eq 'd' || $short eq 'm' || $short eq 'gallery' || $short eq 'zip' || $short eq 'infos');
 
             $img->short($short)
@@ -128,7 +128,7 @@ sub _provisioning {
                 ->enabled(1)
                 ->delete_at_first_view(0)
                 ->delete_at_day(0)
-                ->mod_token($c->shortener($c->config->{token_length}))
+                ->mod_token($c->shortener($c->app->config('token_length')))
                 ->write;
 
             $img = Lutim::DB::Image->new(app => $c->app);
@@ -153,7 +153,7 @@ sub _stop_upload {
 
     if (-f 'stop-upload' || -f 'stop-upload.manual') {
         $c->stash(
-            stop_upload => $c->l('Uploading is currently disabled, please try later or contact the administrator (%1).', $config->{contact})
+            stop_upload => $c->l('Uploading is currently disabled, please try later or contact the administrator (%1).', $c->app->config('contact'))
         );
         return 1;
     }
@@ -163,7 +163,7 @@ sub _stop_upload {
 sub _max_delay {
     my $c = shift;
 
-    return $c->config->{max_delay} if ($c->config->{max_delay} >= 0);
+    return $c->app->config('max_delay') if ($c->app->config('max_delay') >= 0);
 
     warn "max_delay set to a negative value. Default to 0.";
     return 0;
@@ -172,7 +172,7 @@ sub _max_delay {
 sub _default_delay {
     my $c = shift;
 
-    return $c->config->{default_delay} if ($c->config->{default_delay} >= 0);
+    return $c->app->config('default_delay') if ($c->app->config('default_delay') >= 0);
 
     warn "default_delay set to a negative value. Default to 0.";
     return 0;
@@ -245,3 +245,5 @@ sub _delete_image {
     unlink $img->path or warn "Could not unlink ".$img->path.": $!";
     $img->disable();
 }
+
+1;
