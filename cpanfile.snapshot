@@ -309,19 +309,19 @@ DISTRIBUTIONS
       Data::Validate::Domain 0
       Data::Validate::IP 0
       ExtUtils::MakeMaker 0
-  DateTime-1.42
-    pathname: D/DR/DROLSKY/DateTime-1.42.tar.gz
+  DateTime-1.43
+    pathname: D/DR/DROLSKY/DateTime-1.43.tar.gz
     provides:
-      DateTime 1.42
-      DateTime::Duration 1.42
-      DateTime::Helpers 1.42
-      DateTime::Infinite 1.42
-      DateTime::Infinite::Future 1.42
-      DateTime::Infinite::Past 1.42
-      DateTime::LeapSecond 1.42
-      DateTime::PP 1.42
-      DateTime::PPExtra 1.42
-      DateTime::Types 1.42
+      DateTime 1.43
+      DateTime::Duration 1.43
+      DateTime::Helpers 1.43
+      DateTime::Infinite 1.43
+      DateTime::Infinite::Future 1.43
+      DateTime::Infinite::Past 1.43
+      DateTime::LeapSecond 1.43
+      DateTime::PP 1.43
+      DateTime::PPExtra 1.43
+      DateTime::Types 1.43
     requirements:
       Carp 0
       DateTime::Locale 1.06

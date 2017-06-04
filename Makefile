@@ -7,6 +7,7 @@ OC=themes/default/lib/Lutim/I18N/oc.po
 XGETTEXT=carton exec local/bin/xgettext.pl
 CARTON=carton exec
 LUTIM=script/lutim
+REAL_LUTIM=script/application
 
 locales:
 	$(XGETTEXT) $(EXTRACTDIR) -o $(EN) 2>/dev/null
@@ -14,6 +15,14 @@ locales:
 	$(XGETTEXT) $(EXTRACTDIR) -o $(DE) 2>/dev/null
 	$(XGETTEXT) $(EXTRACTDIR) -o $(ES) 2>/dev/null
 	$(XGETTEXT) $(EXTRACTDIR) -o $(OC) 2>/dev/null
+
+podcheck:
+	podchecker lib/Lutim/DB/Image.pm
+
+test-sqlite:
+	MOJO_CONFIG=t/sqlite.conf $(CARTON) $(REAL_LUTIM) test
+
+test: podcheck test-sqlite
 
 clean:
 	rm -rf lutim.db files/

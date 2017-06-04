@@ -15,8 +15,15 @@ has usage => sub { shift->extract_usage };
 sub run {
     my $c = shift;
 
+    my $cfile = Mojo::File->new($Bin, '..' , 'lutim.conf');
+    if (defined $ENV{MOJO_CONFIG}) {
+        $cfile = Mojo::File->new($ENV{MOJO_CONFIG});
+        unless (-e $cfile->to_abs) {
+            $cfile = Mojo::File->new($Bin, '..', $ENV{MOJO_CONFIG});
+        }
+    }
     my $config = $c->app->plugin('Config', {
-        file    => File::Spec->catfile($Bin, '..' ,'lutim.conf'),
+        file    => $cfile,
         theme   => 'default',
         default => {
             stats_day_num => 365,

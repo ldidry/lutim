@@ -405,7 +405,7 @@ sub add {
                 }
 
                 my $key;
-                if ($c->param('crypt') || $c->config->{always_encrypt}) {
+                if ($c->param('crypt') || $c->config('always_encrypt')) {
                     ($upload, $key) = $c->crypt($upload, $filename);
                 }
                 $upload->move_to($path);

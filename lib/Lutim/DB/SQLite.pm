@@ -6,9 +6,16 @@ use FindBin qw($Bin);
 
 BEGIN {
     my $m = Mojolicious->new;
+    my $cfile = Mojo::File->new($Bin, '..' , 'lutim.conf');
+    if (defined $ENV{MOJO_CONFIG}) {
+        $cfile = Mojo::File->new($ENV{MOJO_CONFIG});
+        unless (-e $cfile->to_abs) {
+            $cfile = Mojo::File->new($Bin, '..', $ENV{MOJO_CONFIG});
+        }
+    }
     our $config = $m->plugin('Config' =>
         {
-            file    => Mojo::File->new($Bin, '..' ,'lutim.conf')->to_abs->to_string,
+            file    => $cfile->to_abs->to_string,
             default => {
                 db_path => 'lutim.db'
             }
