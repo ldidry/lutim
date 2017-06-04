@@ -22,7 +22,10 @@ podcheck:
 test-sqlite:
 	MOJO_CONFIG=t/sqlite.conf $(CARTON) $(REAL_LUTIM) test
 
-test: podcheck test-sqlite
+test-pg:
+	MOJO_CONFIG=t/postgresql.conf $(CARTON) $(REAL_LUTIM) test
+
+test: podcheck test-sqlite test-pg
 
 clean:
 	rm -rf lutim.db files/
@@ -33,3 +36,18 @@ dev:
 
 devlog:
 	multitail log/development.log
+
+create-pg-test-db:
+	 sudo -u postgres psql -f t/create-pg-testdb.sql
+
+stats:
+	$(CARTON) $(LUTIM) cron stats -m production
+
+watch:
+	$(CARTON) $(LUTIM) cron watch -m production
+
+cleanfiles:
+	$(CARTON) $(LUTIM) cron cleanfiles -m production
+
+cleanbdd:
+	$(CARTON) $(LUTIM) cron cleanbdd -m production

@@ -217,23 +217,25 @@ sub _slurp {
     }
 
     if (scalar @images) {
-        $c->short($images[0]->short);
-        $c->path($images[0]->path);
-        $c->footprint($images[0]->footprint);
-        $c->enabled($images[0]->enabled);
-        $c->mediatype($images[0]->mediatype);
-        $c->filename($images[0]->filename);
-        $c->counter($images[0]->counter);
-        $c->delete_at_first_view($images[0]->delete_at_first_view);
-        $c->delete_at_day($images[0]->delete_at_day);
-        $c->created_at($images[0]->created_at);
-        $c->created_by($images[0]->created_by);
-        $c->last_access_at($images[0]->last_access_at);
-        $c->mod_token($images[0]->mod_token);
-        $c->width($images[0]->width);
-        $c->height($images[0]->height);
+        my $image = $images[0];
 
-        $c->record($images[0]) unless $c->record;
+        $c->short($image->short);
+        $c->path($image->path);
+        $c->footprint($image->footprint);
+        $c->enabled($image->enabled);
+        $c->mediatype($image->mediatype);
+        $c->filename($image->filename);
+        $c->counter($image->counter);
+        $c->delete_at_first_view($image->delete_at_first_view);
+        $c->delete_at_day($image->delete_at_day);
+        $c->created_at($image->created_at);
+        $c->created_by($image->created_by);
+        $c->last_access_at($image->last_access_at);
+        $c->mod_token($image->mod_token);
+        $c->width($image->width);
+        $c->height($image->height);
+
+        $c->record($image) unless $c->record;
     }
 
     return $c;

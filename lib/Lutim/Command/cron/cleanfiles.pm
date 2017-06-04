@@ -1,10 +1,9 @@
 # vim:set sw=4 ts=4 sts=4 ft=perl expandtab:
 package Lutim::Command::cron::cleanfiles;
 use Mojo::Base 'Mojolicious::Command';
-use Mojo::Util qw(slurp decode);
+use Mojo::File;
 use Lutim::DB::Image;
 use Lutim;
-use Mojo::File;
 use FindBin qw($Bin);
 use File::Spec qw(catfile);
 

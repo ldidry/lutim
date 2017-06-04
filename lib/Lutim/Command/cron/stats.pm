@@ -1,10 +1,10 @@
 # vim:set sw=4 ts=4 sts=4 ft=perl expandtab:
 package Lutim::Command::cron::stats;
 use Mojo::Base 'Mojolicious::Command';
-use Lutim::DB::Image;
 use Mojo::DOM;
 use Mojo::Util qw(encode);
 use Mojo::File;
+use Lutim::DB::Image;
 use DateTime;
 use FindBin qw($Bin);
 use File::Spec qw(catfile);

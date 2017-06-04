@@ -1,0 +1,2 @@
+CREATE USER lutim WITH PASSWORD 'lutim';
+CREATE DATABASE lutimtest OWNER lutim;

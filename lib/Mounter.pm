@@ -28,6 +28,8 @@ sub startup {
         }
     );
 
+    $self->plugin('Lutim::Plugin::Helpers');
+
     $config->{prefix} = $config->{url_sub_dir} if (defined($config->{url_sub_dir}) && $config->{prefix} eq '/');
 
     $self->app->log->warn('"url_sub_dir" configuration option is deprecated. Use "prefix" instead. "url_sub_dir" will be removed in the future') if (defined($config->{url_sub_dir}));

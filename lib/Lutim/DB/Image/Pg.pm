@@ -46,8 +46,7 @@ sub select_created_after {
         sub {
             my ($e, $num) = @_;
             my $i = Lutim::DB::Image->new(app => $c->app);
-            $i->record(1);
-            $i->_slurp;
+            $i->_slurp($e);
 
             push @images, $i;
         }
@@ -61,8 +60,7 @@ sub select_empty {
 
     my $record = $c->app->pg->db->query('SELECT * FROM lutim WHERE path IS NULL LIMIT 1')->hashes->first;
 
-    $c->record(1);
-    $c = $c->_slurp;
+    $c = $c->_slurp($record);
 
     return $c;
 }
@@ -84,7 +82,7 @@ sub count_short {
     my $c     = shift;
     my $short = shift;
 
-    return $c->app->pg->db->query('SELECT count(short) FROM lutim WHERE short IS ?', $short)->hashes->first->{count};
+    return $c->app->pg->db->query('SELECT count(short) FROM lutim WHERE short = ?', $short)->hashes->first->{count};
 }
 
 sub count_empty {
@@ -121,7 +119,7 @@ sub get_no_longer_viewed_files {
             my ($e, $num) = @_;
             my $i = Lutim::DB::Image->new(app => $c->app);
             $i->record(1);
-            $i->_slurp;
+            $i->_slurp($e);
 
             push @images, $i;
         }
@@ -141,8 +139,7 @@ sub get_images_to_clean {
         sub {
             my ($e, $num) = @_;
             my $i = Lutim::DB::Image->new(app => $c->app);
-            $i->record(1);
-            $i->_slurp;
+            $i->_slurp($e);
 
             push @images, $i;
         }
@@ -162,8 +159,7 @@ sub get_50_oldest {
         sub {
             my ($e, $num) = @_;
             my $i = Lutim::DB::Image->new(app => $c->app);
-            $i->record(1);
-            $i->_slurp;
+            $i->_slurp($e);
 
             push @images, $i;
         }
@@ -183,12 +179,20 @@ sub disable {
 
 sub _slurp {
     my $c = shift;
+    my $r = shift;
 
-    my $images = $c->app->pg->db->query('SELECT * FROM lutim WHERE short = ?', $c->short)->hashes;
+    my $image;
+    if (defined $r) {
+        $image = $r;
+    } else {
+        my $images = $c->app->pg->db->query('SELECT * FROM lutim WHERE short = ?', $c->short)->hashes;
 
-    if ($images->size) {
-        my $image = $images->first;
+        if ($images->size) {
+            $image = $images->first;
+        }
+    }
 
+    if ($image) {
         $c->short($image->{short});
         $c->path($image->{path});
         $c->footprint($image->{footprint});
