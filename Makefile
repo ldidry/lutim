@@ -1,4 +1,4 @@
-EXTRACTFILES=utilities/locales_files.txt
+EXTRACTDIR=-D lib -D themes/default/templates
 EN=themes/default/lib/Lutim/I18N/en.po
 FR=themes/default/lib/Lutim/I18N/fr.po
 DE=themes/default/lib/Lutim/I18N/de.po
@@ -9,14 +9,15 @@ CARTON=carton exec
 LUTIM=script/lutim
 
 locales:
-	$(XGETTEXT) -W -f $(EXTRACTFILES) -o $(EN) 2>/dev/null
-	$(XGETTEXT) -W -f $(EXTRACTFILES) -o $(FR) 2>/dev/null
-	$(XGETTEXT) -W -f $(EXTRACTFILES) -o $(DE) 2>/dev/null
-	$(XGETTEXT) -W -f $(EXTRACTFILES) -o $(ES) 2>/dev/null
-	$(XGETTEXT) -W -f $(EXTRACTFILES) -o $(OC) 2>/dev/null
+	$(XGETTEXT) $(EXTRACTDIR) -o $(EN) 2>/dev/null
+	$(XGETTEXT) $(EXTRACTDIR) -o $(FR) 2>/dev/null
+	$(XGETTEXT) $(EXTRACTDIR) -o $(DE) 2>/dev/null
+	$(XGETTEXT) $(EXTRACTDIR) -o $(ES) 2>/dev/null
+	$(XGETTEXT) $(EXTRACTDIR) -o $(OC) 2>/dev/null
 
 clean:
 	rm -rf lutim.db files/
+
 dev:
 	rm -rf themes/default/public/packed/*
 	$(CARTON) morbo $(LUTIM) --listen http://0.0.0.0:3000 --watch lib/ --watch script/ --watch themes/ --watch lutim.conf
