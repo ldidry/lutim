@@ -101,7 +101,7 @@ sub clean_ips_until {
     my $c    = shift;
     my $time = shift;
 
-    $c->app->pg->db->query('UPDATE lutim SET created_by = "" WHERE path IS NOT NULL AND created_at < ?', $time);
+    $c->app->pg->db->query('UPDATE lutim SET created_by = NULL WHERE path IS NOT NULL AND created_at < ?', $time);
 
     return $c;
 }
