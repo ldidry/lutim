@@ -1,10 +1,10 @@
 @font-face {
 	font-family: 'markdown';
-	src:url('../font/markdown.eot?-6fnbp5');
-	src:url('../font/markdown.eot?#iefix-6fnbp5') format('embedded-opentype'),
-		url('../font/markdown.woff?-6fnbp5') format('woff'),
-		url('../font/markdown.ttf?-6fnbp5') format('truetype'),
-		url('../font/markdown.svg?-6fnbp5#markdown') format('svg');
+	src:url('../../font/markdown.eot?-6fnbp5');
+	src:url('../../font/markdown.eot?#iefix-6fnbp5') format('embedded-opentype'),
+		url('../../font/markdown.woff?-6fnbp5') format('woff'),
+		url('../../font/markdown.ttf?-6fnbp5') format('truetype'),
+		url('../../font/markdown.svg?-6fnbp5#markdown') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
