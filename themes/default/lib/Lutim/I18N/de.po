@@ -67,7 +67,7 @@ msgstr "Klicken um den Dateibrowser zu öffnen"
 msgid "Contributors"
 msgstr "Mitwirkende"
 
-#: themes/default/templates/partial/lutim.js.ep:310 themes/default/templates/partial/lutim.js.ep:359 themes/default/templates/partial/lutim.js.ep:437
+#: themes/default/templates/partial/lutim.js.ep:310 themes/default/templates/partial/lutim.js.ep:363 themes/default/templates/partial/lutim.js.ep:441
 msgid "Copy all view links to clipboard"
 msgstr "Alle Links zum Anschauen in die Zwischenablage kopieren"
 
@@ -331,7 +331,7 @@ msgstr "Die Datei %1 ist kein Bild."
 #. ($tx->res->max_message_size)
 #. ($c->req->max_message_size)
 #. ($max_file_size)
-#: lib/Lutim/Controller.pm:271 lib/Lutim/Controller.pm:340 themes/default/templates/partial/lutim.js.ep:332
+#: lib/Lutim/Controller.pm:271 lib/Lutim/Controller.pm:340 themes/default/templates/partial/lutim.js.ep:336
 msgid "The file exceed the size limit (%1)"
 msgstr "Die Datei überschreitet die Größenbeschränkung (%1)"
 

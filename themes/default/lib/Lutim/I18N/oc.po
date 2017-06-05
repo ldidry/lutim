@@ -66,7 +66,7 @@ msgstr "Clicatz per utilizar lo navigador de fichièr"
 msgid "Contributors"
 msgstr "Contributors"
 
-#: themes/default/templates/partial/lutim.js.ep:310 themes/default/templates/partial/lutim.js.ep:359 themes/default/templates/partial/lutim.js.ep:437
+#: themes/default/templates/partial/lutim.js.ep:310 themes/default/templates/partial/lutim.js.ep:363 themes/default/templates/partial/lutim.js.ep:441
 msgid "Copy all view links to clipboard"
 msgstr "Copiar totes los ligams de visualizacion dins lo quichapapièrs"
 
@@ -328,7 +328,7 @@ msgstr "Lo fichièr %1 es pas un imatge."
 #. ($tx->res->max_message_size)
 #. ($c->req->max_message_size)
 #. ($max_file_size)
-#: lib/Lutim/Controller.pm:271 lib/Lutim/Controller.pm:340 themes/default/templates/partial/lutim.js.ep:332
+#: lib/Lutim/Controller.pm:271 lib/Lutim/Controller.pm:340 themes/default/templates/partial/lutim.js.ep:336
 msgid "The file exceed the size limit (%1)"
 msgstr "Lo fichièr depassa lo limit de talha (%1)"
 
