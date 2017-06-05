@@ -9,6 +9,7 @@ Revision history for Lutim
 	- Remove Flattr button
 	- Handle MOJO_CONFIG env variable (#44)
 	- Fix bug #39
+	- Add gallery constructor to "my files" list (#33)
 
 0.7.1  2016-06-21
 	- Fix dependency bug

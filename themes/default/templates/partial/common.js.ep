@@ -1,5 +1,111 @@
 % # vim:set sw=4 ts=4 sts=4 ft=javascript expandtab:
 %= javascript begin
+    window.gallery_url = '<%= url_for('gallery')->to_abs %>#';
+    window.zip_url = '<%= url_for('zip')->to_abs %>?i=';
+    window.short_hash = {};
+    window.zip_hash = {};
+    function addToShortHash(short) {
+        window.short_hash[short] = 1;
+        console.debug(window.short_hash);
+        if (Object.keys(window.short_hash).length > 0) {
+            $('#gallery-url').removeClass('hidden');
+            $('#gallery-url-input').val(window.gallery_url+Object.keys(window.short_hash).join(','));
+            $('#gallery-url-link').attr('href', window.gallery_url+Object.keys(window.short_hash).join(','));
+        }
+    }
+    function rmFromShortHash(short) {
+        delete window.short_hash[short];
+        $('#gallery-url-input').val(window.gallery_url+Object.keys(window.short_hash).join(','));
+        $('#gallery-url-link').attr('href', window.gallery_url+Object.keys(window.short_hash).join(','));
+        if (Object.keys(window.short_hash).length === 0) {
+            $('#gallery-url').addClass('hidden');
+        }
+    }
+    function addToZipHash(short) {
+        window.zip_hash[short] = 1;
+        if (Object.keys(window.zip_hash).length > 0) {
+            $('#zip-url').removeClass('hidden');
+            $('#zip-url-input').val(window.zip_url+Object.keys(window.zip_hash).join('&i='));
+            $('#zip-url-link').attr('href', window.zip_url+Object.keys(window.zip_hash).join('&i='));
+        }
+    }
+    function rmFromZipHash(short) {
+        delete window.zip_hash[short];
+        $('#zip-url-input').val(window.zip_url+Object.keys(window.zip_hash).join('&i='));
+        $('#zip-url-link').attr('href', window.zip_url+Object.keys(window.zip_hash).join('&i='));
+        if (Object.keys(window.zip_hash).length === 0) {
+            $('#zip-url').addClass('hidden');
+        }
+    }
+    /* Stolen from https://github.com/mozilla-services/push-dev-dashboard/blob/3ad4de737380d0842f40c82301d1f748c1b20f2b/push/static/js/validation.js */
+    function createNode(text) {
+        var node = document.createElement('pre');
+        node.style.width = '1px';
+        node.style.height = '1px';
+        node.style.position = 'fixed';
+        node.style.top = '5px';
+        node.textContent = text;
+        return node;
+    }
+
+    function copyNode(node) {
+        var selection = getSelection();
+        selection.removeAllRanges();
+
+        var range = document.createRange();
+        range.selectNodeContents(node);
+        selection.addRange(range);
+
+        var success = document.execCommand('copy');
+        selection.removeAllRanges();
+        return success;
+    }
+
+    function copyText(text) {
+        var node = createNode(text);
+        document.body.appendChild(node);
+        var success = copyNode(node);
+        document.body.removeChild(node);
+        return success;
+    }
+
+    function copyInput(node) {
+        node.select();
+        var success = document.execCommand('copy');
+        getSelection().removeAllRanges();
+        return success;
+    }
+    function copyToClipboard(el) {
+        el = el.siblings('input');
+        try {
+            var successful = copyInput(el);
+            var msg = successful ? 'successful' : 'unsuccessful';
+            console.debug('Copying text command was ' + msg);
+            if (!successful) {
+                throw new Error('Copying text command was ' + msg);
+            }
+        } catch (err) {
+            prompt('<%= l('Hit Ctrl+C, then Enter to copy the short link') %>', el.val());
+        }
+    }
+    function copyAllToClipboard() {
+        var text = new Array();
+        $('.view-link-input').each(function(index) {
+            text.push($(this).val());
+        });
+
+        try {
+            var successful = copyText(text.join("\n"));
+            var msg = successful ? 'successful' : 'unsuccessful';
+            console.debug('Copying text command was ' + msg);
+            if (!successful) {
+                throw new Error('Copying text command was ' + msg);
+            }
+        } catch (err) {
+            prompt('<%= l('Hit Ctrl+C, then Enter to copy the short link') %>', text.join(" "));
+        }
+
+    }
     function delImage() {
         var short = $(this).attr('data-short');
         var token = $(this).attr('data-token');
