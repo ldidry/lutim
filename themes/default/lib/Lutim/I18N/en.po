@@ -53,6 +53,10 @@ msgstr ""
 msgid "An error occured while downloading the image."
 msgstr "An error occured while downloading the image."
 
+#: themes/default/templates/zip.html.ep:2
+msgid "Archives download"
+msgstr ""
+
 #: themes/default/templates/about.html.ep:41 themes/default/templates/myfiles.html.ep:64 themes/default/templates/stats.html.ep:25
 msgid "Back to homepage"
 msgstr "Back to homepage"
@@ -185,7 +189,7 @@ msgstr "Image URL"
 msgid "Image delay"
 msgstr ""
 
-#: lib/Lutim/Controller.pm:702
+#: lib/Lutim/Controller.pm:706
 msgid "Image not found."
 msgstr ""
 
@@ -233,6 +237,10 @@ msgstr "License:"
 msgid "Link for share on social networks"
 msgstr "Link for share on social networks"
 
+#: themes/default/templates/zip.html.ep:7
+msgid "Lutim can't zip so many images at once, so it splitted your demand in multiple URLs."
+msgstr ""
+
 #: themes/default/templates/about.html.ep:4
 msgid "Lutim is a free (as in free beer) and anonymous image hosting service. It's also the name of the free (as in free speech) software which provides this service."
 msgstr "Lutim is a free (as in free beer) and anonymous image hosting service. It's also the name of the free (as in free speech) software which provides this service."
@@ -265,6 +273,10 @@ msgstr ""
 msgid "Only the uploader! (well, only if he's the only owner of the images' rights before the upload)"
 msgstr "Only the uploader! (well, only if he's the only owner of the images' rights before the upload)"
 
+#: themes/default/templates/zip.html.ep:12
+msgid "Please click on each URL to download the different zip files."
+msgstr ""
+
 #. (config('contact')
 #: themes/default/templates/about.html.ep:19
 msgid "Please contact the administrator: %1"
@@ -291,7 +303,7 @@ msgid "Something bad happened"
 msgstr "Something bad happened"
 
 #. ($c->config('contact')
-#: lib/Lutim/Controller.pm:709
+#: lib/Lutim/Controller.pm:713
 msgid "Something went wrong when creating the zip file. Try again later or contact the administrator (%1)."
 msgstr ""
 
@@ -314,6 +326,10 @@ msgstr "The Lutim software is a <a href=\"http://en.wikipedia.org/wiki/Free_soft
 #: lib/Lutim/Controller.pm:307
 msgid "The URL is not valid."
 msgstr "The URL is not valid."
+
+#: themes/default/templates/zip.html.ep:16
+msgid "The automatic download process will open a tab in your browser for each link. You need to allow popups for Lutim."
+msgstr ""
 
 #: lib/Lutim/Controller.pm:120 lib/Lutim/Controller.pm:188
 msgid "The delete token is invalid."
@@ -379,7 +395,7 @@ msgstr "Tweet it!"
 msgid "Unable to find the image %1."
 msgstr "Unable to find the image %1."
 
-#: lib/Lutim/Controller.pm:529 lib/Lutim/Controller.pm:574 lib/Lutim/Controller.pm:615 lib/Lutim/Controller.pm:654 lib/Lutim/Controller.pm:666 lib/Lutim/Controller.pm:677 lib/Lutim/Controller.pm:699 lib/Lutim/Plugin/Helpers.pm:61
+#: lib/Lutim/Controller.pm:529 lib/Lutim/Controller.pm:574 lib/Lutim/Controller.pm:615 lib/Lutim/Controller.pm:658 lib/Lutim/Controller.pm:670 lib/Lutim/Controller.pm:681 lib/Lutim/Controller.pm:703 lib/Lutim/Plugin/Helpers.pm:61
 msgid "Unable to find the image: it has been deleted."
 msgstr "Unable to find the image: it has been deleted."
 
@@ -434,6 +450,10 @@ msgstr "Yes, it is! On the other side, if you want to support the developer, you
 
 #: themes/default/templates/about.html.ep:10
 msgid "Yes, it is! On the other side, if you want to support the developer, you can do it via <a href=\"https://www.tipeee.com/fiat-tux\">Tipeee</a> or via <a href=\"https://liberapay.com/sky/\">Liberapay</a>."
+msgstr ""
+
+#: themes/default/templates/zip.html.ep:6
+msgid "You asked to download a zip archive for too much files."
 msgstr ""
 
 #: themes/default/templates/about.html.ep:8

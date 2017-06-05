@@ -54,6 +54,10 @@ msgstr "Imatges actius"
 msgid "An error occured while downloading the image."
 msgstr "Una error es apareguda pendent lo telecargament de l'imatge."
 
+#: themes/default/templates/zip.html.ep:2
+msgid "Archives download"
+msgstr ""
+
 #: themes/default/templates/about.html.ep:41 themes/default/templates/myfiles.html.ep:64 themes/default/templates/stats.html.ep:25
 msgid "Back to homepage"
 msgstr "Tornar a la pagina d'acuèlh"
@@ -186,7 +190,7 @@ msgstr "URL de l'imatge"
 msgid "Image delay"
 msgstr "Delai de l'imatge"
 
-#: lib/Lutim/Controller.pm:702
+#: lib/Lutim/Controller.pm:706
 msgid "Image not found."
 msgstr "Imatge pas trobat."
 
@@ -234,6 +238,10 @@ msgstr "Licéncia :"
 msgid "Link for share on social networks"
 msgstr "Ligam per partejar suls malhums socials"
 
+#: themes/default/templates/zip.html.ep:7
+msgid "Lutim can't zip so many images at once, so it splitted your demand in multiple URLs."
+msgstr ""
+
 #: themes/default/templates/about.html.ep:4
 msgid "Lutim is a free (as in free beer) and anonymous image hosting service. It's also the name of the free (as in free speech) software which provides this service."
 msgstr "Lutim es un servici gratuit e anonim d’albergament d’imatges. S’agís tanben del nom del logicial (liure) que fornís aqueste servici."
@@ -266,6 +274,10 @@ msgstr "Solament los imatges mandats amb aqueste navigador seràn listats aquí.
 msgid "Only the uploader! (well, only if he's the only owner of the images' rights before the upload)"
 msgstr "Solament lo qu'a mandat ! (ben, solament se ten los dreits exclusius dels imatges abans de los mandar)"
 
+#: themes/default/templates/zip.html.ep:12
+msgid "Please click on each URL to download the different zip files."
+msgstr ""
+
 #. (config('contact')
 #: themes/default/templates/about.html.ep:19
 msgid "Please contact the administrator: %1"
@@ -292,7 +304,7 @@ msgid "Something bad happened"
 msgstr "Un problèma es aparegut"
 
 #. ($c->config('contact')
-#: lib/Lutim/Controller.pm:709
+#: lib/Lutim/Controller.pm:713
 msgid "Something went wrong when creating the zip file. Try again later or contact the administrator (%1)."
 msgstr "Quicòm a trucat pendent la creacion de l'archiu. Mercés de tornar ensajar pus tard o de contactar l'administrator (%1)."
 
@@ -315,6 +327,10 @@ msgstr "Lo logicial Lutim es un <a href=\"https://oc.wikipedia.org/wiki/Logicial
 #: lib/Lutim/Controller.pm:307
 msgid "The URL is not valid."
 msgstr "L'URL n'es pas valida."
+
+#: themes/default/templates/zip.html.ep:16
+msgid "The automatic download process will open a tab in your browser for each link. You need to allow popups for Lutim."
+msgstr ""
 
 #: lib/Lutim/Controller.pm:120 lib/Lutim/Controller.pm:188
 msgid "The delete token is invalid."
@@ -380,7 +396,7 @@ msgstr "Tweetejatz !"
 msgid "Unable to find the image %1."
 msgstr "Impossible de trobar l'imatge %1."
 
-#: lib/Lutim/Controller.pm:529 lib/Lutim/Controller.pm:574 lib/Lutim/Controller.pm:615 lib/Lutim/Controller.pm:654 lib/Lutim/Controller.pm:666 lib/Lutim/Controller.pm:677 lib/Lutim/Controller.pm:699 lib/Lutim/Plugin/Helpers.pm:61
+#: lib/Lutim/Controller.pm:529 lib/Lutim/Controller.pm:574 lib/Lutim/Controller.pm:615 lib/Lutim/Controller.pm:658 lib/Lutim/Controller.pm:670 lib/Lutim/Controller.pm:681 lib/Lutim/Controller.pm:703 lib/Lutim/Plugin/Helpers.pm:61
 msgid "Unable to find the image: it has been deleted."
 msgstr "Impossible de trobar l'imatge : es estat suprimit."
 
@@ -432,6 +448,10 @@ msgstr "Òc, es aquò ! Al contrari, per de rasons legalas, vòstra adreça IP s
 #: themes/default/templates/about.html.ep:10
 msgid "Yes, it is! On the other side, if you want to support the developer, you can do it via <a href=\"https://www.tipeee.com/fiat-tux\">Tipeee</a> or via <a href=\"https://liberapay.com/sky/\">Liberapay</a>."
 msgstr "Òc, o es ! Al contrari, s'avètz enveja de sosténer lo desvolopaire, podètz far un microdon amb <a href=\"https://www.tipeee.com/fiat-tux\">Tipeee</a> o via <a href=\"https://liberapay.com/sky/\">Liberapay</a>."
+
+#: themes/default/templates/zip.html.ep:6
+msgid "You asked to download a zip archive for too much files."
+msgstr ""
 
 #: themes/default/templates/about.html.ep:8
 msgid "You can, optionally, request that the image(s) posted on Lutim to be deleted at first view (or download) or after the delay selected from those proposed."

@@ -138,6 +138,14 @@
     # optional, default is 100 (pixels)
     #thumbnail_size => 100,
 
+    # maximum number of files that can be downloaded as a single zip archive
+    # if too many files are asked, it results a timeout, so Lutim split the zip URL
+    # in multiple URLs, each with max_file_size images.
+    # timeout behavior depends heavily on your server ressources (CPU) and if images
+    # are encrypted
+    # optional, default is 15
+    #max_files_in_zip => 15,
+
     ##########################
     # Lutim cron jobs settings
     ##########################
