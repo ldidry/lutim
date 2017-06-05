@@ -405,7 +405,7 @@ sub add {
                 }
 
                 my $key;
-                if ($c->param('crypt') || $c->config->{always_encrypt}) {
+                if ($c->param('crypt') || $c->config('always_encrypt')) {
                     ($upload, $key) = $c->crypt($upload, $filename);
                 }
                 $upload->move_to($path);
@@ -580,7 +580,7 @@ sub short {
                 $dt->set_time_zone('GMT');
                 $expires = $dt->strftime("%a, %d %b %Y %H:%M:%S GMT");
 
-                $test = $c->render_file($image->filename, $image->path, $image->mediatype, $dl, $expires, $image->delete_at_first_view, $key, $thumb);
+                $test = $c->render_file($im_loaded, $image->filename, $image->path, $image->mediatype, $dl, $expires, $image->delete_at_first_view, $key, $thumb);
             }
         }
 

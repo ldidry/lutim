@@ -98,9 +98,9 @@ sub new {
         if ($dbtype eq 'sqlite') {
             use Lutim::DB::Image::SQLite;
             $c = Lutim::DB::Image::SQLite->new(@_);
-        #} elsif ($dbtype eq 'postgresql') {
-        #    use Lutim::DB::Image::Pg;
-        #    $c = Lutim::DB::Image::Pg->new(@_);
+        } elsif ($dbtype eq 'postgresql') {
+            use Lutim::DB::Image::Pg;
+            $c = Lutim::DB::Image::Pg->new(@_);
         }
     }
 

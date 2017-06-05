@@ -1,0 +1,18 @@
+image: hatsoftwares/test-ci:latest
+stages:
+  - sqlite
+before_script:
+  - carton install
+  - rm -f *db
+sqlite:
+  stage: sqlite
+  cache:
+    key: "$CI_BUILD_REF_NAME"
+    untracked: true
+    paths:
+      - local
+  script:
+    - MOJO_CONFIG=t/sqlite.conf make test
+  tags:
+    - Debian
+    - Jessie

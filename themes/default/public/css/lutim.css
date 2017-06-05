@@ -66,3 +66,11 @@ label.always-encrypt {
 .adjust-addon .btn {
     width: 43px;
 }
+#tipeee-img {
+    margin-top: -4px;
+}
+#liberapay-img {
+    height: 21px;
+    line-height: 21px;
+    margin-top: -5.33333px;
+}
