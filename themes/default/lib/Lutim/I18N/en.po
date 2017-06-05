@@ -65,7 +65,7 @@ msgstr "Click to open the file browser"
 msgid "Contributors"
 msgstr "Contributors"
 
-#: themes/default/templates/partial/lutim.js.ep:310 themes/default/templates/partial/lutim.js.ep:359 themes/default/templates/partial/lutim.js.ep:437
+#: themes/default/templates/partial/lutim.js.ep:310 themes/default/templates/partial/lutim.js.ep:363 themes/default/templates/partial/lutim.js.ep:441
 msgid "Copy all view links to clipboard"
 msgstr ""
 
@@ -327,7 +327,7 @@ msgstr "The file %1 is not an image."
 #. ($tx->res->max_message_size)
 #. ($c->req->max_message_size)
 #. ($max_file_size)
-#: lib/Lutim/Controller.pm:271 lib/Lutim/Controller.pm:340 themes/default/templates/partial/lutim.js.ep:332
+#: lib/Lutim/Controller.pm:271 lib/Lutim/Controller.pm:340 themes/default/templates/partial/lutim.js.ep:336
 msgid "The file exceed the size limit (%1)"
 msgstr "The file exceed the size limit (%1)"
 

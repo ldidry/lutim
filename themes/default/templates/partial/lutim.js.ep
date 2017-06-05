@@ -314,6 +314,10 @@
                     );
                 }
                 $('.messages').append(buildMessage(data.success, data.msg));
+                $('#del-'+data.msg.real_short).on('click', function() {
+                    rmFromShortHash(data.msg.short+'.'+data.msg.ext)
+                    rmFromZipHash(data.msg.short);
+                });
                 $('#del-'+data.msg.real_short).on('click', delImage);
                 if (data.success) {
                     addToShortHash(data.msg.short+'.'+data.msg.ext);
