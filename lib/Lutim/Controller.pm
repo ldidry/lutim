@@ -1,7 +1,7 @@
 # vim:set sw=4 ts=4 sts=4 expandtab:
 package Lutim::Controller;
 use Mojo::Base 'Mojolicious::Controller';
-use Mojo::Util qw(url_unescape b64_encode);
+use Mojo::Util qw(url_escape url_unescape b64_encode);
 use Mojo::Asset::Memory;
 use Mojo::JSON qw(true false);
 use Lutim::DB::Image;
@@ -625,101 +625,119 @@ sub zip {
     my $c     = shift;
     my $imgs  = $c->every_param('i');
 
-    my $zip = Archive::Zip->new();
+    my $img_nb  = scalar(@{$imgs});
+    my $max_zip = $c->config('max_files_in_zip');
 
-    # We HAVE to add a png file at the beginning, otherwise the $zip
-    # could use the mimetype of an SVG file if it's the first file asked.
-    $zip->addFile('themes/default/public/img/favicon.png', 'hosted_with_lutim.png');
+    if ($img_nb <= $max_zip) {
+        my $zip = Archive::Zip->new();
 
-    $zip->addDirectory('images/');
-    for my $img (@{$imgs}) {
-        my ($short, $key) = split('/', $img);
-        if (defined $key) {
-            $key =~ s/\.[^.]*//;
-        } else {
-            $short =~ s/\.[^.]*//;
-        }
-        my $image = Lutim::DB::Image->new(app => $c->app, short => $short);
+        # We HAVE to add a png file at the beginning, otherwise the $zip
+        # could use the mimetype of an SVG file if it's the first file asked.
+        $zip->addFile('themes/default/public/img/favicon.png', 'hosted_with_lutim.png');
 
-        if ($image->enabled && $image->path) {
-            my $filename = $image->filename;
-            if($image->delete_at_day && $image->created_at + $image->delete_at_day * 86400 <= time()) {
-                # Log deletion
-                $c->app->log->info('[DELETION] someone tried to view '.$image->filename.' but it has been removed by expiration (path: '.$image->path.')');
-
-                # Delete image
-                $c->delete_image($image);
-
-                # Warn user
-                $zip->addString($c->l('Unable to find the image: it has been deleted.'), 'images/'.$filename.'.txt');
-                next;
-            }
-
-            # Delete image if needed
-            if ($image->delete_at_first_view && $image->counter >= 1) {
-                # Log deletion
-                $c->app->log->info('[DELETION] someone made '.$image->filename.' removed (path: '.$image->path.')');
-
-                # Delete image
-                $c->delete_image($image);
-
-                $zip->addString($c->l('Unable to find the image: it has been deleted.'), 'images/'.$filename.'.txt');
-                next;
+        $zip->addDirectory('images/');
+        for my $img (@{$imgs}) {
+            my ($short, $key) = split('/', $img);
+            if (defined $key) {
+                $key =~ s/\.[^.]*//;
             } else {
-                my $expires = ($image->delete_at_day) ? $image->delete_at_day : 360;
-                my $dt = DateTime->from_epoch( epoch => $expires * 86400 + $image->created_at);
-                $dt->set_time_zone('GMT');
-                $expires = $dt->strftime("%a, %d %b %Y %H:%M:%S GMT");
+                $short =~ s/\.[^.]*//;
+            }
+            my $image = Lutim::DB::Image->new(app => $c->app, short => $short);
 
-                my $path = $image->path;
-                unless ( -f $path && -r $path ) {
-                    $c->app->log->error("Cannot read file [$path]. error [$!]");
+            if ($image->enabled && $image->path) {
+                my $filename = $image->filename;
+                if($image->delete_at_day && $image->created_at + $image->delete_at_day * 86400 <= time()) {
+                    # Log deletion
+                    $c->app->log->info('[DELETION] someone tried to view '.$image->filename.' but it has been removed by expiration (path: '.$image->path.')');
+
+                    # Delete image
+                    $c->delete_image($image);
+
+                    # Warn user
                     $zip->addString($c->l('Unable to find the image: it has been deleted.'), 'images/'.$filename.'.txt');
                     next;
                 }
 
-                if ($key) {
-                    $zip->addString($c->decrypt($key, $path)->slurp, "images/$filename");
+                # Delete image if needed
+                if ($image->delete_at_first_view && $image->counter >= 1) {
+                    # Log deletion
+                    $c->app->log->info('[DELETION] someone made '.$image->filename.' removed (path: '.$image->path.')');
+
+                    # Delete image
+                    $c->delete_image($image);
+
+                    $zip->addString($c->l('Unable to find the image: it has been deleted.'), 'images/'.$filename.'.txt');
+                    next;
                 } else {
-                    $zip->addFile($path, "images/$filename");
+                    my $expires = ($image->delete_at_day) ? $image->delete_at_day : 360;
+                    my $dt = DateTime->from_epoch( epoch => $expires * 86400 + $image->created_at);
+                    $dt->set_time_zone('GMT');
+                    $expires = $dt->strftime("%a, %d %b %Y %H:%M:%S GMT");
+
+                    my $path = $image->path;
+                    unless ( -f $path && -r $path ) {
+                        $c->app->log->error("Cannot read file [$path]. error [$!]");
+                        $zip->addString($c->l('Unable to find the image: it has been deleted.'), 'images/'.$filename.'.txt');
+                        next;
+                    }
+
+                    if ($key) {
+                        $zip->addString($c->decrypt($key, $path)->slurp, "images/$filename");
+                    } else {
+                        $zip->addFile($path, "images/$filename");
+                    }
+
+                    # Log access
+                    $c->app->log->info('[VIEW] someone viewed '.$image->filename.' (path: '.$image->path.')');
+                    # Update counter and record
+                    $image->counter($image->counter + 1)
+                          ->last_access_at(time)
+                          ->write;
                 }
+            } elsif ($image->path && !$image->enabled) {
+                # Log access try
+                $c->app->log->info('[NOT FOUND] someone tried to view '.$short.' but it does\'nt exist anymore.');
 
-                # Log access
-                $c->app->log->info('[VIEW] someone viewed '.$image->filename.' (path: '.$image->path.')');
-                # Update counter and record
-                $image->counter($image->counter + 1)
-                      ->last_access_at(time)
-                      ->write;
+                # Warn user
+                $zip->addString($c->l('Unable to find the image: it has been deleted.'), 'images/'.$image->filename.'.txt');
+                next;
+            } else {
+                $zip->addString($c->l('Image not found.'), 'images/'.$short.'.txt');
+                next;
             }
-        } elsif ($image->path && !$image->enabled) {
-            # Log access try
-            $c->app->log->info('[NOT FOUND] someone tried to view '.$short.' but it does\'nt exist anymore.');
-
-            # Warn user
-            $zip->addString($c->l('Unable to find the image: it has been deleted.'), 'images/'.$image->filename.'.txt');
-            next;
-        } else {
-            $zip->addString($c->l('Image not found.'), 'images/'.$short.'.txt');
-            next;
         }
-    }
-    my ($fh, $zipfile) = Archive::Zip::tempFile();
-    unless ($zip->writeToFileNamed($zipfile) == AZ_OK) {
-        $c->flash(
-            msg => $c->l('Something went wrong when creating the zip file. Try again later or contact the administrator (%1).', $c->config('contact'))
+        my ($fh, $zipfile) = Archive::Zip::tempFile();
+        unless ($zip->writeToFileNamed($zipfile) == AZ_OK) {
+            $c->flash(
+                msg => $c->l('Something went wrong when creating the zip file. Try again later or contact the administrator (%1).', $c->config('contact'))
+            );
+            return $c->redirect_to('/');
+        }
+        $c->res->content->headers->content_type('application/zip;name=images.zip');
+        $c->res->content->headers->content_disposition('attachment;filename=images.zip');;
+
+        my $asset = Mojo::Asset::File->new(path => $zipfile);
+        $c->res->content->asset($asset);
+        $c->res->content->headers->content_length($asset->size);
+
+        unlink $zipfile;
+
+        return $c->rendered(200);
+    } else {
+        my $i    = -1;
+        my @urls = ();
+        my @esc_imgs = map { my $e = $_; $e = url_escape($e); $e =~ s#%2F#/#g; $e } @{$imgs};
+        while (++$i < $img_nb) {
+            my $stop = ($i + $max_zip - 1 < $img_nb) ? $i + $max_zip - 1 : $img_nb - 1;
+            push @urls, $c->url_for('/zip')->to_abs->to_string.'?i='.join('&i=', @esc_imgs[$i..$stop]);
+            $i = $stop;
+        }
+        $c->render(
+            template => 'zip',
+            urls     => \@urls
         );
-        return $c->redirect_to('/');
     }
-    $c->res->content->headers->content_type('application/zip;name=images.zip');
-    $c->res->content->headers->content_disposition('attachment;filename=images.zip');;
-
-    my $asset = Mojo::Asset::File->new(path => $zipfile);
-    $c->res->content->asset($asset);
-    $c->res->content->headers->content_length($asset->size);
-
-    unlink $zipfile;
-
-    return $c->rendered(200);
 }
 
 1;

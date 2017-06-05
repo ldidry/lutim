@@ -41,6 +41,7 @@ sub startup {
             thumbnail_size    => 100,
             theme             => 'default',
             dbtype            => 'sqlite',
+            max_files_in_zip  => 15,
         }
     });
 
