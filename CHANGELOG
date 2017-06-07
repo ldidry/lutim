@@ -13,6 +13,7 @@ Revision history for Lutim
 	- Handle too much images in zip download URL (#27)
 	- LocalStorage is now updated if an image's delay is modified
 	- Allow user to paste image from clipboard to upload images (#14 and !5)
+	- Fix #40
 
 0.7.1  2016-06-21
 	- Fix dependency bug

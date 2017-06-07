@@ -88,7 +88,7 @@
             var tr = [
                 '<tr id="alert-',real_short,'">',
                     '<td><span class="checkbox"><label><input type="checkbox" onChange="onCheck($(this), \'', element.short, '\', \'', element.ext, '\');"><label></span></td>',
-                    '<td>', element.filename, '</td>',
+                    '<td>', element.filename.replace(/</g, '&lt;').replace(/>/g, '&gt;'), '</td>',
                     '<td><a href="',vlink,'">',vlink,'</a></td>',
                     '<td id="count-',real_short,'" class="text-center"></td>',
                     '<td class="text-center">', del_view, '</td>',

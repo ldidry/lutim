@@ -3,6 +3,13 @@
     function selectInput() {
         $(this).select();
     }
+    function cleanName(name, empty) {
+        if (empty !== undefined && empty !== null && empty) {
+            return name.replace(/&(l|g)t;/g, '').replace(/"/g, '\'');
+        } else {
+            return name.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        }
+    }
     function tw_url(url) {
         var btn = [
             '<a title="<%= l('Tweet it!') %>" target="_blank" href="https://twitter.com/share?url=<%== url_for('/')->to_abs() %>', url, '?t" class="btn btn-default">',
@@ -46,7 +53,7 @@
             var thumb = (msg.thumb !== null) ? [
                 '<div class="col-sm-1">',
                     '<a href="', s_url, '" target="_blank">',
-                        '<img class="thumbnail img-responsive" alt="', msg.filename, ' thumbnail" src="', msg.thumb, '">',
+                        '<img class="thumbnail img-responsive" alt="', cleanName(msg.filename, true), ' thumbnail" src="', msg.thumb, '">',
                     '</a>',
                 '</div>'
             ].join('') : ''
@@ -182,7 +189,7 @@
             onNewFile: function(id, file){
                 $('.messages').append([
                     '<div id="', id, '-div">',
-                        file.name, '<br>',
+                        cleanName(file.name), '<br>',
                         '<div class="progress">',
                             '<div id="', id, '"class="progress-bar progress-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">',
                                 '<span id="', id, '-text" class="pull-left" style="padding-left: 10px;"> 0%</span>',
@@ -198,6 +205,7 @@
                 $('#'+id+'-text').html(percentStr);
             },
             onUploadSuccess: function(id, data){
+                data.msg.filename = cleanName(data.msg.filename);
                 $('#'+id+'-div').remove();
                 if ($('#copy-all').length === 0 && data.success) {
                     $('.messages').prepend(
@@ -251,6 +259,7 @@
                     'delete-day'     : $('#delete-day').val()
                 },
                 success: function(data) {
+                    data.msg.filename = cleanName(data.msg.filename);
                     $('.messages').append(buildMessage(data.success, data.msg));
                     if (data.success) {
                         if ($('#copy-all').length === 0) {
@@ -291,7 +300,7 @@
         fd.append('delete-day', ($('#delete-day').val()));
 
         $('.messages').append([
-            '<div id="1-div">', file.name, '<br>',
+            '<div id="1-div">', cleanName(file.name), '<br>',
                 '<div class="progress">',
                     '<div id="1"class="progress-bar progress-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">',
                         '<span id="1-text" class="pull-left" style="padding-left: 10px;"> 0%</span>',
@@ -340,6 +349,7 @@
                         '</div>'
                     ].join(''));
                 }
+                data.msg.filename = cleanName(data.msg.filename);
                 $('.messages').append(buildMessage(data.success, data.msg));
                 if (data.success) {
                     $('.close').unbind('click', evaluateCopyAll);
@@ -448,7 +458,6 @@
     function onPaste(e) {
         var items = e.clipboardData.items;
         for(var i = 0; i < items.length; i++) {
-            console.log('toto');
             var item = items[i];
             if (/image/.test(item.type)) {
                var file = item.getAsFile();
