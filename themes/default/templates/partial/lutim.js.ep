@@ -19,16 +19,19 @@
         return btn
     }
     function modify(url, short) {
+        var limit       = $('#day-'+short).val();
+        var del_at_view = ($('#first-view-'+short).prop('checked')) ? 1 : 0;
         $.ajax({
             url  : url,
             type : 'POST',
             data : {
                 'image_url'      : '<%== url_for('/')->to_abs() %>'+short,
                 'format'         : 'json',
-                'first-view'     : ($('#first-view-'+short).prop('checked')) ? 1 : 0,
-                'delete-day'     : $('#day-'+short).val()
+                'delete-day'     : limit,
+                'first-view'     : del_at_view
             },
             success: function(data) {
+                updateItem(short, limit, del_at_view);
                 alert(data.msg);
             },
             error: function() {

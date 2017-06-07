@@ -24,6 +24,22 @@ function delItem(short) {
     });
     localStorage.setItem('images', JSON.stringify(files));
 }
+function updateItem(short, limit, del_at_view) {
+    var files = localStorage.getItem('images');
+    if (files === null) {
+        files = new Array();
+    } else {
+        files = JSON.parse(files);
+    }
+    $(files).each(function(index) {
+        if (files[index].real_short === short) {
+            files[index].del_at_view = del_at_view;;
+            files[index].limit       = limit;
+            return false;
+        }
+    });
+    localStorage.setItem('images', JSON.stringify(files));
+}
 function share(url) {
     new MozActivity({
         name: 'share',
