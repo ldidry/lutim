@@ -74,3 +74,12 @@ label.always-encrypt {
     line-height: 21px;
     margin-top: -5.33333px;
 }
+.pasteZone {
+    position: absolute;
+    top: 0;
+    left: -100px;
+    z-index: -999;
+    height: 10000vh;
+    width: 0;
+    display: hidden;
+}

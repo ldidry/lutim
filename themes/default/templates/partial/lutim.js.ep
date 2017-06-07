@@ -352,4 +352,110 @@
             },
         });
     }
+
+    function initPaste() {
+        /*
+            actually FF and Chrome doesn't handle paste events the same way...
+            for ff we need to create a editable div and register an event to it.
+            When user paste, the image is "really" pasted in the div. Then, we need to iterate throught
+            the div childs to get images. Previsouly FF didn't have the paste event so it was esay to figure on wich browser we were.
+            But firefox now have a paste event so I test it...
+
+            on Chrome the file object is directlyt in the clipboard.
+        */
+        var b = 'FF';
+        try {
+            //FF
+            var cbe = new ClipboardEvent('hop');
+        } catch(hop) {
+            //under webkkit Clipboard doesn't have arguments...
+            b = 'WK'
+        }
+        if (b === 'FF') {
+            var pasteDiv = document.createElement('div');
+            pasteDiv.addEventListener('paste', onPasteFF);
+            pasteDiv.setAttribute('class', 'pasteZone');
+            pasteDiv.setAttribute('contenteditable', true);
+
+            document.getElementsByTagName('body')[0].appendChild(pasteDiv);
+            pasteDiv.focus();
+
+            document.addEventListener('click', function(event) {
+                var t = $(event.target);
+
+                switch (t[0].nodeName.toUpperCase()) {
+                    case 'A':
+                    case 'BUTTON':
+                    case 'INPUT':
+                    case 'SELECT':
+                    case 'SPAN':
+                    case 'LABEL':
+                        break;
+                    default:
+                        if (t[0].parentNode.nodeName.toUpperCase() !== 'SELECT') {
+                            pasteDiv.focus();
+                        }
+                }
+            });
+        } else {
+            document.addEventListener('paste', onPaste);
+        }
+    }
+
+    function waitforpastedata(elem, savedcontent) {
+        if (elem.childNodes && elem.childNodes.length > 0) {
+            processpaste(elem, savedcontent);
+        } else {
+            var that = {
+                e: elem,
+                s: savedcontent
+            };
+            that.callself = function () {
+                waitforpastedata(that.e, that.s);
+            }
+            setTimeout(that.callself, 20);
+        }
+    }
+
+    function processpaste(elem, savedcontent) {
+        var pasteZone = document.getElementsByClassName('pasteZone')[0];
+        var f         = new Image();
+
+        f.onload = function(){
+            var canvas    = document.createElement('canvas');
+            canvas.width  = f.width;
+            canvas.height = f.height;
+
+            var ctx = canvas.getContext('2d');
+            ctx.drawImage(f, 0, 0, canvas.width, canvas.height);
+
+            canvas.toBlob(function(blob) {
+                var url = window.URL.createObjectURL(blob);
+                fileUpload(blob);
+            });
+        }
+
+        f.src = pasteZone.childNodes[0].src;
+
+        pasteZone.innerHTML = '';
+    }
+
+    function onPasteFF(e) {
+        var pasteZone = document.getElementsByClassName('pasteZone')[0];
+        waitforpastedata(pasteZone, 'savedcontent');
+    }
+
+    function onPaste(e) {
+        var items = e.clipboardData.items;
+        for(var i = 0; i < items.length; i++) {
+            console.log('toto');
+            var item = items[i];
+            if (/image/.test(item.type)) {
+               var file = item.getAsFile();
+               fileUpload(file);
+            } else {
+               //not image..
+            }
+        }
+    }
 % end
