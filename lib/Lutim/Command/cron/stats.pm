@@ -24,8 +24,8 @@ sub run {
     }
     my $config = $c->app->plugin('Config', {
         file    => $cfile,
-        theme   => 'default',
         default => {
+            theme         => 'default',
             stats_day_num => 365,
             dbtype        => 'sqlite'
         }
