@@ -4,10 +4,12 @@ use Mojo::Base 'Mojolicious::Command';
 use Mojo::DOM;
 use Mojo::Util qw(encode);
 use Mojo::File;
+use Mojo::JSON qw(encode_json);
 use Lutim::DB::Image;
 use DateTime;
 use FindBin qw($Bin);
 use File::Spec qw(catfile);
+use POSIX;
 
 has description => 'Generate statistics about Lutim.';
 has usage => sub { shift->extract_usage };
@@ -36,6 +38,9 @@ sub run {
         $config->{theme} = 'default';
         $template = 'themes/'.$config->{theme}.'/templates/data.html.ep.template';
     }
+
+    my $stats = {};
+
     my $text     = Mojo::File->new($template)->slurp;
     my $dom      = Mojo::DOM->new($text);
     my $thead_tr = $dom->at('table thead tr');
@@ -46,7 +51,13 @@ sub run {
 
     my %data;
     my $img = Lutim::DB::Image->new(app => $c->app);
-    $img->select_created_after($separation)->each(
+    my $sca = $img->select_created_after($separation);
+
+    $stats->{total}    = $img->count_not_empty;
+    $stats->{average}  = floor($sca->size / $config->{stats_day_num}) if $config->{stats_day_num};
+    $stats->{for_days} = $config->{stats_day_num};
+
+    $sca->each(
         sub {
             my ($e, $num) = @_;
             my $time                 = DateTime->from_epoch(epoch => $e->created_at);
@@ -72,6 +83,8 @@ sub run {
         }
     }
 
+    my $moy = $total / $config->{stats_day_num};
+
     # Raw datas
     my $template2 = 'themes/'.$config->{theme}.'/templates/raw.html.ep.template';
     unless (-e $template2) {
@@ -93,6 +106,27 @@ sub run {
     my $year_enabled           = $img->count_delete_at_day_endis(365, 1);
     my $year_disabled          = $img->count_delete_at_day_endis(365, 0);
     my $year_disabled_in_month = $img->count_delete_at_day_endis(365, 1, time - 335 * 86400);
+
+    $stats->{unlimited} = {
+        enabled  => $unlimited_enabled,
+        disabled => $unlimited_disabled
+    };
+    $stats->{day} = {
+        enabled  => $day_enabled,
+        disabled => $day_disabled
+    };
+    $stats->{week} = {
+        enabled  => $week_enabled,
+        disabled => $week_disabled
+    };
+    $stats->{month} = {
+        enabled  => $month_enabled,
+        disabled => $month_disabled
+    };
+    $stats->{year} = {
+        enabled  => $year_enabled,
+        disabled => $year_disabled
+    };
 
     my $year_disabled_in_month_pct = ($year_enabled != 0) ? " (".sprintf('%.2f', $year_disabled_in_month/$year_enabled)."%)" : '';
 
@@ -156,6 +190,7 @@ Morris.Donut({
 $dom2
 EOF
 
+    Mojo::File->new('themes/'.$config->{theme}.'/templates/stats.json.ep')->spurt(encode_json($stats));
     Mojo::File->new('themes/'.$config->{theme}.'/templates/data.html.ep')->spurt($dom);
     Mojo::File->new('themes/'.$config->{theme}.'/templates/raw.html.ep')->spurt(encode('UTF-8', $dom2));
 }
