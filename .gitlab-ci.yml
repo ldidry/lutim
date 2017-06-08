@@ -1,6 +1,7 @@
 image: hatsoftwares/test-ci:latest
 stages:
   - sqlite
+  - postgresql
 before_script:
   - carton install
   - rm -f *db
@@ -12,7 +13,25 @@ sqlite:
     paths:
       - local
   script:
-    - MOJO_CONFIG=t/sqlite.conf make test
+    - make podcheck
+    - make test-sqlite
+  tags:
+    - Debian
+    - Jessie
+postgresql:
+  stage: postgresql
+  cache:
+    key: "$CI_BUILD_REF_NAME"
+    untracked: true
+    paths:
+      - local
+  script:
+    - make podcheck
+    - service postgresql restart
+    - sleep 10
+    - service postgresql status
+    - make create-pg-test-db
+    - make test-pg
   tags:
     - Debian
     - Jessie
