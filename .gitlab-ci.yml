@@ -4,6 +4,7 @@ stages:
   - postgresql
 before_script:
   - carton install
+  - apt-get install -y shared-mime-info
   - rm -f *db
 sqlite:
   stage: sqlite
