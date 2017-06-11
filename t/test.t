@@ -58,8 +58,8 @@ my $image = Mojo::File->new($Bin, '..', 'themes', 'default', 'public', 'img', 'L
 $t->post_ok('/' => form => { file => { file => $image }, format => 'json' })
   ->status_is(200)
   ->json_has('msg', 'success')
-  ->json_is('/success' => true, '/msg/filename' => 'Lutim.png')
-  ->json_like('/msg/short' => qr#[-_a-zA-Z0-9]{8}#, '/msg/real_short' => qr#[-_a-zA-Z0-9]{8}#, '/msg/token' => qr#[-_a-zA-Z0-9]{24}#);
+  ->json_is('/success' => true)
+  ->json_like('/msg/short' => qr#[-_a-zA-Z0-9]{8}#, '/msg/real_short' => qr#[-_a-zA-Z0-9]{8}#, '/msg/token' => qr#[-_a-zA-Z0-9]{24}#, '/msg/filename' => 'Lutim.png');
 
 # Post delete-at-first-view image
 my $raw   = $t->ua->post('/' => form => { file => { file => $image }, 'first-view' => 1, format => 'json' })->res;
