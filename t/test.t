@@ -55,6 +55,7 @@ $t->get_ok('/infos')
 
 # Post image
 my $image = Mojo::File->new($Bin, '..', 'themes', 'default', 'public', 'img', 'Lutim.png')->to_string;
+say STDOUT "======= $image ========";
 $t->post_ok('/' => form => { file => { file => $image }, format => 'json' })
   ->status_is(200)
   ->json_has('msg', 'success')
