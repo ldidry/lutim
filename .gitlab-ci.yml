@@ -4,7 +4,7 @@ stages:
   - postgresql
 before_script:
   - carton install
-  - apt-get install -y shared-mime-info
+  - apt-get install -y shared-mime-info sudo
   - rm -f *db
 sqlite:
   stage: sqlite
@@ -15,7 +15,27 @@ sqlite:
       - local
   script:
     - make podcheck
-    - make test-sqlite
+    - service postgresql restart
+    - sleep 10
+    - service postgresql status
+    - make create-pg-test-db
+    - MOJO_CONFIG=t/sqlite2.conf make minion &
+    - MOJO_CONFIG=t/sqlite3.conf make minion &
+    - MOJO_CONFIG=t/sqlite1.conf make test-sqlite
+    - MOJO_CONFIG=t/sqlite1.conf make watch
+    - MOJO_CONFIG=t/sqlite1.conf make cleanbdd
+    - MOJO_CONFIG=t/sqlite1.conf make cleanfiles
+    - MOJO_CONFIG=t/sqlite1.conf make stats
+    - MOJO_CONFIG=t/sqlite2.conf make test-sqlite
+    - MOJO_CONFIG=t/sqlite2.conf make watch
+    - MOJO_CONFIG=t/sqlite2.conf make cleanbdd
+    - MOJO_CONFIG=t/sqlite2.conf make cleanfiles
+    - MOJO_CONFIG=t/sqlite2.conf make stats
+    - MOJO_CONFIG=t/sqlite3.conf make test-sqlite
+    - MOJO_CONFIG=t/sqlite3.conf make watch
+    - MOJO_CONFIG=t/sqlite3.conf make cleanbdd
+    - MOJO_CONFIG=t/sqlite3.conf make cleanfiles
+    - MOJO_CONFIG=t/sqlite3.conf make stats
   tags:
     - Debian
     - Jessie
@@ -32,7 +52,23 @@ postgresql:
     - sleep 10
     - service postgresql status
     - make create-pg-test-db
-    - make test-pg
+    - MOJO_CONFIG=t/postgresql2.conf make minion &
+    - MOJO_CONFIG=t/postgresql3.conf make minion &
+    - MOJO_CONFIG=t/postgresql1.conf make test-pg
+    - MOJO_CONFIG=t/postgresql1.conf make watch
+    - MOJO_CONFIG=t/postgresql1.conf make cleanbdd
+    - MOJO_CONFIG=t/postgresql1.conf make cleanfiles
+    - MOJO_CONFIG=t/postgresql1.conf make stats
+    - MOJO_CONFIG=t/postgresql2.conf make test-pg
+    - MOJO_CONFIG=t/postgresql2.conf make watch
+    - MOJO_CONFIG=t/postgresql2.conf make cleanbdd
+    - MOJO_CONFIG=t/postgresql2.conf make cleanfiles
+    - MOJO_CONFIG=t/postgresql2.conf make stats
+    - MOJO_CONFIG=t/postgresql3.conf make test-pg
+    - MOJO_CONFIG=t/postgresql3.conf make watch
+    - MOJO_CONFIG=t/postgresql3.conf make cleanbdd
+    - MOJO_CONFIG=t/postgresql3.conf make cleanfiles
+    - MOJO_CONFIG=t/postgresql3.conf make stats
   tags:
     - Debian
     - Jessie
