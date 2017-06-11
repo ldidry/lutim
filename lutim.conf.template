@@ -130,6 +130,31 @@
     #    #pwd      => 'DBPASSWORD'
     #},
 
+    # use Minion instead of directly increase counters
+    # need to launch a minion worker service if enabled
+    # optional, Minion is disabled by default
+    #minion => {
+    #    enabled => 0,
+    #    # Which Minion backend to use?
+    #    # valid values are sqlite and postgresql (all lowercase)
+    #    # mandatory if Minion is enabled, default is sqlite
+    #    dbtype  => 'sqlite',
+    #    # SQLite ONLY - only used if if you choose sqlite as Minion backend, define the path to the minion database
+    #    # you can define it relative to lutim directory or set an absolute path
+    #    # remember that it has to be in a directory writable by Lutim user
+    #    # optional, default is minion.db
+    #    db_path => 'minion.db',
+    #    # PostgreSQL ONLY - only used if you choose postgresql as Minion backend
+    #    # these are the credentials to access the Minion's PostgreSQL database
+    #    # mandatory if you choosed postgresql as Minion backend, no default
+    #    pgdb => {
+    #        database => 'lutim_minion',
+    #        host     => 'localhost',
+    #        #user     => 'DBUSER',
+    #        #pwd      => 'DBPASSWORD'
+    #    }
+    #},
+
     # define the height of the thumbnails generated at users' will
     # this is not the height of the thumbnails send after upload,
     # we're talking about thumbnails generated when someone asked for

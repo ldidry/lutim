@@ -591,10 +591,11 @@ sub short {
                 $c->app->log->info('[VIEW] someone viewed '.$image->filename.' (path: '.$image->path.')');
 
                 # Update record
-                my $counter = $image->counter + 1;
-                $image->counter($counter)
-                      ->last_access_at(time)
-                      ->write;
+                if ($c->config('minion')->{enabled}) {
+                    $c->app->minion->enqueue(accessed => [$image->short, time]);
+                } else {
+                    $image->accessed(time);
+                }
 
                 # Delete image if needed
                 if ($image->delete_at_first_view) {
@@ -690,10 +691,13 @@ sub zip {
 
                     # Log access
                     $c->app->log->info('[VIEW] someone viewed '.$image->filename.' (path: '.$image->path.')');
+
                     # Update counter and record
-                    $image->counter($image->counter + 1)
-                          ->last_access_at(time)
-                          ->write;
+                    if ($c->config('minion')->{enabled}) {
+                        $c->app->minion->enqueue(accessed => [$image->short, time]);
+                    } else {
+                        $image->accessed(time);
+                    }
                 }
             } elsif ($image->path && !$image->enabled) {
                 # Log access try

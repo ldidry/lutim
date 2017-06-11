@@ -129,6 +129,20 @@ sub to_hash {
     };
 }
 
+=head2 accessed
+
+=over 1
+
+=item B<Usage>     : C<$c-E<gt>accessed($time)>
+
+=item B<Arguments> : an unix timestamp
+
+=item B<Purpose>   : increments the counter attribute by one, set the last_access_at attribute to $time and update the database
+
+=item B<Returns>   : the db accessor object
+
+=back
+
 =head2 count_delete_at_day_endis
 
 =over 1

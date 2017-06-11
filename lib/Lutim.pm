@@ -23,6 +23,7 @@ sub startup {
     $self->{wait_for_it} = {};
 
     $self->plugin('DebugDumperHelper');
+    $self->plugin('PgURLHelper');
 
     my $config = $self->plugin('Config', {
         default => {
@@ -42,6 +43,11 @@ sub startup {
             theme             => 'default',
             dbtype            => 'sqlite',
             max_files_in_zip  => 15,
+            minion           => {
+                enabled => 0,
+                dbtype  => 'sqlite',
+                db_path => 'minion.db'
+            },
         }
     });
 
@@ -71,6 +77,27 @@ sub startup {
 
     # Helpers
     $self->plugin('Lutim::Plugin::Helpers');
+
+    # Minion
+    if ($config->{minion}->{enabled}) {
+        $self->config('minion')->{dbtype} = 'sqlite' unless defined $config->{minion}->{dbtype};
+        if ($config->{minion}->{dbtype} eq 'sqlite') {
+            $self->config('minion')->{db_path} = 'minion.db' unless defined $config->{minion}->{db_path};
+            $self->plugin('Minion' => { SQLite => 'sqlite:'.$config->{minion}->{db_path} });
+        } elsif ($config->{minion}->{dbtype} eq 'postgresql') {
+            $self->plugin('Minion' => { Pg => $self->pg_url($config->{minion}->{'pgdb'}) });
+        }
+        $self->app->minion->add_task(
+            accessed => sub {
+                my $job   = shift;
+                my $short = $job->args->[0];
+                my $time  = $job->args->[1];
+
+                my $img = Lutim::DB::Image->new(app => $job->app, short => $short);
+                $img->accessed($time) if $img->path;
+            }
+        );
+    }
 
     # Hooks
     $self->hook(

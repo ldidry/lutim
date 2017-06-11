@@ -35,11 +35,11 @@ msgstr "%1 Bilder wurden bisher über diese Instanz versendet."
 msgid "-or-"
 msgstr "-oder-"
 
-#: lib/Lutim.pm:165 lib/Lutim/Command/cron/stats.pm:151 lib/Lutim/Command/cron/stats.pm:162 lib/Lutim/Command/cron/stats.pm:179 themes/default/templates/index.html.ep:5 themes/default/templates/raw.html.ep:10 themes/default/templates/raw.html.ep:21 themes/default/templates/raw.html.ep:38
+#: lib/Lutim.pm:192 lib/Lutim/Command/cron/stats.pm:151 lib/Lutim/Command/cron/stats.pm:162 lib/Lutim/Command/cron/stats.pm:179 themes/default/templates/index.html.ep:5 themes/default/templates/raw.html.ep:10 themes/default/templates/raw.html.ep:21 themes/default/templates/raw.html.ep:38
 msgid "1 year"
 msgstr "1 Jahr"
 
-#: lib/Lutim.pm:164 lib/Lutim/Command/cron/stats.pm:148 lib/Lutim/Command/cron/stats.pm:159 lib/Lutim/Command/cron/stats.pm:176 themes/default/templates/index.html.ep:4 themes/default/templates/partial/for_my_delay.html.ep:12 themes/default/templates/partial/lutim.js.ep:147 themes/default/templates/raw.html.ep:18 themes/default/templates/raw.html.ep:35 themes/default/templates/raw.html.ep:7
+#: lib/Lutim.pm:191 lib/Lutim/Command/cron/stats.pm:148 lib/Lutim/Command/cron/stats.pm:159 lib/Lutim/Command/cron/stats.pm:176 themes/default/templates/index.html.ep:4 themes/default/templates/partial/for_my_delay.html.ep:12 themes/default/templates/partial/lutim.js.ep:147 themes/default/templates/raw.html.ep:18 themes/default/templates/raw.html.ep:35 themes/default/templates/raw.html.ep:7
 msgid "24 hours"
 msgstr "24 Stunden"
 
@@ -191,7 +191,7 @@ msgstr "Bild-URL"
 msgid "Image delay"
 msgstr ""
 
-#: lib/Lutim/Controller.pm:706
+#: lib/Lutim/Controller.pm:710
 msgid "Image not found."
 msgstr "Bild nicht gefunden"
 
@@ -307,7 +307,7 @@ msgid "Something bad happened"
 msgstr "Es ist ein Fehler aufgetreten"
 
 #. ($c->config('contact')
-#: lib/Lutim/Controller.pm:713
+#: lib/Lutim/Controller.pm:717
 msgid "Something went wrong when creating the zip file. Try again later or contact the administrator (%1)."
 msgstr "Es ist ein Fehler aufgetreten. Versuche es erneut oder kontaktiere den Administrator (%1)."
 
@@ -399,7 +399,7 @@ msgstr "Twittere es!"
 msgid "Unable to find the image %1."
 msgstr "Konnte das Bild %1 nicht finden."
 
-#: lib/Lutim/Controller.pm:529 lib/Lutim/Controller.pm:574 lib/Lutim/Controller.pm:615 lib/Lutim/Controller.pm:658 lib/Lutim/Controller.pm:670 lib/Lutim/Controller.pm:681 lib/Lutim/Controller.pm:703 lib/Lutim/Plugin/Helpers.pm:61
+#: lib/Lutim/Controller.pm:529 lib/Lutim/Controller.pm:574 lib/Lutim/Controller.pm:616 lib/Lutim/Controller.pm:659 lib/Lutim/Controller.pm:671 lib/Lutim/Controller.pm:682 lib/Lutim/Controller.pm:707 lib/Lutim/Plugin/Helpers.pm:57
 msgid "Unable to find the image: it has been deleted."
 msgstr "Dieses Bild wurde gelöscht."
 
@@ -424,7 +424,7 @@ msgid "Uploaded files by days"
 msgstr "Hochgeladene Bilder pro Tag"
 
 #. ($c->app->config('contact')
-#: lib/Lutim/Plugin/Helpers.pm:156
+#: lib/Lutim/Plugin/Helpers.pm:152
 msgid "Uploading is currently disabled, please try later or contact the administrator (%1)."
 msgstr "Hochladen ist momentan deaktiviert. Versuche es später erneut oder kontaktiere den Administrator (%1)."
 
@@ -468,7 +468,7 @@ msgstr "und auf"
 msgid "core developer"
 msgstr "Haupt-Entwickler"
 
-#: lib/Lutim.pm:163 lib/Lutim/Command/cron/stats.pm:147 lib/Lutim/Command/cron/stats.pm:158 lib/Lutim/Command/cron/stats.pm:175 themes/default/templates/index.html.ep:3 themes/default/templates/raw.html.ep:17 themes/default/templates/raw.html.ep:34 themes/default/templates/raw.html.ep:6
+#: lib/Lutim.pm:190 lib/Lutim/Command/cron/stats.pm:147 lib/Lutim/Command/cron/stats.pm:158 lib/Lutim/Command/cron/stats.pm:175 themes/default/templates/index.html.ep:3 themes/default/templates/raw.html.ep:17 themes/default/templates/raw.html.ep:34 themes/default/templates/raw.html.ep:6
 msgid "no time limit"
 msgstr "keine Zeit-Begrenzung"
 

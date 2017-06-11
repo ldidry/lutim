@@ -6,9 +6,12 @@ requires 'Net::Domain::TLD', '>= 1.73'; # Must have the last version to handle (
 requires 'Mojo::Pg';
 requires 'Mojolicious::Plugin::I18N';
 requires 'Mojolicious::Plugin::AssetPack';
+requires 'Mojolicious::Plugin::DebugDumperHelper';
+requires 'Mojolicious::Plugin::PgURLHelper';
+requires "Minion", "== 4.06";
+requires 'Minion::Backend::SQLite', "== 0.009";
 requires 'CSS::Minifier::XS';
 requires 'JavaScript::Minifier::XS';
-requires 'Mojolicious::Plugin::DebugDumperHelper';
 requires 'ORLite';
 requires 'Text::Unidecode';
 requires 'DateTime';

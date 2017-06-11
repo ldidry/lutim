@@ -15,6 +15,21 @@ sub new {
     return $c;
 }
 
+sub accessed {
+    my $c    = shift;
+    my $time = shift;
+
+    $c->record->update(
+        counter        => $c->counter + 1,
+        last_access_at => $time
+    );
+
+    $c->counter($c->record->counter);
+    $c->last_access_at($c->record->last_access_at);
+
+    return $c;
+}
+
 sub count_delete_at_day_endis {
     my $c       = shift;
     my $day     = shift;
