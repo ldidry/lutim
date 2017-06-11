@@ -20,10 +20,10 @@ podcheck:
 	podchecker lib/Lutim/DB/Image.pm
 
 test-sqlite:
-	MOJO_CONFIG=t/sqlite.conf $(CARTON) $(REAL_LUTIM) test
+	$(CARTON) $(REAL_LUTIM) test
 
 test-pg:
-	MOJO_CONFIG=t/postgresql.conf $(CARTON) $(REAL_LUTIM) test
+	$(CARTON) $(REAL_LUTIM) test
 
 test: podcheck test-sqlite test-pg
 
