@@ -3,6 +3,8 @@ Description=Image hosting and sharing service
 Documentation=https://framagit.org/luc/lutim
 Requires=network.target
 After=network.target
+#Requires=postgresql.service
+#After=postgresql.service
 
 [Service]
 Type=forking
