@@ -43,16 +43,14 @@ $t->get_ok('/')
 # Instance settings informations
 $t->get_ok('/infos')
   ->status_is(200)
+  ->json_has('image_magick')
   ->json_is(
-      {
-          always_encrypt    => false,
-          broadcast_message => 'test broadcast message',
-          contact           => 'John Doe, admin[at]example.com',
-          default_delay     => 30,
-          image_magick      => true,
-          max_delay         => 200,
-          max_file_size     => 1048576
-      }
+      '/always_encrypt'    => false,
+      '/broadcast_message' => 'test broadcast message',
+      '/contact'           => 'John Doe, admin[at]example.com',
+      '/default_delay'     => 30,
+      '/max_delay'         => 200,
+      '/max_file_size'     => 1048576
   );
 
 # Post image

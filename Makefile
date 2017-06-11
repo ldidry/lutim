@@ -45,6 +45,9 @@ prod: rmassets
 prodlog:
 	multitail log/production.log
 
+minion:
+	$(CARTON) $(REAL_LUTIM) minion worker
+
 create-pg-test-db:
 	 sudo -u postgres psql -f t/create-pg-testdb.sql
 

@@ -14,6 +14,17 @@ sub new {
     return $c;
 }
 
+sub accessed {
+    my $c    = shift;
+    my $time = shift;
+
+    my $h = $c->app->pg->db->query('UPDATE lutim SET counter = counter + 1, last_access_at = ? WHERE short = ? RETURNING counter, last_access_at', $time, $c->short)->hashes->first;
+    $c->counter($h->{counter});
+    $c->last_access_at($h->{last_access_at});
+
+    return $c;
+}
+
 sub count_delete_at_day_endis {
     my $c       = shift;
     my $day     = shift;

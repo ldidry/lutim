@@ -8,6 +8,8 @@ use Data::Entropy qw(entropy_source);
 sub register {
     my ($self, $app) = @_;
 
+    $app->plugin('PgURLHelper');
+
     if ($app->config('dbtype') eq 'postgresql') {
         use Mojo::Pg;
         $app->helper(pg => \&_pg);
@@ -37,13 +39,7 @@ sub register {
 sub _pg {
     my $c     = shift;
 
-    my $addr  = 'postgresql://';
-    $addr    .= $c->app->config('pgdb')->{host};
-    $addr    .= ':'.$c->app->config('pgdb')->{port} if defined $c->app->config('pgdb')->{port};
-    $addr    .= '/'.$c->app->config('pgdb')->{database};
-    state $pg = Mojo::Pg->new($addr);
-    $pg->password($c->app->config('pgdb')->{pwd});
-    $pg->username($c->app->config('pgdb')->{user});
+    state $pg = Mojo::Pg->new($c->app->pg_url($c->app->config('pgdb')));
     return $pg;
 }
 
