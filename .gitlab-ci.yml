@@ -14,7 +14,7 @@ sqlite:
       - local
   script:
     - make podcheck
-    - make test-sqlite
+    - HARNESS_VERBOSE=1 make test-sqlite
   tags:
     - Debian
     - Jessie
