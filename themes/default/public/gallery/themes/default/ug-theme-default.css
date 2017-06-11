@@ -14,7 +14,7 @@
 
 .ug-theme-default .ug-default-button-fullscreen{
 	position:absolute;
-	background-image:url('images/button_fullscreen.png');
+	background-image:url('../../gallery/themes/default/images/button_fullscreen.png');
     width:53px;
     height:50px;
     cursor:pointer;
@@ -39,7 +39,7 @@
 
 .ug-theme-default .ug-default-button-fullscreen-single{
 	position:absolute;
-	background-image:url('images/button_fullscreen_single.png');
+	background-image:url('../../gallery/themes/default/images/button_fullscreen_single.png');
     width:52px;
     height:50px;
     cursor:pointer;
@@ -64,7 +64,7 @@
 
 .ug-theme-default .ug-default-button-play{
 	position:absolute;
-	background-image:url('images/button_playpause.png');
+	background-image:url('../../gallery/themes/default/images/button_playpause.png');
     width:51px;
     height:50px;
     cursor:pointer;
@@ -88,7 +88,7 @@
 
 .ug-theme-default .ug-default-button-play-single{
 	position:absolute;
-	background-image:url('images/button_playpause_single.png');
+	background-image:url('../../gallery/themes/default/images/button_playpause_single.png');
     width:50px;
     height:50px;
     cursor:pointer;
@@ -136,7 +136,7 @@
 	width:7px;
 	height:7px;
 	background-repeat:no-repeat;
-	background-image:url('images/arrow_down_up.png');
+	background-image:url('../../gallery/themes/default/images/arrow_down_up.png');
 	background-position: 0px 0px;
 	z-index:2;
 }

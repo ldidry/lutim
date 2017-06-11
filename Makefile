@@ -30,12 +30,20 @@ test: podcheck test-sqlite test-pg
 clean:
 	rm -rf lutim.db files/
 
-dev:
+rmassets:
 	rm -rf themes/default/public/packed/*
+
+dev: rmassets
 	$(CARTON) morbo $(LUTIM) --listen http://0.0.0.0:3000 --watch lib/ --watch script/ --watch themes/ --watch lutim.conf
 
 devlog:
 	multitail log/development.log
+
+prod: rmassets
+	$(CARTON) hypnotoad -f $(LUTIM)
+
+prodlog:
+	multitail log/production.log
 
 create-pg-test-db:
 	 sudo -u postgres psql -f t/create-pg-testdb.sql

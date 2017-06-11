@@ -28,6 +28,12 @@
 % } else {
         %= asset 'index.css'
 % }
+% if (current_route 'gallery') {
+        %= asset 'gallery.css'
+% }
+% if (!(current_route 'about')) {
+        %= javascript '/js/jquery-2.1.0.min.js'
+% }
     </head>
     <body>
         <div class="container-fluid">
@@ -67,18 +73,34 @@
                 <strong><%= stash('stop_upload') %></strong>
             </div>
 % }
+            <%= content %>
+        </div>
         %= javascript begin
             var manifestUrl = '<%== url_for('manifest.webapp')->to_abs() %>';
         % end
+% if (defined(config('piwik_img'))) {
+        <img src="<%== config('piwik_img') %>" style="border:0" alt="">
+% }
 % if (current_route 'stats') {
         %= asset 'stats.js'
 % } elsif (!(current_route 'about')) {
         %= asset 'index.js'
 % }
-            <%= content %>
-        </div>
-% if (defined(config('piwik_img'))) {
-        <img src="<%== config('piwik_img') %>" style="border:0" alt="" />
+% if (current_route 'index') {
+        %= javascript '/partial/common.js'
+        %= javascript '/partial/lutim.js'
+% }
+% if (current_route 'gallery') {
+        %= javascript '/gallery/js/unitegallery.js'
+        %= javascript '/gallery/themes/tiles/ug-theme-tiles.js'
+        %= javascript '/js/jszip.min.js'
+        %= javascript '/js/FileSaver.min.js'
+        %= javascript '/partial/gallery.js'
+% }
+% if (current_route 'myfiles') {
+        %= javascript '/partial/common.js'
+        %= javascript '/js/moment-with-locales.min.js'
+        %= javascript '/partial/myfiles.js'
 % }
     </body>
 </html>

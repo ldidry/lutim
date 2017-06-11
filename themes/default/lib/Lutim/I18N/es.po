@@ -22,7 +22,7 @@ msgstr ""
 #. (30)
 #. ($delay)
 #. (config('max_delay')
-#: lib/Lutim/Command/cron/stats.pm:149 lib/Lutim/Command/cron/stats.pm:150 lib/Lutim/Command/cron/stats.pm:160 lib/Lutim/Command/cron/stats.pm:161 lib/Lutim/Command/cron/stats.pm:177 lib/Lutim/Command/cron/stats.pm:178 themes/default/templates/partial/for_my_delay.html.ep:12 themes/default/templates/partial/for_my_delay.html.ep:13 themes/default/templates/partial/for_my_delay.html.ep:3 themes/default/templates/partial/lutim.js.ep:139 themes/default/templates/partial/lutim.js.ep:148 themes/default/templates/partial/lutim.js.ep:149 themes/default/templates/raw.html.ep:19 themes/default/templates/raw.html.ep:20 themes/default/templates/raw.html.ep:36 themes/default/templates/raw.html.ep:37 themes/default/templates/raw.html.ep:8 themes/default/templates/raw.html.ep:9
+#: lib/Lutim/Command/cron/stats.pm:149 lib/Lutim/Command/cron/stats.pm:150 lib/Lutim/Command/cron/stats.pm:160 lib/Lutim/Command/cron/stats.pm:161 lib/Lutim/Command/cron/stats.pm:177 lib/Lutim/Command/cron/stats.pm:178 themes/default/templates/partial/for_my_delay.html.ep:12 themes/default/templates/partial/for_my_delay.html.ep:13 themes/default/templates/partial/for_my_delay.html.ep:3 themes/default/templates/partial/lutim.js.ep:138 themes/default/templates/partial/lutim.js.ep:147 themes/default/templates/partial/lutim.js.ep:148 themes/default/templates/raw.html.ep:19 themes/default/templates/raw.html.ep:20 themes/default/templates/raw.html.ep:36 themes/default/templates/raw.html.ep:37 themes/default/templates/raw.html.ep:8 themes/default/templates/raw.html.ep:9
 msgid "%1 days"
 msgstr "%1 días"
 
@@ -35,15 +35,15 @@ msgstr "%1 imágenes enviadas a esta instancia desde el inicio."
 msgid "-or-"
 msgstr "-o-"
 
-#: lib/Lutim/Command/cron/stats.pm:151 lib/Lutim/Command/cron/stats.pm:162 lib/Lutim/Command/cron/stats.pm:179 themes/default/templates/index.html.ep:5 themes/default/templates/raw.html.ep:10 themes/default/templates/raw.html.ep:21 themes/default/templates/raw.html.ep:38
+#: lib/Lutim.pm:165 lib/Lutim/Command/cron/stats.pm:151 lib/Lutim/Command/cron/stats.pm:162 lib/Lutim/Command/cron/stats.pm:179 themes/default/templates/index.html.ep:5 themes/default/templates/raw.html.ep:10 themes/default/templates/raw.html.ep:21 themes/default/templates/raw.html.ep:38
 msgid "1 year"
 msgstr "1 año"
 
-#: lib/Lutim/Command/cron/stats.pm:148 lib/Lutim/Command/cron/stats.pm:159 lib/Lutim/Command/cron/stats.pm:176 themes/default/templates/index.html.ep:4 themes/default/templates/partial/for_my_delay.html.ep:12 themes/default/templates/partial/lutim.js.ep:148 themes/default/templates/raw.html.ep:18 themes/default/templates/raw.html.ep:35 themes/default/templates/raw.html.ep:7
+#: lib/Lutim.pm:164 lib/Lutim/Command/cron/stats.pm:148 lib/Lutim/Command/cron/stats.pm:159 lib/Lutim/Command/cron/stats.pm:176 themes/default/templates/index.html.ep:4 themes/default/templates/partial/for_my_delay.html.ep:12 themes/default/templates/partial/lutim.js.ep:147 themes/default/templates/raw.html.ep:18 themes/default/templates/raw.html.ep:35 themes/default/templates/raw.html.ep:7
 msgid "24 hours"
 msgstr "24 horas"
 
-#: themes/default/templates/myfiles.html.ep:123
+#: themes/default/templates/partial/myfiles.js.ep:57
 msgid ": Error while trying to get the counter."
 msgstr ": Error al intentar obtener el contador."
 
@@ -71,11 +71,11 @@ msgstr "Clic para abrir el explorador de archivos"
 msgid "Contributors"
 msgstr "Contribuidores"
 
-#: themes/default/templates/partial/lutim.js.ep:215 themes/default/templates/partial/lutim.js.ep:269 themes/default/templates/partial/lutim.js.ep:347
+#: themes/default/templates/partial/lutim.js.ep:214 themes/default/templates/partial/lutim.js.ep:268 themes/default/templates/partial/lutim.js.ep:346
 msgid "Copy all view links to clipboard"
 msgstr "Copiar todos los enlaces  de visualización al portapapeles"
 
-#: themes/default/templates/index.html.ep:18 themes/default/templates/index.html.ep:36 themes/default/templates/index.html.ep:69 themes/default/templates/index.html.ep:77 themes/default/templates/index.html.ep:85 themes/default/templates/index.html.ep:93 themes/default/templates/myfiles.html.ep:20 themes/default/templates/myfiles.html.ep:38 themes/default/templates/partial/common.js.ep:151 themes/default/templates/partial/lutim.js.ep:106 themes/default/templates/partial/lutim.js.ep:121 themes/default/templates/partial/lutim.js.ep:80 themes/default/templates/partial/lutim.js.ep:92
+#: themes/default/templates/index.html.ep:18 themes/default/templates/index.html.ep:36 themes/default/templates/index.html.ep:69 themes/default/templates/index.html.ep:77 themes/default/templates/index.html.ep:85 themes/default/templates/index.html.ep:93 themes/default/templates/myfiles.html.ep:20 themes/default/templates/myfiles.html.ep:38 themes/default/templates/partial/common.js.ep:150 themes/default/templates/partial/lutim.js.ep:105 themes/default/templates/partial/lutim.js.ep:120 themes/default/templates/partial/lutim.js.ep:79 themes/default/templates/partial/lutim.js.ep:91
 msgid "Copy to clipboard"
 msgstr "Copiar al portapapeles"
 
@@ -91,7 +91,7 @@ msgstr ""
 msgid "Delay repartition chart for enabled images"
 msgstr ""
 
-#: themes/default/templates/index.html.ep:115 themes/default/templates/index.html.ep:147 themes/default/templates/index.html.ep:178 themes/default/templates/myfiles.html.ep:53 themes/default/templates/partial/lutim.js.ep:160
+#: themes/default/templates/index.html.ep:115 themes/default/templates/index.html.ep:147 themes/default/templates/index.html.ep:178 themes/default/templates/myfiles.html.ep:53 themes/default/templates/partial/lutim.js.ep:159
 msgid "Delete at first view?"
 msgstr "¿Borrar en la primera vista?"
 
@@ -103,7 +103,7 @@ msgstr ""
 msgid "Deleted images in 30 days"
 msgstr ""
 
-#: themes/default/templates/index.html.ep:98 themes/default/templates/myfiles.html.ep:56 themes/default/templates/partial/common.js.ep:143 themes/default/templates/partial/common.js.ep:146
+#: themes/default/templates/index.html.ep:98 themes/default/templates/myfiles.html.ep:56 themes/default/templates/partial/common.js.ep:142 themes/default/templates/partial/common.js.ep:145
 msgid "Deletion link"
 msgstr "Enlace para borrar"
 
@@ -111,7 +111,7 @@ msgstr "Enlace para borrar"
 msgid "Download all images"
 msgstr "Descargar todas las imágenes"
 
-#: themes/default/templates/index.html.ep:81 themes/default/templates/index.html.ep:83 themes/default/templates/partial/lutim.js.ep:102 themes/default/templates/partial/lutim.js.ep:98
+#: themes/default/templates/index.html.ep:81 themes/default/templates/index.html.ep:83 themes/default/templates/partial/lutim.js.ep:101 themes/default/templates/partial/lutim.js.ep:97
 msgid "Download link"
 msgstr "Enlace de descarga"
 
@@ -131,7 +131,7 @@ msgstr "Arrastre y suelte una imagen en el área apropiada, o use el método tra
 msgid "Encrypt the image (Lutim does not keep the key)."
 msgstr "Las imágenes se cifran en el servidor (Lutim no guarda la clave)."
 
-#: themes/default/templates/partial/lutim.js.ep:45
+#: themes/default/templates/partial/lutim.js.ep:44
 msgid "Error while trying to modify the image."
 msgstr "Error al intentar modificar la imagen."
 
@@ -151,7 +151,7 @@ msgstr "Nombre de archivo"
 msgid "For more details, see the <a href=\"https://framagit.org/luc/lutim\">homepage of the project</a>."
 msgstr "Para más detalles, vea la <a href=\"https://framagit.org/luc/lutim\">página del proyecto</a>."
 
-#: themes/default/templates/layouts/default.html.ep:49
+#: themes/default/templates/layouts/default.html.ep:55
 msgid "Fork me!"
 msgstr "¡Clóname!"
 
@@ -159,11 +159,11 @@ msgstr "¡Clóname!"
 msgid "Gallery link"
 msgstr "Enlace a la galería"
 
-#: themes/default/templates/partial/common.js.ep:105 themes/default/templates/partial/common.js.ep:88
+#: themes/default/templates/partial/common.js.ep:104 themes/default/templates/partial/common.js.ep:87
 msgid "Hit Ctrl+C, then Enter to copy the short link"
 msgstr "Presione Ctrl + C, entonces Ingresar para copiar el enlace"
 
-#: themes/default/templates/layouts/default.html.ep:44
+#: themes/default/templates/layouts/default.html.ep:50
 msgid "Homepage"
 msgstr "Página inicial"
 
@@ -195,15 +195,15 @@ msgstr ""
 msgid "Image not found."
 msgstr "Imagen no encontrada."
 
-#: themes/default/templates/layouts/default.html.ep:48
+#: themes/default/templates/layouts/default.html.ep:54
 msgid "Informations"
 msgstr "Informaciones"
 
-#: themes/default/templates/layouts/default.html.ep:56
+#: themes/default/templates/layouts/default.html.ep:62
 msgid "Install webapp"
 msgstr "Instalar webapp"
 
-#: themes/default/templates/layouts/default.html.ep:55
+#: themes/default/templates/layouts/default.html.ep:61
 msgid "Instance's statistics"
 msgstr ""
 
@@ -223,19 +223,19 @@ msgstr "Tal y como se pronuncia la palabra francesa <a href=\"https://fr.wikiped
 msgid "Keep EXIF tags"
 msgstr "Mantener las etiquetas EXIF"
 
-#: themes/default/templates/index.html.ep:118 themes/default/templates/index.html.ep:166 themes/default/templates/index.html.ep:206 themes/default/templates/partial/lutim.js.ep:164
+#: themes/default/templates/index.html.ep:118 themes/default/templates/index.html.ep:166 themes/default/templates/index.html.ep:206 themes/default/templates/partial/lutim.js.ep:163
 msgid "Let's go!"
 msgstr "¡Vamos allá!"
 
-#: themes/default/templates/layouts/default.html.ep:52
+#: themes/default/templates/layouts/default.html.ep:58
 msgid "Liberapay button"
 msgstr ""
 
-#: themes/default/templates/layouts/default.html.ep:47
+#: themes/default/templates/layouts/default.html.ep:53
 msgid "License:"
 msgstr "Licencia:"
 
-#: themes/default/templates/index.html.ep:89 themes/default/templates/index.html.ep:91 themes/default/templates/partial/lutim.js.ep:112 themes/default/templates/partial/lutim.js.ep:116
+#: themes/default/templates/index.html.ep:89 themes/default/templates/index.html.ep:91 themes/default/templates/partial/lutim.js.ep:111 themes/default/templates/partial/lutim.js.ep:115
 msgid "Link for share on social networks"
 msgstr "Enlace para compartir en redes sociales"
 
@@ -251,15 +251,15 @@ msgstr "Lutim es un servicio de alojamiento de imágenes anónimo y gratuito. Ta
 msgid "Main developers"
 msgstr "Desarrolladores principales"
 
-#: themes/default/templates/index.html.ep:73 themes/default/templates/index.html.ep:75 themes/default/templates/partial/lutim.js.ep:86 themes/default/templates/partial/lutim.js.ep:89
+#: themes/default/templates/index.html.ep:73 themes/default/templates/index.html.ep:75 themes/default/templates/partial/lutim.js.ep:85 themes/default/templates/partial/lutim.js.ep:88
 msgid "Markdown syntax"
 msgstr "Sintaxis de Markdown"
 
-#: themes/default/templates/layouts/default.html.ep:54 themes/default/templates/myfiles.html.ep:2
+#: themes/default/templates/layouts/default.html.ep:60 themes/default/templates/myfiles.html.ep:2
 msgid "My images"
 msgstr "Mis Imágenes"
 
-#: themes/default/templates/myfiles.html.ep:85
+#: themes/default/templates/partial/myfiles.js.ep:19
 msgid "No limit"
 msgstr "Sin fecha de caducidad"
 
@@ -292,15 +292,15 @@ msgstr ""
 msgid "Send an image"
 msgstr "Enviar una imagen"
 
-#: themes/default/templates/partial/lutim.js.ep:21
+#: themes/default/templates/partial/lutim.js.ep:20
 msgid "Share it!"
 msgstr "¡Compártelo!"
 
-#: themes/default/templates/layouts/default.html.ep:50
+#: themes/default/templates/layouts/default.html.ep:56
 msgid "Share on Twitter"
 msgstr "Compartir en Twitter"
 
-#: themes/default/templates/index.html.ep:133 themes/default/templates/partial/lutim.js.ep:175
+#: themes/default/templates/index.html.ep:133 themes/default/templates/partial/lutim.js.ep:174
 msgid "Something bad happened"
 msgstr "Algo malo ha pasado"
 
@@ -309,11 +309,11 @@ msgstr "Algo malo ha pasado"
 msgid "Something went wrong when creating the zip file. Try again later or contact the administrator (%1)."
 msgstr "Algo malo ha pasado. Inténtelo de nuevo más tarde o contacte con el administrador (%1)."
 
-#: themes/default/templates/layouts/default.html.ep:52
+#: themes/default/templates/layouts/default.html.ep:58
 msgid "Support the author on Liberapay"
 msgstr ""
 
-#: themes/default/templates/layouts/default.html.ep:51
+#: themes/default/templates/layouts/default.html.ep:57
 msgid "Support the author on Tipeee"
 msgstr ""
 
@@ -344,8 +344,8 @@ msgstr "El archivo %1 no es una imagen."
 
 #. ($tx->res->max_message_size)
 #. ($c->req->max_message_size)
-#. ($max_file_size)
-#: lib/Lutim/Controller.pm:271 lib/Lutim/Controller.pm:340 themes/default/templates/partial/lutim.js.ep:241
+#. (config('max_file_size')
+#: lib/Lutim/Controller.pm:271 lib/Lutim/Controller.pm:340 themes/default/templates/partial/lutim.js.ep:240
 msgid "The file exceed the size limit (%1)"
 msgstr "El archivo supera el límite de tamaño (%1)"
 
@@ -380,7 +380,7 @@ msgstr "Puede, opcionalmente, solicitar que la imagen publicada en Lutim se elim
 msgid "There is no more available URL. Retry or contact the administrator. %1"
 msgstr "No más URL disponibles. Inténtelo de nuevo o contacte con el administrador. %1"
 
-#: themes/default/templates/layouts/default.html.ep:51
+#: themes/default/templates/layouts/default.html.ep:57
 msgid "Tipeee button"
 msgstr ""
 
@@ -388,7 +388,7 @@ msgstr ""
 msgid "Total"
 msgstr ""
 
-#: themes/default/templates/index.html.ep:60 themes/default/templates/partial/lutim.js.ep:15
+#: themes/default/templates/index.html.ep:60 themes/default/templates/partial/lutim.js.ep:14
 msgid "Tweet it!"
 msgstr "¡Tuitéalo!"
 
@@ -426,7 +426,7 @@ msgstr "Archivos enviados por día"
 msgid "Uploading is currently disabled, please try later or contact the administrator (%1)."
 msgstr "La carga está deshabilitada en estos momentos, por favor inténtelo más tarde o contacte con el administrador (%1)."
 
-#: themes/default/templates/index.html.ep:65 themes/default/templates/index.html.ep:67 themes/default/templates/myfiles.html.ep:51 themes/default/templates/partial/lutim.js.ep:72 themes/default/templates/partial/lutim.js.ep:76
+#: themes/default/templates/index.html.ep:65 themes/default/templates/index.html.ep:67 themes/default/templates/myfiles.html.ep:51 themes/default/templates/partial/lutim.js.ep:71 themes/default/templates/partial/lutim.js.ep:75
 msgid "View link"
 msgstr "Enlace de visualización"
 
@@ -466,7 +466,7 @@ msgstr "y en"
 msgid "core developer"
 msgstr "desarrollador principal"
 
-#: lib/Lutim/Command/cron/stats.pm:147 lib/Lutim/Command/cron/stats.pm:158 lib/Lutim/Command/cron/stats.pm:175 themes/default/templates/index.html.ep:3 themes/default/templates/raw.html.ep:17 themes/default/templates/raw.html.ep:34 themes/default/templates/raw.html.ep:6
+#: lib/Lutim.pm:163 lib/Lutim/Command/cron/stats.pm:147 lib/Lutim/Command/cron/stats.pm:158 lib/Lutim/Command/cron/stats.pm:175 themes/default/templates/index.html.ep:3 themes/default/templates/raw.html.ep:17 themes/default/templates/raw.html.ep:34 themes/default/templates/raw.html.ep:6
 msgid "no time limit"
 msgstr "Sin tiempo límite"
 
