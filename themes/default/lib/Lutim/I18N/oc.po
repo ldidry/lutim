@@ -285,7 +285,7 @@ msgstr "Mercés de contactar l'administrator : %1"
 
 #: themes/default/templates/stats.html.ep:22
 msgid "Raw stats"
-msgstr "Estatisticas bruts"
+msgstr "Estatisticas brutas"
 
 #: themes/default/templates/index.html.ep:158
 msgid "Send an image"
@@ -293,7 +293,7 @@ msgstr "Mandar un imatge"
 
 #: themes/default/templates/partial/lutim.js.ep:20
 msgid "Share it!"
-msgstr "Partejatz-lo!"
+msgstr "Partejatz-lo !"
 
 #: themes/default/templates/layouts/default.html.ep:56
 msgid "Share on Twitter"
