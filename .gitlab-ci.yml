@@ -1,12 +1,12 @@
 image: hatsoftwares/test-ci:latest
 stages:
-  - sqlite
+  - tests
   - postgresql
 before_script:
   - carton install
   - rm -f *db
 sqlite:
-  stage: sqlite
+  stage: tests
   cache:
     key: "$CI_BUILD_REF_NAME"
     untracked: true
@@ -39,7 +39,7 @@ sqlite:
     - Debian
     - Jessie
 postgresql:
-  stage: postgresql
+  stage: tests
   cache:
     key: "$CI_BUILD_REF_NAME"
     untracked: true
