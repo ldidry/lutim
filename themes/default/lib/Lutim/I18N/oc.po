@@ -56,7 +56,7 @@ msgstr "Una error es apareguda pendent lo telecargament de l'imatge."
 
 #: themes/default/templates/zip.html.ep:2
 msgid "Archives download"
-msgstr ""
+msgstr "Telecargar los archius"
 
 #: themes/default/templates/about.html.ep:41 themes/default/templates/myfiles.html.ep:64 themes/default/templates/stats.html.ep:25
 msgid "Back to homepage"
@@ -64,11 +64,11 @@ msgstr "Tornar a la pagina d'acuèlh"
 
 #: themes/default/templates/index.html.ep:193 themes/default/templates/index.html.ep:194
 msgid "Click to open the file browser"
-msgstr "Clicatz per utilizar lo navigador de fichièr"
+msgstr "Clicatz per utilizar lo navigator de fichièr"
 
 #: themes/default/templates/about.html.ep:30
 msgid "Contributors"
-msgstr "Contributors"
+msgstr "Contribudors"
 
 #: themes/default/templates/partial/lutim.js.ep:214 themes/default/templates/partial/lutim.js.ep:268 themes/default/templates/partial/lutim.js.ep:346
 msgid "Copy all view links to clipboard"
@@ -140,7 +140,7 @@ msgstr "Evolucion del nombre total de fichièrs"
 
 #: themes/default/templates/myfiles.html.ep:55
 msgid "Expires at"
-msgstr "Expira lo"
+msgstr "S'acaba lo"
 
 #: themes/default/templates/myfiles.html.ep:50
 msgid "File name"
@@ -152,7 +152,7 @@ msgstr "Per mai de detalhs, consultatz la pagina <a href=\"https://framagit.org/
 
 #: themes/default/templates/layouts/default.html.ep:55
 msgid "Fork me!"
-msgstr "Creatz un fork !"
+msgstr "Tustatz-me !"
 
 #: themes/default/templates/index.html.ep:10 themes/default/templates/index.html.ep:13 themes/default/templates/myfiles.html.ep:12 themes/default/templates/myfiles.html.ep:15
 msgid "Gallery link"
@@ -204,7 +204,7 @@ msgstr "Installar la webapp"
 
 #: themes/default/templates/layouts/default.html.ep:61
 msgid "Instance's statistics"
-msgstr ""
+msgstr "Estatisticas de l'instància"
 
 #: themes/default/templates/about.html.ep:11
 msgid "Is it really anonymous?"
@@ -228,7 +228,7 @@ msgstr "Zo !"
 
 #: themes/default/templates/layouts/default.html.ep:58
 msgid "Liberapay button"
-msgstr ""
+msgstr "Boton Liberapay"
 
 #: themes/default/templates/layouts/default.html.ep:53
 msgid "License:"
@@ -240,7 +240,7 @@ msgstr "Ligam per partejar suls malhums socials"
 
 #: themes/default/templates/zip.html.ep:7
 msgid "Lutim can't zip so many images at once, so it splitted your demand in multiple URLs."
-msgstr ""
+msgstr "Lutim pòt pas comprimir tan d'imatge d'un còp, a doncas trocejat vòstra demanda en multiplas URLs"
 
 #: themes/default/templates/about.html.ep:4
 msgid "Lutim is a free (as in free beer) and anonymous image hosting service. It's also the name of the free (as in free speech) software which provides this service."
@@ -276,7 +276,7 @@ msgstr "Solament lo qu'a mandat ! (ben, solament se ten los dreits exclusius del
 
 #: themes/default/templates/zip.html.ep:12
 msgid "Please click on each URL to download the different zip files."
-msgstr ""
+msgstr "Mercés de clicar sus cada URL per telecargar los diferents archius ZIP."
 
 #. (config('contact')
 #: themes/default/templates/about.html.ep:19
@@ -293,7 +293,7 @@ msgstr "Mandar un imatge"
 
 #: themes/default/templates/partial/lutim.js.ep:20
 msgid "Share it!"
-msgstr "Partejatz !"
+msgstr "Partejatz-lo!"
 
 #: themes/default/templates/layouts/default.html.ep:56
 msgid "Share on Twitter"
@@ -310,11 +310,11 @@ msgstr "Quicòm a trucat pendent la creacion de l'archiu. Mercés de tornar ensa
 
 #: themes/default/templates/layouts/default.html.ep:58
 msgid "Support the author on Liberapay"
-msgstr ""
+msgstr "Sostenir l'autor sus Liberapay"
 
 #: themes/default/templates/layouts/default.html.ep:57
 msgid "Support the author on Tipeee"
-msgstr ""
+msgstr "Sostenir l'autor sus Tipeee"
 
 #: themes/default/templates/about.html.ep:13
 msgid "The IP address of the image's sender is retained for a delay which depends of the administrator's choice (for the official instance, which is located in France, it's one year)."
@@ -330,7 +330,7 @@ msgstr "L'URL n'es pas valida."
 
 #: themes/default/templates/zip.html.ep:16
 msgid "The automatic download process will open a tab in your browser for each link. You need to allow popups for Lutim."
-msgstr ""
+msgstr "Lo processús automatic de telecargament obrirà un onglet dins lo navigato per cada ligam. Vos cal autorizar las popups per Lutim."
 
 #: lib/Lutim/Controller.pm:120 lib/Lutim/Controller.pm:188
 msgid "The delete token is invalid."
@@ -381,7 +381,7 @@ msgstr "I a pas mai d'URL disponibla. Mercés de tornar ensajar o de contactar l
 
 #: themes/default/templates/layouts/default.html.ep:57
 msgid "Tipeee button"
-msgstr ""
+msgstr "Boton Tipeee"
 
 #: lib/Lutim/Command/cron/stats.pm:152 themes/default/templates/raw.html.ep:11
 msgid "Total"
@@ -389,7 +389,7 @@ msgstr "Total"
 
 #: themes/default/templates/index.html.ep:60 themes/default/templates/partial/lutim.js.ep:14
 msgid "Tweet it!"
-msgstr "Tweetejatz !"
+msgstr "Tweetejatz-lo !"
 
 #. ($short)
 #: lib/Lutim/Controller.pm:162 lib/Lutim/Controller.pm:233
@@ -451,7 +451,7 @@ msgstr "Òc, o es ! Al contrari, s'avètz enveja de sosténer lo desvolopaire, p
 
 #: themes/default/templates/zip.html.ep:6
 msgid "You asked to download a zip archive for too much files."
-msgstr ""
+msgstr "Avètz demandat de telecargar tròp d'imatges d'un còp dins un archiu ZIP."
 
 #: themes/default/templates/about.html.ep:8
 msgid "You can, optionally, request that the image(s) posted on Lutim to be deleted at first view (or download) or after the delay selected from those proposed."
