@@ -80,7 +80,7 @@ sub startup {
 
     # Minion
     if ($config->{minion}->{enabled}) {
-        $self->config('minion')->{dbtype} = 'sqlite' unless defined $config->{minion}->{dbtype};
+        $self->config->{minion}->{dbtype} = 'sqlite' unless defined $config->{minion}->{dbtype};
         if ($config->{minion}->{dbtype} eq 'sqlite') {
             $self->config('minion')->{db_path} = 'minion.db' unless defined $config->{minion}->{db_path};
             $self->plugin('Minion' => { SQLite => 'sqlite:'.$config->{minion}->{db_path} });
