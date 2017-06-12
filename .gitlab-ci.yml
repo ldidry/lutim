@@ -40,11 +40,6 @@ sqlite:
     - Jessie
 postgresql:
   stage: postgresql
-  cache:
-    key: "$CI_BUILD_REF_NAME"
-    untracked: true
-    paths:
-      - local
   script:
     - make podcheck
     - service postgresql restart
