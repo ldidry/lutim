@@ -1,7 +1,7 @@
 # vim:set sw=4 ts=4 sts=4 expandtab:
 package Lutim::Controller;
 use Mojo::Base 'Mojolicious::Controller';
-use Mojo::Util qw(url_escape url_unescape b64_encode);
+use Mojo::Util qw(url_escape url_unescape b64_encode encode);
 use Mojo::Asset::Memory;
 use Mojo::JSON qw(true false);
 use Lutim::DB::Image;
@@ -656,7 +656,7 @@ sub zip {
                     $c->delete_image($image);
 
                     # Warn user
-                    $zip->addString($c->l('Unable to find the image: it has been deleted.'), 'images/'.$filename.'.txt');
+                    $zip->addString(encode('UTF-8', $c->l('Unable to find the image: it has been deleted.')), 'images/'.$filename.'.txt');
                     next;
                 }
 
@@ -668,7 +668,7 @@ sub zip {
                     # Delete image
                     $c->delete_image($image);
 
-                    $zip->addString($c->l('Unable to find the image: it has been deleted.'), 'images/'.$filename.'.txt');
+                    $zip->addString(encode('UTF-8', $c->l('Unable to find the image: it has been deleted.')), 'images/'.$filename.'.txt');
                     next;
                 } else {
                     my $expires = ($image->delete_at_day) ? $image->delete_at_day : 360;
@@ -679,7 +679,7 @@ sub zip {
                     my $path = $image->path;
                     unless ( -f $path && -r $path ) {
                         $c->app->log->error("Cannot read file [$path]. error [$!]");
-                        $zip->addString($c->l('Unable to find the image: it has been deleted.'), 'images/'.$filename.'.txt');
+                        $zip->addString(encode('UTF-8', $c->l('Unable to find the image: it has been deleted.')), 'images/'.$filename.'.txt');
                         next;
                     }
 
@@ -704,10 +704,10 @@ sub zip {
                 $c->app->log->info('[NOT FOUND] someone tried to view '.$short.' but it does\'nt exist anymore.');
 
                 # Warn user
-                $zip->addString($c->l('Unable to find the image: it has been deleted.'), 'images/'.$image->filename.'.txt');
+                $zip->addString(encode('UTF-8', $c->l('Unable to find the image: it has been deleted.')), 'images/'.$image->filename.'.txt');
                 next;
             } else {
-                $zip->addString($c->l('Image not found.'), 'images/'.$short.'.txt');
+                $zip->addString(encode('UTF-8', $c->l('Image not found.')), 'images/'.$short.'.txt');
                 next;
             }
         }
