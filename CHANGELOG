@@ -1,5 +1,8 @@
 Revision history for Lutim
 
+0.8.1  2017-06-13
+	- Fix #46
+
 0.8  2017-06-13
 	- Improve statistics page
 	- Add database abstraction layer (#42)
