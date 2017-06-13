@@ -16,7 +16,7 @@ sub register {
 
         # Database migration
         my $migrations = Mojo::Pg::Migrations->new(pg => $app->pg);
-        if ($app->mode eq 'development') {
+        if ($app->mode eq 'development' && $ENV{LUTIM_DEBUG}) {
             $migrations->from_file('utilities/migrations.sql')->migrate(0)->migrate(1);
         } else {
             $migrations->from_file('utilities/migrations.sql')->migrate(1);

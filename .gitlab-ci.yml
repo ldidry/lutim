@@ -29,6 +29,7 @@ sqlite2:
   script:
     - make podcheck
     - MOJO_CONFIG=t/sqlite2.conf make minion &
+    - sleep 3
     - MOJO_CONFIG=t/sqlite2.conf make test-sqlite
     - MOJO_CONFIG=t/sqlite2.conf make watch
     - MOJO_CONFIG=t/sqlite2.conf make cleanbdd
