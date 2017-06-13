@@ -1,8 +1,10 @@
+# vim:set sw=4 ts=4 sts=4 ft=perl expandtab:
 package Lutim::Command::cron::watch;
 use Mojo::Base 'Mojolicious::Command';
-use Mojo::Util qw(slurp decode);
 use Filesys::DiskUsage qw/du/;
-use LutimModel;
+use Lutim::DB::Image;
+use Lutim;
+use Mojo::File;
 use Switch;
 use FindBin qw($Bin);
 use File::Spec qw(catfile);
@@ -13,10 +15,18 @@ has usage => sub { shift->extract_usage };
 sub run {
     my $c = shift;
 
+    my $cfile = Mojo::File->new($Bin, '..' , 'lutim.conf');
+    if (defined $ENV{MOJO_CONFIG}) {
+        $cfile = Mojo::File->new($ENV{MOJO_CONFIG});
+        unless (-e $cfile->to_abs) {
+            $cfile = Mojo::File->new($Bin, '..', $ENV{MOJO_CONFIG});
+        }
+    }
     my $config = $c->app->plugin('Config', {
-        file    => File::Spec->catfile($Bin, '..' ,'lutim.conf'),
+        file    => $cfile,
         default => {
-            policy_when_full => 'warn'
+            policy_when_full => 'warn',
+            dbtype           => 'sqlite',
         }
     });
 
@@ -36,11 +46,15 @@ sub run {
                 }
                 case 'delete' {
                     say '[Lutim cron job watch] Older files are being deleted';
+                    my $dbi = Lutim::DB::Image->new(app => $c->app);
+                    my $l = Lutim->new;
                     do {
-                        for my $img (LutimModel::Lutim->select('WHERE path IS NOT NULL AND enabled = 1 ORDER BY created_at ASC LIMIT 50')) {
-                            unlink $img->path() or warn "Could not unlink ".$img->path.": $!";
-                            $img->update(enabled => 0);
-                        }
+                        $dbi->get_50_oldest()->each(
+                            sub {
+                                my ($img, $num) = @_;
+                                $l->app->delete_image($img);
+                            }
+                        );
                     } while (du(qw/files/) > $config->{max_total_size});
                 }
                 else {

@@ -1,6 +1,8 @@
 *.swp
 lutim.conf
-lutim.db
+*.db
+*.db-shm
+*.db-wal
 script/hypnotoad.pid
 local/*
 files/*
@@ -10,5 +12,6 @@ themes/*
 !themes/default/*
 themes/default/templates/data.html.ep
 themes/default/templates/raw.html.ep
+themes/default/templates/stats.json.ep
 themes/default/public/packed/*
-tmp/
+tmp/*

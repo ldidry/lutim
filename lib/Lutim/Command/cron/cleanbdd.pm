@@ -1,7 +1,8 @@
+# vim:set sw=4 ts=4 sts=4 ft=perl expandtab:
 package Lutim::Command::cron::cleanbdd;
 use Mojo::Base 'Mojolicious::Command';
-use LutimModel;
-use Mojo::Util qw(slurp decode);
+use Mojo::File;
+use Lutim::DB::Image;
 use FindBin qw($Bin);
 use File::Spec qw(catfile);
 
@@ -11,20 +12,26 @@ has usage => sub { shift->extract_usage };
 sub run {
     my $c = shift;
 
+    my $cfile = Mojo::File->new($Bin, '..' , 'lutim.conf');
+    if (defined $ENV{MOJO_CONFIG}) {
+        $cfile = Mojo::File->new($ENV{MOJO_CONFIG});
+        unless (-e $cfile->to_abs) {
+            $cfile = Mojo::File->new($Bin, '..', $ENV{MOJO_CONFIG});
+        }
+    }
     my $config = $c->app->plugin('Config', {
-        file    => File::Spec->catfile($Bin, '..' ,'lutim.conf'),
+        file    => $cfile,
         default => {
             keep_ip_during => 365,
+            dbtype         => 'sqlite',
         }
     });
 
     my $separation = time() - $config->{keep_ip_during} * 86400;
 
-    LutimModel->do(
-        'UPDATE lutim SET created_by = "" WHERE path IS NOT NULL AND created_at < ?',
-        {},
-        $separation
-    );
+    my $dbi = Lutim::DB::Image->new(app => $c->app);
+
+    $dbi->clean_ips_until($separation);
 }
 
 =encoding utf8

@@ -1,9 +1,7 @@
+# vim:set sw=4 ts=4 sts=4 ft=perl expandtab:
 package Lutim;
 use Mojo::Base 'Mojolicious';
-use Mojo::Util qw(quote);
-use LutimModel;
-use Crypt::CBC;
-use Data::Entropy qw(entropy_source);
+use Lutim::DB::Image;
 
 use vars qw($im_loaded);
 BEGIN {
@@ -25,6 +23,7 @@ sub startup {
     $self->{wait_for_it} = {};
 
     $self->plugin('DebugDumperHelper');
+    $self->plugin('PgURLHelper');
 
     my $config = $self->plugin('Config', {
         default => {
@@ -42,6 +41,13 @@ sub startup {
             crypto_key_length => 8,
             thumbnail_size    => 100,
             theme             => 'default',
+            dbtype            => 'sqlite',
+            max_files_in_zip  => 15,
+            minion           => {
+                enabled => 0,
+                dbtype  => 'sqlite',
+                db_path => 'minion.db'
+            },
         }
     });
 
@@ -70,228 +76,30 @@ sub startup {
     $self->plugin('AssetPack' => { pipes => [qw(Combine)] });
 
     # Helpers
-    $self->helper(
-        render_file => sub {
-            my $c = shift;
-            my ($filename, $path, $mediatype, $dl, $expires, $nocache, $key, $thumb) = @_;
+    $self->plugin('Lutim::Plugin::Helpers');
 
-            $dl       = 'attachment' if ($mediatype =~ m/svg/);
-            $filename = quote($filename);
+    # Minion
+    if ($config->{minion}->{enabled}) {
+        $self->config->{minion}->{dbtype} = 'sqlite' unless defined $config->{minion}->{dbtype};
+        if ($config->{minion}->{dbtype} eq 'sqlite') {
+            $self->config('minion')->{db_path} = 'minion.db' unless defined $config->{minion}->{db_path};
+            $self->plugin('Minion' => { SQLite => 'sqlite:'.$config->{minion}->{db_path} });
+        } elsif ($config->{minion}->{dbtype} eq 'postgresql') {
+            $self->plugin('Minion' => { Pg => $self->pg_url($config->{minion}->{'pgdb'}) });
+        }
+        $self->app->minion->add_task(
+            accessed => sub {
+                my $job   = shift;
+                my $short = $job->args->[0];
+                my $time  = $job->args->[1];
 
-            my $asset;
-            unless (-f $path && -r $path) {
-                $c->app->log->error("Cannot read file [$path]. error [$!]");
-                $c->flash(
-                    msg => $c->l('Unable to find the image: it has been deleted.')
-                );
-                return 500;
+                my $img = Lutim::DB::Image->new(app => $job->app, short => $short);
+                $img->accessed($time) if $img->path;
             }
+        );
+    }
 
-            $mediatype =~ s/x-//;
-
-            my $headers = Mojo::Headers->new();
-            if ($nocache) {
-                $headers->add('Cache-Control'   => 'no-cache, no-store, max-age=0, must-revalidate');
-            } else {
-                $headers->add('Expires'         => $expires);
-            }
-            $headers->add('Content-Type'        => $mediatype.';name='.$filename);
-            $headers->add('Content-Disposition' => $dl.';filename='.$filename);
-            $c->res->content->headers($headers);
-
-            if ($key) {
-                $asset = $c->decrypt($key, $path);
-            } else {
-                $asset = Mojo::Asset::File->new(path => $path);
-            }
-
-            if (defined $thumb && $im_loaded && $mediatype ne 'image/svg+xml' && $mediatype !~ m#image/(x-)?xcf# && $mediatype ne 'image/webp') { # ImageMagick don't work in Debian with svg (for now?)
-                my $im  = Image::Magick->new;
-                $im->BlobToImage($asset->slurp);
-
-                # Create the thumbnail
-                $im->Resize(geometry=>'x'.$c->config('thumbnail_size'));
-
-                # Replace the asset with the thumbnail
-                $asset = Mojo::Asset::Memory->new->add_chunk($im->ImageToBlob());
-            }
-
-            $c->res->content->asset($asset);
-            $headers->add('Content-Length' => $asset->size);
-
-            return $c->rendered(200);
-        }
-    );
-
-    $self->helper(
-        ip => sub {
-            my $c  = shift;
-            my $ip_only = shift || 0;
-
-            my $proxy = $c->req->headers->header('X-Forwarded-For');
-
-            my $ip = ($proxy) ? $proxy : $c->tx->remote_address;
-
-            my $remote_port = (defined($c->req->headers->header('X-Remote-Port'))) ? $c->req->headers->header('X-Remote-Port') : $c->tx->remote_port;
-
-            return ($ip_only) ? $ip : "$ip remote port:$remote_port";
-        }
-    );
-
-    $self->helper(
-        provisioning => sub {
-            my $c = shift;
-
-            # Create some short patterns for provisioning
-            if (LutimModel::Lutim->count('WHERE path IS NULL') < $c->config->{provisioning}) {
-                for (my $i = 0; $i < $c->config->{provis_step}; $i++) {
-                    if (LutimModel->begin) {
-                        my $short;
-                        do {
-                            $short= $c->shortener($c->config->{length});
-                        } while (LutimModel::Lutim->count('WHERE short = ?', $short) || $short eq 'about' || $short eq 'stats' || $short eq 'd' || $short eq 'm' || $short eq 'gallery' || $short eq 'zip' || $short eq 'infos');
-
-                        LutimModel::Lutim->create(
-                            short                => $short,
-                            counter              => 0,
-                            enabled              => 1,
-                            delete_at_first_view => 0,
-                            delete_at_day        => 0,
-                            mod_token            => $c->shortener($c->config->{token_length})
-                        );
-                        LutimModel->commit;
-                    }
-                }
-            }
-        }
-    );
-
-    $self->helper(
-        shortener => sub {
-            my $c      = shift;
-            my $length = shift;
-
-            my @chars  = ('a'..'z','A'..'Z','0'..'9');
-            my $result = '';
-            foreach (1..$length) {
-                $result .= $chars[entropy_source->get_int(scalar(@chars))];
-            }
-            return $result;
-        }
-    );
-
-    $self->helper(
-        stop_upload => sub {
-            my $c = shift;
-
-            if (-f 'stop-upload' || -f 'stop-upload.manual') {
-                $c->stash(
-                    stop_upload => $c->l('Uploading is currently disabled, please try later or contact the administrator (%1).', $config->{contact})
-                );
-                return 1;
-            }
-            return 0;
-        }
-    );
-
-    $self->helper(
-        max_delay => sub {
-            my $c = shift;
-
-            return $c->config->{max_delay} if ($c->config->{max_delay} >= 0);
-
-            warn "max_delay set to a negative value. Default to 0.";
-            return 0;
-        }
-    );
-
-    $self->helper(
-        default_delay => sub {
-            my $c = shift;
-
-            return $c->config->{default_delay} if ($c->config->{default_delay} >= 0);
-
-            warn "default_delay set to a negative value. Default to 0.";
-            return 0;
-        }
-    );
-
-    $self->helper(
-        is_selected => sub {
-            my $c   = shift;
-            my $num = shift;
-
-            return ($num == $c->default_delay) ? 'selected="selected"' : '';
-        }
-    );
-
-    $self->helper(
-        crypt => sub {
-            my $c        = shift;
-            my $upload   = shift;
-            my $filename = shift;
-
-            my $key   = $c->shortener($c->config('crypto_key_length'));
-
-            my $cipher = Crypt::CBC->new(
-                -key    => $key,
-                -cipher => 'Blowfish',
-                -header => 'none',
-                -iv     => 'dupajasi'
-            );
-
-            $cipher->start('encrypting');
-
-            my $crypt_asset = Mojo::Asset::File->new;
-
-            $crypt_asset->add_chunk($cipher->crypt($upload->slurp));
-            $crypt_asset->add_chunk($cipher->finish);
-
-            my $crypt_upload = Mojo::Upload->new;
-            $crypt_upload->filename($filename);
-            $crypt_upload->asset($crypt_asset);
-
-            return ($crypt_upload, $key);
-        }
-    );
-
-    $self->helper(
-        decrypt => sub {
-            my $c    = shift;
-            my $key  = shift;
-            my $file = shift;
-
-            my $cipher = Crypt::CBC->new(
-                -key    => $key,
-                -cipher => 'Blowfish',
-                -header => 'none',
-                -iv     => 'dupajasi'
-            );
-
-            $cipher->start('decrypting');
-
-            my $decrypt_asset = Mojo::Asset::File->new;
-
-            open(my $f, "<",$file) or die "Unable to read encrypted file: $!";
-            binmode $f;
-            while (read($f, my $buffer,1024)) {
-                  $decrypt_asset->add_chunk($cipher->crypt($buffer));
-            }
-            $decrypt_asset->add_chunk($cipher->finish) ;
-
-            return $decrypt_asset;
-        }
-    );
-
-    $self->helper(
-        delete_image => sub {
-            my $c = shift;
-            my $image = shift;
-            unlink $image->path();
-            $image->update(enabled => 0);
-        }
-    );
-
+    # Hooks
     $self->hook(
         before_dispatch => sub {
             my $c = shift;
@@ -328,15 +136,20 @@ sub startup {
             delete @{$wait_for_it}{grep { time - $wait_for_it->{$_} > $c->config->{anti_flood_delay} } keys %{$wait_for_it}} if (defined($wait_for_it));
         }
     );
+    $self->hook(after_static => sub {
+        my $c = shift;
+        $c->res->headers->cache_control('max-age=2592000, must-revalidate');
+    });
 
     $self->asset->store->paths($self->static->paths);
-    $self->asset->process('index.css' => ('css/bootstrap.min.css', 'css/fontello-embedded.css', 'css/animation.css', 'css/uploader.css', 'css/hennypenny.css', 'css/lutim.css', 'css/markdown.css'));
-    $self->asset->process('stats.css' => ('css/bootstrap.min.css', 'css/fontello-embedded.css', 'css/morris-0.4.3.min.css', 'css/hennypenny.css', 'css/lutim.css'));
-    $self->asset->process('about.css' => ('css/bootstrap.min.css', 'css/fontello-embedded.css', 'css/hennypenny.css', 'css/lutim.css'));
+    $self->asset->process('index.css'   => ('css/bootstrap.min.css', 'css/fontello-embedded.css', 'css/animation.css', 'css/uploader.css', 'css/hennypenny.css', 'css/lutim.css', 'css/markdown.css'));
+    $self->asset->process('stats.css'   => ('css/bootstrap.min.css', 'css/fontello-embedded.css', 'css/morris-0.4.3.min.css', 'css/hennypenny.css', 'css/lutim.css'));
+    $self->asset->process('about.css'   => ('css/bootstrap.min.css', 'css/fontello-embedded.css', 'css/hennypenny.css', 'css/lutim.css'));
+    $self->asset->process('gallery.css' => ('/gallery/css/unite-gallery.css', '/gallery/themes/default/ug-theme-default.css'));
 
-    $self->asset->process('index.js'  => ('js/jquery-2.1.0.min.js', 'js/bootstrap.min.js', 'js/lutim.js', 'js/dmuploader.min.js'));
-    $self->asset->process('stats.js'  => ('js/jquery-2.1.0.min.js', 'js/bootstrap.min.js', 'js/lutim.js', 'js/raphael-min.js', 'js/morris-0.4.3.min.js', 'js/stats.js'));
-    $self->asset->process('freeze.js' => ('js/jquery-2.1.0.min.js', 'js/freezeframe.min.js'));
+    $self->asset->process('index.js'    => ('js/bootstrap.min.js', 'js/lutim.js', 'js/dmuploader.min.js'));
+    $self->asset->process('stats.js'    => ('js/bootstrap.min.js', 'js/lutim.js', 'js/raphael-min.js', 'js/morris-0.4.3.min.js', 'js/stats.js'));
+    $self->asset->process('freeze.js'   => ('js/jquery-2.1.0.min.js', 'js/freezeframe.min.js'));
 
     $self->defaults(layout => 'default');
 
@@ -366,6 +179,20 @@ sub startup {
     $r->get('/stats')->
         to('Controller#stats')->
         name('stats');
+
+    $r->get('/partial/:file' => sub {
+        my $c = shift;
+        $c->render(
+            template => 'partial/'.$c->param('file'),
+            format   => 'js',
+            layout   => undef,
+            d        => {
+                delay_0   => $c->l('no time limit'),
+                delay_1   => $c->l('24 hours'),
+                delay_365 => $c->l('1 year')
+            }
+        );
+    })->name('partial');
 
     $r->get('/gallery' => sub {
         shift->render(

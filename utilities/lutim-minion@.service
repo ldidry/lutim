@@ -1,0 +1,13 @@
+[Unit]
+Description=Image hosting and sharing service job queue
+Documentation=https://framagit.org/luc/lutim
+After=lutim.service
+
+[Service]
+Type=simple
+User=www-data
+WorkingDirectory=/var/www/lutim/
+ExecStart=/usr/local/bin/carton exec script/application minion worker -m production
+
+[Install]
+WantedBy=multi-user.target

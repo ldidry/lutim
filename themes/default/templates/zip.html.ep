@@ -1,0 +1,31 @@
+% # vim:set sts=4 sw=4 ts=4 ft=html.epl expandtab:
+<h4><%= l('Archives download') %></h4>
+<hr>
+<div>
+    <p>
+        <%= l('You asked to download a zip archive for too much files.') %>
+        <%= l('Lutim can\'t zip so many images at once, so it splitted your demand in multiple URLs.') %>
+    </p>
+</div>
+<noscript>
+    <div>
+        <p><%= l('Please click on each URL to download the different zip files.') %></p>
+    </div>
+</noscript>
+<div class="jsonly">
+    <p><%= l('The automatic download process will open a tab in your browser for each link. You need to allow popups for Lutim.') %></p>
+</div>
+
+<ul>
+% for my $i (@{$urls}) {
+    <li><a href="<%== $i %>" class="dl-zip" target="_blank"><%= $i %></a></li>
+% }
+</ul>
+%= javascript begin
+$(document).ready(function() {
+    $('.jsononly').show();
+    $('.dl-zip').each(function(index) {
+        this.click();
+    });
+});
+% end

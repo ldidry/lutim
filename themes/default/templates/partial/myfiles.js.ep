@@ -1,0 +1,61 @@
+% # vim:set sw=4 ts=4 sts=4 ft=javascript expandtab:
+function onCheck(e, short, ext) {
+    if (e.is(':checked')) {
+        addToShortHash(short+'.'+ext);
+        addToZipHash(short);
+    } else {
+        rmFromShortHash(short+'.'+ext);
+        rmFromZipHash(short);
+    }
+}
+function populateFilesTable() {
+    var files = JSON.parse(localStorage.getItem('images'));
+    files.reverse();
+    files.forEach(function(element, index, array) {
+        var real_short = element.real_short;
+        var vlink      = link(element.short+'.'+element.ext, '');
+        var del_view   = (element.del_at_view) ? '<span class="icon icon-ok"></span>' : '<span class="icon icon-cancel"></span>';
+        var dlink      = link(real_short, 'dl', element.token, false, true);
+        var limit      = (element.limit === 0) ? '<%= l('No limit') %>' : moment.unix(element.limit * 86400 + element.created_at).locale(window.navigator.language).format('LLLL');
+        var created_at = moment.unix(element.created_at).locale(window.navigator.language).format('LLLL');
+
+        var tr = [
+            '<tr id="alert-',real_short,'">',
+                '<td><span class="checkbox"><label><input type="checkbox" onChange="onCheck($(this), \'', element.short, '\', \'', element.ext, '\');"><label></span></td>',
+                '<td>', element.filename.replace(/</g, '&lt;').replace(/>/g, '&gt;'), '</td>',
+                '<td><a href="',vlink,'">',vlink,'</a></td>',
+                '<td id="count-',real_short,'" class="text-center"></td>',
+                '<td class="text-center">', del_view, '</td>',
+                '<td>', created_at, '</td>',
+                '<td>', limit, '</td>',
+                '<td><a id="del-',real_short,'" data-short="',real_short,'" data-token="',element.token,'" href="#">',dlink,'</a></td>',
+            '</tr>'
+        ].join('');
+        $('#myfiles').append(tr);
+        $('#del-'+real_short).on('click', delImage);
+
+        $.ajax({
+            url  : '<%== url_for('counter') %>',
+            type : 'POST',
+            data : {
+                'short': real_short,
+                'token': element.token
+            },
+            success: function(data) {
+                if (data.success) {
+                    if (data.enabled) {
+                        $('#count-'+real_short).text(data.counter);
+                    } else {
+                        delItem(real_short);
+                        $('#alert-'+real_short).remove();
+                    }
+                } else {
+                    alert(data.msg);
+                }
+            },
+            error: function() {
+                alert(element.filename+'<%= l(': Error while trying to get the counter.') %>');
+            }
+        });
+    });
+}

@@ -3,7 +3,6 @@
 % my $twitter_url = 'https://twitter.com/share';
 % my $url    = url_for('/')->to_abs();
 % $twitter_url .= '?url='.url_escape("$url")
-%              .'&via=framasky'
 %              .'&text=Check out this %23Lutim instance! ';
 <!DOCTYPE html>
 <html>
@@ -29,6 +28,12 @@
 % } else {
         %= asset 'index.css'
 % }
+% if (current_route 'gallery') {
+        %= asset 'gallery.css'
+% }
+% if (!(current_route 'about')) {
+        %= javascript '/js/jquery-2.1.0.min.js'
+% }
     </head>
     <body>
         <div class="container-fluid">
@@ -48,10 +53,12 @@
                         <%= l('License:') %> <%= link_to 'https://www.gnu.org/licenses/agpl-3.0.html' => begin %>AGPL<% end %> — 
                         <%= link_to url_for('about') => begin %><%= l('Informations') %><% end %> — 
                         <%= link_to 'https://framagit.org/luc/lutim' => (title => l('Fork me!')) => begin %><i class="lead icon icon-git"></i><% end %> 
-                        <%= link_to $twitter_url                      => (title => l('Share on Twitter'))   => begin %><i class="lead icon icon-twitter"></i><% end %> 
-                        <%= link_to 'https://flattr.com/submit/auto?user_id=_SKy_&url='.$url.'&title=Lutim&category=software' => (title => 'Flattr this') => begin %><i class="lead icon icon-flattr"></i><% end %> 
+                        <%= link_to $twitter_url                     => (title => l('Share on Twitter'))   => begin %><i class="lead icon icon-twitter"></i><% end %> 
+                        <%= link_to 'https://tipeee.com/fiat-tux'    => (title => l('Support the author on Tipeee')) => begin %><img id="tipeee-img" src="/img/tipeee-tip-btn.png" alt="<%= l('Tipeee button') %>"><% end %> 
+                        <%= link_to 'https://liberapay.com/sky'    => (title => l('Support the author on Liberapay')) => begin %><img id="liberapay-img" src="/img/liberapay.svg" alt="<%= l('Liberapay button') %>"><% end %> 
                         <%= link_to 'bitcoin:1JCEtmx9pyzWfitMQj2pKAk8GNgyix7RmA?label=lutim' => (title => 'Give Bitcoins') => begin %><i class="lead icon icon-bitcoin"></i><% end %> — 
                         <%= link_to url_for('myfiles') => begin %><%= l('My images') %><% end %> — 
+                        <%= link_to url_for('stats') => begin %><%= l('Instance\'s statistics') %><% end %> — 
                         <a class="btn btn-default btn-xs" href="#" id="install-app"><img src="<%= url_for('/img/rocket.png') %>" alt="mozilla rocket logo"> <%= l('Install webapp') %></a>
                     </p>
                 </div>
@@ -66,18 +73,34 @@
                 <strong><%= stash('stop_upload') %></strong>
             </div>
 % }
+            <%= content %>
+        </div>
         %= javascript begin
             var manifestUrl = '<%== url_for('manifest.webapp')->to_abs() %>';
         % end
+% if (defined(config('piwik_img'))) {
+        <img src="<%== config('piwik_img') %>" style="border:0" alt="">
+% }
 % if (current_route 'stats') {
         %= asset 'stats.js'
 % } elsif (!(current_route 'about')) {
         %= asset 'index.js'
 % }
-            <%= content %>
-        </div>
-% if (defined(config('piwik_img'))) {
-        <img src="<%== config('piwik_img') %>" style="border:0" alt="" />
+% if (current_route 'index') {
+        %= javascript '/partial/common.js'
+        %= javascript '/partial/lutim.js'
+% }
+% if (current_route 'gallery') {
+        %= javascript '/gallery/js/unitegallery.js'
+        %= javascript '/gallery/themes/tiles/ug-theme-tiles.js'
+        %= javascript '/js/jszip.min.js'
+        %= javascript '/js/FileSaver.min.js'
+        %= javascript '/partial/gallery.js'
+% }
+% if (current_route 'myfiles') {
+        %= javascript '/partial/common.js'
+        %= javascript '/js/moment-with-locales.min.js'
+        %= javascript '/partial/myfiles.js'
 % }
     </body>
 </html>

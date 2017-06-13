@@ -6,10 +6,47 @@
     <%= l('Only the images sent with this browser will be listed here. The informations are stored in localStorage: if you delete your localStorage data, you\'ll loose this informations.') %>
 </p>
 
+<div id="gallery-url" class="hidden row">
+    <form class="form col-sm-12">
+        <div class="form-group">
+            <label for="gallery-url-input"><%= l('Gallery link') %></label>
+            <div class="input-group">
+                <div class="input-group-addon">
+                    <a id="gallery-url-link" href="#" target="_blank" title="<%= l('Gallery link') %>">
+                        <span class="icon icon-picture"></span>
+                    </a>
+                </div>
+                <input class="form-control" name="gallery-url-input" type="text" id="gallery-url-input" readonly></input>
+                <a href="#" onClick="event.preventDefault();copyToClipboard($(this));" class="input-group-addon jsonly" title="<%= l('Copy to clipboard') %>">
+                    <span class="icon icon-clipboard"></span>
+                </a>
+            </div>
+        </div>
+    </form>
+</div>
+<div id="zip-url" class="hidden row">
+    <form class="form col-sm-12">
+        <div class="form-group">
+            <label for="zip-url-input"><%= l('Download zip link') %></label>
+            <div class="input-group">
+                <div class="input-group-addon">
+                    <a id="zip-url-link" href="#" target="_blank" title="<%= l('Download zip link') %>">
+                        <span class="icon icon-file-archive"></span>
+                    </a>
+                </div>
+                <input class="form-control" name="zip-url-input" type="text" id="zip-url-input" readonly></input>
+                <a href="#" onClick="event.preventDefault();copyToClipboard($(this));" class="input-group-addon jsonly" title="<%= l('Copy to clipboard') %>">
+                    <span class="icon icon-clipboard"></span>
+                </a>
+            </div>
+        </div>
+    </form>
+</div>
 <div class="table-responsive">
     <table class="table table-hover">
         <thead>
             <tr>
+                <th class="text-center"></th>
                 <th class="text-center"><%= l('File name') %></th>
                 <th class="text-center"><%= l('View link') %></th>
                 <th class="text-center"><%= l('Counter') %></th>
@@ -25,61 +62,3 @@
 </div>
 
 <%= link_to url_for('/') => ( class => "btn btn-primary btn-lg" ) => begin %><%= l('Back to homepage') %><% end%>
-
-%= include 'partial/common', format => 'js'
-%= javascript begin
-    function populateFilesTable() {
-        var files = JSON.parse(localStorage.getItem('images'));
-        files.reverse();
-        files.forEach(function(element, index, array) {
-            var real_short = element.real_short;
-            var vlink      = link(element.short+'.'+element.ext, '');
-            var del_view   = (element.del_at_view) ? '<span class="icon icon-ok"></span>' : '<span class="icon icon-cancel"></span>';
-            var dlink      = link(real_short, 'dl', element.token, false, true);
-            var limit      = (element.limit === 0) ? '<%= l('No limit') %>' : moment.unix(element.limit * 86400 + element.created_at).locale(window.navigator.language).format('LLLL');
-            var created_at = moment.unix(element.created_at).locale(window.navigator.language).format('LLLL');
-
-            var tr = '<tr id="alert-'+real_short+'"><td>'
-                +element.filename
-                +'</td><td>'
-                +'<a href="'+vlink+'">'+vlink+'</a>'
-                +'</td><td id="count-'+real_short+'" class="text-center">'
-                +'</td><td class="text-center">'
-                +del_view
-                +'</td><td>'
-                +created_at
-                +'</td><td>'
-                +limit
-                +'</td><td>'
-                +'<a id="del-'+real_short+'" data-short="'+real_short+'" data-token="'+element.token+'" href="#">'+dlink+'</a>'
-                +'</td></tr>';
-            $('#myfiles').append(tr);
-            $('#del-'+real_short).on('click', delImage);
-
-            $.ajax({
-                url  : '<%== url_for('counter') %>',
-                type : 'POST',
-                data : {
-                    'short': real_short,
-                    'token': element.token
-                },
-                success: function(data) {
-                    if (data.success) {
-                        if (data.enabled) {
-                            $('#count-'+real_short).text(data.counter);
-                        } else {
-                            delItem(real_short);
-                            $('#alert-'+real_short).remove();
-                        }
-                    } else {
-                        alert(data.msg);
-                    }
-                },
-                error: function() {
-                    alert(element.filename+'<%= l(': Error while trying to get the counter.') %>');
-                }
-            });
-        });
-    }
-% end
-%= javascript '/js/moment-with-locales.min.js'

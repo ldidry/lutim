@@ -1,0 +1,30 @@
+% # vim:set sw=4 ts=4 sts=4 ft=javascript expandtab:
+$(document).ready(function() {
+    var absUrl = '<%= url_for('/') %>';
+
+    var key = window.location.hash.substring(1);  // Get key
+    // First, strip everything after the equal sign (=) which signals end of base64 string.
+    i = key.indexOf('='); if (i>-1) { key = key.substring(0,i+1); }
+    // If the equal sign was not present, some parameters may remain:
+    i = key.indexOf('&'); if (i>-1) { key = key.substring(0,i); }
+
+    var keys = key.split(',');
+
+    $('#download-all').attr('href', $('#download-all').attr('href')+keys.join('&i='));
+
+    var items = [];
+    keys.forEach(function(element, index, array) {
+        if (!element.match('xcf')) {
+            $('#gallery').append(
+                [
+                    '<img src="', absUrl+element, '" data-image="', absUrl+element, '" data-description="" alt="">'
+                ].join('')
+            );
+        }
+    });
+    var api = $("#gallery").unitegallery({
+        gallery_theme:     "tiles",
+        tiles_max_columns: 4,
+        lightbox_overlay_color: "#DDD"
+    });
+});

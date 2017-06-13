@@ -1,454 +1,468 @@
 % # vim:set sw=4 ts=4 sts=4 ft=javascript expandtab:
-%= javascript begin
-    window.gallery_url = '<%= url_for('gallery')->to_abs %>#';
-    window.zip_url = '<%= url_for('zip')->to_abs %>?i=';
-    window.short_hash = {};
-    window.zip_hash = {};
-    function addToShortHash(short) {
-        window.short_hash[short] = 1;
-        console.debug(window.short_hash);
-        if (Object.keys(window.short_hash).length > 0) {
-            $('#gallery-url').removeClass('hidden');
-            $('#gallery-url-input').val(window.gallery_url+Object.keys(window.short_hash).join(','));
-            $('#gallery-url-link').attr('href', window.gallery_url+Object.keys(window.short_hash).join(','));
-        }
+function selectInput() {
+    $(this).select();
+}
+function cleanName(name, empty) {
+    if (empty !== undefined && empty !== null && empty) {
+        return name.replace(/&(l|g)t;/g, '').replace(/"/g, '\'');
+    } else {
+        return name.replace(/</g, '&lt;').replace(/>/g, '&gt;');
     }
-    function rmFromShortHash(short) {
-        delete window.short_hash[short];
-        $('#gallery-url-input').val(window.gallery_url+Object.keys(window.short_hash).join(','));
-        $('#gallery-url-link').attr('href', window.gallery_url+Object.keys(window.short_hash).join(','));
-        if (Object.keys(window.short_hash).length === 0) {
-            $('#gallery-url').addClass('hidden');
-        }
-    }
-    function addToZipHash(short) {
-        window.zip_hash[short] = 1;
-        if (Object.keys(window.zip_hash).length > 0) {
-            $('#zip-url').removeClass('hidden');
-            $('#zip-url-input').val(window.zip_url+Object.keys(window.zip_hash).join('&i='));
-            $('#zip-url-link').attr('href', window.zip_url+Object.keys(window.zip_hash).join('&i='));
-        }
-    }
-    function rmFromZipHash(short) {
-        delete window.zip_hash[short];
-        $('#zip-url-input').val(window.zip_url+Object.keys(window.zip_hash).join('&i='));
-        $('#zip-url-link').attr('href', window.zip_url+Object.keys(window.zip_hash).join('&i='));
-        if (Object.keys(window.zip_hash).length === 0) {
-            $('#zip-url').addClass('hidden');
-        }
-    }
-    function selectInput() {
-        $(this).select();
-    }
-    function tw_url(url) {
-        var btn = [
-            '<a title="<%= l('Tweet it!') %>" target="_blank" href="https://twitter.com/share?url=<%== url_for('/')->to_abs() %>', url, '?t" class="btn btn-default">',
-               '<span class="icon icon-twitter"></span>',
+}
+function tw_url(url) {
+    var btn = [
+        '<a title="<%= l('Tweet it!') %>" target="_blank" href="https://twitter.com/share?url=<%== url_for('/')->to_abs() %>', url, '?t" class="btn btn-default">',
+           '<span class="icon icon-twitter"></span>',
+        '</a>'
+    ].join('');
+    if (navigator.mozSetMessageHandler !== undefined) {
+        btn = btn+[
+            '<a title="<%= l('Share it!') %>" target="_blank" href="" onclick="share(\'<%== url_for('/')->to_abs() %>', url, '?t\');return false;">',
+               '<span class="icon icon-share"></span>',
             '</a>'
         ].join('');
-        if (navigator.mozSetMessageHandler !== undefined) {
-            btn = btn+[
-                '<a title="<%= l('Share it!') %>" target="_blank" href="" onclick="share(\'<%== url_for('/')->to_abs() %>', url, '?t\');return false;">',
-                   '<span class="icon icon-share"></span>',
-                '</a>'
-            ].join('');
+    }
+    return btn
+}
+function modify(url, short) {
+    var limit       = $('#day-'+short).val();
+    var del_at_view = ($('#first-view-'+short).prop('checked')) ? 1 : 0;
+    $.ajax({
+        url  : url,
+        type : 'POST',
+        data : {
+            'image_url'      : '<%== url_for('/')->to_abs() %>'+short,
+            'format'         : 'json',
+            'delete-day'     : limit,
+            'first-view'     : del_at_view
+        },
+        success: function(data) {
+            updateItem(short, limit, del_at_view);
+            alert(data.msg);
+        },
+        error: function() {
+            alert('<%= l('Error while trying to modify the image.') %>');
         }
-        return btn
-    }
-    function modify(url, short) {
-        $.ajax({
-            url  : url,
-            type : 'POST',
-            data : {
-                'image_url'      : '<%== url_for('/')->to_abs() %>'+short,
-                'format'         : 'json',
-                'first-view'     : ($('#first-view-'+short).prop('checked')) ? 1 : 0,
-                'delete-day'     : $('#day-'+short).val()
-            },
-            success: function(data) {
-                alert(data.msg);
-            },
-            error: function() {
-                alert('<%= l('Error while trying to modify the image.') %>');
-            }
-        });
-    }
+    });
+}
 
-    /* Stolen from https://github.com/mozilla-services/push-dev-dashboard/blob/3ad4de737380d0842f40c82301d1f748c1b20f2b/push/static/js/validation.js */
-    function createNode(text) {
-        var node = document.createElement('pre');
-        node.style.width = '1px';
-        node.style.height = '1px';
-        node.style.position = 'fixed';
-        node.style.top = '5px';
-        node.textContent = text;
-        return node;
-    }
-
-    function copyNode(node) {
-        var selection = getSelection();
-        selection.removeAllRanges();
-
-        var range = document.createRange();
-        range.selectNodeContents(node);
-        selection.addRange(range);
-
-        var success = document.execCommand('copy');
-        selection.removeAllRanges();
-        return success;
-    }
-
-    function copyText(text) {
-        var node = createNode(text);
-        document.body.appendChild(node);
-        var success = copyNode(node);
-        document.body.removeChild(node);
-        return success;
-    }
-
-    function copyInput(node) {
-        node.select();
-        var success = document.execCommand('copy');
-        getSelection().removeAllRanges();
-        return success;
-    }
-    function copyToClipboard(el) {
-        el = el.siblings('input');
-        try {
-            var successful = copyInput(el);
-            var msg = successful ? 'successful' : 'unsuccessful';
-            console.debug('Copying text command was ' + msg);
-            if (!successful) {
-                throw new Error('Copying text command was ' + msg);
-            }
-        } catch (err) {
-            prompt('<%= l('Hit Ctrl+C, then Enter to copy the short link') %>', el.val());
-        }
-    }
-    function copyAllToClipboard() {
-        var text = new Array();
-        $('.view-link-input').each(function(index) {
-            text.push($(this).val());
-        });
-
-        try {
-            var successful = copyText(text.join("\n"));
-            var msg = successful ? 'successful' : 'unsuccessful';
-            console.debug('Copying text command was ' + msg);
-            if (!successful) {
-                throw new Error('Copying text command was ' + msg);
-            }
-        } catch (err) {
-            prompt('<%= l('Hit Ctrl+C, then Enter to copy the short link') %>', text.join(" "));
-        }
-
-    }
-    function buildMessage(success, msg) {
-        if(success) {
-            var s_url = link([msg.short, '.', msg.ext].join(''), '');
-            var thumb = (msg.thumb !== null) ? [
-                '<div class="col-sm-1">',
-                    '<a href="', s_url, '" target="_blank">',
-                        '<img class="thumbnail img-responsive" alt="', msg.filename, ' thumbnail" src="', msg.thumb, '">',
-                    '</a>',
-                '</div>'
-            ].join('') : ''
-            return [
-                '<div class="alert alert-success" id="alert-', msg.real_short, '">',
-                    '<button type="button" class="close" data-dismiss="alert" aria-hidden="true" onclick="rmFromShortHash(\'', msg.short, '.', msg.ext, '\');rmFromZipHash(\'', msg.short, '\');">&times;</button>',
-                    '<div class="row">', thumb,
-                        '<div class="col-sm-11">',
-                            '<h4>',
-                                '<a href="', s_url, '" target="_blank">',
-                                    msg.filename,
-                                '</a>',
-                            '</h4>',
-                            '<form class="form">',
-                                '<div class="form-group">',
-                                    '<label class="sr-only" for="view', msg.real_short, '"><%= l('View link') %></label>',
-                                    '<div class="input-group input-group-sm col-sm-6">',
-                                        '<div class="input-group-btn adjust-addon">',
-                                            '<a href="', s_url, '" target="_blank" class="btn btn-default">',
-                                                '<span class="icon icon-eye" title=" <%= l('View link') %>"></span>',
-                                            '</a>',
-                                        '</div>',
-                                        '<input type="text" class="form-control view-link-input" id="view', msg.real_short, '" value="', s_url, '" readonly>',
-                                        '<a href="#" onClick="event.preventDefault();copyToClipboard($(this));" class="input-group-addon" title="<%= l('Copy to clipboard') %>">',
-                                            '<span class="icon icon-clipboard"></span>',
+function buildMessage(success, msg) {
+    if(success) {
+        var s_url = link([msg.short, '.', msg.ext].join(''), '');
+        var thumb = (msg.thumb !== null) ? [
+            '<div class="col-sm-1">',
+                '<a href="', s_url, '" target="_blank">',
+                    '<img class="thumbnail img-responsive" alt="', cleanName(msg.filename, true), ' thumbnail" src="', msg.thumb, '">',
+                '</a>',
+            '</div>'
+        ].join('') : ''
+        return [
+            '<div class="alert alert-success" id="alert-', msg.real_short, '">',
+                '<button type="button" class="close" data-dismiss="alert" aria-hidden="true" onclick="rmFromShortHash(\'', msg.short, '.', msg.ext, '\');rmFromZipHash(\'', msg.short, '\');">&times;</button>',
+                '<div class="row">', thumb,
+                    '<div class="col-sm-11">',
+                        '<h4>',
+                            '<a href="', s_url, '" target="_blank">',
+                                msg.filename,
+                            '</a>',
+                        '</h4>',
+                        '<form class="form">',
+                            '<div class="form-group">',
+                                '<label class="sr-only" for="view', msg.real_short, '"><%= l('View link') %></label>',
+                                '<div class="input-group input-group-sm col-sm-6">',
+                                    '<div class="input-group-btn adjust-addon">',
+                                        '<a href="', s_url, '" target="_blank" class="btn btn-default">',
+                                            '<span class="icon icon-eye" title=" <%= l('View link') %>"></span>',
                                         '</a>',
                                     '</div>',
+                                    '<input type="text" class="form-control view-link-input" id="view', msg.real_short, '" value="', s_url, '" readonly>',
+                                    '<a href="#" onClick="event.preventDefault();copyToClipboard($(this));" class="input-group-addon" title="<%= l('Copy to clipboard') %>">',
+                                        '<span class="icon icon-clipboard"></span>',
+                                    '</a>',
                                 '</div>',
-                                '<div class="form-group">',
-                                    '<label class="sr-only" for="markdown', msg.real_short, '"><%= l('Markdown syntax') %></label>',
-                                    '<div class="input-group input-group-sm col-sm-6">',
-                                        '<div class="input-group-addon adjust-addon">',
-                                            '<span class="markdown-mark-solid" title="<%= l('Markdown syntax') %>"></span>',
-                                        '</div>',
-                                        '<input type="text" class="form-control" id="markdown', msg.real_short, '" value="![](', link(msg.short, ''), ')" readonly>',
-                                        '<a href="#" onClick="event.preventDefault();copyToClipboard($(this));" class="input-group-addon" title="<%= l('Copy to clipboard') %>">',
-                                            '<span class="icon icon-clipboard"></span>',
+                            '</div>',
+                            '<div class="form-group">',
+                                '<label class="sr-only" for="markdown', msg.real_short, '"><%= l('Markdown syntax') %></label>',
+                                '<div class="input-group input-group-sm col-sm-6">',
+                                    '<div class="input-group-addon adjust-addon">',
+                                        '<span class="markdown-mark-solid" title="<%= l('Markdown syntax') %>"></span>',
+                                    '</div>',
+                                    '<input type="text" class="form-control" id="markdown', msg.real_short, '" value="![](', link(msg.short, ''), ')" readonly>',
+                                    '<a href="#" onClick="event.preventDefault();copyToClipboard($(this));" class="input-group-addon" title="<%= l('Copy to clipboard') %>">',
+                                        '<span class="icon icon-clipboard"></span>',
+                                    '</a>',
+                                '</div>',
+                            '</div>',
+                            '<div class="form-group">',
+                                '<label class="sr-only" for="download', msg.real_short, '"><%= l('Download link') %></label>',
+                                '<div class="input-group input-group-sm col-sm-6">',
+                                    '<div class="input-group-btn adjust-addon">',
+                                        '<a href="', link(msg.short, 'dl'), '" class="btn btn-default">',
+                                            '<span class="icon icon-download" title="<%= l('Download link') %>"></span>',
                                         '</a>',
                                     '</div>',
+                                    '<input type="text" class="form-control" id="download', msg.real_short, '" value="', link(msg.short, 'dl'), '" readonly>',
+                                    '<a href="#" onClick="event.preventDefault();copyToClipboard($(this));" class="input-group-addon" title="<%= l('Copy to clipboard') %>">',
+                                        '<span class="icon icon-clipboard"></span>',
+                                    '</a>',
                                 '</div>',
-                                '<div class="form-group">',
-                                    '<label class="sr-only" for="download', msg.real_short, '"><%= l('Download link') %></label>',
-                                    '<div class="input-group input-group-sm col-sm-6">',
-                                        '<div class="input-group-btn adjust-addon">',
-                                            '<a href="', link(msg.short, 'dl'), '" class="btn btn-default">',
-                                                '<span class="icon icon-download" title="<%= l('Download link') %>"></span>',
-                                            '</a>',
-                                        '</div>',
-                                        '<input type="text" class="form-control" id="download', msg.real_short, '" value="', link(msg.short, 'dl'), '" readonly>',
-                                        '<a href="#" onClick="event.preventDefault();copyToClipboard($(this));" class="input-group-addon" title="<%= l('Copy to clipboard') %>">',
-                                            '<span class="icon icon-clipboard"></span>',
+                            '</div>',
+                            '<div class="form-group">',
+                                '<label class="sr-only" for="share', msg.real_short, '"><%= l('Link for share on social networks') %></label>',
+                                '<div class="input-group input-group-sm col-sm-6">',
+                                    '<div class="input-group-btn adjust-addon">',
+                                        '<a href="', link(msg.short, 't'), '" target="_blank" class="btn btn-default">',
+                                            '<span class="icon icon-share" title="<%= l('Link for share on social networks') %>"></span>',
                                         '</a>',
+                                        tw_url(msg.short),
                                     '</div>',
+                                    '<input type="text" class="form-control" id="share', msg.real_short, '" value="', link(msg.short, 't'), '" readonly>',
+                                    '<a href="#" onClick="event.preventDefault();copyToClipboard($(this));" class="input-group-addon" title="<%= l('Copy to clipboard') %>">',
+                                        '<span class="icon icon-clipboard"></span>',
+                                    '</a>',
                                 '</div>',
-                                '<div class="form-group">',
-                                    '<label class="sr-only" for="share', msg.real_short, '"><%= l('Link for share on social networks') %></label>',
-                                    '<div class="input-group input-group-sm col-sm-6">',
-                                        '<div class="input-group-btn adjust-addon">',
-                                            '<a href="', link(msg.short, 't'), '" target="_blank" class="btn btn-default">',
-                                                '<span class="icon icon-share" title="<%= l('Link for share on social networks') %>"></span>',
-                                            '</a>',
-                                            tw_url(msg.short),
-                                        '</div>',
-                                        '<input type="text" class="form-control" id="share', msg.real_short, '" value="', link(msg.short, 't'), '" readonly>',
-                                        '<a href="#" onClick="event.preventDefault();copyToClipboard($(this));" class="input-group-addon" title="<%= l('Copy to clipboard') %>">',
-                                            '<span class="icon icon-clipboard"></span>',
-                                        '</a>',
-                                    '</div>',
+                            '</div>',
+                            '<div class="form-group">',
+                                '<div class="input-group col-sm-6 col-xs-12">',
+                                    '<span class="form-control-static">', link(msg.real_short, '', msg.token), '</span>',
                                 '</div>',
-                                '<div class="form-group">',
-                                    '<div class="input-group col-sm-6 col-xs-12">',
-                                        '<span class="form-control-static">', link(msg.real_short, '', msg.token), '</span>',
-                                    '</div>',
-                                '</div>',
-                            '</form>',
-                        '</div>',
+                            '</div>',
+                        '</form>',
                     '</div>',
-                    '<div class="row">',
-                        '<form class="form col-sm-11 col-sm-offset-1" role="form" method="POST" action="', link(msg.real_short, '', msg.token, true), '">',
-                            '<div class="form-group form-inline">',
-                                '<select id="day-', msg.real_short, '" name="delete-day" class="form-control">',
+                '</div>',
+                '<div class="row">',
+                    '<form class="form col-sm-11 col-sm-offset-1" role="form" method="POST" action="', link(msg.real_short, '', msg.token, true), '">',
+                        '<div class="form-group form-inline">',
+                            '<select id="day-', msg.real_short, '" name="delete-day" class="form-control">',
 % for my $delay (qw/0 1 7 30 365/) {
 %   my $text = ($delay == 7 || $delay == 30) ? l('%1 days', $delay) : $d->{'delay_'.$delay};
 %   if (config('max_delay')) {
 %       if ($delay) {
 %           if ($delay < config('max_delay')) {
-                                    '<option value="<%= $delay %>" <%== is_selected($delay) %>><%= $text %></option>',
+                                '<option value="<%= $delay %>" <%== is_selected($delay) %>><%= $text %></option>',
 %           } elsif ($delay == config('max_delay')) {
-                                    '<option value="<%= $delay %>" <%== is_selected($delay) %>><%= $text %></option>',
+                                '<option value="<%= $delay %>" <%== is_selected($delay) %>><%= $text %></option>',
 %               last;
 %           } else {
 %               my $text = ($delay == 1) ? l('24 hours') : l('%1 days', $delay);
-                                    '<option value="<%= config('max_delay') %>" <%== is_selected(config('max_delay')) %>><%= l('%1 days', config('max_delay')) %></option>',
+                                '<option value="<%= config('max_delay') %>" <%== is_selected(config('max_delay')) %>><%= l('%1 days', config('max_delay')) %></option>',
 %               last;
 %           }
 %       }
 %   } else {
-                                    '<option value="<%= $delay %>" <%== is_selected($delay) %>><%= $text %></option>',
+                                '<option value="<%= $delay %>" <%== is_selected($delay) %>><%= $text %></option>',
 %   }
 % }
-                                '</select>&nbsp;',
-                                '<div class="checkbox">',
-                                    '<label>',
-                                        '<input id="first-view-', msg.real_short, '" type="checkbox" name="first-view"> <%= l('Delete at first view?') %>',
-                                    '</label>',
-                                '</div>&nbsp;',
-                                '<a href="#" onclick="modify(\'', link(msg.real_short, '', msg.token, true), '\', \'', msg.real_short, '\');return false;" class="btn btn-sm btn-default btn-primary">',
-                                    '<%= l('Let\'s go!') %>',
-                                '</a>',
-                            '</div>',
-                        '</form>',
-                    '</div>',
-                '</div>'
-            ].join('');
-        } else {
-            return [
-                '<div class="alert alert-danger">',
-                    '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>',
-                    '<strong><%= l('Something bad happened') %></strong><br>',
-                    msg.filename,
-                    '<br>',
-                    msg.msg,
-                '</div>'
-            ].join('');
-        }
-    }
-    function bindddz(firstview, deleteday) {
-        $('#drag-and-drop-zone').dmUploader({
-            url: '<%== url_for('/') %>',
-            dataType: 'json',
-            allowedTypes: 'image/*',
-            maxFileSize: <%= $max_file_size %>,
-            onNewFile: function(id, file){
-                $('.messages').append([
-                    '<div id="', id, '-div">',
-                        file.name, '<br>',
-                        '<div class="progress">',
-                            '<div id="', id, '"class="progress-bar progress-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">',
-                                '<span id="', id, '-text" class="pull-left" style="padding-left: 10px;"> 0%</span>',
-                            '</div>',
+                            '</select>&nbsp;',
+                            '<div class="checkbox">',
+                                '<label>',
+                                    '<input id="first-view-', msg.real_short, '" type="checkbox" name="first-view"> <%= l('Delete at first view?') %>',
+                                '</label>',
+                            '</div>&nbsp;',
+                            '<a href="#" onclick="modify(\'', link(msg.real_short, '', msg.token, true), '\', \'', msg.real_short, '\');return false;" class="btn btn-sm btn-default btn-primary">',
+                                '<%= l('Let\'s go!') %>',
+                            '</a>',
                         '</div>',
-                    '</div>'
-                ].join(''));
-            },
-            onUploadProgress: function(id, percent){
-                var percentStr = ' '+percent+'%';
-                $('#'+id).prop('aria-valuenow', percent);
-                $('#'+id).prop('style', 'width: '+percent+'%;');
-                $('#'+id+'-text').html(percentStr);
-            },
-            onUploadSuccess: function(id, data){
-                $('#'+id+'-div').remove();
-                if ($('#copy-all').length === 0 && data.success) {
-                    $('.messages').prepend(
-                        [
-                            '<div class="col-xs-12 col-sm-11 col-sm-offset-1">',
-                                '<a id="copy-all" href="#" class="btn btn-info" onClick="event.preventDefault();copyAllToClipboard();">',
-                                    '<%= l('Copy all view links to clipboard') %>',
-                                '</a>',
-                            '</div>'
-                        ].join('')
-                    );
-                }
-                $('.messages').append(buildMessage(data.success, data.msg));
-                $('#del-'+data.msg.real_short).on('click', delImage);
-                if (data.success) {
-                    addToShortHash(data.msg.short+'.'+data.msg.ext);
-                    addToZipHash(data.msg.short);
-                    $('.close').unbind('click', evaluateCopyAll);
-                    $('.close').on('click', evaluateCopyAll);
-                    $('input[type=\'text\']').unbind("click", selectInput);
-                    $('input[type=\'text\']').on("click", selectInput);
-                    addItem(data.msg);
-                }
-            },
-            onUploadError: function(id, message){
-                $('.messages').append(buildMessage(false, ''));
-            },
-            onFileSizeError: function(file){
-                $('.messages').append(buildMessage(false, { filename: file.name, msg: '<%= l('The file exceed the size limit (%1)', $max_file_size) %>'}));
-            }
-        });
-    }
-
-    function upload_url() {
-        var val = $('#lutim-file-url').val();
-        if (val !== undefined && val !== '') {
-            $('#lutim-file-url').prop('disabled', 'disabled');
-            $('.hidden-spin').css('display', 'block');
-            $.ajax({
-                url  : '<%== url_for('/') %>',
-                type : 'POST',
-                data : {
-                    'lutim-file-url' : val,
-                    'format'         : 'json',
-                    'first-view'     : ($('#first-view').prop('checked')) ? 1 : 0,
-                    'crypt'          : ($('#crypt').prop('checked')) ? 1 : 0,
-                    'delete-day'     : $('#delete-day').val()
-                },
-                success: function(data) {
-                    $('.messages').append(buildMessage(data.success, data.msg));
-                    if (data.success) {
-                        if ($('#copy-all').length === 0) {
-                            $('.messages').prepend([
-                                '<div class="col-xs-12 col-sm-11 col-sm-offset-1">',
-                                    '<a id="copy-all" href="#" class="btn btn-info" onClick="event.preventDefault();copyAllToClipboard();">',
-                                        '<%= l('Copy all view links to clipboard') %>',
-                                    '</a>',
-                                '</div>'
-                            ].join(''));
-                        }
-                        $('#lutim-file-url').val('');
-                        addToShortHash(data.msg.short+'.'+data.msg.ext);
-                        addToZipHash(data.msg.short);
-                        $('.close').unbind('click', evaluateCopyAll);
-                        $('.close').on('click', evaluateCopyAll);
-                        addItem(data.msg);
-                    }
-                },
-                error: function() {
-                    $('.messages').append(buildMessage(false, ''));
-                },
-                complete: function() {
-                    $('#lutim-file-url').prop('disabled', '');
-                    $('.hidden-spin').css('display', 'none');
-                }
-            });
-        }
-    }
-
-    function fileUpload(file) {
-        var fd = new FormData();
-        fd.append('file', file);
-
-        fd.append('format', 'json');
-        fd.append('first-view', ($('#first-view').prop('checked')) ? 1 : 0);
-        fd.append('crypt', ($('#crypt').prop('checked')) ? 1 : 0);
-        fd.append('delete-day', ($('#delete-day').val()));
-
-        $('.messages').append([
-            '<div id="1-div">', file.name, '<br>',
-                '<div class="progress">',
-                    '<div id="1"class="progress-bar progress-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">',
-                        '<span id="1-text" class="pull-left" style="padding-left: 10px;"> 0%</span>',
-                    '</div>',
+                    '</form>',
                 '</div>',
             '</div>'
-        ].join(''));
-        // Ajax Submit
-        $.ajax({
-            url: '<%== url_for('/') %>',
-            type: 'POST',
-            dataType: 'json',
-            data: fd,
-            cache: false,
-            contentType: false,
-            processData: false,
-            forceSync: false,
-            xhr: function(){
-                var xhrobj = $.ajaxSettings.xhr();
-                if(xhrobj.upload){
-                    xhrobj.upload.addEventListener('progress', function(event) {
-                        var percent = 0;
-                        var position = event.loaded || event.position;
-                        var total = event.total || e.totalSize;
-                        if(event.lengthComputable){
-                          percent = Math.ceil(position / total * 100);
-                        }
-
-                        var percentStr = ' '+percent+'%';
-                        $('#1').prop('aria-valuenow', percent);
-                        $('#1').prop('style', 'width: '+percent+'%;');
-                        $('#1-text').html(percentStr);
-                    }, false);
-                }
-
-                return xhrobj;
-            },
-            success: function (data, message, xhr){
-                $('#1-div').remove();
-                if ($('#copy-all').length === 0 && data.success) {
-                    $('.messages').prepend([
+        ].join('');
+    } else {
+        return [
+            '<div class="alert alert-danger">',
+                '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>',
+                '<strong><%= l('Something bad happened') %></strong><br>',
+                msg.filename,
+                '<br>',
+                msg.msg,
+            '</div>'
+        ].join('');
+    }
+}
+function bindddz(firstview, deleteday) {
+    $('#drag-and-drop-zone').dmUploader({
+        url: '<%== url_for('/') %>',
+        dataType: 'json',
+        allowedTypes: 'image/*',
+        maxFileSize: <%= config('max_file_size') %>,
+        onNewFile: function(id, file){
+            $('.messages').append([
+                '<div id="', id, '-div">',
+                    cleanName(file.name), '<br>',
+                    '<div class="progress">',
+                        '<div id="', id, '"class="progress-bar progress-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">',
+                            '<span id="', id, '-text" class="pull-left" style="padding-left: 10px;"> 0%</span>',
+                        '</div>',
+                    '</div>',
+                '</div>'
+            ].join(''));
+        },
+        onUploadProgress: function(id, percent){
+            var percentStr = ' '+percent+'%';
+            $('#'+id).prop('aria-valuenow', percent);
+            $('#'+id).prop('style', 'width: '+percent+'%;');
+            $('#'+id+'-text').html(percentStr);
+        },
+        onUploadSuccess: function(id, data){
+            data.msg.filename = cleanName(data.msg.filename);
+            $('#'+id+'-div').remove();
+            if ($('#copy-all').length === 0 && data.success) {
+                $('.messages').prepend(
+                    [
                         '<div class="col-xs-12 col-sm-11 col-sm-offset-1">',
                             '<a id="copy-all" href="#" class="btn btn-info" onClick="event.preventDefault();copyAllToClipboard();">',
                                 '<%= l('Copy all view links to clipboard') %>',
                             '</a>',
                         '</div>'
-                    ].join(''));
-                }
+                    ].join('')
+                );
+            }
+            $('.messages').append(buildMessage(data.success, data.msg));
+            $('#del-'+data.msg.real_short).on('click', function() {
+                rmFromShortHash(data.msg.short+'.'+data.msg.ext)
+                rmFromZipHash(data.msg.short);
+            });
+            $('#del-'+data.msg.real_short).on('click', delImage);
+            if (data.success) {
+                addToShortHash(data.msg.short+'.'+data.msg.ext);
+                addToZipHash(data.msg.short);
+                $('.close').unbind('click', evaluateCopyAll);
+                $('.close').on('click', evaluateCopyAll);
+                $('input[type=\'text\']').unbind("click", selectInput);
+                $('input[type=\'text\']').on("click", selectInput);
+                addItem(data.msg);
+            }
+        },
+        onUploadError: function(id, message){
+            $('.messages').append(buildMessage(false, ''));
+        },
+        onFileSizeError: function(file){
+            $('.messages').append(buildMessage(false, { filename: file.name, msg: '<%= l('The file exceed the size limit (%1)', config('max_file_size')) %>'}));
+        }
+    });
+}
+
+function upload_url() {
+    var val = $('#lutim-file-url').val();
+    if (val !== undefined && val !== '') {
+        $('#lutim-file-url').prop('disabled', 'disabled');
+        $('.hidden-spin').css('display', 'block');
+        $.ajax({
+            url  : '<%== url_for('/') %>',
+            type : 'POST',
+            data : {
+                'lutim-file-url' : val,
+                'format'         : 'json',
+                'first-view'     : ($('#first-view').prop('checked')) ? 1 : 0,
+                'crypt'          : ($('#crypt').prop('checked')) ? 1 : 0,
+                'delete-day'     : $('#delete-day').val()
+            },
+            success: function(data) {
+                data.msg.filename = cleanName(data.msg.filename);
                 $('.messages').append(buildMessage(data.success, data.msg));
                 if (data.success) {
+                    if ($('#copy-all').length === 0) {
+                        $('.messages').prepend([
+                            '<div class="col-xs-12 col-sm-11 col-sm-offset-1">',
+                                '<a id="copy-all" href="#" class="btn btn-info" onClick="event.preventDefault();copyAllToClipboard();">',
+                                    '<%= l('Copy all view links to clipboard') %>',
+                                '</a>',
+                            '</div>'
+                        ].join(''));
+                    }
+                    $('#lutim-file-url').val('');
+                    addToShortHash(data.msg.short+'.'+data.msg.ext);
+                    addToZipHash(data.msg.short);
                     $('.close').unbind('click', evaluateCopyAll);
                     $('.close').on('click', evaluateCopyAll);
                     addItem(data.msg);
                 }
             },
-            error: function (xhr, status, errMsg){
+            error: function() {
                 $('.messages').append(buildMessage(false, ''));
             },
+            complete: function() {
+                $('#lutim-file-url').prop('disabled', '');
+                $('.hidden-spin').css('display', 'none');
+            }
         });
     }
-% end
+}
+
+function fileUpload(file) {
+    var fd = new FormData();
+    fd.append('file', file);
+
+    fd.append('format', 'json');
+    fd.append('first-view', ($('#first-view').prop('checked')) ? 1 : 0);
+    fd.append('crypt', ($('#crypt').prop('checked')) ? 1 : 0);
+    fd.append('delete-day', ($('#delete-day').val()));
+
+    $('.messages').append([
+        '<div id="1-div">', cleanName(file.name), '<br>',
+            '<div class="progress">',
+                '<div id="1"class="progress-bar progress-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">',
+                    '<span id="1-text" class="pull-left" style="padding-left: 10px;"> 0%</span>',
+                '</div>',
+            '</div>',
+        '</div>'
+    ].join(''));
+    // Ajax Submit
+    $.ajax({
+        url: '<%== url_for('/') %>',
+        type: 'POST',
+        dataType: 'json',
+        data: fd,
+        cache: false,
+        contentType: false,
+        processData: false,
+        forceSync: false,
+        xhr: function(){
+            var xhrobj = $.ajaxSettings.xhr();
+            if(xhrobj.upload){
+                xhrobj.upload.addEventListener('progress', function(event) {
+                    var percent = 0;
+                    var position = event.loaded || event.position;
+                    var total = event.total || e.totalSize;
+                    if(event.lengthComputable){
+                      percent = Math.ceil(position / total * 100);
+                    }
+
+                    var percentStr = ' '+percent+'%';
+                    $('#1').prop('aria-valuenow', percent);
+                    $('#1').prop('style', 'width: '+percent+'%;');
+                    $('#1-text').html(percentStr);
+                }, false);
+            }
+
+            return xhrobj;
+        },
+        success: function (data, message, xhr){
+            $('#1-div').remove();
+            if ($('#copy-all').length === 0 && data.success) {
+                $('.messages').prepend([
+                    '<div class="col-xs-12 col-sm-11 col-sm-offset-1">',
+                        '<a id="copy-all" href="#" class="btn btn-info" onClick="event.preventDefault();copyAllToClipboard();">',
+                            '<%= l('Copy all view links to clipboard') %>',
+                        '</a>',
+                    '</div>'
+                ].join(''));
+            }
+            data.msg.filename = cleanName(data.msg.filename);
+            $('.messages').append(buildMessage(data.success, data.msg));
+            if (data.success) {
+                $('.close').unbind('click', evaluateCopyAll);
+                $('.close').on('click', evaluateCopyAll);
+                addItem(data.msg);
+            }
+        },
+        error: function (xhr, status, errMsg){
+            $('.messages').append(buildMessage(false, ''));
+        },
+    });
+}
+
+function initPaste() {
+    /*
+        actually FF and Chrome doesn't handle paste events the same way...
+        for ff we need to create a editable div and register an event to it.
+        When user paste, the image is "really" pasted in the div. Then, we need to iterate throught
+        the div childs to get images. Previsouly FF didn't have the paste event so it was esay to figure on wich browser we were.
+        But firefox now have a paste event so I test it...
+
+        on Chrome the file object is directlyt in the clipboard.
+    */
+    var b = 'FF';
+    try {
+        //FF
+        var cbe = new ClipboardEvent('hop');
+    } catch(hop) {
+        //under webkkit Clipboard doesn't have arguments...
+        b = 'WK'
+    }
+    if (b === 'FF') {
+        var pasteDiv = document.createElement('div');
+        pasteDiv.addEventListener('paste', onPasteFF);
+        pasteDiv.setAttribute('class', 'pasteZone');
+        pasteDiv.setAttribute('contenteditable', true);
+
+        document.getElementsByTagName('body')[0].appendChild(pasteDiv);
+        pasteDiv.focus();
+
+        document.addEventListener('click', function(event) {
+            var t = $(event.target);
+
+            switch (t[0].nodeName.toUpperCase()) {
+                case 'A':
+                case 'BUTTON':
+                case 'INPUT':
+                case 'SELECT':
+                case 'SPAN':
+                case 'LABEL':
+                    break;
+                default:
+                    if (t[0].parentNode.nodeName.toUpperCase() !== 'SELECT') {
+                        pasteDiv.focus();
+                    }
+            }
+        });
+    } else {
+        document.addEventListener('paste', onPaste);
+    }
+}
+
+function waitforpastedata(elem, savedcontent) {
+    if (elem.childNodes && elem.childNodes.length > 0) {
+        processpaste(elem, savedcontent);
+    } else {
+        var that = {
+            e: elem,
+            s: savedcontent
+        };
+        that.callself = function () {
+            waitforpastedata(that.e, that.s);
+        }
+        setTimeout(that.callself, 20);
+    }
+}
+
+function processpaste(elem, savedcontent) {
+    var pasteZone = document.getElementsByClassName('pasteZone')[0];
+    var f         = new Image();
+
+    f.onload = function(){
+        var canvas    = document.createElement('canvas');
+        canvas.width  = f.width;
+        canvas.height = f.height;
+
+        var ctx = canvas.getContext('2d');
+        ctx.drawImage(f, 0, 0, canvas.width, canvas.height);
+
+        canvas.toBlob(function(blob) {
+            var url = window.URL.createObjectURL(blob);
+            fileUpload(blob);
+        });
+    }
+
+    f.src = pasteZone.childNodes[0].src;
+
+    pasteZone.innerHTML = '';
+}
+
+function onPasteFF(e) {
+    var pasteZone = document.getElementsByClassName('pasteZone')[0];
+    waitforpastedata(pasteZone, 'savedcontent');
+}
+
+function onPaste(e) {
+    var items = e.clipboardData.items;
+    for(var i = 0; i < items.length; i++) {
+        var item = items[i];
+        if (/image/.test(item.type)) {
+           var file = item.getAsFile();
+           fileUpload(file);
+        } else {
+           //not image..
+        }
+    }
+}
