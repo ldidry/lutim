@@ -152,7 +152,7 @@ sub run {
 %     l('Total')
 % );
 <script>
-Morris.Donut({
+var enabled_donut = {
   element: 'raw-enabled-holder',
   data: [
     {label: "<%= l('no time limit') %>", value: $unlimited_enabled},
@@ -168,8 +168,8 @@ Morris.Donut({
       '#427dc1',
       '#455ac3',
   ]
-});
-Morris.Donut({
+};
+var disabled_donut = {
   element: 'raw-disabled-holder',
   data: [
     {label: "<%= l('no time limit') %>", value: $unlimited_disabled},
@@ -185,7 +185,7 @@ Morris.Donut({
       '#427dc1',
       '#455ac3',
   ]
-});
+};
 </script>
 $dom2
 EOF

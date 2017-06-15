@@ -64,4 +64,6 @@ $(document).ready(function() {
         $("#total-holder").empty();
         graph(stats_labels, stats_data, stats_total);
     });
+    Morris.Donut(enabled_donut);
+    Morris.Donut(disabled_donut);
 });
