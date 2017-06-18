@@ -334,7 +334,7 @@ sub add {
         # Check file type
         if (index($mediatype, 'image/') >= 0) {
             # Create directory if needed
-            mkdir('files', 0700) unless (-d 'files');
+            mkdir($c->config->{storage_path}, 0700) unless (-d $c->config->{storage_path});
 
             if ($c->req->is_limit_exceeded) {
                 $msg = $c->l('The file exceed the size limit (%1)', $c->req->max_message_size);

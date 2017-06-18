@@ -43,6 +43,7 @@ sub startup {
             theme             => 'default',
             dbtype            => 'sqlite',
             max_files_in_zip  => 15,
+            storage_path      => 'files',
             minion           => {
                 enabled => 0,
                 dbtype  => 'sqlite',
