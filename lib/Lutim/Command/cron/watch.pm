@@ -27,11 +27,12 @@ sub run {
         default => {
             policy_when_full => 'warn',
             dbtype           => 'sqlite',
+            storage_path     => 'files',
         }
     });
 
     if (defined($config->{max_total_size})) {
-        my $total = du(qw/files/);
+        my $total = du($config->{storage_path});
 
         if ($total > $config->{max_total_size}) {
             say "[Lutim cron job watch] Files directory is over quota ($total > ".$config->{max_total_size}.")";
@@ -55,7 +56,7 @@ sub run {
                                 $l->app->delete_image($img);
                             }
                         );
-                    } while (du(qw/files/) > $config->{max_total_size});
+                    } while (du($config->{storage_path}) > $config->{max_total_size});
                 }
                 else {
                     say '[Lutim cron job watch] Unrecognized policy_when_full option: '.$config->{policy_when_full}.'. Aborting.';
