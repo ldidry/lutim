@@ -14,7 +14,7 @@ BEGIN {
     }
 }
 
-$ENV{MOJO_TMPDIR} = 'tmp';
+$ENV{MOJO_TMPDIR} = 'tmp' unless (defined $ENV{MOJO_TMPDIR});
 mkdir($ENV{MOJO_TMPDIR}, 0700) unless (-d $ENV{MOJO_TMPDIR});
 # This method will run once at server start
 sub startup {
