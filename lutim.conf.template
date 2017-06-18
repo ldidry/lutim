@@ -171,6 +171,12 @@
     # optional, default is 15
     #max_files_in_zip => 15,
 
+    # define a path to the the storage folder
+    # you can define it relative to lutim directory or set an absolute path
+    # remember that it has to be in a directory writable by Lutim user
+    # optional, default is files
+    #storage_path => 'files',
+
     ##########################
     # Lutim cron jobs settings
     ##########################

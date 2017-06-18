@@ -15,3 +15,4 @@
 * Thor77 (<http://thor77.org>), german translation, among other things
 * Quentin Pagès, occitan translation
 * Alexis Clairet (<https://github.com/Turboconnard>), paste image to upload ability
+* Stéphane Baron, aka s7b4 (https://gitlab.com/s7b4)
