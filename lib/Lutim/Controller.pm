@@ -356,7 +356,7 @@ sub add {
                 # Save file and create record
                 my $filename = unidecode($upload->filename);
                 my $ext      = ($filename =~ m/([^.]+)$/)[0];
-                my $path     = 'files/'.$record->short.'.'.$ext;
+                my $path     = $c->config->{storage_path}.'/'.$record->short.'.'.$ext;
 
                 my ($width, $height);
                 if ($im_loaded && $mediatype ne 'image/svg+xml' && $mediatype !~ m#image/(x-)?xcf# && $mediatype ne 'image/webp') { # ImageMagick don't work in Debian with svg (for now?)
