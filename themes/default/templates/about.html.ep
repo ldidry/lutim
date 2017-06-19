@@ -36,6 +36,7 @@
         <li>Laura Arjona Reina (<a href="https://wiki.debian.org/LauraArjona">https://wiki.debian.org/LauraArjona</a>), <%= l('spanish translation') %>
         <li>Thor77 (<a href="http://thor77.org">http://thor77.org</a>)</li>
         <li>Quentin Pagès, <%= l('occitan translation') %></li>
+        <li>Stéphane Baron, aka s7b4 (<a href="https://gitlab.com/s7b4">https://gitlab.com/s7b4</a>)</li>
     </ul>
 
     <%= link_to url_for('/') => ( class => "btn btn-primary btn-lg" ) => begin %><%= l('Back to homepage') %><% end%>
