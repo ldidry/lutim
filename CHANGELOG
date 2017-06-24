@@ -1,5 +1,14 @@
 Revision history for Lutim
 
+0.8.4  2017-06-24
+	- Mitigate a bug using the same empty record twice
+
+0.8.3  2017-06-15
+	- Fix the donuts charts in the /stats page.
+
+0.8.2  2017-06-14
+	- Enforce Mojolicious::Plugin::AssetPack version
+
 0.8.1  2017-06-13
 	- Fix #46
 
