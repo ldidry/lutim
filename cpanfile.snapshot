@@ -44,32 +44,6 @@ DISTRIBUTIONS
       perl 5.008001
       strict 0
       warnings 0
-  CPAN-Meta-2.150010
-    pathname: D/DA/DAGOLDEN/CPAN-Meta-2.150010.tar.gz
-    provides:
-      CPAN::Meta 2.150010
-      CPAN::Meta::Converter 2.150010
-      CPAN::Meta::Feature 2.150010
-      CPAN::Meta::History 2.150010
-      CPAN::Meta::Merge 2.150010
-      CPAN::Meta::Prereqs 2.150010
-      CPAN::Meta::Spec 2.150010
-      CPAN::Meta::Validator 2.150010
-      Parse::CPAN::Meta 2.150010
-    requirements:
-      CPAN::Meta::Requirements 2.121
-      CPAN::Meta::YAML 0.011
-      Carp 0
-      Encode 0
-      Exporter 0
-      ExtUtils::MakeMaker 6.17
-      File::Spec 0.80
-      JSON::PP 2.27300
-      Scalar::Util 0
-      perl 5.008001
-      strict 0
-      version 0.88
-      warnings 0
   CSS-Minifier-XS-0.09
     pathname: G/GT/GTERMARS/CSS-Minifier-XS-0.09.tar.gz
     provides:
@@ -1037,14 +1011,6 @@ DISTRIBUTIONS
       Clone 0
       ExtUtils::MakeMaker 0
       perl 5.008001
-  IO-Socket-IP-0.39
-    pathname: P/PE/PEVANS/IO-Socket-IP-0.39.tar.gz
-    provides:
-      IO::Socket::IP 0.39
-    requirements:
-      IO::Socket 0
-      Socket 1.97
-      Test::More 0.88
   IO-Socket-SSL-2.048
     pathname: S/SU/SULLR/IO-Socket-SSL-2.048.tar.gz
     provides:
@@ -1059,6 +1025,7 @@ DISTRIBUTIONS
       IO::Socket::SSL::Utils 2.014
     requirements:
       ExtUtils::MakeMaker 0
+      Mozilla::CA 0
       Net::SSLeay 1.46
       Scalar::Util 0
   IO-stringy-2.111
@@ -1264,16 +1231,6 @@ DISTRIBUTIONS
     requirements:
       ExtUtils::MakeMaker 0
       perl 5.004
-  JSON-PP-2.94
-    pathname: I/IS/ISHIGAKI/JSON-PP-2.94.tar.gz
-    provides:
-      JSON::PP 2.94
-      JSON::PP::Boolean 2.94
-      JSON::PP::IncrParser 2.94
-    requirements:
-      ExtUtils::MakeMaker 0
-      Scalar::Util 1.08
-      Test::More 0
   JavaScript-Minifier-XS-0.11
     pathname: G/GT/GTERMARS/JavaScript-Minifier-XS-0.11.tar.gz
     provides:
@@ -1340,6 +1297,7 @@ DISTRIBUTIONS
     requirements:
       ExtUtils::MakeMaker 0
       Mojolicious 6.0
+      perl 5.010001
   Minion-Backend-SQLite-0.009
     pathname: D/DB/DBOOK/Minion-Backend-SQLite-0.009.tar.gz
     provides:
@@ -1462,6 +1420,7 @@ DISTRIBUTIONS
       ExtUtils::MakeMaker 0
       Mojolicious 7.32
       SQL::Abstract 1.81
+      perl 5.010001
   Mojo-SQLite-2.002
     pathname: D/DB/DBOOK/Mojo-SQLite-2.002.tar.gz
     provides:
@@ -1605,6 +1564,7 @@ DISTRIBUTIONS
       JSON::PP 2.27103
       Pod::Simple 3.09
       Time::Local 1.2
+      perl 5.010001
   Mojolicious-Plugin-AssetPack-1.44
     pathname: J/JH/JHTHORSEN/Mojolicious-Plugin-AssetPack-1.44.tar.gz
     provides:
@@ -1688,6 +1648,14 @@ DISTRIBUTIONS
       Scalar::Util 0
       Sub::Defer 2.003001
       Sub::Quote 2.003001
+      perl 5.006
+  Mozilla-CA-20160104
+    pathname: A/AB/ABH/Mozilla-CA-20160104.tar.gz
+    provides:
+      Mozilla::CA 20160104
+    requirements:
+      ExtUtils::MakeMaker 0
+      Test 0
       perl 5.006
   Net-Domain-TLD-1.75
     pathname: A/AL/ALEXP/Net-Domain-TLD-1.75.tar.gz

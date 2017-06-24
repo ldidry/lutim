@@ -1,6 +1,7 @@
 requires 'Mojolicious', '>= 7.31';
 requires 'EV';
 requires 'IO::Socket::SSL';
+requires 'Net::SSLeay', '>= 1.81';
 requires 'Data::Validate::URI';
 requires 'Net::Domain::TLD', '>= 1.73'; # Must have the last version to handle (at least) .xyz and .link
 requires 'Mojo::Pg';

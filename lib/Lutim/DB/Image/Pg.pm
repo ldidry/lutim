@@ -69,7 +69,8 @@ sub select_created_after {
 sub select_empty {
     my $c = shift;
 
-    my $record = $c->app->pg->db->query('SELECT * FROM lutim WHERE path IS NULL LIMIT 1')->hashes->first;
+    my $record = $c->app->pg->db->query('SELECT * FROM lutim WHERE path IS NULL')->hashes->shuffle->first;
+    $c->app->pg->db->query('UPDATE lutim SET path = ? WHERE short = ?', 'used', $record->{short});
 
     $c = $c->_slurp($record);
 

@@ -72,9 +72,10 @@ sub select_created_after {
 sub select_empty {
     my $c = shift;
 
-    my @records = Lutim::DB::SQLite::Lutim->select('WHERE path IS NULL LIMIT 1');
+    my $record = c(Lutim::DB::SQLite::Lutim->select('WHERE path IS NULL'))->shuffle->first;
+    $record->update(path => 'used');
 
-    $c->record($records[0]);
+    $c->record($record);
     $c = $c->_slurp;
 
     return $c;
