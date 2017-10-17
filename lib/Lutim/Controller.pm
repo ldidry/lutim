@@ -4,6 +4,7 @@ use Mojo::Base 'Mojolicious::Controller';
 use Mojo::Util qw(url_escape url_unescape b64_encode encode);
 use Mojo::Asset::Memory;
 use Mojo::JSON qw(true false);
+use Mojo::IOLoop;
 use Lutim::DB::Image;
 use DateTime;
 use Digest::file qw(digest_file_hex);
@@ -89,20 +90,28 @@ sub get_counter {
     my $short = $c->param('short');
     my $token = $c->param('token');
 
-    my $img = Lutim::DB::Image->new(app => $c->app, short => $short);
-    if (defined($img->mod_token) && $img->mod_token eq $token) {
-        return $c->render(
-            json => {
-                success => true,
-                counter => $img->counter,
-                enabled => ($img->enabled) ? true : false
+    $c->render_later;
+    Mojo::IOLoop->subprocess(
+        sub {
+            my $subprocess = shift;
+            my $img = Lutim::DB::Image->new(app => $c->app, short => $short);
+            if (defined($img->mod_token) && $img->mod_token eq $token) {
+                return {
+                    success => true,
+                    counter => $img->counter,
+                    enabled => ($img->enabled) ? true : false
+                };
             }
-        );
-    }
-    $c->render(
-        json => {
-            success => false,
-            msg     => $c->l('Unable to get counter')
+            return {
+                success => false,
+                msg     => $c->l('Unable to get counter')
+            };
+        },
+        sub {
+            my ($subprocess, $err, @results) = @_;
+            return $c->render(
+                json => $results[0]
+            );
         }
     );
 }
@@ -181,63 +190,79 @@ sub delete {
     my $short = $c->param('short');
     my $token = $c->param('token');
 
-    my $image = Lutim::DB::Image->new(app => $c->app, short => $short);
-    if ($image->path) {
-        my $msg;
-        if ($image->mod_token ne $token || $token eq '') {
-            $msg = $c->l('The delete token is invalid.');
-        } elsif ($image->enabled() == 0) {
-            $msg = $c->l('The image %1 has already been deleted.', $image->filename);
-        } else {
-            $c->app->log->info('[DELETION] someone made '.$image->filename.' removed with token method (path: '.$image->path.')');
+    $c->render_later;
 
-            $c->delete_image($image);
-            return $c->respond_to(
-                json => {
+    Mojo::IOLoop->subprocess(
+        sub {
+            my $subprocess = shift;
+            my $image = Lutim::DB::Image->new(app => $c->app, short => $short);
+            if ($image->path) {
+                my $msg;
+                if ($image->mod_token ne $token || $token eq '') {
+                    $msg = $c->l('The delete token is invalid.');
+                } elsif ($image->enabled() == 0) {
+                    $msg = $c->l('The image %1 has already been deleted.', $image->filename);
+                } else {
+                    $c->app->log->info('[DELETION] someone made '.$image->filename.' removed with token method (path: '.$image->path.')');
+
+                    $c->delete_image($image);
+                    return {
+                        json => {
+                            success => true,
+                            msg     => $c->l('The image %1 has been successfully deleted', $image->filename)
+                        },
+                        any => {
+                            flash => {
+                                success => $c->l('The image %1 has been successfully deleted', $image->filename)
+                            },
+                            redirect_to => '/'
+                        }
+                    };
+                }
+
+                return {
                     json => {
-                        success => true,
-                        msg     => $c->l('The image %1 has been successfully deleted', $image->filename)
+                        success => false,
+                        msg     => $msg
+                    },
+                    any => {
+                        flash => {
+                            msg => $msg
+                        },
+                        redirect_to => '/'
                     }
+                };
+            } else {
+                $c->app->log->info('[UNSUCCESSFUL] someone tried to delete '.$short.' but it does\'nt exist.');
+
+                # Image never existed
+                return {
+                    json => {
+                        success => false,
+                        msg     => $c->l('Unable to find the image %1.', $short)
+                    },
+                    any => {
+                        flash => {
+                            msg => $c->l('Unable to find the image %1.', $short)
+                        },
+                        redirect_to => '/'
+                    }
+                };
+            }
+        }, sub {
+            my ($subprocess, $err, @results) = @_;
+            my $hash = $results[0];
+            $c->respond_to(
+                json => {
+                    json => $hash->{json}
                 },
                 any => sub {
-                    $c->flash(
-                        success => $c->l('The image %1 has been successfully deleted', $image->filename)
-                    );
-                    return $c->redirect_to('/');
+                    $c->flash($hash->{any}->{flash});
+                    $c->redirect_to($hash->{any}->{redirect_to});
                 }
             );
         }
-
-        return $c->respond_to(
-            json => {
-                json => {
-                    success => false,
-                    msg     => $msg
-                }
-            },
-            any => sub {
-                $c->flash(
-                    msg => $msg
-                );
-                return $c->redirect_to('/');
-            }
-        );
-    } else {
-        $c->app->log->info('[UNSUCCESSFUL] someone tried to delete '.$short.' but it does\'nt exist.');
-
-        # Image never existed
-        return $c->respond_to(
-            json => {
-                json => {
-                    success => false,
-                    msg     => $c->l('Unable to find the image %1.', $short)
-                }
-            },
-            any => sub {
-                shift->render_not_found;
-            }
-        );
-    }
+    );
 }
 
 sub add {
@@ -515,111 +540,151 @@ sub short {
     my $thumb = $c->param('thumb');
     my $dl    = (defined($c->param('dl'))) ? 'attachment' : 'inline';
 
-    my $image = Lutim::DB::Image->new(app => $c->app, short => $short);
-    if ($image->enabled && $image->path) {
-        if($image->delete_at_day && $image->created_at + $image->delete_at_day * 86400 <= time()) {
-            # Log deletion
-            $c->app->log->info('[DELETION] someone tried to view '.$image->filename.' but it has been removed by expiration (path: '.$image->path.')');
-
-            # Delete image
-            $c->delete_image($image);
-
-            # Warn user
-            $c->flash(
-                msg => $c->l('Unable to find the image: it has been deleted.')
-            );
-            return $c->redirect_to('/');
-        }
-
-        my $test;
-        if (defined($touit)) {
-            $test = 1;
-            my $short  = $image->short;
-               $short .= '/'.$key if (defined($key));
-            my ($width, $height) = (340,340);
-            if ($image->mediatype eq 'image/gif') {
-                if (defined($image->width) && defined($image->height)) {
-                    ($width, $height) = ($image->width, $image->height);
-                } elsif ($im_loaded) {
-                    my $upload = $c->decrypt($key, $image->path);
-                    my $im     = Image::Magick->new;
-                    $im->BlobToImage($upload->slurp);
-                    $width     = $im->Get('width');
-                    $height    = $im->Get('height');
-
-                    $image->width($width)
-                          ->height($height)
-                          ->write;
-                }
-            }
-            return $c->render(
-                template => 'twitter',
-                layout   => undef,
-                short    => $short,
-                filename => $image->filename,
-                mimetype => ($c->req->url->to_abs()->scheme eq 'https') ? $image->mediatype : '',
-                width    => $width,
-                height   => $height
-            );
-        } else {
-            # Delete image if needed
-            if ($image->delete_at_first_view && $image->counter >= 1) {
-                # Log deletion
-                $c->app->log->info('[DELETION] someone made '.$image->filename.' removed (path: '.$image->path.')');
-
-                # Delete image
-                $c->delete_image($image);
-
-                $c->flash(
-                    msg => $c->l('Unable to find the image: it has been deleted.')
-                );
-                return $c->redirect_to('/');
-            } else {
-                my $expires = ($image->delete_at_day) ? $image->delete_at_day : 360;
-                my $dt = DateTime->from_epoch( epoch => $expires * 86400 + $image->created_at);
-                $dt->set_time_zone('GMT');
-                $expires = $dt->strftime("%a, %d %b %Y %H:%M:%S GMT");
-
-                $test = $c->render_file($im_loaded, $image->filename, $image->path, $image->mediatype, $dl, $expires, $image->delete_at_first_view, $key, $thumb);
-            }
-        }
-
-        if ($test != 500) {
-            # Update counter
-            $c->on(finish => sub {
-                # Log access
-                $c->app->log->info('[VIEW] someone viewed '.$image->filename.' (path: '.$image->path.')');
-
-                # Update record
-                if ($c->config('minion')->{enabled}) {
-                    $c->app->minion->enqueue(accessed => [$image->short, time]);
-                } else {
-                    $image->accessed(time);
-                }
-
-                # Delete image if needed
-                if ($image->delete_at_first_view) {
+    $c->render_later;
+    Mojo::IOLoop->subprocess(
+        sub {
+            my $image = Lutim::DB::Image->new(app => $c->app, short => $short);
+            if ($image->enabled && $image->path) {
+                if($image->delete_at_day && $image->created_at + $image->delete_at_day * 86400 <= time()) {
                     # Log deletion
-                    $c->app->log->info('[DELETION] someone made '.$image->filename.' removed (path: '.$image->path.')');
+                    $c->app->log->info('[DELETION] someone tried to view '.$image->filename.' but it has been removed by expiration (path: '.$image->path.')');
 
                     # Delete image
                     $c->delete_image($image);
-                }
-            });
-        }
-    } elsif ($image->path && !$image->enabled) {
-        # Log access try
-        $c->app->log->info('[NOT FOUND] someone tried to view '.$short.' but it does\'nt exist anymore.');
 
-        # Warn user
-        $c->flash(
-            msg => $c->l('Unable to find the image: it has been deleted.')
-        );
-        return $c->redirect_to('/');
-    } else {
-        # Image never existed
-        $c->render_not_found;
-    }
+                    # Warn user
+                    return {
+                        success => 0,
+                        flash   => {
+                            msg => $c->l('Unable to find the image: it has been deleted.')
+                        },
+                        redirect_to => '/'
+                    };
+                }
+
+                my $test;
+                if (defined($touit)) {
+                    $test = 1;
+                    my $short  = $image->short;
+                       $short .= '/'.$key if (defined($key));
+                    my ($width, $height) = (340,340);
+                    if ($image->mediatype eq 'image/gif') {
+                        if (defined($image->width) && defined($image->height)) {
+                            ($width, $height) = ($image->width, $image->height);
+                        } elsif ($im_loaded) {
+                            my $upload = $c->decrypt($key, $image->path);
+                            my $im     = Image::Magick->new;
+                            $im->BlobToImage($upload->slurp);
+                            $width     = $im->Get('width');
+                            $height    = $im->Get('height');
+
+                            $image->width($width)
+                                  ->height($height)
+                                  ->write;
+                        }
+                    }
+                    return {
+                        success => 1,
+                        twitter => {
+                            template => 'twitter',
+                            layout   => undef,
+                            short    => $short,
+                            filename => $image->filename,
+                            mimetype => ($c->req->url->to_abs()->scheme eq 'https') ? $image->mediatype : '',
+                            width    => $width,
+                            height   => $height
+                        }
+                    };
+                } else {
+                    # Delete image if needed
+                    if ($image->delete_at_first_view && $image->counter >= 1) {
+                        # Log deletion
+                        $c->app->log->info('[DELETION] someone made '.$image->filename.' removed (path: '.$image->path.')');
+
+                        # Delete image
+                        $c->delete_image($image);
+
+                        return {
+                            success => 0,
+                            flash   => {
+                                msg => $c->l('Unable to find the image: it has been deleted.')
+                            },
+                            redirect_to => '/'
+                        }
+                    } else {
+                        my $expires = ($image->delete_at_day) ? $image->delete_at_day : 360;
+                        my $dt = DateTime->from_epoch( epoch => $expires * 86400 + $image->created_at);
+                        $dt->set_time_zone('GMT');
+                        $expires = $dt->strftime("%a, %d %b %Y %H:%M:%S GMT");
+
+                        return {
+                            success     => 1,
+                            render_file => [$im_loaded, $image->filename, $image->path, $image->mediatype, $dl, $expires, $image->delete_at_first_view, $key, $thumb],
+                            short       => $image->short
+                        }
+                    }
+                }
+            } elsif ($image->path && !$image->enabled) {
+                # Log access try
+                $c->app->log->info('[NOT FOUND] someone tried to view '.$short.' but it does\'nt exist anymore.');
+
+                # Warn user
+                return {
+                    success => 0,
+                    flash   => {
+                        msg => $c->l('Unable to find the image: it has been deleted.')
+                    },
+                    redirect_to => '/'
+                }
+            } else {
+                # Image never existed
+                return {
+                    success => 0,
+                    flash   => {
+                        msg => $c->l('Unable to find the image %1.', $short)
+                    },
+                    redirect_to => '/'
+                }
+            }
+        },
+        sub {
+            my ($subprocess, $err, @results) = @_;
+            my $hash = $results[0];
+
+            unless ($hash->{success}) {
+                $c->flash($hash->{flash});
+                $c->redirect_to($hash->{redirect_to});
+            } elsif (defined($hash->{render_file})) {
+                my $test = $c->render_file(@{$hash->{render_file}});
+                if ($test != 500) {
+                    # Update counter
+                    $c->on(finish => sub {
+                        # Log access
+                        my $image = Lutim::DB::Image->new(app => $c->app, short => $hash->{short});
+                        $c->app->log->info('[VIEW] someone viewed '.$image->filename.' (path: '.$image->path.')');
+
+                        # Update record
+                        if ($c->config('minion')->{enabled}) {
+                            $c->app->minion->enqueue(accessed => [$image->short, time]);
+                        } else {
+                            $image->accessed(time);
+                        }
+
+                        # Delete image if needed
+                        if ($image->delete_at_first_view) {
+                            # Log deletion
+                            $c->app->log->info('[DELETION] someone made '.$image->filename.' removed (path: '.$image->path.')');
+
+                            # Delete image
+                            $c->delete_image($image);
+                        }
+                    });
+                }
+            } else {
+                $c->render($hash->{twitter});
+            }
+        }
+    );
 }
 
 sub zip {
