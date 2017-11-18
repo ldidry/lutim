@@ -384,24 +384,26 @@ sub add {
 
                 }
 
-                unless ((defined($keep_exif) && $keep_exif) || $mediatype eq 'image/svg+xml' || $mediatype !~ m#image/(x-)?xcf# || $mediatype ne 'image/webp') {
-                    # Remove the EXIF tags
-                    my $data = new IO::Scalar \$upload->slurp();
-                    my $et   = new Image::ExifTool;
+                unless (defined($keep_exif) && $keep_exif) {
+                    if ($mediatype ne 'image/svg+xml' && $mediatype !~ m#image/(x-)?xcf# && $mediatype ne 'image/webp') {
+                        # Remove the EXIF tags
+                        my $data = new IO::Scalar \$upload->slurp();
+                        my $et   = new Image::ExifTool;
 
-                    # Use $data in Image::ExifTool object
-                    $et->ExtractInfo($data);
-                    # Remove all metadata
-                    $et->SetNewValue('*', undef);
+                        # Use $data in Image::ExifTool object
+                        $et->ExtractInfo($data);
+                        # Remove all metadata
+                        $et->SetNewValue('*', undef);
 
-                    # Create a temporary IO::Scalar to write into
-                    my $temp;
-                    my $a = new IO::Scalar \$temp;
-                    $et->WriteInfo($data, $a);
+                        # Create a temporary IO::Scalar to write into
+                        my $temp;
+                        my $a = new IO::Scalar \$temp;
+                        $et->WriteInfo($data, $a);
 
-                    # Update the uploaded file with it's no-tags clone
-                    $data = Mojo::Asset::Memory->new->add_chunk($temp);
-                    $upload->asset($data);
+                        # Update the uploaded file with it's no-tags clone
+                        $data = Mojo::Asset::Memory->new->add_chunk($temp);
+                        $upload->asset($data);
+                    }
                 }
 
                 my $key;
