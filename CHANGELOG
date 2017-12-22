@@ -1,5 +1,8 @@
 Revision history for Lutim
 
+0.8.7  2017-12-22
+	- Fix bug if dbtype not configured in lutim.conf
+
 0.8.6  2017-11-18
 	- Fix bug resulting in no EXIF tags deletion
 

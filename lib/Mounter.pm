@@ -22,8 +22,28 @@ sub startup {
         {
             file    => $cfile,
             default => {
-                prefix => '/',
-                theme  => 'default',
+                provisioning      => 100,
+                provis_step       => 5,
+                length            => 8,
+                always_encrypt    => 0,
+                anti_flood_delay  => 5,
+                tweet_card_via    => '@framasky',
+                max_file_size     => 10*1024*1024,
+                https             => 0,
+                default_delay     => 0,
+                max_delay         => 0,
+                token_length      => 24,
+                crypto_key_length => 8,
+                thumbnail_size    => 100,
+                theme             => 'default',
+                dbtype            => 'sqlite',
+                max_files_in_zip  => 15,
+                prefix            => '/',
+                minion            => {
+                    enabled => 0,
+                    dbtype  => 'sqlite',
+                    db_path => 'minion.db'
+                },
             }
         }
     );
