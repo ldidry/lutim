@@ -1,0 +1,345 @@
+# Lutim language file
+# Copyright (C) 2014 Luc Didry
+# This file is distributed under the same license as the Lutim package.
+# 
+# Translators:
+# ButterflyOfFire <butterflyoffire@protonmail.com>, ٢٠١٨, 2018.
+msgid ""
+msgstr ""
+"Project-Id-Version: Lutim\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2018-01-14 17:46+0100\n"
+"Last-Translator: ButterflyOfFire <butterflyoffire@protonmail.com>\n"
+"Language-Team: Arabic <butterflyoffire+lutim@protonmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ar\n"
+"Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && "
+"n%100<=10 ? 3 : n%100>=11 ? 4 : 5);\n"
+"n%100<=10 ? 3 : n%100>=11 ? 4 : 5);\n"
+"X-Generator: Vé 0.1.4\n"
+
+#. (7)
+#. (30)
+#. ($delay)
+#. (config('max_delay')
+#: lib/Lutim/Command/cron/stats.pm:149 lib/Lutim/Command/cron/stats.pm:150
+#: lib/Lutim/Command/cron/stats.pm:160 lib/Lutim/Command/cron/stats.pm:161
+#: lib/Lutim/Command/cron/stats.pm:177 lib/Lutim/Command/cron/stats.pm:178
+#: themes/default/templates/partial/for_my_delay.html.ep:12
+#: themes/default/templates/partial/for_my_delay.html.ep:13
+#: themes/default/templates/partial/for_my_delay.html.ep:3
+#: themes/default/templates/partial/lutim.js.ep:138
+#: themes/default/templates/partial/lutim.js.ep:147
+#: themes/default/templates/partial/lutim.js.ep:148
+#: themes/default/templates/raw.html.ep:19
+#: themes/default/templates/raw.html.ep:20
+#: themes/default/templates/raw.html.ep:36
+#: themes/default/templates/raw.html.ep:37
+#: themes/default/templates/raw.html.ep:8 themes/default/templates/raw.html.ep:9
+msgid "%1 days"
+msgstr "%1 أيام"
+
+#. ($total)
+#: themes/default/templates/stats.html.ep:2
+msgid "%1 sent images on this instance from beginning."
+msgstr "تم إرسال %1 صور على مثيل الخادوم هذا منذ البداية."
+
+#: themes/default/templates/index.html.ep:190
+msgid "-or-"
+msgstr "-or-"
+
+#: lib/Lutim.pm:192 lib/Lutim/Command/cron/stats.pm:151
+#: lib/Lutim/Command/cron/stats.pm:162 lib/Lutim/Command/cron/stats.pm:179
+#: themes/default/templates/index.html.ep:5
+#: themes/default/templates/raw.html.ep:10
+#: themes/default/templates/raw.html.ep:21
+#: themes/default/templates/raw.html.ep:38
+msgid "1 year"
+msgstr "سنة واحدة"
+
+#: lib/Lutim.pm:191 lib/Lutim/Command/cron/stats.pm:148
+#: lib/Lutim/Command/cron/stats.pm:159 lib/Lutim/Command/cron/stats.pm:176
+#: themes/default/templates/index.html.ep:4
+#: themes/default/templates/partial/for_my_delay.html.ep:12
+#: themes/default/templates/partial/lutim.js.ep:147
+#: themes/default/templates/raw.html.ep:18
+#: themes/default/templates/raw.html.ep:35
+#: themes/default/templates/raw.html.ep:7
+msgid "24 hours"
+msgstr "24 ساعة"
+
+#: themes/default/templates/partial/myfiles.js.ep:57
+msgid ": Error while trying to get the counter."
+msgstr ": طرأ هناك خطأ أثناء محاولة إستعادة العداد."
+
+#: lib/Lutim/Command/cron/stats.pm:144 themes/default/templates/raw.html.ep:3
+msgid "Active images"
+msgstr "الصور النشطة"
+
+#: lib/Lutim/Controller.pm:288
+msgid "An error occured while downloading the image."
+msgstr "طرأ هناك خطأ أثناء عملية تنزيل الصورة."
+
+#: themes/default/templates/zip.html.ep:2
+msgid "Archives download"
+msgstr "تنزيل الأرشيف"
+
+#: themes/default/templates/about.html.ep:41
+#: themes/default/templates/myfiles.html.ep:64
+#: themes/default/templates/stats.html.ep:25
+msgid "Back to homepage"
+msgstr "العودة إلى الصفحة الرئيسية"
+
+#: themes/default/templates/index.html.ep:193
+#: themes/default/templates/index.html.ep:194
+msgid "Click to open the file browser"
+msgstr "إضغط لفتح مدير الملفات"
+
+#: themes/default/templates/about.html.ep:30
+msgid "Contributors"
+msgstr "المساهمون"
+
+#: themes/default/templates/partial/lutim.js.ep:214
+#: themes/default/templates/partial/lutim.js.ep:268
+#: themes/default/templates/partial/lutim.js.ep:346
+msgid "Copy all view links to clipboard"
+msgstr "أنسخ كافة روابط العرض إلى الحافظة"
+
+#: themes/default/templates/index.html.ep:18
+#: themes/default/templates/index.html.ep:36
+#: themes/default/templates/index.html.ep:69
+#: themes/default/templates/index.html.ep:77
+#: themes/default/templates/index.html.ep:85
+#: themes/default/templates/index.html.ep:93
+#: themes/default/templates/myfiles.html.ep:20
+#: themes/default/templates/myfiles.html.ep:38
+#: themes/default/templates/partial/common.js.ep:150
+#: themes/default/templates/partial/lutim.js.ep:105
+#: themes/default/templates/partial/lutim.js.ep:120
+#: themes/default/templates/partial/lutim.js.ep:79
+#: themes/default/templates/partial/lutim.js.ep:91
+msgid "Copy to clipboard"
+msgstr "أنسخ إلى الحافظة"
+
+#: themes/default/templates/myfiles.html.ep:52
+msgid "Counter"
+msgstr "العداد"
+
+#: themes/default/templates/stats.html.ep:18
+msgid "Delay repartition chart for disabled images"
+msgstr ""
+
+#: themes/default/templates/stats.html.ep:15
+msgid "Delay repartition chart for enabled images"
+msgstr ""
+
+#: themes/default/templates/index.html.ep:115
+#: themes/default/templates/index.html.ep:147
+#: themes/default/templates/index.html.ep:178
+#: themes/default/templates/myfiles.html.ep:53
+#: themes/default/templates/partial/lutim.js.ep:159
+msgid "Delete at first view?"
+msgstr "هل تود حذف الصورة مباشرة بعد أول عرض ؟"
+
+#: lib/Lutim/Command/cron/stats.pm:145 themes/default/templates/raw.html.ep:4
+msgid "Deleted images"
+msgstr "الصور المحذوفة"
+
+#: lib/Lutim/Command/cron/stats.pm:146 themes/default/templates/raw.html.ep:5
+msgid "Deleted images in 30 days"
+msgstr "الصور المحذوفة منذ 30 يوما"
+
+#: themes/default/templates/index.html.ep:98
+#: themes/default/templates/myfiles.html.ep:56
+#: themes/default/templates/partial/common.js.ep:142
+#: themes/default/templates/partial/common.js.ep:145
+msgid "Deletion link"
+msgstr "رابط الحذف"
+
+#: themes/default/templates/gallery.html.ep:6
+msgid "Download all images"
+msgstr "تنزيل كافة الصور"
+
+#: themes/default/templates/index.html.ep:81
+#: themes/default/templates/index.html.ep:83
+#: themes/default/templates/partial/lutim.js.ep:101
+#: themes/default/templates/partial/lutim.js.ep:97
+msgid "Download link"
+msgstr "رابط التنزيل"
+
+#: themes/default/templates/index.html.ep:28
+#: themes/default/templates/index.html.ep:31
+#: themes/default/templates/myfiles.html.ep:30
+#: themes/default/templates/myfiles.html.ep:33
+msgid "Download zip link"
+msgstr "رابط التنزيل كحزمة مضغوطة"
+
+#: themes/default/templates/index.html.ep:189
+msgid "Drag & drop images here"
+msgstr "إسحب ثم القي الصور هنا"
+
+#: themes/default/templates/about.html.ep:7
+msgid ""
+"Drag and drop an image in the appropriate area or use the traditional way to "
+"send files and Lutim will provide you four URLs. One to view the image, an "
+"other to directly download it, one you can use on social networks and a last "
+"to delete the image when you want."
+msgstr ""
+"Drag and drop an image in the appropriate area or use the traditional way to "
+"send files and Lutim will provide you four URLs. One to view the image, an "
+"other to directly download it, one you can use on social networks and a last "
+"to delete the image when you want."
+
+#: themes/default/templates/index.html.ep:150
+#: themes/default/templates/index.html.ep:181
+msgid "Encrypt the image (Lutim does not keep the key)."
+msgstr "قم بتعمية الصورة (لوتان لا يحتفظ بالمفتاح)."
+
+#: themes/default/templates/partial/lutim.js.ep:44
+msgid "Error while trying to modify the image."
+msgstr "طرأ هناك خطأ أثناء عملية تعديل الصورة."
+
+#: themes/default/templates/stats.html.ep:10
+msgid "Evolution of total files"
+msgstr "تطور العدد الإجمالي للملفات"
+
+#: themes/default/templates/myfiles.html.ep:55
+msgid "Expires at"
+msgstr "تنتهي مدة صلاحيتها في"
+
+#: themes/default/templates/myfiles.html.ep:50
+msgid "File name"
+msgstr "إسم الملف"
+
+#: themes/default/templates/about.html.ep:24
+msgid ""
+"For more details, see the <a href=\"https://framagit.org/luc/lutim\">homepage of "
+""
+"the project</a>."
+msgstr ""
+"للمزيد من التفاصيل، قم بزيارة <a href=\"https://framagit.org/luc/lutim\">الصفحة "
+"الرئيسة للمشروع</a>."
+
+#: themes/default/templates/layouts/default.html.ep:55
+msgid "Fork me!"
+msgstr "قم بتشعيبي !"
+
+#: themes/default/templates/index.html.ep:10
+#: themes/default/templates/index.html.ep:13
+#: themes/default/templates/myfiles.html.ep:12
+#: themes/default/templates/myfiles.html.ep:15
+msgid "Gallery link"
+msgstr "رابط المعرض"
+
+#: themes/default/templates/partial/common.js.ep:104
+#: themes/default/templates/partial/common.js.ep:87
+msgid "Hit Ctrl+C, then Enter to copy the short link"
+msgstr "إضغط على CTRL+C ثم على مفتاح الإدخال للقيام بنسخ الرابط القصير"
+
+#: themes/default/templates/layouts/default.html.ep:50
+msgid "Homepage"
+msgstr "الصفحة الرئيسية"
+
+#: themes/default/templates/about.html.ep:20
+msgid "How do you pronounce Lutim?"
+msgstr "كيف يُنطق Lutim ؟"
+
+#: themes/default/templates/about.html.ep:6
+msgid "How does it work?"
+msgstr "كيف يشتغل ؟"
+
+#: themes/default/templates/about.html.ep:18
+msgid "How to report an image?"
+msgstr "كيف يتم الإبلاغ عن صورة ما ؟"
+
+#: themes/default/templates/about.html.ep:14
+msgid ""
+"If the files are deleted if you ask it while posting it, their SHA512 "
+"footprint are retained."
+msgstr ""
+"If the files are deleted if you ask it while posting it, their SHA512 "
+"footprint are retained."
+
+#: themes/default/templates/index.html.ep:163
+#: themes/default/templates/index.html.ep:203
+msgid "Image URL"
+msgstr "رابط الصورة"
+
+#: lib/Lutim/Command/cron/stats.pm:143 themes/default/templates/raw.html.ep:2
+msgid "Image delay"
+msgstr ""
+
+#: lib/Lutim/Controller.pm:710
+msgid "Image not found."
+msgstr "الصورة غير موجودة."
+
+#: themes/default/templates/layouts/default.html.ep:54
+msgid "Informations"
+msgstr "معلومات"
+
+#: themes/default/templates/layouts/default.html.ep:62
+msgid "Install webapp"
+msgstr "نتصيب برنامج الويب"
+
+#: themes/default/templates/layouts/default.html.ep:61
+msgid "Instance's statistics"
+msgstr "إحصائيات مثيل الخادوم"
+
+#: themes/default/templates/about.html.ep:11
+msgid "Is it really anonymous?"
+msgstr "هل يدعم حقا التخفي ؟"
+
+#: themes/default/templates/about.html.ep:9
+msgid "Is it really free (as in free beer)?"
+msgstr "هل هو مجاني (كما في عبارة مشروب مجاني) ؟"
+
+#: themes/default/templates/about.html.ep:21
+msgid ""
+"Juste like you pronounce the French word <a "
+"href=\"https://fr.wikipedia.org/wiki/Lutin\">lutin</a> (/ly.tɛ̃/)."
+msgstr ""
+"يُنطق مِثل الكلمة الفرنسية <a "
+"href=\"https://fr.wikipedia.org/wiki/Lutin\">lutin</a> (/ly.tɛ̃/)."
+
+#: themes/default/templates/index.html.ep:153
+#: themes/default/templates/index.html.ep:184
+msgid "Keep EXIF tags"
+msgstr "الإبقاء على بيانات EXIF"
+
+#: themes/default/templates/index.html.ep:118
+#: themes/default/templates/index.html.ep:166
+#: themes/default/templates/index.html.ep:206
+#: themes/default/templates/partial/lutim.js.ep:163
+msgid "Let's go!"
+msgstr "هيا بنا !"
+
+#: themes/default/templates/layouts/default.html.ep:58
+msgid "Liberapay button"
+msgstr "زر ليبيراباي"
+
+#: themes/default/templates/layouts/default.html.ep:53
+msgid "License:"
+msgstr "الرخصة :"
+
+#: themes/default/templates/index.html.ep:89
+#: themes/default/templates/index.html.ep:91
+#: themes/default/templates/partial/lutim.js.ep:111
+#: themes/default/templates/partial/lutim.js.ep:115
+msgid "Link for share on social networks"
+msgstr "رابط للمشاركة على شبكات التواصل الإجتماعي"
+
+#: themes/default/templates/zip.html.ep:7
+msgid ""
+"Lutim can't zip so many images at once, so it splitted your demand in multiple "
+""
+"URLs."
+msgstr ""
+"ليس بمقدور لوتان ضغط العديد من الصور في آن واحد، لذا قام بتقطيع طلبك على شكل "
+"عدة"
+"روابط."
+
+#: themes/
+msgid ""
+msgstr ""
