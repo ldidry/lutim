@@ -234,7 +234,7 @@ sub delete {
                 }
             },
             any => sub {
-                shift->render_not_found;
+                $c->helpers->reply->not_found;
             }
         );
     }
@@ -620,7 +620,7 @@ sub short {
         return $c->redirect_to('/');
     } else {
         # Image never existed
-        $c->render_not_found;
+        $c->helpers->reply->not_found;
     }
 }
 
