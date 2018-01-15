@@ -47,6 +47,10 @@ msgstr "24 horas"
 msgid ": Error while trying to get the counter."
 msgstr ": Error al intentar obtener el contador."
 
+#: themes/default/templates/partial/navbar.html.ep:55
+msgid "About"
+msgstr ""
+
 #: lib/Lutim/Command/cron/stats.pm:144 themes/default/templates/raw.html.ep:3
 msgid "Active images"
 msgstr ""
@@ -59,7 +63,7 @@ msgstr "Error al intentar modificar la imagen."
 msgid "Archives download"
 msgstr ""
 
-#: themes/default/templates/about.html.ep:41 themes/default/templates/myfiles.html.ep:64 themes/default/templates/stats.html.ep:25
+#: themes/default/templates/about.html.ep:43 themes/default/templates/myfiles.html.ep:64 themes/default/templates/stats.html.ep:25
 msgid "Back to homepage"
 msgstr "Volver a la página inicial"
 
@@ -151,7 +155,7 @@ msgstr "Nombre de archivo"
 msgid "For more details, see the <a href=\"https://framagit.org/luc/lutim\">homepage of the project</a>."
 msgstr "Para más detalles, vea la <a href=\"https://framagit.org/luc/lutim\">página del proyecto</a>."
 
-#: themes/default/templates/layouts/default.html.ep:60
+#: themes/default/templates/partial/navbar.html.ep:58
 msgid "Fork me!"
 msgstr "¡Clóname!"
 
@@ -163,7 +167,7 @@ msgstr "Enlace a la galería"
 msgid "Hit Ctrl+C, then Enter to copy the short link"
 msgstr "Presione Ctrl + C, entonces Ingresar para copiar el enlace"
 
-#: themes/default/templates/layouts/default.html.ep:55
+#: themes/default/templates/layouts/default.html.ep:54
 msgid "Homepage"
 msgstr "Página inicial"
 
@@ -195,15 +199,15 @@ msgstr ""
 msgid "Image not found."
 msgstr "Imagen no encontrada."
 
-#: themes/default/templates/layouts/default.html.ep:59
+#: themes/default/templates/partial/navbar.html.ep:47
 msgid "Informations"
 msgstr "Informaciones"
 
-#: themes/default/templates/layouts/default.html.ep:67
+#: themes/default/templates/partial/navbar.html.ep:23
 msgid "Install webapp"
 msgstr "Instalar webapp"
 
-#: themes/default/templates/layouts/default.html.ep:66
+#: themes/default/templates/partial/navbar.html.ep:19
 msgid "Instance's statistics"
 msgstr ""
 
@@ -227,11 +231,7 @@ msgstr "Mantener las etiquetas EXIF"
 msgid "Let's go!"
 msgstr "¡Vamos allá!"
 
-#: themes/default/templates/layouts/default.html.ep:63
-msgid "Liberapay button"
-msgstr ""
-
-#: themes/default/templates/layouts/default.html.ep:58
+#: themes/default/templates/partial/navbar.html.ep:52
 msgid "License:"
 msgstr "Licencia:"
 
@@ -255,7 +255,7 @@ msgstr "Desarrolladores principales"
 msgid "Markdown syntax"
 msgstr "Sintaxis de Markdown"
 
-#: themes/default/templates/layouts/default.html.ep:65 themes/default/templates/myfiles.html.ep:2
+#: themes/default/templates/myfiles.html.ep:2 themes/default/templates/partial/navbar.html.ep:16
 msgid "My images"
 msgstr "Mis Imágenes"
 
@@ -296,7 +296,7 @@ msgstr "Enviar una imagen"
 msgid "Share it!"
 msgstr "¡Compártelo!"
 
-#: themes/default/templates/layouts/default.html.ep:61
+#:
 msgid "Share on Twitter"
 msgstr "Compartir en Twitter"
 
@@ -309,12 +309,20 @@ msgstr "Algo malo ha pasado"
 msgid "Something went wrong when creating the zip file. Try again later or contact the administrator (%1)."
 msgstr "Algo malo ha pasado. Inténtelo de nuevo más tarde o contacte con el administrador (%1)."
 
-#: themes/default/templates/layouts/default.html.ep:63
+#: themes/default/templates/partial/navbar.html.ep:30
+msgid "Support the author"
+msgstr ""
+
+#: themes/default/templates/partial/navbar.html.ep:38
 msgid "Support the author on Liberapay"
 msgstr ""
 
-#: themes/default/templates/layouts/default.html.ep:62
+#: themes/default/templates/partial/navbar.html.ep:35
 msgid "Support the author on Tipeee"
+msgstr ""
+
+#: themes/default/templates/partial/navbar.html.ep:41
+msgid "Support the author with bitcoins"
 msgstr ""
 
 #: themes/default/templates/about.html.ep:13
@@ -380,8 +388,8 @@ msgstr "Puede, opcionalmente, solicitar que la imagen publicada en Lutim se elim
 msgid "There is no more available URL. Retry or contact the administrator. %1"
 msgstr "No más URL disponibles. Inténtelo de nuevo o contacte con el administrador. %1"
 
-#: themes/default/templates/layouts/default.html.ep:62
-msgid "Tipeee button"
+#: themes/default/templates/partial/navbar.html.ep:6
+msgid "Toggle navigation"
 msgstr ""
 
 #: lib/Lutim/Command/cron/stats.pm:152 themes/default/templates/raw.html.ep:11
@@ -462,6 +470,10 @@ msgstr "Puede, opcionalmente, solicitar que la imagen publicada en Lutim se elim
 msgid "and on"
 msgstr "y en"
 
+#: themes/default/templates/about.html.ep:40
+msgid "arabic translation"
+msgstr ""
+
 #: themes/default/templates/about.html.ep:27
 msgid "core developer"
 msgstr "desarrollador principal"
@@ -477,6 +489,10 @@ msgstr "traducción al occitano"
 #: themes/default/templates/about.html.ep:27
 msgid "on"
 msgstr "en"
+
+#: themes/default/templates/about.html.ep:39
+msgid "paste image to upload ability"
+msgstr ""
 
 #: themes/default/templates/about.html.ep:36
 msgid "spanish translation"
