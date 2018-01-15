@@ -45,6 +45,19 @@ sub about {
     shift->render(template => 'about');
 }
 
+sub change_lang {
+    my $c = shift;
+    my $l = $c->param('l');
+
+    $c->cookie(lutim_lang => $l, { path => $c->config('prefix') });
+
+    if ($c->req->headers->referrer) {
+        return $c->redirect_to($c->req->headers->referrer);
+    } else {
+        return $c->redirect_to('/');
+    }
+}
+
 sub stats {
     my $c = shift;
 
