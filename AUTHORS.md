@@ -15,3 +15,4 @@
 * Thor77 (<http://thor77.org>), german translation, among other things
 * Quentin Pagès, occitan translation
 * Alexis Clairet (<https://github.com/Turboconnard>), paste image to upload ability
+* ButterflyOfFire (<https://mastodon.tetaneutral.net/@BoF>), arabic translation
