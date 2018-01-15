@@ -68,13 +68,14 @@ sub startup {
     }
     push @{$self->renderer->paths}, $self->home->rel_file('themes/default/templates');
     push @{$self->static->paths}, $self->home->rel_file('themes/default/public');
+
     # Internationalization
     my $lib = $self->home->rel_file('themes/'.$config->{theme}.'/lib');
     eval qq(use lib "$lib");
     $self->plugin('I18N');
 
-    # Compressed assets
-    $self->plugin('AssetPack' => { pipes => [qw(Combine)] });
+    # Cache static files
+    $self->plugin('StaticCache');
 
     # Helpers
     $self->plugin('Lutim::Plugin::Helpers');
@@ -137,20 +138,6 @@ sub startup {
             delete @{$wait_for_it}{grep { time - $wait_for_it->{$_} > $c->config->{anti_flood_delay} } keys %{$wait_for_it}} if (defined($wait_for_it));
         }
     );
-    $self->hook(after_static => sub {
-        my $c = shift;
-        $c->res->headers->cache_control('max-age=2592000, must-revalidate');
-    });
-
-    $self->asset->store->paths($self->static->paths);
-    $self->asset->process('index.css'   => ('css/bootstrap.min.css', 'css/fontello-embedded.css', 'css/animation.css', 'css/uploader.css', 'css/hennypenny.css', 'css/lutim.css', 'css/markdown.css'));
-    $self->asset->process('stats.css'   => ('css/bootstrap.min.css', 'css/fontello-embedded.css', 'css/morris-0.4.3.min.css', 'css/hennypenny.css', 'css/lutim.css'));
-    $self->asset->process('about.css'   => ('css/bootstrap.min.css', 'css/fontello-embedded.css', 'css/hennypenny.css', 'css/lutim.css'));
-    $self->asset->process('gallery.css' => ('/gallery/css/unite-gallery.css', '/gallery/themes/default/ug-theme-default.css'));
-
-    $self->asset->process('index.js'    => ('js/bootstrap.min.js', 'js/lutim.js', 'js/dmuploader.min.js'));
-    $self->asset->process('stats.js'    => ('js/bootstrap.min.js', 'js/lutim.js', 'js/raphael-min.js', 'js/morris-0.4.3.min.js', 'js/stats.js'));
-    $self->asset->process('freeze.js'   => ('js/jquery-2.1.0.min.js', 'js/freezeframe.min.js'));
 
     $self->defaults(layout => 'default');
 

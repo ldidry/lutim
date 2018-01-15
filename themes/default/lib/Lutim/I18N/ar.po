@@ -37,11 +37,11 @@ msgstr "تم إرسال %1 صور على مثيل الخادوم هذا منذ �
 msgid "-or-"
 msgstr "-or-"
 
-#: lib/Lutim.pm:193 lib/Lutim/Command/cron/stats.pm:151 lib/Lutim/Command/cron/stats.pm:162 lib/Lutim/Command/cron/stats.pm:179 themes/default/templates/index.html.ep:5 themes/default/templates/raw.html.ep:10 themes/default/templates/raw.html.ep:21 themes/default/templates/raw.html.ep:38
+#: lib/Lutim.pm:180 lib/Lutim/Command/cron/stats.pm:151 lib/Lutim/Command/cron/stats.pm:162 lib/Lutim/Command/cron/stats.pm:179 themes/default/templates/index.html.ep:5 themes/default/templates/raw.html.ep:10 themes/default/templates/raw.html.ep:21 themes/default/templates/raw.html.ep:38
 msgid "1 year"
 msgstr "سنة واحدة"
 
-#: lib/Lutim.pm:192 lib/Lutim/Command/cron/stats.pm:148 lib/Lutim/Command/cron/stats.pm:159 lib/Lutim/Command/cron/stats.pm:176 themes/default/templates/index.html.ep:4 themes/default/templates/partial/for_my_delay.html.ep:12 themes/default/templates/partial/lutim.js.ep:147 themes/default/templates/raw.html.ep:18 themes/default/templates/raw.html.ep:35 themes/default/templates/raw.html.ep:7
+#: lib/Lutim.pm:179 lib/Lutim/Command/cron/stats.pm:148 lib/Lutim/Command/cron/stats.pm:159 lib/Lutim/Command/cron/stats.pm:176 themes/default/templates/index.html.ep:4 themes/default/templates/partial/for_my_delay.html.ep:12 themes/default/templates/partial/lutim.js.ep:147 themes/default/templates/raw.html.ep:18 themes/default/templates/raw.html.ep:35 themes/default/templates/raw.html.ep:7
 msgid "24 hours"
 msgstr "24 ساعة"
 
@@ -153,7 +153,7 @@ msgstr "إسم الملف"
 msgid "For more details, see the <a href=\"https://framagit.org/luc/lutim\">homepage of the project</a>."
 msgstr "للمزيد من التفاصيل، قم بزيارة <a href=\"https://framagit.org/luc/lutim\">الصفحة الرئيسة للمشروع</a>."
 
-#: themes/default/templates/layouts/default.html.ep:55
+#: themes/default/templates/layouts/default.html.ep:60
 msgid "Fork me!"
 msgstr "قم بتشعيبي !"
 
@@ -165,7 +165,7 @@ msgstr "رابط المعرض"
 msgid "Hit Ctrl+C, then Enter to copy the short link"
 msgstr "إضغط على CTRL+C ثم على مفتاح الإدخال للقيام بنسخ الرابط القصير"
 
-#: themes/default/templates/layouts/default.html.ep:50
+#: themes/default/templates/layouts/default.html.ep:55
 msgid "Homepage"
 msgstr "الصفحة الرئيسية"
 
@@ -197,15 +197,15 @@ msgstr ""
 msgid "Image not found."
 msgstr "الصورة غير موجودة."
 
-#: themes/default/templates/layouts/default.html.ep:54
+#: themes/default/templates/layouts/default.html.ep:59
 msgid "Informations"
 msgstr "معلومات"
 
-#: themes/default/templates/layouts/default.html.ep:62
+#: themes/default/templates/layouts/default.html.ep:67
 msgid "Install webapp"
 msgstr "نتصيب برنامج الويب"
 
-#: themes/default/templates/layouts/default.html.ep:61
+#: themes/default/templates/layouts/default.html.ep:66
 msgid "Instance's statistics"
 msgstr "إحصائيات مثيل الخادوم"
 
@@ -229,11 +229,11 @@ msgstr "الإبقاء على بيانات EXIF"
 msgid "Let's go!"
 msgstr "هيا بنا !"
 
-#: themes/default/templates/layouts/default.html.ep:58
+#: themes/default/templates/layouts/default.html.ep:63
 msgid "Liberapay button"
 msgstr "زر ليبيراباي"
 
-#: themes/default/templates/layouts/default.html.ep:53
+#: themes/default/templates/layouts/default.html.ep:58
 msgid "License:"
 msgstr "الرخصة :"
 
@@ -257,7 +257,7 @@ msgstr ""
 msgid "Markdown syntax"
 msgstr ""
 
-#: themes/default/templates/layouts/default.html.ep:60 themes/default/templates/myfiles.html.ep:2
+#: themes/default/templates/layouts/default.html.ep:65 themes/default/templates/myfiles.html.ep:2
 msgid "My images"
 msgstr ""
 
@@ -298,7 +298,7 @@ msgstr ""
 msgid "Share it!"
 msgstr ""
 
-#: themes/default/templates/layouts/default.html.ep:56
+#: themes/default/templates/layouts/default.html.ep:61
 msgid "Share on Twitter"
 msgstr ""
 
@@ -311,11 +311,11 @@ msgstr ""
 msgid "Something went wrong when creating the zip file. Try again later or contact the administrator (%1)."
 msgstr ""
 
-#: themes/default/templates/layouts/default.html.ep:58
+#: themes/default/templates/layouts/default.html.ep:63
 msgid "Support the author on Liberapay"
 msgstr ""
 
-#: themes/default/templates/layouts/default.html.ep:57
+#: themes/default/templates/layouts/default.html.ep:62
 msgid "Support the author on Tipeee"
 msgstr ""
 
@@ -382,7 +382,7 @@ msgstr ""
 msgid "There is no more available URL. Retry or contact the administrator. %1"
 msgstr ""
 
-#: themes/default/templates/layouts/default.html.ep:57
+#: themes/default/templates/layouts/default.html.ep:62
 msgid "Tipeee button"
 msgstr ""
 
@@ -468,7 +468,7 @@ msgstr ""
 msgid "core developer"
 msgstr ""
 
-#: lib/Lutim.pm:191 lib/Lutim/Command/cron/stats.pm:147 lib/Lutim/Command/cron/stats.pm:158 lib/Lutim/Command/cron/stats.pm:175 themes/default/templates/index.html.ep:3 themes/default/templates/raw.html.ep:17 themes/default/templates/raw.html.ep:34 themes/default/templates/raw.html.ep:6
+#: lib/Lutim.pm:178 lib/Lutim/Command/cron/stats.pm:147 lib/Lutim/Command/cron/stats.pm:158 lib/Lutim/Command/cron/stats.pm:175 themes/default/templates/index.html.ep:3 themes/default/templates/raw.html.ep:17 themes/default/templates/raw.html.ep:34 themes/default/templates/raw.html.ep:6
 msgid "no time limit"
 msgstr ""
 

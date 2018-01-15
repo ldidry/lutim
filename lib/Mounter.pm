@@ -62,10 +62,9 @@ sub startup {
     }
     push @{$self->static->paths}, $self->home->rel_file('themes/default/public');
 
-    $self->hook(after_static => sub {
-        my $c = shift;
-        $c->res->headers->cache_control('max-age=2592000, must-revalidate');
-    });
+    # Cache static files
+    $self->plugin('StaticCache');
+
     $self->plugin('Mount' => {$config->{prefix} => File::Spec->catfile($Bin, '..', 'script', 'application')});
 }
 

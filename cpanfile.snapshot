@@ -1,20 +1,20 @@
 # carton snapshot format: version 1.0
 DISTRIBUTIONS
-  Archive-Zip-1.59
-    pathname: P/PH/PHRED/Archive-Zip-1.59.tar.gz
+  Archive-Zip-1.60
+    pathname: P/PH/PHRED/Archive-Zip-1.60.tar.gz
     provides:
-      Archive::Zip 1.59
-      Archive::Zip::Archive 1.59
-      Archive::Zip::BufferedFileHandle 1.59
-      Archive::Zip::DirectoryMember 1.59
-      Archive::Zip::FileMember 1.59
-      Archive::Zip::Member 1.59
-      Archive::Zip::MemberRead 1.59
-      Archive::Zip::MockFileHandle 1.59
-      Archive::Zip::NewFileMember 1.59
-      Archive::Zip::StringMember 1.59
-      Archive::Zip::Tree 1.59
-      Archive::Zip::ZipFileMember 1.59
+      Archive::Zip 1.60
+      Archive::Zip::Archive 1.60
+      Archive::Zip::BufferedFileHandle 1.60
+      Archive::Zip::DirectoryMember 1.60
+      Archive::Zip::FileMember 1.60
+      Archive::Zip::Member 1.60
+      Archive::Zip::MemberRead 1.60
+      Archive::Zip::MockFileHandle 1.60
+      Archive::Zip::NewFileMember 1.60
+      Archive::Zip::StringMember 1.60
+      Archive::Zip::Tree 1.60
+      Archive::Zip::ZipFileMember 1.60
     requirements:
       Compress::Raw::Zlib 2.017
       ExtUtils::MakeMaker 0
@@ -316,19 +316,19 @@ DISTRIBUTIONS
       Data::Validate::Domain 0
       Data::Validate::IP 0
       ExtUtils::MakeMaker 0
-  DateTime-1.43
-    pathname: D/DR/DROLSKY/DateTime-1.43.tar.gz
+  DateTime-1.45
+    pathname: D/DR/DROLSKY/DateTime-1.45.tar.gz
     provides:
-      DateTime 1.43
-      DateTime::Duration 1.43
-      DateTime::Helpers 1.43
-      DateTime::Infinite 1.43
-      DateTime::Infinite::Future 1.43
-      DateTime::Infinite::Past 1.43
-      DateTime::LeapSecond 1.43
-      DateTime::PP 1.43
-      DateTime::PPExtra 1.43
-      DateTime::Types 1.43
+      DateTime 1.45
+      DateTime::Duration 1.45
+      DateTime::Helpers 1.45
+      DateTime::Infinite 1.45
+      DateTime::Infinite::Future 1.45
+      DateTime::Infinite::Past 1.45
+      DateTime::LeapSecond 1.45
+      DateTime::PP 1.45
+      DateTime::PPExtra 1.45
+      DateTime::Types 1.45
     requirements:
       Carp 0
       DateTime::Locale 1.06
@@ -336,7 +336,7 @@ DISTRIBUTIONS
       Dist::CheckConflicts 0.02
       ExtUtils::MakeMaker 0
       POSIX 0
-      Params::ValidationCompiler 0.13
+      Params::ValidationCompiler 0.26
       Scalar::Util 0
       Specio 0.18
       Specio::Declare 0
@@ -1011,17 +1011,17 @@ DISTRIBUTIONS
       Clone 0
       ExtUtils::MakeMaker 0
       perl 5.008001
-  IO-Socket-SSL-2.048
-    pathname: S/SU/SULLR/IO-Socket-SSL-2.048.tar.gz
+  IO-Socket-SSL-2.052
+    pathname: S/SU/SULLR/IO-Socket-SSL-2.052.tar.gz
     provides:
-      IO::Socket::SSL 2.048
+      IO::Socket::SSL 2.052
       IO::Socket::SSL::Intercept 2.014
-      IO::Socket::SSL::OCSP_Cache 2.048
-      IO::Socket::SSL::OCSP_Resolver 2.048
+      IO::Socket::SSL::OCSP_Cache 2.052
+      IO::Socket::SSL::OCSP_Resolver 2.052
       IO::Socket::SSL::PublicSuffix undef
-      IO::Socket::SSL::SSL_Context 2.048
-      IO::Socket::SSL::SSL_HANDLE 2.048
-      IO::Socket::SSL::Session_Cache 2.048
+      IO::Socket::SSL::SSL_Context 2.052
+      IO::Socket::SSL::SSL_HANDLE 2.052
+      IO::Socket::SSL::Session_Cache 2.052
       IO::Socket::SSL::Utils 2.014
     requirements:
       ExtUtils::MakeMaker 0
@@ -1239,14 +1239,29 @@ DISTRIBUTIONS
       ExtUtils::CBuilder 0
       Test::More 0
       perl v5.6.0
-  List-MoreUtils-0.419
-    pathname: R/RE/REHSACK/List-MoreUtils-0.419.tar.gz
+  List-MoreUtils-0.428
+    pathname: R/RE/REHSACK/List-MoreUtils-0.428.tar.gz
     provides:
-      List::MoreUtils 0.419
-      List::MoreUtils::PP 0.419
+      List::MoreUtils 0.428
+      List::MoreUtils::PP 0.428
     requirements:
       Exporter::Tiny 0.038
       ExtUtils::MakeMaker 0
+      List::MoreUtils::XS 0.426
+  List-MoreUtils-XS-0.428
+    pathname: R/RE/REHSACK/List-MoreUtils-XS-0.428.tar.gz
+    provides:
+      List::MoreUtils::XS 0.428
+    requirements:
+      Carp 0
+      ExtUtils::MakeMaker 0
+      File::Basename 0
+      File::Copy 0
+      File::Path 0
+      File::Spec 0
+      IPC::Cmd 0
+      XSLoader 0.22
+      base 0
   Locale-Maketext-Lexicon-1.00
     pathname: D/DR/DRTECH/Locale-Maketext-Lexicon-1.00.tar.gz
     provides:
@@ -1406,10 +1421,10 @@ DISTRIBUTIONS
       perl 5.006
       strict 0
       warnings 0
-  Mojo-Pg-3.06
-    pathname: S/SR/SRI/Mojo-Pg-3.06.tar.gz
+  Mojo-Pg-4.04
+    pathname: S/SR/SRI/Mojo-Pg-4.04.tar.gz
     provides:
-      Mojo::Pg 3.06
+      Mojo::Pg 4.04
       Mojo::Pg::Database undef
       Mojo::Pg::Migrations undef
       Mojo::Pg::PubSub undef
@@ -1418,7 +1433,7 @@ DISTRIBUTIONS
     requirements:
       DBD::Pg 3.005001
       ExtUtils::MakeMaker 0
-      Mojolicious 7.32
+      Mojolicious 7.53
       SQL::Abstract 1.81
       perl 5.010001
   Mojo-SQLite-2.002
@@ -1444,8 +1459,8 @@ DISTRIBUTIONS
       URI::db 0.15
       URI::file 4.21
       perl 5.010001
-  Mojolicious-7.33
-    pathname: S/SR/SRI/Mojolicious-7.33.tar.gz
+  Mojolicious-7.61
+    pathname: S/SR/SRI/Mojolicious-7.61.tar.gz
     provides:
       Mojo undef
       Mojo::Asset undef
@@ -1487,6 +1502,7 @@ DISTRIBUTIONS
       Mojo::Message::Response undef
       Mojo::Parameters undef
       Mojo::Path undef
+      Mojo::Promise undef
       Mojo::Reactor undef
       Mojo::Reactor::EV undef
       Mojo::Reactor::Poll undef
@@ -1513,7 +1529,7 @@ DISTRIBUTIONS
       Mojo::UserAgent::Transactor undef
       Mojo::Util undef
       Mojo::WebSocket undef
-      Mojolicious 7.33
+      Mojolicious 7.61
       Mojolicious::Command undef
       Mojolicious::Command::cgi undef
       Mojolicious::Command::cpanify undef
@@ -1565,10 +1581,10 @@ DISTRIBUTIONS
       Pod::Simple 3.09
       Time::Local 1.2
       perl 5.010001
-  Mojolicious-Plugin-AssetPack-1.44
-    pathname: J/JH/JHTHORSEN/Mojolicious-Plugin-AssetPack-1.44.tar.gz
+  Mojolicious-Plugin-AssetPack-2.01
+    pathname: M/MR/MRAMBERG/Mojolicious-Plugin-AssetPack-2.01.tar.gz
     provides:
-      Mojolicious::Plugin::AssetPack 1.44
+      Mojolicious::Plugin::AssetPack 2.01
       Mojolicious::Plugin::AssetPack::Asset undef
       Mojolicious::Plugin::AssetPack::Asset::Null undef
       Mojolicious::Plugin::AssetPack::Pipe undef
@@ -1581,8 +1597,8 @@ DISTRIBUTIONS
       Mojolicious::Plugin::AssetPack::Pipe::Jpeg undef
       Mojolicious::Plugin::AssetPack::Pipe::Less undef
       Mojolicious::Plugin::AssetPack::Pipe::Png undef
-      Mojolicious::Plugin::AssetPack::Pipe::Reloader undef
       Mojolicious::Plugin::AssetPack::Pipe::Riotjs undef
+      Mojolicious::Plugin::AssetPack::Pipe::RollupJs undef
       Mojolicious::Plugin::AssetPack::Pipe::Sass undef
       Mojolicious::Plugin::AssetPack::Pipe::TypeScript undef
       Mojolicious::Plugin::AssetPack::Pipe::Vuejs undef
@@ -1619,6 +1635,13 @@ DISTRIBUTIONS
     requirements:
       ExtUtils::MakeMaker 0
       Mojolicious 7.23
+  Mojolicious-Plugin-StaticCache-0.02
+    pathname: L/LD/LDIDRY/Mojolicious-Plugin-StaticCache-0.02.tar.gz
+    provides:
+      Mojolicious::Plugin::StaticCache 0.02
+    requirements:
+      ExtUtils::MakeMaker 0
+      Mojolicious 7.33
   Moo-2.003002
     pathname: H/HA/HAARG/Moo-2.003002.tar.gz
     provides:
@@ -1665,10 +1688,10 @@ DISTRIBUTIONS
       Carp 0
       ExtUtils::MakeMaker 0
       Storable 0
-  Net-SSLeay-1.81
-    pathname: M/MI/MIKEM/Net-SSLeay-1.81.tar.gz
+  Net-SSLeay-1.82
+    pathname: M/MI/MIKEM/Net-SSLeay-1.82.tar.gz
     provides:
-      Net::SSLeay 1.81
+      Net::SSLeay 1.82
       Net::SSLeay::Handle 0.61
     requirements:
       ExtUtils::MakeMaker 6.36
@@ -1759,12 +1782,12 @@ DISTRIBUTIONS
       Scalar::Util 1.18
       Test::More 0.42
       perl 5.00503
-  Params-ValidationCompiler-0.24
-    pathname: D/DR/DROLSKY/Params-ValidationCompiler-0.24.tar.gz
+  Params-ValidationCompiler-0.26
+    pathname: D/DR/DROLSKY/Params-ValidationCompiler-0.26.tar.gz
     provides:
-      Params::ValidationCompiler 0.24
-      Params::ValidationCompiler::Compiler 0.24
-      Params::ValidationCompiler::Exceptions 0.24
+      Params::ValidationCompiler 0.26
+      Params::ValidationCompiler::Compiler 0.26
+      Params::ValidationCompiler::Exceptions 0.26
     requirements:
       B 0
       Carp 0
