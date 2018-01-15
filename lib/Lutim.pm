@@ -168,6 +168,10 @@ sub startup {
         to('Controller#stats')->
         name('stats');
 
+    $r->get('/lang/:l')->
+        to('Controller#change_lang')->
+        name('lang');
+
     $r->get('/partial/:file' => sub {
         my $c = shift;
         $c->render(
