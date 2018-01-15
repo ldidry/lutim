@@ -34,11 +34,11 @@ msgstr "%1 imatges mandats sus aquesta instància dempuèi lo començament."
 msgid "-or-"
 msgstr "-o-"
 
-#: lib/Lutim.pm:192 lib/Lutim/Command/cron/stats.pm:151 lib/Lutim/Command/cron/stats.pm:162 lib/Lutim/Command/cron/stats.pm:179 themes/default/templates/index.html.ep:5 themes/default/templates/raw.html.ep:10 themes/default/templates/raw.html.ep:21 themes/default/templates/raw.html.ep:38
+#: lib/Lutim.pm:193 lib/Lutim/Command/cron/stats.pm:151 lib/Lutim/Command/cron/stats.pm:162 lib/Lutim/Command/cron/stats.pm:179 themes/default/templates/index.html.ep:5 themes/default/templates/raw.html.ep:10 themes/default/templates/raw.html.ep:21 themes/default/templates/raw.html.ep:38
 msgid "1 year"
 msgstr "1 an"
 
-#: lib/Lutim.pm:191 lib/Lutim/Command/cron/stats.pm:148 lib/Lutim/Command/cron/stats.pm:159 lib/Lutim/Command/cron/stats.pm:176 themes/default/templates/index.html.ep:4 themes/default/templates/partial/for_my_delay.html.ep:12 themes/default/templates/partial/lutim.js.ep:147 themes/default/templates/raw.html.ep:18 themes/default/templates/raw.html.ep:35 themes/default/templates/raw.html.ep:7
+#: lib/Lutim.pm:192 lib/Lutim/Command/cron/stats.pm:148 lib/Lutim/Command/cron/stats.pm:159 lib/Lutim/Command/cron/stats.pm:176 themes/default/templates/index.html.ep:4 themes/default/templates/partial/for_my_delay.html.ep:12 themes/default/templates/partial/lutim.js.ep:147 themes/default/templates/raw.html.ep:18 themes/default/templates/raw.html.ep:35 themes/default/templates/raw.html.ep:7
 msgid "24 hours"
 msgstr "24 oras"
 
@@ -190,7 +190,7 @@ msgstr "URL de l'imatge"
 msgid "Image delay"
 msgstr "Delai de l'imatge"
 
-#: lib/Lutim/Controller.pm:710
+#: lib/Lutim/Controller.pm:712
 msgid "Image not found."
 msgstr "Imatge pas trobat."
 
@@ -304,7 +304,7 @@ msgid "Something bad happened"
 msgstr "Un problèma es aparegut"
 
 #. ($c->config('contact')
-#: lib/Lutim/Controller.pm:717
+#: lib/Lutim/Controller.pm:719
 msgid "Something went wrong when creating the zip file. Try again later or contact the administrator (%1)."
 msgstr "Quicòm a trucat pendent la creacion de l'archiu. Mercés de tornar ensajar pus tard o de contactar l'administrator (%1)."
 
@@ -337,7 +337,7 @@ msgid "The delete token is invalid."
 msgstr "Lo geton de supression es invalida."
 
 #. ($upload->filename)
-#: lib/Lutim/Controller.pm:445
+#: lib/Lutim/Controller.pm:447
 msgid "The file %1 is not an image."
 msgstr "Lo fichièr %1 es pas un imatge."
 
@@ -375,7 +375,7 @@ msgid "The images you post on Lutim can be stored indefinitely or be deleted at 
 msgstr "Los imatges depausats sus Lutim pòdon èsser gardats sens fin, o s’escafar tre lo primièr afichatge o al cap d'un delai causit entre los prepausats."
 
 #. ($c->config->{contact})
-#: lib/Lutim/Controller.pm:442
+#: lib/Lutim/Controller.pm:444
 msgid "There is no more available URL. Retry or contact the administrator. %1"
 msgstr "I a pas mai d'URL disponibla. Mercés de tornar ensajar o de contactar l'administrator. %1."
 
@@ -396,7 +396,7 @@ msgstr "Tweetejatz-lo !"
 msgid "Unable to find the image %1."
 msgstr "Impossible de trobar l'imatge %1."
 
-#: lib/Lutim/Controller.pm:529 lib/Lutim/Controller.pm:574 lib/Lutim/Controller.pm:616 lib/Lutim/Controller.pm:659 lib/Lutim/Controller.pm:671 lib/Lutim/Controller.pm:682 lib/Lutim/Controller.pm:707 lib/Lutim/Plugin/Helpers.pm:57
+#: lib/Lutim/Controller.pm:531 lib/Lutim/Controller.pm:576 lib/Lutim/Controller.pm:618 lib/Lutim/Controller.pm:661 lib/Lutim/Controller.pm:673 lib/Lutim/Controller.pm:684 lib/Lutim/Controller.pm:709 lib/Lutim/Plugin/Helpers.pm:57
 msgid "Unable to find the image: it has been deleted."
 msgstr "Impossible de trobar l'imatge : es estat suprimit."
 
@@ -465,7 +465,7 @@ msgstr "e sus"
 msgid "core developer"
 msgstr "desvolopaire màger"
 
-#: lib/Lutim.pm:190 lib/Lutim/Command/cron/stats.pm:147 lib/Lutim/Command/cron/stats.pm:158 lib/Lutim/Command/cron/stats.pm:175 themes/default/templates/index.html.ep:3 themes/default/templates/raw.html.ep:17 themes/default/templates/raw.html.ep:34 themes/default/templates/raw.html.ep:6
+#: lib/Lutim.pm:191 lib/Lutim/Command/cron/stats.pm:147 lib/Lutim/Command/cron/stats.pm:158 lib/Lutim/Command/cron/stats.pm:175 themes/default/templates/index.html.ep:3 themes/default/templates/raw.html.ep:17 themes/default/templates/raw.html.ep:34 themes/default/templates/raw.html.ep:6
 msgid "no time limit"
 msgstr "Pas cap de limitacion de durada"
 
