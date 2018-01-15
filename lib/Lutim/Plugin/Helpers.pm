@@ -2,8 +2,6 @@
 package Lutim::Plugin::Helpers;
 use Mojo::Base 'Mojolicious::Plugin';
 use Mojo::Util qw(quote);
-use Mojo::Collection;
-use Mojo::File;
 use Crypt::CBC;
 use Data::Entropy qw(entropy_source);
 
@@ -36,14 +34,6 @@ sub register {
     $app->helper(crypt           => \&_crypt);
     $app->helper(decrypt         => \&_decrypt);
     $app->helper(delete_image    => \&_delete_image);
-    $app->helper(available_langs => \&_available_langs);
-
-    $app->hook(
-        before_dispatch => sub {
-            my $c = shift;
-            $c->languages($c->cookie('lutim_lang')) if $c->cookie('lutim_lang');
-        }
-    );
 }
 
 sub _pg {
@@ -250,23 +240,6 @@ sub _delete_image {
     my $img = shift;
     unlink $img->path or warn "Could not unlink ".$img->path.": $!";
     $img->disable();
-}
-
-sub _available_langs {
-    my $c = shift;
-
-    state $langs = Mojo::Collection->new(
-        glob($c->app->home->rel_file('themes/'.$c->config('theme').'/lib/Lutim/I18N/*')),
-        glob($c->app->home->rel_file('themes/default/lib/Lutim/I18N/*'))
-    )->map(
-        sub {
-            Mojo::File->new($_)->basename('.po');
-        }
-    )->uniq->sort(
-        sub {
-            $c->l($a) cmp $c->l($b)
-        }
-    )->to_array;
 }
 
 1;
