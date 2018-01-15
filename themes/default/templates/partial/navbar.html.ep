@@ -1,0 +1,65 @@
+% # vim:set sw=4 ts=4 sts=4 ft=html.epl expandtab:
+<nav class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-lutim" aria-expanded="false">
+                <span class="sr-only"><%= l('Toggle navigation') %></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Lutim</a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-lutim">
+            <ul class="nav navbar-nav">
+                <li>
+                    <%= link_to url_for('myfiles') => begin %><%= l('My images') %><% end %>
+                </li>
+                <li>
+                    <%= link_to url_for('stats') => begin %><%= l('Instance\'s statistics') %><% end %>
+                </li>
+                <li>
+                    <a class="btn btn-default btn-xs" href="#" id="install-app">
+                        <img src="<%= url_for('/img/rocket.png') %>" alt="mozilla rocket logo"> <%= l('Install webapp') %>
+                    </a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <%= l('Support the author') %>
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <%= link_to 'https://tipeee.com/fiat-tux' => begin %><%= l('Support the author on Tipeee') %><% end %>
+                        </li>
+                        <li>
+                            <%= link_to 'https://liberapay.com/sky'   => begin %><%= l('Support the author on Liberapay') %><% end %>
+                        </li>
+                        <li>
+                            <%= link_to 'bitcoin:1JCEtmx9pyzWfitMQj2pKAk8GNgyix7RmA?label=lutim' => begin %><%= l('Support the author with bitcoins') %><% end %>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <%= l('Informations') %>
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <%= link_to 'https://www.gnu.org/licenses/agpl-3.0.html' => begin %><%= l('License:') %> AGPL<% end %>
+                        </li>
+                        <li>
+                            <%= link_to url_for('about') => begin %><%= l('About') %><% end %>
+                        </li>
+                        <li>
+                            <%= link_to 'https://framagit.org/luc/lutim' => begin %><%= l('Fork me!') %><% end %>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

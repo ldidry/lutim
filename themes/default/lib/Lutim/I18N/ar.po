@@ -49,6 +49,10 @@ msgstr "24 ساعة"
 msgid ": Error while trying to get the counter."
 msgstr ": طرأ هناك خطأ أثناء محاولة إستعادة العداد."
 
+#: themes/default/templates/partial/navbar.html.ep:55
+msgid "About"
+msgstr ""
+
 #: lib/Lutim/Command/cron/stats.pm:144 themes/default/templates/raw.html.ep:3
 msgid "Active images"
 msgstr "الصور النشطة"
@@ -61,7 +65,7 @@ msgstr "طرأ هناك خطأ أثناء عملية تنزيل الصورة."
 msgid "Archives download"
 msgstr "تنزيل الأرشيف"
 
-#: themes/default/templates/about.html.ep:41 themes/default/templates/myfiles.html.ep:64 themes/default/templates/stats.html.ep:25
+#: themes/default/templates/about.html.ep:43 themes/default/templates/myfiles.html.ep:64 themes/default/templates/stats.html.ep:25
 msgid "Back to homepage"
 msgstr "العودة إلى الصفحة الرئيسية"
 
@@ -153,7 +157,7 @@ msgstr "إسم الملف"
 msgid "For more details, see the <a href=\"https://framagit.org/luc/lutim\">homepage of the project</a>."
 msgstr "للمزيد من التفاصيل، قم بزيارة <a href=\"https://framagit.org/luc/lutim\">الصفحة الرئيسة للمشروع</a>."
 
-#: themes/default/templates/layouts/default.html.ep:60
+#: themes/default/templates/partial/navbar.html.ep:58
 msgid "Fork me!"
 msgstr "قم بتشعيبي !"
 
@@ -165,7 +169,7 @@ msgstr "رابط المعرض"
 msgid "Hit Ctrl+C, then Enter to copy the short link"
 msgstr "إضغط على CTRL+C ثم على مفتاح الإدخال للقيام بنسخ الرابط القصير"
 
-#: themes/default/templates/layouts/default.html.ep:55
+#: themes/default/templates/layouts/default.html.ep:54
 msgid "Homepage"
 msgstr "الصفحة الرئيسية"
 
@@ -197,15 +201,15 @@ msgstr ""
 msgid "Image not found."
 msgstr "الصورة غير موجودة."
 
-#: themes/default/templates/layouts/default.html.ep:59
+#: themes/default/templates/partial/navbar.html.ep:47
 msgid "Informations"
 msgstr "معلومات"
 
-#: themes/default/templates/layouts/default.html.ep:67
+#: themes/default/templates/partial/navbar.html.ep:23
 msgid "Install webapp"
 msgstr "نتصيب برنامج الويب"
 
-#: themes/default/templates/layouts/default.html.ep:66
+#: themes/default/templates/partial/navbar.html.ep:19
 msgid "Instance's statistics"
 msgstr "إحصائيات مثيل الخادوم"
 
@@ -229,11 +233,11 @@ msgstr "الإبقاء على بيانات EXIF"
 msgid "Let's go!"
 msgstr "هيا بنا !"
 
-#: themes/default/templates/layouts/default.html.ep:63
+#:
 msgid "Liberapay button"
 msgstr "زر ليبيراباي"
 
-#: themes/default/templates/layouts/default.html.ep:58
+#: themes/default/templates/partial/navbar.html.ep:52
 msgid "License:"
 msgstr "الرخصة :"
 
@@ -257,7 +261,7 @@ msgstr ""
 msgid "Markdown syntax"
 msgstr ""
 
-#: themes/default/templates/layouts/default.html.ep:65 themes/default/templates/myfiles.html.ep:2
+#: themes/default/templates/myfiles.html.ep:2 themes/default/templates/partial/navbar.html.ep:16
 msgid "My images"
 msgstr ""
 
@@ -298,10 +302,6 @@ msgstr ""
 msgid "Share it!"
 msgstr ""
 
-#: themes/default/templates/layouts/default.html.ep:61
-msgid "Share on Twitter"
-msgstr ""
-
 #: themes/default/templates/index.html.ep:133 themes/default/templates/partial/lutim.js.ep:174
 msgid "Something bad happened"
 msgstr ""
@@ -311,12 +311,20 @@ msgstr ""
 msgid "Something went wrong when creating the zip file. Try again later or contact the administrator (%1)."
 msgstr ""
 
-#: themes/default/templates/layouts/default.html.ep:63
+#: themes/default/templates/partial/navbar.html.ep:30
+msgid "Support the author"
+msgstr ""
+
+#: themes/default/templates/partial/navbar.html.ep:38
 msgid "Support the author on Liberapay"
 msgstr ""
 
-#: themes/default/templates/layouts/default.html.ep:62
+#: themes/default/templates/partial/navbar.html.ep:35
 msgid "Support the author on Tipeee"
+msgstr ""
+
+#: themes/default/templates/partial/navbar.html.ep:41
+msgid "Support the author with bitcoins"
 msgstr ""
 
 #: themes/default/templates/about.html.ep:13
@@ -382,8 +390,8 @@ msgstr ""
 msgid "There is no more available URL. Retry or contact the administrator. %1"
 msgstr ""
 
-#: themes/default/templates/layouts/default.html.ep:62
-msgid "Tipeee button"
+#: themes/default/templates/partial/navbar.html.ep:6
+msgid "Toggle navigation"
 msgstr ""
 
 #: lib/Lutim/Command/cron/stats.pm:152 themes/default/templates/raw.html.ep:11
@@ -464,6 +472,10 @@ msgstr ""
 msgid "and on"
 msgstr ""
 
+#: themes/default/templates/about.html.ep:40
+msgid "arabic translation"
+msgstr ""
+
 #: themes/default/templates/about.html.ep:27
 msgid "core developer"
 msgstr ""
@@ -478,6 +490,10 @@ msgstr ""
 
 #: themes/default/templates/about.html.ep:27
 msgid "on"
+msgstr ""
+
+#: themes/default/templates/about.html.ep:39
+msgid "paste image to upload ability"
 msgstr ""
 
 #: themes/default/templates/about.html.ep:36

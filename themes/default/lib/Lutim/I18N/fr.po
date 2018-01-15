@@ -47,6 +47,10 @@ msgstr "24 heures"
 msgid ": Error while trying to get the counter."
 msgstr " : Erreur en essayant de récupérer le compteur."
 
+#: themes/default/templates/partial/navbar.html.ep:55
+msgid "About"
+msgstr "À propos"
+
 #: lib/Lutim/Command/cron/stats.pm:144 themes/default/templates/raw.html.ep:3
 msgid "Active images"
 msgstr "Images actives"
@@ -59,7 +63,7 @@ msgstr "Une erreur est survenue lors du téléchargement de l’image."
 msgid "Archives download"
 msgstr "Téléchargement d’archives"
 
-#: themes/default/templates/about.html.ep:41 themes/default/templates/myfiles.html.ep:64 themes/default/templates/stats.html.ep:25
+#: themes/default/templates/about.html.ep:43 themes/default/templates/myfiles.html.ep:64 themes/default/templates/stats.html.ep:25
 msgid "Back to homepage"
 msgstr "Retour à la page d’accueil"
 
@@ -151,7 +155,7 @@ msgstr "Nom du fichier"
 msgid "For more details, see the <a href=\"https://framagit.org/luc/lutim\">homepage of the project</a>."
 msgstr "Pour plus de détails, consultez la page <a href=\"https://framagit.org/luc/lutim\">Github</a> du projet."
 
-#: themes/default/templates/layouts/default.html.ep:60
+#: themes/default/templates/partial/navbar.html.ep:58
 msgid "Fork me!"
 msgstr "Créez un fork !"
 
@@ -163,7 +167,7 @@ msgstr "Lien vers la galerie"
 msgid "Hit Ctrl+C, then Enter to copy the short link"
 msgstr "Faites Ctrl+C puis appuyez sur la touche Entrée pour copier le lien"
 
-#: themes/default/templates/layouts/default.html.ep:55
+#: themes/default/templates/layouts/default.html.ep:54
 msgid "Homepage"
 msgstr "Accueil"
 
@@ -195,15 +199,15 @@ msgstr "Durée de rétention de l’image"
 msgid "Image not found."
 msgstr "Image non trouvée."
 
-#: themes/default/templates/layouts/default.html.ep:59
+#: themes/default/templates/partial/navbar.html.ep:47
 msgid "Informations"
 msgstr "Informations"
 
-#: themes/default/templates/layouts/default.html.ep:67
+#: themes/default/templates/partial/navbar.html.ep:23
 msgid "Install webapp"
 msgstr "Installer la webapp"
 
-#: themes/default/templates/layouts/default.html.ep:66
+#: themes/default/templates/partial/navbar.html.ep:19
 msgid "Instance's statistics"
 msgstr "Statistiques de l’instance"
 
@@ -227,11 +231,11 @@ msgstr "Conserver les données EXIF"
 msgid "Let's go!"
 msgstr "Allons-y !"
 
-#: themes/default/templates/layouts/default.html.ep:63
+#:
 msgid "Liberapay button"
 msgstr "Bouton Liberapay"
 
-#: themes/default/templates/layouts/default.html.ep:58
+#: themes/default/templates/partial/navbar.html.ep:52
 msgid "License:"
 msgstr "Licence :"
 
@@ -255,7 +259,7 @@ msgstr "Développeurs de l’application"
 msgid "Markdown syntax"
 msgstr "Syntaxe Markdown"
 
-#: themes/default/templates/layouts/default.html.ep:65 themes/default/templates/myfiles.html.ep:2
+#: themes/default/templates/myfiles.html.ep:2 themes/default/templates/partial/navbar.html.ep:16
 msgid "My images"
 msgstr "Mes images"
 
@@ -296,7 +300,7 @@ msgstr "Envoyer une image"
 msgid "Share it!"
 msgstr "Partagez !"
 
-#: themes/default/templates/layouts/default.html.ep:61
+#:
 msgid "Share on Twitter"
 msgstr "Partager sur Twitter"
 
@@ -309,13 +313,21 @@ msgstr "Un problème est survenu"
 msgid "Something went wrong when creating the zip file. Try again later or contact the administrator (%1)."
 msgstr "Quelque chose s’est mal passé lors de la création de l’archive. Veuillez réessayer plus tard ou contactez l’administrateur (%1)."
 
-#: themes/default/templates/layouts/default.html.ep:63
+#: themes/default/templates/partial/navbar.html.ep:30
+msgid "Support the author"
+msgstr "Supportez l’auteur"
+
+#: themes/default/templates/partial/navbar.html.ep:38
 msgid "Support the author on Liberapay"
 msgstr "Supporter l’auteur sur Liberapay"
 
-#: themes/default/templates/layouts/default.html.ep:62
+#: themes/default/templates/partial/navbar.html.ep:35
 msgid "Support the author on Tipeee"
 msgstr "Supporter l’auteur sur Tipeee"
+
+#: themes/default/templates/partial/navbar.html.ep:41
+msgid "Support the author with bitcoins"
+msgstr "Supporter l’auteur avec des bitcoins"
 
 #: themes/default/templates/about.html.ep:13
 msgid "The IP address of the image's sender is retained for a delay which depends of the administrator's choice (for the official instance, which is located in France, it's one year)."
@@ -382,9 +394,13 @@ msgstr "Les images déposées sur Lutim peuvent être stockées indéfiniment, o
 msgid "There is no more available URL. Retry or contact the administrator. %1"
 msgstr "Il n’y a plus d’URL disponible. Veuillez réessayer ou contacter l’administrateur. %1."
 
-#: themes/default/templates/layouts/default.html.ep:62
+#:
 msgid "Tipeee button"
 msgstr "Bouton Tipeee"
+
+#: themes/default/templates/partial/navbar.html.ep:6
+msgid "Toggle navigation"
+msgstr "Étendre la barre de navigation"
 
 #: lib/Lutim/Command/cron/stats.pm:152 themes/default/templates/raw.html.ep:11
 msgid "Total"
@@ -464,6 +480,10 @@ msgstr "Vous pouvez, de façon facultative, demander à ce que la ou les images 
 msgid "and on"
 msgstr "et sur"
 
+#: themes/default/templates/about.html.ep:40
+msgid "arabic translation"
+msgstr "traduction en arabe"
+
 #: themes/default/templates/about.html.ep:27
 msgid "core developer"
 msgstr "développeur principal"
@@ -479,6 +499,10 @@ msgstr "traduction occitane"
 #: themes/default/templates/about.html.ep:27
 msgid "on"
 msgstr "sur"
+
+#: themes/default/templates/about.html.ep:39
+msgid "paste image to upload ability"
+msgstr "possibilité de coller une image pour l’envoyer"
 
 #: themes/default/templates/about.html.ep:36
 msgid "spanish translation"

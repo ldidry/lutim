@@ -45,6 +45,10 @@ msgstr "24 hours"
 msgid ": Error while trying to get the counter."
 msgstr ""
 
+#: themes/default/templates/partial/navbar.html.ep:55
+msgid "About"
+msgstr ""
+
 #: lib/Lutim/Command/cron/stats.pm:144 themes/default/templates/raw.html.ep:3
 msgid "Active images"
 msgstr ""
@@ -57,7 +61,7 @@ msgstr "An error occured while downloading the image."
 msgid "Archives download"
 msgstr ""
 
-#: themes/default/templates/about.html.ep:41 themes/default/templates/myfiles.html.ep:64 themes/default/templates/stats.html.ep:25
+#: themes/default/templates/about.html.ep:43 themes/default/templates/myfiles.html.ep:64 themes/default/templates/stats.html.ep:25
 msgid "Back to homepage"
 msgstr "Back to homepage"
 
@@ -149,7 +153,7 @@ msgstr ""
 msgid "For more details, see the <a href=\"https://framagit.org/luc/lutim\">homepage of the project</a>."
 msgstr "For more details, see the <a href=\"https://framagit.org/luc/lutim\">homepage of the project</a>."
 
-#: themes/default/templates/layouts/default.html.ep:60
+#: themes/default/templates/partial/navbar.html.ep:58
 msgid "Fork me!"
 msgstr "Fork me!"
 
@@ -161,7 +165,7 @@ msgstr ""
 msgid "Hit Ctrl+C, then Enter to copy the short link"
 msgstr ""
 
-#: themes/default/templates/layouts/default.html.ep:55
+#: themes/default/templates/layouts/default.html.ep:54
 msgid "Homepage"
 msgstr "Homepage"
 
@@ -193,15 +197,15 @@ msgstr ""
 msgid "Image not found."
 msgstr ""
 
-#: themes/default/templates/layouts/default.html.ep:59
+#: themes/default/templates/partial/navbar.html.ep:47
 msgid "Informations"
 msgstr "Informations"
 
-#: themes/default/templates/layouts/default.html.ep:67
+#: themes/default/templates/partial/navbar.html.ep:23
 msgid "Install webapp"
 msgstr "Install webapp"
 
-#: themes/default/templates/layouts/default.html.ep:66
+#: themes/default/templates/partial/navbar.html.ep:19
 msgid "Instance's statistics"
 msgstr ""
 
@@ -225,11 +229,7 @@ msgstr "Keep EXIF tags"
 msgid "Let's go!"
 msgstr "Let's go!"
 
-#: themes/default/templates/layouts/default.html.ep:63
-msgid "Liberapay button"
-msgstr ""
-
-#: themes/default/templates/layouts/default.html.ep:58
+#: themes/default/templates/partial/navbar.html.ep:52
 msgid "License:"
 msgstr "License:"
 
@@ -253,7 +253,7 @@ msgstr "Main developers"
 msgid "Markdown syntax"
 msgstr "Markdown syntax"
 
-#: themes/default/templates/layouts/default.html.ep:65 themes/default/templates/myfiles.html.ep:2
+#: themes/default/templates/myfiles.html.ep:2 themes/default/templates/partial/navbar.html.ep:16
 msgid "My images"
 msgstr ""
 
@@ -294,7 +294,7 @@ msgstr "Send an image"
 msgid "Share it!"
 msgstr ""
 
-#: themes/default/templates/layouts/default.html.ep:61
+#:
 msgid "Share on Twitter"
 msgstr "Share on Twitter"
 
@@ -307,12 +307,20 @@ msgstr "Something bad happened"
 msgid "Something went wrong when creating the zip file. Try again later or contact the administrator (%1)."
 msgstr ""
 
-#: themes/default/templates/layouts/default.html.ep:63
+#: themes/default/templates/partial/navbar.html.ep:30
+msgid "Support the author"
+msgstr ""
+
+#: themes/default/templates/partial/navbar.html.ep:38
 msgid "Support the author on Liberapay"
 msgstr ""
 
-#: themes/default/templates/layouts/default.html.ep:62
+#: themes/default/templates/partial/navbar.html.ep:35
 msgid "Support the author on Tipeee"
+msgstr ""
+
+#: themes/default/templates/partial/navbar.html.ep:41
+msgid "Support the author with bitcoins"
 msgstr ""
 
 #: themes/default/templates/about.html.ep:13
@@ -378,8 +386,8 @@ msgstr "The images you post on Lutim can be stored indefinitely or be deleted at
 msgid "There is no more available URL. Retry or contact the administrator. %1"
 msgstr "There is no more available URL. Retry or contact the administrator. %1"
 
-#: themes/default/templates/layouts/default.html.ep:62
-msgid "Tipeee button"
+#: themes/default/templates/partial/navbar.html.ep:6
+msgid "Toggle navigation"
 msgstr ""
 
 #: lib/Lutim/Command/cron/stats.pm:152 themes/default/templates/raw.html.ep:11
@@ -464,6 +472,10 @@ msgstr "You can, optionally, request that the image(s) posted on Lutim to be del
 msgid "and on"
 msgstr "and on"
 
+#: themes/default/templates/about.html.ep:40
+msgid "arabic translation"
+msgstr ""
+
 #: themes/default/templates/about.html.ep:27
 msgid "core developer"
 msgstr "core developer"
@@ -479,6 +491,10 @@ msgstr ""
 #: themes/default/templates/about.html.ep:27
 msgid "on"
 msgstr "on"
+
+#: themes/default/templates/about.html.ep:39
+msgid "paste image to upload ability"
+msgstr ""
 
 #: themes/default/templates/about.html.ep:36
 msgid "spanish translation"
