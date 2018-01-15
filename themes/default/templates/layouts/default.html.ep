@@ -36,7 +36,7 @@
 % }
     </head>
     <body>
-        <div class="container-fluid">
+        <div class="container">
             <div>
 % if (defined(config('hosted_by'))) {
                 <div class="pull-right">
