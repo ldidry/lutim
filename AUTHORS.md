@@ -2,7 +2,7 @@
 
 ## Main developers
 
-* Luc Didry, aka Sky (<http://www.fiat-tux.fr>), core developer, @framasky on [Twitter](https://twitter.com/framasky) and on [Diaspora*](https://framasphere.org/public/framasky)
+* Luc Didry, aka Sky (<http://www.fiat-tux.fr>), core developer, @framasky on [Mastodon](https://framapiaf.org/@framasky) and on [Diaspora*](https://framasphere.org/public/framasky)
 * Dattaz (<http://dattaz.fr>), webapp developer, [@dat_taz](https://twitter.com/dat_taz)
 
 ## Contributors
