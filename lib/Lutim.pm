@@ -79,6 +79,7 @@ sub startup {
 
     # Helpers
     $self->plugin('Lutim::Plugin::Helpers');
+    $self->plugin('Lutim::Plugin::Lang');
 
     # Minion
     if ($config->{minion}->{enabled}) {

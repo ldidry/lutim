@@ -63,6 +63,9 @@ sub startup {
     # Cache static files
     $self->plugin('StaticCache');
 
+    # Helpers
+    $self->plugin('Lutim::Plugin::Helpers');
+
     $self->plugin('Mount' => {$config->{prefix} => File::Spec->catfile($Bin, '..', 'script', 'application')});
 }
 
