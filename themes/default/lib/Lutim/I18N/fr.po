@@ -35,11 +35,11 @@ msgstr "%1 images envoyées sur cette instance depuis le début."
 msgid "-or-"
 msgstr "-ou-"
 
-#: lib/Lutim.pm:193 lib/Lutim/Command/cron/stats.pm:151 lib/Lutim/Command/cron/stats.pm:162 lib/Lutim/Command/cron/stats.pm:179 themes/default/templates/index.html.ep:5 themes/default/templates/raw.html.ep:10 themes/default/templates/raw.html.ep:21 themes/default/templates/raw.html.ep:38
+#: lib/Lutim.pm:180 lib/Lutim/Command/cron/stats.pm:151 lib/Lutim/Command/cron/stats.pm:162 lib/Lutim/Command/cron/stats.pm:179 themes/default/templates/index.html.ep:5 themes/default/templates/raw.html.ep:10 themes/default/templates/raw.html.ep:21 themes/default/templates/raw.html.ep:38
 msgid "1 year"
 msgstr "1 an"
 
-#: lib/Lutim.pm:192 lib/Lutim/Command/cron/stats.pm:148 lib/Lutim/Command/cron/stats.pm:159 lib/Lutim/Command/cron/stats.pm:176 themes/default/templates/index.html.ep:4 themes/default/templates/partial/for_my_delay.html.ep:12 themes/default/templates/partial/lutim.js.ep:147 themes/default/templates/raw.html.ep:18 themes/default/templates/raw.html.ep:35 themes/default/templates/raw.html.ep:7
+#: lib/Lutim.pm:179 lib/Lutim/Command/cron/stats.pm:148 lib/Lutim/Command/cron/stats.pm:159 lib/Lutim/Command/cron/stats.pm:176 themes/default/templates/index.html.ep:4 themes/default/templates/partial/for_my_delay.html.ep:12 themes/default/templates/partial/lutim.js.ep:147 themes/default/templates/raw.html.ep:18 themes/default/templates/raw.html.ep:35 themes/default/templates/raw.html.ep:7
 msgid "24 hours"
 msgstr "24 heures"
 
@@ -151,7 +151,7 @@ msgstr "Nom du fichier"
 msgid "For more details, see the <a href=\"https://framagit.org/luc/lutim\">homepage of the project</a>."
 msgstr "Pour plus de détails, consultez la page <a href=\"https://framagit.org/luc/lutim\">Github</a> du projet."
 
-#: themes/default/templates/layouts/default.html.ep:55
+#: themes/default/templates/layouts/default.html.ep:60
 msgid "Fork me!"
 msgstr "Créez un fork !"
 
@@ -163,7 +163,7 @@ msgstr "Lien vers la galerie"
 msgid "Hit Ctrl+C, then Enter to copy the short link"
 msgstr "Faites Ctrl+C puis appuyez sur la touche Entrée pour copier le lien"
 
-#: themes/default/templates/layouts/default.html.ep:50
+#: themes/default/templates/layouts/default.html.ep:55
 msgid "Homepage"
 msgstr "Accueil"
 
@@ -195,15 +195,15 @@ msgstr "Durée de rétention de l’image"
 msgid "Image not found."
 msgstr "Image non trouvée."
 
-#: themes/default/templates/layouts/default.html.ep:54
+#: themes/default/templates/layouts/default.html.ep:59
 msgid "Informations"
 msgstr "Informations"
 
-#: themes/default/templates/layouts/default.html.ep:62
+#: themes/default/templates/layouts/default.html.ep:67
 msgid "Install webapp"
 msgstr "Installer la webapp"
 
-#: themes/default/templates/layouts/default.html.ep:61
+#: themes/default/templates/layouts/default.html.ep:66
 msgid "Instance's statistics"
 msgstr "Statistiques de l’instance"
 
@@ -227,11 +227,11 @@ msgstr "Conserver les données EXIF"
 msgid "Let's go!"
 msgstr "Allons-y !"
 
-#: themes/default/templates/layouts/default.html.ep:58
+#: themes/default/templates/layouts/default.html.ep:63
 msgid "Liberapay button"
 msgstr "Bouton Liberapay"
 
-#: themes/default/templates/layouts/default.html.ep:53
+#: themes/default/templates/layouts/default.html.ep:58
 msgid "License:"
 msgstr "Licence :"
 
@@ -255,7 +255,7 @@ msgstr "Développeurs de l’application"
 msgid "Markdown syntax"
 msgstr "Syntaxe Markdown"
 
-#: themes/default/templates/layouts/default.html.ep:60 themes/default/templates/myfiles.html.ep:2
+#: themes/default/templates/layouts/default.html.ep:65 themes/default/templates/myfiles.html.ep:2
 msgid "My images"
 msgstr "Mes images"
 
@@ -296,7 +296,7 @@ msgstr "Envoyer une image"
 msgid "Share it!"
 msgstr "Partagez !"
 
-#: themes/default/templates/layouts/default.html.ep:56
+#: themes/default/templates/layouts/default.html.ep:61
 msgid "Share on Twitter"
 msgstr "Partager sur Twitter"
 
@@ -309,11 +309,11 @@ msgstr "Un problème est survenu"
 msgid "Something went wrong when creating the zip file. Try again later or contact the administrator (%1)."
 msgstr "Quelque chose s’est mal passé lors de la création de l’archive. Veuillez réessayer plus tard ou contactez l’administrateur (%1)."
 
-#: themes/default/templates/layouts/default.html.ep:58
+#: themes/default/templates/layouts/default.html.ep:63
 msgid "Support the author on Liberapay"
 msgstr "Supporter l’auteur sur Liberapay"
 
-#: themes/default/templates/layouts/default.html.ep:57
+#: themes/default/templates/layouts/default.html.ep:62
 msgid "Support the author on Tipeee"
 msgstr "Supporter l’auteur sur Tipeee"
 
@@ -382,7 +382,7 @@ msgstr "Les images déposées sur Lutim peuvent être stockées indéfiniment, o
 msgid "There is no more available URL. Retry or contact the administrator. %1"
 msgstr "Il n’y a plus d’URL disponible. Veuillez réessayer ou contacter l’administrateur. %1."
 
-#: themes/default/templates/layouts/default.html.ep:57
+#: themes/default/templates/layouts/default.html.ep:62
 msgid "Tipeee button"
 msgstr "Bouton Tipeee"
 
@@ -468,7 +468,7 @@ msgstr "et sur"
 msgid "core developer"
 msgstr "développeur principal"
 
-#: lib/Lutim.pm:191 lib/Lutim/Command/cron/stats.pm:147 lib/Lutim/Command/cron/stats.pm:158 lib/Lutim/Command/cron/stats.pm:175 themes/default/templates/index.html.ep:3 themes/default/templates/raw.html.ep:17 themes/default/templates/raw.html.ep:34 themes/default/templates/raw.html.ep:6
+#: lib/Lutim.pm:178 lib/Lutim/Command/cron/stats.pm:147 lib/Lutim/Command/cron/stats.pm:158 lib/Lutim/Command/cron/stats.pm:175 themes/default/templates/index.html.ep:3 themes/default/templates/raw.html.ep:17 themes/default/templates/raw.html.ep:34 themes/default/templates/raw.html.ep:6
 msgid "no time limit"
 msgstr "Pas de limitation de durée"
 

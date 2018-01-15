@@ -9,6 +9,7 @@ requires 'Mojolicious::Plugin::I18N';
 requires 'Mojolicious::Plugin::AssetPack', '>= 1.44';
 requires 'Mojolicious::Plugin::DebugDumperHelper';
 requires 'Mojolicious::Plugin::PgURLHelper';
+requires 'Mojolicious::Plugin::StaticCache';
 requires "Minion", "== 4.06";
 requires 'Minion::Backend::SQLite', "== 0.009";
 requires 'CSS::Minifier::XS';

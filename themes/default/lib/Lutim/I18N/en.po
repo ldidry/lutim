@@ -33,11 +33,11 @@ msgstr "%1 sent images on this instance from beginning."
 msgid "-or-"
 msgstr "-or-"
 
-#: lib/Lutim.pm:193 lib/Lutim/Command/cron/stats.pm:151 lib/Lutim/Command/cron/stats.pm:162 lib/Lutim/Command/cron/stats.pm:179 themes/default/templates/index.html.ep:5 themes/default/templates/raw.html.ep:10 themes/default/templates/raw.html.ep:21 themes/default/templates/raw.html.ep:38
+#: lib/Lutim.pm:180 lib/Lutim/Command/cron/stats.pm:151 lib/Lutim/Command/cron/stats.pm:162 lib/Lutim/Command/cron/stats.pm:179 themes/default/templates/index.html.ep:5 themes/default/templates/raw.html.ep:10 themes/default/templates/raw.html.ep:21 themes/default/templates/raw.html.ep:38
 msgid "1 year"
 msgstr "1 year"
 
-#: lib/Lutim.pm:192 lib/Lutim/Command/cron/stats.pm:148 lib/Lutim/Command/cron/stats.pm:159 lib/Lutim/Command/cron/stats.pm:176 themes/default/templates/index.html.ep:4 themes/default/templates/partial/for_my_delay.html.ep:12 themes/default/templates/partial/lutim.js.ep:147 themes/default/templates/raw.html.ep:18 themes/default/templates/raw.html.ep:35 themes/default/templates/raw.html.ep:7
+#: lib/Lutim.pm:179 lib/Lutim/Command/cron/stats.pm:148 lib/Lutim/Command/cron/stats.pm:159 lib/Lutim/Command/cron/stats.pm:176 themes/default/templates/index.html.ep:4 themes/default/templates/partial/for_my_delay.html.ep:12 themes/default/templates/partial/lutim.js.ep:147 themes/default/templates/raw.html.ep:18 themes/default/templates/raw.html.ep:35 themes/default/templates/raw.html.ep:7
 msgid "24 hours"
 msgstr "24 hours"
 
@@ -149,7 +149,7 @@ msgstr ""
 msgid "For more details, see the <a href=\"https://framagit.org/luc/lutim\">homepage of the project</a>."
 msgstr "For more details, see the <a href=\"https://framagit.org/luc/lutim\">homepage of the project</a>."
 
-#: themes/default/templates/layouts/default.html.ep:55
+#: themes/default/templates/layouts/default.html.ep:60
 msgid "Fork me!"
 msgstr "Fork me!"
 
@@ -161,7 +161,7 @@ msgstr ""
 msgid "Hit Ctrl+C, then Enter to copy the short link"
 msgstr ""
 
-#: themes/default/templates/layouts/default.html.ep:50
+#: themes/default/templates/layouts/default.html.ep:55
 msgid "Homepage"
 msgstr "Homepage"
 
@@ -193,15 +193,15 @@ msgstr ""
 msgid "Image not found."
 msgstr ""
 
-#: themes/default/templates/layouts/default.html.ep:54
+#: themes/default/templates/layouts/default.html.ep:59
 msgid "Informations"
 msgstr "Informations"
 
-#: themes/default/templates/layouts/default.html.ep:62
+#: themes/default/templates/layouts/default.html.ep:67
 msgid "Install webapp"
 msgstr "Install webapp"
 
-#: themes/default/templates/layouts/default.html.ep:61
+#: themes/default/templates/layouts/default.html.ep:66
 msgid "Instance's statistics"
 msgstr ""
 
@@ -225,11 +225,11 @@ msgstr "Keep EXIF tags"
 msgid "Let's go!"
 msgstr "Let's go!"
 
-#: themes/default/templates/layouts/default.html.ep:58
+#: themes/default/templates/layouts/default.html.ep:63
 msgid "Liberapay button"
 msgstr ""
 
-#: themes/default/templates/layouts/default.html.ep:53
+#: themes/default/templates/layouts/default.html.ep:58
 msgid "License:"
 msgstr "License:"
 
@@ -253,7 +253,7 @@ msgstr "Main developers"
 msgid "Markdown syntax"
 msgstr "Markdown syntax"
 
-#: themes/default/templates/layouts/default.html.ep:60 themes/default/templates/myfiles.html.ep:2
+#: themes/default/templates/layouts/default.html.ep:65 themes/default/templates/myfiles.html.ep:2
 msgid "My images"
 msgstr ""
 
@@ -294,7 +294,7 @@ msgstr "Send an image"
 msgid "Share it!"
 msgstr ""
 
-#: themes/default/templates/layouts/default.html.ep:56
+#: themes/default/templates/layouts/default.html.ep:61
 msgid "Share on Twitter"
 msgstr "Share on Twitter"
 
@@ -307,11 +307,11 @@ msgstr "Something bad happened"
 msgid "Something went wrong when creating the zip file. Try again later or contact the administrator (%1)."
 msgstr ""
 
-#: themes/default/templates/layouts/default.html.ep:58
+#: themes/default/templates/layouts/default.html.ep:63
 msgid "Support the author on Liberapay"
 msgstr ""
 
-#: themes/default/templates/layouts/default.html.ep:57
+#: themes/default/templates/layouts/default.html.ep:62
 msgid "Support the author on Tipeee"
 msgstr ""
 
@@ -378,7 +378,7 @@ msgstr "The images you post on Lutim can be stored indefinitely or be deleted at
 msgid "There is no more available URL. Retry or contact the administrator. %1"
 msgstr "There is no more available URL. Retry or contact the administrator. %1"
 
-#: themes/default/templates/layouts/default.html.ep:57
+#: themes/default/templates/layouts/default.html.ep:62
 msgid "Tipeee button"
 msgstr ""
 
@@ -468,7 +468,7 @@ msgstr "and on"
 msgid "core developer"
 msgstr "core developer"
 
-#: lib/Lutim.pm:191 lib/Lutim/Command/cron/stats.pm:147 lib/Lutim/Command/cron/stats.pm:158 lib/Lutim/Command/cron/stats.pm:175 themes/default/templates/index.html.ep:3 themes/default/templates/raw.html.ep:17 themes/default/templates/raw.html.ep:34 themes/default/templates/raw.html.ep:6
+#: lib/Lutim.pm:178 lib/Lutim/Command/cron/stats.pm:147 lib/Lutim/Command/cron/stats.pm:158 lib/Lutim/Command/cron/stats.pm:175 themes/default/templates/index.html.ep:3 themes/default/templates/raw.html.ep:17 themes/default/templates/raw.html.ep:34 themes/default/templates/raw.html.ep:6
 msgid "no time limit"
 msgstr "no time limit"
 
