@@ -1,5 +1,5 @@
 EXTRACTDIR=-D lib -D themes/default/templates
-POT=themes/default/lib/Lutim/I18N/template.pot
+POT=themes/default/lib/Lutim/I18N/lutim.pot
 EN=themes/default/lib/Lutim/I18N/en.po
 FR=themes/default/lib/Lutim/I18N/fr.po
 DE=themes/default/lib/Lutim/I18N/de.po
