@@ -1,4 +1,6 @@
 % # vim:set sw=4 ts=4 sts=4 ft=javascript expandtab:
+var absUrl = '<%= url_for('/') %>';
+
 var initPhotoSwipeFromDOM = function(gallerySelector) {
 
     // parse slide data (url, title, size ...) from DOM elements
@@ -201,9 +203,38 @@ var initPhotoSwipeFromDOM = function(gallerySelector) {
         openPhotoSwipe( hashData.pid ,  galleryElements[ hashData.gid - 1 ], true, true );
     }
 };
-$(document).ready(function() {
-    var absUrl = '<%= url_for('/') %>';
 
+function addElement(keys) {
+    element = keys.shift();
+    if (!element.match('xcf')) {
+        $.ajax({
+            url: '<%= url_for('about_img') %>'+'/'+element,
+            method: 'GET',
+            dataType: 'json',
+            success: function(data, textStatus, jqXHR) {
+                if (data.success) {
+                    $('.gallery').append(
+                        [
+                            '<figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">',
+                            '    <a href="', absUrl+element, '" itemprop="contentUrl" data-size="', data.data.width, 'x', data.data.height, '">',
+                            '        <img src="', absUrl+element, '?width=275" itemprop="thumbnail" alt="" class="img-responsive"/>',
+                            '    </a>',
+                            '</figure>'
+                        ].join('')
+                    );
+                }
+            },
+            complete: function() {
+                if (keys.length > 0) {
+                    addElement(keys);
+                } else {
+                    initPhotoSwipeFromDOM('.gallery');
+                }
+            }
+        });
+    }
+}
+$(document).ready(function() {
     var key = window.location.hash.substring(1);  // Get key
     // First, strip everything after the equal sign (=) which signals end of base64 string.
     i = key.indexOf('='); if (i>-1) { key = key.substring(0,i+1); }
@@ -214,32 +245,5 @@ $(document).ready(function() {
 
     $('#download-all').attr('href', $('#download-all').attr('href')+keys.join('&i='));
 
-    var items = [];
-    keys.forEach(function(element, index, array) {
-        if (!element.match('xcf')) {
-            $.ajax({
-                url: '<%= url_for('about_img') %>'+'/'+element,
-                method: 'GET',
-                dataType: 'json',
-                success: function(data, textStatus, jqXHR) {
-                    if (data.success) {
-                        $('.gallery').append(
-                            [
-                                '<figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">',
-                                '    <a href="', absUrl+element, '" itemprop="contentUrl" data-size="', data.data.width, 'x', data.data.height, '">',
-                                '        <img src="', absUrl+element, '?width=275" itemprop="thumbnail" alt="" class="img-responsive"/>',
-                                '    </a>',
-                                '</figure>'
-                            ].join('')
-                        );
-                    }
-                },
-                complete: function() {
-                    if (index + 1 === keys.length) {
-                        initPhotoSwipeFromDOM('.gallery');
-                    }
-                }
-            });
-        }
-    });
+    addElement(keys);
 });
