@@ -1,3 +1,4 @@
+/* vim:set sw=4 ts=4 sts=4 ft=css expandtab: */
 @media (max-width: 767px) {
     body {
         padding-top: 5px;
@@ -85,4 +86,21 @@ label.always-encrypt {
     height: 10000vh;
     width: 0;
     display: hidden;
+}
+.gallery figure {
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 5px;
+}
+@media (min-width: 1200px) {
+    .gallery { column-count: 4 }
+}
+@media (min-width: 991px) and (max-width: 1199px) {
+    .gallery { column-count: 3 }
+}
+@media (min-width: 676px) and (max-width: 990px) {
+    .gallery { column-count: 2 }
+}
+@media (max-width: 675px) {
+    .gallery { column-count: 1 }
 }

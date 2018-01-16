@@ -84,6 +84,31 @@ sub infos {
     );
 }
 
+sub about_img {
+    my $c     = shift;
+    my $short = $c->param('short');
+
+    my $image = Lutim::DB::Image->new(app => $c->app, short => $short);
+    if ($image->enabled && $image->path) {
+        return $c->render(
+            json => {
+                success => true,
+                data    => {
+                    width  => $image->width,
+                    height => $image->height,
+                }
+            }
+        );
+    } else {
+        return $c->render(
+            json => {
+                success => false,
+                msg     => $c->l('Unable to find the image %1.', $short)
+            }
+        );
+    }
+}
+
 sub webapp {
     my $c = shift;
 
@@ -527,7 +552,9 @@ sub short {
     my $short = $c->param('short');
     my $touit = $c->param('t');
     my $key   = $c->param('key');
-    my $thumb = $c->param('thumb');
+    my $thumb;
+       $thumb = '' if defined $c->param('thumb');
+       $thumb = $c->param('width') if defined $c->param('width');
     my $dl    = (defined($c->param('dl'))) ? 'attachment' : 'inline';
 
     my $image = Lutim::DB::Image->new(app => $c->app, short => $short);

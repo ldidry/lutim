@@ -64,6 +64,6 @@ It uses:
 * [Moment.js](http://momentjs.com/) for displaying real dates instead of unix timestamps.
 * [Fontello](http://fontello.com/) and the [markdown font](https://github.com/dcurtis/markdown-mark/) for the icons, licenses for the fontello icons fonts are in `public/font/LICENSE.txt`
 * [Henny Penny](https://www.google.com/fonts/specimen/Henny+Penny) font designed by Olga Umpeleva for [Brownfox](http://brownfox.org)
-* [Unite gallery](http://unitegallery.net/) for the gallery
+* [PhotoSwipe](http://photoswipe.com/) for the gallery
 * [JSZip](https://stuk.github.io/jszip/) for generating a zip containing all the images in the gallery
 * [FileSaver.js](https://github.com/eligrey/FileSaver.js/) for saving the zip

@@ -223,14 +223,24 @@ sub startup {
         to('Controller#get_counter')->
         name('counter');
 
+    $r->get('/about/(:short).(:f)')->
+        to('Controller#about_img')->
+        name('about_img');
+
+    $r->get('/about/:short/(:key).(:f)')->
+        to('Controller#about_img')->
+        name('about_img');
+
     $r->get('/(:short).(:f)')->
         to('Controller#short')->
         name('short');
+
     $r->get('/:short')->
         to('Controller#short');
 
     $r->get('/:short/(:key).(:f)')->
         to('Controller#short');
+
     $r->get('/:short/:key')->
         to('Controller#short');
 }

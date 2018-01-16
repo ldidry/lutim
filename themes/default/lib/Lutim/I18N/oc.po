@@ -54,7 +54,7 @@ msgstr ""
 msgid "Active images"
 msgstr "Imatges actius"
 
-#: lib/Lutim/Controller.pm:301
+#: lib/Lutim/Controller.pm:326
 msgid "An error occured while downloading the image."
 msgstr "Una error es apareguda pendent lo telecargament de l'imatge."
 
@@ -69,6 +69,10 @@ msgstr "Tornar a la pagina d'acuèlh"
 #: themes/default/templates/index.html.ep:193 themes/default/templates/index.html.ep:194
 msgid "Click to open the file browser"
 msgstr "Clicatz per utilizar lo navigator de fichièr"
+
+#: themes/default/templates/gallery.html.ep:26
+msgid "Close (Esc)"
+msgstr ""
 
 #: themes/default/templates/about.html.ep:30
 msgid "Contributors"
@@ -194,7 +198,7 @@ msgstr "URL de l'imatge"
 msgid "Image delay"
 msgstr "Delai de l'imatge"
 
-#: lib/Lutim/Controller.pm:725
+#: lib/Lutim/Controller.pm:752
 msgid "Image not found."
 msgstr "Imatge pas trobat."
 
@@ -234,10 +238,6 @@ msgstr ""
 msgid "Let's go!"
 msgstr "Zo !"
 
-#:
-msgid "Liberapay button"
-msgstr "Boton Liberapay"
-
 #: themes/default/templates/partial/navbar.html.ep:72
 msgid "License:"
 msgstr "Licéncia :"
@@ -266,6 +266,10 @@ msgstr "Sintaxi Markdown"
 msgid "My images"
 msgstr "Mos imatges"
 
+#: themes/default/templates/gallery.html.ep:42
+msgid "Next (arrow right)"
+msgstr ""
+
 #: themes/default/templates/partial/myfiles.js.ep:19
 msgid "No limit"
 msgstr "Pas cap de data d'expiracion"
@@ -291,6 +295,10 @@ msgstr "Mercés de clicar sus cada URL per telecargar los diferents archius ZIP.
 msgid "Please contact the administrator: %1"
 msgstr "Mercés de contactar l'administrator : %1"
 
+#: themes/default/templates/gallery.html.ep:40
+msgid "Previous (arrow left)"
+msgstr ""
+
 #: themes/default/templates/stats.html.ep:22
 msgid "Raw stats"
 msgstr "Estatisticas brutas"
@@ -303,16 +311,12 @@ msgstr "Mandar un imatge"
 msgid "Share it!"
 msgstr "Partejatz-lo !"
 
-#:
-msgid "Share on Twitter"
-msgstr "Partejar sus Twitter"
-
 #: themes/default/templates/index.html.ep:133 themes/default/templates/partial/lutim.js.ep:174
 msgid "Something bad happened"
 msgstr "Un problèma es aparegut"
 
 #. ($c->config('contact')
-#: lib/Lutim/Controller.pm:732
+#: lib/Lutim/Controller.pm:759
 msgid "Something went wrong when creating the zip file. Try again later or contact the administrator (%1)."
 msgstr "Quicòm a trucat pendent la creacion de l'archiu. Mercés de tornar ensajar pus tard o de contactar l'administrator (%1)."
 
@@ -340,7 +344,7 @@ msgstr "L’IP de la persona que mandèt l'imatge es gardada pendent un delai qu
 msgid "The Lutim software is a <a href=\"http://en.wikipedia.org/wiki/Free_software\">free software</a>, which allows you to download and install it on you own server. Have a look at the <a href=\"https://www.gnu.org/licenses/agpl-3.0.html\">AGPL</a> to see what you can do."
 msgstr "Lo logicial Lutim es un <a href=\"https://oc.wikipedia.org/wiki/Logicial_liure\">logicial liure</a>, que permet de lo telecargar e de l’installar sus vòstre pròpri servidor. Gaitatz l’<a href=\"https://www.gnu.org/licenses/agpl-3.0.html\">AGPL</a> per veire que son vòstres dreits"
 
-#: lib/Lutim/Controller.pm:320
+#: lib/Lutim/Controller.pm:345
 msgid "The URL is not valid."
 msgstr "L'URL n'es pas valida."
 
@@ -348,19 +352,19 @@ msgstr "L'URL n'es pas valida."
 msgid "The automatic download process will open a tab in your browser for each link. You need to allow popups for Lutim."
 msgstr "Lo processús automatic de telecargament obrirà un onglet dins lo navigato per cada ligam. Vos cal autorizar las popups per Lutim."
 
-#: lib/Lutim/Controller.pm:133 lib/Lutim/Controller.pm:201
+#: lib/Lutim/Controller.pm:158 lib/Lutim/Controller.pm:226
 msgid "The delete token is invalid."
 msgstr "Lo geton de supression es invalida."
 
 #. ($upload->filename)
-#: lib/Lutim/Controller.pm:460
+#: lib/Lutim/Controller.pm:485
 msgid "The file %1 is not an image."
 msgstr "Lo fichièr %1 es pas un imatge."
 
 #. ($tx->res->max_message_size)
 #. ($c->req->max_message_size)
 #. (config('max_file_size')
-#: lib/Lutim/Controller.pm:284 lib/Lutim/Controller.pm:353 themes/default/templates/partial/lutim.js.ep:240
+#: lib/Lutim/Controller.pm:309 lib/Lutim/Controller.pm:378 themes/default/templates/partial/lutim.js.ep:240
 msgid "The file exceed the size limit (%1)"
 msgstr "Lo fichièr depassa lo limit de talha (%1)"
 
@@ -369,16 +373,16 @@ msgid "The graph's datas are not updated in real-time."
 msgstr "Las donadas del grafic son pas mesas a jorn en temps real."
 
 #. ($image->filename)
-#: lib/Lutim/Controller.pm:203
+#: lib/Lutim/Controller.pm:228
 msgid "The image %1 has already been deleted."
 msgstr "L'imatge %1 es ja estat suprimit."
 
 #. ($image->filename)
-#: lib/Lutim/Controller.pm:212 lib/Lutim/Controller.pm:217
+#: lib/Lutim/Controller.pm:237 lib/Lutim/Controller.pm:242
 msgid "The image %1 has been successfully deleted"
 msgstr "L'imatge %1 es estat suprimit amb succès."
 
-#: lib/Lutim/Controller.pm:141
+#: lib/Lutim/Controller.pm:166
 msgid "The image's delay has been successfully modified"
 msgstr "Lo delai de l'imatge es plan estat modificat."
 
@@ -391,13 +395,13 @@ msgid "The images you post on Lutim can be stored indefinitely or be deleted at 
 msgstr "Los imatges depausats sus Lutim pòdon èsser gardats sens fin, o s’escafar tre lo primièr afichatge o al cap d'un delai causit entre los prepausats."
 
 #. ($c->config->{contact})
-#: lib/Lutim/Controller.pm:457
+#: lib/Lutim/Controller.pm:482
 msgid "There is no more available URL. Retry or contact the administrator. %1"
 msgstr "I a pas mai d'URL disponibla. Mercés de tornar ensajar o de contactar l'administrator. %1."
 
-#:
-msgid "Tipeee button"
-msgstr "Boton Tipeee"
+#: themes/default/templates/gallery.html.ep:27
+msgid "Toggle fullscreen"
+msgstr ""
 
 #: themes/default/templates/partial/navbar.html.ep:14
 msgid "Toggle navigation"
@@ -412,15 +416,15 @@ msgid "Tweet it!"
 msgstr "Tweetejatz-lo !"
 
 #. ($short)
-#: lib/Lutim/Controller.pm:175 lib/Lutim/Controller.pm:246
+#: lib/Lutim/Controller.pm:106 lib/Lutim/Controller.pm:200 lib/Lutim/Controller.pm:271
 msgid "Unable to find the image %1."
 msgstr "Impossible de trobar l'imatge %1."
 
-#: lib/Lutim/Controller.pm:544 lib/Lutim/Controller.pm:589 lib/Lutim/Controller.pm:631 lib/Lutim/Controller.pm:674 lib/Lutim/Controller.pm:686 lib/Lutim/Controller.pm:697 lib/Lutim/Controller.pm:722 lib/Lutim/Plugin/Helpers.pm:57
+#: lib/Lutim/Controller.pm:571 lib/Lutim/Controller.pm:616 lib/Lutim/Controller.pm:658 lib/Lutim/Controller.pm:701 lib/Lutim/Controller.pm:713 lib/Lutim/Controller.pm:724 lib/Lutim/Controller.pm:749 lib/Lutim/Plugin/Helpers.pm:57
 msgid "Unable to find the image: it has been deleted."
 msgstr "Impossible de trobar l'imatge : es estat suprimit."
 
-#: lib/Lutim/Controller.pm:118
+#: lib/Lutim/Controller.pm:143
 msgid "Unable to get counter"
 msgstr "Impossible de recuperar lo comptador"
 
@@ -441,7 +445,7 @@ msgid "Uploaded files by days"
 msgstr "Fichièrs mandats per jorn"
 
 #. ($c->app->config('contact')
-#: lib/Lutim/Plugin/Helpers.pm:152
+#: lib/Lutim/Plugin/Helpers.pm:156
 msgid "Uploading is currently disabled, please try later or contact the administrator (%1)."
 msgstr "La mesa en linha es desactivada pel moment, mercés de tornar ensajar mai tard o de contactar l'administrator (%1)."
 
@@ -476,6 +480,10 @@ msgstr "Avètz demandat de telecargar tròp d'imatges d'un còp dins un archiu Z
 #: themes/default/templates/about.html.ep:8
 msgid "You can, optionally, request that the image(s) posted on Lutim to be deleted at first view (or download) or after the delay selected from those proposed."
 msgstr "Podètz, d'un biais facultatiu, demandar que l'imatge o los imatges depausats sus Lutim sián suprimits aprèp lor primièr afichatge (o telecargament) o al cap d'un delai causit entre las prepausadas."
+
+#: themes/default/templates/gallery.html.ep:28
+msgid "Zoom in/out"
+msgstr ""
 
 #: themes/default/templates/about.html.ep:27
 msgid "and on"
