@@ -62,7 +62,7 @@ sub _render_file {
     $mediatype =~ s/x-//;
 
     my $headers = Mojo::Headers->new();
-    if ($nocache) {
+    if ($nocache || defined($thumb)) {
         $headers->add('Cache-Control'   => 'no-cache, no-store, max-age=0, must-revalidate');
     } else {
         $headers->add('Expires'         => $expires);
@@ -82,7 +82,11 @@ sub _render_file {
         $im->BlobToImage($asset->slurp);
 
         # Create the thumbnail
-        $im->Resize(geometry=>'x'.$c->config('thumbnail_size'));
+        if ($thumb eq '') {
+            $im->Resize(geometry => 'x'.$c->config('thumbnail_size'));
+        } else {
+            $im->Resize(geometry => $thumb);
+        }
 
         # Replace the asset with the thumbnail
         $asset = Mojo::Asset::Memory->new->add_chunk($im->ImageToBlob());

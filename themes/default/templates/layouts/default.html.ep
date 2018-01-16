@@ -33,8 +33,8 @@
         %= stylesheet '/css/markdown.css'
 % }
 % if (current_route 'gallery') {
-        %= stylesheet '/gallery/css/unite-gallery.css'
-        %= stylesheet '/gallery/themes/default/ug-theme-default.css'
+        %= stylesheet '/css/photoswipe.css'
+        %= stylesheet '/css/default-skin/default-skin.css'
 % }
         %= javascript '/js/jquery-3.2.1.min.js'
     </head>
@@ -87,8 +87,8 @@
         %= javascript '/partial/lutim.js'
 % }
 % if (current_route 'gallery') {
-        %= javascript '/gallery/js/unitegallery.js'
-        %= javascript '/gallery/themes/tiles/ug-theme-tiles.js'
+        %= javascript '/js/photoswipe.min.js'
+        %= javascript '/js/photoswipe-ui-default.min.js'
         %= javascript '/js/jszip.min.js'
         %= javascript '/js/FileSaver.min.js'
         %= javascript '/partial/gallery.js'

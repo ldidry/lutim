@@ -55,7 +55,7 @@ msgstr ""
 msgid "Active images"
 msgstr ""
 
-#: lib/Lutim/Controller.pm:301
+#: lib/Lutim/Controller.pm:326
 msgid "An error occured while downloading the image."
 msgstr "Error al intentar modificar la imagen."
 
@@ -70,6 +70,10 @@ msgstr "Volver a la página inicial"
 #: themes/default/templates/index.html.ep:193 themes/default/templates/index.html.ep:194
 msgid "Click to open the file browser"
 msgstr "Clic para abrir el explorador de archivos"
+
+#: themes/default/templates/gallery.html.ep:26
+msgid "Close (Esc)"
+msgstr ""
 
 #: themes/default/templates/about.html.ep:30
 msgid "Contributors"
@@ -195,7 +199,7 @@ msgstr "URL de la imagen"
 msgid "Image delay"
 msgstr ""
 
-#: lib/Lutim/Controller.pm:725
+#: lib/Lutim/Controller.pm:752
 msgid "Image not found."
 msgstr "Imagen no encontrada."
 
@@ -263,6 +267,10 @@ msgstr "Sintaxis de Markdown"
 msgid "My images"
 msgstr "Mis Imágenes"
 
+#: themes/default/templates/gallery.html.ep:42
+msgid "Next (arrow right)"
+msgstr ""
+
 #: themes/default/templates/partial/myfiles.js.ep:19
 msgid "No limit"
 msgstr "Sin fecha de caducidad"
@@ -288,6 +296,10 @@ msgstr ""
 msgid "Please contact the administrator: %1"
 msgstr "Por favor, contacte con el administrador: %1"
 
+#: themes/default/templates/gallery.html.ep:40
+msgid "Previous (arrow left)"
+msgstr ""
+
 #: themes/default/templates/stats.html.ep:22
 msgid "Raw stats"
 msgstr ""
@@ -300,16 +312,12 @@ msgstr "Enviar una imagen"
 msgid "Share it!"
 msgstr "¡Compártelo!"
 
-#:
-msgid "Share on Twitter"
-msgstr "Compartir en Twitter"
-
 #: themes/default/templates/index.html.ep:133 themes/default/templates/partial/lutim.js.ep:174
 msgid "Something bad happened"
 msgstr "Algo malo ha pasado"
 
 #. ($c->config('contact')
-#: lib/Lutim/Controller.pm:732
+#: lib/Lutim/Controller.pm:759
 msgid "Something went wrong when creating the zip file. Try again later or contact the administrator (%1)."
 msgstr "Algo malo ha pasado. Inténtelo de nuevo más tarde o contacte con el administrador (%1)."
 
@@ -337,7 +345,7 @@ msgstr "La dirección IP del remitente de la imagen se retiene durante un tiempo
 msgid "The Lutim software is a <a href=\"http://en.wikipedia.org/wiki/Free_software\">free software</a>, which allows you to download and install it on you own server. Have a look at the <a href=\"https://www.gnu.org/licenses/agpl-3.0.html\">AGPL</a> to see what you can do."
 msgstr "El software Lutim es <a href=\"http://es.wikipedia.org/wiki/Software_libre\">software libre</a>, lo que le permite descargarlo e instalarlo en su propio servidor. Eche un vistazo a la licencia <a href=\"https://www.gnu.org/licenses/agpl-3.0.html\">AGPL</a> para ver qué puede hacer."
 
-#: lib/Lutim/Controller.pm:320
+#: lib/Lutim/Controller.pm:345
 msgid "The URL is not valid."
 msgstr "La URL no es válida."
 
@@ -345,19 +353,19 @@ msgstr "La URL no es válida."
 msgid "The automatic download process will open a tab in your browser for each link. You need to allow popups for Lutim."
 msgstr ""
 
-#: lib/Lutim/Controller.pm:133 lib/Lutim/Controller.pm:201
+#: lib/Lutim/Controller.pm:158 lib/Lutim/Controller.pm:226
 msgid "The delete token is invalid."
 msgstr "El código de borrado no es válido."
 
 #. ($upload->filename)
-#: lib/Lutim/Controller.pm:460
+#: lib/Lutim/Controller.pm:485
 msgid "The file %1 is not an image."
 msgstr "El archivo %1 no es una imagen."
 
 #. ($tx->res->max_message_size)
 #. ($c->req->max_message_size)
 #. (config('max_file_size')
-#: lib/Lutim/Controller.pm:284 lib/Lutim/Controller.pm:353 themes/default/templates/partial/lutim.js.ep:240
+#: lib/Lutim/Controller.pm:309 lib/Lutim/Controller.pm:378 themes/default/templates/partial/lutim.js.ep:240
 msgid "The file exceed the size limit (%1)"
 msgstr "El archivo supera el límite de tamaño (%1)"
 
@@ -366,16 +374,16 @@ msgid "The graph's datas are not updated in real-time."
 msgstr "Los datos del gráfico no se actualizan en tiempo real."
 
 #. ($image->filename)
-#: lib/Lutim/Controller.pm:203
+#: lib/Lutim/Controller.pm:228
 msgid "The image %1 has already been deleted."
 msgstr "La imagen %1 ya se ha borrado."
 
 #. ($image->filename)
-#: lib/Lutim/Controller.pm:212 lib/Lutim/Controller.pm:217
+#: lib/Lutim/Controller.pm:237 lib/Lutim/Controller.pm:242
 msgid "The image %1 has been successfully deleted"
 msgstr "La imagen %1 se ha borrado correctamente"
 
-#: lib/Lutim/Controller.pm:141
+#: lib/Lutim/Controller.pm:166
 msgid "The image's delay has been successfully modified"
 msgstr "Se ha modificado correctamente el tiempo de la imagen"
 
@@ -388,9 +396,13 @@ msgid "The images you post on Lutim can be stored indefinitely or be deleted at 
 msgstr "Puede, opcionalmente, solicitar que la imagen publicada en Lutim se elimine con la primera vista (o descarga) o tras un tiempo seleccionado de entre varios propuestos."
 
 #. ($c->config->{contact})
-#: lib/Lutim/Controller.pm:457
+#: lib/Lutim/Controller.pm:482
 msgid "There is no more available URL. Retry or contact the administrator. %1"
 msgstr "No más URL disponibles. Inténtelo de nuevo o contacte con el administrador. %1"
+
+#: themes/default/templates/gallery.html.ep:27
+msgid "Toggle fullscreen"
+msgstr ""
 
 #: themes/default/templates/partial/navbar.html.ep:14
 msgid "Toggle navigation"
@@ -405,15 +417,15 @@ msgid "Tweet it!"
 msgstr "¡Tuitéalo!"
 
 #. ($short)
-#: lib/Lutim/Controller.pm:175 lib/Lutim/Controller.pm:246
+#: lib/Lutim/Controller.pm:106 lib/Lutim/Controller.pm:200 lib/Lutim/Controller.pm:271
 msgid "Unable to find the image %1."
 msgstr "No se ha podido encontrar la imagen %1."
 
-#: lib/Lutim/Controller.pm:544 lib/Lutim/Controller.pm:589 lib/Lutim/Controller.pm:631 lib/Lutim/Controller.pm:674 lib/Lutim/Controller.pm:686 lib/Lutim/Controller.pm:697 lib/Lutim/Controller.pm:722 lib/Lutim/Plugin/Helpers.pm:57
+#: lib/Lutim/Controller.pm:571 lib/Lutim/Controller.pm:616 lib/Lutim/Controller.pm:658 lib/Lutim/Controller.pm:701 lib/Lutim/Controller.pm:713 lib/Lutim/Controller.pm:724 lib/Lutim/Controller.pm:749 lib/Lutim/Plugin/Helpers.pm:57
 msgid "Unable to find the image: it has been deleted."
 msgstr "No se ha podido encontrar la imagen: ha sido borrada."
 
-#: lib/Lutim/Controller.pm:118
+#: lib/Lutim/Controller.pm:143
 msgid "Unable to get counter"
 msgstr "Imposible recuperar el contador"
 
@@ -434,7 +446,7 @@ msgid "Uploaded files by days"
 msgstr "Archivos enviados por día"
 
 #. ($c->app->config('contact')
-#: lib/Lutim/Plugin/Helpers.pm:152
+#: lib/Lutim/Plugin/Helpers.pm:156
 msgid "Uploading is currently disabled, please try later or contact the administrator (%1)."
 msgstr "La carga está deshabilitada en estos momentos, por favor inténtelo más tarde o contacte con el administrador (%1)."
 
@@ -469,6 +481,10 @@ msgstr ""
 #: themes/default/templates/about.html.ep:8
 msgid "You can, optionally, request that the image(s) posted on Lutim to be deleted at first view (or download) or after the delay selected from those proposed."
 msgstr "Puede, opcionalmente, solicitar que la imagen publicada en Lutim se elimine con la primera vista (o descarga) o tras un tiempo seleccionado de entre varios propuestos."
+
+#: themes/default/templates/gallery.html.ep:28
+msgid "Zoom in/out"
+msgstr ""
 
 #: themes/default/templates/about.html.ep:27
 msgid "and on"
