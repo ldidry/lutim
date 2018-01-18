@@ -35,6 +35,7 @@ sub startup {
             tweet_card_via    => '@framasky',
             max_file_size     => 10*1024*1024,
             https             => 0,
+            proposed_delays   => '0,1,7,30,365',
             default_delay     => 0,
             max_delay         => 0,
             token_length      => 24,
