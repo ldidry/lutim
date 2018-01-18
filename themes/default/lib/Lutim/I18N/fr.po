@@ -22,7 +22,7 @@ msgstr ""
 #. (30)
 #. ($delay)
 #. (config('max_delay')
-#: lib/Lutim/Command/cron/stats.pm:149 lib/Lutim/Command/cron/stats.pm:150 lib/Lutim/Command/cron/stats.pm:160 lib/Lutim/Command/cron/stats.pm:161 lib/Lutim/Command/cron/stats.pm:177 lib/Lutim/Command/cron/stats.pm:178 themes/default/templates/partial/for_my_delay.html.ep:12 themes/default/templates/partial/for_my_delay.html.ep:13 themes/default/templates/partial/for_my_delay.html.ep:3 themes/default/templates/partial/lutim.js.ep:138 themes/default/templates/partial/lutim.js.ep:147 themes/default/templates/partial/lutim.js.ep:148 themes/default/templates/raw.html.ep:19 themes/default/templates/raw.html.ep:20 themes/default/templates/raw.html.ep:36 themes/default/templates/raw.html.ep:37 themes/default/templates/raw.html.ep:8 themes/default/templates/raw.html.ep:9
+#: lib/Lutim/Command/cron/stats.pm:149 lib/Lutim/Command/cron/stats.pm:150 lib/Lutim/Command/cron/stats.pm:160 lib/Lutim/Command/cron/stats.pm:161 lib/Lutim/Command/cron/stats.pm:177 lib/Lutim/Command/cron/stats.pm:178 themes/default/templates/partial/for_my_delay.html.ep:12 themes/default/templates/partial/for_my_delay.html.ep:13 themes/default/templates/partial/for_my_delay.html.ep:3 themes/default/templates/partial/lutim.js.ep:138 themes/default/templates/partial/lutim.js.ep:147 themes/default/templates/partial/lutim.js.ep:148
 msgid "%1 days"
 msgstr "%1 jours"
 
@@ -35,11 +35,11 @@ msgstr "%1 images envoyées sur cette instance depuis le début."
 msgid "-or-"
 msgstr "-ou-"
 
-#: lib/Lutim.pm:185 lib/Lutim/Command/cron/stats.pm:151 lib/Lutim/Command/cron/stats.pm:162 lib/Lutim/Command/cron/stats.pm:179 themes/default/templates/index.html.ep:5 themes/default/templates/raw.html.ep:10 themes/default/templates/raw.html.ep:21 themes/default/templates/raw.html.ep:38
+#: lib/Lutim.pm:185 lib/Lutim/Command/cron/stats.pm:151 lib/Lutim/Command/cron/stats.pm:162 lib/Lutim/Command/cron/stats.pm:179 themes/default/templates/index.html.ep:5
 msgid "1 year"
 msgstr "1 an"
 
-#: lib/Lutim.pm:184 lib/Lutim/Command/cron/stats.pm:148 lib/Lutim/Command/cron/stats.pm:159 lib/Lutim/Command/cron/stats.pm:176 themes/default/templates/index.html.ep:4 themes/default/templates/partial/for_my_delay.html.ep:12 themes/default/templates/partial/lutim.js.ep:147 themes/default/templates/raw.html.ep:18 themes/default/templates/raw.html.ep:35 themes/default/templates/raw.html.ep:7
+#: lib/Lutim.pm:184 lib/Lutim/Command/cron/stats.pm:148 lib/Lutim/Command/cron/stats.pm:159 lib/Lutim/Command/cron/stats.pm:176 themes/default/templates/index.html.ep:4 themes/default/templates/partial/for_my_delay.html.ep:12 themes/default/templates/partial/lutim.js.ep:147
 msgid "24 hours"
 msgstr "24 heures"
 
@@ -51,7 +51,7 @@ msgstr " : Erreur en essayant de récupérer le compteur."
 msgid "About"
 msgstr "À propos"
 
-#: lib/Lutim/Command/cron/stats.pm:144 themes/default/templates/raw.html.ep:3
+#: lib/Lutim/Command/cron/stats.pm:144
 msgid "Active images"
 msgstr "Images actives"
 
@@ -103,11 +103,11 @@ msgstr "Graphe de répartition des délais pour les images actives"
 msgid "Delete at first view?"
 msgstr "Supprimer au premier accès ?"
 
-#: lib/Lutim/Command/cron/stats.pm:145 themes/default/templates/raw.html.ep:4
+#: lib/Lutim/Command/cron/stats.pm:145
 msgid "Deleted images"
 msgstr "Images supprimées"
 
-#: lib/Lutim/Command/cron/stats.pm:146 themes/default/templates/raw.html.ep:5
+#: lib/Lutim/Command/cron/stats.pm:146
 msgid "Deleted images in 30 days"
 msgstr "Images supprimées dans 30 jours"
 
@@ -195,7 +195,7 @@ msgstr "Si les fichiers sont bien supprimés si vous en avez exprimé le choix, 
 msgid "Image URL"
 msgstr "URL de l’image"
 
-#: lib/Lutim/Command/cron/stats.pm:143 themes/default/templates/raw.html.ep:2
+#: lib/Lutim/Command/cron/stats.pm:143
 msgid "Image delay"
 msgstr "Durée de rétention de l’image"
 
@@ -404,13 +404,13 @@ msgstr "Il n’y a plus d’URL disponible. Veuillez réessayer ou contacter l�
 
 #: themes/default/templates/gallery.html.ep:27
 msgid "Toggle fullscreen"
-msgstr ""
+msgstr "Basculler le plein écran"
 
 #: themes/default/templates/partial/navbar.html.ep:14
 msgid "Toggle navigation"
 msgstr "Étendre la barre de navigation"
 
-#: lib/Lutim/Command/cron/stats.pm:152 themes/default/templates/raw.html.ep:11
+#: lib/Lutim/Command/cron/stats.pm:152
 msgid "Total"
 msgstr "Total"
 
@@ -486,7 +486,7 @@ msgstr "Vous pouvez, de façon facultative, demander à ce que la ou les images 
 
 #: themes/default/templates/gallery.html.ep:28
 msgid "Zoom in/out"
-msgstr ""
+msgstr "Zoomer / dézoomer"
 
 #: themes/default/templates/about.html.ep:27
 msgid "and on"
@@ -500,7 +500,7 @@ msgstr "traduction en arabe"
 msgid "core developer"
 msgstr "développeur principal"
 
-#: lib/Lutim.pm:183 lib/Lutim/Command/cron/stats.pm:147 lib/Lutim/Command/cron/stats.pm:158 lib/Lutim/Command/cron/stats.pm:175 themes/default/templates/index.html.ep:3 themes/default/templates/raw.html.ep:17 themes/default/templates/raw.html.ep:34 themes/default/templates/raw.html.ep:6
+#: lib/Lutim.pm:183 lib/Lutim/Command/cron/stats.pm:147 lib/Lutim/Command/cron/stats.pm:158 lib/Lutim/Command/cron/stats.pm:175 themes/default/templates/index.html.ep:3
 msgid "no time limit"
 msgstr "Pas de limitation de durée"
 
