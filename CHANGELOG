@@ -1,5 +1,8 @@
 Revision history for Lutim
 
+0.8.8  2018-02-07
+	- Fix security issues, thanks to SecuNinja
+
 0.8.7  2017-12-22
 	- Fix bug if dbtype not configured in lutim.conf
 
