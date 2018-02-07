@@ -172,9 +172,9 @@ function buildMessage(success, msg) {
             '<div class="alert alert-danger">',
                 '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>',
                 '<strong><%= l('Something bad happened') %></strong><br>',
-                msg.filename,
+                cleanName(msg.filename, false),
                 '<br>',
-                msg.msg,
+                cleanName(msg.msg, false),
             '</div>'
         ].join('');
     }

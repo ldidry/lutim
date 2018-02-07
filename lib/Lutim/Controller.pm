@@ -534,7 +534,7 @@ sub short {
         }
 
         my $test;
-        if (defined($touit)) {
+        if (defined($touit) && $image->mediatype !~ m/svg/) {
             $test = 1;
             my $short  = $image->short;
                $short .= '/'.$key if (defined($key));
