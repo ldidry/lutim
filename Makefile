@@ -1,11 +1,5 @@
 EXTRACTDIR=-D lib -D themes/default/templates
 POT=themes/default/lib/Lutim/I18N/lutim.pot
-EN=themes/default/lib/Lutim/I18N/en.po
-FR=themes/default/lib/Lutim/I18N/fr.po
-DE=themes/default/lib/Lutim/I18N/de.po
-ES=themes/default/lib/Lutim/I18N/es.po
-OC=themes/default/lib/Lutim/I18N/oc.po
-AR=themes/default/lib/Lutim/I18N/ar.po
 XGETTEXT=carton exec local/bin/xgettext.pl -u
 CARTON=carton exec
 LUTIM=script/lutim
@@ -13,12 +7,15 @@ REAL_LUTIM=script/application
 
 locales:
 	$(XGETTEXT) $(EXTRACTDIR) -o $(POT) 2>/dev/null
-	$(XGETTEXT) $(EXTRACTDIR) -o $(EN) 2>/dev/null
-	$(XGETTEXT) $(EXTRACTDIR) -o $(FR) 2>/dev/null
-	$(XGETTEXT) $(EXTRACTDIR) -o $(DE) 2>/dev/null
-	$(XGETTEXT) $(EXTRACTDIR) -o $(ES) 2>/dev/null
-	$(XGETTEXT) $(EXTRACTDIR) -o $(OC) 2>/dev/null
-	$(XGETTEXT) $(EXTRACTDIR) -o $(AR) 2>/dev/null
+
+push-locales: locales
+	zanata-cli -q -B push
+
+pull-locales:
+	zanata-cli -q -B pull
+
+stats-locales:
+	zanata-cli -q stats
 
 podcheck:
 	podchecker lib/Lutim/DB/Image.pm

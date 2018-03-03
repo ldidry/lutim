@@ -14,3 +14,4 @@ themes/default/templates/data.html.ep
 themes/default/templates/raw.html.ep
 themes/default/templates/stats.json.ep
 tmp/*
+.zanata-cache/*
