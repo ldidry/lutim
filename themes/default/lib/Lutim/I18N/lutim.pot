@@ -277,7 +277,7 @@ msgid "Only images are allowed"
 msgstr ""
 
 #: themes/default/templates/myfiles.html.ep:6
-msgid "Only the images sent with this browser will be listed here. The informations are stored in localStorage: if you delete your localStorage data, you'll loose this informations."
+msgid "Only the images sent with this browser will be listed here. The details are stored in localStorage: if you delete your localStorage data, you'll loose these details."
 msgstr ""
 
 #: themes/default/templates/about.html.ep:16

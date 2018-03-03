@@ -3,7 +3,7 @@
 <hr>
 
 <p>
-    <%= l('Only the images sent with this browser will be listed here. The informations are stored in localStorage: if you delete your localStorage data, you\'ll loose this informations.') %>
+    <%= l('Only the images sent with this browser will be listed here. The details are stored in localStorage: if you delete your localStorage data, you\'ll loose these details.') %>
 </p>
 
 <div id="gallery-url" class="hidden row">
