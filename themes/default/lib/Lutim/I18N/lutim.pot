@@ -68,7 +68,7 @@ msgstr ""
 msgid "Click to open the file browser"
 msgstr ""
 
-#: themes/default/templates/gallery.html.ep:26
+#: themes/default/templates/gallery.html.ep:27
 msgid "Close (Esc)"
 msgstr ""
 
@@ -112,7 +112,7 @@ msgstr ""
 msgid "Deletion link"
 msgstr ""
 
-#: themes/default/templates/gallery.html.ep:6
+#: themes/default/templates/gallery.html.ep:8
 msgid "Download all images"
 msgstr ""
 
@@ -264,7 +264,7 @@ msgstr ""
 msgid "My images"
 msgstr ""
 
-#: themes/default/templates/gallery.html.ep:42
+#: themes/default/templates/gallery.html.ep:43
 msgid "Next (arrow right)"
 msgstr ""
 
@@ -293,7 +293,7 @@ msgstr ""
 msgid "Please contact the administrator: %1"
 msgstr ""
 
-#: themes/default/templates/gallery.html.ep:40
+#: themes/default/templates/gallery.html.ep:41
 msgid "Previous (arrow left)"
 msgstr ""
 
@@ -309,7 +309,7 @@ msgstr ""
 msgid "Share it!"
 msgstr ""
 
-#: themes/default/templates/index.html.ep:133 themes/default/templates/partial/lutim.js.ep:175
+#: themes/default/templates/index.html.ep:133 themes/default/templates/partial/gallery.js.ep:211 themes/default/templates/partial/lutim.js.ep:175
 msgid "Something bad happened"
 msgstr ""
 
@@ -397,7 +397,7 @@ msgstr ""
 msgid "There is no more available URL. Retry or contact the administrator. %1"
 msgstr ""
 
-#: themes/default/templates/gallery.html.ep:27
+#: themes/default/templates/gallery.html.ep:28
 msgid "Toggle fullscreen"
 msgstr ""
 
@@ -479,7 +479,7 @@ msgstr ""
 msgid "You can, optionally, request that the image(s) posted on Lutim to be deleted at first view (or download) or after the delay selected from those proposed."
 msgstr ""
 
-#: themes/default/templates/gallery.html.ep:28
+#: themes/default/templates/gallery.html.ep:29
 msgid "Zoom in/out"
 msgstr ""
 
