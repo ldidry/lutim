@@ -31,16 +31,13 @@ test: podcheck test-sqlite test-pg
 clean:
 	rm -rf lutim.db files/
 
-rmassets:
-	rm -rf themes/default/public/packed/*
-
-dev: rmassets
+dev:
 	$(CARTON) morbo $(LUTIM) --listen http://0.0.0.0:3000 --watch lib/ --watch script/ --watch themes/ --watch lutim.conf
 
 devlog:
 	multitail log/development.log
 
-prod: rmassets
+prod:
 	$(CARTON) hypnotoad -f $(LUTIM)
 
 prodlog:
