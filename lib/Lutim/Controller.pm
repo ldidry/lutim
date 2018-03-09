@@ -45,6 +45,19 @@ sub about {
     shift->render(template => 'about');
 }
 
+sub change_lang {
+    my $c = shift;
+    my $l = $c->param('l');
+
+    $c->cookie(lutim_lang => $l, { path => $c->config('prefix') });
+
+    if ($c->req->headers->referrer) {
+        return $c->redirect_to($c->req->headers->referrer);
+    } else {
+        return $c->redirect_to('/');
+    }
+}
+
 sub stats {
     my $c = shift;
 
@@ -69,6 +82,31 @@ sub infos {
             always_encrypt    => ($c->config('always_encrypt')) ? true : false,
         }
     );
+}
+
+sub about_img {
+    my $c     = shift;
+    my $short = $c->param('short');
+
+    my $image = Lutim::DB::Image->new(app => $c->app, short => $short);
+    if ($image->enabled && $image->path) {
+        return $c->render(
+            json => {
+                success => true,
+                data    => {
+                    width  => $image->width,
+                    height => $image->height,
+                }
+            }
+        );
+    } else {
+        return $c->render(
+            json => {
+                success => false,
+                msg     => $c->l('Unable to find the image %1.', $short)
+            }
+        );
+    }
 }
 
 sub webapp {
@@ -234,7 +272,7 @@ sub delete {
                 }
             },
             any => sub {
-                shift->render_not_found;
+                $c->helpers->reply->not_found;
             }
         );
     }
@@ -406,9 +444,9 @@ sub add {
                     }
                 }
 
-                my $key;
+                my ($key, $iv);
                 if ($c->param('crypt') || $c->config('always_encrypt')) {
-                    ($upload, $key) = $c->crypt($upload, $filename);
+                    ($upload, $key, $iv) = $c->crypt($upload, $filename);
                 }
                 $upload->move_to($path);
 
@@ -423,6 +461,7 @@ sub add {
                        ->created_by($ip)
                        ->width($width)
                        ->height($height)
+                       ->iv($iv)
                        ->write;
 
                 # Log image creation
@@ -514,7 +553,9 @@ sub short {
     my $short = $c->param('short');
     my $touit = $c->param('t');
     my $key   = $c->param('key');
-    my $thumb = $c->param('thumb');
+    my $thumb;
+       $thumb = '' if defined $c->param('thumb');
+       $thumb = $c->param('width') if defined $c->param('width');
     my $dl    = (defined($c->param('dl'))) ? 'attachment' : 'inline';
 
     my $image = Lutim::DB::Image->new(app => $c->app, short => $short);
@@ -577,12 +618,7 @@ sub short {
                 );
                 return $c->redirect_to('/');
             } else {
-                my $expires = ($image->delete_at_day) ? $image->delete_at_day : 360;
-                my $dt = DateTime->from_epoch( epoch => $expires * 86400 + $image->created_at);
-                $dt->set_time_zone('GMT');
-                $expires = $dt->strftime("%a, %d %b %Y %H:%M:%S GMT");
-
-                $test = $c->render_file($im_loaded, $image->filename, $image->path, $image->mediatype, $dl, $expires, $image->delete_at_first_view, $key, $thumb);
+                $test = $c->render_file($im_loaded, $image, $dl, $key, $thumb);
             }
         }
 
@@ -620,7 +656,7 @@ sub short {
         return $c->redirect_to('/');
     } else {
         # Image never existed
-        $c->render_not_found;
+        $c->helpers->reply->not_found;
     }
 }
 

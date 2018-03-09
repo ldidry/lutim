@@ -3,6 +3,9 @@ function selectInput() {
     $(this).select();
 }
 function cleanName(name, empty) {
+    if (typeof(name) === 'undefined') {
+        return name;
+    }
     if (empty !== undefined && empty !== null && empty) {
         return name.replace(/&(l|g)t;/g, '').replace(/"/g, '\'');
     } else {
@@ -134,7 +137,8 @@ function buildMessage(success, msg) {
                     '<form class="form col-sm-11 col-sm-offset-1" role="form" method="POST" action="', link(msg.real_short, '', msg.token, true), '">',
                         '<div class="form-group form-inline">',
                             '<select id="day-', msg.real_short, '" name="delete-day" class="form-control">',
-% for my $delay (qw/0 1 7 30 365/) {
+% my @delays = split(',', $self->config('proposed_delays'));
+% for my $delay (@delays) {
 %   my $text = ($delay == 7 || $delay == 30) ? l('%1 days', $delay) : $d->{'delay_'.$delay};
 %   if (config('max_delay')) {
 %       if ($delay) {

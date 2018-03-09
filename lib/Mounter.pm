@@ -30,6 +30,7 @@ sub startup {
                 tweet_card_via    => '@framasky',
                 max_file_size     => 10*1024*1024,
                 https             => 0,
+                proposed_delays   => '0,1,7,30,365',
                 default_delay     => 0,
                 max_delay         => 0,
                 token_length      => 24,
@@ -48,8 +49,6 @@ sub startup {
         }
     );
 
-    $self->plugin('Lutim::Plugin::Helpers');
-
     $config->{prefix} = $config->{url_sub_dir} if (defined($config->{url_sub_dir}) && $config->{prefix} eq '/');
 
     $self->app->log->warn('"url_sub_dir" configuration option is deprecated. Use "prefix" instead. "url_sub_dir" will be removed in the future') if (defined($config->{url_sub_dir}));
@@ -62,10 +61,12 @@ sub startup {
     }
     push @{$self->static->paths}, $self->home->rel_file('themes/default/public');
 
-    $self->hook(after_static => sub {
-        my $c = shift;
-        $c->res->headers->cache_control('max-age=2592000, must-revalidate');
-    });
+    # Cache static files
+    $self->plugin('StaticCache');
+
+    # Helpers
+    $self->plugin('Lutim::Plugin::Helpers');
+
     $self->plugin('Mount' => {$config->{prefix} => File::Spec->catfile($Bin, '..', 'script', 'application')});
 }
 

@@ -4,6 +4,7 @@ use Mojo::Base 'Mojolicious::Plugin';
 use Mojo::Util qw(quote);
 use Crypt::CBC;
 use Data::Entropy qw(entropy_source);
+use DateTime;
 
 sub register {
     my ($self, $app) = @_;
@@ -17,23 +18,35 @@ sub register {
         # Database migration
         my $migrations = Mojo::Pg::Migrations->new(pg => $app->pg);
         if ($app->mode eq 'development' && $ENV{LUTIM_DEBUG}) {
-            $migrations->from_file('utilities/migrations.sql')->migrate(0)->migrate(1);
+            $migrations->from_file('utilities/migrations/postgresql.sql')->migrate(0)->migrate(2);
         } else {
-            $migrations->from_file('utilities/migrations.sql')->migrate(1);
+            $migrations->from_file('utilities/migrations/postgresql.sql')->migrate(2);
+        }
+    } elsif ($app->config('dbtype') eq 'sqlite') {
+        # SQLite database migration if needed
+        use Mojo::SQLite;
+        $app->helper(sqlite => \&_sqlite);
+
+        my $sql = Mojo::SQLite->new('sqlite:'.$app->config('db_path'));
+        my $migrations = $sql->migrations;
+        if ($app->mode eq 'development' && $ENV{LUTIM_DEBUG}) {
+            $migrations->from_file('utilities/migrations/sqlite.sql')->migrate(0)->migrate(2);
+        } else {
+            $migrations->from_file('utilities/migrations/sqlite.sql')->migrate(2);
         }
     }
 
-    $app->helper(render_file => \&_render_file);
-    $app->helper(ip => \&_ip);
-    $app->helper(provisioning => \&_provisioning);
-    $app->helper(shortener => \&_shortener);
-    $app->helper(stop_upload => \&_stop_upload);
-    $app->helper(max_delay => \&_max_delay);
-    $app->helper(default_delay => \&_default_delay);
-    $app->helper(is_selected => \&_is_selected);
-    $app->helper(crypt => \&_crypt);
-    $app->helper(decrypt => \&_decrypt);
-    $app->helper(delete_image => \&_delete_image);
+    $app->helper(render_file     => \&_render_file);
+    $app->helper(ip              => \&_ip);
+    $app->helper(provisioning    => \&_provisioning);
+    $app->helper(shortener       => \&_shortener);
+    $app->helper(stop_upload     => \&_stop_upload);
+    $app->helper(max_delay       => \&_max_delay);
+    $app->helper(default_delay   => \&_default_delay);
+    $app->helper(is_selected     => \&_is_selected);
+    $app->helper(crypt           => \&_crypt);
+    $app->helper(decrypt         => \&_decrypt);
+    $app->helper(delete_image    => \&_delete_image);
 }
 
 sub _pg {
@@ -43,9 +56,23 @@ sub _pg {
     return $pg;
 }
 
+sub _sqlite {
+    my $c     = shift;
+
+    state $sqlite = Mojo::SQLite->new('sqlite:'.$c->app->config('db_path'));
+    return $sqlite;
+}
+
 sub _render_file {
     my $c = shift;
-    my ($im_loaded, $filename, $path, $mediatype, $dl, $expires, $nocache, $key, $thumb) = @_;
+    my ($im_loaded, $img, $dl, $key, $thumb) = @_;
+
+    my ($filename, $path, $iv, $mediatype, $no_cache) = ($img->filename, $img->path, $img->iv, $img->mediatype, $img->delete_at_first_view);
+
+    my $expires = ($img->delete_at_day) ? $img->delete_at_day : 360;
+    my $dt = DateTime->from_epoch( epoch => $expires * 86400 + $img->created_at);
+    $dt->set_time_zone('GMT');
+    $expires = $dt->strftime("%a, %d %b %Y %H:%M:%S GMT");
 
     $dl       = 'attachment' if ($mediatype =~ m/svg/);
     $filename = quote($filename);
@@ -62,7 +89,7 @@ sub _render_file {
     $mediatype =~ s/x-//;
 
     my $headers = Mojo::Headers->new();
-    if ($nocache) {
+    if ($no_cache || defined($thumb)) {
         $headers->add('Cache-Control'   => 'no-cache, no-store, max-age=0, must-revalidate');
     } else {
         $headers->add('Expires'         => $expires);
@@ -72,7 +99,7 @@ sub _render_file {
     $c->res->content->headers($headers);
 
     if ($key) {
-        $asset = $c->decrypt($key, $path);
+        $asset = $c->decrypt($key, $path, $iv);
     } else {
         $asset = Mojo::Asset::File->new(path => $path);
     }
@@ -82,7 +109,11 @@ sub _render_file {
         $im->BlobToImage($asset->slurp);
 
         # Create the thumbnail
-        $im->Resize(geometry=>'x'.$c->config('thumbnail_size'));
+        if ($thumb eq '') {
+            $im->Resize(geometry => 'x'.$c->config('thumbnail_size'));
+        } else {
+            $im->Resize(geometry => $thumb);
+        }
 
         # Replace the asset with the thumbnail
         $asset = Mojo::Asset::Memory->new->add_chunk($im->ImageToBlob());
@@ -187,12 +218,13 @@ sub _crypt {
     my $filename = shift;
 
     my $key   = $c->shortener($c->config('crypto_key_length'));
+    my $iv    = $c->shortener(8);
 
     my $cipher = Crypt::CBC->new(
         -key    => $key,
         -cipher => 'Blowfish',
         -header => 'none',
-        -iv     => 'dupajasi'
+        -iv     => $iv
     );
 
     $cipher->start('encrypting');
@@ -206,19 +238,21 @@ sub _crypt {
     $crypt_upload->filename($filename);
     $crypt_upload->asset($crypt_asset);
 
-    return ($crypt_upload, $key);
+    return ($crypt_upload, $key, $iv);
 }
 
 sub _decrypt {
     my $c    = shift;
     my $key  = shift;
     my $file = shift;
+    my $iv   = shift;
+    $iv = 'dupajasi' unless $iv;
 
     my $cipher = Crypt::CBC->new(
         -key    => $key,
         -cipher => 'Blowfish',
         -header => 'none',
-        -iv     => 'dupajasi'
+        -iv     => $iv
     );
 
     $cipher->start('decrypting');

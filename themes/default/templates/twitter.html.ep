@@ -23,7 +23,8 @@
         <meta name="twitter:title" content="<%= $filename %>">
         <meta name="twitter:player:width" content="<%= $width %>">
         <meta name="twitter:player:height" content="<%= $height %>">
-        %= asset 'freeze.js', { inline => 1 }
+        %= javascript '/js/jquery-3.2.1.min.js'
+        %= javascript '/js/freezeframe.min.js'
         %= javascript begin
             freezeframe_options = {
                 trigger_event: "click",

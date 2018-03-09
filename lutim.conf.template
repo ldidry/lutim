@@ -89,6 +89,10 @@
     # optional, default is 0 (no limit)
     #default_delay     => 0,
 
+    # comma-separated values proposed for delays
+    # optional, default is '0,1,7,30,365'
+    #proposed_delays         => '0,1,7,30,365',
+    
     # number of days after which the images will be deleted, even if they were uploaded with "no delay" (or value superior to max_delay)
     # a warning message will be displayed on homepage
     # optional, default is 0 (no limit)

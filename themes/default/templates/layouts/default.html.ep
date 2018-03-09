@@ -21,22 +21,26 @@
         <link rel="apple-touch-icon" sizes="120x120" href="<%= url_for('/img/lutim120.png') %>">
         <link rel="apple-touch-icon" sizes="152x152" href="<%= url_for('/img/lutim152.png') %>">
         <link rel="apple-touch-icon-precomposed" sizes="128x128" href="<%= url_for('/img/lutim128.png') %>">
+        %= stylesheet '/css/bootstrap.min.css'
+        %= stylesheet '/css/fontello-embedded.css'
+        %= stylesheet '/css/hennypenny.css'
+        %= stylesheet '/css/lutim.css'
 % if (current_route 'stats') {
-        %= asset 'stats.css'
-% } elsif (current_route 'about') {
-        %= asset 'about.css'
+        %= stylesheet '/css/morris-0.4.3.min.css'
 % } else {
-        %= asset 'index.css'
+        %= stylesheet '/css/animation.css'
+        %= stylesheet '/css/uploader.css'
+        %= stylesheet '/css/markdown.css'
 % }
 % if (current_route 'gallery') {
-        %= asset 'gallery.css'
+        %= stylesheet '/css/photoswipe.css'
+        %= stylesheet '/css/default-skin/default-skin.css'
 % }
-% if (!(current_route 'about')) {
-        %= javascript '/js/jquery-2.1.0.min.js'
-% }
+        %= javascript '/js/jquery-3.2.1.min.js'
     </head>
     <body>
-        <div class="container-fluid">
+        %= include 'partial/navbar', twitter_url => $twitter_url
+        <div class="container">
             <div>
 % if (defined(config('hosted_by'))) {
                 <div class="pull-right">
@@ -48,19 +52,6 @@
                         <img src="<%= url_for('/img/Lutim_small.png') %>" alt="Lutim logo" width="57" height="75">
                     </div>
                     <a class="link_nocol" href="<%= url_for('/') %>" title="<%= l('Homepage') %>"><h1 class="hennypenny">Let's Upload That Image!</h1></a>
-                    <p>
-                        &copy; 2014 <%= link_to 'http://www.fiat-tux.fr' => begin %>Luc Didry<% end %> — 
-                        <%= l('License:') %> <%= link_to 'https://www.gnu.org/licenses/agpl-3.0.html' => begin %>AGPL<% end %> — 
-                        <%= link_to url_for('about') => begin %><%= l('Informations') %><% end %> — 
-                        <%= link_to 'https://framagit.org/luc/lutim' => (title => l('Fork me!')) => begin %><i class="lead icon icon-git"></i><% end %> 
-                        <%= link_to $twitter_url                     => (title => l('Share on Twitter'))   => begin %><i class="lead icon icon-twitter"></i><% end %> 
-                        <%= link_to 'https://tipeee.com/fiat-tux'    => (title => l('Support the author on Tipeee')) => begin %><img id="tipeee-img" src="/img/tipeee-tip-btn.png" alt="<%= l('Tipeee button') %>"><% end %> 
-                        <%= link_to 'https://liberapay.com/sky'    => (title => l('Support the author on Liberapay')) => begin %><img id="liberapay-img" src="/img/liberapay.svg" alt="<%= l('Liberapay button') %>"><% end %> 
-                        <%= link_to 'bitcoin:1JCEtmx9pyzWfitMQj2pKAk8GNgyix7RmA?label=lutim' => (title => 'Give Bitcoins') => begin %><i class="lead icon icon-bitcoin"></i><% end %> — 
-                        <%= link_to url_for('myfiles') => begin %><%= l('My images') %><% end %> — 
-                        <%= link_to url_for('stats') => begin %><%= l('Instance\'s statistics') %><% end %> — 
-                        <a class="btn btn-default btn-xs" href="#" id="install-app"><img src="<%= url_for('/img/rocket.png') %>" alt="mozilla rocket logo"> <%= l('Install webapp') %></a>
-                    </p>
                 </div>
             </div>
 % if (defined(config('broadcast_message'))) {
@@ -81,21 +72,27 @@
 % if (defined(config('piwik_img'))) {
         <img src="<%== config('piwik_img') %>" style="border:0" alt="">
 % }
+        %= javascript '/js/bootstrap.min.js'
 % if (current_route 'stats') {
-        %= asset 'stats.js'
+        %= javascript '/js/lutim.js'
+        %= javascript '/js/raphael-min.js'
+        %= javascript '/js/morris-0.4.3.min.js'
+        %= javascript '/js/stats.js'
 % } elsif (!(current_route 'about')) {
-        %= asset 'index.js'
+        %= javascript '/js/lutim.js'
+        %= javascript '/js/dmuploader.min.js'
 % }
 % if (current_route 'index') {
         %= javascript '/partial/common.js'
         %= javascript '/partial/lutim.js'
 % }
 % if (current_route 'gallery') {
-        %= javascript '/gallery/js/unitegallery.js'
-        %= javascript '/gallery/themes/tiles/ug-theme-tiles.js'
+        %= javascript '/js/photoswipe.min.js'
+        %= javascript '/js/photoswipe-ui-default.min.js'
         %= javascript '/js/jszip.min.js'
         %= javascript '/js/FileSaver.min.js'
         %= javascript '/partial/gallery.js'
+        %= javascript '/partial/lutim.js'
 % }
 % if (current_route 'myfiles') {
         %= javascript '/partial/common.js'

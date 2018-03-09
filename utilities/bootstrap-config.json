@@ -391,14 +391,19 @@
     "responsive-utilities.less",
     "button-groups.less",
     "input-groups.less",
+    "navs.less",
+    "navbar.less",
     "alerts.less",
     "progress-bars.less",
     "close.less",
-    "component-animations.less"
+    "component-animations.less",
+    "dropdowns.less"
   ],
   "js": [
     "alert.js",
+    "dropdown.js",
+    "collapse.js",
     "transition.js"
   ],
-  "customizerUrl": "http://getbootstrap.com/customize/?id=a3e981920dd6bd53664e6b133bd0d53f"
+  "customizerUrl": "<none>"
 }

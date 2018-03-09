@@ -35,6 +35,7 @@ sub startup {
             tweet_card_via    => '@framasky',
             max_file_size     => 10*1024*1024,
             https             => 0,
+            proposed_delays   => '0,1,7,30,365',
             default_delay     => 0,
             max_delay         => 0,
             token_length      => 24,
@@ -68,16 +69,18 @@ sub startup {
     }
     push @{$self->renderer->paths}, $self->home->rel_file('themes/default/templates');
     push @{$self->static->paths}, $self->home->rel_file('themes/default/public');
+
     # Internationalization
     my $lib = $self->home->rel_file('themes/'.$config->{theme}.'/lib');
     eval qq(use lib "$lib");
     $self->plugin('I18N');
 
-    # Compressed assets
-    $self->plugin('AssetPack' => { pipes => [qw(Combine)] });
+    # Cache static files
+    $self->plugin('StaticCache');
 
     # Helpers
     $self->plugin('Lutim::Plugin::Helpers');
+    $self->plugin('Lutim::Plugin::Lang');
 
     # Minion
     if ($config->{minion}->{enabled}) {
@@ -137,20 +140,6 @@ sub startup {
             delete @{$wait_for_it}{grep { time - $wait_for_it->{$_} > $c->config->{anti_flood_delay} } keys %{$wait_for_it}} if (defined($wait_for_it));
         }
     );
-    $self->hook(after_static => sub {
-        my $c = shift;
-        $c->res->headers->cache_control('max-age=2592000, must-revalidate');
-    });
-
-    $self->asset->store->paths($self->static->paths);
-    $self->asset->process('index.css'   => ('css/bootstrap.min.css', 'css/fontello-embedded.css', 'css/animation.css', 'css/uploader.css', 'css/hennypenny.css', 'css/lutim.css', 'css/markdown.css'));
-    $self->asset->process('stats.css'   => ('css/bootstrap.min.css', 'css/fontello-embedded.css', 'css/morris-0.4.3.min.css', 'css/hennypenny.css', 'css/lutim.css'));
-    $self->asset->process('about.css'   => ('css/bootstrap.min.css', 'css/fontello-embedded.css', 'css/hennypenny.css', 'css/lutim.css'));
-    $self->asset->process('gallery.css' => ('/gallery/css/unite-gallery.css', '/gallery/themes/default/ug-theme-default.css'));
-
-    $self->asset->process('index.js'    => ('js/bootstrap.min.js', 'js/lutim.js', 'js/dmuploader.min.js'));
-    $self->asset->process('stats.js'    => ('js/bootstrap.min.js', 'js/lutim.js', 'js/raphael-min.js', 'js/morris-0.4.3.min.js', 'js/stats.js'));
-    $self->asset->process('freeze.js'   => ('js/jquery-2.1.0.min.js', 'js/freezeframe.min.js'));
 
     $self->defaults(layout => 'default');
 
@@ -180,6 +169,10 @@ sub startup {
     $r->get('/stats')->
         to('Controller#stats')->
         name('stats');
+
+    $r->get('/lang/:l')->
+        to('Controller#change_lang')->
+        name('lang');
 
     $r->get('/partial/:file' => sub {
         my $c = shift;
@@ -231,14 +224,24 @@ sub startup {
         to('Controller#get_counter')->
         name('counter');
 
+    $r->get('/about/(:short).(:f)')->
+        to('Controller#about_img')->
+        name('about_img');
+
+    $r->get('/about/:short/(:key).(:f)')->
+        to('Controller#about_img')->
+        name('about_img');
+
     $r->get('/(:short).(:f)')->
         to('Controller#short')->
         name('short');
+
     $r->get('/:short')->
         to('Controller#short');
 
     $r->get('/:short/(:key).(:f)')->
         to('Controller#short');
+
     $r->get('/:short/:key')->
         to('Controller#short');
 }

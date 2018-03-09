@@ -5,15 +5,13 @@ requires 'Net::SSLeay', '>= 1.81';
 requires 'Data::Validate::URI';
 requires 'Net::Domain::TLD', '>= 1.73'; # Must have the last version to handle (at least) .xyz and .link
 requires 'Mojo::Pg';
+requires 'Mojo::SQLite';
 requires 'Mojolicious::Plugin::I18N';
-requires 'Mojolicious::Plugin::AssetPack', '>= 1.44';
 requires 'Mojolicious::Plugin::DebugDumperHelper';
 requires 'Mojolicious::Plugin::PgURLHelper';
+requires 'Mojolicious::Plugin::StaticCache';
 requires "Minion", "== 4.06";
 requires 'Minion::Backend::SQLite', "== 0.009";
-requires 'CSS::Minifier::XS';
-requires 'JavaScript::Minifier::XS';
-requires 'ORLite';
 requires 'Text::Unidecode';
 requires 'DateTime';
 requires 'Filesys::DiskUsage';
