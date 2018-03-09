@@ -17,6 +17,7 @@ has 'last_access_at';
 has 'mod_token';
 has 'width';
 has 'height';
+has 'iv';
 has 'app';
 
 =head1 NAME
@@ -63,6 +64,8 @@ Have a look at Lutim::DB::Image::SQLite's code: it's simple and may be more unde
 =item B<width>                : integer
 
 =item B<height>               : integer
+
+=item B<iv>                   : initialization vector for the file encryption
 
 =item B<app>                  : a mojolicious object
 
@@ -125,7 +128,8 @@ sub to_hash {
         last_access_at       => $c->last_access_at,
         mod_token            => $c->mod_token,
         width                => $c->width,
-        height               => $c->height
+        height               => $c->height,
+        height               => $c->iv
     };
 }
 

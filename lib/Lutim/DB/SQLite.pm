@@ -45,7 +45,8 @@ use ORLite {
                last_access_at        INTEGER,
                mod_token             TEXT,
                width                 INTEGER,
-               height                INTEGER)'
+               height                INTEGER,
+               iv                    TEXT)'
           );
           return 1;
      }

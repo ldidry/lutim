@@ -18,3 +18,7 @@ CREATE TABLE IF NOT EXISTS lutim (
 );
 -- 1 down
 DROP TABLE lutim;
+-- 2 up
+ALTER TABLE lutim ADD COLUMN iv text;
+-- 2 down
+ALTER TABLE lutim DROP COLUMN iv;

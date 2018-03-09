@@ -444,9 +444,9 @@ sub add {
                     }
                 }
 
-                my $key;
+                my ($key, $iv);
                 if ($c->param('crypt') || $c->config('always_encrypt')) {
-                    ($upload, $key) = $c->crypt($upload, $filename);
+                    ($upload, $key, $iv) = $c->crypt($upload, $filename);
                 }
                 $upload->move_to($path);
 
@@ -461,6 +461,7 @@ sub add {
                        ->created_by($ip)
                        ->width($width)
                        ->height($height)
+                       ->iv($iv)
                        ->write;
 
                 # Log image creation
@@ -617,12 +618,7 @@ sub short {
                 );
                 return $c->redirect_to('/');
             } else {
-                my $expires = ($image->delete_at_day) ? $image->delete_at_day : 360;
-                my $dt = DateTime->from_epoch( epoch => $expires * 86400 + $image->created_at);
-                $dt->set_time_zone('GMT');
-                $expires = $dt->strftime("%a, %d %b %Y %H:%M:%S GMT");
-
-                $test = $c->render_file($im_loaded, $image->filename, $image->path, $image->mediatype, $dl, $expires, $image->delete_at_first_view, $key, $thumb);
+                $test = $c->render_file($im_loaded, $image, $dl, $key, $thumb);
             }
         }
 
