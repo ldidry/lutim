@@ -1,5 +1,15 @@
 Revision history for Lutim
 
+0.9.0  2018-03-09
+	- Added partial arabic translation (thx to ButterflyOfFire)
+	- Default theme is now non-fluid (ie don't take all the width of the screen)
+	- Use Photoswipe for the gallery instead of Unite gallery
+	- Use Zanata for translations (https://trad.framasoft.org)
+	- Add an option to personnalize proposed retention delays
+	- Use random Initialization Vector for encryption
+	- Use Mojo::SQLite instead of ORLite
+	- Fix various bugs
+
 0.8.8  2018-02-07
 	- Fix security issues, thanks to SecuNinja
 
