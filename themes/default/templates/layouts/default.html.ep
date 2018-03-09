@@ -56,7 +56,7 @@
             </div>
 % if (defined(config('broadcast_message'))) {
             <div class="alert alert-info">
-                <strong><%= config('broadcast_message') %></strong>
+                <strong><%== config('broadcast_message') %></strong>
             </div>
 % }
 % if (defined(stash('stop_upload'))) {
