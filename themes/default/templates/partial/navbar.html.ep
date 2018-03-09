@@ -1,11 +1,12 @@
 % # vim:set sw=4 ts=4 sts=4 ft=html.epl expandtab:
 % my $l = {
-%     ar => 'العربية',
-%     de => 'Deutsch',
-%     en => 'English',
-%     es => 'Español',
-%     fr => 'Français',
-%     oc => 'Occitan',
+%     ar    => 'العربية',
+%     de    => 'Deutsch',
+%     en    => 'English',
+%     es    => 'Español',
+%     fr    => 'Français',
+%     fr_FR => 'Français (France)',
+%     oc    => 'Occitan',
 % };
 <nav class="navbar navbar-default">
     <div class="container">

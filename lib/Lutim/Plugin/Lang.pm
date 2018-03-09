@@ -21,8 +21,8 @@ sub _available_langs {
     my $c = shift;
 
     state $langs = Mojo::Collection->new(
-        glob($c->app->home->rel_file('themes/'.$c->config('theme').'/lib/Lutim/I18N/*')),
-        glob($c->app->home->rel_file('themes/default/lib/Lutim/I18N/*'))
+        glob($c->app->home->rel_file('themes/'.$c->config('theme').'/lib/Lutim/I18N/*po')),
+        glob($c->app->home->rel_file('themes/default/lib/Lutim/I18N/*po'))
     )->map(
         sub {
             Mojo::File->new($_)->basename('.po');
