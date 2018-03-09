@@ -1,5 +1,8 @@
 Revision history for Lutim
 
+0.9.1  2018-03-09
+	- Fix default setting bug (db_path)
+
 0.9.0  2018-03-09
 	- Added partial arabic translation (thx to ButterflyOfFire)
 	- Default theme is now non-fluid (ie don't take all the width of the screen)

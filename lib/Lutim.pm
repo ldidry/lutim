@@ -43,6 +43,7 @@ sub startup {
             thumbnail_size    => 100,
             theme             => 'default',
             dbtype            => 'sqlite',
+            db_path           => 'lutim.db',
             max_files_in_zip  => 15,
             prefix            => '/',
             minion            => {
