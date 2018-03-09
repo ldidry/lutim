@@ -204,6 +204,16 @@ var initPhotoSwipeFromDOM = function(gallerySelector) {
     }
 };
 
+function addAlert(e) {
+    $('#infos-msg').append([
+        '<div class="alert alert-danger">',
+            '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>',
+            '<strong><%= l('Something bad happened') %></strong><br>',
+            cleanName(e, false),
+        '</div>'
+    ].join(''));
+}
+
 function addElement(keys) {
     element = keys.shift();
     if (!element.match('xcf')) {
@@ -222,6 +232,8 @@ function addElement(keys) {
                             '</figure>'
                         ].join('')
                     );
+                } else {
+                    addAlert(data.msg);
                 }
             },
             complete: function() {

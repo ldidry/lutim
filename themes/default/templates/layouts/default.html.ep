@@ -92,6 +92,7 @@
         %= javascript '/js/jszip.min.js'
         %= javascript '/js/FileSaver.min.js'
         %= javascript '/partial/gallery.js'
+        %= javascript '/partial/lutim.js'
 % }
 % if (current_route 'myfiles') {
         %= javascript '/partial/common.js'
