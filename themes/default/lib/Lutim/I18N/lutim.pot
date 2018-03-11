@@ -44,7 +44,7 @@ msgstr ""
 msgid ": Error while trying to get the counter."
 msgstr ""
 
-#: themes/default/templates/partial/navbar.html.ep:76
+#: themes/default/templates/partial/navbar.html.ep:77
 msgid "About"
 msgstr ""
 
@@ -60,7 +60,7 @@ msgstr ""
 msgid "Archives download"
 msgstr ""
 
-#: themes/default/templates/about.html.ep:43 themes/default/templates/myfiles.html.ep:64 themes/default/templates/stats.html.ep:25
+#: themes/default/templates/about.html.ep:44 themes/default/templates/myfiles.html.ep:64 themes/default/templates/stats.html.ep:25
 msgid "Back to homepage"
 msgstr ""
 
@@ -156,7 +156,7 @@ msgstr ""
 msgid "For more details, see the <a href=\"https://framagit.org/luc/lutim\">homepage of the project</a>."
 msgstr ""
 
-#: themes/default/templates/partial/navbar.html.ep:79
+#: themes/default/templates/partial/navbar.html.ep:80
 msgid "Fork me!"
 msgstr ""
 
@@ -200,15 +200,15 @@ msgstr ""
 msgid "Image not found."
 msgstr ""
 
-#: themes/default/templates/partial/navbar.html.ep:68
+#: themes/default/templates/partial/navbar.html.ep:69
 msgid "Informations"
 msgstr ""
 
-#: themes/default/templates/partial/navbar.html.ep:32
+#: themes/default/templates/partial/navbar.html.ep:33
 msgid "Install webapp"
 msgstr ""
 
-#: themes/default/templates/partial/navbar.html.ep:28
+#: themes/default/templates/partial/navbar.html.ep:29
 msgid "Instance's statistics"
 msgstr ""
 
@@ -228,7 +228,7 @@ msgstr ""
 msgid "Keep EXIF tags"
 msgstr ""
 
-#: themes/default/templates/partial/navbar.html.ep:39
+#: themes/default/templates/partial/navbar.html.ep:40
 msgid "Language"
 msgstr ""
 
@@ -236,7 +236,7 @@ msgstr ""
 msgid "Let's go!"
 msgstr ""
 
-#: themes/default/templates/partial/navbar.html.ep:73
+#: themes/default/templates/partial/navbar.html.ep:74
 msgid "License:"
 msgstr ""
 
@@ -260,7 +260,7 @@ msgstr ""
 msgid "Markdown syntax"
 msgstr ""
 
-#: themes/default/templates/myfiles.html.ep:2 themes/default/templates/partial/navbar.html.ep:25
+#: themes/default/templates/myfiles.html.ep:2 themes/default/templates/partial/navbar.html.ep:26
 msgid "My images"
 msgstr ""
 
@@ -318,19 +318,19 @@ msgstr ""
 msgid "Something went wrong when creating the zip file. Try again later or contact the administrator (%1)."
 msgstr ""
 
-#: themes/default/templates/partial/navbar.html.ep:51
+#: themes/default/templates/partial/navbar.html.ep:52
 msgid "Support the author"
 msgstr ""
 
-#: themes/default/templates/partial/navbar.html.ep:59
+#: themes/default/templates/partial/navbar.html.ep:60
 msgid "Support the author on Liberapay"
 msgstr ""
 
-#: themes/default/templates/partial/navbar.html.ep:56
+#: themes/default/templates/partial/navbar.html.ep:57
 msgid "Support the author on Tipeee"
 msgstr ""
 
-#: themes/default/templates/partial/navbar.html.ep:62
+#: themes/default/templates/partial/navbar.html.ep:63
 msgid "Support the author with bitcoins"
 msgstr ""
 
@@ -401,7 +401,7 @@ msgstr ""
 msgid "Toggle fullscreen"
 msgstr ""
 
-#: themes/default/templates/partial/navbar.html.ep:15
+#: themes/default/templates/partial/navbar.html.ep:16
 msgid "Toggle navigation"
 msgstr ""
 
@@ -509,6 +509,10 @@ msgstr ""
 
 #: themes/default/templates/about.html.ep:39
 msgid "paste image to upload ability"
+msgstr ""
+
+#: themes/default/templates/about.html.ep:41
+msgid "russian translation"
 msgstr ""
 
 #: themes/default/templates/about.html.ep:36
