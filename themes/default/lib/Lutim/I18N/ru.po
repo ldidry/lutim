@@ -1,10 +1,3 @@
-# Lutim language file
-# Copyright (C) 2014 Luc Didry
-# This file is distributed under the same license as the Lutim package.
-#
-# Translators:
-# Translators:
-# Thor77 <thor77@thor77.org>, 2015
 # Luc Didry <luc@framasoft.org>, 2018. #zanata
 msgid ""
 msgstr ""
@@ -14,11 +7,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "PO-Revision-Date: 2018-03-03 05:32+0000\n"
-"Last-Translator: Luc Didry <luc@framasoft.org>\n"
-"Language-Team: German (http://www.transifex.com/fiat-tux/lutim/language/de/)\n"
-"Language: de\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Last-Translator: Alexander Sapozhnikov <shoorick@cpan.org>\n"
+"Language-Team: Russian\n"
+"Language: ru\n"
 "X-Generator: Zanata 4.3.3\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;"
 
 #. (7)
 #. (30)
@@ -26,112 +19,115 @@ msgstr ""
 #. (config('max_delay')
 #: lib/Lutim/Command/cron/stats.pm:149 lib/Lutim/Command/cron/stats.pm:150 lib/Lutim/Command/cron/stats.pm:160 lib/Lutim/Command/cron/stats.pm:161 lib/Lutim/Command/cron/stats.pm:177 lib/Lutim/Command/cron/stats.pm:178 themes/default/templates/partial/for_my_delay.html.ep:13 themes/default/templates/partial/for_my_delay.html.ep:14 themes/default/templates/partial/for_my_delay.html.ep:4 themes/default/templates/partial/lutim.js.ep:139 themes/default/templates/partial/lutim.js.ep:148 themes/default/templates/partial/lutim.js.ep:149 themes/default/templates/raw.html.ep:19 themes/default/templates/raw.html.ep:20 themes/default/templates/raw.html.ep:36 themes/default/templates/raw.html.ep:37 themes/default/templates/raw.html.ep:8 themes/default/templates/raw.html.ep:9
 msgid "%1 days"
-msgstr "%1 Tage"
+msgstr "%1 дней"
+msgstr[0] "%1 день\n"
+msgstr[1] "%1 дня\n"
+msgstr[2] "%1 дней\n"
 
 #. ($total)
 #: themes/default/templates/stats.html.ep:2
 msgid "%1 sent images on this instance from beginning."
-msgstr "%1 Bilder wurden bisher über diese Instanz versendet."
+msgstr "%1 изображений загружено в этот экземпляр с самого начала."
 
 #: themes/default/templates/index.html.ep:190
 msgid "-or-"
-msgstr "-oder-"
+msgstr "-или-"
 
 #: lib/Lutim.pm:186 lib/Lutim/Command/cron/stats.pm:151 lib/Lutim/Command/cron/stats.pm:162 lib/Lutim/Command/cron/stats.pm:179 themes/default/templates/index.html.ep:5 themes/default/templates/raw.html.ep:10 themes/default/templates/raw.html.ep:21 themes/default/templates/raw.html.ep:38
 msgid "1 year"
-msgstr "1 Jahr"
+msgstr "1 год"
 
 #: lib/Lutim.pm:185 lib/Lutim/Command/cron/stats.pm:148 lib/Lutim/Command/cron/stats.pm:159 lib/Lutim/Command/cron/stats.pm:176 themes/default/templates/index.html.ep:4 themes/default/templates/partial/for_my_delay.html.ep:13 themes/default/templates/partial/lutim.js.ep:148 themes/default/templates/raw.html.ep:18 themes/default/templates/raw.html.ep:35 themes/default/templates/raw.html.ep:7
 msgid "24 hours"
-msgstr "24 Stunden"
+msgstr "24 часа"
 
 #: themes/default/templates/partial/myfiles.js.ep:57
 msgid ": Error while trying to get the counter."
-msgstr ":Fehler beim Abrufen des Zählers."
+msgstr ": Error while trying to get the counter."
 
 #: themes/default/templates/partial/navbar.html.ep:75
 msgid "About"
-msgstr ""
+msgstr "О Lutim"
 
 #: lib/Lutim/Command/cron/stats.pm:144 themes/default/templates/raw.html.ep:3
 msgid "Active images"
-msgstr ""
+msgstr "Активные изображения"
 
 #: lib/Lutim/Controller.pm:326
 msgid "An error occured while downloading the image."
-msgstr "Beim Herunterladen des Bildes ist ein Fehler aufgetreten."
+msgstr "Произошла ошибка при скачивании изображения."
 
 #: themes/default/templates/zip.html.ep:2
 msgid "Archives download"
-msgstr ""
+msgstr "Archives download"
 
 #: themes/default/templates/about.html.ep:43 themes/default/templates/myfiles.html.ep:64 themes/default/templates/stats.html.ep:25
 msgid "Back to homepage"
-msgstr "Zurück zur Hauptseite"
+msgstr "Вернуться на главную страницу"
 
 #: themes/default/templates/index.html.ep:193 themes/default/templates/index.html.ep:194
 msgid "Click to open the file browser"
-msgstr "Klicken um den Dateibrowser zu öffnen"
+msgstr "Щёлкните для выбора файлов"
 
 #: themes/default/templates/gallery.html.ep:26
 msgid "Close (Esc)"
-msgstr ""
+msgstr "Закрыть (Esc)"
 
 #: themes/default/templates/about.html.ep:30
 msgid "Contributors"
-msgstr "Mitwirkende"
+msgstr "Участники"
 
 #: themes/default/templates/partial/lutim.js.ep:215 themes/default/templates/partial/lutim.js.ep:269 themes/default/templates/partial/lutim.js.ep:347
 msgid "Copy all view links to clipboard"
-msgstr "Alle Links zum Anschauen in die Zwischenablage kopieren"
+msgstr "Скопировать в буфер все ссылки на просмотр"
 
 #: themes/default/templates/index.html.ep:18 themes/default/templates/index.html.ep:36 themes/default/templates/index.html.ep:69 themes/default/templates/index.html.ep:77 themes/default/templates/index.html.ep:85 themes/default/templates/index.html.ep:93 themes/default/templates/myfiles.html.ep:20 themes/default/templates/myfiles.html.ep:38 themes/default/templates/partial/common.js.ep:150 themes/default/templates/partial/lutim.js.ep:105 themes/default/templates/partial/lutim.js.ep:120 themes/default/templates/partial/lutim.js.ep:79 themes/default/templates/partial/lutim.js.ep:91
 msgid "Copy to clipboard"
-msgstr "In die Zwischenablage kopieren"
+msgstr "Скопировать в буфер"
 
 #: themes/default/templates/myfiles.html.ep:52
 msgid "Counter"
-msgstr "Zähler"
+msgstr "Счётчик"
 
 #: themes/default/templates/stats.html.ep:18
 msgid "Delay repartition chart for disabled images"
-msgstr ""
+msgstr "Распределение сроков хранения недоступных изображений"
 
 #: themes/default/templates/stats.html.ep:15
 msgid "Delay repartition chart for enabled images"
-msgstr ""
+msgstr "Распределение сроков хранения доступных изображений"
 
 #: themes/default/templates/index.html.ep:115 themes/default/templates/index.html.ep:147 themes/default/templates/index.html.ep:178 themes/default/templates/myfiles.html.ep:53 themes/default/templates/partial/lutim.js.ep:160
 msgid "Delete at first view?"
-msgstr "Nach erstem Aufruf löschen?"
+msgstr "Удалить после первого просмотра?"
 
 #: lib/Lutim/Command/cron/stats.pm:145 themes/default/templates/raw.html.ep:4
 msgid "Deleted images"
-msgstr ""
+msgstr "Удалённые изображения"
 
 #: lib/Lutim/Command/cron/stats.pm:146 themes/default/templates/raw.html.ep:5
 msgid "Deleted images in 30 days"
-msgstr ""
+msgstr "Удалить изображения через 30 дней"
 
 #: themes/default/templates/index.html.ep:98 themes/default/templates/myfiles.html.ep:56 themes/default/templates/partial/common.js.ep:142 themes/default/templates/partial/common.js.ep:145
 msgid "Deletion link"
-msgstr "Link zum Löschen"
+msgstr "Ссылка на удаление"
 
 #: themes/default/templates/gallery.html.ep:6
 msgid "Download all images"
-msgstr "Laden Sie alle Bilder"
+msgstr "Скачать все изображения"
 
 #: themes/default/templates/index.html.ep:81 themes/default/templates/index.html.ep:83 themes/default/templates/partial/lutim.js.ep:101 themes/default/templates/partial/lutim.js.ep:97
 msgid "Download link"
-msgstr "Link zum Herunterladen"
+msgstr "Ссылка на скачивание"
 
 #: themes/default/templates/index.html.ep:28 themes/default/templates/index.html.ep:31 themes/default/templates/myfiles.html.ep:30 themes/default/templates/myfiles.html.ep:33
 msgid "Download zip link"
-msgstr "Link zum Archivbilder"
+msgstr "Ссылка на скачивание zip-архивом"
 
 #: themes/default/templates/index.html.ep:189
 msgid "Drag & drop images here"
-msgstr "Bilder hierher ziehen"
+msgstr "Перетащите и бросьте изображения сюда"
 
 #: themes/default/templates/about.html.ep:7
 msgid ""
@@ -140,139 +136,142 @@ msgid ""
 "other to directly download it, one you can use on social networks and a last "
 "to delete the image when you want."
 msgstr ""
-"Ziehe Bilder in den dafür vorgesehenen Bereich und Lutim wird vier URLs "
-"generieren. Eine zum Anschauen, eine zum direkten Herunterladen, eine zum "
-"Nutzen in sozialen Netzwerken und eine letzte um das Bild zu löschen."
+"Перетащите и бросьте изображение либо воспользуйтесь традиционным путём для "
+"загрузки файлов, и Lutim предоставит вам четыре URL. Один для просмотра "
+"изображения, другой — для скачивания, следующий вы можете использовать "
+"в социальных сетях и последний — для удаления изображения, когда заходите."
 
 #: themes/default/templates/index.html.ep:150 themes/default/templates/index.html.ep:181
 msgid "Encrypt the image (Lutim does not keep the key)."
-msgstr "Verschlüssle das Bild (Lutim behält den Key nicht)"
+msgstr "Зашифровать изображение (Lutim не хранит ключ)."
 
 #: themes/default/templates/partial/lutim.js.ep:44
 msgid "Error while trying to modify the image."
-msgstr "Beim bearbeiten des Bildes ist ein Fehler aufgetreten."
+msgstr "Ошибка при попытке модифицировать изображение."
 
 #: themes/default/templates/stats.html.ep:10
 msgid "Evolution of total files"
-msgstr "Entwicklung der Anzahl an Dateien"
+msgstr "Общее количество файлов"
 
 #: themes/default/templates/myfiles.html.ep:55
 msgid "Expires at"
-msgstr "Läuft ab am"
+msgstr "Истекает в"
 
 #: themes/default/templates/myfiles.html.ep:50
 msgid "File name"
-msgstr "Dateiname"
+msgstr "Имя файла"
 
 #: themes/default/templates/about.html.ep:24
 msgid ""
 "For more details, see the <a href=\"https://framagit.org/luc/"
 "lutim\">homepage of the project</a>."
 msgstr ""
-"Besuche für mehr Details die <a href=\"https://framagit.org/luc/"
-"lutim\">Homepage des Projekts</a>."
+"Чтоб узнать больше, посетите <a href=\"https://framagit.org/luc/"
+"lutim\">главную страницу проекта</a>."
 
 #: themes/default/templates/partial/navbar.html.ep:78
 msgid "Fork me!"
-msgstr "Fork me!"
+msgstr "Форкни меня!"
 
 #: themes/default/templates/index.html.ep:10 themes/default/templates/index.html.ep:13 themes/default/templates/myfiles.html.ep:12 themes/default/templates/myfiles.html.ep:15
 msgid "Gallery link"
-msgstr "Link zur Galerie"
+msgstr "Ссылка на галерею"
 
 #: themes/default/templates/partial/common.js.ep:104 themes/default/templates/partial/common.js.ep:87
 msgid "Hit Ctrl+C, then Enter to copy the short link"
-msgstr "Drücke STRG+C und dann Enter um den Kurz-Link zu kopieren."
+msgstr "Нажмите Ctrl+C, а затем Enter для копирования короткой ссылки"
 
 #: themes/default/templates/layouts/default.html.ep:54
 msgid "Homepage"
-msgstr "Webseite"
+msgstr "Главная страница"
 
 #: themes/default/templates/about.html.ep:20
 msgid "How do you pronounce Lutim?"
-msgstr "Wie spricht man Lutim aus?"
+msgstr "Как произносится Lutim?"
 
 #: themes/default/templates/about.html.ep:6
 msgid "How does it work?"
-msgstr "Wie funktionert das?"
+msgstr "Как это работает?"
 
 #: themes/default/templates/about.html.ep:18
 msgid "How to report an image?"
-msgstr "Wie kann ich ein Bild melden?"
+msgstr "Как пожаловаться на изображение?"
 
 #: themes/default/templates/about.html.ep:14
 msgid ""
 "If the files are deleted if you ask it while posting it, their SHA512 "
 "footprint are retained."
 msgstr ""
-"Wenn du versuchst, ein Bild während dem Hochladen zu löschen, wird die "
-"SHA512-Summe des Bildes behalten."
+"Если файлы были удалены, потому что вы указали это при их загрузке, их "
+"контрольные суммы SHA512 сохранятся."
 
 #: themes/default/templates/index.html.ep:163 themes/default/templates/index.html.ep:203
 msgid "Image URL"
-msgstr "Bild-URL"
+msgstr "URL изображения"
 
 #: lib/Lutim/Command/cron/stats.pm:143 themes/default/templates/raw.html.ep:2
 msgid "Image delay"
-msgstr ""
+msgstr "Срок хранения"
 
 #: lib/Lutim/Controller.pm:752
 msgid "Image not found."
-msgstr "Bild nicht gefunden"
+msgstr "Изображение не найдено."
 
 #: themes/default/templates/partial/navbar.html.ep:67
 msgid "Informations"
-msgstr "Informationen"
+msgstr "Информация"
 
 #: themes/default/templates/partial/navbar.html.ep:31
 msgid "Install webapp"
-msgstr "Installiere die Webapp"
+msgstr "Установить веб-приложение"
 
 #: themes/default/templates/partial/navbar.html.ep:27
 msgid "Instance's statistics"
-msgstr ""
+msgstr "Статистика экземпляра"
 
 #: themes/default/templates/about.html.ep:11
 msgid "Is it really anonymous?"
-msgstr "Ist es wirklich anonym?"
+msgstr "Это действительно анонимно?"
 
 #: themes/default/templates/about.html.ep:9
 msgid "Is it really free (as in free beer)?"
-msgstr "Is es wirklich kostenlos?"
+msgstr "Это действительно бесплатно (as in free beer)?"
 
 #: themes/default/templates/about.html.ep:21
 msgid ""
 "Juste like you pronounce the French word <a href=\"https://fr.wikipedia.org/"
 "wiki/Lutin\">lutin</a> (/ly.tɛ̃/)."
 msgstr ""
-"Genauso wie das französische Wort <a href=\"https://fr.wikipedia.org/wiki/"
-"Lutin\">lutin</a> (/ly.tɛ̃/)."
+"Как французское слово <a href=\"https://fr.wikipedia.org/"
+"wiki/Lutin\">lutin</a> (/ly.tɛ̃/)."
 
 #: themes/default/templates/index.html.ep:153 themes/default/templates/index.html.ep:184
 msgid "Keep EXIF tags"
-msgstr "Behalte EXIF-Daten"
+msgstr "Сохранить EXIF-теги"
 
 #: themes/default/templates/partial/navbar.html.ep:38
 msgid "Language"
-msgstr ""
+msgstr "Язык"
 
 #: themes/default/templates/index.html.ep:118 themes/default/templates/index.html.ep:166 themes/default/templates/index.html.ep:206 themes/default/templates/partial/lutim.js.ep:164
 msgid "Let's go!"
-msgstr "Los gehts!"
+msgstr "Вперёд!"
 
 #: themes/default/templates/partial/navbar.html.ep:72
 msgid "License:"
-msgstr "Lizenz:"
+msgstr "Лицензия:"
 
 #: themes/default/templates/index.html.ep:89 themes/default/templates/index.html.ep:91 themes/default/templates/partial/lutim.js.ep:111 themes/default/templates/partial/lutim.js.ep:115
 msgid "Link for share on social networks"
-msgstr "Links zum teilen auf sozialen Netzwerken"
+msgstr "Ссылка для того, чтоб поделиться в социальных сетях"
 
 #: themes/default/templates/zip.html.ep:7
 msgid ""
 "Lutim can't zip so many images at once, so it splitted your demand in "
 "multiple URLs."
 msgstr ""
+"Lutim не может сархивировать так много картинок за раз, поэтому ваш запрос "
+"разбит на несколько URL."
 
 #: themes/default/templates/about.html.ep:4
 msgid ""
@@ -280,32 +279,33 @@ msgid ""
 "also the name of the free (as in free speech) software which provides this "
 "service."
 msgstr ""
-"Lutim ist ein freier und anonymer Bilder-Upload-Service.\n"
-"Es ist auch der Name der freien Software, die diesen Service bietet."
+"Lutim — это бесплатный (as in free beer) и анонимный сервис размещения "
+"изображений. Также это название свободного (as in free speech) программного "
+"обеспечения, предоставляющего этот сервис."
 
 #: themes/default/templates/about.html.ep:25
 msgid "Main developers"
-msgstr "Haupt-Entwickler"
+msgstr "Главные разработчики"
 
 #: themes/default/templates/index.html.ep:73 themes/default/templates/index.html.ep:75 themes/default/templates/partial/lutim.js.ep:85 themes/default/templates/partial/lutim.js.ep:88
 msgid "Markdown syntax"
-msgstr "Markdown Syntax"
+msgstr "Синтаксис Маркдауна"
 
 #: themes/default/templates/myfiles.html.ep:2 themes/default/templates/partial/navbar.html.ep:24
 msgid "My images"
-msgstr "Meine Bilder"
+msgstr "Мои изображения"
 
 #: themes/default/templates/gallery.html.ep:42
 msgid "Next (arrow right)"
-msgstr ""
+msgstr "Следующий (стрелка вправо)"
 
 #: themes/default/templates/partial/myfiles.js.ep:19
 msgid "No limit"
-msgstr "Keine Begrenzung"
+msgstr "Без ограничений"
 
 #: themes/default/templates/index.html.ep:165 themes/default/templates/index.html.ep:198
 msgid "Only images are allowed"
-msgstr "Es sind nur Bilder erlaubt"
+msgstr "Разрешены только изображения"
 
 #: themes/default/templates/myfiles.html.ep:6
 msgid ""
@@ -313,46 +313,47 @@ msgid ""
 "stored in localStorage: if you delete your localStorage data, you'll loose "
 "these details."
 msgstr ""
-"Nur die Bilder, die über diesen Browser versendet wurden, werden hier "
-"angezeigt. Die Details werden im localStorage gespeichert, wenn du diesen "
-"leerst, sind die Details verloren."
+"Здесь перечислены только изображения, загруженные через браузер. Статистика "
+"хранится в localStorage: если вы удалите данные localStorage, вы потеряете "
+"эту статистику."
 
 #: themes/default/templates/about.html.ep:16
 msgid ""
 "Only the uploader! (well, only if he's the only owner of the images' rights "
 "before the upload)"
 msgstr ""
-"Nur der Hochladende (natürlich nur, wenn er vorher auch Rechteinhaber des "
-"Bildes war)"
+"Только тот, кто загрузил! (ну хорошо, только если он — единственный "
+"правообладатель изображений до загрузки)"
 
 #: themes/default/templates/zip.html.ep:12
 msgid "Please click on each URL to download the different zip files."
-msgstr ""
+msgstr "Пожалуйста, щёлкните по каждому URL для скачивания отдельными "
+"zip-архивами."
 
 #. (config('contact')
 #: themes/default/templates/about.html.ep:19
 msgid "Please contact the administrator: %1"
-msgstr "Kontaktiere den Administrator: %1"
+msgstr "Пожалуйста, свяжитесь с администратором: %1"
 
 #: themes/default/templates/gallery.html.ep:40
 msgid "Previous (arrow left)"
-msgstr ""
+msgstr "Предыдущий (стрелка влево)"
 
 #: themes/default/templates/stats.html.ep:22
 msgid "Raw stats"
-msgstr ""
+msgstr "Сырые статистические данные"
 
 #: themes/default/templates/index.html.ep:158
 msgid "Send an image"
-msgstr "Sende ein Bild"
+msgstr "Послать изображение"
 
 #: themes/default/templates/partial/lutim.js.ep:20
 msgid "Share it!"
-msgstr "Teile es!"
+msgstr "Поделиться!"
 
 #: themes/default/templates/index.html.ep:133 themes/default/templates/partial/lutim.js.ep:175
 msgid "Something bad happened"
-msgstr "Es ist ein Fehler aufgetreten"
+msgstr "Произошло что-то плохое"
 
 #. ($c->config('contact')
 #: lib/Lutim/Controller.pm:759
@@ -360,24 +361,24 @@ msgid ""
 "Something went wrong when creating the zip file. Try again later or contact "
 "the administrator (%1)."
 msgstr ""
-"Es ist ein Fehler aufgetreten. Versuche es erneut oder kontaktiere den "
-"Administrator (%1)."
+"Что-то пошло не так при создании zip-архива. Попробуйте позже или свяжитесь "
+"с администратором (%1)."
 
 #: themes/default/templates/partial/navbar.html.ep:50
 msgid "Support the author"
-msgstr ""
+msgstr "Поддержать автора"
 
 #: themes/default/templates/partial/navbar.html.ep:58
 msgid "Support the author on Liberapay"
-msgstr ""
+msgstr "Поддержать автора на Liberapay"
 
 #: themes/default/templates/partial/navbar.html.ep:55
 msgid "Support the author on Tipeee"
-msgstr ""
+msgstr "Поддержать автора на Tipeee"
 
 #: themes/default/templates/partial/navbar.html.ep:61
 msgid "Support the author with bitcoins"
-msgstr ""
+msgstr "Поддержать автора биткойнами"
 
 #: themes/default/templates/about.html.ep:13
 msgid ""
@@ -385,9 +386,8 @@ msgid ""
 "of the administrator's choice (for the official instance, which is located "
 "in France, it's one year)."
 msgstr ""
-"Die IP-Adresse des Nutzers wird für eine bestimmte Zeit gespeichert. Diese "
-"kann der Administrator frei wählen (für die offizielle Instanz, die in "
-"Frankreich gehostet ist, liegt diese Zeit bei einem Jahr)"
+"IP-адрес отправителя изображений сохраняется на время, зависящее от решения "
+"администратора (официальное требование во Франции — один год)."
 
 #: themes/default/templates/about.html.ep:23
 msgid ""
@@ -396,123 +396,127 @@ msgid ""
 "it on you own server. Have a look at the <a href=\"https://www.gnu.org/"
 "licenses/agpl-3.0.html\">AGPL</a> to see what you can do."
 msgstr ""
-"Lutim ist <a href=\"https://de.wikipedia.org/wiki/Freie_Software\">freie "
-"Software</a>, was dir erlaubt sie herunterzuladen und sie auf deinem eigenem "
-"Server zu installieren. Schau dir die <a href=\"https://www.gnu.org/licenses/"
-"agpl-3.0.html\">AGPL</a> an um deine Recht zu sehen."
+"Lutim — это <a href=\"https://ru.wikipedia.org/wiki/"
+"%D0%A1%D0%B2%D0%BE%D0%B1%D0%BE%D0%B4%D0%BD%D0%BE%D0%B5_"
+"%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%BD%D0%BE%D0%B5_"
+"%D0%BE%D0%B1%D0%B5%D1%81%D0%BF%D0%B5%D1%87%D0%B5%D0%BD%D0%B8%D0%B5\">"
+"свободное программное обеспечение</a>, которое вы можете скачать и установить "
+"на свой сервер. Посмотрите <a href=\"https://www.gnu.org/"
+"licenses/agpl-3.0.html\">AGPL</a>, чтоб увидеть, что вы можете делать."
 
 #: lib/Lutim/Controller.pm:345
 msgid "The URL is not valid."
-msgstr "Die URL ist nicht gültig."
+msgstr "Недопустимый URL."
 
 #: themes/default/templates/zip.html.ep:16
 msgid ""
 "The automatic download process will open a tab in your browser for each link."
 " You need to allow popups for Lutim."
 msgstr ""
+"Процесс автоматического скачивания откроет вкладку в вашем браузере для "
+"каждой ссылки. Вам надо разрешить всплывающие окна для Lutim."
 
 #: lib/Lutim/Controller.pm:158 lib/Lutim/Controller.pm:226
 msgid "The delete token is invalid."
-msgstr "Das Token zum Löschen ist ungültig."
+msgstr "Неправильный ключ для удаления."
 
 #. ($upload->filename)
 #: lib/Lutim/Controller.pm:485
 msgid "The file %1 is not an image."
-msgstr "Die Datei %1 ist kein Bild."
+msgstr "Файл %1 — не изображение."
 
 #. ($tx->res->max_message_size)
 #. ($c->req->max_message_size)
 #. (config('max_file_size')
 #: lib/Lutim/Controller.pm:309 lib/Lutim/Controller.pm:378 themes/default/templates/partial/lutim.js.ep:241
 msgid "The file exceed the size limit (%1)"
-msgstr "Die Datei überschreitet die Größenbeschränkung (%1)"
+msgstr "Размер файла превосходит ограничение (%1)"
 
 #: themes/default/templates/stats.html.ep:12
 msgid "The graph's datas are not updated in real-time."
-msgstr "Die Daten des Graphs werden nicht in Echtzeit aktualisiert."
+msgstr "Данные графиков не обновляются в реальном времени."
 
 #. ($image->filename)
 #: lib/Lutim/Controller.pm:228
 msgid "The image %1 has already been deleted."
-msgstr "Das Bild %1 wurde schon gelöscht."
+msgstr "Изображение %1 уже было удалено."
 
 #. ($image->filename)
 #: lib/Lutim/Controller.pm:237 lib/Lutim/Controller.pm:242
 msgid "The image %1 has been successfully deleted"
-msgstr "Das Bild %1 wurde erfolgreich gelöscht."
+msgstr "Изображение %1 успешно удалено"
 
 #: lib/Lutim/Controller.pm:166
 msgid "The image's delay has been successfully modified"
-msgstr "Die Zeit bis zum Löschen des Bildes wurde erfolgreich geändert."
+msgstr "Срок хранения изображения успешно изменён"
 
 #: themes/default/templates/index.html.ep:45
 msgid "The images are encrypted on the server (Lutim does not keep the key)."
-msgstr ""
-"Die Bilder werden auf dem Server verschlüsselt (Lutim behält den Key nicht)"
+msgstr "Изображения зашифрованы на сервере (Lutim не хранит ключ)."
 
 #: themes/default/templates/about.html.ep:5
 msgid ""
 "The images you post on Lutim can be stored indefinitely or be deleted at "
 "first view or after a delay selected from those proposed."
 msgstr ""
-"Die Bilder, die du auf Lutim hochlädst, können entweder nie, nach dem ersten "
-"Aufruf oder nach einer bestimmten Zeit gelöscht werden."
+"Изображения, загружаемые в Lutim, могут храниться неопределённо долго либо "
+"быть удалёнными после первого просмотра или по истечении определённого "
+"промежутка времени."
 
 #. ($c->config->{contact})
 #: lib/Lutim/Controller.pm:482
 msgid "There is no more available URL. Retry or contact the administrator. %1"
 msgstr ""
-"Es sind keine URLs mehr verfügbar. Versuche es erneut oder kontaktiere den "
-"Administrator. %1"
+"Больше нет доступных URL. Попробуйте снова или свяжитесь с администратором. %1"
 
 #: themes/default/templates/gallery.html.ep:27
 msgid "Toggle fullscreen"
-msgstr ""
+msgstr "Переключить полноэкранный режим"
 
 #: themes/default/templates/partial/navbar.html.ep:14
 msgid "Toggle navigation"
-msgstr ""
+msgstr "Переключить навигацию"
 
 #: lib/Lutim/Command/cron/stats.pm:152 themes/default/templates/raw.html.ep:11
 msgid "Total"
-msgstr ""
+msgstr "Итого"
 
 #: themes/default/templates/index.html.ep:60 themes/default/templates/partial/lutim.js.ep:14
 msgid "Tweet it!"
-msgstr "Twittere es!"
+msgstr "Твитнуть!"
 
 #. ($short)
 #: lib/Lutim/Controller.pm:106 lib/Lutim/Controller.pm:200 lib/Lutim/Controller.pm:271
 msgid "Unable to find the image %1."
-msgstr "Konnte das Bild %1 nicht finden."
+msgstr "Невозможно найти изображение %1."
 
 #: lib/Lutim/Controller.pm:571 lib/Lutim/Controller.pm:616 lib/Lutim/Controller.pm:658 lib/Lutim/Controller.pm:701 lib/Lutim/Controller.pm:713 lib/Lutim/Controller.pm:724 lib/Lutim/Controller.pm:749 lib/Lutim/Plugin/Helpers.pm:57
 msgid "Unable to find the image: it has been deleted."
-msgstr "Dieses Bild wurde gelöscht."
+msgstr "Невозможно найти изображение: оно было удалено."
 
 #: lib/Lutim/Controller.pm:143
 msgid "Unable to get counter"
-msgstr "Konnte den Zähler nicht abrufen"
+msgstr "Невозможно получить счётчик"
 
 #: themes/default/templates/about.html.ep:17
 msgid ""
 "Unlike many image sharing services, you don't give us rights on uploaded "
 "images."
 msgstr ""
-"Im Gegensatz zu anderen Bild-Hosting-Diensten, überträgst du uns nicht die "
-"Rechte an hochgeladenen Bildern."
+"В отличие от многих сервисов публикации изображений, вы не даёте нам права "
+"на переданные изображения."
 
 #: themes/default/templates/index.html.ep:162 themes/default/templates/index.html.ep:201
 msgid "Upload an image with its URL"
-msgstr "Lade ein Bild über seine URL hoch"
+msgstr "Загрузить изображение с URL"
 
 #: themes/default/templates/myfiles.html.ep:54
 msgid "Uploaded at"
-msgstr "Hochgeladen am"
+msgstr "Загружено в"
 
 #: themes/default/templates/stats.html.ep:6
 msgid "Uploaded files by days"
-msgstr "Hochgeladene Bilder pro Tag"
+msgstr "Загружено файлов по дням"
 
 #. ($c->app->config('contact')
 #: lib/Lutim/Plugin/Helpers.pm:156
@@ -520,24 +524,24 @@ msgid ""
 "Uploading is currently disabled, please try later or contact the "
 "administrator (%1)."
 msgstr ""
-"Hochladen ist momentan deaktiviert. Versuche es später erneut oder "
-"kontaktiere den Administrator (%1)."
+"Загрузка сейчас отключена, пожалуйста, попробуйте позже или свяжитесь с "
+"администратором (%1)."
 
 #: themes/default/templates/index.html.ep:65 themes/default/templates/index.html.ep:67 themes/default/templates/myfiles.html.ep:51 themes/default/templates/partial/lutim.js.ep:71 themes/default/templates/partial/lutim.js.ep:75
 msgid "View link"
-msgstr "Link ansehen"
+msgstr "Ссылка на просмотр"
 
 #: themes/default/templates/about.html.ep:22
 msgid "What about the software which provides the service?"
-msgstr "Welche Software stellt diesen Dienst bereit?"
+msgstr "Что насчёт программного обеспечения, предоставляющего этот сервис?"
 
 #: themes/default/templates/about.html.ep:3
 msgid "What is Lutim?"
-msgstr "Was ist Lutim?"
+msgstr "Что такое Lutim?"
 
 #: themes/default/templates/about.html.ep:15
 msgid "Who owns rights on images uploaded on Lutim?"
-msgstr "Wer hat die Rechte an auf Lutim hochgeladenen Bildern?"
+msgstr "Кто обладает правами на изображения, загруженные на Lutim?"
 
 #: themes/default/templates/about.html.ep:12
 msgid ""
@@ -545,9 +549,9 @@ msgid ""
 "stored when you send an image. Don't panic, it is normally the case of all "
 "sites on which you send files!"
 msgstr ""
-"Ja, ist es! Auf der anderen Seite wird deine IP-Adresse, wegen rechtlichen "
-"Gründen, beim hochladen gespeichert. Keine Panik, das ist normalerweise der "
-"Fall für alle Seiten, an die du Dateien sendest!"
+"Да, это так! С другой стороны, согласно требованиям закона, ваш IP-адрес "
+"будет сохранён при загрузке изображения. Без паники, это обычная практика "
+"на всех сайтах, куда посылают файлы."
 
 #: themes/default/templates/about.html.ep:10
 msgid ""
@@ -555,62 +559,62 @@ msgid ""
 "do it via <a href=\"https://www.tipeee.com/fiat-tux\">Tipeee</a> or via <a "
 "href=\"https://liberapay.com/sky/\">Liberapay</a>."
 msgstr ""
-"Ja, ist es! Auf der anderen Seite kannst du den Entwickler via <a href="
-"\"https://www.tipeee.com/fiat-tux\">Tipeee</a> oder <a href=\"https://"
-"liberapay.com/sky/\">Liberapay</a> unterstützen."
+"Да, это так! С другой стороны, если вы хотите поддержать разработчика, вы "
+"можете сделать это через <a href=\"https://www.tipeee.com/fiat-tux\">Tipeee"
+"</a> или <a href=\"https://liberapay.com/sky/\">Liberapay</a>."
 
 #: themes/default/templates/zip.html.ep:6
 msgid "You asked to download a zip archive for too much files."
-msgstr ""
+msgstr "Вы запросили скачивание zip-архива с очень большим числом файлов."
 
 #: themes/default/templates/about.html.ep:8
 msgid ""
 "You can, optionally, request that the image(s) posted on Lutim to be deleted "
 "at first view (or download) or after the delay selected from those proposed."
 msgstr ""
-"Du kannst Bilder, die du auf Lutim hochlädst, entweder nach dem ernsten "
-"Ansehen (oder Herunterladen) oder nach einem der vorgeschlagenen Zeiten "
-"löschen lassen."
+"Вы можете, при желании, запросить, чтоб загруженные в Lutim изображения "
+"были удалены после первого просмотра (либо скачивания) или по истечении "
+"выбранного промежутка времени."
 
 #: themes/default/templates/gallery.html.ep:28
 msgid "Zoom in/out"
-msgstr ""
+msgstr "Приблизить/отдалить"
 
 #: themes/default/templates/about.html.ep:27
 msgid "and on"
-msgstr "und auf"
+msgstr "и на"
 
 #: themes/default/templates/about.html.ep:40
 msgid "arabic translation"
-msgstr ""
+msgstr "арабский перевод"
 
 #: themes/default/templates/about.html.ep:27
 msgid "core developer"
-msgstr "Haupt-Entwickler"
+msgstr "разработчик ядра"
 
 #: lib/Lutim.pm:184 lib/Lutim/Command/cron/stats.pm:147 lib/Lutim/Command/cron/stats.pm:158 lib/Lutim/Command/cron/stats.pm:175 themes/default/templates/index.html.ep:3 themes/default/templates/raw.html.ep:17 themes/default/templates/raw.html.ep:34 themes/default/templates/raw.html.ep:6
 msgid "no time limit"
-msgstr "keine Zeit-Begrenzung"
+msgstr "без ограничения времени"
 
 #: themes/default/templates/about.html.ep:38
 msgid "occitan translation"
-msgstr "okzitanisch Übersetzung"
+msgstr "окситанский перевод"
 
 #: themes/default/templates/about.html.ep:27
 msgid "on"
-msgstr "auf"
+msgstr "в"
 
 #: themes/default/templates/about.html.ep:39
 msgid "paste image to upload ability"
-msgstr ""
-
-msgid "russian translation"
-msgstr "russische Übersetzung"
+msgstr "paste image to upload ability"
 
 #: themes/default/templates/about.html.ep:36
 msgid "spanish translation"
-msgstr "spanische Übersetzung"
+msgstr "испанский перевод"
+
+msgid "russian translation"
+msgstr "русский перевод"
 
 #: themes/default/templates/about.html.ep:28
 msgid "webapp developer"
-msgstr "Webapp-Entwickler"
+msgstr "разработчик веб-приложения"

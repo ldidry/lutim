@@ -7,6 +7,7 @@
 %     fr    => 'Français',
 %     fr_FR => 'Français (France)',
 %     oc    => 'Occitan',
+%     ru    => 'Русский',
 % };
 <nav class="navbar navbar-default">
     <div class="container">

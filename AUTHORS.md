@@ -16,3 +16,4 @@
 * Quentin Pagès, occitan translation
 * Alexis Clairet (<https://github.com/Turboconnard>), paste image to upload ability
 * ButterflyOfFire (<https://mastodon.tetaneutral.net/@BoF>), arabic translation
+* Alexander Sapozhnikov (<http://shoorick.ru>), russian translation
