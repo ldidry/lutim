@@ -38,6 +38,7 @@
         <li>Quentin Pagès, <%= l('occitan translation') %></li>
         <li>Alexis Clairet (<a href="https://github.com/Turboconnard">https://github.com/Turboconnard</a>), <%= l('paste image to upload ability') %></li>
         <li>ButterflyOfFire, <%= l('arabic translation') %></li>
+        <li>Alexander Sapozhnikov (<a href="http://shoorick.ru">http://shoorick.ru</a>), <%= l('russian translation') %></li>
     </ul>
 
     <%= link_to url_for('/') => ( class => "btn btn-primary btn-lg" ) => begin %><%= l('Back to homepage') %><% end%>
