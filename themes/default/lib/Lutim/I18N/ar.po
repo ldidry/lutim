@@ -4,6 +4,7 @@
 # 
 # Translators:
 # ButterflyOfFire <butterflyoffire@protonmail.com>, ٢٠١٨, 2018.
+# ButterflyOfFire <butterflyoffire@protonmail.com>, 2018. #zanata
 # Luc Didry <luc@framasoft.org>, 2018. #zanata
 msgid ""
 msgstr ""
@@ -12,7 +13,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2018-01-30 01:11+0000\n"
+"PO-Revision-Date: 2018-03-09 06:55+0000\n"
 "Last-Translator: Copied by Zanata <copied-by-zanata@zanata.org>\n"
 "Language-Team: Arabic <butterflyoffire+lutim@protonmail.com>\n"
 "Language: ar\n"
@@ -287,7 +288,7 @@ msgstr ""
 
 #: themes/default/templates/about.html.ep:25
 msgid "Main developers"
-msgstr ""
+msgstr "المطورون الرئيسيون"
 
 #: themes/default/templates/index.html.ep:73 themes/default/templates/index.html.ep:75 themes/default/templates/partial/lutim.js.ep:88 themes/default/templates/partial/lutim.js.ep:91
 msgid "Markdown syntax"
@@ -295,7 +296,7 @@ msgstr ""
 
 #: themes/default/templates/myfiles.html.ep:2 themes/default/templates/partial/navbar.html.ep:26
 msgid "My images"
-msgstr ""
+msgstr "صوري"
 
 #: themes/default/templates/gallery.html.ep:43
 msgid "Next (arrow right)"
@@ -303,11 +304,11 @@ msgstr ""
 
 #: themes/default/templates/partial/myfiles.js.ep:19
 msgid "No limit"
-msgstr ""
+msgstr "مدة غير محدودة"
 
 #: themes/default/templates/index.html.ep:165 themes/default/templates/index.html.ep:198
 msgid "Only images are allowed"
-msgstr ""
+msgstr "مسموحة إلّا الصور"
 
 #: themes/default/templates/myfiles.html.ep:6
 msgid ""
@@ -337,7 +338,7 @@ msgstr ""
 
 #: themes/default/templates/stats.html.ep:22
 msgid "Raw stats"
-msgstr ""
+msgstr "إحصائيات خامة"
 
 #: themes/default/templates/index.html.ep:158
 msgid "Send an image"
