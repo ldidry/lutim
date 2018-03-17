@@ -1,6 +1,7 @@
 # vim:set sw=4 ts=4 sts=4 ft=perl expandtab:
 package Lutim;
 use Mojo::Base 'Mojolicious';
+use Mojo::IOLoop;
 use Lutim::DB::Image;
 
 use vars qw($im_loaded);
@@ -131,16 +132,16 @@ sub startup {
         }
     );
 
-    $self->hook(
-        after_dispatch => sub {
-            my $c = shift;
-            $c->provisioning();
+    # Recurrent tasks
+    Mojo::IOLoop->recurring(5 => sub {
+        my $loop = shift;
 
-            # Purge expired anti-flood protection
-            my $wait_for_it = $c->app->{wait_for_it};
-            delete @{$wait_for_it}{grep { time - $wait_for_it->{$_} > $c->config->{anti_flood_delay} } keys %{$wait_for_it}} if (defined($wait_for_it));
-        }
-    );
+        $self->provisioning();
+
+        # Purge expired anti-flood protection
+        my $wait_for_it = $self->{wait_for_it};
+        delete @{$wait_for_it}{grep { time - $wait_for_it->{$_} > $self->config->{anti_flood_delay} } keys %{$wait_for_it}} if (defined($wait_for_it));
+    });
 
     $self->defaults(layout => 'default');
 
