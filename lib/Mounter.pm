@@ -46,6 +46,7 @@ sub startup {
                     dbtype  => 'sqlite',
                     db_path => 'minion.db'
                 },
+                cache_max_size    => 0,
             }
         }
     );
