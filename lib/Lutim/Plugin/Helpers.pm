@@ -18,9 +18,9 @@ sub register {
         # Database migration
         my $migrations = Mojo::Pg::Migrations->new(pg => $app->pg);
         if ($app->mode eq 'development' && $ENV{LUTIM_DEBUG}) {
-            $migrations->from_file('utilities/migrations/postgresql.sql')->migrate(0)->migrate(2);
+            $migrations->from_file('utilities/migrations/postgresql.sql')->migrate(0)->migrate(3);
         } else {
-            $migrations->from_file('utilities/migrations/postgresql.sql')->migrate(2);
+            $migrations->from_file('utilities/migrations/postgresql.sql')->migrate(3);
         }
     } elsif ($app->config('dbtype') eq 'sqlite') {
         # SQLite database migration if needed
