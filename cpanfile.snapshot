@@ -44,12 +44,65 @@ DISTRIBUTIONS
       perl 5.008001
       strict 0
       warnings 0
+  CHI-0.60
+    pathname: J/JS/JSWARTZ/CHI-0.60.tar.gz
+    provides:
+      CHI 0.60
+      CHI::CacheObject 0.60
+      CHI::Driver 0.60
+      CHI::Driver::Base::CacheContainer 0.60
+      CHI::Driver::CacheCache 0.60
+      CHI::Driver::FastMmap 0.60
+      CHI::Driver::File 0.60
+      CHI::Driver::Memory 0.60
+      CHI::Driver::Metacache 0.60
+      CHI::Driver::Null 0.60
+      CHI::Driver::RawMemory 0.60
+      CHI::Driver::Role::HasSubcaches 0.60
+      CHI::Driver::Role::IsSizeAware 0.60
+      CHI::Driver::Role::IsSubcache 0.60
+      CHI::Stats 0.60
+    requirements:
+      Carp::Assert 0.20
+      Class::Load 0
+      Data::UUID 0
+      Digest::JHash 0
+      Digest::MD5 0
+      ExtUtils::MakeMaker 0
+      File::Spec 0.80
+      Hash::MoreUtils 0
+      JSON::MaybeXS 1.003003
+      List::MoreUtils 0.13
+      Log::Any 0.08
+      Moo 1.003
+      MooX::Types::MooseLike 0.23
+      MooX::Types::MooseLike::Base 0
+      MooX::Types::MooseLike::Numeric 0
+      Storable 0
+      String::RewritePrefix 0
+      Task::Weaken 0
+      Time::Duration 1.06
+      Time::Duration::Parse 0.03
+      Time::HiRes 1.30
+      Try::Tiny 0.05
   Canary-Stability-2012
     pathname: M/ML/MLEHMANN/Canary-Stability-2012.tar.gz
     provides:
       Canary::Stability 2012
     requirements:
       ExtUtils::MakeMaker 0
+  Carp-Assert-0.21
+    pathname: N/NE/NEILB/Carp-Assert-0.21.tar.gz
+    provides:
+      Carp::Assert 0.21
+    requirements:
+      Carp 0
+      Exporter 0
+      ExtUtils::MakeMaker 0
+      perl 5.006
+      strict 0
+      vars 0
+      warnings 0
   Class-Data-Inheritable-0.08
     pathname: T/TM/TMTM/Class-Data-Inheritable-0.08.tar.gz
     provides:
@@ -65,6 +118,25 @@ DISTRIBUTIONS
       ExtUtils::MakeMaker 0
       File::Spec 0.80
       perl 5.006
+  Class-Load-0.24
+    pathname: E/ET/ETHER/Class-Load-0.24.tar.gz
+    provides:
+      Class::Load 0.24
+      Class::Load::PP 0.24
+    requirements:
+      Carp 0
+      Data::OptList 0
+      Exporter 0
+      ExtUtils::MakeMaker 0
+      Module::Implementation 0.04
+      Module::Runtime 0.012
+      Package::Stash 0.14
+      Scalar::Util 0
+      Try::Tiny 0
+      base 0
+      perl 5.006
+      strict 0
+      warnings 0
   Class-Method-Modifiers-2.12
     pathname: E/ET/ETHER/Class-Method-Modifiers-2.12.tar.gz
     provides:
@@ -287,6 +359,55 @@ DISTRIBUTIONS
       perl 5.006
       strict 0
       warnings 0
+  Data-OptList-0.110
+    pathname: R/RJ/RJBS/Data-OptList-0.110.tar.gz
+    provides:
+      Data::OptList 0.110
+    requirements:
+      ExtUtils::MakeMaker 0
+      List::Util 0
+      Params::Util 0
+      Sub::Install 0.921
+      strict 0
+      warnings 0
+  Data-Serializer-0.60
+    pathname: N/NE/NEELY/Data-Serializer-0.60.tar.gz
+    provides:
+      Data::Serializer 0.60
+      Data::Serializer::Bencode 0.03
+      Data::Serializer::Config::General 0.02
+      Data::Serializer::Convert::Bencode 0.03
+      Data::Serializer::Convert::Bencode_XS 0.03
+      Data::Serializer::Cookbook 0.05
+      Data::Serializer::Data::Denter 0.02
+      Data::Serializer::Data::Dumper 0.05
+      Data::Serializer::Data::Taxi 0.02
+      Data::Serializer::FreezeThaw 0.02
+      Data::Serializer::JSON 0.04
+      Data::Serializer::JSON::Syck 0.02
+      Data::Serializer::PHP::Serialization 0.02
+      Data::Serializer::Persistent 0.01
+      Data::Serializer::Raw 0.02
+      Data::Serializer::Storable 0.03
+      Data::Serializer::XML::Dumper 0.02
+      Data::Serializer::XML::Simple 0.03
+      Data::Serializer::YAML 0.02
+      Data::Serializer::YAML::Syck 0.02
+    requirements:
+      AutoLoader 0
+      Data::Dumper 2.08
+      Digest::SHA 0
+      Exporter 0
+      File::Spec 0
+      IO::File 0
+      Test::More 0
+  Data-UUID-1.221
+    pathname: R/RJ/RJBS/Data-UUID-1.221.tar.gz
+    provides:
+      Data::UUID 1.221
+    requirements:
+      Digest::MD5 0
+      ExtUtils::MakeMaker 0
   Data-Validate-Domain-0.14
     pathname: D/DR/DROLSKY/Data-Validate-Domain-0.14.tar.gz
     provides:
@@ -797,6 +918,18 @@ DISTRIBUTIONS
       perl 5.006
       strict 0
       warnings 0
+  Digest-JHash-0.10
+    pathname: S/SH/SHLOMIF/Digest-JHash-0.10.tar.gz
+    provides:
+      Digest::JHash 0.10
+    requirements:
+      DynaLoader 0
+      Exporter 0
+      ExtUtils::MakeMaker 0
+      perl 5.008
+      strict 0
+      vars 0
+      warnings 0
   Dist-CheckConflicts-0.11
     pathname: D/DO/DOY/Dist-CheckConflicts-0.11.tar.gz
     provides:
@@ -844,6 +977,16 @@ DISTRIBUTIONS
       base 0
       overload 0
       perl 5.008001
+      strict 0
+      warnings 0
+  Exporter-Lite-0.08
+    pathname: N/NE/NEILB/Exporter-Lite-0.08.tar.gz
+    provides:
+      Exporter::Lite 0.08
+    requirements:
+      Carp 0
+      ExtUtils::MakeMaker 6.3
+      perl 5.006
       strict 0
       warnings 0
   Exporter-Tiny-1.000000
@@ -992,15 +1135,21 @@ DISTRIBUTIONS
       perl 5.005
       strict 0
       warnings 0
-  Hash-Merge-0.299
-    pathname: H/HE/HERMES/Hash-Merge-0.299.tar.gz
+  Hash-Merge-0.300
+    pathname: R/RE/REHSACK/Hash-Merge-0.300.tar.gz
     provides:
-      Hash::Merge 0.299
+      Hash::Merge 0.300
     requirements:
       Clone::Choose 0.008
-      ExtUtils::MakeMaker 0
+      ExtUtils::MakeMaker 6.64
       Scalar::Util 0
       perl 5.008001
+  Hash-MoreUtils-0.05
+    pathname: R/RE/REHSACK/Hash-MoreUtils-0.05.tar.gz
+    provides:
+      Hash::MoreUtils 0.05
+    requirements:
+      Test::More 0.90
   IO-Socket-SSL-2.056
     pathname: S/SU/SULLR/IO-Socket-SSL-2.056.tar.gz
     provides:
@@ -1215,6 +1364,16 @@ DISTRIBUTIONS
     requirements:
       ExtUtils::MakeMaker 0
       perl 5.004
+  JSON-MaybeXS-1.003010
+    pathname: H/HA/HAARG/JSON-MaybeXS-1.003010.tar.gz
+    provides:
+      JSON::MaybeXS 1.003010
+    requirements:
+      Carp 0
+      ExtUtils::MakeMaker 0
+      JSON::PP 2.27300
+      Scalar::Util 0
+      perl 5.006
   List-MoreUtils-0.428
     pathname: R/RE/REHSACK/List-MoreUtils-0.428.tar.gz
     provides:
@@ -1266,6 +1425,40 @@ DISTRIBUTIONS
     requirements:
       ExtUtils::MakeMaker 6.30
       Locale::Maketext 1.17
+  Log-Any-1.705
+    pathname: P/PR/PREACTION/Log-Any-1.705.tar.gz
+    provides:
+      Log::Any 1.705
+      Log::Any::Adapter 1.705
+      Log::Any::Adapter::Base 1.705
+      Log::Any::Adapter::File 1.705
+      Log::Any::Adapter::Null 1.705
+      Log::Any::Adapter::Stderr 1.705
+      Log::Any::Adapter::Stdout 1.705
+      Log::Any::Adapter::Syslog 1.705
+      Log::Any::Adapter::Test 1.705
+      Log::Any::Adapter::Util 1.705
+      Log::Any::Manager 1.705
+      Log::Any::Proxy 1.705
+      Log::Any::Proxy::Null 1.705
+      Log::Any::Proxy::Test 1.705
+      Log::Any::Test 1.705
+    requirements:
+      B 0
+      Carp 0
+      Data::Dumper 0
+      Exporter 0
+      ExtUtils::MakeMaker 0
+      Fcntl 0
+      File::Basename 0
+      FindBin 0
+      IO::File 0
+      Storable 0
+      Sys::Syslog 0
+      Test::Builder 0
+      constant 0
+      strict 0
+      warnings 0
   MRO-Compat-0.13
     pathname: H/HA/HAARG/MRO-Compat-0.13.tar.gz
     provides:
@@ -1436,8 +1629,8 @@ DISTRIBUTIONS
       URI::db 0.15
       URI::file 4.21
       perl 5.010001
-  Mojolicious-7.70
-    pathname: S/SR/SRI/Mojolicious-7.70.tar.gz
+  Mojolicious-7.71
+    pathname: S/SR/SRI/Mojolicious-7.71.tar.gz
     provides:
       Mojo undef
       Mojo::Asset undef
@@ -1506,7 +1699,7 @@ DISTRIBUTIONS
       Mojo::UserAgent::Transactor undef
       Mojo::Util undef
       Mojo::WebSocket undef
-      Mojolicious 7.70
+      Mojolicious 7.71
       Mojolicious::Command undef
       Mojolicious::Command::cgi undef
       Mojolicious::Command::cpanify undef
@@ -1619,6 +1812,24 @@ DISTRIBUTIONS
       Sub::Defer 2.003001
       Sub::Quote 2.003001
       perl 5.006
+  MooX-Types-MooseLike-0.29
+    pathname: M/MA/MATEU/MooX-Types-MooseLike-0.29.tar.gz
+    provides:
+      MooX::Types::MooseLike 0.29
+      MooX::Types::MooseLike::Base 0.29
+    requirements:
+      ExtUtils::MakeMaker 0
+      Module::Runtime 0.014
+  MooX-Types-MooseLike-Numeric-1.03
+    pathname: M/MA/MATEU/MooX-Types-MooseLike-Numeric-1.03.tar.gz
+    provides:
+      MooX::Types::MooseLike::Numeric 1.03
+    requirements:
+      ExtUtils::MakeMaker 0
+      Moo 1.004002
+      MooX::Types::MooseLike 0.23
+      Test::Fatal 0.003
+      Test::More 0.96
   Mozilla-CA-20180117
     pathname: A/AB/ABH/Mozilla-CA-20180117.tar.gz
     provides:
@@ -1635,10 +1846,10 @@ DISTRIBUTIONS
       Carp 0
       ExtUtils::MakeMaker 0
       Storable 0
-  Net-SSLeay-1.84
-    pathname: M/MI/MIKEM/Net-SSLeay-1.84.tar.gz
+  Net-SSLeay-1.85
+    pathname: M/MI/MIKEM/Net-SSLeay-1.85.tar.gz
     provides:
-      Net::SSLeay 1.84
+      Net::SSLeay 1.85
       Net::SSLeay::Handle 0.61
     requirements:
       ExtUtils::MakeMaker 6.36
@@ -1701,6 +1912,17 @@ DISTRIBUTIONS
       perl 5.006001
       strict 0
       warnings 0
+  Params-Util-1.07
+    pathname: A/AD/ADAMK/Params-Util-1.07.tar.gz
+    provides:
+      Params::Util 1.07
+    requirements:
+      ExtUtils::CBuilder 0.27
+      ExtUtils::MakeMaker 6.52
+      File::Spec 0.80
+      Scalar::Util 1.18
+      Test::More 0.42
+      perl 5.00503
   Params-ValidationCompiler-0.27
     pathname: D/DR/DROLSKY/Params-ValidationCompiler-0.27.tar.gz
     provides:
@@ -1824,6 +2046,29 @@ DISTRIBUTIONS
       strict 0
       version 0.83
       warnings 0
+  String-RewritePrefix-0.007
+    pathname: R/RJ/RJBS/String-RewritePrefix-0.007.tar.gz
+    provides:
+      String::RewritePrefix 0.007
+    requirements:
+      Carp 0
+      ExtUtils::MakeMaker 6.30
+      Sub::Exporter 0.972
+      strict 0
+      warnings 0
+  Sub-Exporter-0.987
+    pathname: R/RJ/RJBS/Sub-Exporter-0.987.tar.gz
+    provides:
+      Sub::Exporter 0.987
+      Sub::Exporter::Util 0.987
+    requirements:
+      Carp 0
+      Data::OptList 0.100
+      ExtUtils::MakeMaker 6.30
+      Params::Util 0.14
+      Sub::Install 0.92
+      strict 0
+      warnings 0
   Sub-Exporter-Progressive-0.001013
     pathname: F/FR/FREW/Sub-Exporter-Progressive-0.001013.tar.gz
     provides:
@@ -1837,6 +2082,17 @@ DISTRIBUTIONS
     requirements:
       ExtUtils::MakeMaker 0
       Test::More 0
+  Sub-Install-0.928
+    pathname: R/RJ/RJBS/Sub-Install-0.928.tar.gz
+    provides:
+      Sub::Install 0.928
+    requirements:
+      B 0
+      Carp 0
+      ExtUtils::MakeMaker 6.30
+      Scalar::Util 0
+      strict 0
+      warnings 0
   Sub-Quote-2.005000
     pathname: H/HA/HAARG/Sub-Quote-2.005000.tar.gz
     provides:
@@ -1867,6 +2123,17 @@ DISTRIBUTIONS
       Text::Balanced 2
       if 0
       perl 5.005
+  Task-Weaken-1.05
+    pathname: E/ET/ETHER/Task-Weaken-1.05.tar.gz
+    provides:
+      Task::Weaken 1.05
+    requirements:
+      Config 0
+      ExtUtils::MakeMaker 0
+      File::Spec 0
+      Scalar::Util 1.14
+      perl 5.006
+      strict 0
   Test-Fatal-0.014
     pathname: R/RJ/RJBS/Test-Fatal-0.014.tar.gz
     provides:
@@ -1898,6 +2165,28 @@ DISTRIBUTIONS
     requirements:
       ExtUtils::MakeMaker 0
       perl 5.008
+  Time-Duration-1.20
+    pathname: N/NE/NEILB/Time-Duration-1.20.tar.gz
+    provides:
+      Time::Duration 1.20
+    requirements:
+      Exporter 0
+      ExtUtils::MakeMaker 0
+      constant 0
+      perl 5.006
+      strict 0
+      warnings 0
+  Time-Duration-Parse-0.13
+    pathname: N/NE/NEILB/Time-Duration-Parse-0.13.tar.gz
+    provides:
+      Time::Duration::Parse 0.13
+    requirements:
+      Carp 0
+      Exporter::Lite 0
+      ExtUtils::MakeMaker 0
+      perl 5.006
+      strict 0
+      warnings 0
   Try-Tiny-0.30
     pathname: E/ET/ETHER/Try-Tiny-0.30.tar.gz
     provides:
