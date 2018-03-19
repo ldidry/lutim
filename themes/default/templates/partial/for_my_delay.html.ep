@@ -1,7 +1,7 @@
 % # vim:set sw=4 ts=4 sts=4 ft=html.epl expandtab:
 % my @delays = split(',', $self->config('proposed_delays'));
 % for my $delay (@delays) {
-%   my $text = ($delay > 1 && $delay < 365) ? l('%1 days', $delay) : $d->{'delay_'.$delay};
+%   my $text = (defined($d->{'delay_'.$delay})) ? $d->{'delay_'.$delay} : l('%1 days', $delay);
 %   if (config('max_delay')) {
 %       if ($delay) {
 %           if ($delay < config('max_delay')) {
