@@ -139,7 +139,7 @@ function buildMessage(success, msg) {
                             '<select id="day-', msg.real_short, '" name="delete-day" class="form-control">',
 % my @delays = split(',', $self->config('proposed_delays'));
 % for my $delay (@delays) {
-%   my $text = ($delay == 7 || $delay == 30) ? l('%1 days', $delay) : $d->{'delay_'.$delay};
+%   my $text = (defined($d->{'delay_'.$delay})) ? $d->{'delay_'.$delay} : l('%1 days', $delay);
 %   if (config('max_delay')) {
 %       if ($delay) {
 %           if ($delay < config('max_delay')) {
