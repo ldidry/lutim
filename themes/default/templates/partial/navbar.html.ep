@@ -9,6 +9,8 @@
 %     oc    => 'Occitan',
 %     ru    => 'Русский',
 % };
+% my $lang = $self->languages;
+%    $lang =~ s/-(.*)/_\U$1/;
 <nav class="navbar navbar-default">
     <div class="container">
         <div class="navbar-header">
@@ -41,7 +43,7 @@
                     </a>
                     <ul class="dropdown-menu" role="menu">
                     % for my $i (@{$self->available_langs}) {
-                        <li<%== ($i eq $self->languages) ? ' class="active"' : '' %>>
+                        <li<%== ($i eq $lang) ? ' class="active"' : '' %>>
                             <a href="<%= url_for('lang', l => $i) %>" class="set-lang"><%= $l->{$i} %></a>
                         </li>
                     % }
