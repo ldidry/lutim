@@ -22,3 +22,7 @@ DROP TABLE lutim;
 ALTER TABLE lutim ADD COLUMN iv text;
 -- 2 down
 ALTER TABLE lutim DROP COLUMN iv;
+-- 3 up
+CREATE INDEX IF NOT EXISTS empty_short_idx ON lutim (short) WHERE path IS NULL;
+-- 3 down
+DROP INDEX empty_short_idx;

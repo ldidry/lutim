@@ -2,6 +2,7 @@
 package Lutim::Plugin::Helpers;
 use Mojo::Base 'Mojolicious::Plugin';
 use Mojo::Util qw(quote);
+use Mojo::File;
 use Crypt::CBC;
 use Data::Entropy qw(entropy_source);
 use DateTime;
@@ -18,9 +19,9 @@ sub register {
         # Database migration
         my $migrations = Mojo::Pg::Migrations->new(pg => $app->pg);
         if ($app->mode eq 'development' && $ENV{LUTIM_DEBUG}) {
-            $migrations->from_file('utilities/migrations/postgresql.sql')->migrate(0)->migrate(2);
+            $migrations->from_file('utilities/migrations/postgresql.sql')->migrate(0)->migrate(3);
         } else {
-            $migrations->from_file('utilities/migrations/postgresql.sql')->migrate(2);
+            $migrations->from_file('utilities/migrations/postgresql.sql')->migrate(3);
         }
     } elsif ($app->config('dbtype') eq 'sqlite') {
         # SQLite database migration if needed
@@ -77,7 +78,6 @@ sub _render_file {
     $dl       = 'attachment' if ($mediatype =~ m/svg/);
     $filename = quote($filename);
 
-    my $asset;
     unless (-f $path && -r $path) {
         $c->app->log->error("Cannot read file [$path]. error [$!]");
         $c->flash(
@@ -98,11 +98,30 @@ sub _render_file {
     $headers->add('Content-Disposition' => $dl.';filename='.$filename);
     $c->res->content->headers($headers);
 
-    if ($key) {
-        $asset = $c->decrypt($key, $path, $iv);
-    } else {
-        $asset = Mojo::Asset::File->new(path => $path);
+    my $cache = $c->app->{images_cache}->compute($img->short, undef, sub {
+        if ($key) {
+            return {
+                asset      => $c->decrypt($key, $path, $iv),
+                key        => $key
+            };
+        } else {
+            return {
+                asset      => Mojo::File->new($path)->slurp,
+            };
+        }
+    });
+    if ($key && $key ne $cache->{key}) {
+        $c->app->{images_cache}->replace(
+            $img->short,
+            {
+                asset      => $c->decrypt($key, $path, $iv),
+                key        => $key
+            },
+        );
     }
+    # Extend expiration time
+    my $asset = Mojo::Asset::Memory->new;
+    $asset->add_chunk($cache->{asset});
 
     if (defined $thumb && $im_loaded && $mediatype ne 'image/svg+xml' && $mediatype !~ m#image/(x-)?xcf# && $mediatype ne 'image/webp') { # ImageMagick don't work in Debian with svg (for now?)
         my $im  = Image::Magick->new;
@@ -261,17 +280,20 @@ sub _decrypt {
 
     open(my $f, "<",$file) or die "Unable to read encrypted file: $!";
     binmode $f;
-    while (read($f, my $buffer,1024)) {
+    while (read($f, my $buffer, 1024)) {
           $decrypt_asset->add_chunk($cipher->crypt($buffer));
     }
     $decrypt_asset->add_chunk($cipher->finish) ;
 
-    return $decrypt_asset;
+    return $decrypt_asset->slurp;
 }
 
 sub _delete_image {
     my $c   = shift;
     my $img = shift;
+    if ($c->app->{images_cache}) {
+        $c->app->{images_cache}->remove($img->short);
+    }
     unlink $img->path or warn "Could not unlink ".$img->path.": $!";
     $img->disable();
 }

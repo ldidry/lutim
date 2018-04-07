@@ -26,12 +26,35 @@ BEGIN {
         {
             file    => $cfile->to_abs->to_string,
             default => {
-                dbtype => 'sqlite'
+                provisioning      => 100,
+                provis_step       => 5,
+                length            => 8,
+                always_encrypt    => 0,
+                anti_flood_delay  => 5,
+                tweet_card_via    => '@framasky',
+                max_file_size     => 10*1024*1024,
+                https             => 0,
+                proposed_delays   => '0,1,7,30,365',
+                default_delay     => 0,
+                max_delay         => 0,
+                token_length      => 24,
+                crypto_key_length => 8,
+                thumbnail_size    => 100,
+                theme             => 'default',
+                dbtype            => 'sqlite',
+                db_path           => 'lutim.db',
+                max_files_in_zip  => 15,
+                prefix            => '/',
+                minion            => {
+                    enabled => 0,
+                    dbtype  => 'sqlite',
+                    db_path => 'minion.db'
+                },
+                cache_max_size    => 0,
             }
         }
     );
     $m->plugin('Lutim::Plugin::Helpers');
-    $m->plugin('DebugDumperHelper');
 }
 
 # Home page

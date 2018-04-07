@@ -92,7 +92,7 @@
     # comma-separated values proposed for delays
     # optional, default is '0,1,7,30,365'
     #proposed_delays         => '0,1,7,30,365',
-    
+
     # number of days after which the images will be deleted, even if they were uploaded with "no delay" (or value superior to max_delay)
     # a warning message will be displayed on homepage
     # optional, default is 0 (no limit)
@@ -159,6 +159,11 @@
     #    }
     #},
 
+    # disable counters of images
+    # set to 1 to disable counters
+    # optional, counters are enabled by default
+    #disable_img_stats => 0,
+
     # define the height of the thumbnails generated at users' will
     # this is not the height of the thumbnails send after upload,
     # we're talking about thumbnails generated when someone asked for
@@ -174,6 +179,22 @@
     # are encrypted
     # optional, default is 15
     #max_files_in_zip => 15,
+
+    # maximum size (in MB) of memory allowed for the image cache
+    # Lutim has a built-in memory-based image cache to accelerate responses to often-viewed images.
+    # This setting makes the cache remove oldest viewed image if the cache size is over it.
+    # WARNING: a cache is created for each hypnotoad worker, which by default is twice the number of
+    # CPUs you have. See http://mojolicious.org/perldoc/Mojo/Server/Hypnotoad#workers for details
+    # So, if you have 4 workers and set cache_max_size to 100, the real maximum size of RAM used for
+    # cache is 400MB.
+    # If set to 0, the cache is disabled
+    # optional, default is 0
+    #cache_max_size => 0,
+
+    # enable or disable Lutim built-in logs
+    # set to 1 to disable logs
+    # optional, default is 0
+    #quiet_logs => 0,
 
     ##########################
     # Lutim cron jobs settings

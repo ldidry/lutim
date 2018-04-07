@@ -1,7 +1,9 @@
 # vim:set sw=4 ts=4 sts=4 ft=perl expandtab:
 package Lutim;
 use Mojo::Base 'Mojolicious';
+use Mojo::IOLoop;
 use Lutim::DB::Image;
+use CHI;
 
 use vars qw($im_loaded);
 BEGIN {
@@ -51,8 +53,20 @@ sub startup {
                 dbtype  => 'sqlite',
                 db_path => 'minion.db'
             },
+            cache_max_size    => 0,
+            quiet_logs        => 0,
+            disable_img_stats => 0,
         }
     });
+
+    my $cache_max_size = ($config->{cache_max_size} > 0) ? 8 * 1024 * 1024 * $config->{cache_max_size} : 1;
+    $self->{images_cache} = CHI->new(
+        driver        => 'Memory',
+        global        => 1,
+        is_size_aware => 1,
+        max_size      => $cache_max_size,
+        expires_in    => '1 day'
+    );
 
     die "You need to provide a contact information in lutim.conf !" unless (defined($config->{contact}));
 
@@ -131,16 +145,16 @@ sub startup {
         }
     );
 
-    $self->hook(
-        after_dispatch => sub {
-            my $c = shift;
-            $c->provisioning();
+    # Recurrent tasks
+    Mojo::IOLoop->recurring(5 => sub {
+        my $loop = shift;
 
-            # Purge expired anti-flood protection
-            my $wait_for_it = $c->app->{wait_for_it};
-            delete @{$wait_for_it}{grep { time - $wait_for_it->{$_} > $c->config->{anti_flood_delay} } keys %{$wait_for_it}} if (defined($wait_for_it));
-        }
-    );
+        $self->provisioning();
+
+        # Purge expired anti-flood protection
+        my $wait_for_it = $self->{wait_for_it};
+        delete @{$wait_for_it}{grep { time - $wait_for_it->{$_} > $self->config->{anti_flood_delay} } keys %{$wait_for_it}} if (defined($wait_for_it));
+    });
 
     $self->defaults(layout => 'default');
 
