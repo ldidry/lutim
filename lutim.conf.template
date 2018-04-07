@@ -159,6 +159,11 @@
     #    }
     #},
 
+    # disable counters of images
+    # set to 1 to disable counters
+    # optional, counters are enabled by default
+    #disable_img_stats => 0,
+
     # define the height of the thumbnails generated at users' will
     # this is not the height of the thumbnails send after upload,
     # we're talking about thumbnails generated when someone asked for

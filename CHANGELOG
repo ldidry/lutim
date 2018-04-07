@@ -5,6 +5,7 @@ Revision history for Lutim
 	- Move some tasks to recurring instead of being in after_dispatch hook
 	- Built-in image cache system \o/
 	- Disable logs option
+	- Disable images' counter option
 
 0.9.6  2018-03-12
 	- Update translations

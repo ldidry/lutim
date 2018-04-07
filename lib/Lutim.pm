@@ -55,6 +55,7 @@ sub startup {
             },
             cache_max_size    => 0,
             quiet_logs        => 0,
+            disable_img_stats => 0,
         }
     });
 

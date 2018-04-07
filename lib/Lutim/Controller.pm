@@ -629,10 +629,12 @@ sub short {
                 $c->app->log->info('[VIEW] someone viewed '.$image->filename.' (path: '.$image->path.')') unless $c->config('quiet_logs');
 
                 # Update record
-                if ($c->config('minion')->{enabled}) {
-                    $c->app->minion->enqueue(accessed => [$image->short, time]);
-                } else {
-                    $image->accessed(time);
+                unless ($c->config('disable_img_stats')) {
+                    if ($c->config('minion')->{enabled}) {
+                        $c->app->minion->enqueue(accessed => [$image->short, time]);
+                    } else {
+                        $image->accessed(time);
+                    }
                 }
 
                 # Delete image if needed
@@ -731,10 +733,12 @@ sub zip {
                     $c->app->log->info('[VIEW] someone viewed '.$image->filename.' (path: '.$image->path.')') unless $c->config('quiet_logs');
 
                     # Update counter and record
-                    if ($c->config('minion')->{enabled}) {
-                        $c->app->minion->enqueue(accessed => [$image->short, time]);
-                    } else {
-                        $image->accessed(time);
+                    unless ($c->config('disable_img_stats')) {
+                        if ($c->config('minion')->{enabled}) {
+                            $c->app->minion->enqueue(accessed => [$image->short, time]);
+                        } else {
+                            $image->accessed(time);
+                        }
                     }
                 }
             } elsif ($image->path && !$image->enabled) {

@@ -32,11 +32,11 @@ msgstr ""
 msgid "-or-"
 msgstr ""
 
-#: lib/Lutim.pm:199 lib/Lutim/Command/cron/stats.pm:151 lib/Lutim/Command/cron/stats.pm:162 lib/Lutim/Command/cron/stats.pm:179 themes/default/templates/index.html.ep:5 themes/default/templates/raw.html.ep:10 themes/default/templates/raw.html.ep:21 themes/default/templates/raw.html.ep:38
+#: lib/Lutim.pm:201 lib/Lutim/Command/cron/stats.pm:151 lib/Lutim/Command/cron/stats.pm:162 lib/Lutim/Command/cron/stats.pm:179 themes/default/templates/index.html.ep:5 themes/default/templates/raw.html.ep:10 themes/default/templates/raw.html.ep:21 themes/default/templates/raw.html.ep:38
 msgid "1 year"
 msgstr ""
 
-#: lib/Lutim.pm:198 lib/Lutim/Command/cron/stats.pm:148 lib/Lutim/Command/cron/stats.pm:159 lib/Lutim/Command/cron/stats.pm:176 themes/default/templates/index.html.ep:4 themes/default/templates/partial/for_my_delay.html.ep:13 themes/default/templates/partial/lutim.js.ep:151 themes/default/templates/raw.html.ep:18 themes/default/templates/raw.html.ep:35 themes/default/templates/raw.html.ep:7
+#: lib/Lutim.pm:200 lib/Lutim/Command/cron/stats.pm:148 lib/Lutim/Command/cron/stats.pm:159 lib/Lutim/Command/cron/stats.pm:176 themes/default/templates/index.html.ep:4 themes/default/templates/partial/for_my_delay.html.ep:13 themes/default/templates/partial/lutim.js.ep:151 themes/default/templates/raw.html.ep:18 themes/default/templates/raw.html.ep:35 themes/default/templates/raw.html.ep:7
 msgid "24 hours"
 msgstr ""
 
@@ -44,7 +44,7 @@ msgstr ""
 msgid ": Error while trying to get the counter."
 msgstr ""
 
-#: themes/default/templates/partial/navbar.html.ep:77
+#: themes/default/templates/partial/navbar.html.ep:79
 msgid "About"
 msgstr ""
 
@@ -156,7 +156,7 @@ msgstr ""
 msgid "For more details, see the <a href=\"https://framagit.org/luc/lutim\">homepage of the project</a>."
 msgstr ""
 
-#: themes/default/templates/partial/navbar.html.ep:80
+#: themes/default/templates/partial/navbar.html.ep:82
 msgid "Fork me!"
 msgstr ""
 
@@ -196,19 +196,19 @@ msgstr ""
 msgid "Image delay"
 msgstr ""
 
-#: lib/Lutim/Controller.pm:748
+#: lib/Lutim/Controller.pm:752
 msgid "Image not found."
 msgstr ""
 
-#: themes/default/templates/partial/navbar.html.ep:69
+#: themes/default/templates/partial/navbar.html.ep:71
 msgid "Informations"
 msgstr ""
 
-#: themes/default/templates/partial/navbar.html.ep:33
+#: themes/default/templates/partial/navbar.html.ep:35
 msgid "Install webapp"
 msgstr ""
 
-#: themes/default/templates/partial/navbar.html.ep:29
+#: themes/default/templates/partial/navbar.html.ep:31
 msgid "Instance's statistics"
 msgstr ""
 
@@ -228,7 +228,7 @@ msgstr ""
 msgid "Keep EXIF tags"
 msgstr ""
 
-#: themes/default/templates/partial/navbar.html.ep:40
+#: themes/default/templates/partial/navbar.html.ep:42
 msgid "Language"
 msgstr ""
 
@@ -236,7 +236,7 @@ msgstr ""
 msgid "Let's go!"
 msgstr ""
 
-#: themes/default/templates/partial/navbar.html.ep:74
+#: themes/default/templates/partial/navbar.html.ep:76
 msgid "License:"
 msgstr ""
 
@@ -260,7 +260,7 @@ msgstr ""
 msgid "Markdown syntax"
 msgstr ""
 
-#: themes/default/templates/myfiles.html.ep:2 themes/default/templates/partial/navbar.html.ep:26
+#: themes/default/templates/myfiles.html.ep:2 themes/default/templates/partial/navbar.html.ep:28
 msgid "My images"
 msgstr ""
 
@@ -314,23 +314,23 @@ msgid "Something bad happened"
 msgstr ""
 
 #. ($c->config('contact')
-#: lib/Lutim/Controller.pm:755
+#: lib/Lutim/Controller.pm:759
 msgid "Something went wrong when creating the zip file. Try again later or contact the administrator (%1)."
 msgstr ""
 
-#: themes/default/templates/partial/navbar.html.ep:52
+#: themes/default/templates/partial/navbar.html.ep:54
 msgid "Support the author"
 msgstr ""
 
-#: themes/default/templates/partial/navbar.html.ep:60
+#: themes/default/templates/partial/navbar.html.ep:62
 msgid "Support the author on Liberapay"
 msgstr ""
 
-#: themes/default/templates/partial/navbar.html.ep:57
+#: themes/default/templates/partial/navbar.html.ep:59
 msgid "Support the author on Tipeee"
 msgstr ""
 
-#: themes/default/templates/partial/navbar.html.ep:63
+#: themes/default/templates/partial/navbar.html.ep:65
 msgid "Support the author with bitcoins"
 msgstr ""
 
@@ -401,7 +401,7 @@ msgstr ""
 msgid "Toggle fullscreen"
 msgstr ""
 
-#: themes/default/templates/partial/navbar.html.ep:16
+#: themes/default/templates/partial/navbar.html.ep:18
 msgid "Toggle navigation"
 msgstr ""
 
@@ -418,7 +418,7 @@ msgstr ""
 msgid "Unable to find the image %1."
 msgstr ""
 
-#: lib/Lutim/Controller.pm:572 lib/Lutim/Controller.pm:617 lib/Lutim/Controller.pm:654 lib/Lutim/Controller.pm:697 lib/Lutim/Controller.pm:709 lib/Lutim/Controller.pm:720 lib/Lutim/Controller.pm:745 lib/Lutim/Plugin/Helpers.pm:84
+#: lib/Lutim/Controller.pm:572 lib/Lutim/Controller.pm:617 lib/Lutim/Controller.pm:656 lib/Lutim/Controller.pm:699 lib/Lutim/Controller.pm:711 lib/Lutim/Controller.pm:722 lib/Lutim/Controller.pm:749 lib/Lutim/Plugin/Helpers.pm:84
 msgid "Unable to find the image: it has been deleted."
 msgstr ""
 
@@ -495,7 +495,7 @@ msgstr ""
 msgid "core developer"
 msgstr ""
 
-#: lib/Lutim.pm:197 lib/Lutim/Command/cron/stats.pm:147 lib/Lutim/Command/cron/stats.pm:158 lib/Lutim/Command/cron/stats.pm:175 themes/default/templates/index.html.ep:3 themes/default/templates/raw.html.ep:17 themes/default/templates/raw.html.ep:34 themes/default/templates/raw.html.ep:6
+#: lib/Lutim.pm:199 lib/Lutim/Command/cron/stats.pm:147 lib/Lutim/Command/cron/stats.pm:158 lib/Lutim/Command/cron/stats.pm:175 themes/default/templates/index.html.ep:3 themes/default/templates/raw.html.ep:17 themes/default/templates/raw.html.ep:34 themes/default/templates/raw.html.ep:6
 msgid "no time limit"
 msgstr ""
 
