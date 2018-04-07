@@ -47,6 +47,7 @@ sub startup {
                     db_path => 'minion.db'
                 },
                 cache_max_size    => 0,
+                quiet_logs        => 0,
             }
         }
     );

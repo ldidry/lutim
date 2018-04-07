@@ -178,9 +178,18 @@
     # maximum size (in MB) of memory allowed for the image cache
     # Lutim has a built-in memory-based image cache to accelerate responses to often-viewed images.
     # This setting makes the cache remove oldest viewed image if the cache size is over it.
+    # WARNING: a cache is created for each hypnotoad worker, which by default is twice the number of
+    # CPUs you have. See http://mojolicious.org/perldoc/Mojo/Server/Hypnotoad#workers for details
+    # So, if you have 4 workers and set cache_max_size to 100, the real maximum size of RAM used for
+    # cache is 400MB.
     # If set to 0, the cache is disabled
     # optional, default is 0
     #cache_max_size => 0,
+
+    # enable or disable Lutim built-in logs
+    # set to 1 to disable logs
+    # optional, default is 0
+    #quiet_logs => 0,
 
     ##########################
     # Lutim cron jobs settings

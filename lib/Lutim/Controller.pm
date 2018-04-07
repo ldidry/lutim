@@ -36,7 +36,7 @@ sub home {
 
     $c->on(finish => sub {
             my $c = shift;
-            $c->app->log->info('[HIT] someone visited site index');
+            $c->app->log->info('[HIT] someone visited site index') unless $c->config('quiet_logs');
         }
     );
 }
@@ -157,7 +157,7 @@ sub modify {
         if ($image->mod_token ne $token || $token eq '') {
             $msg = $c->l('The delete token is invalid.');
         } else {
-            $c->app->log->info('[MODIFICATION] someone modify '.$image->filename.' with token method (path: '.$image->path.')');
+            $c->app->log->info('[MODIFICATION] someone modify '.$image->filename.' with token method (path: '.$image->path.')') unless $c->config('quiet_logs');
 
             $image->delete_at_day(($c->param('delete-day') && ($c->param('delete-day') <= $c->max_delay || $c->max_delay == 0)) ? $c->param('delete-day') : $c->max_delay);
             $image->delete_at_first_view(($c->param('first-view')) ? 1 : 0);
@@ -194,7 +194,7 @@ sub modify {
             return $c->redirect_to('/');
         }
     } else {
-        $c->app->log->info('[UNSUCCESSFUL] someone tried to modify '.$short.' but it does\'nt exist.');
+        $c->app->log->info('[UNSUCCESSFUL] someone tried to modify '.$short.' but it does\'nt exist.') unless $c->config('quiet_logs');
 
         # Image never existed
         my $msg = $c->l('Unable to find the image %1.', $short);
@@ -227,7 +227,7 @@ sub delete {
         } elsif ($image->enabled() == 0) {
             $msg = $c->l('The image %1 has already been deleted.', $image->filename);
         } else {
-            $c->app->log->info('[DELETION] someone made '.$image->filename.' removed with token method (path: '.$image->path.')');
+            $c->app->log->info('[DELETION] someone made '.$image->filename.' removed with token method (path: '.$image->path.')') unless $c->config('quiet_logs');
 
             $c->delete_image($image);
             return $c->respond_to(
@@ -261,7 +261,7 @@ sub delete {
             }
         );
     } else {
-        $c->app->log->info('[UNSUCCESSFUL] someone tried to delete '.$short.' but it does\'nt exist.');
+        $c->app->log->info('[UNSUCCESSFUL] someone tried to delete '.$short.' but it does\'nt exist.') unless $c->config('quiet_logs');
 
         # Image never existed
         return $c->respond_to(
@@ -465,7 +465,7 @@ sub add {
                        ->write;
 
                 # Log image creation
-                $c->app->log->info('[CREATION] '.$ip.' pushed '.$filename.' (path: '.$path.')');
+                $c->app->log->info('[CREATION] '.$ip.' pushed '.$filename.' (path: '.$path.')') unless $c->config('quiet_logs');
 
                 # Give url to user
                 $short      = $record->short;
@@ -562,7 +562,7 @@ sub short {
     if ($image->enabled && $image->path) {
         if($image->delete_at_day && $image->created_at + $image->delete_at_day * 86400 <= time()) {
             # Log deletion
-            $c->app->log->info('[DELETION] someone tried to view '.$image->filename.' but it has been removed by expiration (path: '.$image->path.')');
+            $c->app->log->info('[DELETION] someone tried to view '.$image->filename.' but it has been removed by expiration (path: '.$image->path.')') unless $c->config('quiet_logs');
 
             # Delete image
             $c->delete_image($image);
@@ -608,7 +608,7 @@ sub short {
             # Delete image if needed
             if ($image->delete_at_first_view && $image->counter >= 1) {
                 # Log deletion
-                $c->app->log->info('[DELETION] someone made '.$image->filename.' removed (path: '.$image->path.')');
+                $c->app->log->info('[DELETION] someone made '.$image->filename.' removed (path: '.$image->path.')') unless $c->config('quiet_logs');
 
                 # Delete image
                 $c->delete_image($image);
@@ -626,7 +626,7 @@ sub short {
             # Update counter
             $c->on(finish => sub {
                 # Log access
-                $c->app->log->info('[VIEW] someone viewed '.$image->filename.' (path: '.$image->path.')');
+                $c->app->log->info('[VIEW] someone viewed '.$image->filename.' (path: '.$image->path.')') unless $c->config('quiet_logs');
 
                 # Update record
                 if ($c->config('minion')->{enabled}) {
@@ -638,7 +638,7 @@ sub short {
                 # Delete image if needed
                 if ($image->delete_at_first_view) {
                     # Log deletion
-                    $c->app->log->info('[DELETION] someone made '.$image->filename.' removed (path: '.$image->path.')');
+                    $c->app->log->info('[DELETION] someone made '.$image->filename.' removed (path: '.$image->path.')') unless $c->config('quiet_logs');
 
                     # Delete image
                     $c->delete_image($image);
@@ -647,7 +647,7 @@ sub short {
         }
     } elsif ($image->path && !$image->enabled) {
         # Log access try
-        $c->app->log->info('[NOT FOUND] someone tried to view '.$short.' but it does\'nt exist anymore.');
+        $c->app->log->info('[NOT FOUND] someone tried to view '.$short.' but it does\'nt exist anymore.') unless $c->config('quiet_logs');
 
         # Warn user
         $c->flash(
@@ -688,7 +688,7 @@ sub zip {
                 my $filename = $image->filename;
                 if($image->delete_at_day && $image->created_at + $image->delete_at_day * 86400 <= time()) {
                     # Log deletion
-                    $c->app->log->info('[DELETION] someone tried to view '.$image->filename.' but it has been removed by expiration (path: '.$image->path.')');
+                    $c->app->log->info('[DELETION] someone tried to view '.$image->filename.' but it has been removed by expiration (path: '.$image->path.')') unless $c->config('quiet_logs');
 
                     # Delete image
                     $c->delete_image($image);
@@ -701,7 +701,7 @@ sub zip {
                 # Delete image if needed
                 if ($image->delete_at_first_view && $image->counter >= 1) {
                     # Log deletion
-                    $c->app->log->info('[DELETION] someone made '.$image->filename.' removed (path: '.$image->path.')');
+                    $c->app->log->info('[DELETION] someone made '.$image->filename.' removed (path: '.$image->path.')') unless $c->config('quiet_logs');
 
                     # Delete image
                     $c->delete_image($image);
@@ -728,7 +728,7 @@ sub zip {
                     }
 
                     # Log access
-                    $c->app->log->info('[VIEW] someone viewed '.$image->filename.' (path: '.$image->path.')');
+                    $c->app->log->info('[VIEW] someone viewed '.$image->filename.' (path: '.$image->path.')') unless $c->config('quiet_logs');
 
                     # Update counter and record
                     if ($c->config('minion')->{enabled}) {
@@ -739,7 +739,7 @@ sub zip {
                 }
             } elsif ($image->path && !$image->enabled) {
                 # Log access try
-                $c->app->log->info('[NOT FOUND] someone tried to view '.$short.' but it does\'nt exist anymore.');
+                $c->app->log->info('[NOT FOUND] someone tried to view '.$short.' but it does\'nt exist anymore.') unless $c->config('quiet_logs');
 
                 # Warn user
                 $zip->addString(encode('UTF-8', $c->l('Unable to find the image: it has been deleted.')), 'images/'.$image->filename.'.txt');
