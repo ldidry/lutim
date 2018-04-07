@@ -2,8 +2,8 @@
 <config xmlns="http://zanata.org/namespace/config/">
   <url>https://trad.framasoft.org/zanata/</url>
   <project>lutim</project>
-  <project-version>development</project-version>
   <project-type>gettext</project-type>
   <src-dir>themes/default/lib/Lutim/I18N/</src-dir>
+  <project-version>development</project-version>
   <trans-dir>themes/default/lib/Lutim/I18N/</trans-dir>
 </config>
