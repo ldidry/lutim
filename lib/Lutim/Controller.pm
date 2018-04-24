@@ -724,7 +724,7 @@ sub zip {
                     }
 
                     if ($key) {
-                        $zip->addString($c->decrypt($key, $path)->slurp, "images/$filename");
+                        $zip->addString($c->decrypt($key, $path), "images/$filename");
                     } else {
                         $zip->addFile($path, "images/$filename");
                     }
