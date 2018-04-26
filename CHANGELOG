@@ -1,7 +1,10 @@
 Revision history for Lutim
 
+0.10.3 2018-04-26
+	- Fix another bug on zip file creation
+
 0.10.2 2018-04-24
-    - Fix bug on zip file creation
+	- Fix bug on zip file creation
 
 0.10.1 2018-04-15
 	- Fix bug on theme creation (#73)

@@ -584,7 +584,7 @@ sub short {
                 if (defined($image->width) && defined($image->height)) {
                     ($width, $height) = ($image->width, $image->height);
                 } elsif ($im_loaded) {
-                    my $upload = $c->decrypt($key, $image->path);
+                    my $upload = $c->decrypt($key, $image->path, $image->iv);
                     my $im     = Image::Magick->new;
                     $im->BlobToImage($upload->slurp);
                     $width     = $im->Get('width');
@@ -724,7 +724,7 @@ sub zip {
                     }
 
                     if ($key) {
-                        $zip->addString($c->decrypt($key, $path), "images/$filename");
+                        $zip->addString($c->decrypt($key, $path, $image->iv), "images/$filename");
                     } else {
                         $zip->addFile($path, "images/$filename");
                     }
