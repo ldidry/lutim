@@ -34,8 +34,13 @@ feature 'minion', 'Minion support' => sub {
     requires 'Minion';
 };
 feature 'cache', 'Cache system' => sub {
-    requires 'CHI';
+    requires 'Mojolicious::Plugin::CHI';
     requires 'Data::Serializer';
+};
+feature 'memcached', 'Cache system using Memcached' => sub {
+    requires 'Mojolicious::Plugin::CHI';
+    requires 'CHI::Driver::Memcached';
+    requires 'Cache::Memcached';
 };
 feature 'test' => sub {
     requires 'Devel::Cover';
