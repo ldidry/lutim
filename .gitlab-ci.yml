@@ -56,7 +56,7 @@ carton:
       - local/
   dependencies: []
   script:
-    - carton install --deployment --without=sqlite --without=postgresql --without=minion --without=cache
+    - carton install --deployment --without=sqlite --without=postgresql --without=minion --without=cache --without=memcached
   when: always
   retry: 2
 
@@ -66,11 +66,11 @@ carton:
 carton_sqlite:
   <<: *carton_bdd_definition
   script:
-    - carton install --deployment --without=postgresql --without=minion --without=cache --without=test
+    - carton install --deployment --without=postgresql --without=minion --without=cache --without=memcached
 carton_postgresql:
   <<: *carton_bdd_definition
   script:
-    - carton install --deployment --without=sqlite --without=minion --without=cache --without=test
+    - carton install --deployment --without=sqlite --without=minion --without=cache --without=memcached
 
 ### SQLite tests
 ##
@@ -78,7 +78,7 @@ carton_postgresql:
 sqlite1:
   <<: *sqlite_definition
   script:
-    - carton install --deployment --without=postgresql --without=minion --without=cache --without=test
+    - carton install --deployment --without=postgresql --without=minion --without=cache --without=memcached
     - MOJO_CONFIG=t/sqlite1.conf make test-sqlite
     - MOJO_CONFIG=t/sqlite1.conf make watch
     - MOJO_CONFIG=t/sqlite1.conf make cleanbdd
@@ -88,7 +88,7 @@ sqlite1:
 sqlite2:
   <<: *sqlite_definition
   script:
-    - carton install --deployment --without=postgresql --without=cache --without=test
+    - carton install --deployment --without=postgresql --without=cache --without=memcached
     - MOJO_CONFIG=t/sqlite2.conf make minion &
     - sleep 3
     - MOJO_CONFIG=t/sqlite2.conf make test-sqlite
@@ -103,7 +103,7 @@ sqlite3:
     - name: postgres:9.6
       alias: postgres
   script:
-    - carton install --deployment --without=cache --without=test
+    - carton install --deployment --without=cache --without=memcached
     - export PGPASSWORD=lutim_pwd; echo 'CREATE DATABASE lutim_minion WITH OWNER lutim;' | psql -h postgres -U lutim lutim_db
     - MOJO_CONFIG=t/sqlite3.conf make minion &
     - sleep 3
@@ -120,7 +120,7 @@ sqlite3:
 postgresql1:
   <<: *pg_definition
   script:
-    - carton install --deployment --without=sqlite --without=minion --without=cache --without=test
+    - carton install --deployment --without=sqlite --without=minion --without=cache --without=memcached
     - MOJO_CONFIG=t/postgresql1.conf make test-pg
     - MOJO_CONFIG=t/postgresql1.conf make watch
     - MOJO_CONFIG=t/postgresql1.conf make cleanbdd
@@ -130,7 +130,7 @@ postgresql1:
 postgresql2:
   <<: *pg_definition
   script:
-    - carton install --deployment --without=cache --without=test
+    - carton install --deployment --without=cache --without=memcached
     - MOJO_CONFIG=t/postgresql2.conf make minion &
     - sleep 3
     - MOJO_CONFIG=t/postgresql2.conf make test-pg
@@ -142,7 +142,7 @@ postgresql2:
 postgresql3:
   <<: *pg_definition
   script:
-    - carton install --deployment --without=sqlite --without=cache --without=test
+    - carton install --deployment --without=sqlite --without=cache --without=memcached
     - export PGPASSWORD=lutim_pwd; echo 'CREATE DATABASE lutim_minion WITH OWNER lutim;' | psql -h postgres -U lutim lutim_db
     - MOJO_CONFIG=t/postgresql3.conf make minion &
     - sleep 3
