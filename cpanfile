@@ -7,6 +7,7 @@ requires 'Net::Domain::TLD', '>= 1.75'; # Must have the last version to handle (
 requires 'Mojolicious::Plugin::I18N';
 requires 'Mojolicious::Plugin::DebugDumperHelper';
 requires 'Mojolicious::Plugin::StaticCache';
+requires 'Mojolicious::Plugin::GzipStatic';
 requires 'Text::Unidecode';
 requires 'DateTime';
 requires 'Filesys::DiskUsage';
