@@ -10,10 +10,10 @@ use DateTime;
 sub register {
     my ($self, $app) = @_;
 
-    $app->plugin('PgURLHelper');
 
     if ($app->config('dbtype') eq 'postgresql') {
         require Mojo::Pg;
+        $app->plugin('PgURLHelper');
         $app->helper(pg => \&_pg);
 
         # Database migration
