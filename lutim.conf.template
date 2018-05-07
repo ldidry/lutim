@@ -191,6 +191,15 @@
     # optional, default is 0
     #cache_max_size => 0,
 
+    # array of memcached servers to cache URL in order to accelerate responses to often-viewed URL.
+    # If set to [], the use of memcached is disabled.
+    # If you use memcached, the internal cache (see cache_max_size option above) will not be used.
+    # Please see https://framagit.org/luc/lutim/wikis/memcached to know how to configure your memcached
+    # servers.
+    # exemple of valid value: ['127.0.0.1:11211']
+    # optional, default is []
+    #memcached_servers => [],
+
     # enable or disable Lutim built-in logs
     # set to 1 to disable logs
     # optional, default is 0
