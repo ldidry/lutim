@@ -1,5 +1,13 @@
 Revision history for Lutim
 
+0.11.0 2018-??-??
+	- Allow to install only needed deps
+	- Notification when copying to clipboard or deleting images
+	- Allow to use memcached as cache system
+	- Use Mojolicious::Plugin::Chi
+	- Gzip static assets with Mojolicious::Plugin::GzipStatic
+	- Fix scroll-to-top when clicking on delete image
+
 0.10.4 2018-05-07
 	- Fix bug in cache system that would allow someone to view an image with an incorrect decryption key
 
