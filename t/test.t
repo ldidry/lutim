@@ -65,6 +65,11 @@ $t->get_ok('/')
   ->status_is(200)
   ->content_like(qr/Let's Upload That IMage/i);
 
+# Gzip static assets
+$t->get_ok('/css/lutim.css')
+  ->status_is(200)
+  ->header_is(Vary => 'Accept-Encoding');
+
 # Instance settings informations
 $t->get_ok('/infos')
   ->status_is(200)
