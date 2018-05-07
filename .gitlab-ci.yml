@@ -1,33 +1,93 @@
-image: hatsoftwares/test-ci:latest
+image: hatsoftwares/lutim-test-ci:latest
 stages:
-  - sqlite
-  - postgresql
+  - podcheck
+  - carton
+  - carton_bdd
+  - tests
 before_script:
-  - carton install
   - rm -f *db
-sqlite1:
-  stage: sqlite
-  cache:
-    key: "$CI_BUILD_REF_NAME"
-    untracked: true
+variables:
+  POSTGRES_DB: lutim_db
+  POSTGRES_USER: lutim
+  POSTGRES_PASSWORD: lutim_pwd
+
+### Jobs templates
+##
+#
+.carton_bdd_template: &carton_bdd_definition
+  stage: carton_bdd
+  retry: 2
+  artifacts:
     paths:
-      - local
+      - local/
+  dependencies:
+    - carton
+.sqlite_template: &sqlite_definition
+  stage: tests
+  retry: 2
+  dependencies:
+    - carton_sqlite
+  coverage: '/Total .*\d+\.\d+$/'
+.pg_template: &pg_definition
+  stage: tests
+  retry: 2
+  dependencies:
+    - carton_postgresql
+  services:
+    - name: postgres:9.6
+      alias: postgres
+  coverage: '/Total .*\d+\.\d+$/'
+
+### Podcheck
+##
+#
+podcheck:
+  stage: podcheck
   script:
     - make podcheck
+
+### Install common dependencies
+##
+#
+carton:
+  stage: carton
+  artifacts:
+    paths:
+      - local/
+  dependencies: []
+  script:
+    - carton install --deployment --without=sqlite --without=postgresql --without=minion --without=cache
+  when: always
+  retry: 2
+
+### Install DB related dependencies
+##
+#
+carton_sqlite:
+  <<: *carton_bdd_definition
+  script:
+    - carton install --deployment --without=postgresql --without=minion --without=cache
+carton_postgresql:
+  <<: *carton_bdd_definition
+  script:
+    - carton install --deployment --without=sqlite --without=minion --without=cache
+
+### SQLite tests
+##
+#
+sqlite1:
+  <<: *sqlite_definition
+  script:
+    - carton install --deployment --without=postgresql --without=minion --without=cache
     - MOJO_CONFIG=t/sqlite1.conf make test-sqlite
     - MOJO_CONFIG=t/sqlite1.conf make watch
     - MOJO_CONFIG=t/sqlite1.conf make cleanbdd
     - MOJO_CONFIG=t/sqlite1.conf make cleanfiles
     - MOJO_CONFIG=t/sqlite1.conf make stats
 sqlite2:
-  stage: sqlite
-  cache:
-    key: "$CI_BUILD_REF_NAME"
-    untracked: true
-    paths:
-      - local
+  <<: *sqlite_definition
   script:
-    - make podcheck
+    - carton install --deployment --without=postgresql --without=cache
     - MOJO_CONFIG=t/sqlite2.conf make minion &
     - sleep 3
     - MOJO_CONFIG=t/sqlite2.conf make test-sqlite
@@ -36,18 +96,10 @@ sqlite2:
     - MOJO_CONFIG=t/sqlite2.conf make cleanfiles
     - MOJO_CONFIG=t/sqlite2.conf make stats
 sqlite3:
-  stage: sqlite
-  cache:
-    key: "$CI_BUILD_REF_NAME"
-    untracked: true
-    paths:
-      - local
+  <<: *sqlite_definition
   script:
-    - make podcheck
-    - service postgresql restart
-    - sleep 10
-    - service postgresql status
-    - make create-pg-test-db
+    - carton install --deployment --without=postgresql --without=cache
+    - export PGPASSWORD=lstu_pwd; echo 'CREATE DATABASE lutim_minion WITH OWNER lutim;' | psql -h postgres -U lutim lutim_db
     - MOJO_CONFIG=t/sqlite3.conf make minion &
     - sleep 3
     - MOJO_CONFIG=t/sqlite3.conf make test-sqlite
@@ -55,40 +107,23 @@ sqlite3:
     - MOJO_CONFIG=t/sqlite3.conf make cleanbdd
     - MOJO_CONFIG=t/sqlite3.conf make cleanfiles
     - MOJO_CONFIG=t/sqlite3.conf make stats
-  tags:
-    - Debian
-    - Jessie
+
+### PostgreSQL tests
+##
+#
 postgresql1:
-  stage: postgresql
-  cache:
-    key: "$CI_BUILD_REF_NAME"
-    untracked: true
-    paths:
-      - local
+  <<: *pg_definition
   script:
-    - make podcheck
-    - service postgresql restart
-    - sleep 10
-    - service postgresql status
-    - make create-pg-test-db
+    - carton install --deployment --without=sqlite --without=minion --without=cache
     - MOJO_CONFIG=t/postgresql1.conf make test-pg
     - MOJO_CONFIG=t/postgresql1.conf make watch
     - MOJO_CONFIG=t/postgresql1.conf make cleanbdd
     - MOJO_CONFIG=t/postgresql1.conf make cleanfiles
     - MOJO_CONFIG=t/postgresql1.conf make stats
 postgresql2:
-  stage: postgresql
-  cache:
-    key: "$CI_BUILD_REF_NAME"
-    untracked: true
-    paths:
-      - local
+  <<: *pg_definition
   script:
-    - make podcheck
-    - service postgresql restart
-    - sleep 10
-    - service postgresql status
-    - make create-pg-test-db
+    - carton install --deployment --without=sqlite --without=cache
     - MOJO_CONFIG=t/postgresql2.conf make minion &
     - sleep 3
     - MOJO_CONFIG=t/postgresql2.conf make test-pg
@@ -97,18 +132,10 @@ postgresql2:
     - MOJO_CONFIG=t/postgresql2.conf make cleanfiles
     - MOJO_CONFIG=t/postgresql2.conf make stats
 postgresql3:
-  stage: postgresql
-  cache:
-    key: "$CI_BUILD_REF_NAME"
-    untracked: true
-    paths:
-      - local
+  <<: *pg_definition
   script:
-    - make podcheck
-    - service postgresql restart
-    - sleep 10
-    - service postgresql status
-    - make create-pg-test-db
+    - carton install --deployment --without=sqlite --without=cache
+    - export PGPASSWORD=lstu_pwd; echo 'CREATE DATABASE lutim_minion WITH OWNER lutim;' | psql -h postgres -U lutim lutim_db
     - MOJO_CONFIG=t/postgresql3.conf make minion &
     - sleep 3
     - MOJO_CONFIG=t/postgresql3.conf make test-pg
@@ -116,6 +143,3 @@ postgresql3:
     - MOJO_CONFIG=t/postgresql3.conf make cleanbdd
     - MOJO_CONFIG=t/postgresql3.conf make cleanfiles
     - MOJO_CONFIG=t/postgresql3.conf make stats
-  tags:
-    - Debian
-    - Jessie
