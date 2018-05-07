@@ -20,11 +20,14 @@ stats-locales:
 podcheck:
 	podchecker lib/Lutim/DB/Image.pm
 
+cover:
+	PERL5OPT='-Ilib/' HARNESS_PERL_SWITCHES='-MDevel::Cover' $(CARTON) cover --ignore_re '^local'
+
 test-sqlite:
-	$(CARTON) $(REAL_LUTIM) test
+	@PERL5OPT='-Ilib/' HARNESS_PERL_SWITCHES='-MDevel::Cover' $(CARTON) $(REAL_LUTIM) test
 
 test-pg:
-	$(CARTON) $(REAL_LUTIM) test
+	@PERL5OPT='-Ilib/' HARNESS_PERL_SWITCHES='-MDevel::Cover' $(CARTON) $(REAL_LUTIM) test
 
 test: podcheck test-sqlite test-pg
 
