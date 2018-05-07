@@ -1466,10 +1466,13 @@ DISTRIBUTIONS
     requirements:
       ExtUtils::MakeMaker 0
       perl 5.006
-  Minion-4.06
-    pathname: S/SR/SRI/Minion-4.06.tar.gz
+  Minion-9.03
+    pathname: S/SR/SRI/Minion-9.03.tar.gz
     provides:
-      Minion 4.06
+      LinkCheck undef
+      LinkCheck::Controller::Links undef
+      LinkCheck::Task::CheckLinks undef
+      Minion 9.03
       Minion::Backend undef
       Minion::Backend::Pg undef
       Minion::Command::minion undef
@@ -1477,20 +1480,23 @@ DISTRIBUTIONS
       Minion::Command::minion::worker undef
       Minion::Job undef
       Minion::Worker undef
+      Minion::_Guard 9.03
       Mojolicious::Plugin::Minion undef
+      Mojolicious::Plugin::Minion::Admin undef
     requirements:
       ExtUtils::MakeMaker 0
-      Mojolicious 6.0
+      Mojolicious 7.56
       perl 5.010001
-  Minion-Backend-SQLite-0.009
-    pathname: D/DB/DBOOK/Minion-Backend-SQLite-0.009.tar.gz
+  Minion-Backend-SQLite-4.001
+    pathname: D/DB/DBOOK/Minion-Backend-SQLite-4.001.tar.gz
     provides:
-      Minion::Backend::SQLite 0.009
+      Minion::Backend::SQLite 4.001
     requirements:
-      Minion 4.0
+      List::Util 0
+      Minion 9.0
       Module::Build::Tiny 0.034
-      Mojo::SQLite 1.002
-      Mojolicious 6.0
+      Mojo::SQLite 3.000
+      Mojolicious 7.29
       Sys::Hostname 0
       Time::HiRes 0
       perl 5.010001
