@@ -102,6 +102,9 @@ sub startup {
     eval qq(use lib "$lib");
     $self->plugin('I18N');
 
+    # Static assets gzipping
+    $self->plugin('GzipStatic');
+
     # Cache static files
     $self->plugin('StaticCache');
 

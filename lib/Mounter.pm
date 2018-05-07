@@ -66,6 +66,9 @@ sub startup {
     }
     push @{$self->static->paths}, $self->home->rel_file('themes/default/public');
 
+    # Static assets gzipping
+    $self->plugin('GzipStatic');
+
     # Cache static files
     $self->plugin('StaticCache');
 
