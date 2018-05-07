@@ -99,39 +99,38 @@ sub _render_file {
     $c->res->content->headers($headers);
 
     my $cache;
-    if ($c->config('cache_max_size') != 0) {
-        $cache = $c->app->{images_cache}->compute($img->short, undef, sub {
+    if ($c->config('cache_max_size') != 0 || scalar(@{$c->config('memcached_servers')})) {
+        $cache = $c->chi('lutim_images_cache')->compute($img->short, undef, sub {
             if ($key) {
                 return {
-                    asset      => $c->decrypt($key, $path, $iv),
-                    key        => $key
+                    asset => $c->decrypt($key, $path, $iv),
+                    key   => $key
                 };
             } else {
                 return {
-                    asset      => Mojo::File->new($path)->slurp,
+                    asset => Mojo::File->new($path)->slurp,
                 };
             }
         });
         if ($key && $key ne $cache->{key}) {
             my $tmp = $c->decrypt($key, $path, $iv);
             $cache->{asset} = $tmp;
-            $c->app->{images_cache}->replace(
+            $c->chi('lutim_images_cache')->replace(
                 $img->short,
                 {
-                    asset      => $tmp,
-                    key        => $key
+                    asset => $tmp,
+                    key   => $key
                 },
             );
         }
     } else {
         if ($key) {
             $cache = {
-                asset      => $c->decrypt($key, $path, $iv),
-                key        => $key
+                asset => $c->decrypt($key, $path, $iv),
             };
         } else {
             $cache = {
-                asset      => Mojo::File->new($path)->slurp,
+                asset => Mojo::File->new($path)->slurp,
             };
         }
     }
@@ -307,8 +306,8 @@ sub _decrypt {
 sub _delete_image {
     my $c   = shift;
     my $img = shift;
-    if ($c->config('cache_max_size') != 0 && $c->app->{images_cache}) {
-        $c->app->{images_cache}->remove($img->short);
+    if ($c->config('cache_max_size') != 0 || scalar(@{$c->config('memcached_servers')})) {
+        $c->chi('lutim_images_cache')->remove($img->short);
     }
     unlink $img->path or warn "Could not unlink ".$img->path.": $!";
     $img->disable();

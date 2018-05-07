@@ -52,21 +52,32 @@ sub startup {
                 db_path => 'minion.db'
             },
             cache_max_size    => 0,
+            memcached_servers => [],
             quiet_logs        => 0,
             disable_img_stats => 0,
         }
     });
 
-    if ($config->{cache_max_size} != 0) {
-        require CHI;
+    if (scalar(@{$config->{memcached_servers}})) {
+        $self->plugin(CHI => {
+            lutim_images_cache => {
+                driver             => 'Memcached',
+                servers            => $config->{memcached_servers},
+                expires_in         => '1 day',
+                expires_on_backend => 1,
+            }
+        });
+    } elsif ($config->{cache_max_size} != 0) {
         my $cache_max_size = 8 * 1024 * 1024 * $config->{cache_max_size};
-        $self->{images_cache} = CHI->new(
-            driver        => 'Memory',
-            global        => 1,
-            is_size_aware => 1,
-            max_size      => $cache_max_size,
-            expires_in    => '1 day'
-        );
+        $self->plugin(CHI => {
+            lutim_images_cache => {
+                driver        => 'Memory',
+                global        => 1,
+                is_size_aware => 1,
+                max_size      => $cache_max_size,
+                expires_in    => '1 day'
+            }
+        });
     }
 
     die "You need to provide a contact information in lutim.conf !" unless (defined($config->{contact}));
@@ -241,22 +252,22 @@ sub startup {
         to('Controller#get_counter')->
         name('counter');
 
-    $r->get('/about/(:short).(:f)')->
+    $r->get('/about/<:short>.<:f>')->
         to('Controller#about_img')->
         name('about_img');
 
-    $r->get('/about/:short/(:key).(:f)')->
+    $r->get('/about/:short/<:key>.<:f>')->
         to('Controller#about_img')->
         name('about_img');
 
-    $r->get('/(:short).(:f)')->
+    $r->get('/<:short>.<:f>')->
         to('Controller#short')->
         name('short');
 
     $r->get('/:short')->
         to('Controller#short');
 
-    $r->get('/:short/(:key).(:f)')->
+    $r->get('/:short/<:key>.<:f>')->
         to('Controller#short');
 
     $r->get('/:short/:key')->
