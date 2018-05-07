@@ -3,7 +3,6 @@ package Lutim;
 use Mojo::Base 'Mojolicious';
 use Mojo::IOLoop;
 use Lutim::DB::Image;
-use CHI;
 
 use vars qw($im_loaded);
 BEGIN {
@@ -59,14 +58,17 @@ sub startup {
         }
     });
 
-    my $cache_max_size = ($config->{cache_max_size} > 0) ? 8 * 1024 * 1024 * $config->{cache_max_size} : 1;
-    $self->{images_cache} = CHI->new(
-        driver        => 'Memory',
-        global        => 1,
-        is_size_aware => 1,
-        max_size      => $cache_max_size,
-        expires_in    => '1 day'
-    );
+    if ($config->{cache_max_size} != 0) {
+        require CHI;
+        my $cache_max_size = 8 * 1024 * 1024 * $config->{cache_max_size};
+        $self->{images_cache} = CHI->new(
+            driver        => 'Memory',
+            global        => 1,
+            is_size_aware => 1,
+            max_size      => $cache_max_size,
+            expires_in    => '1 day'
+        );
+    }
 
     die "You need to provide a contact information in lutim.conf !" unless (defined($config->{contact}));
 

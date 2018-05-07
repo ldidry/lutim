@@ -13,7 +13,7 @@ sub register {
     $app->plugin('PgURLHelper');
 
     if ($app->config('dbtype') eq 'postgresql') {
-        use Mojo::Pg;
+        require Mojo::Pg;
         $app->helper(pg => \&_pg);
 
         # Database migration
@@ -25,7 +25,7 @@ sub register {
         }
     } elsif ($app->config('dbtype') eq 'sqlite') {
         # SQLite database migration if needed
-        use Mojo::SQLite;
+        require Mojo::SQLite;
         $app->helper(sqlite => \&_sqlite);
 
         my $sql = Mojo::SQLite->new('sqlite:'.$app->config('db_path'));
@@ -98,28 +98,42 @@ sub _render_file {
     $headers->add('Content-Disposition' => $dl.';filename='.$filename);
     $c->res->content->headers($headers);
 
-    my $cache = $c->app->{images_cache}->compute($img->short, undef, sub {
+    my $cache;
+    if ($c->config('cache_max_size') != 0) {
+        $cache = $c->app->{images_cache}->compute($img->short, undef, sub {
+            if ($key) {
+                return {
+                    asset      => $c->decrypt($key, $path, $iv),
+                    key        => $key
+                };
+            } else {
+                return {
+                    asset      => Mojo::File->new($path)->slurp,
+                };
+            }
+        });
+        if ($key && $key ne $cache->{key}) {
+            my $tmp = $c->decrypt($key, $path, $iv);
+            $cache->{asset} = $tmp;
+            $c->app->{images_cache}->replace(
+                $img->short,
+                {
+                    asset      => $tmp,
+                    key        => $key
+                },
+            );
+        }
+    } else {
         if ($key) {
-            return {
+            $cache = {
                 asset      => $c->decrypt($key, $path, $iv),
                 key        => $key
             };
         } else {
-            return {
+            $cache = {
                 asset      => Mojo::File->new($path)->slurp,
             };
         }
-    });
-    if ($key && $key ne $cache->{key}) {
-        my $tmp = $c->decrypt($key, $path, $iv);
-        $cache->{asset} = $tmp;
-        $c->app->{images_cache}->replace(
-            $img->short,
-            {
-                asset      => $tmp,
-                key        => $key
-            },
-        );
     }
     # Extend expiration time
     my $asset = Mojo::Asset::Memory->new;
@@ -293,7 +307,7 @@ sub _decrypt {
 sub _delete_image {
     my $c   = shift;
     my $img = shift;
-    if ($c->app->{images_cache}) {
+    if ($c->config('cache_max_size') != 0 && $c->app->{images_cache}) {
         $c->app->{images_cache}->remove($img->short);
     }
     unlink $img->path or warn "Could not unlink ".$img->path.": $!";

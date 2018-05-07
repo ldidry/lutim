@@ -3,20 +3,14 @@ requires 'EV';
 requires 'IO::Socket::SSL';
 requires 'Net::SSLeay', '>= 1.81';
 requires 'Data::Validate::URI';
-requires 'Net::Domain::TLD', '>= 1.73'; # Must have the last version to handle (at least) .xyz and .link
-requires 'Mojo::Pg';
-requires 'Mojo::SQLite';
+requires 'Net::Domain::TLD', '>= 1.75'; # Must have the last version to handle (at least) .xyz and .link
 requires 'Mojolicious::Plugin::I18N';
 requires 'Mojolicious::Plugin::DebugDumperHelper';
-requires 'Mojolicious::Plugin::PgURLHelper';
 requires 'Mojolicious::Plugin::StaticCache';
-requires "Minion", "== 4.06";
-requires 'Minion::Backend::SQLite', "== 0.009";
 requires 'Text::Unidecode';
 requires 'DateTime';
 requires 'Filesys::DiskUsage';
 requires 'Switch';
-requires 'Data::Validate::URI';
 requires 'Crypt::CBC';
 requires 'Crypt::Blowfish';
 requires 'Locale::Maketext';
@@ -27,5 +21,19 @@ requires 'Image::ExifTool';
 requires 'Data::Entropy';
 requires 'List::MoreUtils', '> 0.33';
 requires 'Archive::Zip';
-requires 'CHI';
-requires 'Data::Serializer';
+
+feature 'postgresql', 'PostgreSQL support' => sub {
+    requires 'Mojo::Pg';
+    requires 'Mojolicious::Plugin::PgURLHelper';
+};
+feature 'sqlite', 'SQLite support' => sub {
+    requires 'Mojo::SQLite', '>= 3.000';
+    requires 'Minion::Backend::SQLite', '>= 4.001';
+};
+feature 'minion', 'Minion support' => sub {
+    requires 'Minion';
+};
+feature 'cache', 'Cache system' => sub {
+    requires 'CHI';
+    requires 'Data::Serializer';
+};
