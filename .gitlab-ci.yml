@@ -66,11 +66,11 @@ carton:
 carton_sqlite:
   <<: *carton_bdd_definition
   script:
-    - carton install --deployment --without=postgresql --without=minion --without=cache
+    - carton install --deployment --without=postgresql --without=minion --without=cache --without=test
 carton_postgresql:
   <<: *carton_bdd_definition
   script:
-    - carton install --deployment --without=sqlite --without=minion --without=cache
+    - carton install --deployment --without=sqlite --without=minion --without=cache --without=test
 
 ### SQLite tests
 ##
@@ -78,16 +78,17 @@ carton_postgresql:
 sqlite1:
   <<: *sqlite_definition
   script:
-    - carton install --deployment --without=postgresql --without=minion --without=cache
+    - carton install --deployment --without=postgresql --without=minion --without=cache --without=test
     - MOJO_CONFIG=t/sqlite1.conf make test-sqlite
     - MOJO_CONFIG=t/sqlite1.conf make watch
     - MOJO_CONFIG=t/sqlite1.conf make cleanbdd
     - MOJO_CONFIG=t/sqlite1.conf make cleanfiles
     - MOJO_CONFIG=t/sqlite1.conf make stats
+    - MOJO_CONFIG=t/sqlite1.conf make cover
 sqlite2:
   <<: *sqlite_definition
   script:
-    - carton install --deployment --without=postgresql --without=cache
+    - carton install --deployment --without=postgresql --without=cache --without=test
     - MOJO_CONFIG=t/sqlite2.conf make minion &
     - sleep 3
     - MOJO_CONFIG=t/sqlite2.conf make test-sqlite
@@ -95,13 +96,14 @@ sqlite2:
     - MOJO_CONFIG=t/sqlite2.conf make cleanbdd
     - MOJO_CONFIG=t/sqlite2.conf make cleanfiles
     - MOJO_CONFIG=t/sqlite2.conf make stats
+    - MOJO_CONFIG=t/sqlite2.conf make cover
 sqlite3:
   <<: *sqlite_definition
   services:
     - name: postgres:9.6
       alias: postgres
   script:
-    - carton install --deployment --without=cache
+    - carton install --deployment --without=cache --without=test
     - export PGPASSWORD=lutim_pwd; echo 'CREATE DATABASE lutim_minion WITH OWNER lutim;' | psql -h postgres -U lutim lutim_db
     - MOJO_CONFIG=t/sqlite3.conf make minion &
     - sleep 3
@@ -110,6 +112,7 @@ sqlite3:
     - MOJO_CONFIG=t/sqlite3.conf make cleanbdd
     - MOJO_CONFIG=t/sqlite3.conf make cleanfiles
     - MOJO_CONFIG=t/sqlite3.conf make stats
+    - MOJO_CONFIG=t/sqlite3.conf make cover
 
 ### PostgreSQL tests
 ##
@@ -117,16 +120,17 @@ sqlite3:
 postgresql1:
   <<: *pg_definition
   script:
-    - carton install --deployment --without=sqlite --without=minion --without=cache
+    - carton install --deployment --without=sqlite --without=minion --without=cache --without=test
     - MOJO_CONFIG=t/postgresql1.conf make test-pg
     - MOJO_CONFIG=t/postgresql1.conf make watch
     - MOJO_CONFIG=t/postgresql1.conf make cleanbdd
     - MOJO_CONFIG=t/postgresql1.conf make cleanfiles
     - MOJO_CONFIG=t/postgresql1.conf make stats
+    - MOJO_CONFIG=t/postgresql1.conf make cover
 postgresql2:
   <<: *pg_definition
   script:
-    - carton install --deployment --without=cache
+    - carton install --deployment --without=cache --without=test
     - MOJO_CONFIG=t/postgresql2.conf make minion &
     - sleep 3
     - MOJO_CONFIG=t/postgresql2.conf make test-pg
@@ -134,10 +138,11 @@ postgresql2:
     - MOJO_CONFIG=t/postgresql2.conf make cleanbdd
     - MOJO_CONFIG=t/postgresql2.conf make cleanfiles
     - MOJO_CONFIG=t/postgresql2.conf make stats
+    - MOJO_CONFIG=t/postgresql2.conf make cover
 postgresql3:
   <<: *pg_definition
   script:
-    - carton install --deployment --without=sqlite --without=cache
+    - carton install --deployment --without=sqlite --without=cache --without=test
     - export PGPASSWORD=lutim_pwd; echo 'CREATE DATABASE lutim_minion WITH OWNER lutim;' | psql -h postgres -U lutim lutim_db
     - MOJO_CONFIG=t/postgresql3.conf make minion &
     - sleep 3
@@ -146,3 +151,4 @@ postgresql3:
     - MOJO_CONFIG=t/postgresql3.conf make cleanbdd
     - MOJO_CONFIG=t/postgresql3.conf make cleanfiles
     - MOJO_CONFIG=t/postgresql3.conf make stats
+    - MOJO_CONFIG=t/postgresql3.conf make cover
