@@ -106,7 +106,7 @@ sub startup {
     $self->plugin('GzipStatic');
 
     # Cache static files
-    $self->plugin('StaticCache');
+    $self->plugin('StaticCache' => { even_in_dev => 1 });
 
     # Helpers
     $self->plugin('Lutim::Plugin::Helpers');

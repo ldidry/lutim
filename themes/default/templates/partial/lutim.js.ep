@@ -222,7 +222,8 @@ function bindddz(firstview, deleteday) {
                 );
             }
             $('.messages').append(buildMessage(data.success, data.msg));
-            $('#del-'+data.msg.real_short).on('click', function() {
+            $('#del-'+data.msg.real_short).on('click', function(e) {
+                e.preventDefault();
                 rmFromShortHash(data.msg.short+'.'+data.msg.ext)
                 rmFromZipHash(data.msg.short);
             });
