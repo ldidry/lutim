@@ -37,3 +37,6 @@ feature 'cache', 'Cache system' => sub {
     requires 'CHI';
     requires 'Data::Serializer';
 };
+feature 'test' => sub {
+    requires 'Devel::Cover';
+};
