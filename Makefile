@@ -14,7 +14,7 @@ minify:
 locales:
 	$(XGETTEXT) $(EXTRACTDIR) -o $(POT) 2>/dev/null
 
-push-locales: locales
+push-locales:
 	zanata-cli -q -B push
 
 pull-locales:
