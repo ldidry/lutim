@@ -111,10 +111,12 @@ sub _render_file {
         }
     });
     if ($key && $key ne $cache->{key}) {
+        my $tmp = $c->decrypt($key, $path, $iv);
+        $cache->{asset} = $tmp;
         $c->app->{images_cache}->replace(
             $img->short,
             {
-                asset      => $c->decrypt($key, $path, $iv),
+                asset      => $tmp,
                 key        => $key
             },
         );
