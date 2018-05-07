@@ -50,7 +50,10 @@ function share(url) {
         }
     });
 }
-function evaluateCopyAll() {
+function evaluateCopyAll(e) {
+    if (e) {
+        e.preventDefault();
+    }
     setTimeout(function() {
         if ($('.view-link-input').length === 0) {
             $('#copy-all').parent().remove();

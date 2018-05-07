@@ -5,6 +5,12 @@ CARTON=carton exec
 LUTIM=script/lutim
 REAL_LUTIM=script/application
 
+minify:
+	@echo "CSS concatenation"
+	@cd ./themes/default/public/css/ && cat bootstrap.min.css fontello.css hennypenny.css lutim.css toastify.css | csso > common.min.css
+	@cd ./themes/default/public/css/ && cat animation.css uploader.css markdown.css                              | csso > not_stats.min.css
+	@cd ./themes/default/public/css/ && cat photoswipe.css default-skin/default-skin.css                         | csso > gallery.min.css
+
 locales:
 	$(XGETTEXT) $(EXTRACTDIR) -o $(POT) 2>/dev/null
 
@@ -34,7 +40,7 @@ test: podcheck test-sqlite test-pg
 clean:
 	rm -rf lutim.db files/
 
-dev:
+dev: minify
 	$(CARTON) morbo $(LUTIM) --listen http://0.0.0.0:3000 --watch lib/ --watch script/ --watch themes/ --watch lutim.conf
 
 devlog:
