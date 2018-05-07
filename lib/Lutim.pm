@@ -24,7 +24,6 @@ sub startup {
     $self->{wait_for_it} = {};
 
     $self->plugin('DebugDumperHelper');
-    $self->plugin('PgURLHelper');
 
     my $config = $self->plugin('Config', {
         default => {
@@ -106,6 +105,7 @@ sub startup {
             $self->config('minion')->{db_path} = 'minion.db' unless defined $config->{minion}->{db_path};
             $self->plugin('Minion' => { SQLite => 'sqlite:'.$config->{minion}->{db_path} });
         } elsif ($config->{minion}->{dbtype} eq 'postgresql') {
+            $self->plugin('PgURLHelper');
             $self->plugin('Minion' => { Pg => $self->pg_url($config->{minion}->{'pgdb'}) });
         }
         $self->app->minion->add_task(
