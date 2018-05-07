@@ -160,3 +160,16 @@ cover:
   script:
     - make cover
   coverage: '/Total .*\d+\.\d+$/'
+
+### Push new translations strings to https://trad.framasoft.org
+##
+#
+trads:
+  stage: cover
+  image: framasoft/push-trad:latest
+  script:
+  - sed -e 's#<project-version>.*</project-version>#<project-version>development</project-version>#' -i zanata.xml
+  - if [ ! -z ${ZANATA_CONFIG+x} ]; then mkdir -p ${HOME}/.config; echo -e "${ZANATA_CONFIG}" > ${HOME}/.config/zanata.ini; fi
+  - if [ ! -z ${ZANATA_CONFIG+x} ]; then make push-locales; fi
+  only:
+    - development

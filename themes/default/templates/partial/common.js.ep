@@ -81,7 +81,25 @@ function copyToClipboard(el) {
         var msg = successful ? 'successful' : 'unsuccessful';
         console.debug('Copying text command was ' + msg);
         if (!successful) {
+            Toastify({
+                text: '<%= l('Unable to copy to clipboard') %>',
+                duration: 3000,
+                newWindow: true,
+                close: true,
+                gravity: 'bottom',
+                positionLeft: false,
+                backgroundColor: '#f2dede'
+            }).showToast();
             throw new Error('Copying text command was ' + msg);
+        } else {
+            Toastify({
+                text: '<%= l('Copied to clipboard') %>',
+                duration: 3000,
+                newWindow: true,
+                close: true,
+                gravity: 'bottom',
+                positionLeft: false
+            }).showToast();
         }
     } catch (err) {
         prompt('<%= l('Hit Ctrl+C, then Enter to copy the short link') %>', el.val());
@@ -105,7 +123,8 @@ function copyAllToClipboard() {
     }
 
 }
-function delImage() {
+function delImage(e) {
+    e.preventDefault();
     var short = $(this).attr('data-short');
     var token = $(this).attr('data-token');
     $.ajax({
@@ -119,6 +138,14 @@ function delImage() {
                 $('#alert-'+short).remove();
                 evaluateCopyAll();
                 delItem(short);
+                Toastify({
+                    text: '<%= l('Image deleted') %>',
+                    duration: 3000,
+                    newWindow: true,
+                    close: true,
+                    gravity: 'bottom',
+                    positionLeft: false
+                }).showToast();
             } else {
                 alert(data.msg);
             }

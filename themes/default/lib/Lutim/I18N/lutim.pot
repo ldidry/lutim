@@ -76,11 +76,15 @@ msgstr ""
 msgid "Contributors"
 msgstr ""
 
-#: themes/default/templates/partial/lutim.js.ep:218 themes/default/templates/partial/lutim.js.ep:272 themes/default/templates/partial/lutim.js.ep:350
+#: themes/default/templates/partial/common.js.ep:96
+msgid "Copied to clipboard"
+msgstr ""
+
+#: themes/default/templates/partial/lutim.js.ep:218 themes/default/templates/partial/lutim.js.ep:273 themes/default/templates/partial/lutim.js.ep:351
 msgid "Copy all view links to clipboard"
 msgstr ""
 
-#: themes/default/templates/index.html.ep:18 themes/default/templates/index.html.ep:36 themes/default/templates/index.html.ep:69 themes/default/templates/index.html.ep:77 themes/default/templates/index.html.ep:85 themes/default/templates/index.html.ep:93 themes/default/templates/myfiles.html.ep:20 themes/default/templates/myfiles.html.ep:38 themes/default/templates/partial/common.js.ep:150 themes/default/templates/partial/lutim.js.ep:108 themes/default/templates/partial/lutim.js.ep:123 themes/default/templates/partial/lutim.js.ep:82 themes/default/templates/partial/lutim.js.ep:94
+#: themes/default/templates/index.html.ep:18 themes/default/templates/index.html.ep:36 themes/default/templates/index.html.ep:69 themes/default/templates/index.html.ep:77 themes/default/templates/index.html.ep:85 themes/default/templates/index.html.ep:93 themes/default/templates/myfiles.html.ep:20 themes/default/templates/myfiles.html.ep:38 themes/default/templates/partial/common.js.ep:177 themes/default/templates/partial/lutim.js.ep:108 themes/default/templates/partial/lutim.js.ep:123 themes/default/templates/partial/lutim.js.ep:82 themes/default/templates/partial/lutim.js.ep:94
 msgid "Copy to clipboard"
 msgstr ""
 
@@ -108,7 +112,7 @@ msgstr ""
 msgid "Deleted images in 30 days"
 msgstr ""
 
-#: themes/default/templates/index.html.ep:98 themes/default/templates/myfiles.html.ep:56 themes/default/templates/partial/common.js.ep:142 themes/default/templates/partial/common.js.ep:145
+#: themes/default/templates/index.html.ep:98 themes/default/templates/myfiles.html.ep:56 themes/default/templates/partial/common.js.ep:169 themes/default/templates/partial/common.js.ep:172
 msgid "Deletion link"
 msgstr ""
 
@@ -164,11 +168,11 @@ msgstr ""
 msgid "Gallery link"
 msgstr ""
 
-#: themes/default/templates/partial/common.js.ep:104 themes/default/templates/partial/common.js.ep:87
+#: themes/default/templates/partial/common.js.ep:105 themes/default/templates/partial/common.js.ep:122
 msgid "Hit Ctrl+C, then Enter to copy the short link"
 msgstr ""
 
-#: themes/default/templates/layouts/default.html.ep:54
+#: themes/default/templates/layouts/default.html.ep:48
 msgid "Homepage"
 msgstr ""
 
@@ -194,6 +198,10 @@ msgstr ""
 
 #: lib/Lutim/Command/cron/stats.pm:143 themes/default/templates/raw.html.ep:2
 msgid "Image delay"
+msgstr ""
+
+#: themes/default/templates/partial/common.js.ep:142
+msgid "Image deleted"
 msgstr ""
 
 #: lib/Lutim/Controller.pm:752
@@ -362,7 +370,7 @@ msgstr ""
 #. ($tx->res->max_message_size)
 #. ($c->req->max_message_size)
 #. (config('max_file_size')
-#: lib/Lutim/Controller.pm:309 lib/Lutim/Controller.pm:378 themes/default/templates/partial/lutim.js.ep:244
+#: lib/Lutim/Controller.pm:309 lib/Lutim/Controller.pm:378 themes/default/templates/partial/lutim.js.ep:245
 msgid "The file exceed the size limit (%1)"
 msgstr ""
 
@@ -411,6 +419,10 @@ msgstr ""
 
 #: themes/default/templates/index.html.ep:60 themes/default/templates/partial/lutim.js.ep:17
 msgid "Tweet it!"
+msgstr ""
+
+#: themes/default/templates/partial/common.js.ep:85
+msgid "Unable to copy to clipboard"
 msgstr ""
 
 #. ($short)
