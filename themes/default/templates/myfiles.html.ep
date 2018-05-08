@@ -17,7 +17,7 @@
                     </a>
                 </div>
                 <input class="form-control" name="gallery-url-input" type="text" id="gallery-url-input" readonly></input>
-                <a href="#" onClick="event.preventDefault();copyToClipboard($(this));" class="input-group-addon jsonly" title="<%= l('Copy to clipboard') %>">
+                <a href="#" class="input-group-addon jsonly copy-to-clipboard-link" title="<%= l('Copy to clipboard') %>">
                     <span class="icon icon-clipboard"></span>
                 </a>
             </div>
@@ -35,7 +35,7 @@
                     </a>
                 </div>
                 <input class="form-control" name="zip-url-input" type="text" id="zip-url-input" readonly></input>
-                <a href="#" onClick="event.preventDefault();copyToClipboard($(this));" class="input-group-addon jsonly" title="<%= l('Copy to clipboard') %>">
+                <a href="#" class="input-group-addon jsonly copy-to-clipboard-link" title="<%= l('Copy to clipboard') %>">
                     <span class="icon icon-clipboard"></span>
                 </a>
             </div>

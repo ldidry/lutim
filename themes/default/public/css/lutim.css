@@ -104,3 +104,28 @@ label.always-encrypt {
 @media (max-width: 675px) {
     .gallery { column-count: 1 }
 }
+.border-zero {
+    border: 0;
+}
+.copy-node {
+    width: 1px;
+    height: 1px;
+    position: 'fixed';
+    top: 5px;
+}
+.width-zero {
+    width: 0%;
+}
+.pdg-left-10 {
+    padding-left: 10px;
+}
+.spin {
+    font-size: 200%;
+    display: none;
+}
+#myfiles td.ellips {
+    max-width: 300px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
