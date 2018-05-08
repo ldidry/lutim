@@ -63,7 +63,8 @@ BEGIN {
 my $t = Test::Mojo->new('Lutim');
 $t->get_ok('/')
   ->status_is(200)
-  ->content_like(qr/Let's Upload That IMage/i);
+  ->content_like(qr/Let's Upload That IMage/i)
+  ->header_is('Content-Security-Policy' => "base-uri 'self'; connect-src 'self'; default-src 'none'; font-src 'self'; form-action 'self'; img-src 'self' data:; script-src 'self' 'unsafe-eval'; style-src 'self' 'unsafe-inline'");
 
 # Gzip static assets
 $t->get_ok('/css/lutim.css')

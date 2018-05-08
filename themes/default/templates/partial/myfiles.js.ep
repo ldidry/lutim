@@ -1,6 +1,7 @@
 % # vim:set sw=4 ts=4 sts=4 ft=javascript expandtab:
 function onCheck(e, short, ext) {
-    if (e.is(':checked')) {
+    e.preventDefault();
+    if ($(this).is(':checked')) {
         addToShortHash(short+'.'+ext);
         addToZipHash(short);
     } else {
@@ -19,16 +20,20 @@ function populateFilesTable() {
         var limit      = (element.limit === 0) ? '<%= l('No limit') %>' : moment.unix(element.limit * 86400 + element.created_at).locale(window.navigator.language).format('LLLL');
         var created_at = moment.unix(element.created_at).locale(window.navigator.language).format('LLLL');
 
+        var name = element.filename.replace(/</g, '&lt;').replace(/>/g, '&gt;');
         var tr = [
             '<tr id="alert-',real_short,'">',
-                '<td><span class="checkbox"><label><input type="checkbox" onChange="onCheck($(this), \'', element.short, '\', \'', element.ext, '\');"><label></span></td>',
-                '<td>', element.filename.replace(/</g, '&lt;').replace(/>/g, '&gt;'), '</td>',
-                '<td><a href="',vlink,'">',vlink,'</a></td>',
+                '<td><span class="checkbox"><label><input type="checkbox"><label></span></td>',
+                '<td class="ellips"><span title="', name,'">', name, '</span></td>',
+                '<td class="text-center">',
+                    '<a href="',vlink,'" target="_blank"><i class="icon icon-eye"></i></a>',
+                    '&nbsp;<a href="',vlink,'" class="copy-to-clipboard" title="<%= l('Copy to clipboard') %>"><i class="icon icon-clipboard"></i></a>',
+                '</td>',
                 '<td id="count-',real_short,'" class="text-center"></td>',
                 '<td class="text-center">', del_view, '</td>',
                 '<td>', created_at, '</td>',
                 '<td>', limit, '</td>',
-                '<td><a id="del-',real_short,'" data-short="',real_short,'" data-token="',element.token,'" href="#">',dlink,'</a></td>',
+                '<td class="text-center"><a id="del-',real_short,'" data-short="',real_short,'" data-token="',element.token,'" href="#" class="remove-link"><i class="icon icon-trash"></i></a></td>',
             '</tr>'
         ].join('');
         $('#myfiles').append(tr);
@@ -50,12 +55,14 @@ function populateFilesTable() {
                         $('#alert-'+real_short).remove();
                     }
                 } else {
-                    alert(data.msg);
+                    badToast(element.filename+' '+data.msg);
                 }
             },
             error: function() {
-                alert(element.filename+'<%= l(': Error while trying to get the counter.') %>');
+                badToast(element.filename+'<%= l(': Error while trying to get the counter.') %>');
             }
         });
     });
+    $('input[type="checkbox"]').on('change', onCheck);
+    $('.copy-to-clipboard').on('click', copyLink);
 }
