@@ -8,6 +8,7 @@ requires 'Mojolicious::Plugin::I18N';
 requires 'Mojolicious::Plugin::DebugDumperHelper';
 requires 'Mojolicious::Plugin::StaticCache';
 requires 'Mojolicious::Plugin::GzipStatic';
+requires 'Mojolicious::Plugin::CSPHeader';
 requires 'Text::Unidecode';
 requires 'DateTime';
 requires 'Filesys::DiskUsage';
