@@ -151,7 +151,10 @@ sub run {
 %     l('1 year'),
 %     l('Total')
 % );
-<script>
+$dom2
+EOF
+
+    my $js = <<EOF;
 var enabled_donut = {
   element: 'raw-enabled-holder',
   data: [
@@ -186,13 +189,12 @@ var disabled_donut = {
       '#455ac3',
   ]
 };
-</script>
-$dom2
 EOF
 
     Mojo::File->new('themes/'.$config->{theme}.'/templates/stats.json.ep')->spurt(encode_json($stats));
     Mojo::File->new('themes/'.$config->{theme}.'/templates/data.html.ep')->spurt($dom);
     Mojo::File->new('themes/'.$config->{theme}.'/templates/raw.html.ep')->spurt(encode('UTF-8', $dom2));
+    Mojo::File->new('themes/'.$config->{theme}.'/templates/partial/raw.js.ep')->spurt(encode('UTF-8', $js));
 }
 
 =encoding utf8

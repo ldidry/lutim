@@ -5,7 +5,6 @@ window.short_hash = {};
 window.zip_hash = {};
 function addToShortHash(short) {
     window.short_hash[short] = 1;
-    console.debug(window.short_hash);
     if (Object.keys(window.short_hash).length > 0) {
         $('#gallery-url').removeClass('hidden');
         $('#gallery-url-input').val(window.gallery_url+Object.keys(window.short_hash).join(','));
@@ -39,10 +38,7 @@ function rmFromZipHash(short) {
 /* Stolen from https://github.com/mozilla-services/push-dev-dashboard/blob/3ad4de737380d0842f40c82301d1f748c1b20f2b/push/static/js/validation.js */
 function createNode(text) {
     var node = document.createElement('pre');
-    node.style.width = '1px';
-    node.style.height = '1px';
-    node.style.position = 'fixed';
-    node.style.top = '5px';
+    node.classList.add('copy-node');
     node.textContent = text;
     return node;
 }
@@ -67,6 +63,18 @@ function copyText(text) {
     document.body.removeChild(node);
     return success;
 }
+function copyLink(e) {
+    e.preventDefault();
+    var successful = copyText($(this).prop('href'));
+    var msg = successful ? 'successful' : 'unsuccessful';
+    console.debug('Copying text command was ' + msg);
+    if (!successful) {
+        badToast('<%= l('Unable to copy to clipboard') %>');
+        throw new Error('Copying text command was ' + msg);
+    } else {
+        goodToast('<%= l('Copied to clipboard') %>');
+    }
+}
 
 function copyInput(node) {
     node.select();
@@ -81,31 +89,17 @@ function copyToClipboard(el) {
         var msg = successful ? 'successful' : 'unsuccessful';
         console.debug('Copying text command was ' + msg);
         if (!successful) {
-            Toastify({
-                text: '<%= l('Unable to copy to clipboard') %>',
-                duration: 3000,
-                newWindow: true,
-                close: true,
-                gravity: 'bottom',
-                positionLeft: false,
-                backgroundColor: '#f2dede'
-            }).showToast();
+            badToast('<%= l('Unable to copy to clipboard') %>');
             throw new Error('Copying text command was ' + msg);
         } else {
-            Toastify({
-                text: '<%= l('Copied to clipboard') %>',
-                duration: 3000,
-                newWindow: true,
-                close: true,
-                gravity: 'bottom',
-                positionLeft: false
-            }).showToast();
+            goodToast('<%= l('Copied to clipboard') %>');
         }
     } catch (err) {
         prompt('<%= l('Hit Ctrl+C, then Enter to copy the short link') %>', el.val());
     }
 }
-function copyAllToClipboard() {
+function copyAllToClipboard(e) {
+    e.preventDefault;
     var text = new Array();
     $('.view-link-input').each(function(index) {
         text.push($(this).val());
@@ -123,6 +117,10 @@ function copyAllToClipboard() {
     }
 
 }
+function clickOnCopyLink(e) {
+    e.preventDefault();
+    copyToClipboard($(this));
+}
 function delImage(e) {
     e.preventDefault();
     var short = $(this).attr('data-short');
@@ -138,16 +136,9 @@ function delImage(e) {
                 $('#alert-'+short).remove();
                 evaluateCopyAll();
                 delItem(short);
-                Toastify({
-                    text: '<%= l('Image deleted') %>',
-                    duration: 3000,
-                    newWindow: true,
-                    close: true,
-                    gravity: 'bottom',
-                    positionLeft: false
-                }).showToast();
+                goodToast('<%= l('Image deleted') %>');
             } else {
-                alert(data.msg);
+                badToast(data.msg);
             }
         },
         error: function() {
@@ -174,7 +165,7 @@ function link(url, dl, token, modify, only_url) {
                     '</a>',
                 '</div>',
                 '<input type="text" class="form-control" id="link-del-', url, '" value="', link, '" readonly>',
-                '<a href="#" onClick="event.preventDefault();copyToClipboard($(this));" class="input-group-addon" title="<%= l('Copy to clipboard') %>">',
+                '<a href="#" class="input-group-addon copy-to-clipboard-link" title="<%= l('Copy to clipboard') %>">',
                     '<span class="icon icon-clipboard"></span>',
                 '</a>',
             '</div>'
@@ -183,4 +174,27 @@ function link(url, dl, token, modify, only_url) {
         url = url+'?'+dl;
     }
     return '<%== url_for('/')->to_abs() %>'+url;
+}
+
+function badToast(msg) {
+    Toastify({
+        text: msg,
+        duration: 6000,
+        newWindow: true,
+        close: true,
+        gravity: 'bottom',
+        positionLeft: false,
+        backgroundColor: '#f26163'
+    }).showToast();
+}
+
+function goodToast(msg) {
+    Toastify({
+        text: msg,
+        duration: 3000,
+        newWindow: true,
+        close: true,
+        gravity: 'bottom',
+        positionLeft: false
+    }).showToast();
 }

@@ -205,6 +205,16 @@
     # optional, default is 0
     #quiet_logs => 0,
 
+    # Content-Security-Policy header that will be sent by Lstu
+    # Set to '' to disable CSP header
+    # https://content-security-policy.com/ provides a good documentation about CSP.
+    # https://report-uri.com/home/generate provides a tool to generate a CSP header.
+    # optional, default is "base-uri 'self'; connect-src 'self'; default-src 'none'; font-src 'self'; form-action 'self'; img-src 'self' data:; script-src 'self' 'unsafe-eval'; style-src 'self' 'unsafe-inline'"
+    # NB: unsafe-inline for script-src and style-src are here only because morris,
+    # the graph library used in the stats page requires it
+    # the default value is good for `default` theme
+    #csp => "base-uri 'self'; connect-src 'self'; default-src 'none'; font-src 'self'; form-action 'self'; img-src 'self' data:; script-src 'self' 'unsafe-eval'; style-src 'self' 'unsafe-inline'",
+
     ##########################
     # Lutim cron jobs settings
     ##########################
