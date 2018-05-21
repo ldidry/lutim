@@ -254,6 +254,7 @@ $(document).ready(function() {
     i = key.indexOf('&'); if (i>-1) { key = key.substring(0,i); }
 
     var keys = key.split(',');
+    $('#img-nb').append('<p><%= l('There is XXXX image(s) in the gallery') %></p>'.replace('XXXX', keys.length));
 
     $('#download-all').attr('href', $('#download-all').attr('href')+keys.join('&i='));
 
