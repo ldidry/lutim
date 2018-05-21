@@ -68,7 +68,7 @@ msgstr ""
 msgid "Click to open the file browser"
 msgstr ""
 
-#: themes/default/templates/gallery.html.ep:27
+#: themes/default/templates/gallery.html.ep:29
 msgid "Close (Esc)"
 msgstr ""
 
@@ -116,7 +116,7 @@ msgstr ""
 msgid "Deletion link"
 msgstr ""
 
-#: themes/default/templates/gallery.html.ep:8
+#: themes/default/templates/gallery.html.ep:10
 msgid "Download all images"
 msgstr ""
 
@@ -272,7 +272,7 @@ msgstr ""
 msgid "My images"
 msgstr ""
 
-#: themes/default/templates/gallery.html.ep:43
+#: themes/default/templates/gallery.html.ep:45
 msgid "Next (arrow right)"
 msgstr ""
 
@@ -301,7 +301,7 @@ msgstr ""
 msgid "Please contact the administrator: %1"
 msgstr ""
 
-#: themes/default/templates/gallery.html.ep:41
+#: themes/default/templates/gallery.html.ep:43
 msgid "Previous (arrow left)"
 msgstr ""
 
@@ -396,12 +396,16 @@ msgstr ""
 msgid "The images you post on Lutim can be stored indefinitely or be deleted at first view or after a delay selected from those proposed."
 msgstr ""
 
+#: themes/default/templates/partial/gallery.js.ep:257
+msgid "There is XXXX image(s) in the gallery"
+msgstr ""
+
 #. ($c->config->{contact})
 #: lib/Lutim/Controller.pm:483
 msgid "There is no more available URL. Retry or contact the administrator. %1"
 msgstr ""
 
-#: themes/default/templates/gallery.html.ep:28
+#: themes/default/templates/gallery.html.ep:30
 msgid "Toggle fullscreen"
 msgstr ""
 
@@ -487,7 +491,7 @@ msgstr ""
 msgid "You can, optionally, request that the image(s) posted on Lutim to be deleted at first view (or download) or after the delay selected from those proposed."
 msgstr ""
 
-#: themes/default/templates/gallery.html.ep:29
+#: themes/default/templates/gallery.html.ep:31
 msgid "Zoom in/out"
 msgstr ""
 

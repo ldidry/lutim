@@ -10,6 +10,7 @@ Revision history for Lutim
 	- Add CSP header
 	- Add X-Content-Type-Options, X-XSS-Protection, X-Frame-Options headers
 	- Remove @framasky as default tweet_card_via setting
+	- Add a message saying how many images there is in the gallery
 
 0.10.4 2018-05-07
 	- Fix bug in cache system that would allow someone to view an image with an incorrect decryption key
