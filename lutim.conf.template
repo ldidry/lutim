@@ -51,8 +51,8 @@
 
     # twitter account which will appear on twitter cards
     # see https://dev.twitter.com/docs/cards/validation/validator to register your Lutim instance on twitter
-    # optional, default is @framasky
-    #tweet_card_via    => '@framasky',
+    # optional, no default
+    #tweet_card_via    => '@foo',
 
     # max image size, in octets
     # you can write it 10*1024*1024

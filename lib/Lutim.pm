@@ -32,7 +32,6 @@ sub startup {
             length                 => 8,
             always_encrypt         => 0,
             anti_flood_delay       => 5,
-            tweet_card_via         => '@framasky',
             max_file_size          => 10*1024*1024,
             https                  => 0,
             proposed_delays        => '0,1,7,30,365',
