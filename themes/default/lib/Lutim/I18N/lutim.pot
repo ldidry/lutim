@@ -32,11 +32,11 @@ msgstr ""
 msgid "-or-"
 msgstr ""
 
-#: lib/Lutim.pm:217 lib/Lutim/Command/cron/stats.pm:151 lib/Lutim/Command/cron/stats.pm:165 lib/Lutim/Command/cron/stats.pm:182 themes/default/templates/index.html.ep:5 themes/default/templates/partial/raw.js.ep:25 themes/default/templates/partial/raw.js.ep:8 themes/default/templates/raw.html.ep:10
+#: lib/Lutim.pm:219 lib/Lutim/Command/cron/stats.pm:151 lib/Lutim/Command/cron/stats.pm:165 lib/Lutim/Command/cron/stats.pm:182 themes/default/templates/index.html.ep:5 themes/default/templates/partial/raw.js.ep:25 themes/default/templates/partial/raw.js.ep:8 themes/default/templates/raw.html.ep:10
 msgid "1 year"
 msgstr ""
 
-#: lib/Lutim.pm:216 lib/Lutim/Command/cron/stats.pm:148 lib/Lutim/Command/cron/stats.pm:162 lib/Lutim/Command/cron/stats.pm:179 themes/default/templates/index.html.ep:4 themes/default/templates/partial/for_my_delay.html.ep:13 themes/default/templates/partial/lutim.js.ep:149 themes/default/templates/partial/raw.js.ep:22 themes/default/templates/partial/raw.js.ep:5 themes/default/templates/raw.html.ep:7
+#: lib/Lutim.pm:218 lib/Lutim/Command/cron/stats.pm:148 lib/Lutim/Command/cron/stats.pm:162 lib/Lutim/Command/cron/stats.pm:179 themes/default/templates/index.html.ep:4 themes/default/templates/partial/for_my_delay.html.ep:13 themes/default/templates/partial/lutim.js.ep:149 themes/default/templates/partial/raw.js.ep:22 themes/default/templates/partial/raw.js.ep:5 themes/default/templates/raw.html.ep:7
 msgid "24 hours"
 msgstr ""
 
@@ -503,7 +503,7 @@ msgstr ""
 msgid "core developer"
 msgstr ""
 
-#: lib/Lutim.pm:215 lib/Lutim/Command/cron/stats.pm:147 lib/Lutim/Command/cron/stats.pm:161 lib/Lutim/Command/cron/stats.pm:178 themes/default/templates/index.html.ep:3 themes/default/templates/partial/raw.js.ep:21 themes/default/templates/partial/raw.js.ep:4 themes/default/templates/raw.html.ep:6
+#: lib/Lutim.pm:217 lib/Lutim/Command/cron/stats.pm:147 lib/Lutim/Command/cron/stats.pm:161 lib/Lutim/Command/cron/stats.pm:178 themes/default/templates/index.html.ep:3 themes/default/templates/partial/raw.js.ep:21 themes/default/templates/partial/raw.js.ep:4 themes/default/templates/raw.html.ep:6
 msgid "no time limit"
 msgstr ""
 

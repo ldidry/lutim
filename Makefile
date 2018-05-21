@@ -31,12 +31,9 @@ cover:
 	PERL5OPT='-Ilib/' HARNESS_PERL_SWITCHES='-MDevel::Cover' $(CARTON) cover --ignore_re '^local'
 
 test-sqlite:
-	@PERL5OPT='-Ilib/' HARNESS_PERL_SWITCHES='-MDevel::Cover' $(CARTON) $(REAL_LUTIM) test
+	@MOJO_CONFIG=t/sqlite1.conf PERL5OPT='-Ilib/' HARNESS_PERL_SWITCHES='-MDevel::Cover' $(CARTON) $(REAL_LUTIM) test
 
-test-pg:
-	@PERL5OPT='-Ilib/' HARNESS_PERL_SWITCHES='-MDevel::Cover' $(CARTON) $(REAL_LUTIM) test
-
-test: podcheck test-sqlite test-pg
+test: podcheck test-sqlite
 
 clean:
 	rm -rf lutim.db files/
