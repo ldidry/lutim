@@ -167,6 +167,7 @@ cover:
 trads:
   stage: cover
   image: framasoft/push-trad:latest
+  dependencies: []
   script:
   - sed -e "s@<project-version>.*</project-version>@<project-version>$CI_COMMIT_REF_SLUG</project-version>@" -i zanata.xml
   - if [ ! -z ${ZANATA_CONFIG+x} ]; then mkdir -p ${HOME}/.config; echo -e "${ZANATA_CONFIG}" > ${HOME}/.config/zanata.ini; fi
