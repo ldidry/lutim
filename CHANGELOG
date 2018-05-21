@@ -8,6 +8,7 @@ Revision history for Lutim
 	- Gzip static assets with Mojolicious::Plugin::GzipStatic
 	- Fix scroll-to-top when clicking on delete image
 	- Add CSP header
+	- Add X-Content-Type-Options, X-XSS-Protection, X-Frame-Options headers
 
 0.10.4 2018-05-07
 	- Fix bug in cache system that would allow someone to view an image with an incorrect decryption key
