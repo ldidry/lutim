@@ -26,7 +26,7 @@ msgstr ""
 #. (30)
 #. ($delay)
 #. (config('max_delay')
-#: lib/Lutim/Command/cron/stats.pm:149 lib/Lutim/Command/cron/stats.pm:150 lib/Lutim/Command/cron/stats.pm:160 lib/Lutim/Command/cron/stats.pm:161 lib/Lutim/Command/cron/stats.pm:177 lib/Lutim/Command/cron/stats.pm:178 themes/default/templates/partial/for_my_delay.html.ep:13 themes/default/templates/partial/for_my_delay.html.ep:14 themes/default/templates/partial/for_my_delay.html.ep:4 themes/default/templates/partial/lutim.js.ep:142 themes/default/templates/partial/lutim.js.ep:151 themes/default/templates/partial/lutim.js.ep:152 themes/default/templates/raw.html.ep:19 themes/default/templates/raw.html.ep:20 themes/default/templates/raw.html.ep:36 themes/default/templates/raw.html.ep:37 themes/default/templates/raw.html.ep:8 themes/default/templates/raw.html.ep:9
+#: lib/Lutim/Command/cron/stats.pm:149 lib/Lutim/Command/cron/stats.pm:150 lib/Lutim/Command/cron/stats.pm:163 lib/Lutim/Command/cron/stats.pm:164 lib/Lutim/Command/cron/stats.pm:180 lib/Lutim/Command/cron/stats.pm:181 themes/default/templates/partial/for_my_delay.html.ep:13 themes/default/templates/partial/for_my_delay.html.ep:14 themes/default/templates/partial/for_my_delay.html.ep:4 themes/default/templates/partial/lutim.js.ep:140 themes/default/templates/partial/lutim.js.ep:149 themes/default/templates/partial/lutim.js.ep:150 themes/default/templates/partial/raw.js.ep:23 themes/default/templates/partial/raw.js.ep:24 themes/default/templates/partial/raw.js.ep:6 themes/default/templates/partial/raw.js.ep:7 themes/default/templates/raw.html.ep:8 themes/default/templates/raw.html.ep:9
 msgid "%1 days"
 msgstr "%1 أيام"
 
@@ -39,15 +39,15 @@ msgstr "تم إرسال %1 صورة على مثيل الخادوم هذا منذ
 msgid "-or-"
 msgstr "-أو-"
 
-#: lib/Lutim.pm:217 lib/Lutim/Command/cron/stats.pm:151 lib/Lutim/Command/cron/stats.pm:162 lib/Lutim/Command/cron/stats.pm:179 themes/default/templates/index.html.ep:5 themes/default/templates/raw.html.ep:10 themes/default/templates/raw.html.ep:21 themes/default/templates/raw.html.ep:38
+#: lib/Lutim.pm:219 lib/Lutim/Command/cron/stats.pm:151 lib/Lutim/Command/cron/stats.pm:165 lib/Lutim/Command/cron/stats.pm:182 themes/default/templates/index.html.ep:5 themes/default/templates/partial/raw.js.ep:25 themes/default/templates/partial/raw.js.ep:8 themes/default/templates/raw.html.ep:10
 msgid "1 year"
 msgstr "سنة واحدة"
 
-#: lib/Lutim.pm:216 lib/Lutim/Command/cron/stats.pm:148 lib/Lutim/Command/cron/stats.pm:159 lib/Lutim/Command/cron/stats.pm:176 themes/default/templates/index.html.ep:4 themes/default/templates/partial/for_my_delay.html.ep:13 themes/default/templates/partial/lutim.js.ep:151 themes/default/templates/raw.html.ep:18 themes/default/templates/raw.html.ep:35 themes/default/templates/raw.html.ep:7
+#: lib/Lutim.pm:218 lib/Lutim/Command/cron/stats.pm:148 lib/Lutim/Command/cron/stats.pm:162 lib/Lutim/Command/cron/stats.pm:179 themes/default/templates/index.html.ep:4 themes/default/templates/partial/for_my_delay.html.ep:13 themes/default/templates/partial/lutim.js.ep:149 themes/default/templates/partial/raw.js.ep:22 themes/default/templates/partial/raw.js.ep:5 themes/default/templates/raw.html.ep:7
 msgid "24 hours"
 msgstr "24 ساعة"
 
-#: themes/default/templates/partial/myfiles.js.ep:57
+#: themes/default/templates/partial/myfiles.js.ep:62
 msgid ": Error while trying to get the counter."
 msgstr ": طرأ هناك خطأ أثناء محاولة إستعادة العداد."
 
@@ -75,7 +75,7 @@ msgstr "العودة إلى الصفحة الرئيسية"
 msgid "Click to open the file browser"
 msgstr "إضغط لفتح مدير الملفات"
 
-#: themes/default/templates/gallery.html.ep:27
+#: themes/default/templates/gallery.html.ep:29
 msgid "Close (Esc)"
 msgstr "إغلاق (Esc)"
 
@@ -83,15 +83,15 @@ msgstr "إغلاق (Esc)"
 msgid "Contributors"
 msgstr "المساهمون"
 
-#: themes/default/templates/partial/common.js.ep:96
+#: themes/default/templates/partial/common.js.ep:75 themes/default/templates/partial/common.js.ep:95
 msgid "Copied to clipboard"
 msgstr ""
 
-#: themes/default/templates/partial/lutim.js.ep:218 themes/default/templates/partial/lutim.js.ep:273 themes/default/templates/partial/lutim.js.ep:351
+#: themes/default/templates/partial/lutim.js.ep:215 themes/default/templates/partial/lutim.js.ep:276 themes/default/templates/partial/lutim.js.ep:361
 msgid "Copy all view links to clipboard"
 msgstr "أنسخ كافة روابط العرض إلى الحافظة"
 
-#: themes/default/templates/index.html.ep:18 themes/default/templates/index.html.ep:36 themes/default/templates/index.html.ep:69 themes/default/templates/index.html.ep:77 themes/default/templates/index.html.ep:85 themes/default/templates/index.html.ep:93 themes/default/templates/myfiles.html.ep:20 themes/default/templates/myfiles.html.ep:38 themes/default/templates/partial/common.js.ep:177 themes/default/templates/partial/lutim.js.ep:108 themes/default/templates/partial/lutim.js.ep:123 themes/default/templates/partial/lutim.js.ep:82 themes/default/templates/partial/lutim.js.ep:94
+#: themes/default/templates/index.html.ep:18 themes/default/templates/index.html.ep:36 themes/default/templates/index.html.ep:69 themes/default/templates/index.html.ep:77 themes/default/templates/index.html.ep:85 themes/default/templates/index.html.ep:93 themes/default/templates/myfiles.html.ep:20 themes/default/templates/myfiles.html.ep:38 themes/default/templates/partial/common.js.ep:168 themes/default/templates/partial/lutim.js.ep:106 themes/default/templates/partial/lutim.js.ep:121 themes/default/templates/partial/lutim.js.ep:80 themes/default/templates/partial/lutim.js.ep:92 themes/default/templates/partial/myfiles.js.ep:30
 msgid "Copy to clipboard"
 msgstr "أنسخ إلى الحافظة"
 
@@ -107,7 +107,7 @@ msgstr ""
 msgid "Delay repartition chart for enabled images"
 msgstr ""
 
-#: themes/default/templates/index.html.ep:115 themes/default/templates/index.html.ep:147 themes/default/templates/index.html.ep:178 themes/default/templates/myfiles.html.ep:53 themes/default/templates/partial/lutim.js.ep:163
+#: themes/default/templates/index.html.ep:115 themes/default/templates/index.html.ep:147 themes/default/templates/index.html.ep:178 themes/default/templates/myfiles.html.ep:53 themes/default/templates/partial/lutim.js.ep:161
 msgid "Delete at first view?"
 msgstr "هل تود حذف الصورة مباشرة بعد أول عرض ؟"
 
@@ -119,15 +119,15 @@ msgstr "الصور المحذوفة"
 msgid "Deleted images in 30 days"
 msgstr "الصور المحذوفة منذ 30 يوما"
 
-#: themes/default/templates/index.html.ep:98 themes/default/templates/myfiles.html.ep:56 themes/default/templates/partial/common.js.ep:169 themes/default/templates/partial/common.js.ep:172
+#: themes/default/templates/index.html.ep:98 themes/default/templates/myfiles.html.ep:56 themes/default/templates/partial/common.js.ep:160 themes/default/templates/partial/common.js.ep:163
 msgid "Deletion link"
 msgstr "رابط الحذف"
 
-#: themes/default/templates/gallery.html.ep:8
+#: themes/default/templates/gallery.html.ep:10
 msgid "Download all images"
 msgstr "تنزيل كافة الصور"
 
-#: themes/default/templates/index.html.ep:81 themes/default/templates/index.html.ep:83 themes/default/templates/partial/lutim.js.ep:100 themes/default/templates/partial/lutim.js.ep:104
+#: themes/default/templates/index.html.ep:81 themes/default/templates/index.html.ep:83 themes/default/templates/partial/lutim.js.ep:102 themes/default/templates/partial/lutim.js.ep:98
 msgid "Download link"
 msgstr "رابط التنزيل"
 
@@ -155,7 +155,7 @@ msgstr ""
 msgid "Encrypt the image (Lutim does not keep the key)."
 msgstr "قم بتعمية و تشفير الصورة (لوتان Lutim لا يحتفظ بالمفتاح)."
 
-#: themes/default/templates/partial/lutim.js.ep:47
+#: themes/default/templates/partial/lutim.js.ep:45
 msgid "Error while trying to modify the image."
 msgstr "طرأ هناك خطأ أثناء عملية تعديل الصورة."
 
@@ -187,11 +187,11 @@ msgstr "قم بتشعيبي !"
 msgid "Gallery link"
 msgstr "رابط المعرض"
 
-#: themes/default/templates/partial/common.js.ep:105 themes/default/templates/partial/common.js.ep:122
+#: themes/default/templates/partial/common.js.ep:116 themes/default/templates/partial/common.js.ep:98
 msgid "Hit Ctrl+C, then Enter to copy the short link"
 msgstr "إضغط على CTRL+C ثم على مفتاح الإدخال للقيام بنسخ الرابط القصير"
 
-#: themes/default/templates/layouts/default.html.ep:48
+#: themes/default/templates/layouts/default.html.ep:47
 msgid "Homepage"
 msgstr "الصفحة الرئيسية"
 
@@ -223,7 +223,7 @@ msgstr "رابط الصورة"
 msgid "Image delay"
 msgstr "تأجيل الصورة"
 
-#: themes/default/templates/partial/common.js.ep:142
+#: themes/default/templates/partial/common.js.ep:139
 msgid "Image deleted"
 msgstr ""
 
@@ -267,7 +267,7 @@ msgstr "الإبقاء على بيانات EXIF"
 msgid "Language"
 msgstr "اللغة"
 
-#: themes/default/templates/index.html.ep:118 themes/default/templates/index.html.ep:166 themes/default/templates/index.html.ep:206 themes/default/templates/partial/lutim.js.ep:167
+#: themes/default/templates/index.html.ep:118 themes/default/templates/index.html.ep:166 themes/default/templates/index.html.ep:206 themes/default/templates/partial/lutim.js.ep:165
 msgid "Let's go!"
 msgstr "هيا بنا !"
 
@@ -275,7 +275,7 @@ msgstr "هيا بنا !"
 msgid "License:"
 msgstr "الرخصة :"
 
-#: themes/default/templates/index.html.ep:89 themes/default/templates/index.html.ep:91 themes/default/templates/partial/lutim.js.ep:114 themes/default/templates/partial/lutim.js.ep:118
+#: themes/default/templates/index.html.ep:89 themes/default/templates/index.html.ep:91 themes/default/templates/partial/lutim.js.ep:112 themes/default/templates/partial/lutim.js.ep:116
 msgid "Link for share on social networks"
 msgstr "رابط للمشاركة على شبكات التواصل الإجتماعي"
 
@@ -298,7 +298,7 @@ msgstr ""
 msgid "Main developers"
 msgstr "المطورون الرئيسيون"
 
-#: themes/default/templates/index.html.ep:73 themes/default/templates/index.html.ep:75 themes/default/templates/partial/lutim.js.ep:88 themes/default/templates/partial/lutim.js.ep:91
+#: themes/default/templates/index.html.ep:73 themes/default/templates/index.html.ep:75 themes/default/templates/partial/lutim.js.ep:86 themes/default/templates/partial/lutim.js.ep:89
 msgid "Markdown syntax"
 msgstr ""
 
@@ -306,11 +306,11 @@ msgstr ""
 msgid "My images"
 msgstr "صوري"
 
-#: themes/default/templates/gallery.html.ep:43
+#: themes/default/templates/gallery.html.ep:45
 msgid "Next (arrow right)"
 msgstr ""
 
-#: themes/default/templates/partial/myfiles.js.ep:19
+#: themes/default/templates/partial/myfiles.js.ep:20
 msgid "No limit"
 msgstr "غير محدود"
 
@@ -340,7 +340,7 @@ msgstr ""
 msgid "Please contact the administrator: %1"
 msgstr "يرجى الإتصال بالمدير : %1"
 
-#: themes/default/templates/gallery.html.ep:41
+#: themes/default/templates/gallery.html.ep:43
 msgid "Previous (arrow left)"
 msgstr ""
 
@@ -352,11 +352,7 @@ msgstr "الإحصائيات الخامة"
 msgid "Send an image"
 msgstr "إرسال صورة"
 
-#: themes/default/templates/partial/lutim.js.ep:23
-msgid "Share it!"
-msgstr "شاركه !"
-
-#: themes/default/templates/index.html.ep:133 themes/default/templates/partial/gallery.js.ep:211 themes/default/templates/partial/lutim.js.ep:178
+#: themes/default/templates/index.html.ep:133 themes/default/templates/partial/gallery.js.ep:211 themes/default/templates/partial/lutim.js.ep:176
 msgid "Something bad happened"
 msgstr "طرأ هناك خلل"
 
@@ -420,7 +416,7 @@ msgstr ""
 #. ($tx->res->max_message_size)
 #. ($c->req->max_message_size)
 #. (config('max_file_size')
-#: lib/Lutim/Controller.pm:309 lib/Lutim/Controller.pm:378 themes/default/templates/partial/lutim.js.ep:245
+#: lib/Lutim/Controller.pm:309 lib/Lutim/Controller.pm:378 themes/default/templates/partial/lutim.js.ep:247
 msgid "The file exceed the size limit (%1)"
 msgstr ""
 
@@ -452,12 +448,16 @@ msgid ""
 "first view or after a delay selected from those proposed."
 msgstr ""
 
+#: themes/default/templates/partial/gallery.js.ep:257
+msgid "There is XXXX image(s) in the gallery"
+msgstr ""
+
 #. ($c->config->{contact})
 #: lib/Lutim/Controller.pm:483
 msgid "There is no more available URL. Retry or contact the administrator. %1"
 msgstr ""
 
-#: themes/default/templates/gallery.html.ep:28
+#: themes/default/templates/gallery.html.ep:30
 msgid "Toggle fullscreen"
 msgstr ""
 
@@ -473,7 +473,7 @@ msgstr "العدد الإجمالي"
 msgid "Tweet it!"
 msgstr "غرِّد الرابط"
 
-#: themes/default/templates/partial/common.js.ep:85
+#: themes/default/templates/partial/common.js.ep:72 themes/default/templates/partial/common.js.ep:92
 msgid "Unable to copy to clipboard"
 msgstr ""
 
@@ -515,7 +515,7 @@ msgid ""
 "administrator (%1)."
 msgstr ""
 
-#: themes/default/templates/index.html.ep:65 themes/default/templates/index.html.ep:67 themes/default/templates/myfiles.html.ep:51 themes/default/templates/partial/lutim.js.ep:74 themes/default/templates/partial/lutim.js.ep:78
+#: themes/default/templates/index.html.ep:65 themes/default/templates/index.html.ep:67 themes/default/templates/myfiles.html.ep:51 themes/default/templates/partial/lutim.js.ep:72 themes/default/templates/partial/lutim.js.ep:76
 msgid "View link"
 msgstr "عرض الرابط"
 
@@ -555,7 +555,7 @@ msgid ""
 "at first view (or download) or after the delay selected from those proposed."
 msgstr ""
 
-#: themes/default/templates/gallery.html.ep:29
+#: themes/default/templates/gallery.html.ep:31
 msgid "Zoom in/out"
 msgstr "تكبير/تصغير"
 
@@ -571,7 +571,7 @@ msgstr "الترجمة إلى العربية"
 msgid "core developer"
 msgstr "المطور الرئيسي"
 
-#: lib/Lutim.pm:215 lib/Lutim/Command/cron/stats.pm:147 lib/Lutim/Command/cron/stats.pm:158 lib/Lutim/Command/cron/stats.pm:175 themes/default/templates/index.html.ep:3 themes/default/templates/raw.html.ep:17 themes/default/templates/raw.html.ep:34 themes/default/templates/raw.html.ep:6
+#: lib/Lutim.pm:217 lib/Lutim/Command/cron/stats.pm:147 lib/Lutim/Command/cron/stats.pm:161 lib/Lutim/Command/cron/stats.pm:178 themes/default/templates/index.html.ep:3 themes/default/templates/partial/raw.js.ep:21 themes/default/templates/partial/raw.js.ep:4 themes/default/templates/raw.html.ep:6
 msgid "no time limit"
 msgstr ""
 
