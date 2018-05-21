@@ -4,6 +4,7 @@ XGETTEXT=carton exec local/bin/xgettext.pl -u
 CARTON=carton exec
 LUTIM=script/lutim
 REAL_LUTIM=script/application
+HEAD := $(shell git rev-parse --abbrev-ref HEAD)
 
 minify:
 	@echo "CSS concatenation"
@@ -16,10 +17,16 @@ locales:
 	$(XGETTEXT) $(EXTRACTDIR) -o $(POT) 2>/dev/null
 
 push-locales:
-	zanata-cli -q -B push
+    ifeq ($(HEAD),$(filter $(HEAD),master development))
+		sed -e 's@<project-version>.*</project-version>@<project-version>$(HEAD)</project-version>@' -i zanata.xml && \
+			zanata-cli -q -B push
+    endif
 
 pull-locales:
-	zanata-cli -q -B pull
+    ifeq ($(HEAD),$(filter $(HEAD),master development))
+		sed -e 's@<project-version>.*</project-version>@<project-version>$(HEAD)</project-version>@' -i zanata.xml && \
+			zanata-cli -q -B pull
+    endif
 
 stats-locales:
 	zanata-cli -q stats
