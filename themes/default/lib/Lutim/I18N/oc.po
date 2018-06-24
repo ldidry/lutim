@@ -11,13 +11,13 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2018-05-10 07:30+0000\n"
+"PO-Revision-Date: 2018-05-21 09:45+0000\n"
 "Last-Translator: Quentí\n"
 "Language-Team: Occitan (http://www.transifex.com/fiat-tux/lutim/language/oc/"
 ")\n"
 "Language: oc\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Zanata 4.3.3\n"
+"X-Generator: Zanata 4.4.5\n"
 
 #. (7)
 #. (30)
@@ -470,7 +470,7 @@ msgstr ""
 
 #: themes/default/templates/partial/gallery.js.ep:257
 msgid "There is XXXX image(s) in the gallery"
-msgstr ""
+msgstr "I a XXXX imatge(s) dins la galariá"
 
 #. ($c->config->{contact})
 #: lib/Lutim/Controller.pm:483
