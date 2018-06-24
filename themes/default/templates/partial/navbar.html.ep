@@ -1,14 +1,4 @@
 % # vim:set sw=4 ts=4 sts=4 ft=html.epl expandtab:
-% my $l = {
-%     ar    => 'العربية',
-%     de    => 'Deutsch',
-%     en    => 'English',
-%     es    => 'Español',
-%     fr    => 'Français',
-%     fr_FR => 'Français (France)',
-%     oc    => 'Occitan',
-%     ru    => 'Русский',
-% };
 % my $lang = $self->languages;
 %    $lang =~ s/-(.*)/_\U$1/;
 <nav class="navbar navbar-default">
@@ -44,7 +34,7 @@
                     <ul class="dropdown-menu" role="menu">
                     % for my $i (@{$self->available_langs}) {
                         <li<%== ($i eq $lang) ? ' class="active"' : '' %>>
-                            <a href="<%= url_for('lang', l => $i) %>" class="set-lang"><%= $l->{$i} %></a>
+                            <a href="<%= url_for('lang', l => $i) %>" class="set-lang"><%= iso639_native_name($i) %></a>
                         </li>
                     % }
                     </ul>

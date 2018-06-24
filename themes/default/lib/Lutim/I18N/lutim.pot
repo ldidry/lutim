@@ -44,7 +44,7 @@ msgstr ""
 msgid ": Error while trying to get the counter."
 msgstr ""
 
-#: themes/default/templates/partial/navbar.html.ep:79
+#: themes/default/templates/partial/navbar.html.ep:69
 msgid "About"
 msgstr ""
 
@@ -160,7 +160,7 @@ msgstr ""
 msgid "For more details, see the <a href=\"https://framagit.org/luc/lutim\">homepage of the project</a>."
 msgstr ""
 
-#: themes/default/templates/partial/navbar.html.ep:82
+#: themes/default/templates/partial/navbar.html.ep:72
 msgid "Fork me!"
 msgstr ""
 
@@ -208,15 +208,15 @@ msgstr ""
 msgid "Image not found."
 msgstr ""
 
-#: themes/default/templates/partial/navbar.html.ep:71
+#: themes/default/templates/partial/navbar.html.ep:61
 msgid "Informations"
 msgstr ""
 
-#: themes/default/templates/partial/navbar.html.ep:35
+#: themes/default/templates/partial/navbar.html.ep:25
 msgid "Install webapp"
 msgstr ""
 
-#: themes/default/templates/partial/navbar.html.ep:31
+#: themes/default/templates/partial/navbar.html.ep:21
 msgid "Instance's statistics"
 msgstr ""
 
@@ -236,7 +236,7 @@ msgstr ""
 msgid "Keep EXIF tags"
 msgstr ""
 
-#: themes/default/templates/partial/navbar.html.ep:42
+#: themes/default/templates/partial/navbar.html.ep:32
 msgid "Language"
 msgstr ""
 
@@ -244,7 +244,7 @@ msgstr ""
 msgid "Let's go!"
 msgstr ""
 
-#: themes/default/templates/partial/navbar.html.ep:76
+#: themes/default/templates/partial/navbar.html.ep:66
 msgid "License:"
 msgstr ""
 
@@ -268,7 +268,7 @@ msgstr ""
 msgid "Markdown syntax"
 msgstr ""
 
-#: themes/default/templates/myfiles.html.ep:2 themes/default/templates/partial/navbar.html.ep:28
+#: themes/default/templates/myfiles.html.ep:2 themes/default/templates/partial/navbar.html.ep:18
 msgid "My images"
 msgstr ""
 
@@ -322,19 +322,19 @@ msgstr ""
 msgid "Something went wrong when creating the zip file. Try again later or contact the administrator (%1)."
 msgstr ""
 
-#: themes/default/templates/partial/navbar.html.ep:54
+#: themes/default/templates/partial/navbar.html.ep:44
 msgid "Support the author"
 msgstr ""
 
-#: themes/default/templates/partial/navbar.html.ep:62
+#: themes/default/templates/partial/navbar.html.ep:52
 msgid "Support the author on Liberapay"
 msgstr ""
 
-#: themes/default/templates/partial/navbar.html.ep:59
+#: themes/default/templates/partial/navbar.html.ep:49
 msgid "Support the author on Tipeee"
 msgstr ""
 
-#: themes/default/templates/partial/navbar.html.ep:65
+#: themes/default/templates/partial/navbar.html.ep:55
 msgid "Support the author with bitcoins"
 msgstr ""
 
@@ -409,7 +409,7 @@ msgstr ""
 msgid "Toggle fullscreen"
 msgstr ""
 
-#: themes/default/templates/partial/navbar.html.ep:18
+#: themes/default/templates/partial/navbar.html.ep:8
 msgid "Toggle navigation"
 msgstr ""
 
@@ -430,7 +430,7 @@ msgstr ""
 msgid "Unable to find the image %1."
 msgstr ""
 
-#: lib/Lutim/Controller.pm:572 lib/Lutim/Controller.pm:617 lib/Lutim/Controller.pm:656 lib/Lutim/Controller.pm:699 lib/Lutim/Controller.pm:711 lib/Lutim/Controller.pm:722 lib/Lutim/Controller.pm:749 lib/Lutim/Plugin/Helpers.pm:84
+#: lib/Lutim/Controller.pm:572 lib/Lutim/Controller.pm:617 lib/Lutim/Controller.pm:656 lib/Lutim/Controller.pm:699 lib/Lutim/Controller.pm:711 lib/Lutim/Controller.pm:722 lib/Lutim/Controller.pm:749 lib/Lutim/Plugin/Helpers.pm:87
 msgid "Unable to find the image: it has been deleted."
 msgstr ""
 
@@ -455,7 +455,7 @@ msgid "Uploaded files by days"
 msgstr ""
 
 #. ($c->app->config('contact')
-#: lib/Lutim/Plugin/Helpers.pm:217
+#: lib/Lutim/Plugin/Helpers.pm:220
 msgid "Uploading is currently disabled, please try later or contact the administrator (%1)."
 msgstr ""
 
