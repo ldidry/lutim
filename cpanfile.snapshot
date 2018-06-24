@@ -1343,6 +1343,13 @@ DISTRIBUTIONS
       re 0
       strict 0
       warnings 0
+  ISO-639_1-0.01
+    pathname: L/LD/LDIDRY/ISO-639_1-0.01.tar.gz
+    provides:
+      ISO::639_1 0.01
+    requirements:
+      Module::Build::Tiny 0.035
+      perl 5.008001
   Image-ExifTool-10.80
     pathname: E/EX/EXIFTOOL/Image-ExifTool-10.80.tar.gz
     provides:

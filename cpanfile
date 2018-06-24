@@ -23,6 +23,7 @@ requires 'Image::ExifTool';
 requires 'Data::Entropy';
 requires 'List::MoreUtils', '> 0.33';
 requires 'Archive::Zip';
+requires 'ISO::639_1';
 
 feature 'postgresql', 'PostgreSQL support' => sub {
     requires 'Mojo::Pg';

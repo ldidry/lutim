@@ -6,6 +6,8 @@ use Mojo::File;
 use Crypt::CBC;
 use Data::Entropy qw(entropy_source);
 use DateTime;
+use Mojo::Util qw(decode);
+use ISO::639_1;
 
 sub register {
     my ($self, $app) = @_;
@@ -37,17 +39,18 @@ sub register {
         }
     }
 
-    $app->helper(render_file     => \&_render_file);
-    $app->helper(ip              => \&_ip);
-    $app->helper(provisioning    => \&_provisioning);
-    $app->helper(shortener       => \&_shortener);
-    $app->helper(stop_upload     => \&_stop_upload);
-    $app->helper(max_delay       => \&_max_delay);
-    $app->helper(default_delay   => \&_default_delay);
-    $app->helper(is_selected     => \&_is_selected);
-    $app->helper(crypt           => \&_crypt);
-    $app->helper(decrypt         => \&_decrypt);
-    $app->helper(delete_image    => \&_delete_image);
+    $app->helper(render_file        => \&_render_file);
+    $app->helper(ip                 => \&_ip);
+    $app->helper(provisioning       => \&_provisioning);
+    $app->helper(shortener          => \&_shortener);
+    $app->helper(stop_upload        => \&_stop_upload);
+    $app->helper(max_delay          => \&_max_delay);
+    $app->helper(default_delay      => \&_default_delay);
+    $app->helper(is_selected        => \&_is_selected);
+    $app->helper(crypt              => \&_crypt);
+    $app->helper(decrypt            => \&_decrypt);
+    $app->helper(delete_image       => \&_delete_image);
+    $app->helper(iso639_native_name => \&_iso639_native_name);
 }
 
 sub _pg {
@@ -311,6 +314,11 @@ sub _delete_image {
     }
     unlink $img->path or warn "Could not unlink ".$img->path.": $!";
     $img->disable();
+}
+
+sub _iso639_native_name {
+    my $c = shift;
+    return ucfirst(decode 'UTF-8', get_iso639_1(shift)->{nativeName});
 }
 
 1;
