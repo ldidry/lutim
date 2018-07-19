@@ -43,7 +43,7 @@ See [AUTHORS.md](AUTHORS.md) file.
 
 ## Contribute!
 
-Please consider contributing, either by [reporting issues](https://framagit.org/luc/lutim/issues) or by helping the [internationalization](https://pootle.framasoft.org/projects/lutim/). And of course, code contribution are welcome!
+Please consider contributing, either by [reporting issues](https://framagit.org/luc/lutim/issues) or by helping the [internationalization](https://trad.framasoft.org/project/view/lutim). And of course, code contribution are welcome!
 
 The details on how to contribute are on the [wiki](https://framagit.org/luc/lutim/wikis/contribute).
 
