@@ -23,6 +23,8 @@ sub startup {
 
     $self->{wait_for_it} = {};
 
+    push @{$self->commands->namespaces}, 'Lutim::Command';
+
     $self->plugin('DebugDumperHelper');
 
     my $config = $self->plugin('Config', {

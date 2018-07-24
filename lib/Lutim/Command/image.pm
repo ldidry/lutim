@@ -13,7 +13,7 @@ has usage => sub { shift->extract_usage };
 my $csv_header = 0;
 
 sub run {
-    my $c = shift;
+    my $c    = shift;
     my @args = @_;
 
     my $cfile = Mojo::File->new($Bin, '..' , 'lutim.conf');
@@ -59,9 +59,25 @@ sub run {
         }
     });
 
+    if (scalar(@{$config->{memcached_servers}})) {
+        $c->app->plugin(CHI => {
+            lutim_images_cache => {
+                driver             => 'Memcached',
+                servers            => $config->{memcached_servers},
+                expires_in         => '1 day',
+                expires_on_backend => 1,
+            }
+        });
+    }
+
     getopt \@args,
-      'i|info=s{1,}' => \my @info,
-      'c|csv'        => \my $csv;
+      'i|info=s{1,}'   => \my @info,
+      'c|csv'          => \my $csv,
+      'r|remove=s{1,}' => \my @remove,
+      'y|yes'          => \my $yes,
+      'q|quiet'        => \my $quiet,
+      's|search=s'     => \my $ip
+    ;
 
     if (scalar @info) {
         c(@info)->each(
@@ -71,6 +87,36 @@ sub run {
                 print_infos($i, $csv) if $i;
             }
         );
+    }
+    if (scalar @remove) {
+        c(@remove)->each(
+            sub {
+                my ($e, $num) = @_;
+                my $i = get_short($c, $e);
+                if ($i) {
+                    if ($i->enabled) {
+                        print_infos($i, 0) unless $quiet;
+                        delete_short($c, $i, $yes);
+                    } else {
+                        say sprintf('The image %s is already disabled', $e);
+                    }
+                }
+            }
+        );
+        if ($config->{cache_max_size} && !scalar(@{$config->{memcached_servers}})) {
+            say "\nPlease reload Lutim to be sure that the deleted images are not in the cache anymore.";
+        }
+    }
+    if ($ip) {
+        my $u = Lutim::DB::Image->new(app => $c->app)->search_created_by($ip);
+        my @shorts;
+        $u->each(sub {
+            my ($e, $num) = @_;
+            push @shorts, $e->short;
+            print_infos($e, $csv);
+        });
+        say sprintf('%d matching URLs', $u->size);
+        say sprintf("If you want to delete those images, please do:\n  carton exec script/lutim image --remove %s", join(' ', @shorts)) if @shorts;
     }
 }
 
@@ -145,6 +191,24 @@ EOF
     }
 }
 
+sub delete_short {
+    my $c = shift;
+    my $i = shift;
+    my $y = shift;
+
+    my $confirm = ($y) ? 'yes' : undef;
+    unless (defined $confirm) {
+        printf('Are you sure you want to remove this image (%s) ? [N/y] ', $i->short);
+        $confirm = <STDIN>;
+        chomp $confirm;
+    }
+    if ($confirm =~ m/^y(es)?$/i) {
+        $c->app->delete_image($i);
+    } else {
+        say 'Answer was not "y" or "yes". Aborting deletion.';
+    }
+}
+
 =encoding utf8
 
 =head1 NAME
@@ -154,7 +218,9 @@ Lutim::Command::image - Manage URL in Lutim's database
 =head1 SYNOPSIS
 
   Usage:
-      carton exec script/lutim image --info <short> <short> [--csv]     Print infos about the space-separated images (--csv creates a CSV output)
+      carton exec script/lutim image --info <short> <short> [--csv]              Print infos about the space-separated images (--csv creates a CSV output)
+      carton exec script/lutim image --remove <short> <short> [--yes] [--quiet]  Delete the space-separated images (--yes disables confirmation, --quiet disables informations printing)
+      carton exec script/lutim image --search <ip>                               Print infos about the images uploaded by this IP (database LIKE, may include images uploaded by other IPs)
 
 =cut
 
