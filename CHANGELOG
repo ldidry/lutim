@@ -13,6 +13,8 @@ Revision history for Lutim
 	- Add a message saying how many images there is in the gallery
 	- Use ISO::639_1 for languages' native names
 	- Add CLI command to print informations about images
+	- Add CLI command to remove images
+	- Add CLI command to search images based on the uploader's IP address
 
 0.10.4 2018-05-07
 	- Fix bug in cache system that would allow someone to view an image with an incorrect decryption key
