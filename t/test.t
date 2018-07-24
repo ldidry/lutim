@@ -9,6 +9,7 @@ use Test::Mojo;
 
 use FindBin qw($Bin);
 use Digest::file qw(digest_file_hex);
+use IO::Uncompress::Unzip qw($UnzipError);
 
 my ($m, $cfile);
 
@@ -107,6 +108,26 @@ $t->get_ok('/'.$short)
 
 $t->get_ok('/'.$short)
   ->status_is(302);
+
+# Get zip file and test it
+$t->get_ok('/zip?i='.$short)
+  ->status_is(200)
+  ->header_is('Content-Disposition' => 'attachment;filename=images.zip');
+
+my $zip = $t->ua->get('/zip?i='.$short)->res->body;
+my $u = new IO::Uncompress::Unzip \$zip
+    or die "Cannot open zip file: $UnzipError";
+
+my $status;
+my @files = qw(hosted_with_lutim.png images/ images/Lutim.png.txt);
+for ($status = 1; $status > 0; $status = $u->nextStream()) {
+    my $name = $u->getHeaderInfo()->{Name};
+    is($name, shift(@files));
+    my $buff;
+    while (($status = $u->read($buff)) > 0) {
+    }
+    last if $status < 0;
+}
 
 # Delete image with token
 $raw       = $t->ua->post('/' => form => { file => { file => $image }, format => 'json' })->res;
