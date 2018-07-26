@@ -1,6 +1,6 @@
 % # vim:set sw=4 ts=4 sts=4 ft=javascript expandtab:
-window.gallery_url = '<%= url_for('gallery')->to_abs %>#';
-window.zip_url = '<%= url_for('zip')->to_abs %>?i=';
+window.gallery_url = '<%= prefix().'gallery' %>#';
+window.zip_url = '<%= prefix().'zip' %>?i=';
 window.short_hash = {};
 window.zip_hash = {};
 function addToShortHash(short) {
@@ -173,7 +173,7 @@ function link(url, dl, token, modify, only_url) {
     } else if (dl !== '') {
         url = url+'?'+dl;
     }
-    return '<%== url_for('/')->to_abs() %>'+url;
+    return '<%== prefix() %>'+url;
 }
 
 function badToast(msg) {
