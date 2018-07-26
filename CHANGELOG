@@ -16,6 +16,7 @@ Revision history for Lutim
 	- Add CLI command to remove images
 	- Add CLI command to search images based on the uploader's IP address
 	- Add .zip file check in the tests
+	- Fix stats files place when using non-default theme
 	- Allow to use a fixed domain
 
 0.10.4 2018-05-07
