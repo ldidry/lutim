@@ -51,6 +51,7 @@ sub register {
     $app->helper(decrypt            => \&_decrypt);
     $app->helper(delete_image       => \&_delete_image);
     $app->helper(iso639_native_name => \&_iso639_native_name);
+    $app->helper(prefix             => \&_prefix);
 }
 
 sub _pg {
@@ -319,6 +320,17 @@ sub _delete_image {
 sub _iso639_native_name {
     my $c = shift;
     return ucfirst(decode 'UTF-8', get_iso639_1(shift)->{nativeName});
+}
+
+sub _prefix {
+    my $c = shift;
+
+    my $prefix = $c->url_for('/')->to_abs;
+    # Forced domain
+    $prefix->host($c->config('fixed_domain')) if (defined($c->config('fixed_domain')) && $c->config('fixed_domain') ne '');
+    # Hack for prefix (subdir) handling
+    $prefix .= '/' unless ($prefix =~ m#/$#);
+    return $prefix;
 }
 
 1;
