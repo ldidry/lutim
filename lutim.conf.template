@@ -236,6 +236,10 @@
     # optional, default is '1; mode=block'
     #x_xss_protection => '1; mode=block',
 
+    # if set, the uploaded images will use this domain
+    # optional
+    #fixed_domain => 'example.org',
+
     ##########################
     # Lutim cron jobs settings
     ##########################
