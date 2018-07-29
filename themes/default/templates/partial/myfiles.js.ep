@@ -1,4 +1,57 @@
 % # vim:set sw=4 ts=4 sts=4 ft=javascript expandtab:
+function exportStorage() {
+    var a   = $('<a id="data-json">');
+    a.hide();
+    $('body').append(a);
+
+    var storageData = [localStorage.getItem('images')];
+    var exportFile  = new Blob(storageData, {type : 'application/json'});
+    var url         = window.URL.createObjectURL(exportFile);
+
+    a.attr('href', url);
+    a.attr('download', 'data.json');
+    $('#data-json')[0].click();
+    $('#data-json').remove();
+}
+function importStorage(f) {
+    var reader = new FileReader();
+    reader.addEventListener("loadend", function() {
+        try {
+            var newFiles = JSON.parse(String.fromCharCode.apply(null, new Uint8Array(reader.result)));
+            var i;
+            var hasImported = 0;
+            for (i = 0; i < newFiles.length; i++) {
+                var item = newFiles[i];
+                if (!itemExists(item.short)) {
+                    addItem(item);
+                    hasImported++;
+                }
+            }
+            populateFilesTable();
+
+            goodToast('<%= l('The data has been successfully imported.') %>');
+        } catch(err) {
+            alert(err);
+        }
+    });
+    reader.readAsArrayBuffer(f[0]);
+}
+function itemExists(name) {
+    var files = localStorage.getItem('images');
+    console.log(files);
+    if (files === null) {
+        return false;
+    } else {
+        files = JSON.parse(files);
+        var i;
+        for (i = 0; i < files.length; i++) {
+            if (files[i].short === name) {
+                return true;
+            }
+        }
+        return false;
+    }
+}
 function onCheck(e, short, ext) {
     e.preventDefault();
     if ($(this).is(':checked')) {
@@ -10,8 +63,13 @@ function onCheck(e, short, ext) {
     }
 }
 function populateFilesTable() {
-    var files = JSON.parse(localStorage.getItem('images'));
+    var localImages = localStorage.getItem('images');
+    if (localImages === null) {
+        return null;
+    }
+    var files = JSON.parse(localImages);
     files.reverse();
+    $('#myfiles').empty();
     files.forEach(function(element, index, array) {
         var real_short = element.real_short;
         var vlink      = link(element.short+'.'+element.ext, '');
