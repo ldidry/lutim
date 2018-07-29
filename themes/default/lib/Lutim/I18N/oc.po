@@ -32,7 +32,7 @@ msgstr "%1 jorns"
 msgid "%1 sent images on this instance from beginning."
 msgstr "%1 imatges mandats sus aquesta instància dempuèi lo començament."
 
-#: themes/default/templates/index.html.ep:190
+#: themes/default/templates/index.html.ep:208
 msgid "-or-"
 msgstr "-o-"
 
@@ -44,7 +44,7 @@ msgstr "1 an"
 msgid "24 hours"
 msgstr "24 oras"
 
-#: themes/default/templates/partial/myfiles.js.ep:120
+#: themes/default/templates/partial/myfiles.js.ep:124
 msgid ": Error while trying to get the counter."
 msgstr " : Error al moment de recuperar lo comptador."
 
@@ -56,7 +56,7 @@ msgstr "A prepaus"
 msgid "Active images"
 msgstr "Imatges actius"
 
-#: lib/Lutim/Controller.pm:326
+#: lib/Lutim/Controller.pm:327
 msgid "An error occured while downloading the image."
 msgstr "Una error es apareguda pendent lo telecargament de l'imatge."
 
@@ -64,11 +64,11 @@ msgstr "Una error es apareguda pendent lo telecargament de l'imatge."
 msgid "Archives download"
 msgstr "Telecargar los archius"
 
-#: themes/default/templates/about.html.ep:44 themes/default/templates/myfiles.html.ep:69 themes/default/templates/stats.html.ep:25
+#: themes/default/templates/about.html.ep:44 themes/default/templates/myfiles.html.ep:87 themes/default/templates/stats.html.ep:25
 msgid "Back to homepage"
 msgstr "Tornar a la pagina d'acuèlh"
 
-#: themes/default/templates/index.html.ep:193 themes/default/templates/index.html.ep:194
+#: themes/default/templates/index.html.ep:211 themes/default/templates/index.html.ep:212
 msgid "Click to open the file browser"
 msgstr "Clicatz per utilizar lo navigator de fichièr"
 
@@ -80,19 +80,19 @@ msgstr "Tampar (Esc)"
 msgid "Contributors"
 msgstr "Contributors"
 
-#: themes/default/templates/partial/common.js.ep:75 themes/default/templates/partial/common.js.ep:95
+#: themes/default/templates/partial/common.js.ep:113 themes/default/templates/partial/common.js.ep:93
 msgid "Copied to clipboard"
 msgstr "Copiat al quichapapièrs"
 
-#: themes/default/templates/partial/lutim.js.ep:215 themes/default/templates/partial/lutim.js.ep:276 themes/default/templates/partial/lutim.js.ep:361
+#: themes/default/templates/partial/lutim.js.ep:215 themes/default/templates/partial/lutim.js.ep:278 themes/default/templates/partial/lutim.js.ep:364
 msgid "Copy all view links to clipboard"
 msgstr "Copiar totes los ligams de visualizacion dins lo quichapapièrs"
 
-#: themes/default/templates/index.html.ep:18 themes/default/templates/index.html.ep:36 themes/default/templates/index.html.ep:69 themes/default/templates/index.html.ep:77 themes/default/templates/index.html.ep:85 themes/default/templates/index.html.ep:93 themes/default/templates/myfiles.html.ep:20 themes/default/templates/myfiles.html.ep:38 themes/default/templates/partial/common.js.ep:168 themes/default/templates/partial/lutim.js.ep:106 themes/default/templates/partial/lutim.js.ep:121 themes/default/templates/partial/lutim.js.ep:80 themes/default/templates/partial/lutim.js.ep:92 themes/default/templates/partial/myfiles.js.ep:88
+#: themes/default/templates/index.html.ep:103 themes/default/templates/index.html.ep:111 themes/default/templates/index.html.ep:18 themes/default/templates/index.html.ep:36 themes/default/templates/index.html.ep:54 themes/default/templates/index.html.ep:87 themes/default/templates/index.html.ep:95 themes/default/templates/myfiles.html.ep:20 themes/default/templates/myfiles.html.ep:38 themes/default/templates/myfiles.html.ep:56 themes/default/templates/partial/common.js.ep:186 themes/default/templates/partial/lutim.js.ep:106 themes/default/templates/partial/lutim.js.ep:121 themes/default/templates/partial/lutim.js.ep:80 themes/default/templates/partial/lutim.js.ep:92 themes/default/templates/partial/myfiles.js.ep:92
 msgid "Copy to clipboard"
 msgstr "Copiar dins lo quichapapièrs"
 
-#: themes/default/templates/myfiles.html.ep:57
+#: themes/default/templates/myfiles.html.ep:75
 msgid "Counter"
 msgstr "Comptador"
 
@@ -104,7 +104,7 @@ msgstr "Grafic de despartiment dels delais pels imatges desactivats"
 msgid "Delay repartition chart for enabled images"
 msgstr "Grafic de despartiment dels delais pels imatges activats"
 
-#: themes/default/templates/index.html.ep:115 themes/default/templates/index.html.ep:147 themes/default/templates/index.html.ep:178 themes/default/templates/myfiles.html.ep:58 themes/default/templates/partial/lutim.js.ep:161
+#: themes/default/templates/index.html.ep:133 themes/default/templates/index.html.ep:165 themes/default/templates/index.html.ep:196 themes/default/templates/myfiles.html.ep:76 themes/default/templates/partial/lutim.js.ep:161
 msgid "Delete at first view?"
 msgstr "Suprimir al primièr accès ?"
 
@@ -116,7 +116,7 @@ msgstr "Imatges suprimits"
 msgid "Deleted images in 30 days"
 msgstr "Imatges per èsser suprimits dins 30 jorns"
 
-#: themes/default/templates/index.html.ep:98 themes/default/templates/myfiles.html.ep:61 themes/default/templates/partial/common.js.ep:160 themes/default/templates/partial/common.js.ep:163
+#: themes/default/templates/index.html.ep:116 themes/default/templates/myfiles.html.ep:79 themes/default/templates/partial/common.js.ep:178 themes/default/templates/partial/common.js.ep:181
 msgid "Deletion link"
 msgstr "Ligam de supression"
 
@@ -124,7 +124,7 @@ msgstr "Ligam de supression"
 msgid "Download all images"
 msgstr "Telecargar totes los imatges"
 
-#: themes/default/templates/index.html.ep:81 themes/default/templates/index.html.ep:83 themes/default/templates/partial/lutim.js.ep:102 themes/default/templates/partial/lutim.js.ep:98
+#: themes/default/templates/index.html.ep:101 themes/default/templates/index.html.ep:99 themes/default/templates/partial/lutim.js.ep:102 themes/default/templates/partial/lutim.js.ep:98
 msgid "Download link"
 msgstr "Ligam de telecargament"
 
@@ -132,7 +132,7 @@ msgstr "Ligam de telecargament"
 msgid "Download zip link"
 msgstr "Ligam de telecargament de l'archiu dels imatges"
 
-#: themes/default/templates/index.html.ep:189
+#: themes/default/templates/index.html.ep:207
 msgid "Drag & drop images here"
 msgstr "Lisatz e depausatz vòstres imatges aquí"
 
@@ -149,7 +149,7 @@ msgstr ""
 "suls malhums socials e una darrièra per suprimir vòstre imatge quand "
 "volguèssetz."
 
-#: themes/default/templates/index.html.ep:150 themes/default/templates/index.html.ep:181
+#: themes/default/templates/index.html.ep:168 themes/default/templates/index.html.ep:199
 msgid "Encrypt the image (Lutim does not keep the key)."
 msgstr "Chifrar l'imatge (Lutim garda pas la clau)."
 
@@ -161,15 +161,15 @@ msgstr "Una error es apareguda al moment de modificar l'imatge."
 msgid "Evolution of total files"
 msgstr "Evolucion del nombre total de fichièrs"
 
-#: themes/default/templates/myfiles.html.ep:60
+#: themes/default/templates/myfiles.html.ep:78
 msgid "Expires at"
 msgstr "S'acaba lo"
 
-#: themes/default/templates/myfiles.html.ep:46
+#: themes/default/templates/myfiles.html.ep:64
 msgid "Export localStorage data"
 msgstr "Exportar las donadas localStorage"
 
-#: themes/default/templates/myfiles.html.ep:55
+#: themes/default/templates/myfiles.html.ep:73
 msgid "File name"
 msgstr "Nom del fichièr"
 
@@ -189,7 +189,7 @@ msgstr "Tustatz-me !"
 msgid "Gallery link"
 msgstr "Ligam  cap a la galariá"
 
-#: themes/default/templates/partial/common.js.ep:116 themes/default/templates/partial/common.js.ep:98
+#: themes/default/templates/partial/common.js.ep:116 themes/default/templates/partial/common.js.ep:134
 msgid "Hit Ctrl+C, then Enter to copy the short link"
 msgstr "Fasètz Ctrl+C puèi picatz Entrada per copiar lo ligam"
 
@@ -217,7 +217,7 @@ msgstr ""
 "Se los fichièrs son ben estats suprimits se o avètz demandat, lors "
 "signaturas SHA512 son gardadas."
 
-#: themes/default/templates/index.html.ep:163 themes/default/templates/index.html.ep:203
+#: themes/default/templates/index.html.ep:181 themes/default/templates/index.html.ep:221
 msgid "Image URL"
 msgstr "URL de l'imatge"
 
@@ -225,15 +225,15 @@ msgstr "URL de l'imatge"
 msgid "Image delay"
 msgstr "Delai de l'imatge"
 
-#: themes/default/templates/partial/common.js.ep:139
+#: themes/default/templates/partial/common.js.ep:157
 msgid "Image deleted"
 msgstr "Imatge suprimit"
 
-#: lib/Lutim/Controller.pm:752
+#: lib/Lutim/Controller.pm:753
 msgid "Image not found."
 msgstr "Imatge pas trobat."
 
-#: themes/default/templates/myfiles.html.ep:47
+#: themes/default/templates/myfiles.html.ep:65
 msgid "Import localStorage data"
 msgstr "Importar las donadas localStorage"
 
@@ -266,7 +266,7 @@ msgstr ""
 "N, o coma la paraula francesa <a href=\"https://fr.wikipedia.org/wiki/"
 "Lutin\">lutin</a> (/ly.tɛ̃/)."
 
-#: themes/default/templates/index.html.ep:153 themes/default/templates/index.html.ep:184
+#: themes/default/templates/index.html.ep:171 themes/default/templates/index.html.ep:202
 msgid "Keep EXIF tags"
 msgstr "Conservar las donadas EXIF"
 
@@ -274,7 +274,7 @@ msgstr "Conservar las donadas EXIF"
 msgid "Language"
 msgstr "Lenga"
 
-#: themes/default/templates/index.html.ep:118 themes/default/templates/index.html.ep:166 themes/default/templates/index.html.ep:206 themes/default/templates/partial/lutim.js.ep:165
+#: themes/default/templates/index.html.ep:136 themes/default/templates/index.html.ep:184 themes/default/templates/index.html.ep:224 themes/default/templates/partial/lutim.js.ep:165
 msgid "Let's go!"
 msgstr "Zo !"
 
@@ -282,7 +282,7 @@ msgstr "Zo !"
 msgid "License:"
 msgstr "Licéncia :"
 
-#: themes/default/templates/index.html.ep:89 themes/default/templates/index.html.ep:91 themes/default/templates/partial/lutim.js.ep:112 themes/default/templates/partial/lutim.js.ep:116
+#: themes/default/templates/index.html.ep:107 themes/default/templates/index.html.ep:109 themes/default/templates/partial/lutim.js.ep:112 themes/default/templates/partial/lutim.js.ep:116
 msgid "Link for share on social networks"
 msgstr "Ligam per partejar suls malhums socials"
 
@@ -307,7 +307,7 @@ msgstr ""
 msgid "Main developers"
 msgstr "Desvolopaires de l'aplicacion"
 
-#: themes/default/templates/index.html.ep:73 themes/default/templates/index.html.ep:75 themes/default/templates/partial/lutim.js.ep:86 themes/default/templates/partial/lutim.js.ep:89
+#: themes/default/templates/index.html.ep:91 themes/default/templates/index.html.ep:93 themes/default/templates/partial/lutim.js.ep:86 themes/default/templates/partial/lutim.js.ep:89
 msgid "Markdown syntax"
 msgstr "Sintaxi Markdown"
 
@@ -319,11 +319,11 @@ msgstr "Mos imatges"
 msgid "Next (arrow right)"
 msgstr "Seguent (sageta dreita)"
 
-#: themes/default/templates/partial/myfiles.js.ep:78
+#: themes/default/templates/partial/myfiles.js.ep:82
 msgid "No limit"
 msgstr "Pas cap de data d'expiracion"
 
-#: themes/default/templates/index.html.ep:165 themes/default/templates/index.html.ep:198
+#: themes/default/templates/index.html.ep:183 themes/default/templates/index.html.ep:216
 msgid "Only images are allowed"
 msgstr "Solament son acceptats los imatges"
 
@@ -359,20 +359,24 @@ msgstr "Mercés de contactar l'administrator : %1"
 msgid "Previous (arrow left)"
 msgstr "Precedent (sageta esquèrra)"
 
+#: themes/default/templates/index.html.ep:46 themes/default/templates/index.html.ep:49 themes/default/templates/myfiles.html.ep:48 themes/default/templates/myfiles.html.ep:51
+msgid "Random image link"
+msgstr ""
+
 #: themes/default/templates/stats.html.ep:22
 msgid "Raw stats"
 msgstr "Estatisticas brutas"
 
-#: themes/default/templates/index.html.ep:158
+#: themes/default/templates/index.html.ep:176
 msgid "Send an image"
 msgstr "Mandar un imatge"
 
-#: themes/default/templates/index.html.ep:133 themes/default/templates/partial/gallery.js.ep:211 themes/default/templates/partial/lutim.js.ep:176
+#: themes/default/templates/index.html.ep:151 themes/default/templates/partial/gallery.js.ep:211 themes/default/templates/partial/lutim.js.ep:176
 msgid "Something bad happened"
 msgstr "Un problèma es aparegut"
 
 #. ($c->config('contact')
-#: lib/Lutim/Controller.pm:759
+#: lib/Lutim/Controller.pm:760
 msgid ""
 "Something went wrong when creating the zip file. Try again later or contact "
 "the administrator (%1)."
@@ -418,7 +422,7 @@ msgstr ""
 "l’installar sus vòstre pròpri servidor. Gaitatz l’<a href=\"https://www.gnu."
 "org/licenses/agpl-3.0.html\">AGPL</a> per veire que son vòstres dreits"
 
-#: lib/Lutim/Controller.pm:345
+#: lib/Lutim/Controller.pm:346
 msgid "The URL is not valid."
 msgstr "L'URL n'es pas valida."
 
@@ -434,19 +438,19 @@ msgstr ""
 msgid "The data has been successfully imported."
 msgstr "Las donadas son ben estadas importadas."
 
-#: lib/Lutim/Controller.pm:158 lib/Lutim/Controller.pm:226
+#: lib/Lutim/Controller.pm:159 lib/Lutim/Controller.pm:227
 msgid "The delete token is invalid."
 msgstr "Lo geton de supression es invalid."
 
 #. ($upload->filename)
-#: lib/Lutim/Controller.pm:486
+#: lib/Lutim/Controller.pm:487
 msgid "The file %1 is not an image."
 msgstr "Lo fichièr %1 es pas un imatge."
 
 #. ($tx->res->max_message_size)
 #. ($c->req->max_message_size)
 #. (config('max_file_size')
-#: lib/Lutim/Controller.pm:309 lib/Lutim/Controller.pm:378 themes/default/templates/partial/lutim.js.ep:247
+#: lib/Lutim/Controller.pm:310 lib/Lutim/Controller.pm:379 themes/default/templates/partial/lutim.js.ep:249
 msgid "The file exceed the size limit (%1)"
 msgstr "Lo fichièr depassa lo limit de talha (%1)"
 
@@ -455,20 +459,20 @@ msgid "The graph's datas are not updated in real-time."
 msgstr "Las donadas del grafic son pas mesas a jorn en temps real."
 
 #. ($image->filename)
-#: lib/Lutim/Controller.pm:228
+#: lib/Lutim/Controller.pm:229
 msgid "The image %1 has already been deleted."
 msgstr "L'imatge %1 es ja estat suprimit."
 
 #. ($image->filename)
-#: lib/Lutim/Controller.pm:237 lib/Lutim/Controller.pm:242
+#: lib/Lutim/Controller.pm:238 lib/Lutim/Controller.pm:243
 msgid "The image %1 has been successfully deleted"
 msgstr "L'imatge %1 es estat suprimit amb succès."
 
-#: lib/Lutim/Controller.pm:166
+#: lib/Lutim/Controller.pm:167
 msgid "The image's delay has been successfully modified"
 msgstr "Lo delai de l'imatge es plan estat modificat."
 
-#: themes/default/templates/index.html.ep:45
+#: themes/default/templates/index.html.ep:63
 msgid "The images are encrypted on the server (Lutim does not keep the key)."
 msgstr "Los imatges son chifrats sul servidor (Lutim garda pas la clau)."
 
@@ -485,7 +489,7 @@ msgid "There is XXXX image(s) in the gallery"
 msgstr "I a XXXX imatge(s) dins la galariá"
 
 #. ($c->config->{contact})
-#: lib/Lutim/Controller.pm:483
+#: lib/Lutim/Controller.pm:484
 msgid "There is no more available URL. Retry or contact the administrator. %1"
 msgstr ""
 "I a pas mai d'URL disponiblas. Mercés de tornar ensajar o de contactar "
@@ -503,24 +507,24 @@ msgstr "Passar en navigacion"
 msgid "Total"
 msgstr "Total"
 
-#: themes/default/templates/index.html.ep:60 themes/default/templates/partial/lutim.js.ep:17
+#: themes/default/templates/index.html.ep:78 themes/default/templates/partial/lutim.js.ep:17
 msgid "Tweet it!"
 msgstr "Tweetejatz-lo !"
 
-#: themes/default/templates/partial/common.js.ep:72 themes/default/templates/partial/common.js.ep:92
+#: themes/default/templates/partial/common.js.ep:110 themes/default/templates/partial/common.js.ep:90
 msgid "Unable to copy to clipboard"
 msgstr "Fracàs de la còpia al quichapapièrs"
 
 #. ($short)
-#: lib/Lutim/Controller.pm:106 lib/Lutim/Controller.pm:200 lib/Lutim/Controller.pm:271
+#: lib/Lutim/Controller.pm:107 lib/Lutim/Controller.pm:201 lib/Lutim/Controller.pm:272
 msgid "Unable to find the image %1."
 msgstr "Impossible de trobar l'imatge %1."
 
-#: lib/Lutim/Controller.pm:572 lib/Lutim/Controller.pm:617 lib/Lutim/Controller.pm:656 lib/Lutim/Controller.pm:699 lib/Lutim/Controller.pm:711 lib/Lutim/Controller.pm:722 lib/Lutim/Controller.pm:749 lib/Lutim/Plugin/Helpers.pm:88
+#: lib/Lutim/Controller.pm:573 lib/Lutim/Controller.pm:618 lib/Lutim/Controller.pm:657 lib/Lutim/Controller.pm:700 lib/Lutim/Controller.pm:712 lib/Lutim/Controller.pm:723 lib/Lutim/Controller.pm:750 lib/Lutim/Plugin/Helpers.pm:88
 msgid "Unable to find the image: it has been deleted."
 msgstr "Impossible de trobar l'imatge : es estat suprimit."
 
-#: lib/Lutim/Controller.pm:143
+#: lib/Lutim/Controller.pm:144
 msgid "Unable to get counter"
 msgstr "Impossible de recuperar lo comptador"
 
@@ -532,11 +536,11 @@ msgstr ""
 "A l'invèrse de la màger part dels servicis de partiment d'imatge, daissatz "
 "pas cap de dreit suls imatges que mandatz."
 
-#: themes/default/templates/index.html.ep:162 themes/default/templates/index.html.ep:201
+#: themes/default/templates/index.html.ep:180 themes/default/templates/index.html.ep:219
 msgid "Upload an image with its URL"
 msgstr "Depausar un imatge per son URL"
 
-#: themes/default/templates/myfiles.html.ep:59
+#: themes/default/templates/myfiles.html.ep:77
 msgid "Uploaded at"
 msgstr "Mandat lo"
 
@@ -553,7 +557,7 @@ msgstr ""
 "La mesa en linha es desactivada pel moment, mercés de tornar ensajar mai "
 "tard o de contactar l'administrator (%1)."
 
-#: themes/default/templates/index.html.ep:65 themes/default/templates/index.html.ep:67 themes/default/templates/myfiles.html.ep:56 themes/default/templates/partial/lutim.js.ep:72 themes/default/templates/partial/lutim.js.ep:76
+#: themes/default/templates/index.html.ep:83 themes/default/templates/index.html.ep:85 themes/default/templates/myfiles.html.ep:74 themes/default/templates/partial/lutim.js.ep:72 themes/default/templates/partial/lutim.js.ep:76
 msgid "View link"
 msgstr "Ligam d'afichatge"
 

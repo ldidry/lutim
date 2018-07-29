@@ -35,7 +35,7 @@ msgstr "%1 أيام"
 msgid "%1 sent images on this instance from beginning."
 msgstr "تم إرسال %1 صورة على مثيل الخادوم هذا منذ البداية."
 
-#: themes/default/templates/index.html.ep:190
+#: themes/default/templates/index.html.ep:208
 msgid "-or-"
 msgstr "-أو-"
 
@@ -47,7 +47,7 @@ msgstr "سنة واحدة"
 msgid "24 hours"
 msgstr "24 ساعة"
 
-#: themes/default/templates/partial/myfiles.js.ep:120
+#: themes/default/templates/partial/myfiles.js.ep:124
 msgid ": Error while trying to get the counter."
 msgstr ": طرأ هناك خطأ أثناء محاولة إستعادة العداد."
 
@@ -59,7 +59,7 @@ msgstr "عن البرنامج"
 msgid "Active images"
 msgstr "الصور النشطة"
 
-#: lib/Lutim/Controller.pm:326
+#: lib/Lutim/Controller.pm:327
 msgid "An error occured while downloading the image."
 msgstr "طرأ هناك خطأ أثناء عملية تنزيل الصورة."
 
@@ -67,11 +67,11 @@ msgstr "طرأ هناك خطأ أثناء عملية تنزيل الصورة."
 msgid "Archives download"
 msgstr "تنزيل الأرشيف"
 
-#: themes/default/templates/about.html.ep:44 themes/default/templates/myfiles.html.ep:69 themes/default/templates/stats.html.ep:25
+#: themes/default/templates/about.html.ep:44 themes/default/templates/myfiles.html.ep:87 themes/default/templates/stats.html.ep:25
 msgid "Back to homepage"
 msgstr "العودة إلى الصفحة الرئيسية"
 
-#: themes/default/templates/index.html.ep:193 themes/default/templates/index.html.ep:194
+#: themes/default/templates/index.html.ep:211 themes/default/templates/index.html.ep:212
 msgid "Click to open the file browser"
 msgstr "إضغط لفتح مدير الملفات"
 
@@ -83,19 +83,19 @@ msgstr "إغلاق (Esc)"
 msgid "Contributors"
 msgstr "المساهمون"
 
-#: themes/default/templates/partial/common.js.ep:75 themes/default/templates/partial/common.js.ep:95
+#: themes/default/templates/partial/common.js.ep:113 themes/default/templates/partial/common.js.ep:93
 msgid "Copied to clipboard"
 msgstr ""
 
-#: themes/default/templates/partial/lutim.js.ep:215 themes/default/templates/partial/lutim.js.ep:276 themes/default/templates/partial/lutim.js.ep:361
+#: themes/default/templates/partial/lutim.js.ep:215 themes/default/templates/partial/lutim.js.ep:278 themes/default/templates/partial/lutim.js.ep:364
 msgid "Copy all view links to clipboard"
 msgstr "أنسخ كافة روابط العرض إلى الحافظة"
 
-#: themes/default/templates/index.html.ep:18 themes/default/templates/index.html.ep:36 themes/default/templates/index.html.ep:69 themes/default/templates/index.html.ep:77 themes/default/templates/index.html.ep:85 themes/default/templates/index.html.ep:93 themes/default/templates/myfiles.html.ep:20 themes/default/templates/myfiles.html.ep:38 themes/default/templates/partial/common.js.ep:168 themes/default/templates/partial/lutim.js.ep:106 themes/default/templates/partial/lutim.js.ep:121 themes/default/templates/partial/lutim.js.ep:80 themes/default/templates/partial/lutim.js.ep:92 themes/default/templates/partial/myfiles.js.ep:88
+#: themes/default/templates/index.html.ep:103 themes/default/templates/index.html.ep:111 themes/default/templates/index.html.ep:18 themes/default/templates/index.html.ep:36 themes/default/templates/index.html.ep:54 themes/default/templates/index.html.ep:87 themes/default/templates/index.html.ep:95 themes/default/templates/myfiles.html.ep:20 themes/default/templates/myfiles.html.ep:38 themes/default/templates/myfiles.html.ep:56 themes/default/templates/partial/common.js.ep:186 themes/default/templates/partial/lutim.js.ep:106 themes/default/templates/partial/lutim.js.ep:121 themes/default/templates/partial/lutim.js.ep:80 themes/default/templates/partial/lutim.js.ep:92 themes/default/templates/partial/myfiles.js.ep:92
 msgid "Copy to clipboard"
 msgstr "أنسخ إلى الحافظة"
 
-#: themes/default/templates/myfiles.html.ep:57
+#: themes/default/templates/myfiles.html.ep:75
 msgid "Counter"
 msgstr "العداد"
 
@@ -107,7 +107,7 @@ msgstr ""
 msgid "Delay repartition chart for enabled images"
 msgstr ""
 
-#: themes/default/templates/index.html.ep:115 themes/default/templates/index.html.ep:147 themes/default/templates/index.html.ep:178 themes/default/templates/myfiles.html.ep:58 themes/default/templates/partial/lutim.js.ep:161
+#: themes/default/templates/index.html.ep:133 themes/default/templates/index.html.ep:165 themes/default/templates/index.html.ep:196 themes/default/templates/myfiles.html.ep:76 themes/default/templates/partial/lutim.js.ep:161
 msgid "Delete at first view?"
 msgstr "هل تود حذف الصورة مباشرة بعد أول عرض ؟"
 
@@ -119,7 +119,7 @@ msgstr "الصور المحذوفة"
 msgid "Deleted images in 30 days"
 msgstr "الصور المحذوفة منذ 30 يوما"
 
-#: themes/default/templates/index.html.ep:98 themes/default/templates/myfiles.html.ep:61 themes/default/templates/partial/common.js.ep:160 themes/default/templates/partial/common.js.ep:163
+#: themes/default/templates/index.html.ep:116 themes/default/templates/myfiles.html.ep:79 themes/default/templates/partial/common.js.ep:178 themes/default/templates/partial/common.js.ep:181
 msgid "Deletion link"
 msgstr "رابط الحذف"
 
@@ -127,7 +127,7 @@ msgstr "رابط الحذف"
 msgid "Download all images"
 msgstr "تنزيل كافة الصور"
 
-#: themes/default/templates/index.html.ep:81 themes/default/templates/index.html.ep:83 themes/default/templates/partial/lutim.js.ep:102 themes/default/templates/partial/lutim.js.ep:98
+#: themes/default/templates/index.html.ep:101 themes/default/templates/index.html.ep:99 themes/default/templates/partial/lutim.js.ep:102 themes/default/templates/partial/lutim.js.ep:98
 msgid "Download link"
 msgstr "رابط التنزيل"
 
@@ -135,7 +135,7 @@ msgstr "رابط التنزيل"
 msgid "Download zip link"
 msgstr "رابط التنزيل كحزمة مضغوطة"
 
-#: themes/default/templates/index.html.ep:189
+#: themes/default/templates/index.html.ep:207
 msgid "Drag & drop images here"
 msgstr "إسحب ثم القي الصور هنا"
 
@@ -151,7 +151,7 @@ msgstr ""
 "آخر لتنزيل الصورة مباشرة و آخر يمكنكم إستخدامه على شبكات التواصل الإجتماعي و "
 "أخيرا رابط آخر يمكّنكم من حذف الصورة إن شئتم."
 
-#: themes/default/templates/index.html.ep:150 themes/default/templates/index.html.ep:181
+#: themes/default/templates/index.html.ep:168 themes/default/templates/index.html.ep:199
 msgid "Encrypt the image (Lutim does not keep the key)."
 msgstr "قم بتعمية و تشفير الصورة (لوتان Lutim لا يحتفظ بالمفتاح)."
 
@@ -163,15 +163,15 @@ msgstr "طرأ هناك خطأ أثناء عملية تعديل الصورة."
 msgid "Evolution of total files"
 msgstr "تطور العدد الإجمالي للملفات"
 
-#: themes/default/templates/myfiles.html.ep:60
+#: themes/default/templates/myfiles.html.ep:78
 msgid "Expires at"
 msgstr "تنتهي مدة صلاحيتها في"
 
-#: themes/default/templates/myfiles.html.ep:46
+#: themes/default/templates/myfiles.html.ep:64
 msgid "Export localStorage data"
 msgstr ""
 
-#: themes/default/templates/myfiles.html.ep:55
+#: themes/default/templates/myfiles.html.ep:73
 msgid "File name"
 msgstr "إسم الملف"
 
@@ -191,7 +191,7 @@ msgstr "قم بتشعيبي !"
 msgid "Gallery link"
 msgstr "رابط المعرض"
 
-#: themes/default/templates/partial/common.js.ep:116 themes/default/templates/partial/common.js.ep:98
+#: themes/default/templates/partial/common.js.ep:116 themes/default/templates/partial/common.js.ep:134
 msgid "Hit Ctrl+C, then Enter to copy the short link"
 msgstr "إضغط على CTRL+C ثم على مفتاح الإدخال للقيام بنسخ الرابط القصير"
 
@@ -219,7 +219,7 @@ msgstr ""
 "إذا تم حذف الملفات و إن قمت بطلب ذلك أثناء الإرسال سوف نقوم بالإحتفاظ ببصمات "
 "SHA512 الخاصة بالصور."
 
-#: themes/default/templates/index.html.ep:163 themes/default/templates/index.html.ep:203
+#: themes/default/templates/index.html.ep:181 themes/default/templates/index.html.ep:221
 msgid "Image URL"
 msgstr "رابط الصورة"
 
@@ -227,15 +227,15 @@ msgstr "رابط الصورة"
 msgid "Image delay"
 msgstr "تأجيل الصورة"
 
-#: themes/default/templates/partial/common.js.ep:139
+#: themes/default/templates/partial/common.js.ep:157
 msgid "Image deleted"
 msgstr ""
 
-#: lib/Lutim/Controller.pm:752
+#: lib/Lutim/Controller.pm:753
 msgid "Image not found."
 msgstr "الصورة غير موجودة."
 
-#: themes/default/templates/myfiles.html.ep:47
+#: themes/default/templates/myfiles.html.ep:65
 msgid "Import localStorage data"
 msgstr ""
 
@@ -267,7 +267,7 @@ msgstr ""
 "يُنطق مِثل الكلمة الفرنسية <a href=\"https://fr.wikipedia.org/wiki/"
 "Lutin\">lutin</a> (/ly.tɛ̃/)."
 
-#: themes/default/templates/index.html.ep:153 themes/default/templates/index.html.ep:184
+#: themes/default/templates/index.html.ep:171 themes/default/templates/index.html.ep:202
 msgid "Keep EXIF tags"
 msgstr "الإبقاء على بيانات EXIF"
 
@@ -275,7 +275,7 @@ msgstr "الإبقاء على بيانات EXIF"
 msgid "Language"
 msgstr "اللغة"
 
-#: themes/default/templates/index.html.ep:118 themes/default/templates/index.html.ep:166 themes/default/templates/index.html.ep:206 themes/default/templates/partial/lutim.js.ep:165
+#: themes/default/templates/index.html.ep:136 themes/default/templates/index.html.ep:184 themes/default/templates/index.html.ep:224 themes/default/templates/partial/lutim.js.ep:165
 msgid "Let's go!"
 msgstr "هيا بنا !"
 
@@ -283,7 +283,7 @@ msgstr "هيا بنا !"
 msgid "License:"
 msgstr "الرخصة :"
 
-#: themes/default/templates/index.html.ep:89 themes/default/templates/index.html.ep:91 themes/default/templates/partial/lutim.js.ep:112 themes/default/templates/partial/lutim.js.ep:116
+#: themes/default/templates/index.html.ep:107 themes/default/templates/index.html.ep:109 themes/default/templates/partial/lutim.js.ep:112 themes/default/templates/partial/lutim.js.ep:116
 msgid "Link for share on social networks"
 msgstr "رابط للمشاركة على شبكات التواصل الإجتماعي"
 
@@ -306,7 +306,7 @@ msgstr ""
 msgid "Main developers"
 msgstr "المطورون الرئيسيون"
 
-#: themes/default/templates/index.html.ep:73 themes/default/templates/index.html.ep:75 themes/default/templates/partial/lutim.js.ep:86 themes/default/templates/partial/lutim.js.ep:89
+#: themes/default/templates/index.html.ep:91 themes/default/templates/index.html.ep:93 themes/default/templates/partial/lutim.js.ep:86 themes/default/templates/partial/lutim.js.ep:89
 msgid "Markdown syntax"
 msgstr ""
 
@@ -318,11 +318,11 @@ msgstr "صوري"
 msgid "Next (arrow right)"
 msgstr ""
 
-#: themes/default/templates/partial/myfiles.js.ep:78
+#: themes/default/templates/partial/myfiles.js.ep:82
 msgid "No limit"
 msgstr "غير محدود"
 
-#: themes/default/templates/index.html.ep:165 themes/default/templates/index.html.ep:198
+#: themes/default/templates/index.html.ep:183 themes/default/templates/index.html.ep:216
 msgid "Only images are allowed"
 msgstr "لا يُسمح إلّا بإستضافة الصور"
 
@@ -352,20 +352,24 @@ msgstr "يرجى الإتصال بالمدير : %1"
 msgid "Previous (arrow left)"
 msgstr ""
 
+#: themes/default/templates/index.html.ep:46 themes/default/templates/index.html.ep:49 themes/default/templates/myfiles.html.ep:48 themes/default/templates/myfiles.html.ep:51
+msgid "Random image link"
+msgstr ""
+
 #: themes/default/templates/stats.html.ep:22
 msgid "Raw stats"
 msgstr "الإحصائيات الخامة"
 
-#: themes/default/templates/index.html.ep:158
+#: themes/default/templates/index.html.ep:176
 msgid "Send an image"
 msgstr "إرسال صورة"
 
-#: themes/default/templates/index.html.ep:133 themes/default/templates/partial/gallery.js.ep:211 themes/default/templates/partial/lutim.js.ep:176
+#: themes/default/templates/index.html.ep:151 themes/default/templates/partial/gallery.js.ep:211 themes/default/templates/partial/lutim.js.ep:176
 msgid "Something bad happened"
 msgstr "طرأ هناك خلل"
 
 #. ($c->config('contact')
-#: lib/Lutim/Controller.pm:759
+#: lib/Lutim/Controller.pm:760
 msgid ""
 "Something went wrong when creating the zip file. Try again later or contact "
 "the administrator (%1)."
@@ -402,7 +406,7 @@ msgid ""
 "licenses/agpl-3.0.html\">AGPL</a> to see what you can do."
 msgstr ""
 
-#: lib/Lutim/Controller.pm:345
+#: lib/Lutim/Controller.pm:346
 msgid "The URL is not valid."
 msgstr ""
 
@@ -416,19 +420,19 @@ msgstr ""
 msgid "The data has been successfully imported."
 msgstr ""
 
-#: lib/Lutim/Controller.pm:158 lib/Lutim/Controller.pm:226
+#: lib/Lutim/Controller.pm:159 lib/Lutim/Controller.pm:227
 msgid "The delete token is invalid."
 msgstr ""
 
 #. ($upload->filename)
-#: lib/Lutim/Controller.pm:486
+#: lib/Lutim/Controller.pm:487
 msgid "The file %1 is not an image."
 msgstr ""
 
 #. ($tx->res->max_message_size)
 #. ($c->req->max_message_size)
 #. (config('max_file_size')
-#: lib/Lutim/Controller.pm:309 lib/Lutim/Controller.pm:378 themes/default/templates/partial/lutim.js.ep:247
+#: lib/Lutim/Controller.pm:310 lib/Lutim/Controller.pm:379 themes/default/templates/partial/lutim.js.ep:249
 msgid "The file exceed the size limit (%1)"
 msgstr ""
 
@@ -437,20 +441,20 @@ msgid "The graph's datas are not updated in real-time."
 msgstr ""
 
 #. ($image->filename)
-#: lib/Lutim/Controller.pm:228
+#: lib/Lutim/Controller.pm:229
 msgid "The image %1 has already been deleted."
 msgstr ""
 
 #. ($image->filename)
-#: lib/Lutim/Controller.pm:237 lib/Lutim/Controller.pm:242
+#: lib/Lutim/Controller.pm:238 lib/Lutim/Controller.pm:243
 msgid "The image %1 has been successfully deleted"
 msgstr ""
 
-#: lib/Lutim/Controller.pm:166
+#: lib/Lutim/Controller.pm:167
 msgid "The image's delay has been successfully modified"
 msgstr ""
 
-#: themes/default/templates/index.html.ep:45
+#: themes/default/templates/index.html.ep:63
 msgid "The images are encrypted on the server (Lutim does not keep the key)."
 msgstr ""
 
@@ -465,7 +469,7 @@ msgid "There is XXXX image(s) in the gallery"
 msgstr ""
 
 #. ($c->config->{contact})
-#: lib/Lutim/Controller.pm:483
+#: lib/Lutim/Controller.pm:484
 msgid "There is no more available URL. Retry or contact the administrator. %1"
 msgstr ""
 
@@ -481,24 +485,24 @@ msgstr ""
 msgid "Total"
 msgstr "العدد الإجمالي"
 
-#: themes/default/templates/index.html.ep:60 themes/default/templates/partial/lutim.js.ep:17
+#: themes/default/templates/index.html.ep:78 themes/default/templates/partial/lutim.js.ep:17
 msgid "Tweet it!"
 msgstr "غرِّد الرابط"
 
-#: themes/default/templates/partial/common.js.ep:72 themes/default/templates/partial/common.js.ep:92
+#: themes/default/templates/partial/common.js.ep:110 themes/default/templates/partial/common.js.ep:90
 msgid "Unable to copy to clipboard"
 msgstr ""
 
 #. ($short)
-#: lib/Lutim/Controller.pm:106 lib/Lutim/Controller.pm:200 lib/Lutim/Controller.pm:271
+#: lib/Lutim/Controller.pm:107 lib/Lutim/Controller.pm:201 lib/Lutim/Controller.pm:272
 msgid "Unable to find the image %1."
 msgstr "تعذر العثور على الصورة %1."
 
-#: lib/Lutim/Controller.pm:572 lib/Lutim/Controller.pm:617 lib/Lutim/Controller.pm:656 lib/Lutim/Controller.pm:699 lib/Lutim/Controller.pm:711 lib/Lutim/Controller.pm:722 lib/Lutim/Controller.pm:749 lib/Lutim/Plugin/Helpers.pm:88
+#: lib/Lutim/Controller.pm:573 lib/Lutim/Controller.pm:618 lib/Lutim/Controller.pm:657 lib/Lutim/Controller.pm:700 lib/Lutim/Controller.pm:712 lib/Lutim/Controller.pm:723 lib/Lutim/Controller.pm:750 lib/Lutim/Plugin/Helpers.pm:88
 msgid "Unable to find the image: it has been deleted."
 msgstr "تعذر العثور على الصورة : لقد تم حذفها."
 
-#: lib/Lutim/Controller.pm:143
+#: lib/Lutim/Controller.pm:144
 msgid "Unable to get counter"
 msgstr "تعذر جلب التعداد"
 
@@ -508,11 +512,11 @@ msgid ""
 "images."
 msgstr ""
 
-#: themes/default/templates/index.html.ep:162 themes/default/templates/index.html.ep:201
+#: themes/default/templates/index.html.ep:180 themes/default/templates/index.html.ep:219
 msgid "Upload an image with its URL"
 msgstr "القيام برفع صورة بواسطة رابطها"
 
-#: themes/default/templates/myfiles.html.ep:59
+#: themes/default/templates/myfiles.html.ep:77
 msgid "Uploaded at"
 msgstr "تم رفعها على"
 
@@ -527,7 +531,7 @@ msgid ""
 "administrator (%1)."
 msgstr ""
 
-#: themes/default/templates/index.html.ep:65 themes/default/templates/index.html.ep:67 themes/default/templates/myfiles.html.ep:56 themes/default/templates/partial/lutim.js.ep:72 themes/default/templates/partial/lutim.js.ep:76
+#: themes/default/templates/index.html.ep:83 themes/default/templates/index.html.ep:85 themes/default/templates/myfiles.html.ep:74 themes/default/templates/partial/lutim.js.ep:72 themes/default/templates/partial/lutim.js.ep:76
 msgid "View link"
 msgstr "عرض الرابط"
 
