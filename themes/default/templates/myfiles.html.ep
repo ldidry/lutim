@@ -42,6 +42,11 @@
         </div>
     </form>
 </div>
+<div class="files-buttons">
+    <a href="#" id="json-export" class="btn btn-info"><%= l('Export localStorage data') %></a>
+    <a href="#" id="json-import" class="btn btn-info"><%= l('Import localStorage data') %></a>
+    <input type="file" class="hidden" id="import">
+</div>
 <div class="table-responsive">
     <table class="table table-hover">
         <thead>

@@ -105,6 +105,9 @@ $('document').ready(function() {
         });
     } else if ($('#myfiles').length !== 0) {
         populateFilesTable();
+        $('#json-export').on('click', function() { exportStorage(); });
+        $('#json-import').on('click', function() { $('#import').click(); });
+        $('#import').on('change', function() { importStorage(this.files); })
     }
     $('.copy-to-clipboard-link').on('click', clickOnCopyLink);
     $('.copy-all-to-clipboard-link').on('click', copyAllToClipboard);
