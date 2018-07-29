@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the Lutim package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # Luc Didry <luc@framasoft.org>, 2018. #zanata
-# Quentí <quentinantonin@free.fr>, 2018. #zanata
+# Quentí, 2018. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
