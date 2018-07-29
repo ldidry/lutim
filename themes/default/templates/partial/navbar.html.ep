@@ -62,9 +62,6 @@
                         <li>
                             <%= link_to 'https://liberapay.com/sky'   => begin %><%= l('Support the author on Liberapay') %><% end %>
                         </li>
-                        <li>
-                            <%= link_to 'bitcoin:3MJBezS1S1jPZ1Jgn8MYURLLu78CcPfqew?label=lutim' => begin %><%= l('Support the author with bitcoins') %><% end %>
-                        </li>
                     </ul>
                 </li>
                 <li class="dropdown">

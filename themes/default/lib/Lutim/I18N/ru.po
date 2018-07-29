@@ -43,7 +43,7 @@ msgstr "24 часа"
 msgid ": Error while trying to get the counter."
 msgstr ": Error while trying to get the counter."
 
-#: themes/default/templates/partial/navbar.html.ep:80
+#: themes/default/templates/partial/navbar.html.ep:77
 msgid "About"
 msgstr "О Lutim"
 
@@ -179,7 +179,7 @@ msgstr ""
 "Чтоб узнать больше, посетите <a href=\"https://framagit.org/luc/"
 "lutim\">главную страницу проекта</a>."
 
-#: themes/default/templates/partial/navbar.html.ep:83
+#: themes/default/templates/partial/navbar.html.ep:80
 msgid "Fork me!"
 msgstr "Форкни меня!"
 
@@ -235,7 +235,7 @@ msgstr "Изображение не найдено."
 msgid "Import localStorage data"
 msgstr ""
 
-#: themes/default/templates/partial/navbar.html.ep:72
+#: themes/default/templates/partial/navbar.html.ep:69
 msgid "Informations"
 msgstr "Информация"
 
@@ -275,7 +275,7 @@ msgstr "Язык"
 msgid "Let's go!"
 msgstr "Вперёд!"
 
-#: themes/default/templates/partial/navbar.html.ep:77
+#: themes/default/templates/partial/navbar.html.ep:74
 msgid "License:"
 msgstr "Лицензия:"
 
@@ -421,10 +421,6 @@ msgstr "Поддержать автора на Liberapay"
 #: themes/default/templates/partial/navbar.html.ep:60
 msgid "Support the author on Tipeee"
 msgstr "Поддержать автора на Tipeee"
-
-#: themes/default/templates/partial/navbar.html.ep:66
-msgid "Support the author with bitcoins"
-msgstr "Поддержать автора биткойнами"
 
 #: themes/default/templates/about.html.ep:13
 msgid ""

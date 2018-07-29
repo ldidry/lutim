@@ -51,7 +51,7 @@ msgstr "24 ساعة"
 msgid ": Error while trying to get the counter."
 msgstr ": طرأ هناك خطأ أثناء محاولة إستعادة العداد."
 
-#: themes/default/templates/partial/navbar.html.ep:80
+#: themes/default/templates/partial/navbar.html.ep:77
 msgid "About"
 msgstr "عن البرنامج"
 
@@ -187,7 +187,7 @@ msgstr ""
 "للمزيد من التفاصيل، قم بزيارة <a href=\"https://framagit.org/luc/"
 "lutim\">الصفحة الرئيسة للمشروع</a>."
 
-#: themes/default/templates/partial/navbar.html.ep:83
+#: themes/default/templates/partial/navbar.html.ep:80
 msgid "Fork me!"
 msgstr "قم بتشعيبي !"
 
@@ -243,7 +243,7 @@ msgstr "الصورة غير موجودة."
 msgid "Import localStorage data"
 msgstr ""
 
-#: themes/default/templates/partial/navbar.html.ep:72
+#: themes/default/templates/partial/navbar.html.ep:69
 msgid "Informations"
 msgstr "معلومات"
 
@@ -283,7 +283,7 @@ msgstr "اللغة"
 msgid "Let's go!"
 msgstr "هيا بنا !"
 
-#: themes/default/templates/partial/navbar.html.ep:77
+#: themes/default/templates/partial/navbar.html.ep:74
 msgid "License:"
 msgstr "الرخصة :"
 
@@ -418,10 +418,6 @@ msgstr "ساند المؤلف عبر ليبراباي"
 #: themes/default/templates/partial/navbar.html.ep:60
 msgid "Support the author on Tipeee"
 msgstr "ساند المؤلف عبر تيبي"
-
-#: themes/default/templates/partial/navbar.html.ep:66
-msgid "Support the author with bitcoins"
-msgstr "ساند المؤلف بالبيتكوين"
 
 #: themes/default/templates/about.html.ep:13
 msgid ""

@@ -49,7 +49,7 @@ msgstr "24 heures"
 msgid ": Error while trying to get the counter."
 msgstr " : Erreur en essayant de récupérer le compteur."
 
-#: themes/default/templates/partial/navbar.html.ep:80
+#: themes/default/templates/partial/navbar.html.ep:77
 msgid "About"
 msgstr "À propos"
 
@@ -186,7 +186,7 @@ msgstr ""
 "Pour plus de détails, consultez la page <a href=\"https://framagit.org/luc/"
 "lutim\">Github</a> du projet."
 
-#: themes/default/templates/partial/navbar.html.ep:83
+#: themes/default/templates/partial/navbar.html.ep:80
 msgid "Fork me!"
 msgstr "Créez un fork !"
 
@@ -242,7 +242,7 @@ msgstr "Image non trouvée."
 msgid "Import localStorage data"
 msgstr "Importer des données localStorage"
 
-#: themes/default/templates/partial/navbar.html.ep:72
+#: themes/default/templates/partial/navbar.html.ep:69
 msgid "Informations"
 msgstr "Informations"
 
@@ -282,7 +282,7 @@ msgstr "Langue"
 msgid "Let's go!"
 msgstr "Allons-y !"
 
-#: themes/default/templates/partial/navbar.html.ep:77
+#: themes/default/templates/partial/navbar.html.ep:74
 msgid "License:"
 msgstr "Licence :"
 
@@ -428,10 +428,6 @@ msgstr "Supporter l’auteur sur Liberapay"
 #: themes/default/templates/partial/navbar.html.ep:60
 msgid "Support the author on Tipeee"
 msgstr "Supporter l’auteur sur Tipeee"
-
-#: themes/default/templates/partial/navbar.html.ep:66
-msgid "Support the author with bitcoins"
-msgstr "Supporter l’auteur avec des bitcoins"
 
 #: themes/default/templates/about.html.ep:13
 msgid ""

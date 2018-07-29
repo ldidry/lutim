@@ -12,6 +12,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "PO-Revision-Date: 2018-07-29 07:47+0000\n"
+"Last-Translator: Luc Didry <luc@framasoft.org>\n"
+"Language-Team: Occitan (http://www.transifex.com/fiat-tux/lutim/language/oc/"
 ")\n"
 "Language: oc\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
@@ -46,7 +48,7 @@ msgstr "24 oras"
 msgid ": Error while trying to get the counter."
 msgstr " : Error al moment de recuperar lo comptador."
 
-#: themes/default/templates/partial/navbar.html.ep:80
+#: themes/default/templates/partial/navbar.html.ep:77
 msgid "About"
 msgstr "A prepaus"
 
@@ -183,7 +185,7 @@ msgstr ""
 "Per mai de detalhs, consultatz la <a href=\"https://framagit.org/luc/"
 "lutim\">pagina</a> del projècte."
 
-#: themes/default/templates/partial/navbar.html.ep:83
+#: themes/default/templates/partial/navbar.html.ep:80
 msgid "Fork me!"
 msgstr "Tustatz-me !"
 
@@ -239,7 +241,7 @@ msgstr "Imatge pas trobat."
 msgid "Import localStorage data"
 msgstr "Importar las donadas localStorage"
 
-#: themes/default/templates/partial/navbar.html.ep:72
+#: themes/default/templates/partial/navbar.html.ep:69
 msgid "Informations"
 msgstr "Informacions"
 
@@ -280,7 +282,7 @@ msgstr "Lenga"
 msgid "Let's go!"
 msgstr "Zo !"
 
-#: themes/default/templates/partial/navbar.html.ep:77
+#: themes/default/templates/partial/navbar.html.ep:74
 msgid "License:"
 msgstr "Licéncia :"
 
@@ -426,10 +428,6 @@ msgstr "Sostenir l'autor sus Liberapay"
 #: themes/default/templates/partial/navbar.html.ep:60
 msgid "Support the author on Tipeee"
 msgstr "Sostenir l'autor sus Tipeee"
-
-#: themes/default/templates/partial/navbar.html.ep:66
-msgid "Support the author with bitcoins"
-msgstr "Sostenir l’autor amb bitcoins"
 
 #: themes/default/templates/about.html.ep:13
 msgid ""

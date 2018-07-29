@@ -50,7 +50,7 @@ msgstr "24 horas"
 msgid ": Error while trying to get the counter."
 msgstr ": Error al intentar obtener el contador."
 
-#: themes/default/templates/partial/navbar.html.ep:80
+#: themes/default/templates/partial/navbar.html.ep:77
 msgid "About"
 msgstr ""
 
@@ -186,7 +186,7 @@ msgstr ""
 "Para más detalles, vea la <a href=\"https://framagit.org/luc/lutim\">página "
 "del proyecto</a>."
 
-#: themes/default/templates/partial/navbar.html.ep:83
+#: themes/default/templates/partial/navbar.html.ep:80
 msgid "Fork me!"
 msgstr "¡Clóname!"
 
@@ -242,7 +242,7 @@ msgstr "Imagen no encontrada."
 msgid "Import localStorage data"
 msgstr ""
 
-#: themes/default/templates/partial/navbar.html.ep:72
+#: themes/default/templates/partial/navbar.html.ep:69
 msgid "Informations"
 msgstr "Informaciones"
 
@@ -282,7 +282,7 @@ msgstr "Lengua"
 msgid "Let's go!"
 msgstr "¡Vamos allá!"
 
-#: themes/default/templates/partial/navbar.html.ep:77
+#: themes/default/templates/partial/navbar.html.ep:74
 msgid "License:"
 msgstr "Licencia:"
 
@@ -423,10 +423,6 @@ msgstr ""
 
 #: themes/default/templates/partial/navbar.html.ep:60
 msgid "Support the author on Tipeee"
-msgstr ""
-
-#: themes/default/templates/partial/navbar.html.ep:66
-msgid "Support the author with bitcoins"
 msgstr ""
 
 #: themes/default/templates/about.html.ep:13
