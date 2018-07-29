@@ -404,6 +404,10 @@ sub startup {
     $r->post('/c')->
         to('Authent#index');
 
+    $r->get('/about/<:short>')->
+        to('Image#about_img')->
+        name('about_img');
+
     $r->get('/about/<:short>.<:f>')->
         to('Image#about_img')->
         name('about_img');
