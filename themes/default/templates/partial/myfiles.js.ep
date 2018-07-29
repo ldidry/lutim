@@ -57,9 +57,11 @@ function onCheck(e, short, ext) {
     if ($(this).is(':checked')) {
         addToShortHash(short+'.'+ext);
         addToZipHash(short);
+        addToRandomHash(short);
     } else {
         rmFromShortHash(short+'.'+ext);
         rmFromZipHash(short);
+        rmFromRandomHash(short);
     }
 }
 function populateFilesTable() {

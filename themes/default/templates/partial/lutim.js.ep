@@ -222,11 +222,13 @@ function bindddz(firstview, deleteday) {
                 e.preventDefault();
                 rmFromShortHash(data.msg.short+'.'+data.msg.ext)
                 rmFromZipHash(data.msg.short);
+                rmFromRandomHash(data.msg.short);
             });
             $('#del-'+data.msg.real_short).on('click', delImage);
             if (data.success) {
                 addToShortHash(data.msg.short+'.'+data.msg.ext);
                 addToZipHash(data.msg.short);
+                addToRandomHash(data.msg.short);
                 $('.close').unbind('click', evaluateCopyAll);
                 $('.close').on('click', evaluateCopyAll);
                 $('input[type=\'text\']').unbind("click", selectInput);
@@ -281,6 +283,7 @@ function upload_url(e) {
                     $('#lutim-file-url').val('');
                     addToShortHash(data.msg.short+'.'+data.msg.ext);
                     addToZipHash(data.msg.short);
+                    addToRandomHash(data.msg.short);
                     $('#del-'+data.msg.real_short).on('click', delImage);
                     $('.close').unbind('click', evaluateCopyAll);
                     $('.close').on('click', evaluateCopyAll);

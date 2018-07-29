@@ -19,6 +19,7 @@ Revision history for Lutim
 	- Fix stats files place when using non-default theme
 	- Allow to use a fixed domain
 	- Add localStorage export and import feature
+	- Add link to generate random file in collection
 
 0.10.4 2018-05-07
 	- Fix bug in cache system that would allow someone to view an image with an incorrect decryption key

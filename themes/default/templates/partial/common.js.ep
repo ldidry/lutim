@@ -1,8 +1,10 @@
 % # vim:set sw=4 ts=4 sts=4 ft=javascript expandtab:
 window.gallery_url = '<%= prefix().'gallery' %>#';
 window.zip_url = '<%= prefix().'zip' %>?i=';
+window.random_url = '<%= prefix().'random' %>?i=';
 window.short_hash = {};
 window.zip_hash = {};
+window.random_hash = {};
 function addToShortHash(short) {
     window.short_hash[short] = 1;
     if (Object.keys(window.short_hash).length > 0) {
@@ -33,6 +35,22 @@ function rmFromZipHash(short) {
     $('#zip-url-link').attr('href', window.zip_url+Object.keys(window.zip_hash).join('&i='));
     if (Object.keys(window.zip_hash).length === 0) {
         $('#zip-url').addClass('hidden');
+    }
+}
+function addToRandomHash(short) {
+    window.random_hash[short] = 1;
+    if (Object.keys(window.random_hash).length > 0) {
+        $('#random-url').removeClass('hidden');
+        $('#random-url-input').val(window.random_url+Object.keys(window.random_hash).join('&i='));
+        $('#random-url-link').attr('href', window.random_url+Object.keys(window.random_hash).join('&i='));
+    }
+}
+function rmFromRandomHash(short) {
+    delete window.random_hash[short];
+    $('#random-url-input').val(window.random_url+Object.keys(window.random_hash).join('&i='));
+    $('#random-url-link').attr('href', window.random_url+Object.keys(window.random_hash).join('&i='));
+    if (Object.keys(window.random_hash).length === 0) {
+        $('#random-url').addClass('hidden');
     }
 }
 /* Stolen from https://github.com/mozilla-services/push-dev-dashboard/blob/3ad4de737380d0842f40c82301d1f748c1b20f2b/push/static/js/validation.js */
