@@ -2,6 +2,8 @@
 <div class="container">
     <div class="row" id="infos-msg">
     </div>
+    <div class="row text-center" id="img-nb">
+    </div>
     <div class="row">
         <p>
             <a href="<%= url_for('/zip?i=') %>" id="download-all" class="btn btn-info col-sm-12">

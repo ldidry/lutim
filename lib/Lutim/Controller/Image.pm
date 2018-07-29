@@ -1,5 +1,5 @@
 # vim:set sw=4 ts=4 sts=4 expandtab:
-package Lutim::Controller;
+package Lutim::Controller::Image;
 use Mojo::Base 'Mojolicious::Controller';
 use Mojo::Util qw(url_escape url_unescape b64_encode encode);
 use Mojo::Asset::Memory;
@@ -13,6 +13,7 @@ use File::MimeInfo::Magic qw(mimetype extensions);
 use IO::Scalar;
 use Image::ExifTool;
 use Archive::Zip qw( :ERROR_CODES :CONSTANTS );
+use Data::Entropy qw(entropy_source);
 
 use vars qw($im_loaded);
 BEGIN {
@@ -783,6 +784,18 @@ sub zip {
             template => 'zip',
             urls     => \@urls
         );
+    }
+}
+
+sub random {
+    my $c     = shift;
+    my $imgs  = $c->every_param('i');
+
+    my $img_nb  = scalar(@{$imgs});
+    if ($img_nb) {
+        $c->redirect_to($c->prefix.$imgs->[entropy_source->get_int($img_nb)]);
+    } else {
+        $c->render_not_found;
     }
 }
 

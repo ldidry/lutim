@@ -1,33 +1,98 @@
-image: hatsoftwares/test-ci:latest
+image: hatsoftwares/lutim-test-ci:latest
 stages:
-  - sqlite
-  - postgresql
+  - podcheck
+  - carton
+  - carton_bdd
+  - tests
+  - cover
 before_script:
-  - carton install
-  - rm -f *db
-sqlite1:
-  stage: sqlite
-  cache:
-    key: "$CI_BUILD_REF_NAME"
-    untracked: true
+  - rm -f *.db
+variables:
+  POSTGRES_DB: lutim_db
+  POSTGRES_USER: lutim
+  POSTGRES_PASSWORD: lutim_pwd
+
+### Jobs templates
+##
+#
+.carton_bdd_template: &carton_bdd_definition
+  stage: carton_bdd
+  retry: 2
+  artifacts:
     paths:
-      - local
+      - local/
+  dependencies:
+    - carton
+.sqlite_template: &sqlite_definition
+  stage: tests
+  retry: 2
+  artifacts:
+    paths:
+      - cover_db/
+  dependencies:
+    - carton_sqlite
+.pg_template: &pg_definition
+  stage: tests
+  retry: 2
+  artifacts:
+    paths:
+      - cover_db/
+  dependencies:
+    - carton_postgresql
+  services:
+    - name: postgres:9.6
+      alias: postgres
+
+### Podcheck
+##
+#
+podcheck:
+  stage: podcheck
   script:
     - make podcheck
+
+### Install common dependencies
+##
+#
+carton:
+  stage: carton
+  artifacts:
+    paths:
+      - local/
+  dependencies: []
+  script:
+    - carton install --deployment --without=sqlite --without=postgresql --without=minion --without=cache --without=memcached
+  when: always
+  retry: 2
+
+### Install DB related dependencies
+##
+#
+carton_sqlite:
+  <<: *carton_bdd_definition
+  script:
+    - carton install --deployment --without=postgresql --without=minion --without=cache --without=memcached
+carton_postgresql:
+  <<: *carton_bdd_definition
+  script:
+    - carton install --deployment --without=sqlite --without=minion --without=cache --without=memcached
+
+### SQLite tests
+##
+#
+sqlite1:
+  <<: *sqlite_definition
+  script:
+    - carton install --deployment --without=postgresql --without=minion --without=cache --without=memcached
     - MOJO_CONFIG=t/sqlite1.conf make test-sqlite
     - MOJO_CONFIG=t/sqlite1.conf make watch
     - MOJO_CONFIG=t/sqlite1.conf make cleanbdd
     - MOJO_CONFIG=t/sqlite1.conf make cleanfiles
     - MOJO_CONFIG=t/sqlite1.conf make stats
 sqlite2:
-  stage: sqlite
-  cache:
-    key: "$CI_BUILD_REF_NAME"
-    untracked: true
-    paths:
-      - local
+  <<: *sqlite_definition
   script:
-    - make podcheck
+    - carton install --deployment --without=postgresql --without=cache --without=memcached
     - MOJO_CONFIG=t/sqlite2.conf make minion &
     - sleep 3
     - MOJO_CONFIG=t/sqlite2.conf make test-sqlite
@@ -36,18 +101,13 @@ sqlite2:
     - MOJO_CONFIG=t/sqlite2.conf make cleanfiles
     - MOJO_CONFIG=t/sqlite2.conf make stats
 sqlite3:
-  stage: sqlite
-  cache:
-    key: "$CI_BUILD_REF_NAME"
-    untracked: true
-    paths:
-      - local
+  <<: *sqlite_definition
+  services:
+    - name: postgres:9.6
+      alias: postgres
   script:
-    - make podcheck
-    - service postgresql restart
-    - sleep 10
-    - service postgresql status
-    - make create-pg-test-db
+    - carton install --deployment --without=cache --without=memcached
+    - export PGPASSWORD=lutim_pwd; echo 'CREATE DATABASE lutim_minion WITH OWNER lutim;' | psql -h postgres -U lutim lutim_db
     - MOJO_CONFIG=t/sqlite3.conf make minion &
     - sleep 3
     - MOJO_CONFIG=t/sqlite3.conf make test-sqlite
@@ -55,40 +115,23 @@ sqlite3:
     - MOJO_CONFIG=t/sqlite3.conf make cleanbdd
     - MOJO_CONFIG=t/sqlite3.conf make cleanfiles
     - MOJO_CONFIG=t/sqlite3.conf make stats
-  tags:
-    - Debian
-    - Jessie
+
+### PostgreSQL tests
+##
+#
 postgresql1:
-  stage: postgresql
-  cache:
-    key: "$CI_BUILD_REF_NAME"
-    untracked: true
-    paths:
-      - local
+  <<: *pg_definition
   script:
-    - make podcheck
-    - service postgresql restart
-    - sleep 10
-    - service postgresql status
-    - make create-pg-test-db
+    - carton install --deployment --without=sqlite --without=minion --without=cache --without=memcached
     - MOJO_CONFIG=t/postgresql1.conf make test-pg
     - MOJO_CONFIG=t/postgresql1.conf make watch
     - MOJO_CONFIG=t/postgresql1.conf make cleanbdd
     - MOJO_CONFIG=t/postgresql1.conf make cleanfiles
     - MOJO_CONFIG=t/postgresql1.conf make stats
 postgresql2:
-  stage: postgresql
-  cache:
-    key: "$CI_BUILD_REF_NAME"
-    untracked: true
-    paths:
-      - local
+  <<: *pg_definition
   script:
-    - make podcheck
-    - service postgresql restart
-    - sleep 10
-    - service postgresql status
-    - make create-pg-test-db
+    - carton install --deployment --without=cache --without=memcached
     - MOJO_CONFIG=t/postgresql2.conf make minion &
     - sleep 3
     - MOJO_CONFIG=t/postgresql2.conf make test-pg
@@ -97,18 +140,10 @@ postgresql2:
     - MOJO_CONFIG=t/postgresql2.conf make cleanfiles
     - MOJO_CONFIG=t/postgresql2.conf make stats
 postgresql3:
-  stage: postgresql
-  cache:
-    key: "$CI_BUILD_REF_NAME"
-    untracked: true
-    paths:
-      - local
+  <<: *pg_definition
   script:
-    - make podcheck
-    - service postgresql restart
-    - sleep 10
-    - service postgresql status
-    - make create-pg-test-db
+    - carton install --deployment --without=sqlite --without=cache --without=memcached
+    - export PGPASSWORD=lutim_pwd; echo 'CREATE DATABASE lutim_minion WITH OWNER lutim;' | psql -h postgres -U lutim lutim_db
     - MOJO_CONFIG=t/postgresql3.conf make minion &
     - sleep 3
     - MOJO_CONFIG=t/postgresql3.conf make test-pg
@@ -116,6 +151,27 @@ postgresql3:
     - MOJO_CONFIG=t/postgresql3.conf make cleanbdd
     - MOJO_CONFIG=t/postgresql3.conf make cleanfiles
     - MOJO_CONFIG=t/postgresql3.conf make stats
-  tags:
-    - Debian
-    - Jessie
+
+### Code coverage
+##
+#
+cover:
+  stage: cover
+  script:
+    - make cover
+  coverage: '/Total .*\d+\.\d+$/'
+
+### Push new translations strings to https://trad.framasoft.org
+##
+#
+trads:
+  stage: cover
+  image: framasoft/push-trad:latest
+  dependencies: []
+  script:
+  - sed -e "s@<project-version>.*</project-version>@<project-version>$CI_COMMIT_REF_SLUG</project-version>@" -i zanata.xml
+  - if [ ! -z ${ZANATA_CONFIG+x} ]; then mkdir -p ${HOME}/.config; echo -e "${ZANATA_CONFIG}" > ${HOME}/.config/zanata.ini; fi
+  - if [ ! -z ${ZANATA_CONFIG+x} ]; then make push-locales; fi
+  only:
+    - development
+    - master

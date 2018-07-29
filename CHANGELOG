@@ -1,5 +1,28 @@
 Revision history for Lutim
 
+0.11.0 2018-??-??
+	- Allow to install only needed deps
+	- Notification when copying to clipboard or deleting images
+	- Allow to use memcached as cache system
+	- Use Mojolicious::Plugin::Chi
+	- Gzip static assets with Mojolicious::Plugin::GzipStatic
+	- Fix scroll-to-top when clicking on delete image
+	- Add CSP header
+	- Add X-Content-Type-Options, X-XSS-Protection, X-Frame-Options headers
+	- Remove @framasky as default tweet_card_via setting
+	- Add a message saying how many images there is in the gallery
+	- Use ISO::639_1 for languages' native names
+	- Add CLI command to print informations about images
+	- Add CLI command to remove images
+	- Add CLI command to search images based on the uploader's IP address
+	- Add .zip file check in the tests
+	- Fix stats files place when using non-default theme
+	- Allow to use a fixed domain
+	- Add localStorage export and import feature
+	- Add link to generate random file in collection
+	- Add modal to modify expiration delay from "myfiles" page
+	- Add optional authentication (LDAP or htpasswd file)
+
 0.10.4 2018-05-07
 	- Fix bug in cache system that would allow someone to view an image with an incorrect decryption key
 

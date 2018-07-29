@@ -40,17 +40,10 @@ function updateItem(short, limit, del_at_view) {
     });
     localStorage.setItem('images', JSON.stringify(files));
 }
-function share(url) {
-    new MozActivity({
-        name: 'share',
-        data: {
-            type: 'url',
-            number: 1,
-            url: url
-        }
-    });
-}
-function evaluateCopyAll() {
+function evaluateCopyAll(e) {
+    if (e) {
+        e.preventDefault();
+    }
     setTimeout(function() {
         if ($('.view-link-input').length === 0) {
             $('#copy-all').parent().remove();
@@ -112,5 +105,11 @@ $('document').ready(function() {
         });
     } else if ($('#myfiles').length !== 0) {
         populateFilesTable();
+        $('#json-export').on('click', function() { exportStorage(); });
+        $('#json-import').on('click', function() { $('#import').click(); });
+        $('#import').on('change', function() { importStorage(this.files); })
+        $('#mod-delay').on('click', modifyDelay);
     }
+    $('.copy-to-clipboard-link').on('click', clickOnCopyLink);
+    $('.copy-all-to-clipboard-link').on('click', copyAllToClipboard);
 });

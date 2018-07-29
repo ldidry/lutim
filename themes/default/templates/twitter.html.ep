@@ -2,19 +2,22 @@
 % my $g   = ($mimetype eq 'image/gif') ? 1 : 0;
 % my $abs = url_for('/'.$short)->to_abs();
 <!DOCTYPE html>
-<html style="max-height:100%;">
+<html>
     <head>
         <title>Lutim</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta charset="utf-8" />
         <link rel="icon" type="image/png" href="<%= url_for('/img/favicon.png')->to_abs() %>">
+        %= stylesheet '/css/twitter.min.css'
         <meta property="og:title" content="Lutim" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="<%= $abs %>?t" />
         <meta property="og:image" content="<%= $abs %>" />
         <meta property="og:image:url" content="<%= $abs %>" />
         <meta property="og:image:type" content="<%= $mimetype %>" />
+% if (config('tweet_card_via')) {
         <meta name="twitter:site" content="<%= config('tweet_card_via') %>">
+% }
         <meta name="twitter:image:src" content="<%= $abs %>">
 % if ($g) {
         <meta name="twitter:card" content="player">
@@ -25,18 +28,13 @@
         <meta name="twitter:player:height" content="<%= $height %>">
         %= javascript '/js/jquery-3.2.1.min.js'
         %= javascript '/js/freezeframe.min.js'
-        %= javascript begin
-            freezeframe_options = {
-                trigger_event: "click",
-                animation_play_duration: 60000
-            }
-        % end
+        %= javascript '/js/twitter.js'
 % } else {
         <meta name="twitter:card" content="photo">
 % }
     </head>
-    <body<%== ($g) ? '' : ' style="height: 97%;"' %>>
-        <img<%= ' class="freezeframe"' if ($g) %> style="<%= 'max-' unless ($g) %>width:100%; max-height:100%;" src="<%= $abs %><%= '.gif' if ($g) %>" alt="<%= $filename %>">
+    <body<%== ($g) ? '' : ' class="height-97"' %>>
+        <img class="freezeframe" src="<%= $abs %><%= '.gif' if ($g) %>" alt="<%= $filename %>">
     </body>
 </html>
 

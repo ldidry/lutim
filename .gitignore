@@ -13,5 +13,8 @@ themes/*
 themes/default/templates/data.html.ep
 themes/default/templates/raw.html.ep
 themes/default/templates/stats.json.ep
+themes/default/templates/partial/raw.js.ep
 tmp/*
 .zanata-cache/*
+cover_db/*
+*.passwd

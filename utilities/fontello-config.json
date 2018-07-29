@@ -67,12 +67,6 @@
       "src": "mfglabs"
     },
     {
-      "uid": "c71d7db10ede1349b3a8ae0293b1dbf8",
-      "css": "flattr",
-      "code": 59402,
-      "src": "zocial"
-    },
-    {
       "uid": "499b745a2e2485bdd059c3a53d048e5f",
       "css": "cancel",
       "code": 59403,
@@ -95,6 +89,18 @@
       "css": "language",
       "code": 59406,
       "src": "entypo"
+    },
+    {
+      "uid": "3d349daaea304032a7669b4f24931b6c",
+      "css": "shuffle",
+      "code": 59402,
+      "src": "entypo"
+    },
+    {
+      "uid": "41087bc74d4b20b55059c60a33bf4008",
+      "css": "edit",
+      "code": 59407,
+      "src": "fontawesome"
     }
   ]
 }

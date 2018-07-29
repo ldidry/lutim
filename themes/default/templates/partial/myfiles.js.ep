@@ -1,38 +1,161 @@
 % # vim:set sw=4 ts=4 sts=4 ft=javascript expandtab:
-function onCheck(e, short, ext) {
-    if (e.is(':checked')) {
+function exportStorage() {
+    var a   = $('<a id="data-json">');
+    a.hide();
+    $('body').append(a);
+
+    var storageData = [localStorage.getItem('images')];
+    var exportFile  = new Blob(storageData, {type : 'application/json'});
+    var url         = window.URL.createObjectURL(exportFile);
+
+    a.attr('href', url);
+    a.attr('download', 'data.json');
+    $('#data-json')[0].click();
+    $('#data-json').remove();
+}
+function importStorage(f) {
+    var reader = new FileReader();
+    reader.addEventListener("loadend", function() {
+        try {
+            var newFiles = JSON.parse(String.fromCharCode.apply(null, new Uint8Array(reader.result)));
+            var i;
+            var hasImported = 0;
+            for (i = 0; i < newFiles.length; i++) {
+                var item = newFiles[i];
+                if (!itemExists(item.short)) {
+                    addItem(item);
+                    hasImported++;
+                }
+            }
+            populateFilesTable();
+
+            goodToast('<%= l('The data has been successfully imported.') %>');
+        } catch(err) {
+            alert(err);
+        }
+    });
+    reader.readAsArrayBuffer(f[0]);
+}
+function itemExists(name) {
+    var files = localStorage.getItem('images');
+    console.log(files);
+    if (files === null) {
+        return false;
+    } else {
+        files = JSON.parse(files);
+        var i;
+        for (i = 0; i < files.length; i++) {
+            if (files[i].short === name) {
+                return true;
+            }
+        }
+        return false;
+    }
+}
+function onCheck(e) {
+    e.preventDefault();
+    var short = $(this).data('short');
+    var ext   = $(this).data('ext');
+    if ($(this).is(':checked')) {
         addToShortHash(short+'.'+ext);
         addToZipHash(short);
+        addToRandomHash(short);
     } else {
         rmFromShortHash(short+'.'+ext);
         rmFromZipHash(short);
+        rmFromRandomHash(short);
     }
 }
+function delView(del_at_view) {
+    return (del_at_view) ? '<span class="icon icon-ok"></span>' : '<span class="icon icon-cancel"></span>';
+}
+function editImage(e) {
+    e.preventDefault();
+    var url        = $(this).data('modlink');
+    var short      = $(this).data('modshort');
+    var name       = $(this).data('modname');
+    var delay      = $(this).data('moddelay');
+    var firstview  = $(this).data('modfirstview');
+    var created_at = $(this).data('modcreated_at');
+
+    $('#mod-name').html(name);
+    $('#mod-delete-day').val(delay);
+    $('#mod-first-view').prop('checked', firstview);
+    $('#mod-delay').data('modlink', url),
+    $('#mod-delay').data('modshort', short);
+    $('#mod-delay').data('modcreated_at', created_at);
+
+    $('#modModal').modal('show');
+}
+function modifyDelay() {
+    var limit       = $('#mod-delete-day').val();
+    var del_at_view = ($('#mod-first-view').prop('checked')) ? 1 : 0;
+    var short       = $('#mod-delay').data('modshort');
+    var created_at  = $('#mod-delay').data('modcreated_at');
+    $.ajax({
+        url  : $('#mod-delay').data('modlink'),
+        type : 'POST',
+        data : {
+            'format'         : 'json',
+            'delete-day'     : limit,
+            'first-view'     : del_at_view
+        },
+        success: function(data) {
+            updateItem(short, parseInt(limit), del_at_view);
+            var newLimit = (parseInt(limit, 10) === 0) ? '<%= l('No limit') %>' : moment.unix(limit * 86400 + created_at).locale(window.navigator.language).format('LLLL');
+            $('#limit-'+short).html(newLimit);
+            $('#del_at_view-'+short).html(delView(del_at_view));
+            $('#edit-'+short).data('moddelay', limit);
+            $('#edit-'+short).data('modfirstview', del_at_view);
+            goodToast(data.msg);
+        },
+        error: function() {
+            badToast('<%= l('Error while trying to modify the image.') %>');
+        },
+        complete: function() {
+            $('#modModal').modal('hide');
+        }
+    });
+}
 function populateFilesTable() {
-    var files = JSON.parse(localStorage.getItem('images'));
+    var localImages = localStorage.getItem('images');
+    if (localImages === null) {
+        return null;
+    }
+    var files = JSON.parse(localImages);
     files.reverse();
+    $('#myfiles').empty();
     files.forEach(function(element, index, array) {
         var real_short = element.real_short;
         var vlink      = link(element.short+'.'+element.ext, '');
-        var del_view   = (element.del_at_view) ? '<span class="icon icon-ok"></span>' : '<span class="icon icon-cancel"></span>';
         var dlink      = link(real_short, 'dl', element.token, false, true);
         var limit      = (element.limit === 0) ? '<%= l('No limit') %>' : moment.unix(element.limit * 86400 + element.created_at).locale(window.navigator.language).format('LLLL');
         var created_at = moment.unix(element.created_at).locale(window.navigator.language).format('LLLL');
 
+        var name = element.filename.replace(/</g, '&lt;').replace(/>/g, '&gt;');
         var tr = [
             '<tr id="alert-',real_short,'">',
-                '<td><span class="checkbox"><label><input type="checkbox" onChange="onCheck($(this), \'', element.short, '\', \'', element.ext, '\');"><label></span></td>',
-                '<td>', element.filename.replace(/</g, '&lt;').replace(/>/g, '&gt;'), '</td>',
-                '<td><a href="',vlink,'">',vlink,'</a></td>',
+                '<td><span class="checkbox"><label><input type="checkbox" class="ckbx" data-short="', element.short, '" data-ext="', element.ext, '"><label></span></td>',
+                '<td class="ellips"><span title="', name,'">', name, '</span></td>',
+                '<td class="text-center">',
+                    '<a href="',vlink,'" target="_blank"><i class="icon icon-eye"></i></a>',
+                    '&nbsp;<a href="',vlink,'" class="copy-to-clipboard" title="<%= l('Copy to clipboard') %>"><i class="icon icon-clipboard"></i></a>',
+                '</td>',
                 '<td id="count-',real_short,'" class="text-center"></td>',
-                '<td class="text-center">', del_view, '</td>',
+                '<td id="del_at_view-', real_short, '" class="text-center">', delView(element.del_at_view), '</td>',
                 '<td>', created_at, '</td>',
-                '<td>', limit, '</td>',
-                '<td><a id="del-',real_short,'" data-short="',real_short,'" data-token="',element.token,'" href="#">',dlink,'</a></td>',
+                '<td>',
+                    '<span id="limit-', element.real_short, '">', limit, '</span>',
+                    '&nbsp;<a href="#" id="edit-', element.real_short, '" data-modlink="', link(element.real_short, '', element.token, true), '" data-modshort="', element.real_short, '" data-modfirstview="', element.del_at_view, '" data-moddelay="', element.limit, '" data-modcreated_at="', element.created_at, '" data-modname="', name, '" title="<%= l('Modify expiration delay') %>">',
+                        '<i class="icon icon-edit"></i>',
+                    '</a>',
+                '</td>',
+                '<td class="text-center"><a id="del-',real_short,'" data-short="',real_short,'" data-token="',element.token,'" href="#" class="remove-link"><i class="icon icon-trash"></i></a></td>',
             '</tr>'
         ].join('');
         $('#myfiles').append(tr);
         $('#del-'+real_short).on('click', delImage);
+        $('#edit-'+real_short).on('click', editImage);
 
         $.ajax({
             url  : '<%== url_for('counter') %>',
@@ -50,12 +173,14 @@ function populateFilesTable() {
                         $('#alert-'+real_short).remove();
                     }
                 } else {
-                    alert(data.msg);
+                    badToast(element.filename+' '+data.msg);
                 }
             },
             error: function() {
-                alert(element.filename+'<%= l(': Error while trying to get the counter.') %>');
+                badToast(element.filename+'<%= l(': Error while trying to get the counter.') %>');
             }
         });
     });
+    $('input.ckbx[type="checkbox"]').on('change', onCheck);
+    $('.copy-to-clipboard').on('click', copyLink);
 }

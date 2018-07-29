@@ -35,8 +35,7 @@ sub run {
 
     my $template = 'themes/'.$config->{theme}.'/templates/data.html.ep.template';
     unless (-e $template) {
-        $config->{theme} = 'default';
-        $template = 'themes/'.$config->{theme}.'/templates/data.html.ep.template';
+        $template = 'themes/default/templates/data.html.ep.template';
     }
 
     my $stats = {};
@@ -88,8 +87,7 @@ sub run {
     # Raw datas
     my $template2 = 'themes/'.$config->{theme}.'/templates/raw.html.ep.template';
     unless (-e $template2) {
-        $config->{theme} = 'default';
-        $template = 'themes/'.$config->{theme}.'/templates/raw.html.ep.template';
+        $template2 = 'themes/default/templates/raw.html.ep.template';
     }
     my $text2    = Mojo::File->new($template2)->slurp;
     my $dom2     = Mojo::DOM->new($text2);
@@ -151,7 +149,10 @@ sub run {
 %     l('1 year'),
 %     l('Total')
 % );
-<script>
+$dom2
+EOF
+
+    my $js = <<EOF;
 var enabled_donut = {
   element: 'raw-enabled-holder',
   data: [
@@ -186,13 +187,13 @@ var disabled_donut = {
       '#455ac3',
   ]
 };
-</script>
-$dom2
 EOF
 
     Mojo::File->new('themes/'.$config->{theme}.'/templates/stats.json.ep')->spurt(encode_json($stats));
     Mojo::File->new('themes/'.$config->{theme}.'/templates/data.html.ep')->spurt($dom);
     Mojo::File->new('themes/'.$config->{theme}.'/templates/raw.html.ep')->spurt(encode('UTF-8', $dom2));
+    mkdir 'themes/'.$config->{theme}.'/templates/partial/' unless -d 'themes/'.$config->{theme}.'/templates/partial/';
+    Mojo::File->new('themes/'.$config->{theme}.'/templates/partial/raw.js.ep')->spurt(encode('UTF-8', $js));
 }
 
 =encoding utf8

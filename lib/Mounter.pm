@@ -22,33 +22,36 @@ sub startup {
         {
             file    => $cfile,
             default => {
-                provisioning      => 100,
-                provis_step       => 5,
-                length            => 8,
-                always_encrypt    => 0,
-                anti_flood_delay  => 5,
-                tweet_card_via    => '@framasky',
-                max_file_size     => 10*1024*1024,
-                https             => 0,
-                proposed_delays   => '0,1,7,30,365',
-                default_delay     => 0,
-                max_delay         => 0,
-                token_length      => 24,
-                crypto_key_length => 8,
-                thumbnail_size    => 100,
-                theme             => 'default',
-                dbtype            => 'sqlite',
-                db_path           => 'lutim.db',
-                max_files_in_zip  => 15,
-                prefix            => '/',
-                minion            => {
+                provisioning           => 100,
+                provis_step            => 5,
+                length                 => 8,
+                always_encrypt         => 0,
+                anti_flood_delay       => 5,
+                max_file_size          => 10*1024*1024,
+                https                  => 0,
+                proposed_delays        => '0,1,7,30,365',
+                default_delay          => 0,
+                max_delay              => 0,
+                token_length           => 24,
+                crypto_key_length      => 8,
+                thumbnail_size         => 100,
+                theme                  => 'default',
+                dbtype                 => 'sqlite',
+                db_path                => 'lutim.db',
+                max_files_in_zip       => 15,
+                prefix                 => '/',
+                minion                 => {
                     enabled => 0,
                     dbtype  => 'sqlite',
                     db_path => 'minion.db'
                 },
-                cache_max_size    => 0,
-                quiet_logs        => 0,
-                disable_img_stats => 0,
+                cache_max_size         => 0,
+                memcached_servers      => [],
+                quiet_logs             => 0,
+                disable_img_stats      => 0,
+                x_frame_options        => 'DENY',
+                x_content_type_options => 'nosniff',
+                x_xss_protection       => '1; mode=block',
             }
         }
     );
@@ -65,8 +68,11 @@ sub startup {
     }
     push @{$self->static->paths}, $self->home->rel_file('themes/default/public');
 
-    # Cache static files
-    $self->plugin('StaticCache');
+    # Static assets gzipping
+    $self->plugin('GzipStatic');
+
+    # Headers
+    $self->plugin('Lutim::Plugin::Headers');
 
     # Helpers
     $self->plugin('Lutim::Plugin::Helpers');

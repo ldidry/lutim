@@ -1,14 +1,4 @@
 % # vim:set sw=4 ts=4 sts=4 ft=html.epl expandtab:
-% my $l = {
-%     ar    => 'العربية',
-%     de    => 'Deutsch',
-%     en    => 'English',
-%     es    => 'Español',
-%     fr    => 'Français',
-%     fr_FR => 'Français (France)',
-%     oc    => 'Occitan',
-%     ru    => 'Русский',
-% };
 % my $lang = $self->languages;
 %    $lang =~ s/-(.*)/_\U$1/;
 <nav class="navbar navbar-default">
@@ -37,6 +27,17 @@
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
+        % if (defined($self->config('ldap')) || defined($self->config('htpasswd'))) {
+            % if ($c->is_user_authenticated) {
+                <li>
+                    <a href="<%= url_for('logout') %>"><%= l('Logout') %></a>
+                </li>
+            % } else {
+                <li>
+                    <a href="<%= url_for('login') %>"><%= l('Signin') %></a>
+                </li>
+            % }
+        % }
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                         <span class="icon-language"  aria-hidden="true" title="<%= l('Language') %>"></span><span class="caret"></span>
@@ -44,7 +45,7 @@
                     <ul class="dropdown-menu" role="menu">
                     % for my $i (@{$self->available_langs}) {
                         <li<%== ($i eq $lang) ? ' class="active"' : '' %>>
-                            <a href="<%= url_for('lang', l => $i) %>" class="set-lang"><%= $l->{$i} %></a>
+                            <a href="<%= url_for('lang', l => $i) %>" class="set-lang"><%= iso639_native_name($i) %></a>
                         </li>
                     % }
                     </ul>
@@ -60,9 +61,6 @@
                         </li>
                         <li>
                             <%= link_to 'https://liberapay.com/sky'   => begin %><%= l('Support the author on Liberapay') %><% end %>
-                        </li>
-                        <li>
-                            <%= link_to 'bitcoin:3MJBezS1S1jPZ1Jgn8MYURLLu78CcPfqew?label=lutim' => begin %><%= l('Support the author with bitcoins') %><% end %>
                         </li>
                     </ul>
                 </li>

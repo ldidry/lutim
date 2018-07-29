@@ -21,22 +21,15 @@
         <link rel="apple-touch-icon" sizes="120x120" href="<%= url_for('/img/lutim120.png') %>">
         <link rel="apple-touch-icon" sizes="152x152" href="<%= url_for('/img/lutim152.png') %>">
         <link rel="apple-touch-icon-precomposed" sizes="128x128" href="<%= url_for('/img/lutim128.png') %>">
-        %= stylesheet '/css/bootstrap.min.css'
-        %= stylesheet '/css/fontello-embedded.css'
-        %= stylesheet '/css/hennypenny.css'
-        %= stylesheet '/css/lutim.css'
+        %= stylesheet '/css/common.min.css'
 % if (current_route 'stats') {
-        %= stylesheet '/css/morris-0.4.3.min.css'
+        %= stylesheet '/css/morris-0.5.1.min.css'
 % } else {
-        %= stylesheet '/css/animation.css'
-        %= stylesheet '/css/uploader.css'
-        %= stylesheet '/css/markdown.css'
+        %= stylesheet '/css/not_stats.min.css'
 % }
 % if (current_route 'gallery') {
-        %= stylesheet '/css/photoswipe.css'
-        %= stylesheet '/css/default-skin/default-skin.css'
+        %= stylesheet '/css/gallery.min.css'
 % }
-        %= javascript '/js/jquery-3.2.1.min.js'
     </head>
     <body>
         %= include 'partial/navbar', twitter_url => $twitter_url
@@ -66,24 +59,25 @@
 % }
             <%= content %>
         </div>
-        %= javascript begin
-            var manifestUrl = '<%== url_for('manifest.webapp')->to_abs() %>';
-        % end
 % if (defined(config('piwik_img'))) {
-        <img src="<%== config('piwik_img') %>" style="border:0" alt="">
+        <img src="<%== config('piwik_img') %>" class="border-zero" alt="">
 % }
+        %= javascript '/js/jquery-3.2.1.min.js'
+        %= javascript '/partial/manifest.js'
+        %= javascript '/js/toastify.js'
         %= javascript '/js/bootstrap.min.js'
+        %= javascript '/partial/common.js'
 % if (current_route 'stats') {
         %= javascript '/js/lutim.js'
         %= javascript '/js/raphael-min.js'
-        %= javascript '/js/morris-0.4.3.min.js'
+        %= javascript '/js/morris-0.5.1.min.js'
         %= javascript '/js/stats.js'
+        %= javascript '/partial/raw.js'
 % } elsif (!(current_route 'about')) {
         %= javascript '/js/lutim.js'
         %= javascript '/js/dmuploader.min.js'
 % }
 % if (current_route 'index') {
-        %= javascript '/partial/common.js'
         %= javascript '/partial/lutim.js'
 % }
 % if (current_route 'gallery') {
@@ -95,7 +89,6 @@
         %= javascript '/partial/lutim.js'
 % }
 % if (current_route 'myfiles') {
-        %= javascript '/partial/common.js'
         %= javascript '/js/moment-with-locales.min.js'
         %= javascript '/partial/myfiles.js'
 % }

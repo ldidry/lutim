@@ -4,15 +4,29 @@ XGETTEXT=carton exec local/bin/xgettext.pl -u
 CARTON=carton exec
 LUTIM=script/lutim
 REAL_LUTIM=script/application
+HEAD := $(shell git rev-parse --abbrev-ref HEAD)
+
+minify:
+	@echo "CSS concatenation"
+	@cd ./themes/default/public/css/ && cat bootstrap.min.css fontello.css hennypenny.css lutim.css toastify.css | csso > common.min.css
+	@cd ./themes/default/public/css/ && cat animation.css uploader.css markdown.css                              | csso > not_stats.min.css
+	@cd ./themes/default/public/css/ && cat photoswipe.css default-skin/default-skin.css                         | csso > gallery.min.css
+	@cd ./themes/default/public/css/ && cat twitter.css                                                          | csso > twitter.min.css
 
 locales:
 	$(XGETTEXT) $(EXTRACTDIR) -o $(POT) 2>/dev/null
 
-push-locales: locales
-	zanata-cli -q -B push
+push-locales:
+    ifeq ($(HEAD),$(filter $(HEAD),master development))
+		sed -e 's@<project-version>.*</project-version>@<project-version>$(HEAD)</project-version>@' -i zanata.xml && \
+			zanata-cli -q -B push
+    endif
 
 pull-locales:
-	zanata-cli -q -B pull
+    ifeq ($(HEAD),$(filter $(HEAD),master development))
+		sed -e 's@<project-version>.*</project-version>@<project-version>$(HEAD)</project-version>@' -i zanata.xml && \
+			zanata-cli -q -B pull
+    endif
 
 stats-locales:
 	zanata-cli -q stats
@@ -20,18 +34,21 @@ stats-locales:
 podcheck:
 	podchecker lib/Lutim/DB/Image.pm
 
+cover:
+	PERL5OPT='-Ilib/' HARNESS_PERL_SWITCHES='-MDevel::Cover' $(CARTON) cover --ignore_re '^local'
+
 test-sqlite:
-	$(CARTON) $(REAL_LUTIM) test
+	@PERL5OPT='-Ilib/' HARNESS_PERL_SWITCHES='-MDevel::Cover' $(CARTON) $(REAL_LUTIM) test
 
 test-pg:
-	$(CARTON) $(REAL_LUTIM) test
+	@PERL5OPT='-Ilib/' HARNESS_PERL_SWITCHES='-MDevel::Cover' $(CARTON) $(REAL_LUTIM) test
 
 test: podcheck test-sqlite test-pg
 
 clean:
 	rm -rf lutim.db files/
 
-dev:
+dev: minify
 	$(CARTON) morbo $(LUTIM) --listen http://0.0.0.0:3000 --watch lib/ --watch script/ --watch themes/ --watch lutim.conf
 
 devlog:

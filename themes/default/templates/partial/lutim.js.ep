@@ -13,19 +13,17 @@ function cleanName(name, empty) {
     }
 }
 function tw_url(url) {
-    var btn = [
+    return btn = [
         '<a title="<%= l('Tweet it!') %>" target="_blank" href="https://twitter.com/share?url=<%== url_for('/')->to_abs() %>', url, '?t" class="btn btn-default">',
            '<span class="icon icon-twitter"></span>',
         '</a>'
     ].join('');
-    if (navigator.mozSetMessageHandler !== undefined) {
-        btn = btn+[
-            '<a title="<%= l('Share it!') %>" target="_blank" href="" onclick="share(\'<%== url_for('/')->to_abs() %>', url, '?t\');return false;">',
-               '<span class="icon icon-share"></span>',
-            '</a>'
-        ].join('');
-    }
-    return btn
+}
+function modifyImage(e) {
+    e.preventDefault();
+    var url   = $(this).data('modlink');
+    var short = $(this).data('modshort');
+    modify(url, short);
 }
 function modify(url, short) {
     var limit       = $('#day-'+short).val();
@@ -41,10 +39,10 @@ function modify(url, short) {
         },
         success: function(data) {
             updateItem(short, limit, del_at_view);
-            alert(data.msg);
+            goodToast(data.msg);
         },
         error: function() {
-            alert('<%= l('Error while trying to modify the image.') %>');
+            badToast('<%= l('Error while trying to modify the image.') %>');
         }
     });
 }
@@ -61,7 +59,7 @@ function buildMessage(success, msg) {
         ].join('') : ''
         return [
             '<div class="alert alert-success" id="alert-', msg.real_short, '">',
-                '<button type="button" class="close" data-dismiss="alert" aria-hidden="true" onclick="rmFromShortHash(\'', msg.short, '.', msg.ext, '\');rmFromZipHash(\'', msg.short, '\');">&times;</button>',
+                '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>',
                 '<div class="row">', thumb,
                     '<div class="col-sm-11">',
                         '<h4>',
@@ -79,7 +77,7 @@ function buildMessage(success, msg) {
                                         '</a>',
                                     '</div>',
                                     '<input type="text" class="form-control view-link-input" id="view', msg.real_short, '" value="', s_url, '" readonly>',
-                                    '<a href="#" onClick="event.preventDefault();copyToClipboard($(this));" class="input-group-addon" title="<%= l('Copy to clipboard') %>">',
+                                    '<a href="#" class="input-group-addon copy-to-clipboard-link" title="<%= l('Copy to clipboard') %>">',
                                         '<span class="icon icon-clipboard"></span>',
                                     '</a>',
                                 '</div>',
@@ -91,7 +89,7 @@ function buildMessage(success, msg) {
                                         '<span class="markdown-mark-solid" title="<%= l('Markdown syntax') %>"></span>',
                                     '</div>',
                                     '<input type="text" class="form-control" id="markdown', msg.real_short, '" value="![](', link(msg.short, ''), ')" readonly>',
-                                    '<a href="#" onClick="event.preventDefault();copyToClipboard($(this));" class="input-group-addon" title="<%= l('Copy to clipboard') %>">',
+                                    '<a href="#" class="input-group-addon copy-to-clipboard-link" title="<%= l('Copy to clipboard') %>">',
                                         '<span class="icon icon-clipboard"></span>',
                                     '</a>',
                                 '</div>',
@@ -105,7 +103,7 @@ function buildMessage(success, msg) {
                                         '</a>',
                                     '</div>',
                                     '<input type="text" class="form-control" id="download', msg.real_short, '" value="', link(msg.short, 'dl'), '" readonly>',
-                                    '<a href="#" onClick="event.preventDefault();copyToClipboard($(this));" class="input-group-addon" title="<%= l('Copy to clipboard') %>">',
+                                    '<a href="#" class="input-group-addon copy-to-clipboard-link" title="<%= l('Copy to clipboard') %>">',
                                         '<span class="icon icon-clipboard"></span>',
                                     '</a>',
                                 '</div>',
@@ -120,7 +118,7 @@ function buildMessage(success, msg) {
                                         tw_url(msg.short),
                                     '</div>',
                                     '<input type="text" class="form-control" id="share', msg.real_short, '" value="', link(msg.short, 't'), '" readonly>',
-                                    '<a href="#" onClick="event.preventDefault();copyToClipboard($(this));" class="input-group-addon" title="<%= l('Copy to clipboard') %>">',
+                                    '<a href="#" class="input-group-addon copy-to-clipboard-link" title="<%= l('Copy to clipboard') %>">',
                                         '<span class="icon icon-clipboard"></span>',
                                     '</a>',
                                 '</div>',
@@ -163,7 +161,7 @@ function buildMessage(success, msg) {
                                     '<input id="first-view-', msg.real_short, '" type="checkbox" name="first-view"> <%= l('Delete at first view?') %>',
                                 '</label>',
                             '</div>&nbsp;',
-                            '<a href="#" onclick="modify(\'', link(msg.real_short, '', msg.token, true), '\', \'', msg.real_short, '\');return false;" class="btn btn-sm btn-default btn-primary">',
+                            '<a href="#" class="btn btn-sm btn-default btn-primary modify-image" data-modlink="', link(msg.real_short, '', msg.token, true),'" data-modshort="', msg.real_short,'">',
                                 '<%= l('Let\'s go!') %>',
                             '</a>',
                         '</div>',
@@ -194,8 +192,8 @@ function bindddz(firstview, deleteday) {
                 '<div id="', id, '-div">',
                     cleanName(file.name), '<br>',
                     '<div class="progress">',
-                        '<div id="', id, '"class="progress-bar progress-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">',
-                            '<span id="', id, '-text" class="pull-left" style="padding-left: 10px;"> 0%</span>',
+                        '<div id="', id, '"class="progress-bar progress-striped active width-zero" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">',
+                            '<span id="', id, '-text" class="pull-left pdg-left-10"> 0%</span>',
                         '</div>',
                     '</div>',
                 '</div>'
@@ -204,36 +202,43 @@ function bindddz(firstview, deleteday) {
         onUploadProgress: function(id, percent){
             var percentStr = ' '+percent+'%';
             $('#'+id).prop('aria-valuenow', percent);
-            $('#'+id).prop('style', 'width: '+percent+'%;');
+            $('#'+id).css('width', percent+'%');
             $('#'+id+'-text').html(percentStr);
         },
         onUploadSuccess: function(id, data){
             data.msg.filename = cleanName(data.msg.filename);
             $('#'+id+'-div').remove();
             if ($('#copy-all').length === 0 && data.success) {
-                $('.messages').prepend(
-                    [
-                        '<div class="col-xs-12 col-sm-11 col-sm-offset-1">',
-                            '<a id="copy-all" href="#" class="btn btn-info" onClick="event.preventDefault();copyAllToClipboard();">',
-                                '<%= l('Copy all view links to clipboard') %>',
-                            '</a>',
-                        '</div>'
-                    ].join('')
-                );
+                $('.messages').prepend([
+                    '<div class="col-xs-12 col-sm-11 col-sm-offset-1">',
+                        '<a id="copy-all" href="#" class="btn btn-info copy-all-to-clipboard-link">',
+                            '<%= l('Copy all view links to clipboard') %>',
+                        '</a>',
+                    '</div>'
+                ].join(''));
             }
             $('.messages').append(buildMessage(data.success, data.msg));
-            $('#del-'+data.msg.real_short).on('click', function() {
+            $('#del-'+data.msg.real_short).on('click', function(e) {
+                e.preventDefault();
                 rmFromShortHash(data.msg.short+'.'+data.msg.ext)
                 rmFromZipHash(data.msg.short);
+                rmFromRandomHash(data.msg.short);
             });
             $('#del-'+data.msg.real_short).on('click', delImage);
             if (data.success) {
                 addToShortHash(data.msg.short+'.'+data.msg.ext);
                 addToZipHash(data.msg.short);
+                addToRandomHash(data.msg.short);
                 $('.close').unbind('click', evaluateCopyAll);
                 $('.close').on('click', evaluateCopyAll);
                 $('input[type=\'text\']').unbind("click", selectInput);
                 $('input[type=\'text\']').on("click", selectInput);
+                $('.copy-all-to-clipboard-link').unbind('click', copyAllToClipboard);
+                $('.copy-all-to-clipboard-link').on('click', copyAllToClipboard);
+                $('.modify-image').unbind('click', modifyImage);
+                $('.modify-image').on('click', modifyImage);
+                $('.copy-to-clipboard-link').unbind('click', clickOnCopyLink);
+                $('.copy-to-clipboard-link').on('click', clickOnCopyLink);
                 addItem(data.msg);
             }
         },
@@ -246,7 +251,8 @@ function bindddz(firstview, deleteday) {
     });
 }
 
-function upload_url() {
+function upload_url(e) {
+    e.preventDefault();
     var val = $('#lutim-file-url').val();
     if (val !== undefined && val !== '') {
         $('#lutim-file-url').prop('disabled', 'disabled');
@@ -268,7 +274,7 @@ function upload_url() {
                     if ($('#copy-all').length === 0) {
                         $('.messages').prepend([
                             '<div class="col-xs-12 col-sm-11 col-sm-offset-1">',
-                                '<a id="copy-all" href="#" class="btn btn-info" onClick="event.preventDefault();copyAllToClipboard();">',
+                                '<a id="copy-all" href="#" class="btn btn-info copy-all-to-clipboard-link">',
                                     '<%= l('Copy all view links to clipboard') %>',
                                 '</a>',
                             '</div>'
@@ -277,6 +283,8 @@ function upload_url() {
                     $('#lutim-file-url').val('');
                     addToShortHash(data.msg.short+'.'+data.msg.ext);
                     addToZipHash(data.msg.short);
+                    addToRandomHash(data.msg.short);
+                    $('#del-'+data.msg.real_short).on('click', delImage);
                     $('.close').unbind('click', evaluateCopyAll);
                     $('.close').on('click', evaluateCopyAll);
                     addItem(data.msg);
@@ -288,6 +296,12 @@ function upload_url() {
             complete: function() {
                 $('#lutim-file-url').prop('disabled', '');
                 $('.hidden-spin').css('display', 'none');
+                $('.copy-all-to-clipboard-link').unbind('click', copyAllToClipboard);
+                $('.copy-all-to-clipboard-link').on('click', copyAllToClipboard);
+                $('.modify-image').unbind('click', modifyImage);
+                $('.modify-image').on('click', modifyImage);
+                $('.copy-to-clipboard-link').unbind('click', clickOnCopyLink);
+                $('.copy-to-clipboard-link').on('click', clickOnCopyLink);
             }
         });
     }
@@ -305,8 +319,8 @@ function fileUpload(file) {
     $('.messages').append([
         '<div id="1-div">', cleanName(file.name), '<br>',
             '<div class="progress">',
-                '<div id="1"class="progress-bar progress-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">',
-                    '<span id="1-text" class="pull-left" style="padding-left: 10px;"> 0%</span>',
+                '<div id="1" class="progress-bar progress-striped active width-zero" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">',
+                    '<span id="1-text" class="pull-left pdg-left-10"> 0%</span>',
                 '</div>',
             '</div>',
         '</div>'
@@ -334,7 +348,7 @@ function fileUpload(file) {
 
                     var percentStr = ' '+percent+'%';
                     $('#1').prop('aria-valuenow', percent);
-                    $('#1').prop('style', 'width: '+percent+'%;');
+                    $('#1').css('width', percent+'%');
                     $('#1-text').html(percentStr);
                 }, false);
             }
@@ -346,7 +360,7 @@ function fileUpload(file) {
             if ($('#copy-all').length === 0 && data.success) {
                 $('.messages').prepend([
                     '<div class="col-xs-12 col-sm-11 col-sm-offset-1">',
-                        '<a id="copy-all" href="#" class="btn btn-info" onClick="event.preventDefault();copyAllToClipboard();">',
+                        '<a id="copy-all" href="#" class="btn btn-info copy-all-to-clipboard-link">',
                             '<%= l('Copy all view links to clipboard') %>',
                         '</a>',
                     '</div>'
@@ -363,6 +377,14 @@ function fileUpload(file) {
         error: function (xhr, status, errMsg){
             $('.messages').append(buildMessage(false, ''));
         },
+        complete: function () {
+            $('.copy-all-to-clipboard-link').unbind('click', copyAllToClipboard);
+            $('.copy-all-to-clipboard-link').on('click', copyAllToClipboard);
+            $('.modify-image').unbind('click', modifyImage);
+            $('.modify-image').on('click', modifyImage);
+            $('.copy-to-clipboard-link').unbind('click', clickOnCopyLink);
+            $('.copy-to-clipboard-link').on('click', clickOnCopyLink);
+        }
     });
 }
 

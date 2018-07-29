@@ -6,14 +6,16 @@ use Mojo::File;
 use Crypt::CBC;
 use Data::Entropy qw(entropy_source);
 use DateTime;
+use Mojo::Util qw(decode);
+use ISO::639_1;
 
 sub register {
     my ($self, $app) = @_;
 
-    $app->plugin('PgURLHelper');
 
     if ($app->config('dbtype') eq 'postgresql') {
-        use Mojo::Pg;
+        require Mojo::Pg;
+        $app->plugin('PgURLHelper');
         $app->helper(pg => \&_pg);
 
         # Database migration
@@ -25,7 +27,7 @@ sub register {
         }
     } elsif ($app->config('dbtype') eq 'sqlite') {
         # SQLite database migration if needed
-        use Mojo::SQLite;
+        require Mojo::SQLite;
         $app->helper(sqlite => \&_sqlite);
 
         my $sql = Mojo::SQLite->new('sqlite:'.$app->config('db_path'));
@@ -37,17 +39,19 @@ sub register {
         }
     }
 
-    $app->helper(render_file     => \&_render_file);
-    $app->helper(ip              => \&_ip);
-    $app->helper(provisioning    => \&_provisioning);
-    $app->helper(shortener       => \&_shortener);
-    $app->helper(stop_upload     => \&_stop_upload);
-    $app->helper(max_delay       => \&_max_delay);
-    $app->helper(default_delay   => \&_default_delay);
-    $app->helper(is_selected     => \&_is_selected);
-    $app->helper(crypt           => \&_crypt);
-    $app->helper(decrypt         => \&_decrypt);
-    $app->helper(delete_image    => \&_delete_image);
+    $app->helper(render_file        => \&_render_file);
+    $app->helper(ip                 => \&_ip);
+    $app->helper(provisioning       => \&_provisioning);
+    $app->helper(shortener          => \&_shortener);
+    $app->helper(stop_upload        => \&_stop_upload);
+    $app->helper(max_delay          => \&_max_delay);
+    $app->helper(default_delay      => \&_default_delay);
+    $app->helper(is_selected        => \&_is_selected);
+    $app->helper(crypt              => \&_crypt);
+    $app->helper(decrypt            => \&_decrypt);
+    $app->helper(delete_image       => \&_delete_image);
+    $app->helper(iso639_native_name => \&_iso639_native_name);
+    $app->helper(prefix             => \&_prefix);
 }
 
 sub _pg {
@@ -98,28 +102,41 @@ sub _render_file {
     $headers->add('Content-Disposition' => $dl.';filename='.$filename);
     $c->res->content->headers($headers);
 
-    my $cache = $c->app->{images_cache}->compute($img->short, undef, sub {
+    my $cache;
+    if ($c->config('cache_max_size') != 0 || scalar(@{$c->config('memcached_servers')})) {
+        $cache = $c->chi('lutim_images_cache')->compute($img->short, undef, sub {
+            if ($key) {
+                return {
+                    asset => $c->decrypt($key, $path, $iv),
+                    key   => $key
+                };
+            } else {
+                return {
+                    asset => Mojo::File->new($path)->slurp,
+                };
+            }
+        });
+        if ($key && $key ne $cache->{key}) {
+            my $tmp = $c->decrypt($key, $path, $iv);
+            $cache->{asset} = $tmp;
+            $c->chi('lutim_images_cache')->replace(
+                $img->short,
+                {
+                    asset => $tmp,
+                    key   => $key
+                },
+            );
+        }
+    } else {
         if ($key) {
-            return {
-                asset      => $c->decrypt($key, $path, $iv),
-                key        => $key
+            $cache = {
+                asset => $c->decrypt($key, $path, $iv),
             };
         } else {
-            return {
-                asset      => Mojo::File->new($path)->slurp,
+            $cache = {
+                asset => Mojo::File->new($path)->slurp,
             };
         }
-    });
-    if ($key && $key ne $cache->{key}) {
-        my $tmp = $c->decrypt($key, $path, $iv);
-        $cache->{asset} = $tmp;
-        $c->app->{images_cache}->replace(
-            $img->short,
-            {
-                asset      => $tmp,
-                key        => $key
-            },
-        );
     }
     # Extend expiration time
     my $asset = Mojo::Asset::Memory->new;
@@ -293,11 +310,27 @@ sub _decrypt {
 sub _delete_image {
     my $c   = shift;
     my $img = shift;
-    if ($c->app->{images_cache}) {
-        $c->app->{images_cache}->remove($img->short);
+    if ($c->config('cache_max_size') != 0 || scalar(@{$c->config('memcached_servers')})) {
+        $c->chi('lutim_images_cache')->remove($img->short);
     }
     unlink $img->path or warn "Could not unlink ".$img->path.": $!";
     $img->disable();
+}
+
+sub _iso639_native_name {
+    my $c = shift;
+    return ucfirst(decode 'UTF-8', get_iso639_1(shift)->{nativeName});
+}
+
+sub _prefix {
+    my $c = shift;
+
+    my $prefix = $c->url_for('/')->to_abs;
+    # Forced domain
+    $prefix->host($c->config('fixed_domain')) if (defined($c->config('fixed_domain')) && $c->config('fixed_domain') ne '');
+    # Hack for prefix (subdir) handling
+    $prefix .= '/' unless ($prefix =~ m#/$#);
+    return $prefix;
 }
 
 1;
