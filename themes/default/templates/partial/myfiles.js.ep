@@ -52,8 +52,10 @@ function itemExists(name) {
         return false;
     }
 }
-function onCheck(e, short, ext) {
+function onCheck(e) {
     e.preventDefault();
+    var short = $(this).data('short');
+    var ext   = $(this).data('ext');
     if ($(this).is(':checked')) {
         addToShortHash(short+'.'+ext);
         addToZipHash(short);
@@ -83,7 +85,7 @@ function populateFilesTable() {
         var name = element.filename.replace(/</g, '&lt;').replace(/>/g, '&gt;');
         var tr = [
             '<tr id="alert-',real_short,'">',
-                '<td><span class="checkbox"><label><input type="checkbox"><label></span></td>',
+                '<td><span class="checkbox"><label><input type="checkbox" data-short="', element.short, '" data-ext="', element.ext, '"><label></span></td>',
                 '<td class="ellips"><span title="', name,'">', name, '</span></td>',
                 '<td class="text-center">',
                     '<a href="',vlink,'" target="_blank"><i class="icon icon-eye"></i></a>',
