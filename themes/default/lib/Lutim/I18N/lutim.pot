@@ -40,7 +40,7 @@ msgstr ""
 msgid "24 hours"
 msgstr ""
 
-#: themes/default/templates/partial/myfiles.js.ep:62
+#: themes/default/templates/partial/myfiles.js.ep:120
 msgid ": Error while trying to get the counter."
 msgstr ""
 
@@ -60,7 +60,7 @@ msgstr ""
 msgid "Archives download"
 msgstr ""
 
-#: themes/default/templates/about.html.ep:44 themes/default/templates/myfiles.html.ep:64 themes/default/templates/stats.html.ep:25
+#: themes/default/templates/about.html.ep:44 themes/default/templates/myfiles.html.ep:69 themes/default/templates/stats.html.ep:25
 msgid "Back to homepage"
 msgstr ""
 
@@ -84,11 +84,11 @@ msgstr ""
 msgid "Copy all view links to clipboard"
 msgstr ""
 
-#: themes/default/templates/index.html.ep:18 themes/default/templates/index.html.ep:36 themes/default/templates/index.html.ep:69 themes/default/templates/index.html.ep:77 themes/default/templates/index.html.ep:85 themes/default/templates/index.html.ep:93 themes/default/templates/myfiles.html.ep:20 themes/default/templates/myfiles.html.ep:38 themes/default/templates/partial/common.js.ep:168 themes/default/templates/partial/lutim.js.ep:106 themes/default/templates/partial/lutim.js.ep:121 themes/default/templates/partial/lutim.js.ep:80 themes/default/templates/partial/lutim.js.ep:92 themes/default/templates/partial/myfiles.js.ep:30
+#: themes/default/templates/index.html.ep:18 themes/default/templates/index.html.ep:36 themes/default/templates/index.html.ep:69 themes/default/templates/index.html.ep:77 themes/default/templates/index.html.ep:85 themes/default/templates/index.html.ep:93 themes/default/templates/myfiles.html.ep:20 themes/default/templates/myfiles.html.ep:38 themes/default/templates/partial/common.js.ep:168 themes/default/templates/partial/lutim.js.ep:106 themes/default/templates/partial/lutim.js.ep:121 themes/default/templates/partial/lutim.js.ep:80 themes/default/templates/partial/lutim.js.ep:92 themes/default/templates/partial/myfiles.js.ep:88
 msgid "Copy to clipboard"
 msgstr ""
 
-#: themes/default/templates/myfiles.html.ep:52
+#: themes/default/templates/myfiles.html.ep:57
 msgid "Counter"
 msgstr ""
 
@@ -100,7 +100,7 @@ msgstr ""
 msgid "Delay repartition chart for enabled images"
 msgstr ""
 
-#: themes/default/templates/index.html.ep:115 themes/default/templates/index.html.ep:147 themes/default/templates/index.html.ep:178 themes/default/templates/myfiles.html.ep:53 themes/default/templates/partial/lutim.js.ep:161
+#: themes/default/templates/index.html.ep:115 themes/default/templates/index.html.ep:147 themes/default/templates/index.html.ep:178 themes/default/templates/myfiles.html.ep:58 themes/default/templates/partial/lutim.js.ep:161
 msgid "Delete at first view?"
 msgstr ""
 
@@ -112,7 +112,7 @@ msgstr ""
 msgid "Deleted images in 30 days"
 msgstr ""
 
-#: themes/default/templates/index.html.ep:98 themes/default/templates/myfiles.html.ep:56 themes/default/templates/partial/common.js.ep:160 themes/default/templates/partial/common.js.ep:163
+#: themes/default/templates/index.html.ep:98 themes/default/templates/myfiles.html.ep:61 themes/default/templates/partial/common.js.ep:160 themes/default/templates/partial/common.js.ep:163
 msgid "Deletion link"
 msgstr ""
 
@@ -148,11 +148,15 @@ msgstr ""
 msgid "Evolution of total files"
 msgstr ""
 
-#: themes/default/templates/myfiles.html.ep:55
+#: themes/default/templates/myfiles.html.ep:60
 msgid "Expires at"
 msgstr ""
 
-#: themes/default/templates/myfiles.html.ep:50
+#: themes/default/templates/myfiles.html.ep:46
+msgid "Export localStorage data"
+msgstr ""
+
+#: themes/default/templates/myfiles.html.ep:55
 msgid "File name"
 msgstr ""
 
@@ -206,6 +210,10 @@ msgstr ""
 
 #: lib/Lutim/Controller.pm:752
 msgid "Image not found."
+msgstr ""
+
+#: themes/default/templates/myfiles.html.ep:47
+msgid "Import localStorage data"
 msgstr ""
 
 #: themes/default/templates/partial/navbar.html.ep:61
@@ -276,7 +284,7 @@ msgstr ""
 msgid "Next (arrow right)"
 msgstr ""
 
-#: themes/default/templates/partial/myfiles.js.ep:20
+#: themes/default/templates/partial/myfiles.js.ep:78
 msgid "No limit"
 msgstr ""
 
@@ -352,6 +360,10 @@ msgstr ""
 
 #: themes/default/templates/zip.html.ep:16
 msgid "The automatic download process will open a tab in your browser for each link. You need to allow popups for Lutim."
+msgstr ""
+
+#: themes/default/templates/partial/myfiles.js.ep:32
+msgid "The data has been successfully imported."
 msgstr ""
 
 #: lib/Lutim/Controller.pm:158 lib/Lutim/Controller.pm:226
@@ -446,7 +458,7 @@ msgstr ""
 msgid "Upload an image with its URL"
 msgstr ""
 
-#: themes/default/templates/myfiles.html.ep:54
+#: themes/default/templates/myfiles.html.ep:59
 msgid "Uploaded at"
 msgstr ""
 
@@ -459,7 +471,7 @@ msgstr ""
 msgid "Uploading is currently disabled, please try later or contact the administrator (%1)."
 msgstr ""
 
-#: themes/default/templates/index.html.ep:65 themes/default/templates/index.html.ep:67 themes/default/templates/myfiles.html.ep:51 themes/default/templates/partial/lutim.js.ep:72 themes/default/templates/partial/lutim.js.ep:76
+#: themes/default/templates/index.html.ep:65 themes/default/templates/index.html.ep:67 themes/default/templates/myfiles.html.ep:56 themes/default/templates/partial/lutim.js.ep:72 themes/default/templates/partial/lutim.js.ep:76
 msgid "View link"
 msgstr ""
 
