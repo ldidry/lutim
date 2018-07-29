@@ -129,3 +129,8 @@ label.always-encrypt {
     overflow: hidden;
     text-overflow: ellipsis;
 }
+h1.ellips {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
