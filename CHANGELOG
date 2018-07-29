@@ -20,6 +20,7 @@ Revision history for Lutim
 	- Allow to use a fixed domain
 	- Add localStorage export and import feature
 	- Add link to generate random file in collection
+	- Add modal to modify expiration delay from "myfiles" page
 
 0.10.4 2018-05-07
 	- Fix bug in cache system that would allow someone to view an image with an incorrect decryption key

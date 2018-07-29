@@ -1,11 +1,59 @@
 % # vim:set sts=4 sw=4 ts=4 ft=html.epl expandtab:
+% my %d = (
+%   delay_0   => l('no time limit'),
+%   delay_1   => l('24 hours'),
+%   delay_365 => l('1 year')
+% );
 <h4><%= l('My images') %></h4>
 <hr>
 
 <p>
     <%= l('Only the images sent with this browser will be listed here. The details are stored in localStorage: if you delete your localStorage data, you\'ll loose these details.') %>
 </p>
-
+<div class="modal fade" id="modModal" tabindex="-1" role="dialog" aria-labelledby="modModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 id="mod-name" class="ellips"></h1>
+            </div>
+            <div class="modal-body">
+                <div class="form-group form-inline">
+                    <select id="mod-delete-day" name="delete-day" class="form-control">
+% my @delays = split(',', $self->config('proposed_delays'));
+% for my $delay (@delays) {
+%   my $text = (defined($d{'delay_'.$delay})) ? $d{'delay_'.$delay} : l('%1 days', $delay);
+%   if (config('max_delay')) {
+%       if ($delay) {
+%           if ($delay < config('max_delay')) {
+                                <option value="<%= $delay %>" <%== is_selected($delay) %>><%= $text %></option>
+%           } elsif ($delay == config('max_delay')) {
+                                <option value="<%= $delay %>" <%== is_selected($delay) %>><%= $text %></option>
+%               last;
+%           } else {
+%               my $text = ($delay == 1) ? l('24 hours') : l('%1 days', $delay);
+                                <option value="<%= config('max_delay') %>" <%== is_selected(config('max_delay')) %>><%= l('%1 days', config('max_delay')) %></option>
+%               last;
+%           }
+%       }
+%   } else {
+                                <option value="<%= $delay %>" <%== is_selected($delay) %>><%= $text %></option>
+%   }
+% }
+                    </select>&nbsp;
+                    <div class="checkbox">
+                        <label>
+                            <input id="mod-first-view" type="checkbox" name="first-view"> <%= l('Delete at first view?') %>
+                        </label>
+                    </div>&nbsp;
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal"><%= l('Close') %></button>
+                <button type="button" class="btn btn-primary" id="mod-delay"><%= l('Save changes') %></button>
+            </div>
+        </div>
+    </div>
+</div>
 <div id="gallery-url" class="hidden row">
     <form class="form col-sm-12">
         <div class="form-group">

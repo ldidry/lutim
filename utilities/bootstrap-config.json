@@ -397,11 +397,13 @@
     "progress-bars.less",
     "close.less",
     "component-animations.less",
-    "dropdowns.less"
+    "dropdowns.less",
+    "modals.less"
   ],
   "js": [
     "alert.js",
     "dropdown.js",
+    "modal.js",
     "collapse.js",
     "transition.js"
   ],
