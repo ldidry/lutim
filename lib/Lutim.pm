@@ -243,6 +243,10 @@ sub startup {
         ->to('Controller#zip')
         ->name('zip');
 
+    $r->get('/random')
+        ->to('Controller#random')
+        ->name('random');
+
     $r->post('/')->
         to('Controller#add')->
         name('add');
