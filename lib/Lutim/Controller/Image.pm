@@ -1,5 +1,5 @@
 # vim:set sw=4 ts=4 sts=4 expandtab:
-package Lutim::Controller;
+package Lutim::Controller::Image;
 use Mojo::Base 'Mojolicious::Controller';
 use Mojo::Util qw(url_escape url_unescape b64_encode encode);
 use Mojo::Asset::Memory;

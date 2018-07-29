@@ -17,3 +17,4 @@ themes/default/templates/partial/raw.js.ep
 tmp/*
 .zanata-cache/*
 cover_db/*
+*.passwd
