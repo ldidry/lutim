@@ -52,6 +52,7 @@ sub startup {
                 dbtype  => 'sqlite',
                 db_path => 'minion.db'
             },
+            session_duration       => 3600,
             cache_max_size         => 0,
             memcached_servers      => [],
             quiet_logs             => 0,
@@ -176,12 +177,120 @@ sub startup {
         delete @{$wait_for_it}{grep { time - $wait_for_it->{$_} > $self->config->{anti_flood_delay} } keys %{$wait_for_it}} if (defined($wait_for_it));
     });
 
+    # Authentication (if configured)
+    if (defined($self->config('ldap')) || defined($self->config('htpasswd'))) {
+        if (defined($self->config('ldap'))) {
+            require Net::LDAP;
+        }
+        if (defined($self->config('htpasswd'))) {
+            require Apache::Htpasswd;
+        }
+        die 'Unable to read '.$self->config('htpasswd') if (defined($self->config('htpasswd')) && !-r $self->config('htpasswd'));
+        $self->plugin('Authentication' =>
+            {
+                autoload_user => 1,
+                session_key   => 'Lutim',
+                load_user     => sub {
+                    my ($c, $username) = @_;
+
+                    return $username;
+                },
+                validate_user => sub {
+                    my ($c, $username, $password, $extradata) = @_;
+
+                    if (defined($c->config('ldap'))) {
+                        my $ldap = Net::LDAP->new($c->config->{ldap}->{uri});
+
+                        my $mesg;
+                        if (defined($c->config->{ldap}->{bind_dn}) && defined($c->config->{ldap}->{bind_pwd})) {
+                            # connect to the ldap server using the bind credentials
+                            $mesg = $ldap->bind(
+                                $c->config->{ldap}->{bind_dn},
+                                password => $c->config->{ldap}->{bind_pwd}
+                            );
+                        } else {
+                            # anonymous bind
+                            $mesg = $ldap->bind
+                        }
+
+                        if ($mesg->code) {
+                            $c->app->log->info('[LDAP INFO] Authenticated bind failed - Login: '.$c->config->{ldap}->{bind_dn}) if defined($c->config->{ldap}->{bind_dn});
+                            $c->app->log->error('[LDAP ERROR] Error on bind: '.$mesg->error);
+                            return undef;
+                        }
+
+                        my $ldap_user_attr   = $c->config->{ldap}->{user_attr};
+                        my $ldap_user_filter = $c->config->{ldap}->{user_filter};
+
+                        # search the ldap database for the user who is trying to login
+                        $mesg = $ldap->search(
+                            base   => $c->config->{ldap}->{user_tree},
+                            filter => "(&($ldap_user_attr=$username)$ldap_user_filter)"
+                        );
+
+                        if ($mesg->code) {
+                            $c->app->log->error('[LDAP ERROR] Error on search: '.$mesg->error);
+                            return undef;
+                        }
+
+                        # check to make sure that the ldap search returned at least one entry
+                        my @entries = $mesg->entries;
+                        my $entry   = $entries[0];
+
+                        unless (defined $entry) {
+                            $c->app->log->info("[LDAP INFO] Authentication failed - User $username filtered out, IP: ".$c->ip);
+                            return undef;
+                        }
+
+                        # retrieve the first user returned by the search
+                        $c->app->log->debug("[LDAP DEBUG] Found user dn: ".$entry->dn);
+
+                        # Now we know that the user exists
+                        $mesg = $ldap->bind($entry->dn,
+                            password => $password
+                        );
+
+                        if ($mesg->code) {
+                            $c->app->log->info("[LDAP INFO] Authentication failed - Login: $username, IP: ".$c->ip);
+                            $c->app->log->error('[LDAP ERROR] Authentication failed '.$mesg->error);
+                            return undef;
+                        }
+
+                        $c->app->log->info("[LDAP INFO] Authentication successful - Login: $username, IP: ".$c->ip);
+                    } elsif (defined($c->config('htpasswd'))) {
+                        my $htpasswd = new Apache::Htpasswd(
+                            {
+                                passwdFile => $c->config('htpasswd'),
+                                ReadOnly   => 1
+                            }
+                        );
+                        if (!$htpasswd->htCheckPassword($username, $password)) {
+                            return undef;
+                        }
+                        $c->app->log->info("[Simple authentication successful] login: $username, IP: ".$c->ip);
+                    }
+
+                    return $username;
+                }
+            }
+        );
+        $self->app->sessions->default_expiration($self->config('session_duration'));
+    }
+
     $self->defaults(layout => 'default');
 
     $self->provisioning();
 
     # Router
     my $r = $self->routes;
+
+    $r->add_condition(authorized => sub {
+        my ($r, $c, $captures) = @_;
+
+        return 1 unless (defined($self->config('ldap')) || defined($self->config('htpasswd')));
+
+        return $c->is_user_authenticated;
+    });
 
     $r->options(sub {
         my $c = shift;
@@ -190,23 +299,43 @@ sub startup {
     });
 
     $r->get('/')->
-        to('Controller#home')->
+        over('authorized')->
+        to('Image#home')->
         name('index');
+    $r->get('/')->
+        to('Authent#index');
+
+
+    if (defined $self->config('ldap') || defined $self->config('htpasswd')) {
+        # Login page
+        $r->get('/login')
+            ->to('Authent#index')
+            ->name('login');
+
+        # Authentication
+        $r->post('/login')
+            ->to('Authent#login');
+
+        # Logout page
+        $r->get('/logout')
+            ->to('Authent#log_out')
+            ->name('logout');
+    }
 
     $r->get('/about')->
-        to('Controller#about')->
+        to('Image#about')->
         name('about');
 
     $r->get('/infos')->
-        to('Controller#infos')->
+        to('Image#infos')->
         name('infos');
 
     $r->get('/stats')->
-        to('Controller#stats')->
+        to('Image#stats')->
         name('stats');
 
     $r->get('/lang/:l')->
-        to('Controller#change_lang')->
+        to('Image#change_lang')->
         name('lang');
 
     $r->get('/partial/:file' => sub {
@@ -229,60 +358,72 @@ sub startup {
         );
     })->name('gallery');
 
-    $r->get('/myfiles' => sub {
-        shift->render(
-            template => 'myfiles'
-        );
-    })->name('myfiles');
+    $r->get('/myfiles')->
+        over('authorized')->
+        name('myfiles');
+    $r->get('/myfiles')->
+        to('Authent#index');
 
     $r->get('/manifest.webapp')->
-        to('Controller#webapp')->
+        to('Image#webapp')->
         name('manifest.webapp');
 
     $r->get('/zip')
-        ->to('Controller#zip')
+        ->to('Image#zip')
         ->name('zip');
 
     $r->get('/random')
-        ->to('Controller#random')
+        ->to('Image#random')
         ->name('random');
 
     $r->post('/')->
-        to('Controller#add')->
+        over('authorized')->
+        to('Image#add')->
         name('add');
+    $r->post('/')->
+        to('Authent#index');
 
     $r->get('/d/:short/:token')->
-        to('Controller#delete')->
+        over('authorized')->
+        to('Image#delete')->
         name('delete');
+    $r->get('/d/:short/:token')->
+        to('Authent#index');
 
     $r->post('/m/:short/:token')->
-        to('Controller#modify')->
+        over('authorized')->
+        to('Image#modify')->
         name('modify');
+    $r->post('/m/:short/:token')->
+        to('Authent#index');
 
     $r->post('/c')->
-        to('Controller#get_counter')->
+        over('authorized')->
+        to('Image#get_counter')->
         name('counter');
+    $r->post('/c')->
+        to('Authent#index');
 
     $r->get('/about/<:short>.<:f>')->
-        to('Controller#about_img')->
+        to('Image#about_img')->
         name('about_img');
 
     $r->get('/about/:short/<:key>.<:f>')->
-        to('Controller#about_img')->
+        to('Image#about_img')->
         name('about_img');
 
     $r->get('/<:short>.<:f>')->
-        to('Controller#short')->
+        to('Image#short')->
         name('short');
 
     $r->get('/:short')->
-        to('Controller#short');
+        to('Image#short');
 
     $r->get('/:short/<:key>.<:f>')->
-        to('Controller#short');
+        to('Image#short');
 
     $r->get('/:short/:key')->
-        to('Controller#short');
+        to('Image#short');
 }
 
 1;

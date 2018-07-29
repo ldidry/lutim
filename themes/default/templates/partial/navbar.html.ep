@@ -27,6 +27,17 @@
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
+        % if (defined($self->config('ldap')) || defined($self->config('htpasswd'))) {
+            % if ($c->is_user_authenticated) {
+                <li>
+                    <a href="<%= url_for('logout') %>"><%= l('Logout') %></a>
+                </li>
+            % } else {
+                <li>
+                    <a href="<%= url_for('login') %>"><%= l('Signin') %></a>
+                </li>
+            % }
+        % }
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                         <span class="icon-language"  aria-hidden="true" title="<%= l('Language') %>"></span><span class="caret"></span>

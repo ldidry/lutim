@@ -1,5 +1,14 @@
 # carton snapshot format: version 1.0
 DISTRIBUTIONS
+  Apache-Htpasswd-1.9
+    pathname: K/KM/KMELTZ/Apache-Htpasswd-1.9.tar.gz
+    provides:
+      Apache::Htpasswd 1.9
+    requirements:
+      Crypt::PasswdMD5 0
+      Digest::SHA 2
+      ExtUtils::MakeMaker 0
+      MIME::Base64 0
   Archive-Zip-1.60
     pathname: P/PH/PHRED/Archive-Zip-1.60.tar.gz
     provides:
@@ -29,6 +38,27 @@ DISTRIBUTIONS
       IO::Seekable 0
       Time::Local 0
       perl 5.006
+  Authen-SASL-2.16
+    pathname: G/GB/GBARR/Authen-SASL-2.16.tar.gz
+    provides:
+      Authen::SASL 2.16
+      Authen::SASL::CRAM_MD5 2.14
+      Authen::SASL::EXTERNAL 2.14
+      Authen::SASL::Perl 2.14
+      Authen::SASL::Perl::ANONYMOUS 2.14
+      Authen::SASL::Perl::CRAM_MD5 2.14
+      Authen::SASL::Perl::DIGEST_MD5 2.14
+      Authen::SASL::Perl::EXTERNAL 2.14
+      Authen::SASL::Perl::GSSAPI 0.05
+      Authen::SASL::Perl::LOGIN 2.14
+      Authen::SASL::Perl::Layer 2.14
+      Authen::SASL::Perl::PLAIN 2.14
+    requirements:
+      Digest::HMAC_MD5 0
+      Digest::MD5 0
+      ExtUtils::MakeMaker 6.42
+      Test::More 0
+      perl 5.005
   B-Hooks-EndOfScope-0.24
     pathname: E/ET/ETHER/B-Hooks-EndOfScope-0.24.tar.gz
     provides:
@@ -215,6 +245,14 @@ DISTRIBUTIONS
       ExtUtils::MakeMaker 0
       Storable 0
       perl 5.008001
+  Convert-ASN1-0.27
+    pathname: G/GB/GBARR/Convert-ASN1-0.27.tar.gz
+    provides:
+      Convert::ASN1 0.27
+    requirements:
+      ExtUtils::MakeMaker 6.30
+      Math::BigInt 1.997
+      Test::More 0.90
   Crypt-Blowfish-2.14
     pathname: D/DP/DPARIS/Crypt-Blowfish-2.14.tar.gz
     provides:
@@ -228,6 +266,16 @@ DISTRIBUTIONS
     requirements:
       Digest::MD5 2.00
       ExtUtils::MakeMaker 0
+  Crypt-PasswdMD5-1.40
+    pathname: R/RS/RSAVAGE/Crypt-PasswdMD5-1.40.tgz
+    provides:
+      Crypt::PasswdMD5 1.40
+    requirements:
+      Digest::MD5 2.53
+      Module::Build 0
+      Test::More 0.94
+      strict 0
+      warnings 0
   Crypt-Rijndael-1.13
     pathname: L/LE/LEONT/Crypt-Rijndael-1.13.tar.gz
     provides:
@@ -1042,6 +1090,17 @@ DISTRIBUTIONS
       perl 5.006
       strict 0
       warnings 0
+  Digest-HMAC-1.03
+    pathname: G/GA/GAAS/Digest-HMAC-1.03.tar.gz
+    provides:
+      Digest::HMAC 1.03
+      Digest::HMAC_MD5 1.01
+      Digest::HMAC_SHA1 1.03
+    requirements:
+      Digest::MD5 2
+      Digest::SHA 1
+      ExtUtils::MakeMaker 0
+      perl 5.004
   Digest-JHash-0.10
     pathname: S/SH/SHLOMIF/Digest-JHash-0.10.tar.gz
     provides:
@@ -1075,6 +1134,15 @@ DISTRIBUTIONS
       Canary::Stability 0
       ExtUtils::MakeMaker 6.52
       common::sense 0
+  Encode-Locale-1.05
+    pathname: G/GA/GAAS/Encode-Locale-1.05.tar.gz
+    provides:
+      Encode::Locale 1.05
+    requirements:
+      Encode 2
+      Encode::Alias 0
+      ExtUtils::MakeMaker 0
+      perl 5.008
   Eval-Closure-0.14
     pathname: D/DO/DOY/Eval-Closure-0.14.tar.gz
     provides:
@@ -1188,6 +1256,19 @@ DISTRIBUTIONS
       File::Spec 0
       URI::Escape 0
       perl 5.008006
+  File-Listing-6.04
+    pathname: G/GA/GAAS/File-Listing-6.04.tar.gz
+    provides:
+      File::Listing 6.04
+      File::Listing::apache 6.04
+      File::Listing::dosftp 6.04
+      File::Listing::netware 6.04
+      File::Listing::unix 6.04
+      File::Listing::vms 6.04
+    requirements:
+      ExtUtils::MakeMaker 0
+      HTTP::Date 6
+      perl 5.006002
   File-MimeInfo-0.28
     pathname: M/MI/MICHIELB/File-MimeInfo-0.28.tar.gz
     provides:
@@ -1269,6 +1350,46 @@ DISTRIBUTIONS
       HTML::Tagset 3.20
     requirements:
       ExtUtils::MakeMaker 0
+  HTTP-Cookies-6.04
+    pathname: O/OA/OALDERS/HTTP-Cookies-6.04.tar.gz
+    provides:
+      HTTP::Cookies 6.04
+      HTTP::Cookies::Microsoft 6.04
+      HTTP::Cookies::Netscape 6.04
+    requirements:
+      Carp 0
+      ExtUtils::MakeMaker 0
+      HTTP::Date 6
+      HTTP::Headers::Util 6
+      HTTP::Request 0
+      Time::Local 0
+      locale 0
+      perl 5.008001
+      strict 0
+      vars 0
+  HTTP-Daemon-6.01
+    pathname: G/GA/GAAS/HTTP-Daemon-6.01.tar.gz
+    provides:
+      HTTP::Daemon 6.01
+      HTTP::Daemon::ClientConn 6.01
+    requirements:
+      ExtUtils::MakeMaker 0
+      HTTP::Date 6
+      HTTP::Request 6
+      HTTP::Response 6
+      HTTP::Status 6
+      IO::Socket 0
+      LWP::MediaTypes 6
+      Sys::Hostname 0
+      perl 5.008001
+  HTTP-Date-6.02
+    pathname: G/GA/GAAS/HTTP-Date-6.02.tar.gz
+    provides:
+      HTTP::Date 6.02
+    requirements:
+      ExtUtils::MakeMaker 0
+      Time::Local 0
+      perl 5.006002
   HTTP-Lite-2.44
     pathname: N/NE/NEILB/HTTP-Lite-2.44.tar.gz
     provides:
@@ -1280,6 +1401,52 @@ DISTRIBUTIONS
       perl 5.005
       strict 0
       warnings 0
+  HTTP-Message-6.18
+    pathname: O/OA/OALDERS/HTTP-Message-6.18.tar.gz
+    provides:
+      HTTP::Config 6.18
+      HTTP::Headers 6.18
+      HTTP::Headers::Auth 6.18
+      HTTP::Headers::ETag 6.18
+      HTTP::Headers::Util 6.18
+      HTTP::Message 6.18
+      HTTP::Request 6.18
+      HTTP::Request::Common 6.18
+      HTTP::Response 6.18
+      HTTP::Status 6.18
+    requirements:
+      Carp 0
+      Compress::Raw::Zlib 0
+      Encode 2.21
+      Encode::Locale 1
+      Exporter 5.57
+      ExtUtils::MakeMaker 0
+      HTTP::Date 6
+      IO::Compress::Bzip2 2.021
+      IO::Compress::Deflate 0
+      IO::Compress::Gzip 0
+      IO::HTML 0
+      IO::Uncompress::Bunzip2 2.021
+      IO::Uncompress::Gunzip 0
+      IO::Uncompress::Inflate 0
+      IO::Uncompress::RawInflate 0
+      LWP::MediaTypes 6
+      MIME::Base64 2.1
+      MIME::QuotedPrint 0
+      Storable 0
+      URI 1.10
+      base 0
+      perl 5.008001
+      strict 0
+      warnings 0
+  HTTP-Negotiate-6.01
+    pathname: G/GA/GAAS/HTTP-Negotiate-6.01.tar.gz
+    provides:
+      HTTP::Negotiate 6.01
+    requirements:
+      ExtUtils::MakeMaker 0
+      HTTP::Headers 6
+      perl 5.008001
   Hash-Merge-0.300
     pathname: R/RE/REHSACK/Hash-Merge-0.300.tar.gz
     provides:
@@ -1295,6 +1462,15 @@ DISTRIBUTIONS
       Hash::MoreUtils 0.05
     requirements:
       Test::More 0.90
+  IO-HTML-1.001
+    pathname: C/CJ/CJM/IO-HTML-1.001.tar.gz
+    provides:
+      IO::HTML 1.001
+    requirements:
+      Carp 0
+      Encode 2.10
+      Exporter 5.57
+      ExtUtils::MakeMaker 6.30
   IO-Socket-SSL-2.056
     pathname: S/SU/SULLR/IO-Socket-SSL-2.056.tar.gz
     provides:
@@ -1516,6 +1692,14 @@ DISTRIBUTIONS
     requirements:
       ExtUtils::MakeMaker 0
       perl 5.004
+  JSON-2.97001
+    pathname: I/IS/ISHIGAKI/JSON-2.97001.tar.gz
+    provides:
+      JSON 2.97001
+      JSON::Backend::PP 2.97001
+    requirements:
+      ExtUtils::MakeMaker 0
+      Test::More 0
   JSON-MaybeXS-1.004000
     pathname: H/HA/HAARG/JSON-MaybeXS-1.004000.tar.gz
     provides:
@@ -1526,6 +1710,13 @@ DISTRIBUTIONS
       JSON::PP 2.27300
       Scalar::Util 0
       perl 5.006
+  LWP-MediaTypes-6.02
+    pathname: G/GA/GAAS/LWP-MediaTypes-6.02.tar.gz
+    provides:
+      LWP::MediaTypes 6.02
+    requirements:
+      ExtUtils::MakeMaker 0
+      perl 5.006002
   List-MoreUtils-0.428
     pathname: R/RE/REHSACK/List-MoreUtils-0.428.tar.gz
     provides:
@@ -1920,6 +2111,16 @@ DISTRIBUTIONS
       Pod::Simple 3.09
       Time::Local 1.2
       perl 5.010001
+  Mojolicious-Plugin-Authentication-1.33
+    pathname: J/JJ/JJATRIA/Mojolicious-Plugin-Authentication-1.33.tar.gz
+    provides:
+      Mojolicious::Plugin::Authentication 1.33
+    requirements:
+      ExtUtils::MakeMaker 0
+      Mojo::Base 0
+      perl 5.010
+      strict 0
+      warnings 0
   Mojolicious-Plugin-CHI-0.15
     pathname: A/AK/AKRON/Mojolicious-Plugin-CHI-0.15.tar.gz
     provides:
@@ -2420,6 +2621,25 @@ DISTRIBUTIONS
       Carp 0
       ExtUtils::MakeMaker 0
       Storable 0
+  Net-HTTP-6.18
+    pathname: O/OA/OALDERS/Net-HTTP-6.18.tar.gz
+    provides:
+      Net::HTTP 6.18
+      Net::HTTP::Methods 6.18
+      Net::HTTP::NB 6.18
+      Net::HTTPS 6.18
+    requirements:
+      Carp 0
+      Compress::Raw::Zlib 0
+      ExtUtils::MakeMaker 0
+      IO::Socket::INET 0
+      IO::Uncompress::Gunzip 0
+      URI 0
+      base 0
+      perl 5.006002
+      strict 0
+      vars 0
+      warnings 0
   Net-SSLeay-1.85
     pathname: M/MI/MIKEM/Net-SSLeay-1.85.tar.gz
     provides:
@@ -2773,6 +2993,13 @@ DISTRIBUTIONS
       Test::Builder 0.13
       Test::Builder::Tester 1.02
       perl 5.006
+  Text-Soundex-3.05
+    pathname: R/RJ/RJBS/Text-Soundex-3.05.tar.gz
+    provides:
+      Text::Soundex 3.05
+    requirements:
+      ExtUtils::MakeMaker 0
+      if 0
   Text-Unidecode-1.30
     pathname: S/SB/SBURKE/Text-Unidecode-1.30.tar.gz
     provides:
@@ -2955,12 +3182,86 @@ DISTRIBUTIONS
       base 0
       lib 0
       perl 5.008
+  WWW-RobotRules-6.02
+    pathname: G/GA/GAAS/WWW-RobotRules-6.02.tar.gz
+    provides:
+      WWW::RobotRules 6.02
+      WWW::RobotRules::AnyDBM_File 6.00
+      WWW::RobotRules::InCore 6.02
+    requirements:
+      AnyDBM_File 0
+      ExtUtils::MakeMaker 0
+      Fcntl 0
+      URI 1.10
+      perl 5.008001
   common-sense-3.74
     pathname: M/ML/MLEHMANN/common-sense-3.74.tar.gz
     provides:
       common::sense 3.74
     requirements:
       ExtUtils::MakeMaker 0
+  libwww-perl-6.35
+    pathname: E/ET/ETHER/libwww-perl-6.35.tar.gz
+    provides:
+      LWP 6.35
+      LWP::Authen::Basic 6.35
+      LWP::Authen::Digest 6.35
+      LWP::Authen::Ntlm 6.35
+      LWP::ConnCache 6.35
+      LWP::Debug 6.35
+      LWP::Debug::TraceHTTP 6.35
+      LWP::DebugFile 6.35
+      LWP::MemberMixin 6.35
+      LWP::Protocol 6.35
+      LWP::Protocol::cpan 6.35
+      LWP::Protocol::data 6.35
+      LWP::Protocol::file 6.35
+      LWP::Protocol::ftp 6.35
+      LWP::Protocol::gopher 6.35
+      LWP::Protocol::http 6.35
+      LWP::Protocol::loopback 6.35
+      LWP::Protocol::mailto 6.35
+      LWP::Protocol::nntp 6.35
+      LWP::Protocol::nogo 6.35
+      LWP::RobotUA 6.35
+      LWP::Simple 6.35
+      LWP::UserAgent 6.35
+      libwww::perl undef
+    requirements:
+      CPAN::Meta::Requirements 2.120620
+      Digest::MD5 0
+      Encode 2.12
+      Encode::Locale 0
+      ExtUtils::MakeMaker 0
+      File::Copy 0
+      File::Listing 6
+      Getopt::Long 0
+      HTML::Entities 0
+      HTML::HeadParser 0
+      HTTP::Cookies 6
+      HTTP::Daemon 6
+      HTTP::Date 6
+      HTTP::Negotiate 6
+      HTTP::Request 6
+      HTTP::Request::Common 6
+      HTTP::Response 6
+      HTTP::Status 6.18
+      IO::Select 0
+      IO::Socket 0
+      LWP::MediaTypes 6
+      MIME::Base64 2.1
+      Module::Metadata 0
+      Net::FTP 2.58
+      Net::HTTP 6.07
+      Scalar::Util 0
+      Try::Tiny 0
+      URI 1.10
+      URI::Escape 0
+      WWW::RobotRules 6
+      base 0
+      perl 5.008001
+      strict 0
+      warnings 0
   namespace-autoclean-0.28
     pathname: E/ET/ETHER/namespace-autoclean-0.28.tar.gz
     provides:
@@ -2982,4 +3283,85 @@ DISTRIBUTIONS
       B::Hooks::EndOfScope 0.12
       ExtUtils::MakeMaker 0
       Package::Stash 0.23
+      perl 5.008001
+  perl-ldap-0.65
+    pathname: M/MA/MARSCHAP/perl-ldap-0.65.tar.gz
+    provides:
+      Bundle::Net::LDAP 0.03
+      LWP::Protocol::ldap 1.25
+      LWP::Protocol::ldapi undef
+      LWP::Protocol::ldaps undef
+      Net::LDAP 0.65
+      Net::LDAP::ASN 0.12
+      Net::LDAP::Bind 1.05
+      Net::LDAP::Constant 0.23
+      Net::LDAP::Control 0.18
+      Net::LDAP::Control::Assertion 0.02
+      Net::LDAP::Control::DontUseCopy 0.01
+      Net::LDAP::Control::EntryChange 0.02
+      Net::LDAP::Control::ManageDsaIT 0.04
+      Net::LDAP::Control::MatchedValues 0.02
+      Net::LDAP::Control::Paged 0.05
+      Net::LDAP::Control::PasswordPolicy 0.04
+      Net::LDAP::Control::PersistentSearch 0.04
+      Net::LDAP::Control::PostRead 0.03
+      Net::LDAP::Control::PreRead 0.04
+      Net::LDAP::Control::ProxyAuth 1.09
+      Net::LDAP::Control::Relax 0.03
+      Net::LDAP::Control::Sort 0.04
+      Net::LDAP::Control::SortResult 0.03
+      Net::LDAP::Control::SyncDone 0.03
+      Net::LDAP::Control::SyncRequest 0.03
+      Net::LDAP::Control::SyncState 0.04
+      Net::LDAP::Control::VLV 0.06
+      Net::LDAP::Control::VLVResponse 0.04
+      Net::LDAP::DSML 0.16
+      Net::LDAP::DSML::output 0.16
+      Net::LDAP::DSML::pp 0.16
+      Net::LDAP::Entry 0.27
+      Net::LDAP::Extension 1.04
+      Net::LDAP::Extension::Cancel 0.02
+      Net::LDAP::Extension::Refresh 0.03
+      Net::LDAP::Extension::SetPassword 0.06
+      Net::LDAP::Extension::WhoAmI 0.02
+      Net::LDAP::Extra 0.02
+      Net::LDAP::Extra::AD 0.04
+      Net::LDAP::Extra::eDirectory 0.03
+      Net::LDAP::Filter 0.20
+      Net::LDAP::FilterList 0.02
+      Net::LDAP::FilterMatch 0.27
+      Net::LDAP::Intermediate 0.04
+      Net::LDAP::Intermediate::SyncInfo 0.03
+      Net::LDAP::LDIF 0.26
+      Net::LDAP::Message 1.12
+      Net::LDAP::Message::Dummy 1.12
+      Net::LDAP::Reference 0.14
+      Net::LDAP::RootDSE 0.02
+      Net::LDAP::Schema 0.9908
+      Net::LDAP::Search 0.14
+      Net::LDAP::Util 0.19
+      Net::LDAPI 0.04
+      Net::LDAPS 0.06
+    requirements:
+      Authen::SASL 2.00
+      Convert::ASN1 0.2
+      Digest::MD5 0
+      ExtUtils::MakeMaker 6.42
+      File::Basename 0
+      File::Compare 0
+      File::Path 0
+      HTTP::Negotiate 0
+      HTTP::Response 0
+      HTTP::Status 0
+      IO::File 0
+      IO::Socket::SSL 1.26
+      JSON 0
+      LWP 0
+      LWP::MediaTypes 0
+      LWP::Protocol 0
+      MIME::Base64 0
+      Test::More 0
+      Text::Soundex 0
+      Time::Local 0
+      URI::ldap 1.1
       perl 5.008001

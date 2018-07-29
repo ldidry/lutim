@@ -45,6 +45,14 @@ feature 'memcached', 'Cache system using Memcached' => sub {
     requires 'CHI::Driver::Memcached';
     requires 'Cache::Memcached';
 };
+feature 'ldap', 'LDAP authentication support' => sub {
+    requires 'Net::LDAP';
+    requires 'Mojolicious::Plugin::Authentication';
+};
+feature 'htpasswd', 'Htpasswd authentication support' => sub {
+    requires 'Apache::Htpasswd';
+    requires 'Mojolicious::Plugin::Authentication';
+};
 feature 'test' => sub {
     requires 'Devel::Cover';
 };
