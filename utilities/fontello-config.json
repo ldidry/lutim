@@ -67,12 +67,6 @@
       "src": "mfglabs"
     },
     {
-      "uid": "c71d7db10ede1349b3a8ae0293b1dbf8",
-      "css": "flattr",
-      "code": 59402,
-      "src": "zocial"
-    },
-    {
       "uid": "499b745a2e2485bdd059c3a53d048e5f",
       "css": "cancel",
       "code": 59403,
@@ -94,6 +88,12 @@
       "uid": "ddecf5ad7935e3fb1b70dac6ed00d06a",
       "css": "language",
       "code": 59406,
+      "src": "entypo"
+    },
+    {
+      "uid": "3d349daaea304032a7669b4f24931b6c",
+      "css": "shuffle",
+      "code": 59402,
       "src": "entypo"
     }
   ]
