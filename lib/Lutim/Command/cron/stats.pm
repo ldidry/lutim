@@ -126,7 +126,7 @@ sub run {
         disabled => $year_disabled
     };
 
-    my $year_disabled_in_month_pct = ($year_enabled != 0) ? " (".sprintf('%.2f', $year_disabled_in_month/$year_enabled)."%)" : '';
+    my $year_disabled_in_month_pct = ($year_enabled != 0) ? " (".sprintf('%.2f', 100*$year_disabled_in_month/$year_enabled)."%)" : '';
 
     $raw->append_content("\n<tr><td><%= \$raw[4] %></td><td>".$unlimited_enabled."</td><td>".$unlimited_disabled."</td><td>ø</td></tr>\n");
     $raw->append_content("<tr><td><%= \$raw[5] %></td><td>".$day_enabled."</td><td>".$day_disabled."</td><td>".$day_enabled." (100%)</td></tr>\n");
