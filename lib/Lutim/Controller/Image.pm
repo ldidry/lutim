@@ -81,6 +81,7 @@ sub infos {
             default_delay     => $c->config('default_delay'),
             max_delay         => $c->config('max_delay'),
             always_encrypt    => ($c->config('always_encrypt')) ? true : false,
+            upload_enabled    => ($c->app->stop_upload()) ? false : true,
         }
     );
 }
@@ -647,6 +648,8 @@ sub short {
                     $c->delete_image($image);
                 }
             });
+        } else {
+            $c->app->log->error('[ERROR] Can\'t render '.$image->short);
         }
     } elsif ($image->path && !$image->enabled) {
         # Log access try

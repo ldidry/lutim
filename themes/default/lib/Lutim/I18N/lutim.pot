@@ -52,7 +52,7 @@ msgstr ""
 msgid "Active images"
 msgstr ""
 
-#: lib/Lutim/Controller/Image.pm:327
+#: lib/Lutim/Controller/Image.pm:328
 msgid "An error occured while downloading the image."
 msgstr ""
 
@@ -212,7 +212,7 @@ msgstr ""
 msgid "Image deleted"
 msgstr ""
 
-#: lib/Lutim/Controller/Image.pm:753
+#: lib/Lutim/Controller/Image.pm:756
 msgid "Image not found."
 msgstr ""
 
@@ -362,7 +362,7 @@ msgid "Something bad happened"
 msgstr ""
 
 #. ($c->config('contact')
-#: lib/Lutim/Controller/Image.pm:760
+#: lib/Lutim/Controller/Image.pm:763
 msgid "Something went wrong when creating the zip file. Try again later or contact the administrator (%1)."
 msgstr ""
 
@@ -386,7 +386,7 @@ msgstr ""
 msgid "The Lutim software is a <a href=\"http://en.wikipedia.org/wiki/Free_software\">free software</a>, which allows you to download and install it on you own server. Have a look at the <a href=\"https://www.gnu.org/licenses/agpl-3.0.html\">AGPL</a> to see what you can do."
 msgstr ""
 
-#: lib/Lutim/Controller/Image.pm:346
+#: lib/Lutim/Controller/Image.pm:347
 msgid "The URL is not valid."
 msgstr ""
 
@@ -398,19 +398,19 @@ msgstr ""
 msgid "The data has been successfully imported."
 msgstr ""
 
-#: lib/Lutim/Controller/Image.pm:159 lib/Lutim/Controller/Image.pm:227
+#: lib/Lutim/Controller/Image.pm:160 lib/Lutim/Controller/Image.pm:228
 msgid "The delete token is invalid."
 msgstr ""
 
 #. ($upload->filename)
-#: lib/Lutim/Controller/Image.pm:487
+#: lib/Lutim/Controller/Image.pm:488
 msgid "The file %1 is not an image."
 msgstr ""
 
 #. ($tx->res->max_message_size)
 #. ($c->req->max_message_size)
 #. (config('max_file_size')
-#: lib/Lutim/Controller/Image.pm:310 lib/Lutim/Controller/Image.pm:379 themes/default/templates/partial/lutim.js.ep:249
+#: lib/Lutim/Controller/Image.pm:311 lib/Lutim/Controller/Image.pm:380 themes/default/templates/partial/lutim.js.ep:249
 msgid "The file exceed the size limit (%1)"
 msgstr ""
 
@@ -419,16 +419,16 @@ msgid "The graph's datas are not updated in real-time."
 msgstr ""
 
 #. ($image->filename)
-#: lib/Lutim/Controller/Image.pm:229
+#: lib/Lutim/Controller/Image.pm:230
 msgid "The image %1 has already been deleted."
 msgstr ""
 
 #. ($image->filename)
-#: lib/Lutim/Controller/Image.pm:238 lib/Lutim/Controller/Image.pm:243
+#: lib/Lutim/Controller/Image.pm:239 lib/Lutim/Controller/Image.pm:244
 msgid "The image %1 has been successfully deleted"
 msgstr ""
 
-#: lib/Lutim/Controller/Image.pm:167
+#: lib/Lutim/Controller/Image.pm:168
 msgid "The image's delay has been successfully modified"
 msgstr ""
 
@@ -445,7 +445,7 @@ msgid "There is XXXX image(s) in the gallery"
 msgstr ""
 
 #. ($c->config->{contact})
-#: lib/Lutim/Controller/Image.pm:484
+#: lib/Lutim/Controller/Image.pm:485
 msgid "There is no more available URL. Retry or contact the administrator. %1"
 msgstr ""
 
@@ -470,15 +470,15 @@ msgid "Unable to copy to clipboard"
 msgstr ""
 
 #. ($short)
-#: lib/Lutim/Controller/Image.pm:107 lib/Lutim/Controller/Image.pm:201 lib/Lutim/Controller/Image.pm:272
+#: lib/Lutim/Controller/Image.pm:108 lib/Lutim/Controller/Image.pm:202 lib/Lutim/Controller/Image.pm:273
 msgid "Unable to find the image %1."
 msgstr ""
 
-#: lib/Lutim/Controller/Image.pm:573 lib/Lutim/Controller/Image.pm:618 lib/Lutim/Controller/Image.pm:657 lib/Lutim/Controller/Image.pm:700 lib/Lutim/Controller/Image.pm:712 lib/Lutim/Controller/Image.pm:723 lib/Lutim/Controller/Image.pm:750 lib/Lutim/Plugin/Helpers.pm:88
+#: lib/Lutim/Controller/Image.pm:574 lib/Lutim/Controller/Image.pm:619 lib/Lutim/Controller/Image.pm:660 lib/Lutim/Controller/Image.pm:703 lib/Lutim/Controller/Image.pm:715 lib/Lutim/Controller/Image.pm:726 lib/Lutim/Controller/Image.pm:753 lib/Lutim/Plugin/Helpers.pm:88
 msgid "Unable to find the image: it has been deleted."
 msgstr ""
 
-#: lib/Lutim/Controller/Image.pm:144
+#: lib/Lutim/Controller/Image.pm:145
 msgid "Unable to get counter"
 msgstr ""
 

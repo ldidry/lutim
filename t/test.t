@@ -88,7 +88,8 @@ $t->get_ok('/infos')
       '/contact'           => 'John Doe, admin[at]example.com',
       '/default_delay'     => 30,
       '/max_delay'         => 200,
-      '/max_file_size'     => 1048576
+      '/max_file_size'     => 1048576,
+      '/upload_enabled'    => true
   );
 
 # Post image

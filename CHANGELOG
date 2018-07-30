@@ -1,5 +1,9 @@
 Revision history for Lutim
 
+0.11.1 2018-07-30
+	- Add upload_enabled info to server infos endpoint
+	- Add log message when failing to render an image
+
 0.11.0 2018-07-29
 	- Allow to install only needed deps
 	- Notification when copying to clipboard or deleting images
