@@ -1,5 +1,8 @@
 Revision history for Lutim
 
+0.11.3 2018-07-31
+	- Fix gallery bug
+
 0.11.2 2018-07-31
 	- Fix stats graph if no upload happens in the time range
 
