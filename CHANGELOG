@@ -1,5 +1,8 @@
 Revision history for Lutim
 
+0.11.2 2018-07-31
+	- Fix stats graph if no upload happens in the time range
+
 0.11.1 2018-07-30
 	- Add upload_enabled info to server infos endpoint
 	- Add log message when failing to render an image

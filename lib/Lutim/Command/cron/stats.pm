@@ -71,15 +71,27 @@ sub run {
     );
 
     my $total = $img->count_created_before($separation);
-    for my $year (sort {$a <=> $b} keys %data) {
-        for my $month (sort {$a <=> $b} keys %{$data{$year}}) {
-            for my $day (sort {$a <=> $b} keys %{$data{$year}->{$month}}) {
-                $thead_tr->append_content('<th>'."$day/$month/$year".'</th>'."\n");
-                $tbody_tr->append_content('<td>'.$data{$year}->{$month}->{$day}.'</td>'."\n");
-                $total += $data{$year}->{$month}->{$day};
-                $tbody_t2->append_content('<td>'.$total.'</td>'."\n");
+    if (scalar(keys %data)) {
+        for my $year (sort {$a <=> $b} keys %data) {
+            for my $month (sort {$a <=> $b} keys %{$data{$year}}) {
+                for my $day (sort {$a <=> $b} keys %{$data{$year}->{$month}}) {
+                    $thead_tr->append_content(sprintf("<th>%#.2d/%#.2d/%d</th>\n", $day, $month, $year));
+                    $tbody_tr->append_content(sprintf("<td>%d</td>\n", $data{$year}->{$month}->{$day}));
+                    $total += $data{$year}->{$month}->{$day};
+                    $tbody_t2->append_content(sprintf("<td>%d</td>\n", $total));
+                }
             }
         }
+    } else {
+        my $dt = DateTime->from_epoch(epoch => $separation);
+        $thead_tr->append_content(sprintf("<th>%#.2d/%#.2d/%d</th>\n", $dt->day(), $dt->month(), $dt->year()));
+        $tbody_tr->append_content("<td>0</td>\n");
+        $tbody_t2->append_content(sprintf("<td>%d</td>\n", $total));
+
+        $dt = DateTime->now();
+        $thead_tr->append_content(sprintf("<th>%#.2d/%#.2d/%d</th>\n", $dt->day(), $dt->month(), $dt->year()));
+        $tbody_tr->append_content("<td>0</td>\n");
+        $tbody_t2->append_content(sprintf("<td>%d</td>\n", $total));
     }
 
     my $moy = $total / $config->{stats_day_num};
