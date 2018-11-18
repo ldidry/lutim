@@ -1,5 +1,10 @@
 Revision history for Lutim
 
+0.11.4 2018-11-18
+	- Catch Image::Magick problems
+	- Update arabic translation
+	- Add italian translation
+
 0.11.3 2018-07-31
 	- Fix gallery bug
 
