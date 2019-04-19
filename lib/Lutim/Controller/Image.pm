@@ -401,25 +401,25 @@ sub add {
                 my ($width, $height);
                 if ($im_loaded && $mediatype ne 'image/svg+xml' && $mediatype !~ m#image/(x-)?xcf# && $mediatype ne 'image/webp') { # ImageMagick don't work in Debian with svg (for now?)
                     my $im  = Image::Magick->new;
-                    if($im->BlobToImage($upload->slurp)) {
-                        # Automatic rotation from EXIF tag
-                        $im->AutoOrient();
+                    $im->BlobToImage($upload->slurp);
 
-                        # Update the uploaded file with it's auto-rotated clone
-                        my $asset = Mojo::Asset::Memory->new->add_chunk($im->ImageToBlob());
-                        $upload->asset($asset);
+                    # Automatic rotation from EXIF tag
+                    $im->AutoOrient();
 
-                        # Create the thumbnail
-                        $width  = $im->Get('width');
-                        $height = $im->Get('height');
-                        $im->Resize(geometry=>'x85');
+                    # Update the uploaded file with it's auto-rotated clone
+                    my $asset = Mojo::Asset::Memory->new->add_chunk($im->ImageToBlob());
+                    $upload->asset($asset);
 
-                        $thumb  = 'data:'.$mediatype.';base64,';
-                        if ($mediatype eq 'image/gif') {
-                            $thumb .= b64_encode $im->[0]->ImageToBlob();
-                        } else {
-                            $thumb .= b64_encode $im->ImageToBlob();
-                        }
+                    # Create the thumbnail
+                    $width  = $im->Get('width');
+                    $height = $im->Get('height');
+                    $im->Resize(geometry=>'x85');
+
+                    $thumb  = 'data:'.$mediatype.';base64,';
+                    if ($mediatype eq 'image/gif') {
+                        $thumb .= b64_encode $im->[0]->ImageToBlob();
+                    } else {
+                        $thumb .= b64_encode $im->ImageToBlob();
                     }
 
                 }
