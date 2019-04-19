@@ -1,5 +1,6 @@
 image: hatsoftwares/lutim-test-ci:latest
 stages:
+  - publish_changelog
   - podcheck
   - carton
   - carton_bdd
@@ -15,25 +16,29 @@ variables:
 ### Jobs templates
 ##
 #
-.carton_bdd_template: &carton_bdd_definition
-  stage: carton_bdd
+.retry: &retry
   retry: 2
+  except:
+    - tags
+.carton_bdd_template: &carton_bdd_definition
+  <<: *retry
+  stage: carton_bdd
   artifacts:
     paths:
       - local/
   dependencies:
     - carton
 .sqlite_template: &sqlite_definition
+  <<: *retry
   stage: tests
-  retry: 2
   artifacts:
     paths:
       - cover_db/
   dependencies:
     - carton_sqlite
 .pg_template: &pg_definition
+  <<: *retry
   stage: tests
-  retry: 2
   artifacts:
     paths:
       - cover_db/
@@ -43,10 +48,26 @@ variables:
     - name: postgres:9.6
       alias: postgres
 
+### Publish tag changelog
+##
+#
+publish_changelog:
+  image: hatsoftwares/curl-jq:latest
+  stage: publish_changelog
+  script:
+    - export PROJECT_API_URL="https://framagit.org/api/v4/projects/${CI_PROJECT_ID}"
+    - export DESCRIPTION_URL="${PROJECT_API_URL}/repository/tags/${CI_COMMIT_TAG}/release"
+    - 'export HEADER="Private-Token: ${GITLAB_API_TOKEN}"'
+    - sed -n '/^'$CI_COMMIT_TAG'[[:space:]]/,/^[^\t]/p' CHANGELOG | sed -e 's/^[^\t].*//' -e 's/\t//g' | sed '/^[[:space:]]*$/d' > /tmp/text
+    - if [[ ! -z $GITLAB_API_TOKEN ]]; then curl -s --request POST --data-urlencode "description@/tmp/text" --header "${HEADER}" "${DESCRIPTION_URL}"; fi
+  only:
+    - tags
+
 ### Podcheck
 ##
 #
 podcheck:
+  <<: *retry
   stage: podcheck
   script:
     - make podcheck
@@ -55,6 +76,7 @@ podcheck:
 ##
 #
 carton:
+  <<: *retry
   stage: carton
   artifacts:
     paths:
@@ -63,7 +85,6 @@ carton:
   script:
     - carton install --deployment --without=sqlite --without=postgresql --without=minion --without=cache --without=memcached
   when: always
-  retry: 2
 
 ### Install DB related dependencies
 ##
