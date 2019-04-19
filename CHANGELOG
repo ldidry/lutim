@@ -1,6 +1,6 @@
 Revision history for Lutim
 
-0.11.5 2019-04-xx
+0.11.5 2019-04-19
 	- Revert catching Image::Magick problems
 	- In gallery, use JS to find image's width and height if not provided by image's infos
 
