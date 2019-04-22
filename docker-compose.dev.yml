@@ -1,0 +1,22 @@
+version: '3.3'
+
+services:
+    app_dev:
+        build: .
+        ports:
+            - 8080:8080
+        volumes:
+            - .:/home/lutim
+        command: dev
+    postgres_dev:
+        image: postgres:11.2-alpine
+        environment:
+            POSTGRES_PASSWORD: password
+            POSTGRES_USER: lutim
+            POSTGRES_DB: lutim
+    memcached:
+        image: memcached:1.5-alpine
+    adminer:
+        image: dehy/adminer
+        ports:
+            - 8081:80
