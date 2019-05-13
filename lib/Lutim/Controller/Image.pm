@@ -165,7 +165,7 @@ sub modify {
             $image->delete_at_first_view(($c->param('first-view')) ? 1 : 0);
             $image->write;
 
-            $msg = $c->l('The image\'s delay has been successfully modified');
+            $msg = $c->l('The image’s delay has been successfully modified');
             if (defined($c->param('format')) && $c->param('format') eq 'json') {
                 return $c->render(
                     json => {
@@ -196,7 +196,7 @@ sub modify {
             return $c->redirect_to('/');
         }
     } else {
-        $c->app->log->info('[UNSUCCESSFUL] someone tried to modify '.$short.' but it doesn\'t exist.') unless $c->config('quiet_logs');
+        $c->app->log->info('[UNSUCCESSFUL] someone tried to modify '.$short.' but it doesn’t exist.') unless $c->config('quiet_logs');
 
         # Image never existed
         my $msg = $c->l('Unable to find the image %1.', $short);
@@ -263,7 +263,7 @@ sub delete {
             }
         );
     } else {
-        $c->app->log->info('[UNSUCCESSFUL] someone tried to delete '.$short.' but it doesn\'t exist.') unless $c->config('quiet_logs');
+        $c->app->log->info('[UNSUCCESSFUL] someone tried to delete '.$short.' but it doesn’t exist.') unless $c->config('quiet_logs');
 
         # Image never existed
         return $c->respond_to(
@@ -649,11 +649,11 @@ sub short {
                 }
             });
         } else {
-            $c->app->log->error('[ERROR] Can\'t render '.$image->short);
+            $c->app->log->error('[ERROR] Can’t render '.$image->short);
         }
     } elsif ($image->path && !$image->enabled) {
         # Log access try
-        $c->app->log->info('[NOT FOUND] someone tried to view '.$short.' but it doesn\'t exist anymore.') unless $c->config('quiet_logs');
+        $c->app->log->info('[NOT FOUND] someone tried to view '.$short.' but it doesn’t exist anymore.') unless $c->config('quiet_logs');
 
         # Warn user
         $c->flash(
@@ -747,7 +747,7 @@ sub zip {
                 }
             } elsif ($image->path && !$image->enabled) {
                 # Log access try
-                $c->app->log->info('[NOT FOUND] someone tried to view '.$short.' but it doesn\'t exist anymore.') unless $c->config('quiet_logs');
+                $c->app->log->info('[NOT FOUND] someone tried to view '.$short.' but it doesn’t exist anymore.') unless $c->config('quiet_logs');
 
                 # Warn user
                 $zip->addString(encode('UTF-8', $c->l('Unable to find the image: it has been deleted.')), 'images/'.$image->filename.'.txt');

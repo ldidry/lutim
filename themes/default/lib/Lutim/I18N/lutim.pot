@@ -428,10 +428,6 @@ msgstr ""
 msgid "The image %1 has been successfully deleted"
 msgstr ""
 
-#: lib/Lutim/Controller/Image.pm:168
-msgid "The image's delay has been successfully modified"
-msgstr ""
-
 #: themes/default/templates/index.html.ep:63
 msgid "The images are encrypted on the server (Lutim does not keep the key)."
 msgstr ""
@@ -440,7 +436,11 @@ msgstr ""
 msgid "The images you post on Lutim can be stored indefinitely or be deleted at first view or after a delay selected from those proposed."
 msgstr ""
 
-#: themes/default/templates/partial/gallery.js.ep:257
+#: lib/Lutim/Controller/Image.pm:168
+msgid "The image’s delay has been successfully modified"
+msgstr ""
+
+#: themes/default/templates/partial/gallery.js.ep:277
 msgid "There is XXXX image(s) in the gallery"
 msgstr ""
 
