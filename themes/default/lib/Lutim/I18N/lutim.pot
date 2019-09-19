@@ -44,7 +44,7 @@ msgstr ""
 msgid ": Error while trying to get the counter."
 msgstr ""
 
-#: themes/default/templates/partial/navbar.html.ep:77
+#: themes/default/templates/partial/navbar.html.ep:63
 msgid "About"
 msgstr ""
 
@@ -168,7 +168,7 @@ msgstr ""
 msgid "For more details, see the <a href=\"https://framagit.org/luc/lutim\">homepage of the project</a>."
 msgstr ""
 
-#: themes/default/templates/partial/navbar.html.ep:80
+#: themes/default/templates/partial/navbar.html.ep:66
 msgid "Fork me!"
 msgstr ""
 
@@ -220,7 +220,7 @@ msgstr ""
 msgid "Import localStorage data"
 msgstr ""
 
-#: themes/default/templates/partial/navbar.html.ep:69
+#: themes/default/templates/partial/navbar.html.ep:55
 msgid "Informations"
 msgstr ""
 
@@ -256,7 +256,7 @@ msgstr ""
 msgid "Let's go!"
 msgstr ""
 
-#: themes/default/templates/partial/navbar.html.ep:74
+#: themes/default/templates/partial/navbar.html.ep:60
 msgid "License:"
 msgstr ""
 
@@ -364,18 +364,6 @@ msgstr ""
 #. ($c->config('contact')
 #: lib/Lutim/Controller/Image.pm:763
 msgid "Something went wrong when creating the zip file. Try again later or contact the administrator (%1)."
-msgstr ""
-
-#: themes/default/templates/partial/navbar.html.ep:55
-msgid "Support the author"
-msgstr ""
-
-#: themes/default/templates/partial/navbar.html.ep:63
-msgid "Support the author on Liberapay"
-msgstr ""
-
-#: themes/default/templates/partial/navbar.html.ep:60
-msgid "Support the author on Tipeee"
 msgstr ""
 
 #: themes/default/templates/about.html.ep:13
