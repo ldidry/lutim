@@ -60,11 +60,26 @@ function onCheck(e) {
         addToShortHash(short+'.'+ext);
         addToZipHash(short);
         addToRandomHash(short);
+        if (!$('#check-all').is(':checked') && isAllChecked()) {
+            $('#check-all').prop('checked', true);
+        }
     } else {
+        if ($('#check-all').is(':checked')) {
+            $('#check-all').prop('checked', false);
+        }
         rmFromShortHash(short+'.'+ext);
         rmFromZipHash(short);
         rmFromRandomHash(short);
     }
+}
+function isAllChecked() {
+    var allChecked = true;
+    $('.ckbx').each(function(index) {
+        if (!$(this).is(':checked')) {
+            allChecked = false;
+        }
+    });
+    return allChecked;
 }
 function delView(del_at_view) {
     return (del_at_view) ? '<span class="icon icon-ok"></span>' : '<span class="icon icon-cancel"></span>';
@@ -114,6 +129,21 @@ function modifyDelay() {
         },
         complete: function() {
             $('#modModal').modal('hide');
+        }
+    });
+}
+function checkAll(e) {
+    var checked = $('#check-all').is(':checked');
+    $('.ckbx').each(function(index) {
+        var element = $(this);
+        if (checked) {
+            if (!element.is(':checked')) {
+                element.click();
+            }
+        } else {
+            if (element.is(':checked')) {
+                element.click();
+            }
         }
     });
 }

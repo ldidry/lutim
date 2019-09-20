@@ -117,7 +117,7 @@
     <table class="table table-hover">
         <thead>
             <tr>
-                <th class="text-center"></th>
+                <th class="text-center"><span class="checkbox"><label><input type="checkbox" id="check-all"><label></span></th>
                 <th class="text-center"><%= l('File name') %></th>
                 <th class="text-center"><%= l('View link') %></th>
                 <th class="text-center"><%= l('Counter') %></th>
