@@ -10,17 +10,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2019-11-16 09:11+0000\n"
+"Last-Translator: ButterflyOfFire <butterflyoffire@protonmail.com>\n"
+"Language-Team: Arabic <https://weblate.framasoft.org/projects/lutim/"
+"development/ar/>\n"
+"Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2018-09-14 02:01+0000\n"
-"Last-Translator: ButterflyOfFire <butterflyoffire@protonmail.com>\n"
-"Language-Team: Arabic <butterflyoffire+lutim@protonmail.com>\n"
-"Language: ar\n"
-"Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
-"&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5);\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
+"X-Generator: Weblate 3.9.1\n"
 "n%100<=10 ? 3: n%100>=11 ? 4 : 5);\n"
-"X-Generator: Zanata 4.6.2\n"
 
 #. (7)
 #. (30)
@@ -89,7 +90,7 @@ msgstr "المساهمون"
 
 #: themes/default/templates/partial/common.js.ep:113 themes/default/templates/partial/common.js.ep:93
 msgid "Copied to clipboard"
-msgstr "تم مستخد إلى الحافظة"
+msgstr "تم نسخه إلى الحافظة"
 
 #: themes/default/templates/partial/lutim.js.ep:215 themes/default/templates/partial/lutim.js.ep:278 themes/default/templates/partial/lutim.js.ep:364
 msgid "Copy all view links to clipboard"
@@ -324,7 +325,7 @@ msgstr ""
 
 #: themes/default/templates/partial/myfiles.js.ep:149
 msgid "Modify expiration delay"
-msgstr ""
+msgstr "تعديل تاريخ نهاية الصلاحية"
 
 #: themes/default/templates/myfiles.html.ep:7 themes/default/templates/partial/navbar.html.ep:18
 msgid "My images"
@@ -378,7 +379,7 @@ msgstr ""
 
 #: themes/default/templates/index.html.ep:46 themes/default/templates/index.html.ep:49 themes/default/templates/myfiles.html.ep:96 themes/default/templates/myfiles.html.ep:99
 msgid "Random image link"
-msgstr ""
+msgstr "رابط إلى صورة عشوائية"
 
 #: themes/default/templates/stats.html.ep:22
 msgid "Raw stats"
@@ -436,7 +437,7 @@ msgstr ""
 
 #: lib/Lutim/Controller/Image.pm:347
 msgid "The URL is not valid."
-msgstr ""
+msgstr "الرابط غير صالح."
 
 #: themes/default/templates/zip.html.ep:16
 msgid ""
@@ -446,7 +447,7 @@ msgstr ""
 
 #: themes/default/templates/partial/myfiles.js.ep:32
 msgid "The data has been successfully imported."
-msgstr ""
+msgstr "تم استيراد البيانات بنجاح."
 
 #: lib/Lutim/Controller/Image.pm:160 lib/Lutim/Controller/Image.pm:228
 msgid "The delete token is invalid."
@@ -503,7 +504,7 @@ msgstr ""
 
 #: themes/default/templates/gallery.html.ep:30
 msgid "Toggle fullscreen"
-msgstr ""
+msgstr "الإنتقال إلى وضع الشاشة الكامل"
 
 #: themes/default/templates/partial/navbar.html.ep:8
 msgid "Toggle navigation"
@@ -515,11 +516,11 @@ msgstr "العدد الإجمالي"
 
 #: themes/default/templates/index.html.ep:78 themes/default/templates/partial/lutim.js.ep:17
 msgid "Tweet it!"
-msgstr "غرِّد الرابط"
+msgstr "غرِّد الرابط!"
 
 #: themes/default/templates/partial/common.js.ep:110 themes/default/templates/partial/common.js.ep:90
 msgid "Unable to copy to clipboard"
-msgstr ""
+msgstr "لم يمكن النسخ إلى الحافطة"
 
 #. ($short)
 #: lib/Lutim/Controller/Image.pm:108 lib/Lutim/Controller/Image.pm:202 lib/Lutim/Controller/Image.pm:273
@@ -565,11 +566,11 @@ msgstr "عرض الرابط"
 
 #: themes/default/templates/about.html.ep:22
 msgid "What about the software which provides the service?"
-msgstr ""
+msgstr "عن البرنامج الذي يقدم هذه الخدمة؟"
 
 #: themes/default/templates/about.html.ep:3
 msgid "What is Lutim?"
-msgstr "ماذا نقصد بـ Lutim ؟"
+msgstr "ماذا نقصد بـ Lutim؟"
 
 #: themes/default/templates/about.html.ep:15
 msgid "Who owns rights on images uploaded on Lutim?"
@@ -613,7 +614,7 @@ msgstr "تكبير/تصغير"
 
 #: themes/default/templates/about.html.ep:27
 msgid "and on"
-msgstr ""
+msgstr "وكذا على"
 
 #: themes/default/templates/about.html.ep:40
 msgid "arabic translation"
@@ -633,7 +634,7 @@ msgstr "الترجمة إلى الأوكستانية"
 
 #: themes/default/templates/about.html.ep:27
 msgid "on"
-msgstr ""
+msgstr "على"
 
 #: themes/default/templates/about.html.ep:39
 msgid "paste image to upload ability"
