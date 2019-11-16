@@ -16,20 +16,8 @@ minify:
 locales:
 	$(XGETTEXT) $(EXTRACTDIR) -o $(POT) 2>/dev/null
 
-push-locales:
-    ifeq ($(HEAD),$(filter $(HEAD),master development))
-		sed -e 's@<project-version>.*</project-version>@<project-version>$(HEAD)</project-version>@' -i zanata.xml && \
-			zanata-cli -q -B push
-    endif
-
-pull-locales:
-    ifeq ($(HEAD),$(filter $(HEAD),master development))
-		sed -e 's@<project-version>.*</project-version>@<project-version>$(HEAD)</project-version>@' -i zanata.xml && \
-			zanata-cli -q -B pull
-    endif
-
 stats-locales:
-	zanata-cli -q stats
+	wlc stats lutim/development
 
 podcheck:
 	podchecker lib/Lutim/DB/Image.pm
