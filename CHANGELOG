@@ -1,6 +1,8 @@
 Revision history for Lutim
 
-0.11.6 ????-??-??
+0.1?.? ????-??-??
+
+0.11.6 2019-11-16
 	- Remove the "Support the author" dropdown
 	- Add a "select all" checkbox on /myfiles (#105)
 	- Update arabic translation
