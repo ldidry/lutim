@@ -9,16 +9,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2019-11-16 13:46+0000\n"
+"Last-Translator: Luc Didry <luc@framasoft.org>\n"
+"Language-Team: Occitan <https://weblate.framasoft.org/projects/lutim/"
+"development/oc/>\n"
+"Language: oc\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2019-05-13 08:46+0000\n"
-"Last-Translator: Luc Didry <luc@framasoft.org>\n"
-"Language-Team: Occitan (http://www.transifex.com/fiat-tux/lutim/language/oc/"
-")\n"
-"Language: oc\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Zanata 4.6.2\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 3.9.1\n"
 
 #. (7)
 #. (30)
@@ -47,7 +47,7 @@ msgstr "24 oras"
 
 #: themes/default/templates/partial/myfiles.js.ep:180
 msgid ": Error while trying to get the counter."
-msgstr " : Error al moment de recuperar lo comptador."
+msgstr ": Error al moment de recuperar lo comptador."
 
 #: themes/default/templates/partial/navbar.html.ep:77
 msgid "About"
@@ -305,7 +305,7 @@ msgid ""
 "multiple URLs."
 msgstr ""
 "Lutim pòt pas comprimir tan d'imatge d'un còp, a doncas trocejat vòstra "
-"demanda en multiplas URLs"
+"demanda en multiplas URLs."
 
 #: themes/default/templates/about.html.ep:4
 msgid ""
@@ -448,9 +448,9 @@ msgid ""
 "licenses/agpl-3.0.html\">AGPL</a> to see what you can do."
 msgstr ""
 "Lo logicial Lutim es un <a href=\"https://oc.wikipedia.org/wiki/"
-"Logicial_liure\">logicial liure</a>, que permet de lo telecargar e de "
-"l’installar sus vòstre pròpri servidor. Gaitatz l’<a href=\"https://www.gnu."
-"org/licenses/agpl-3.0.html\">AGPL</a> per veire que son vòstres dreits"
+"Logicial_liure\">logicial liure</a>, que permet de lo telecargar e de l’"
+"installar sus vòstre pròpri servidor. Gaitatz l’<a href=\"https://www.gnu."
+"org/licenses/agpl-3.0.html\">AGPL</a> per veire que son vòstres dreits."
 
 #: lib/Lutim/Controller/Image.pm:347
 msgid "The URL is not valid."
@@ -496,7 +496,7 @@ msgstr "L'imatge %1 es ja estat suprimit."
 #. ($image->filename)
 #: lib/Lutim/Controller/Image.pm:239 lib/Lutim/Controller/Image.pm:244
 msgid "The image %1 has been successfully deleted"
-msgstr "L'imatge %1 es estat suprimit amb succès."
+msgstr "L'imatge %1 es estat suprimit amb succès"
 
 #: themes/default/templates/index.html.ep:63
 msgid "The images are encrypted on the server (Lutim does not keep the key)."
@@ -512,7 +512,7 @@ msgstr ""
 
 #: lib/Lutim/Controller/Image.pm:168
 msgid "The image’s delay has been successfully modified"
-msgstr "Lo delai de l'imatge es plan estat modificat."
+msgstr "Lo delai de l'imatge es plan estat modificat"
 
 #: themes/default/templates/partial/gallery.js.ep:277
 msgid "There is XXXX image(s) in the gallery"
@@ -523,7 +523,7 @@ msgstr "I a XXXX imatge(s) dins la galariá"
 msgid "There is no more available URL. Retry or contact the administrator. %1"
 msgstr ""
 "I a pas mai d'URL disponiblas. Mercés de tornar ensajar o de contactar "
-"l'administrator. %1."
+"l'administrator. %1"
 
 #: themes/default/templates/gallery.html.ep:30
 msgid "Toggle fullscreen"
