@@ -28,7 +28,7 @@ msgstr ""
 msgid "%1 sent images on this instance from beginning."
 msgstr ""
 
-#: themes/default/templates/index.html.ep:208
+#: themes/default/templates/index.html.ep:202
 msgid "-or-"
 msgstr ""
 
@@ -60,11 +60,11 @@ msgstr ""
 msgid "Archives download"
 msgstr ""
 
-#: themes/default/templates/about.html.ep:44 themes/default/templates/myfiles.html.ep:135 themes/default/templates/stats.html.ep:25
+#: themes/default/templates/about.html.ep:44 themes/default/templates/myfiles.html.ep:129 themes/default/templates/stats.html.ep:25
 msgid "Back to homepage"
 msgstr ""
 
-#: themes/default/templates/index.html.ep:211 themes/default/templates/index.html.ep:212
+#: themes/default/templates/index.html.ep:205 themes/default/templates/index.html.ep:206
 msgid "Click to open the file browser"
 msgstr ""
 
@@ -88,11 +88,11 @@ msgstr ""
 msgid "Copy all view links to clipboard"
 msgstr ""
 
-#: themes/default/templates/index.html.ep:103 themes/default/templates/index.html.ep:111 themes/default/templates/index.html.ep:18 themes/default/templates/index.html.ep:36 themes/default/templates/index.html.ep:54 themes/default/templates/index.html.ep:87 themes/default/templates/index.html.ep:95 themes/default/templates/myfiles.html.ep:104 themes/default/templates/myfiles.html.ep:68 themes/default/templates/myfiles.html.ep:86 themes/default/templates/partial/common.js.ep:186 themes/default/templates/partial/lutim.js.ep:106 themes/default/templates/partial/lutim.js.ep:121 themes/default/templates/partial/lutim.js.ep:80 themes/default/templates/partial/lutim.js.ep:92 themes/default/templates/partial/myfiles.js.ep:172
+#: themes/default/templates/index.html.ep:105 themes/default/templates/index.html.ep:16 themes/default/templates/index.html.ep:32 themes/default/templates/index.html.ep:48 themes/default/templates/index.html.ep:81 themes/default/templates/index.html.ep:89 themes/default/templates/index.html.ep:97 themes/default/templates/myfiles.html.ep:66 themes/default/templates/myfiles.html.ep:82 themes/default/templates/myfiles.html.ep:98 themes/default/templates/partial/common.js.ep:186 themes/default/templates/partial/lutim.js.ep:106 themes/default/templates/partial/lutim.js.ep:121 themes/default/templates/partial/lutim.js.ep:80 themes/default/templates/partial/lutim.js.ep:92 themes/default/templates/partial/myfiles.js.ep:172
 msgid "Copy to clipboard"
 msgstr ""
 
-#: themes/default/templates/myfiles.html.ep:123
+#: themes/default/templates/myfiles.html.ep:117
 msgid "Counter"
 msgstr ""
 
@@ -104,7 +104,7 @@ msgstr ""
 msgid "Delay repartition chart for enabled images"
 msgstr ""
 
-#: themes/default/templates/index.html.ep:133 themes/default/templates/index.html.ep:165 themes/default/templates/index.html.ep:196 themes/default/templates/myfiles.html.ep:124 themes/default/templates/myfiles.html.ep:45 themes/default/templates/partial/lutim.js.ep:161
+#: themes/default/templates/index.html.ep:127 themes/default/templates/index.html.ep:159 themes/default/templates/index.html.ep:190 themes/default/templates/myfiles.html.ep:118 themes/default/templates/myfiles.html.ep:45 themes/default/templates/partial/lutim.js.ep:161
 msgid "Delete at first view?"
 msgstr ""
 
@@ -116,7 +116,7 @@ msgstr ""
 msgid "Deleted images in 30 days"
 msgstr ""
 
-#: themes/default/templates/index.html.ep:116 themes/default/templates/myfiles.html.ep:127 themes/default/templates/partial/common.js.ep:178 themes/default/templates/partial/common.js.ep:181
+#: themes/default/templates/index.html.ep:110 themes/default/templates/myfiles.html.ep:121 themes/default/templates/partial/common.js.ep:178 themes/default/templates/partial/common.js.ep:181
 msgid "Deletion link"
 msgstr ""
 
@@ -124,15 +124,15 @@ msgstr ""
 msgid "Download all images"
 msgstr ""
 
-#: themes/default/templates/index.html.ep:101 themes/default/templates/index.html.ep:99 themes/default/templates/partial/lutim.js.ep:102 themes/default/templates/partial/lutim.js.ep:98
+#: themes/default/templates/index.html.ep:93 themes/default/templates/index.html.ep:95 themes/default/templates/partial/lutim.js.ep:102 themes/default/templates/partial/lutim.js.ep:98
 msgid "Download link"
 msgstr ""
 
-#: themes/default/templates/index.html.ep:28 themes/default/templates/index.html.ep:31 themes/default/templates/myfiles.html.ep:78 themes/default/templates/myfiles.html.ep:81
+#: themes/default/templates/index.html.ep:26 themes/default/templates/index.html.ep:28 themes/default/templates/myfiles.html.ep:76 themes/default/templates/myfiles.html.ep:78
 msgid "Download zip link"
 msgstr ""
 
-#: themes/default/templates/index.html.ep:207
+#: themes/default/templates/index.html.ep:201
 msgid "Drag & drop images here"
 msgstr ""
 
@@ -140,7 +140,7 @@ msgstr ""
 msgid "Drag and drop an image in the appropriate area or use the traditional way to send files and Lutim will provide you four URLs. One to view the image, an other to directly download it, one you can use on social networks and a last to delete the image when you want."
 msgstr ""
 
-#: themes/default/templates/index.html.ep:168 themes/default/templates/index.html.ep:199
+#: themes/default/templates/index.html.ep:162 themes/default/templates/index.html.ep:193
 msgid "Encrypt the image (Lutim does not keep the key)."
 msgstr ""
 
@@ -152,15 +152,15 @@ msgstr ""
 msgid "Evolution of total files"
 msgstr ""
 
-#: themes/default/templates/myfiles.html.ep:126
+#: themes/default/templates/myfiles.html.ep:120
 msgid "Expires at"
 msgstr ""
 
-#: themes/default/templates/myfiles.html.ep:112
+#: themes/default/templates/myfiles.html.ep:106
 msgid "Export localStorage data"
 msgstr ""
 
-#: themes/default/templates/myfiles.html.ep:121
+#: themes/default/templates/myfiles.html.ep:115
 msgid "File name"
 msgstr ""
 
@@ -172,7 +172,7 @@ msgstr ""
 msgid "Fork me!"
 msgstr ""
 
-#: themes/default/templates/index.html.ep:10 themes/default/templates/index.html.ep:13 themes/default/templates/myfiles.html.ep:60 themes/default/templates/myfiles.html.ep:63
+#: themes/default/templates/index.html.ep:10 themes/default/templates/index.html.ep:12 themes/default/templates/myfiles.html.ep:60 themes/default/templates/myfiles.html.ep:62
 msgid "Gallery link"
 msgstr ""
 
@@ -200,7 +200,7 @@ msgstr ""
 msgid "If the files are deleted if you ask it while posting it, their SHA512 footprint are retained."
 msgstr ""
 
-#: themes/default/templates/index.html.ep:181 themes/default/templates/index.html.ep:221
+#: themes/default/templates/index.html.ep:175 themes/default/templates/index.html.ep:215
 msgid "Image URL"
 msgstr ""
 
@@ -216,7 +216,7 @@ msgstr ""
 msgid "Image not found."
 msgstr ""
 
-#: themes/default/templates/myfiles.html.ep:113
+#: themes/default/templates/myfiles.html.ep:107
 msgid "Import localStorage data"
 msgstr ""
 
@@ -244,7 +244,7 @@ msgstr ""
 msgid "Juste like you pronounce the French word <a href=\"https://fr.wikipedia.org/wiki/Lutin\">lutin</a> (/ly.tɛ̃/)."
 msgstr ""
 
-#: themes/default/templates/index.html.ep:171 themes/default/templates/index.html.ep:202
+#: themes/default/templates/index.html.ep:165 themes/default/templates/index.html.ep:196
 msgid "Keep EXIF tags"
 msgstr ""
 
@@ -252,7 +252,7 @@ msgstr ""
 msgid "Language"
 msgstr ""
 
-#: themes/default/templates/index.html.ep:136 themes/default/templates/index.html.ep:184 themes/default/templates/index.html.ep:224 themes/default/templates/partial/lutim.js.ep:165
+#: themes/default/templates/index.html.ep:130 themes/default/templates/index.html.ep:178 themes/default/templates/index.html.ep:218 themes/default/templates/partial/lutim.js.ep:165
 msgid "Let's go!"
 msgstr ""
 
@@ -260,7 +260,7 @@ msgstr ""
 msgid "License:"
 msgstr ""
 
-#: themes/default/templates/index.html.ep:107 themes/default/templates/index.html.ep:109 themes/default/templates/partial/lutim.js.ep:112 themes/default/templates/partial/lutim.js.ep:116
+#: themes/default/templates/index.html.ep:101 themes/default/templates/index.html.ep:103 themes/default/templates/partial/lutim.js.ep:112 themes/default/templates/partial/lutim.js.ep:116
 msgid "Link for share on social networks"
 msgstr ""
 
@@ -284,7 +284,7 @@ msgstr ""
 msgid "Main developers"
 msgstr ""
 
-#: themes/default/templates/index.html.ep:91 themes/default/templates/index.html.ep:93 themes/default/templates/partial/lutim.js.ep:86 themes/default/templates/partial/lutim.js.ep:89
+#: themes/default/templates/index.html.ep:85 themes/default/templates/index.html.ep:87 themes/default/templates/partial/lutim.js.ep:86 themes/default/templates/partial/lutim.js.ep:89
 msgid "Markdown syntax"
 msgstr ""
 
@@ -304,7 +304,7 @@ msgstr ""
 msgid "No limit"
 msgstr ""
 
-#: themes/default/templates/index.html.ep:183 themes/default/templates/index.html.ep:216
+#: themes/default/templates/index.html.ep:177 themes/default/templates/index.html.ep:210
 msgid "Only images are allowed"
 msgstr ""
 
@@ -337,7 +337,7 @@ msgstr ""
 msgid "Previous (arrow left)"
 msgstr ""
 
-#: themes/default/templates/index.html.ep:46 themes/default/templates/index.html.ep:49 themes/default/templates/myfiles.html.ep:96 themes/default/templates/myfiles.html.ep:99
+#: themes/default/templates/index.html.ep:42 themes/default/templates/index.html.ep:44 themes/default/templates/myfiles.html.ep:92 themes/default/templates/myfiles.html.ep:94
 msgid "Random image link"
 msgstr ""
 
@@ -349,7 +349,7 @@ msgstr ""
 msgid "Save changes"
 msgstr ""
 
-#: themes/default/templates/index.html.ep:176
+#: themes/default/templates/index.html.ep:170
 msgid "Send an image"
 msgstr ""
 
@@ -357,7 +357,7 @@ msgstr ""
 msgid "Signin"
 msgstr ""
 
-#: themes/default/templates/index.html.ep:151 themes/default/templates/partial/gallery.js.ep:211 themes/default/templates/partial/lutim.js.ep:176
+#: themes/default/templates/index.html.ep:145 themes/default/templates/partial/gallery.js.ep:211 themes/default/templates/partial/lutim.js.ep:176
 msgid "Something bad happened"
 msgstr ""
 
@@ -416,7 +416,7 @@ msgstr ""
 msgid "The image %1 has been successfully deleted"
 msgstr ""
 
-#: themes/default/templates/index.html.ep:63
+#: themes/default/templates/index.html.ep:57
 msgid "The images are encrypted on the server (Lutim does not keep the key)."
 msgstr ""
 
@@ -449,7 +449,7 @@ msgstr ""
 msgid "Total"
 msgstr ""
 
-#: themes/default/templates/index.html.ep:78 themes/default/templates/partial/lutim.js.ep:17
+#: themes/default/templates/index.html.ep:72 themes/default/templates/partial/lutim.js.ep:17
 msgid "Tweet it!"
 msgstr ""
 
@@ -474,11 +474,11 @@ msgstr ""
 msgid "Unlike many image sharing services, you don't give us rights on uploaded images."
 msgstr ""
 
-#: themes/default/templates/index.html.ep:180 themes/default/templates/index.html.ep:219
+#: themes/default/templates/index.html.ep:174 themes/default/templates/index.html.ep:213
 msgid "Upload an image with its URL"
 msgstr ""
 
-#: themes/default/templates/myfiles.html.ep:125
+#: themes/default/templates/myfiles.html.ep:119
 msgid "Uploaded at"
 msgstr ""
 
@@ -491,7 +491,7 @@ msgstr ""
 msgid "Uploading is currently disabled, please try later or contact the administrator (%1)."
 msgstr ""
 
-#: themes/default/templates/index.html.ep:83 themes/default/templates/index.html.ep:85 themes/default/templates/myfiles.html.ep:122 themes/default/templates/partial/lutim.js.ep:72 themes/default/templates/partial/lutim.js.ep:76
+#: themes/default/templates/index.html.ep:77 themes/default/templates/index.html.ep:79 themes/default/templates/myfiles.html.ep:116 themes/default/templates/partial/lutim.js.ep:72 themes/default/templates/partial/lutim.js.ep:76
 msgid "View link"
 msgstr ""
 
