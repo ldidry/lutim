@@ -3,6 +3,10 @@ Revision history for Lutim
 0.11.6 ????-??-??
 	- Remove the "Support the author" dropdown
 	- Add a "select all" checkbox on /myfiles (#105)
+	- Update arabic translation
+	- Group button links fixed to make the whole button a link (Armando Lüscher)
+	- Docker support (Arnaud de Mouhy)
+	- Bump toastify-js to version 1.4.0 (Armando Lüscher)
 
 0.11.5 2019-04-19
 	- Revert catching Image::Magick problems
