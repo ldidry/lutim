@@ -1,0 +1,8 @@
+.ash_history
+.git
+.cpan
+.cpanm
+/files/
+/local/
+/lutim.conf
+/lutim.db
