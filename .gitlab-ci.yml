@@ -174,3 +174,5 @@ cover:
   script:
     - make cover
   coverage: '/Total .*\d+\.\d+$/'
+  except:
+    - tags
