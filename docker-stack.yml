@@ -1,0 +1,39 @@
+version: '3.3'
+
+services:
+    app:
+        image: aquinum/lutim
+        configs:
+            - source: lutim.conf
+              target: /home/lutim/lutim.conf
+              uid: '1000'
+              gid: '1000'
+              mode: 0440
+        deploy:
+            replicas: 1
+    db:
+        image: postgres:11.2-alpine
+        environment:
+            POSTGRES_PASSWORD: <changeme>
+            POSTGRES_USER: lutim
+            POSTGRES_DB: lutim
+    cache:
+        image: memcached:1.5-alpine
+    minion:
+        image: aquinum/lutim
+        command: minion
+        configs:
+            - source: lutim.conf
+              target: /home/lutim/lutim.conf
+              uid: '1000'
+              gid: '1000'
+              mode: 0440
+    minion_db:
+        image: mariadb:10.3
+        environment:
+            MYSQL_ROOT_PASSWORD: <changeme>
+            MYSQL_DATABASE: lutim_minion
+
+configs:
+    lutim.conf:
+        file: ./lutim.conf

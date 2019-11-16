@@ -129,7 +129,7 @@ sub to_hash {
         mod_token            => $c->mod_token,
         width                => $c->width,
         height               => $c->height,
-        height               => $c->iv
+        iv                   => $c->iv
     };
 }
 
@@ -156,7 +156,7 @@ sub to_hash {
 =item B<Arguments> : two mandatory parameters: one integer, the delete_at_day attribute, a boolean (0 or 1), the enabled attribute
                      an optional parameter: an unix timestamp
 
-=item B<Purpose>   : count how many images there is with the given delete_at_day attribute, and enabled or disabled, depending on the given enabled attribute
+=item B<Purpose>   : count how many images there are with the given delete_at_day attribute, and enabled or disabled, depending on the given enabled attribute
                      if the optional parameter is given, count only images according to the given mandatory parameters that were created before the timestamp
 
 =item B<Returns>   : integer
@@ -241,7 +241,7 @@ sub to_hash {
 
 =item B<Arguments> : none
 
-=item B<Purpose>   : counts the number of record which path is null
+=item B<Purpose>   : counts the number of records whose path is null
 
 =item B<Returns>   : integer
 
@@ -255,7 +255,7 @@ sub to_hash {
 
 =item B<Arguments> : none
 
-=item B<Purpose>   : counts the number of record which path is not null
+=item B<Purpose>   : counts the number of records whose path is not null
 
 =item B<Returns>   : integer
 

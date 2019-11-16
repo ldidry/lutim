@@ -177,7 +177,7 @@ function link(url, dl, token, modify, only_url) {
         return [
             '<label class="sr-only" for="link-del-', url, '"><%= l('Deletion link') %></label>',
             '<div class="input-group input-group-sm">',
-                '<div class="input-group-btn">',
+                '<div class="input-group-btn adjust-addon">',
                     '<a class="btn btn-default text-danger" href="#" title="<%= l('Deletion link') %>" id="del-', url, '" data-short="', url, '" data-token="', token, '">',
                         '<span class="icon icon-trash"></span> ',
                     '</a>',

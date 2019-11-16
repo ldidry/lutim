@@ -1,6 +1,7 @@
 image: hatsoftwares/lutim-test-ci:latest
 stages:
   - publish_changelog
+  - pouet_it
   - podcheck
   - carton
   - carton_bdd
@@ -26,7 +27,7 @@ variables:
   artifacts:
     paths:
       - local/
-  dependencies:
+  needs:
     - carton
 .sqlite_template: &sqlite_definition
   <<: *retry
@@ -34,7 +35,7 @@ variables:
   artifacts:
     paths:
       - cover_db/
-  dependencies:
+  needs:
     - carton_sqlite
 .pg_template: &pg_definition
   <<: *retry
@@ -42,26 +43,18 @@ variables:
   artifacts:
     paths:
       - cover_db/
-  dependencies:
+  needs:
     - carton_postgresql
   services:
     - name: postgres:9.6
       alias: postgres
 
-### Publish tag changelog
+### Publish tag changelog and create a toot
 ##
 #
-publish_changelog:
-  image: hatsoftwares/curl-jq:latest
-  stage: publish_changelog
-  script:
-    - export PROJECT_API_URL="https://framagit.org/api/v4/projects/${CI_PROJECT_ID}"
-    - export DESCRIPTION_URL="${PROJECT_API_URL}/repository/tags/${CI_COMMIT_TAG}/release"
-    - 'export HEADER="Private-Token: ${GITLAB_API_TOKEN}"'
-    - sed -n '/^'$CI_COMMIT_TAG'[[:space:]]/,/^[^\t]/p' CHANGELOG | sed -e 's/^[^\t].*//' -e 's/\t//g' | sed '/^[[:space:]]*$/d' > /tmp/text
-    - if [[ ! -z $GITLAB_API_TOKEN ]]; then curl -s --request POST --data-urlencode "description@/tmp/text" --header "${HEADER}" "${DESCRIPTION_URL}"; fi
-  only:
-    - tags
+include:
+  - 'https://framagit.org/fiat-tux/gitlabci-snippets/raw/4e4e03322e95e9b0124c714456ebf1bdc02ad43f/publish_changelog.gitlab-ci.yml'
+  - 'https://framagit.org/fiat-tux/gitlabci-snippets/raw/4e4e03322e95e9b0124c714456ebf1bdc02ad43f/pouet-it-from-ci.gitlab-ci.yml'
 
 ### Podcheck
 ##
@@ -181,18 +174,3 @@ cover:
   script:
     - make cover
   coverage: '/Total .*\d+\.\d+$/'
-
-### Push new translations strings to https://trad.framasoft.org
-##
-#
-trads:
-  stage: cover
-  image: framasoft/push-trad:latest
-  dependencies: []
-  script:
-  - sed -e "s@<project-version>.*</project-version>@<project-version>$CI_COMMIT_REF_SLUG</project-version>@" -i zanata.xml
-  - if [ ! -z ${ZANATA_CONFIG+x} ]; then mkdir -p ${HOME}/.config; echo -e "${ZANATA_CONFIG}" > ${HOME}/.config/zanata.ini; fi
-  - if [ ! -z ${ZANATA_CONFIG+x} ]; then make push-locales; fi
-  only:
-    - development
-    - master

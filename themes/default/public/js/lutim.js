@@ -109,6 +109,7 @@ $('document').ready(function() {
         $('#json-import').on('click', function() { $('#import').click(); });
         $('#import').on('change', function() { importStorage(this.files); })
         $('#mod-delay').on('click', modifyDelay);
+        $('#check-all').on('click', checkAll)
     }
     $('.copy-to-clipboard-link').on('click', clickOnCopyLink);
     $('.copy-all-to-clipboard-link').on('click', copyAllToClipboard);

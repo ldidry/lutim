@@ -18,3 +18,7 @@ tmp/*
 .zanata-cache/*
 cover_db/*
 *.passwd
+.ash_history
+.vscode/
+.DS_Store
+.cpanm/

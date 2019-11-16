@@ -43,7 +43,7 @@ See [AUTHORS.md](AUTHORS.md) file.
 
 ## Contribute!
 
-Please consider contributing, either by [reporting issues](https://framagit.org/luc/lutim/issues) or by helping the [internationalization](https://trad.framasoft.org/project/view/lutim). And of course, code contribution are welcome!
+Please consider contributing, either by [reporting issues](https://framagit.org/luc/lutim/issues) or by helping the [internationalization](https://weblate.framasoft.org/projects/lutim/). And of course, code contribution are welcome!
 
 The details on how to contribute are on the [wiki](https://framagit.org/luc/lutim/wikis/contribute).
 
@@ -67,3 +67,4 @@ It uses:
 * [PhotoSwipe](http://photoswipe.com/) for the gallery
 * [JSZip](https://stuk.github.io/jszip/) for generating a zip containing all the images in the gallery
 * [FileSaver.js](https://github.com/eligrey/FileSaver.js/) for saving the zip
+* [Toastify JS](https://apvarun.github.io/toastify-js/) for notifications

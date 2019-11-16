@@ -4,15 +4,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2019-11-16 13:46+0000\n"
+"Last-Translator: Luc Didry <luc@framasoft.org>\n"
+"Language-Team: Italian <https://weblate.framasoft.org/projects/lutim/"
+"development/it/>\n"
+"Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2018-11-16 08:13+0000\n"
-"Last-Translator: roberto marcolin <nilogadda@gmail.com>\n"
-"Language-Team: Italian\n"
-"Language: it\n"
-"X-Generator: Zanata 4.6.2\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.9.1\n"
 
 #. (7)
 #. (30)
@@ -25,7 +26,7 @@ msgstr "%1 giorni"
 #. ($total)
 #: themes/default/templates/stats.html.ep:2
 msgid "%1 sent images on this instance from beginning."
-msgstr "%1 immagini inviate su questa istanza dall'inizio"
+msgstr "%1 immagini inviate su questa istanza dall'inizio."
 
 #: themes/default/templates/index.html.ep:208
 msgid "-or-"
@@ -53,7 +54,7 @@ msgstr "Immagini attive"
 
 #: lib/Lutim/Controller/Image.pm:327
 msgid "An error occured while downloading the image."
-msgstr "È avvenuto un errore durante il download dell'immagine"
+msgstr "È avvenuto un errore durante il download dell'immagine."
 
 #: themes/default/templates/zip.html.ep:2
 msgid "Archives download"
@@ -150,11 +151,11 @@ msgstr ""
 
 #: themes/default/templates/index.html.ep:168 themes/default/templates/index.html.ep:199
 msgid "Encrypt the image (Lutim does not keep the key)."
-msgstr "Crittografare l'immagine (Lutim non memorizza la chiave)"
+msgstr "Crittografare l'immagine (Lutim non memorizza la chiave)."
 
 #: themes/default/templates/partial/lutim.js.ep:45 themes/default/templates/partial/myfiles.js.ep:113
 msgid "Error while trying to modify the image."
-msgstr "Errore durante la modifica dell'immagine"
+msgstr "Errore durante la modifica dell'immagine."
 
 #: themes/default/templates/stats.html.ep:10
 msgid "Evolution of total files"
@@ -182,7 +183,7 @@ msgstr ""
 
 #: themes/default/templates/partial/navbar.html.ep:80
 msgid "Fork me!"
-msgstr "Crea un fork del progetto"
+msgstr "Crea un fork del progetto !"
 
 #: themes/default/templates/index.html.ep:10 themes/default/templates/index.html.ep:13 themes/default/templates/myfiles.html.ep:60 themes/default/templates/myfiles.html.ep:63
 msgid "Gallery link"
@@ -230,7 +231,7 @@ msgstr "Immagine cancellata"
 
 #: lib/Lutim/Controller/Image.pm:753
 msgid "Image not found."
-msgstr "Immagine non trovata"
+msgstr "Immagine non trovata."
 
 #: themes/default/templates/myfiles.html.ep:113
 msgid "Import localStorage data"
@@ -278,7 +279,7 @@ msgstr "Si parte!"
 
 #: themes/default/templates/partial/navbar.html.ep:74
 msgid "License:"
-msgstr "Licenza"
+msgstr "Licenza :"
 
 #: themes/default/templates/index.html.ep:107 themes/default/templates/index.html.ep:109 themes/default/templates/partial/lutim.js.ep:112 themes/default/templates/partial/lutim.js.ep:116
 msgid "Link for share on social networks"
@@ -462,12 +463,12 @@ msgstr "I dati sono stati importati con successo."
 
 #: lib/Lutim/Controller/Image.pm:159 lib/Lutim/Controller/Image.pm:227
 msgid "The delete token is invalid."
-msgstr "Il token cancellato non è valido"
+msgstr "Il token cancellato non è valido."
 
 #. ($upload->filename)
 #: lib/Lutim/Controller/Image.pm:487
 msgid "The file %1 is not an image."
-msgstr "Il file %1  non è un'immagine"
+msgstr "Il file %1  non è un'immagine."
 
 #. ($tx->res->max_message_size)
 #. ($c->req->max_message_size)
@@ -492,7 +493,7 @@ msgstr "L'immagine %1 è  stata cancellata con successo"
 
 #: lib/Lutim/Controller/Image.pm:167
 msgid "The image's delay has been successfully modified"
-msgstr "La durata dell'immagine è stata modificata con successo."
+msgstr "La durata dell'immagine è stata modificata con successo"
 
 #: themes/default/templates/index.html.ep:63
 msgid "The images are encrypted on the server (Lutim does not keep the key)."
@@ -556,7 +557,7 @@ msgid ""
 "images."
 msgstr ""
 "A differenza di molti servizi di condivisione di immagini, non ci cedi i "
-"diritti sulle immagini che carichi"
+"diritti sulle immagini che carichi."
 
 #: themes/default/templates/index.html.ep:180 themes/default/templates/index.html.ep:219
 msgid "Upload an image with its URL"
@@ -577,7 +578,7 @@ msgid ""
 "administrator (%1)."
 msgstr ""
 "Il caricamento (upload) è al momento disabilitato, prova più tardi o "
-"contatta l'amministratore (%1)"
+"contatta l'amministratore (%1)."
 
 #: themes/default/templates/index.html.ep:83 themes/default/templates/index.html.ep:85 themes/default/templates/myfiles.html.ep:122 themes/default/templates/partial/lutim.js.ep:72 themes/default/templates/partial/lutim.js.ep:76
 msgid "View link"
@@ -603,7 +604,7 @@ msgid ""
 msgstr ""
 "Sì, è così. D'altra parte, per motivi legali, il tuo indirizzo IP viene "
 "registrato quando invii un'immagine. Niente paura, è la procedura usata da "
-"tutti i siti in cui puoi inviare dei file."
+"tutti i siti in cui puoi inviare dei file !"
 
 #: themes/default/templates/about.html.ep:10
 msgid ""

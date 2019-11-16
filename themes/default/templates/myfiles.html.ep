@@ -59,11 +59,9 @@
         <div class="form-group">
             <label for="gallery-url-input"><%= l('Gallery link') %></label>
             <div class="input-group">
-                <div class="input-group-addon">
-                    <a id="gallery-url-link" href="#" target="_blank" title="<%= l('Gallery link') %>">
-                        <span class="icon icon-picture"></span>
-                    </a>
-                </div>
+                <a class="input-group-addon" id="gallery-url-link" href="#" target="_blank" title="<%= l('Gallery link') %>">
+                    <span class="icon icon-picture"></span>
+                </a>
                 <input class="form-control" name="gallery-url-input" type="text" id="gallery-url-input" readonly></input>
                 <a href="#" class="input-group-addon jsonly copy-to-clipboard-link" title="<%= l('Copy to clipboard') %>">
                     <span class="icon icon-clipboard"></span>
@@ -77,11 +75,9 @@
         <div class="form-group">
             <label for="zip-url-input"><%= l('Download zip link') %></label>
             <div class="input-group">
-                <div class="input-group-addon">
-                    <a id="zip-url-link" href="#" target="_blank" title="<%= l('Download zip link') %>">
-                        <span class="icon icon-file-archive"></span>
-                    </a>
-                </div>
+                <a class="input-group-addon" id="zip-url-link" href="#" target="_blank" title="<%= l('Download zip link') %>">
+                    <span class="icon icon-file-archive"></span>
+                </a>
                 <input class="form-control" name="zip-url-input" type="text" id="zip-url-input" readonly></input>
                 <a href="#" class="input-group-addon jsonly copy-to-clipboard-link" title="<%= l('Copy to clipboard') %>">
                     <span class="icon icon-clipboard"></span>
@@ -95,11 +91,9 @@
         <div class="form-group">
             <label for="random-url-input"><%= l('Random image link') %></label>
             <div class="input-group">
-                <div class="input-group-addon">
-                    <a id="random-url-link" href="#" target="_blank" title="<%= l('Random image link') %>">
-                        <span class="icon icon-shuffle"></span>
-                    </a>
-                </div>
+                <a class="input-group-addon" id="random-url-link" href="#" target="_blank" title="<%= l('Random image link') %>">
+                    <span class="icon icon-shuffle"></span>
+                </a>
                 <input class="form-control" name="random-url-input" type="text" id="random-url-input" readonly></input>
                 <a href="#" class="input-group-addon jsonly copy-to-clipboard-link" title="<%= l('Copy to clipboard') %>">
                     <span class="icon icon-clipboard"></span>
@@ -117,7 +111,7 @@
     <table class="table table-hover">
         <thead>
             <tr>
-                <th class="text-center"></th>
+                <th class="text-center"><span class="checkbox"><label><input type="checkbox" id="check-all"><label></span></th>
                 <th class="text-center"><%= l('File name') %></th>
                 <th class="text-center"><%= l('View link') %></th>
                 <th class="text-center"><%= l('Counter') %></th>
