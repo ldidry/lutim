@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2019-11-16 09:11+0000\n"
+"PO-Revision-Date: 2019-11-19 09:11+0000\n"
 "Last-Translator: ButterflyOfFire <butterflyoffire@protonmail.com>\n"
 "Language-Team: Arabic <https://weblate.framasoft.org/projects/lutim/"
 "development/ar/>\n"
@@ -110,7 +110,7 @@ msgstr ""
 
 #: themes/default/templates/stats.html.ep:15
 msgid "Delay repartition chart for enabled images"
-msgstr ""
+msgstr "المنحنى البياني للتوزيع الزمني للصور النشطة"
 
 #: themes/default/templates/index.html.ep:133 themes/default/templates/index.html.ep:165 themes/default/templates/index.html.ep:196 themes/default/templates/myfiles.html.ep:124 themes/default/templates/myfiles.html.ep:45 themes/default/templates/partial/lutim.js.ep:161
 msgid "Delete at first view?"
@@ -174,7 +174,7 @@ msgstr "تنتهي مدة صلاحيتها في"
 
 #: themes/default/templates/myfiles.html.ep:112
 msgid "Export localStorage data"
-msgstr ""
+msgstr "تصدير بيانات localStorage"
 
 #: themes/default/templates/myfiles.html.ep:121
 msgid "File name"
@@ -242,7 +242,7 @@ msgstr "الصورة غير موجودة."
 
 #: themes/default/templates/myfiles.html.ep:113
 msgid "Import localStorage data"
-msgstr ""
+msgstr "استيراد بيانات localStorage"
 
 #: themes/default/templates/partial/navbar.html.ep:69
 msgid "Informations"
@@ -321,7 +321,7 @@ msgstr "المطورون الرئيسيون"
 
 #: themes/default/templates/index.html.ep:91 themes/default/templates/index.html.ep:93 themes/default/templates/partial/lutim.js.ep:86 themes/default/templates/partial/lutim.js.ep:89
 msgid "Markdown syntax"
-msgstr ""
+msgstr "صيغة ماركداون"
 
 #: themes/default/templates/partial/myfiles.js.ep:149
 msgid "Modify expiration delay"
@@ -362,7 +362,7 @@ msgstr "الكلمة السرية"
 
 #: themes/default/templates/zip.html.ep:12
 msgid "Please click on each URL to download the different zip files."
-msgstr ""
+msgstr "يُرجى النقر على كل عنوان لتنزيل الملفات المضغوطة zip المختلفة."
 
 #. (config('contact')
 #: themes/default/templates/about.html.ep:19
@@ -451,12 +451,12 @@ msgstr "تم استيراد البيانات بنجاح."
 
 #: lib/Lutim/Controller/Image.pm:160 lib/Lutim/Controller/Image.pm:228
 msgid "The delete token is invalid."
-msgstr ""
+msgstr "رمز الحذف غير صالح."
 
 #. ($upload->filename)
 #: lib/Lutim/Controller/Image.pm:488
 msgid "The file %1 is not an image."
-msgstr ""
+msgstr "الملف %1 ليس صورة."
 
 #. ($tx->res->max_message_size)
 #. ($c->req->max_message_size)
