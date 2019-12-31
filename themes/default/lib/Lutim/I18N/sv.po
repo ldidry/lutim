@@ -7,13 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2020-01-01 02:14+0000\n"
+"Last-Translator: Filip Bengtsson <filip@libreradio.org>\n"
+"Language-Team: Swedish <https://weblate.framasoft.org/projects/lutim/"
+"development/sv/>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.9.1\n"
 
 #. (7)
 #. (30)
@@ -21,7 +24,7 @@ msgstr ""
 #. (config('max_delay')
 #: lib/Lutim/Command/cron/stats.pm:159 lib/Lutim/Command/cron/stats.pm:160 lib/Lutim/Command/cron/stats.pm:173 lib/Lutim/Command/cron/stats.pm:174 lib/Lutim/Command/cron/stats.pm:190 lib/Lutim/Command/cron/stats.pm:191 themes/default/templates/myfiles.html.ep:24 themes/default/templates/myfiles.html.ep:33 themes/default/templates/myfiles.html.ep:34 themes/default/templates/partial/for_my_delay.html.ep:13 themes/default/templates/partial/for_my_delay.html.ep:14 themes/default/templates/partial/for_my_delay.html.ep:4 themes/default/templates/partial/lutim.js.ep:140 themes/default/templates/partial/lutim.js.ep:149 themes/default/templates/partial/lutim.js.ep:150 themes/default/templates/partial/raw.js.ep:23 themes/default/templates/partial/raw.js.ep:24 themes/default/templates/partial/raw.js.ep:6 themes/default/templates/partial/raw.js.ep:7 themes/default/templates/raw.html.ep:8 themes/default/templates/raw.html.ep:9
 msgid "%1 days"
-msgstr ""
+msgstr "%1 dagar"
 
 #. ($total)
 #: themes/default/templates/stats.html.ep:2
@@ -30,31 +33,31 @@ msgstr ""
 
 #: themes/default/templates/index.html.ep:202
 msgid "-or-"
-msgstr ""
+msgstr "-eller-"
 
 #: lib/Lutim.pm:350 lib/Lutim/Command/cron/stats.pm:161 lib/Lutim/Command/cron/stats.pm:175 lib/Lutim/Command/cron/stats.pm:192 themes/default/templates/index.html.ep:5 themes/default/templates/myfiles.html.ep:5 themes/default/templates/partial/raw.js.ep:25 themes/default/templates/partial/raw.js.ep:8 themes/default/templates/raw.html.ep:10
 msgid "1 year"
-msgstr ""
+msgstr "1 år"
 
 #: lib/Lutim.pm:349 lib/Lutim/Command/cron/stats.pm:158 lib/Lutim/Command/cron/stats.pm:172 lib/Lutim/Command/cron/stats.pm:189 themes/default/templates/index.html.ep:4 themes/default/templates/myfiles.html.ep:33 themes/default/templates/myfiles.html.ep:4 themes/default/templates/partial/for_my_delay.html.ep:13 themes/default/templates/partial/lutim.js.ep:149 themes/default/templates/partial/raw.js.ep:22 themes/default/templates/partial/raw.js.ep:5 themes/default/templates/raw.html.ep:7
 msgid "24 hours"
-msgstr ""
+msgstr "24 timmar"
 
 #: themes/default/templates/partial/myfiles.js.ep:210
 msgid ": Error while trying to get the counter."
-msgstr ""
+msgstr ": Kunde inte hämta räknaren."
 
 #: themes/default/templates/partial/navbar.html.ep:63
 msgid "About"
-msgstr ""
+msgstr "Om"
 
 #: lib/Lutim/Command/cron/stats.pm:154 themes/default/templates/raw.html.ep:3
 msgid "Active images"
-msgstr ""
+msgstr "Aktiva bilder"
 
 #: lib/Lutim/Controller/Image.pm:328
 msgid "An error occured while downloading the image."
-msgstr ""
+msgstr "Ett fel inträffade när bilden laddades ner."
 
 #: themes/default/templates/zip.html.ep:2
 msgid "Archives download"
@@ -62,27 +65,27 @@ msgstr ""
 
 #: themes/default/templates/about.html.ep:44 themes/default/templates/myfiles.html.ep:129 themes/default/templates/stats.html.ep:25
 msgid "Back to homepage"
-msgstr ""
+msgstr "Tillbaka till hemsidan"
 
 #: themes/default/templates/index.html.ep:205 themes/default/templates/index.html.ep:206
 msgid "Click to open the file browser"
-msgstr ""
+msgstr "Klicka för att öppna filhanteraren"
 
 #: themes/default/templates/myfiles.html.ep:51
 msgid "Close"
-msgstr ""
+msgstr "Stäng"
 
 #: themes/default/templates/gallery.html.ep:29
 msgid "Close (Esc)"
-msgstr ""
+msgstr "Stäng (Esc)"
 
 #: themes/default/templates/about.html.ep:30
 msgid "Contributors"
-msgstr ""
+msgstr "Bidragsgivare"
 
 #: themes/default/templates/partial/common.js.ep:113 themes/default/templates/partial/common.js.ep:93
 msgid "Copied to clipboard"
-msgstr ""
+msgstr "Kopierat till urklipp"
 
 #: themes/default/templates/partial/lutim.js.ep:215 themes/default/templates/partial/lutim.js.ep:278 themes/default/templates/partial/lutim.js.ep:364
 msgid "Copy all view links to clipboard"
@@ -94,7 +97,7 @@ msgstr ""
 
 #: themes/default/templates/myfiles.html.ep:117
 msgid "Counter"
-msgstr ""
+msgstr "Räknare"
 
 #: themes/default/templates/stats.html.ep:18
 msgid "Delay repartition chart for disabled images"
@@ -106,11 +109,11 @@ msgstr ""
 
 #: themes/default/templates/index.html.ep:127 themes/default/templates/index.html.ep:159 themes/default/templates/index.html.ep:190 themes/default/templates/myfiles.html.ep:118 themes/default/templates/myfiles.html.ep:45 themes/default/templates/partial/lutim.js.ep:161
 msgid "Delete at first view?"
-msgstr ""
+msgstr "Radera efter första visningen"
 
 #: lib/Lutim/Command/cron/stats.pm:155 themes/default/templates/raw.html.ep:4
 msgid "Deleted images"
-msgstr ""
+msgstr "Raderade bilder"
 
 #: lib/Lutim/Command/cron/stats.pm:156 themes/default/templates/raw.html.ep:5
 msgid "Deleted images in 30 days"
@@ -122,19 +125,19 @@ msgstr ""
 
 #: themes/default/templates/gallery.html.ep:10
 msgid "Download all images"
-msgstr ""
+msgstr "Ladda ner alla bilder"
 
 #: themes/default/templates/index.html.ep:93 themes/default/templates/index.html.ep:95 themes/default/templates/partial/lutim.js.ep:102 themes/default/templates/partial/lutim.js.ep:98
 msgid "Download link"
-msgstr ""
+msgstr "Nerladdningslänk"
 
 #: themes/default/templates/index.html.ep:26 themes/default/templates/index.html.ep:28 themes/default/templates/myfiles.html.ep:76 themes/default/templates/myfiles.html.ep:78
 msgid "Download zip link"
-msgstr ""
+msgstr "Nerladdningslänk (zip)"
 
 #: themes/default/templates/index.html.ep:201
 msgid "Drag & drop images here"
-msgstr ""
+msgstr "Drag och släpp bilder här"
 
 #: themes/default/templates/about.html.ep:7
 msgid "Drag and drop an image in the appropriate area or use the traditional way to send files and Lutim will provide you four URLs. One to view the image, an other to directly download it, one you can use on social networks and a last to delete the image when you want."
@@ -142,11 +145,11 @@ msgstr ""
 
 #: themes/default/templates/index.html.ep:162 themes/default/templates/index.html.ep:193
 msgid "Encrypt the image (Lutim does not keep the key)."
-msgstr ""
+msgstr "Kryptera bilden (Lutim behåller inte nyckeln)."
 
 #: themes/default/templates/partial/lutim.js.ep:45 themes/default/templates/partial/myfiles.js.ep:128
 msgid "Error while trying to modify the image."
-msgstr ""
+msgstr "Ett fel inträffade när bilden redigerades."
 
 #: themes/default/templates/stats.html.ep:10
 msgid "Evolution of total files"
@@ -154,7 +157,7 @@ msgstr ""
 
 #: themes/default/templates/myfiles.html.ep:120
 msgid "Expires at"
-msgstr ""
+msgstr "Förfaller"
 
 #: themes/default/templates/myfiles.html.ep:106
 msgid "Export localStorage data"
@@ -162,39 +165,41 @@ msgstr ""
 
 #: themes/default/templates/myfiles.html.ep:115
 msgid "File name"
-msgstr ""
+msgstr "Filnamn"
 
 #: themes/default/templates/about.html.ep:24
 msgid "For more details, see the <a href=\"https://framagit.org/luc/lutim\">homepage of the project</a>."
 msgstr ""
+"Se <a href=\"https://framagit.org/luc/lutim\">projektets hemsida</a> för mer "
+"information."
 
 #: themes/default/templates/partial/navbar.html.ep:66
 msgid "Fork me!"
-msgstr ""
+msgstr "Grena mig!"
 
 #: themes/default/templates/index.html.ep:10 themes/default/templates/index.html.ep:12 themes/default/templates/myfiles.html.ep:60 themes/default/templates/myfiles.html.ep:62
 msgid "Gallery link"
-msgstr ""
+msgstr "Länk till galleri"
 
 #: themes/default/templates/partial/common.js.ep:116 themes/default/templates/partial/common.js.ep:134
 msgid "Hit Ctrl+C, then Enter to copy the short link"
-msgstr ""
+msgstr "Tryck Ctrl+C och sedan Enter för att kopiera den nerkortade länken"
 
 #: themes/default/templates/layouts/default.html.ep:47
 msgid "Homepage"
-msgstr ""
+msgstr "Hemsida"
 
 #: themes/default/templates/about.html.ep:20
 msgid "How do you pronounce Lutim?"
-msgstr ""
+msgstr "Hur uttalar man Lutim?"
 
 #: themes/default/templates/about.html.ep:6
 msgid "How does it work?"
-msgstr ""
+msgstr "Hur fungerar det?"
 
 #: themes/default/templates/about.html.ep:18
 msgid "How to report an image?"
-msgstr ""
+msgstr "Kan jag anmäla en bild?"
 
 #: themes/default/templates/about.html.ep:14
 msgid "If the files are deleted if you ask it while posting it, their SHA512 footprint are retained."
@@ -202,75 +207,77 @@ msgstr ""
 
 #: themes/default/templates/index.html.ep:175 themes/default/templates/index.html.ep:215
 msgid "Image URL"
-msgstr ""
+msgstr "Bildlänk"
 
 #: lib/Lutim/Command/cron/stats.pm:153 themes/default/templates/raw.html.ep:2
 msgid "Image delay"
-msgstr ""
+msgstr "Bildfördröjning"
 
 #: themes/default/templates/partial/common.js.ep:157
 msgid "Image deleted"
-msgstr ""
+msgstr "Bild raderad"
 
 #: lib/Lutim/Controller/Image.pm:756
 msgid "Image not found."
-msgstr ""
+msgstr "Bilden kunde inte hittas."
 
 #: themes/default/templates/myfiles.html.ep:107
 msgid "Import localStorage data"
-msgstr ""
+msgstr "Importera localStorage-data"
 
 #: themes/default/templates/partial/navbar.html.ep:55
 msgid "Informations"
-msgstr ""
+msgstr "Information"
 
 #: themes/default/templates/partial/navbar.html.ep:25
 msgid "Install webapp"
-msgstr ""
+msgstr "Installera webapp"
 
 #: themes/default/templates/partial/navbar.html.ep:21
 msgid "Instance's statistics"
-msgstr ""
+msgstr "Statistik för instansen"
 
 #: themes/default/templates/about.html.ep:11
 msgid "Is it really anonymous?"
-msgstr ""
+msgstr "Är det verkligen anonymt?"
 
 #: themes/default/templates/about.html.ep:9
 msgid "Is it really free (as in free beer)?"
-msgstr ""
+msgstr "Är det verkligen gratis?"
 
 #: themes/default/templates/about.html.ep:21
 msgid "Juste like you pronounce the French word <a href=\"https://fr.wikipedia.org/wiki/Lutin\">lutin</a> (/ly.tɛ̃/)."
 msgstr ""
+"Precis som du uttalar ordet <a href=\"https://fr.wikipedia.org/wiki/Lutin\""
+">lutin</a> på franska ([ly.tɛ̃])."
 
 #: themes/default/templates/index.html.ep:165 themes/default/templates/index.html.ep:196
 msgid "Keep EXIF tags"
-msgstr ""
+msgstr "Behåll EXIF-taggar"
 
 #: themes/default/templates/partial/navbar.html.ep:43
 msgid "Language"
-msgstr ""
+msgstr "Språk"
 
 #: themes/default/templates/index.html.ep:130 themes/default/templates/index.html.ep:178 themes/default/templates/index.html.ep:218 themes/default/templates/partial/lutim.js.ep:165
 msgid "Let's go!"
-msgstr ""
+msgstr "Nu kör vi!"
 
 #: themes/default/templates/partial/navbar.html.ep:60
 msgid "License:"
-msgstr ""
+msgstr "Licens:"
 
 #: themes/default/templates/index.html.ep:101 themes/default/templates/index.html.ep:103 themes/default/templates/partial/lutim.js.ep:112 themes/default/templates/partial/lutim.js.ep:116
 msgid "Link for share on social networks"
-msgstr ""
+msgstr "Länk för delning på sociala nätverk"
 
 #: themes/default/templates/login.html.ep:8
 msgid "Login"
-msgstr ""
+msgstr "Logga in"
 
 #: themes/default/templates/partial/navbar.html.ep:33
 msgid "Logout"
-msgstr ""
+msgstr "Logga ut"
 
 #: themes/default/templates/zip.html.ep:7
 msgid "Lutim can't zip so many images at once, so it splitted your demand in multiple URLs."
@@ -279,6 +286,8 @@ msgstr ""
 #: themes/default/templates/about.html.ep:4
 msgid "Lutim is a free (as in free beer) and anonymous image hosting service. It's also the name of the free (as in free speech) software which provides this service."
 msgstr ""
+"Lutim är en gratis och helt anonym bilddelningstjänst. Det är även namnet på "
+"den fria mjukvara som står bakom tjänsten."
 
 #: themes/default/templates/about.html.ep:25
 msgid "Main developers"
@@ -286,27 +295,27 @@ msgstr ""
 
 #: themes/default/templates/index.html.ep:85 themes/default/templates/index.html.ep:87 themes/default/templates/partial/lutim.js.ep:86 themes/default/templates/partial/lutim.js.ep:89
 msgid "Markdown syntax"
-msgstr ""
+msgstr "Markdown-syntax"
 
 #: themes/default/templates/partial/myfiles.js.ep:179
 msgid "Modify expiration delay"
-msgstr ""
+msgstr "Ändra utgångsdatum"
 
 #: themes/default/templates/myfiles.html.ep:7 themes/default/templates/partial/navbar.html.ep:18
 msgid "My images"
-msgstr ""
+msgstr "Mina bilder"
 
 #: themes/default/templates/gallery.html.ep:45
 msgid "Next (arrow right)"
-msgstr ""
+msgstr "Nästa (pil höger)"
 
 #: themes/default/templates/partial/myfiles.js.ep:120 themes/default/templates/partial/myfiles.js.ep:162
 msgid "No limit"
-msgstr ""
+msgstr "Ingen gräns"
 
 #: themes/default/templates/index.html.ep:177 themes/default/templates/index.html.ep:210
 msgid "Only images are allowed"
-msgstr ""
+msgstr "Endast bilder tillåts"
 
 #: themes/default/templates/myfiles.html.ep:11
 msgid "Only the images sent with this browser will be listed here. The details are stored in localStorage: if you delete your localStorage data, you'll loose these details."
@@ -318,7 +327,7 @@ msgstr ""
 
 #: themes/default/templates/login.html.ep:12
 msgid "Password"
-msgstr ""
+msgstr "Lösenord"
 
 #: themes/default/templates/zip.html.ep:12
 msgid "Please click on each URL to download the different zip files."
@@ -335,31 +344,31 @@ msgstr ""
 
 #: themes/default/templates/gallery.html.ep:43
 msgid "Previous (arrow left)"
-msgstr ""
+msgstr "Föregående (pil vänster)"
 
 #: themes/default/templates/index.html.ep:42 themes/default/templates/index.html.ep:44 themes/default/templates/myfiles.html.ep:92 themes/default/templates/myfiles.html.ep:94
 msgid "Random image link"
-msgstr ""
+msgstr "Slumpmässig bildlänk"
 
 #: themes/default/templates/stats.html.ep:22
 msgid "Raw stats"
-msgstr ""
+msgstr "Rå statistik"
 
 #: themes/default/templates/myfiles.html.ep:52
 msgid "Save changes"
-msgstr ""
+msgstr "Spara ändringar"
 
 #: themes/default/templates/index.html.ep:170
 msgid "Send an image"
-msgstr ""
+msgstr "Skicka en bild"
 
 #: themes/default/templates/login.html.ep:16 themes/default/templates/logout.html.ep:5 themes/default/templates/partial/navbar.html.ep:37
 msgid "Signin"
-msgstr ""
+msgstr "Logga in"
 
 #: themes/default/templates/index.html.ep:145 themes/default/templates/partial/gallery.js.ep:211 themes/default/templates/partial/lutim.js.ep:176
 msgid "Something bad happened"
-msgstr ""
+msgstr "Någonting har gått riktigt illa"
 
 #. ($c->config('contact')
 #: lib/Lutim/Controller/Image.pm:763
@@ -376,7 +385,7 @@ msgstr ""
 
 #: lib/Lutim/Controller/Image.pm:347
 msgid "The URL is not valid."
-msgstr ""
+msgstr "Länken är ogiltig."
 
 #: themes/default/templates/zip.html.ep:16
 msgid "The automatic download process will open a tab in your browser for each link. You need to allow popups for Lutim."
@@ -393,14 +402,14 @@ msgstr ""
 #. ($upload->filename)
 #: lib/Lutim/Controller/Image.pm:488
 msgid "The file %1 is not an image."
-msgstr ""
+msgstr "Filen %1 är inte en bild."
 
 #. ($tx->res->max_message_size)
 #. ($c->req->max_message_size)
 #. (config('max_file_size')
 #: lib/Lutim/Controller/Image.pm:311 lib/Lutim/Controller/Image.pm:380 themes/default/templates/partial/lutim.js.ep:249
 msgid "The file exceed the size limit (%1)"
-msgstr ""
+msgstr "Filen överskrider storleksgränsen (%1)"
 
 #: themes/default/templates/stats.html.ep:12
 msgid "The graph's datas are not updated in real-time."
@@ -409,16 +418,16 @@ msgstr ""
 #. ($image->filename)
 #: lib/Lutim/Controller/Image.pm:230
 msgid "The image %1 has already been deleted."
-msgstr ""
+msgstr "Bilden %1 har redan raderats."
 
 #. ($image->filename)
 #: lib/Lutim/Controller/Image.pm:239 lib/Lutim/Controller/Image.pm:244
 msgid "The image %1 has been successfully deleted"
-msgstr ""
+msgstr "Bilden %1 har raderats"
 
 #: themes/default/templates/index.html.ep:57
 msgid "The images are encrypted on the server (Lutim does not keep the key)."
-msgstr ""
+msgstr "Bilderna krypteras på servern (Lutim behåller inte nyckeln)."
 
 #: themes/default/templates/about.html.ep:5
 msgid "The images you post on Lutim can be stored indefinitely or be deleted at first view or after a delay selected from those proposed."
@@ -430,7 +439,7 @@ msgstr ""
 
 #: themes/default/templates/partial/gallery.js.ep:277
 msgid "There is XXXX image(s) in the gallery"
-msgstr ""
+msgstr "Det finns XXXX bilder i galleriet"
 
 #. ($c->config->{contact})
 #: lib/Lutim/Controller/Image.pm:485
@@ -451,24 +460,24 @@ msgstr ""
 
 #: themes/default/templates/index.html.ep:72 themes/default/templates/partial/lutim.js.ep:17
 msgid "Tweet it!"
-msgstr ""
+msgstr "Twittra det!"
 
 #: themes/default/templates/partial/common.js.ep:110 themes/default/templates/partial/common.js.ep:90
 msgid "Unable to copy to clipboard"
-msgstr ""
+msgstr "Kunde inte kopiera till urklipp"
 
 #. ($short)
 #: lib/Lutim/Controller/Image.pm:108 lib/Lutim/Controller/Image.pm:202 lib/Lutim/Controller/Image.pm:273
 msgid "Unable to find the image %1."
-msgstr ""
+msgstr "Kunde inte hitta bilden %1."
 
 #: lib/Lutim/Controller/Image.pm:574 lib/Lutim/Controller/Image.pm:619 lib/Lutim/Controller/Image.pm:660 lib/Lutim/Controller/Image.pm:703 lib/Lutim/Controller/Image.pm:715 lib/Lutim/Controller/Image.pm:726 lib/Lutim/Controller/Image.pm:753 lib/Lutim/Plugin/Helpers.pm:88
 msgid "Unable to find the image: it has been deleted."
-msgstr ""
+msgstr "Kunde inte hitta bilden eftersom den har raderats."
 
 #: lib/Lutim/Controller/Image.pm:145
 msgid "Unable to get counter"
-msgstr ""
+msgstr "Kunde inte ladda in räknaren"
 
 #: themes/default/templates/about.html.ep:17
 msgid "Unlike many image sharing services, you don't give us rights on uploaded images."
@@ -480,7 +489,7 @@ msgstr ""
 
 #: themes/default/templates/myfiles.html.ep:119
 msgid "Uploaded at"
-msgstr ""
+msgstr "Uppladdad"
 
 #: themes/default/templates/stats.html.ep:6
 msgid "Uploaded files by days"
@@ -493,7 +502,7 @@ msgstr ""
 
 #: themes/default/templates/index.html.ep:77 themes/default/templates/index.html.ep:79 themes/default/templates/myfiles.html.ep:116 themes/default/templates/partial/lutim.js.ep:72 themes/default/templates/partial/lutim.js.ep:76
 msgid "View link"
-msgstr ""
+msgstr "Visa länk"
 
 #: themes/default/templates/about.html.ep:22
 msgid "What about the software which provides the service?"
@@ -501,7 +510,7 @@ msgstr ""
 
 #: themes/default/templates/about.html.ep:3
 msgid "What is Lutim?"
-msgstr ""
+msgstr "Vad är Lutim?"
 
 #: themes/default/templates/about.html.ep:15
 msgid "Who owns rights on images uploaded on Lutim?"
@@ -525,39 +534,39 @@ msgstr ""
 
 #: lib/Lutim/Controller/Authent.pm:27
 msgid "You have been successfully logged in."
-msgstr ""
+msgstr "Du har loggats in."
 
 #: lib/Lutim/Controller/Authent.pm:66 themes/default/templates/logout.html.ep:3
 msgid "You have been successfully logged out."
-msgstr ""
+msgstr "Du har loggats ut."
 
 #: themes/default/templates/gallery.html.ep:31
 msgid "Zoom in/out"
-msgstr ""
+msgstr "Zooma in eller ut"
 
 #: themes/default/templates/about.html.ep:27
 msgid "and on"
-msgstr ""
+msgstr "och på"
 
 #: themes/default/templates/about.html.ep:40
 msgid "arabic translation"
-msgstr ""
+msgstr "översättning till arabiska"
 
 #: themes/default/templates/about.html.ep:27
 msgid "core developer"
-msgstr ""
+msgstr "huvudutvecklare"
 
 #: lib/Lutim.pm:348 lib/Lutim/Command/cron/stats.pm:157 lib/Lutim/Command/cron/stats.pm:171 lib/Lutim/Command/cron/stats.pm:188 themes/default/templates/index.html.ep:3 themes/default/templates/myfiles.html.ep:3 themes/default/templates/partial/raw.js.ep:21 themes/default/templates/partial/raw.js.ep:4 themes/default/templates/raw.html.ep:6
 msgid "no time limit"
-msgstr ""
+msgstr "ingen tidsbegränsning"
 
 #: themes/default/templates/about.html.ep:38
 msgid "occitan translation"
-msgstr ""
+msgstr "översättning till occitanska"
 
 #: themes/default/templates/about.html.ep:27
 msgid "on"
-msgstr ""
+msgstr "på"
 
 #: themes/default/templates/about.html.ep:39
 msgid "paste image to upload ability"
@@ -565,12 +574,12 @@ msgstr ""
 
 #: themes/default/templates/about.html.ep:41
 msgid "russian translation"
-msgstr ""
+msgstr "översättning till ryska"
 
 #: themes/default/templates/about.html.ep:36
 msgid "spanish translation"
-msgstr ""
+msgstr "översättning till spanska"
 
 #: themes/default/templates/about.html.ep:28
 msgid "webapp developer"
-msgstr ""
+msgstr "utvecklare av webbappen"
