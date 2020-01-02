@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2020-01-01 02:14+0000\n"
+"PO-Revision-Date: 2020-01-03 21:14+0000\n"
 "Last-Translator: Filip Bengtsson <filip@libreradio.org>\n"
 "Language-Team: Swedish <https://weblate.framasoft.org/projects/lutim/"
 "development/sv/>\n"
@@ -29,7 +29,7 @@ msgstr "%1 dagar"
 #. ($total)
 #: themes/default/templates/stats.html.ep:2
 msgid "%1 sent images on this instance from beginning."
-msgstr ""
+msgstr "%1 bilder har skickats från den här instansen sedan starten."
 
 #: themes/default/templates/index.html.ep:202
 msgid "-or-"
@@ -61,7 +61,7 @@ msgstr "Ett fel inträffade när bilden laddades ner."
 
 #: themes/default/templates/zip.html.ep:2
 msgid "Archives download"
-msgstr ""
+msgstr "Nerladdningsarkiv"
 
 #: themes/default/templates/about.html.ep:44 themes/default/templates/myfiles.html.ep:129 themes/default/templates/stats.html.ep:25
 msgid "Back to homepage"
@@ -89,11 +89,11 @@ msgstr "Kopierat till urklipp"
 
 #: themes/default/templates/partial/lutim.js.ep:215 themes/default/templates/partial/lutim.js.ep:278 themes/default/templates/partial/lutim.js.ep:364
 msgid "Copy all view links to clipboard"
-msgstr ""
+msgstr "Kopiera alla visningslänkar till urklipp"
 
 #: themes/default/templates/index.html.ep:105 themes/default/templates/index.html.ep:16 themes/default/templates/index.html.ep:32 themes/default/templates/index.html.ep:48 themes/default/templates/index.html.ep:81 themes/default/templates/index.html.ep:89 themes/default/templates/index.html.ep:97 themes/default/templates/myfiles.html.ep:66 themes/default/templates/myfiles.html.ep:82 themes/default/templates/myfiles.html.ep:98 themes/default/templates/partial/common.js.ep:186 themes/default/templates/partial/lutim.js.ep:106 themes/default/templates/partial/lutim.js.ep:121 themes/default/templates/partial/lutim.js.ep:80 themes/default/templates/partial/lutim.js.ep:92 themes/default/templates/partial/myfiles.js.ep:172
 msgid "Copy to clipboard"
-msgstr ""
+msgstr "Kopiera till urklipp"
 
 #: themes/default/templates/myfiles.html.ep:117
 msgid "Counter"
@@ -121,7 +121,7 @@ msgstr ""
 
 #: themes/default/templates/index.html.ep:110 themes/default/templates/myfiles.html.ep:121 themes/default/templates/partial/common.js.ep:178 themes/default/templates/partial/common.js.ep:181
 msgid "Deletion link"
-msgstr ""
+msgstr "Raderingslänk"
 
 #: themes/default/templates/gallery.html.ep:10
 msgid "Download all images"
@@ -142,6 +142,10 @@ msgstr "Drag och släpp bilder här"
 #: themes/default/templates/about.html.ep:7
 msgid "Drag and drop an image in the appropriate area or use the traditional way to send files and Lutim will provide you four URLs. One to view the image, an other to directly download it, one you can use on social networks and a last to delete the image when you want."
 msgstr ""
+"Drag och släpp en bild i rutan eller använd det vanliga sättet att skicka "
+"filer. Lutim kommer då ge dig fyra länkar: en för att visa bilden, en annan "
+"för att ladda ner den, en för att använda på sociala nätverk och en sista "
+"för att radera bilden när du vill."
 
 #: themes/default/templates/index.html.ep:162 themes/default/templates/index.html.ep:193
 msgid "Encrypt the image (Lutim does not keep the key)."
@@ -153,7 +157,7 @@ msgstr "Ett fel inträffade när bilden redigerades."
 
 #: themes/default/templates/stats.html.ep:10
 msgid "Evolution of total files"
-msgstr ""
+msgstr "Antal filer (totalt) över tid"
 
 #: themes/default/templates/myfiles.html.ep:120
 msgid "Expires at"
@@ -161,7 +165,7 @@ msgstr "Förfaller"
 
 #: themes/default/templates/myfiles.html.ep:106
 msgid "Export localStorage data"
-msgstr ""
+msgstr "Exportera localStorage-data"
 
 #: themes/default/templates/myfiles.html.ep:115
 msgid "File name"
@@ -282,6 +286,8 @@ msgstr "Logga ut"
 #: themes/default/templates/zip.html.ep:7
 msgid "Lutim can't zip so many images at once, so it splitted your demand in multiple URLs."
 msgstr ""
+"Lutim kan inte komprimera så många bilder samtidigt, så de delades upp på "
+"flera länkar."
 
 #: themes/default/templates/about.html.ep:4
 msgid "Lutim is a free (as in free beer) and anonymous image hosting service. It's also the name of the free (as in free speech) software which provides this service."
@@ -291,7 +297,7 @@ msgstr ""
 
 #: themes/default/templates/about.html.ep:25
 msgid "Main developers"
-msgstr ""
+msgstr "Huvudutvecklare"
 
 #: themes/default/templates/index.html.ep:85 themes/default/templates/index.html.ep:87 themes/default/templates/partial/lutim.js.ep:86 themes/default/templates/partial/lutim.js.ep:89
 msgid "Markdown syntax"
@@ -336,11 +342,11 @@ msgstr ""
 #. (config('contact')
 #: themes/default/templates/about.html.ep:19
 msgid "Please contact the administrator: %1"
-msgstr ""
+msgstr "Kontakta gärna administratören: %1"
 
 #: lib/Lutim/Controller/Authent.pm:36
 msgid "Please, check your credentials: unable to authenticate."
-msgstr ""
+msgstr "Kunde inte logga in dig, kontrollera gärna dina uppgifter."
 
 #: themes/default/templates/gallery.html.ep:43
 msgid "Previous (arrow left)"
@@ -374,6 +380,8 @@ msgstr "Någonting har gått riktigt illa"
 #: lib/Lutim/Controller/Image.pm:763
 msgid "Something went wrong when creating the zip file. Try again later or contact the administrator (%1)."
 msgstr ""
+"Någonting gick snett när ZIP-arkivet skapades. Försök igen senare eller "
+"kontakta administratören (%1)."
 
 #: themes/default/templates/about.html.ep:13
 msgid "The IP address of the image's sender is retained for a delay which depends of the administrator's choice (for the official instance, which is located in France, it's one year)."
