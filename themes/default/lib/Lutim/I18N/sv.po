@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2020-01-03 21:14+0000\n"
+"PO-Revision-Date: 2020-02-02 01:07+0000\n"
 "Last-Translator: Filip Bengtsson <filip@libreradio.org>\n"
 "Language-Team: Swedish <https://weblate.framasoft.org/projects/lutim/"
 "development/sv/>\n"
@@ -117,7 +117,7 @@ msgstr "Raderade bilder"
 
 #: lib/Lutim/Command/cron/stats.pm:156 themes/default/templates/raw.html.ep:5
 msgid "Deleted images in 30 days"
-msgstr ""
+msgstr "30 dagars raderade bilder"
 
 #: themes/default/templates/index.html.ep:110 themes/default/templates/myfiles.html.ep:121 themes/default/templates/partial/common.js.ep:178 themes/default/templates/partial/common.js.ep:181
 msgid "Deletion link"
@@ -326,10 +326,15 @@ msgstr "Endast bilder tillåts"
 #: themes/default/templates/myfiles.html.ep:11
 msgid "Only the images sent with this browser will be listed here. The details are stored in localStorage: if you delete your localStorage data, you'll loose these details."
 msgstr ""
+"Det är bara de bilderna som laddats upp från den här webbläsaren som listas "
+"här. Informationen sparas i localStorage: om du raderar din localStorage-"
+"data kommer den här informationen försvinna."
 
 #: themes/default/templates/about.html.ep:16
 msgid "Only the uploader! (well, only if he's the only owner of the images' rights before the upload)"
 msgstr ""
+"Endast uppladdaren! (alltså, bara om han eller hon är bildernas enda "
+"upphovsrättsinnehavare innan uppladdningen)"
 
 #: themes/default/templates/login.html.ep:12
 msgid "Password"
