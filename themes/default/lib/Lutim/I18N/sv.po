@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2020-02-02 01:07+0000\n"
+"PO-Revision-Date: 2020-02-22 21:08+0000\n"
 "Last-Translator: Filip Bengtsson <filip@libreradio.org>\n"
 "Language-Team: Swedish <https://weblate.framasoft.org/projects/lutim/"
 "development/sv/>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 3.11\n"
 
 #. (7)
 #. (30)
@@ -342,7 +342,7 @@ msgstr "Lösenord"
 
 #: themes/default/templates/zip.html.ep:12
 msgid "Please click on each URL to download the different zip files."
-msgstr ""
+msgstr "Klicka på respektive länk för att ladda ner de olika zip-filerna."
 
 #. (config('contact')
 #: themes/default/templates/about.html.ep:19
@@ -391,10 +391,17 @@ msgstr ""
 #: themes/default/templates/about.html.ep:13
 msgid "The IP address of the image's sender is retained for a delay which depends of the administrator's choice (for the official instance, which is located in France, it's one year)."
 msgstr ""
+"IP-adressen som laddade upp bilden kommer sparas en tid som administratören "
+"bestämmer (för den officiella instansen, som drivs från Frankrike, är det "
+"ett år)."
 
 #: themes/default/templates/about.html.ep:23
 msgid "The Lutim software is a <a href=\"http://en.wikipedia.org/wiki/Free_software\">free software</a>, which allows you to download and install it on you own server. Have a look at the <a href=\"https://www.gnu.org/licenses/agpl-3.0.html\">AGPL</a> to see what you can do."
 msgstr ""
+"Lutim är en <a href=\"https://sv.wikipedia.org/wiki/Fri_programvara\">fri "
+"mjukvara</a>, vilket innebär att du kan ladda ner och installera den på din "
+"egen server. Ta en titt på licensen <a href=\"https://www.gnu.org/licenses/"
+"agpl-3.0.html\">AGPL</a> för att se vad du kan göra."
 
 #: lib/Lutim/Controller/Image.pm:347
 msgid "The URL is not valid."
@@ -403,14 +410,16 @@ msgstr "Länken är ogiltig."
 #: themes/default/templates/zip.html.ep:16
 msgid "The automatic download process will open a tab in your browser for each link. You need to allow popups for Lutim."
 msgstr ""
+"Den automatiska nerladdningen kommer påbörjas i en ny flik för varje länk. "
+"Du måste tillåta att Lutim öppnar nya flikar."
 
 #: themes/default/templates/partial/myfiles.js.ep:32
 msgid "The data has been successfully imported."
-msgstr ""
+msgstr "All data har importerats."
 
 #: lib/Lutim/Controller/Image.pm:160 lib/Lutim/Controller/Image.pm:228
 msgid "The delete token is invalid."
-msgstr ""
+msgstr "Raderings-token är ogiltig."
 
 #. ($upload->filename)
 #: lib/Lutim/Controller/Image.pm:488
@@ -426,7 +435,7 @@ msgstr "Filen överskrider storleksgränsen (%1)"
 
 #: themes/default/templates/stats.html.ep:12
 msgid "The graph's datas are not updated in real-time."
-msgstr ""
+msgstr "Diagrammet uppdateras inte i realtid."
 
 #. ($image->filename)
 #: lib/Lutim/Controller/Image.pm:230
@@ -445,10 +454,12 @@ msgstr "Bilderna krypteras på servern (Lutim behåller inte nyckeln)."
 #: themes/default/templates/about.html.ep:5
 msgid "The images you post on Lutim can be stored indefinitely or be deleted at first view or after a delay selected from those proposed."
 msgstr ""
+"Bilderna du laddar upp till Lutim kan sparas för alltid, raderas efter "
+"första visningen eller efter en förutbestämd tid."
 
 #: lib/Lutim/Controller/Image.pm:168
 msgid "The image’s delay has been successfully modified"
-msgstr ""
+msgstr "Bildens livstid har uppdaterats"
 
 #: themes/default/templates/partial/gallery.js.ep:277
 msgid "There is XXXX image(s) in the gallery"
@@ -458,18 +469,20 @@ msgstr "Det finns XXXX bilder i galleriet"
 #: lib/Lutim/Controller/Image.pm:485
 msgid "There is no more available URL. Retry or contact the administrator. %1"
 msgstr ""
+"Det finns inga fler länkar att tillgå. Försök igen eller kontakta "
+"administratören. %1"
 
 #: themes/default/templates/gallery.html.ep:30
 msgid "Toggle fullscreen"
-msgstr ""
+msgstr "Växla mellan fullskärmsläge"
 
 #: themes/default/templates/partial/navbar.html.ep:8
 msgid "Toggle navigation"
-msgstr ""
+msgstr "Slå av eller på navigationsmenyn"
 
 #: lib/Lutim/Command/cron/stats.pm:162 themes/default/templates/raw.html.ep:11
 msgid "Total"
-msgstr ""
+msgstr "Sammanlagt"
 
 #: themes/default/templates/index.html.ep:72 themes/default/templates/partial/lutim.js.ep:17
 msgid "Tweet it!"
@@ -495,10 +508,12 @@ msgstr "Kunde inte ladda in räknaren"
 #: themes/default/templates/about.html.ep:17
 msgid "Unlike many image sharing services, you don't give us rights on uploaded images."
 msgstr ""
+"Till skillnad från många andra bilddelningstjänster, ger du inte oss några "
+"rättigheter till de uppladdade bilderna."
 
 #: themes/default/templates/index.html.ep:174 themes/default/templates/index.html.ep:213
 msgid "Upload an image with its URL"
-msgstr ""
+msgstr "Ladda upp en bild från en länk"
 
 #: themes/default/templates/myfiles.html.ep:119
 msgid "Uploaded at"
@@ -506,12 +521,14 @@ msgstr "Uppladdad"
 
 #: themes/default/templates/stats.html.ep:6
 msgid "Uploaded files by days"
-msgstr ""
+msgstr "Uppladdade filer per dag"
 
 #. ($c->app->config('contact')
 #: lib/Lutim/Plugin/Helpers.pm:221
 msgid "Uploading is currently disabled, please try later or contact the administrator (%1)."
 msgstr ""
+"Det går inte att ladda upp bilder för tillfället. Försök igen senare eller "
+"kontakta administratören (%1)."
 
 #: themes/default/templates/index.html.ep:77 themes/default/templates/index.html.ep:79 themes/default/templates/myfiles.html.ep:116 themes/default/templates/partial/lutim.js.ep:72 themes/default/templates/partial/lutim.js.ep:76
 msgid "View link"
@@ -527,7 +544,7 @@ msgstr "Vad är Lutim?"
 
 #: themes/default/templates/about.html.ep:15
 msgid "Who owns rights on images uploaded on Lutim?"
-msgstr ""
+msgstr "Vem äger rättigheterna till de bilder som laddas upp med Lutim?"
 
 #: themes/default/templates/about.html.ep:12
 msgid "Yes, it is! On the other side, for legal reasons, your IP address will be stored when you send an image. Don't panic, it is normally the case of all sites on which you send files!"
