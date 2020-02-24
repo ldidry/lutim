@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2020-02-22 21:08+0000\n"
+"PO-Revision-Date: 2020-02-25 01:08+0000\n"
 "Last-Translator: Filip Bengtsson <filip@libreradio.org>\n"
 "Language-Team: Swedish <https://weblate.framasoft.org/projects/lutim/"
 "development/sv/>\n"
@@ -101,11 +101,11 @@ msgstr "Räknare"
 
 #: themes/default/templates/stats.html.ep:18
 msgid "Delay repartition chart for disabled images"
-msgstr ""
+msgstr "Intervall för omfördelning av inaktiva bilder"
 
 #: themes/default/templates/stats.html.ep:15
 msgid "Delay repartition chart for enabled images"
-msgstr ""
+msgstr "Intervall för omfördelning av inaktiva bilder"
 
 #: themes/default/templates/index.html.ep:127 themes/default/templates/index.html.ep:159 themes/default/templates/index.html.ep:190 themes/default/templates/myfiles.html.ep:118 themes/default/templates/myfiles.html.ep:45 themes/default/templates/partial/lutim.js.ep:161
 msgid "Delete at first view?"
@@ -207,7 +207,7 @@ msgstr "Kan jag anmäla en bild?"
 
 #: themes/default/templates/about.html.ep:14
 msgid "If the files are deleted if you ask it while posting it, their SHA512 footprint are retained."
-msgstr ""
+msgstr "Om du vill, kan bildernas SHA512-profil behållas när filerna raderats."
 
 #: themes/default/templates/index.html.ep:175 themes/default/templates/index.html.ep:215
 msgid "Image URL"
@@ -536,7 +536,7 @@ msgstr "Visa länk"
 
 #: themes/default/templates/about.html.ep:22
 msgid "What about the software which provides the service?"
-msgstr ""
+msgstr "Vilken mjukvara används av den här tjänsten?"
 
 #: themes/default/templates/about.html.ep:3
 msgid "What is Lutim?"
@@ -549,14 +549,20 @@ msgstr "Vem äger rättigheterna till de bilder som laddas upp med Lutim?"
 #: themes/default/templates/about.html.ep:12
 msgid "Yes, it is! On the other side, for legal reasons, your IP address will be stored when you send an image. Don't panic, it is normally the case of all sites on which you send files!"
 msgstr ""
+"Ja, det är det! Men, av juridiska skäl, sparas din IP-adress när du laddar "
+"upp en bild. Du behöver inte drabbas av panik för det – det är hur det "
+"vanligen görs på alla webbplatser som kan skicka filer!"
 
 #: themes/default/templates/about.html.ep:10
 msgid "Yes, it is! On the other side, if you want to support the developer, you can do it via <a href=\"https://www.tipeee.com/fiat-tux\">Tipeee</a> or via <a href=\"https://liberapay.com/sky/\">Liberapay</a>."
 msgstr ""
+"Ja, det är det! Men, å andra sidan, får du gärna stötta utvecklaren med en "
+"gåva via <a href=\"https://www.tipeee.com/fiat-tux\">Tipeee</a> eller <a "
+"href=\"https://liberapay.com/sky/\">Liberapay</a>."
 
 #: themes/default/templates/zip.html.ep:6
 msgid "You asked to download a zip archive for too much files."
-msgstr ""
+msgstr "Du försökte ladda ner en zip-fil som innehöll för många filer."
 
 #: themes/default/templates/about.html.ep:8
 msgid "You can, optionally, request that the image(s) posted on Lutim to be deleted at first view (or download) or after the delay selected from those proposed."
