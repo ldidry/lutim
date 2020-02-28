@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2019-11-19 09:11+0000\n"
+"PO-Revision-Date: 2020-02-29 16:08+0000\n"
 "Last-Translator: ButterflyOfFire <butterflyoffire@protonmail.com>\n"
 "Language-Team: Arabic <https://weblate.framasoft.org/projects/lutim/"
 "development/ar/>\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 3.11.2\n"
 "n%100<=10 ? 3: n%100>=11 ? 4 : 5);\n"
 
 #. (7)
@@ -314,6 +314,8 @@ msgid ""
 "also the name of the free (as in free speech) software which provides this "
 "service."
 msgstr ""
+"لوتيم أو Lutim خدمة مجانية ومجهولة لاستضافة الصور. ويعني كذلك اسم البرنامج "
+"الحر الموفّر لهذه الخدمة."
 
 #: themes/default/templates/about.html.ep:25
 msgid "Main developers"
@@ -371,7 +373,7 @@ msgstr "يرجى الإتصال بالمدير : %1"
 
 #: lib/Lutim/Controller/Authent.pm:36
 msgid "Please, check your credentials: unable to authenticate."
-msgstr ""
+msgstr "يرجى التحقق مِن مُعرّفاتك : تعذر الإستيثاق."
 
 #: themes/default/templates/gallery.html.ep:43
 msgid "Previous (arrow left)"
@@ -463,25 +465,26 @@ msgstr "الملف %1 ليس صورة."
 #. (config('max_file_size')
 #: lib/Lutim/Controller/Image.pm:311 lib/Lutim/Controller/Image.pm:380 themes/default/templates/partial/lutim.js.ep:249
 msgid "The file exceed the size limit (%1)"
-msgstr ""
+msgstr "لقد تجاوز حجم الملف حد (%1)"
 
 #: themes/default/templates/stats.html.ep:12
 msgid "The graph's datas are not updated in real-time."
-msgstr ""
+msgstr "المنحنيات البيانية للبيانات لا يتم تحديثها آنيا."
 
 #. ($image->filename)
 #: lib/Lutim/Controller/Image.pm:230
 msgid "The image %1 has already been deleted."
-msgstr ""
+msgstr "لقد تم حذف الصورة %1 مِن قَبل."
 
 #. ($image->filename)
 #: lib/Lutim/Controller/Image.pm:239 lib/Lutim/Controller/Image.pm:244
 msgid "The image %1 has been successfully deleted"
-msgstr ""
+msgstr "تم حذف الصورة %1 بنجاح"
 
 #: themes/default/templates/index.html.ep:63
 msgid "The images are encrypted on the server (Lutim does not keep the key)."
 msgstr ""
+"إنّ الصور مشفّرة ومُعمّاة على الخادم (لا يقوم Lutim بالإحتفاظ بالمفتاح)."
 
 #: themes/default/templates/about.html.ep:5
 msgid ""
@@ -491,7 +494,7 @@ msgstr ""
 
 #: lib/Lutim/Controller/Image.pm:168
 msgid "The image’s delay has been successfully modified"
-msgstr ""
+msgstr "تم تعديل مهلة الصورة بنجاح"
 
 #: themes/default/templates/partial/gallery.js.ep:277
 msgid "There is XXXX image(s) in the gallery"
@@ -501,6 +504,7 @@ msgstr ""
 #: lib/Lutim/Controller/Image.pm:485
 msgid "There is no more available URL. Retry or contact the administrator. %1"
 msgstr ""
+"لم يعد هناك أي رابط متوفّر. الرجاء إعادة المحاولة أو الإتصال بالمدير. %1"
 
 #: themes/default/templates/gallery.html.ep:30
 msgid "Toggle fullscreen"
@@ -508,7 +512,7 @@ msgstr "الإنتقال إلى وضع الشاشة الكامل"
 
 #: themes/default/templates/partial/navbar.html.ep:8
 msgid "Toggle navigation"
-msgstr ""
+msgstr "توسيع شريط التصفّح"
 
 #: lib/Lutim/Command/cron/stats.pm:162 themes/default/templates/raw.html.ep:11
 msgid "Total"
@@ -559,6 +563,8 @@ msgid ""
 "Uploading is currently disabled, please try later or contact the "
 "administrator (%1)."
 msgstr ""
+"لقد تمّ تعليق تحميل الصور حاليا ، يرجى إعادة المحاولة لاحقا أو الإتصال "
+"بالمدير (%1)."
 
 #: themes/default/templates/index.html.ep:83 themes/default/templates/index.html.ep:85 themes/default/templates/myfiles.html.ep:122 themes/default/templates/partial/lutim.js.ep:72 themes/default/templates/partial/lutim.js.ep:76
 msgid "View link"
@@ -626,7 +632,7 @@ msgstr "المطور الرئيسي"
 
 #: lib/Lutim.pm:348 lib/Lutim/Command/cron/stats.pm:157 lib/Lutim/Command/cron/stats.pm:171 lib/Lutim/Command/cron/stats.pm:188 themes/default/templates/index.html.ep:3 themes/default/templates/myfiles.html.ep:3 themes/default/templates/partial/raw.js.ep:21 themes/default/templates/partial/raw.js.ep:4 themes/default/templates/raw.html.ep:6
 msgid "no time limit"
-msgstr ""
+msgstr "من دون قيد زمني"
 
 #: themes/default/templates/about.html.ep:38
 msgid "occitan translation"
@@ -638,7 +644,7 @@ msgstr "على"
 
 #: themes/default/templates/about.html.ep:39
 msgid "paste image to upload ability"
-msgstr ""
+msgstr "إمكانية لصق الصورة قصد إرسالها"
 
 #: themes/default/templates/about.html.ep:41
 msgid "russian translation"
