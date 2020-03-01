@@ -11,16 +11,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2020-02-26 14:17+0000\n"
+"Last-Translator: Alberto Teira <ateira@3fpj.com>\n"
+"Language-Team: Spanish <https://weblate.framasoft.org/projects/lutim/"
+"development/es/>\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2019-05-13 08:47+0000\n"
-"Last-Translator: Luc Didry <luc@framasoft.org>\n"
-"Language-Team: Spanish (http://www.transifex.com/fiat-tux/lutim/language/es/"
-")\n"
-"Language: es\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Zanata 4.6.2\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.11.2\n"
 
 #. (7)
 #. (30)
@@ -53,11 +53,11 @@ msgstr ": Error al intentar obtener el contador."
 
 #: themes/default/templates/partial/navbar.html.ep:77
 msgid "About"
-msgstr ""
+msgstr "Acerca de"
 
 #: lib/Lutim/Command/cron/stats.pm:154 themes/default/templates/raw.html.ep:3
 msgid "Active images"
-msgstr ""
+msgstr "Imágenes activas"
 
 #: lib/Lutim/Controller/Image.pm:328
 msgid "An error occured while downloading the image."
@@ -65,7 +65,7 @@ msgstr "Error al intentar modificar la imagen."
 
 #: themes/default/templates/zip.html.ep:2
 msgid "Archives download"
-msgstr ""
+msgstr "Descarga de archivos"
 
 #: themes/default/templates/about.html.ep:44 themes/default/templates/myfiles.html.ep:135 themes/default/templates/stats.html.ep:25
 msgid "Back to homepage"
@@ -89,7 +89,7 @@ msgstr "Contribuidores"
 
 #: themes/default/templates/partial/common.js.ep:113 themes/default/templates/partial/common.js.ep:93
 msgid "Copied to clipboard"
-msgstr ""
+msgstr "Copiado al portapapeles"
 
 #: themes/default/templates/partial/lutim.js.ep:215 themes/default/templates/partial/lutim.js.ep:278 themes/default/templates/partial/lutim.js.ep:364
 msgid "Copy all view links to clipboard"
@@ -105,11 +105,11 @@ msgstr "Contador"
 
 #: themes/default/templates/stats.html.ep:18
 msgid "Delay repartition chart for disabled images"
-msgstr ""
+msgstr "Tabla de reparto de retardos para imágenes deshabilitadas"
 
 #: themes/default/templates/stats.html.ep:15
 msgid "Delay repartition chart for enabled images"
-msgstr ""
+msgstr "Tabla de reparto de retardos para imágenes habilitadas"
 
 #: themes/default/templates/index.html.ep:133 themes/default/templates/index.html.ep:165 themes/default/templates/index.html.ep:196 themes/default/templates/myfiles.html.ep:124 themes/default/templates/myfiles.html.ep:45 themes/default/templates/partial/lutim.js.ep:161
 msgid "Delete at first view?"
@@ -117,11 +117,11 @@ msgstr "¿Borrar en la primera vista?"
 
 #: lib/Lutim/Command/cron/stats.pm:155 themes/default/templates/raw.html.ep:4
 msgid "Deleted images"
-msgstr ""
+msgstr "Imágenes borradas"
 
 #: lib/Lutim/Command/cron/stats.pm:156 themes/default/templates/raw.html.ep:5
 msgid "Deleted images in 30 days"
-msgstr ""
+msgstr "Imágenes borradas en 30 días"
 
 #: themes/default/templates/index.html.ep:116 themes/default/templates/myfiles.html.ep:127 themes/default/templates/partial/common.js.ep:178 themes/default/templates/partial/common.js.ep:181
 msgid "Deletion link"
@@ -173,7 +173,7 @@ msgstr "Expira"
 
 #: themes/default/templates/myfiles.html.ep:112
 msgid "Export localStorage data"
-msgstr ""
+msgstr "Exportar datos de almacenamiento local"
 
 #: themes/default/templates/myfiles.html.ep:121
 msgid "File name"
@@ -229,11 +229,11 @@ msgstr "URL de la imagen"
 
 #: lib/Lutim/Command/cron/stats.pm:153 themes/default/templates/raw.html.ep:2
 msgid "Image delay"
-msgstr ""
+msgstr "Retardo de imagen"
 
 #: themes/default/templates/partial/common.js.ep:157
 msgid "Image deleted"
-msgstr ""
+msgstr "Imagen eliminada"
 
 #: lib/Lutim/Controller/Image.pm:756
 msgid "Image not found."
@@ -241,7 +241,7 @@ msgstr "Imagen no encontrada."
 
 #: themes/default/templates/myfiles.html.ep:113
 msgid "Import localStorage data"
-msgstr ""
+msgstr "Importar datos de almacenamiento local"
 
 #: themes/default/templates/partial/navbar.html.ep:69
 msgid "Informations"
@@ -253,7 +253,7 @@ msgstr "Instalar webapp"
 
 #: themes/default/templates/partial/navbar.html.ep:21
 msgid "Instance's statistics"
-msgstr ""
+msgstr "Estadísticas de la instancia"
 
 #: themes/default/templates/about.html.ep:11
 msgid "Is it really anonymous?"
@@ -304,6 +304,8 @@ msgid ""
 "Lutim can't zip so many images at once, so it splitted your demand in "
 "multiple URLs."
 msgstr ""
+"Lutim no puede comprimir tantas imágenes a la vez, por lo que dividió tu "
+"solicitud en varias URL."
 
 #: themes/default/templates/about.html.ep:4
 msgid ""
@@ -324,7 +326,7 @@ msgstr "Sintaxis de Markdown"
 
 #: themes/default/templates/partial/myfiles.js.ep:149
 msgid "Modify expiration delay"
-msgstr ""
+msgstr "Modificar el retardo de expiración"
 
 #: themes/default/templates/myfiles.html.ep:7 themes/default/templates/partial/navbar.html.ep:18
 msgid "My images"
@@ -332,7 +334,7 @@ msgstr "Mis Imágenes"
 
 #: themes/default/templates/gallery.html.ep:45
 msgid "Next (arrow right)"
-msgstr ""
+msgstr "Siguiente (flecha derecha)"
 
 #: themes/default/templates/partial/myfiles.js.ep:105 themes/default/templates/partial/myfiles.js.ep:132
 msgid "No limit"
@@ -366,7 +368,7 @@ msgstr "Contraseña"
 
 #: themes/default/templates/zip.html.ep:12
 msgid "Please click on each URL to download the different zip files."
-msgstr ""
+msgstr "Haga clic en cada URL para descargar los diferentes archivos zip."
 
 #. (config('contact')
 #: themes/default/templates/about.html.ep:19
@@ -375,19 +377,19 @@ msgstr "Por favor, contacte con el administrador: %1"
 
 #: lib/Lutim/Controller/Authent.pm:36
 msgid "Please, check your credentials: unable to authenticate."
-msgstr ""
+msgstr "Por favor, verifique sus credenciales: no se puede autenticar."
 
 #: themes/default/templates/gallery.html.ep:43
 msgid "Previous (arrow left)"
-msgstr ""
+msgstr "Anterior (flecha izquierda)"
 
 #: themes/default/templates/index.html.ep:46 themes/default/templates/index.html.ep:49 themes/default/templates/myfiles.html.ep:96 themes/default/templates/myfiles.html.ep:99
 msgid "Random image link"
-msgstr ""
+msgstr "Enlace de imagen aleatoria"
 
 #: themes/default/templates/stats.html.ep:22
 msgid "Raw stats"
-msgstr ""
+msgstr "Estadísticas sin procesar"
 
 #: themes/default/templates/myfiles.html.ep:52
 msgid "Save changes"
@@ -399,7 +401,7 @@ msgstr "Enviar una imagen"
 
 #: themes/default/templates/login.html.ep:16 themes/default/templates/logout.html.ep:5 themes/default/templates/partial/navbar.html.ep:37
 msgid "Signin"
-msgstr ""
+msgstr "Acceder"
 
 #: themes/default/templates/index.html.ep:151 themes/default/templates/partial/gallery.js.ep:211 themes/default/templates/partial/lutim.js.ep:176
 msgid "Something bad happened"
@@ -416,15 +418,15 @@ msgstr ""
 
 #: themes/default/templates/partial/navbar.html.ep:55
 msgid "Support the author"
-msgstr ""
+msgstr "Apoya al autor"
 
 #: themes/default/templates/partial/navbar.html.ep:63
 msgid "Support the author on Liberapay"
-msgstr ""
+msgstr "Apoya al autor en Liberapay"
 
 #: themes/default/templates/partial/navbar.html.ep:60
 msgid "Support the author on Tipeee"
-msgstr ""
+msgstr "Apoya al autor en Tipeee"
 
 #: themes/default/templates/about.html.ep:13
 msgid ""
@@ -458,10 +460,12 @@ msgid ""
 "The automatic download process will open a tab in your browser for each link."
 " You need to allow popups for Lutim."
 msgstr ""
+"El proceso de descarga automática abrirá una pestaña en su navegador para "
+"cada enlace. Debe permitir ventanas emergentes para Lutim."
 
 #: themes/default/templates/partial/myfiles.js.ep:32
 msgid "The data has been successfully imported."
-msgstr ""
+msgstr "Los datos se han importado correctamente."
 
 #: lib/Lutim/Controller/Image.pm:160 lib/Lutim/Controller/Image.pm:228
 msgid "The delete token is invalid."
@@ -512,7 +516,7 @@ msgstr "Se ha modificado correctamente el tiempo de la imagen"
 
 #: themes/default/templates/partial/gallery.js.ep:277
 msgid "There is XXXX image(s) in the gallery"
-msgstr ""
+msgstr "Hay imágenes XXXX en la galería"
 
 #. ($c->config->{contact})
 #: lib/Lutim/Controller/Image.pm:485
@@ -523,15 +527,15 @@ msgstr ""
 
 #: themes/default/templates/gallery.html.ep:30
 msgid "Toggle fullscreen"
-msgstr ""
+msgstr "Bascular la pantalla completa"
 
 #: themes/default/templates/partial/navbar.html.ep:8
 msgid "Toggle navigation"
-msgstr ""
+msgstr "Extiender la barra de navegación"
 
 #: lib/Lutim/Command/cron/stats.pm:162 themes/default/templates/raw.html.ep:11
 msgid "Total"
-msgstr ""
+msgstr "Total"
 
 #: themes/default/templates/index.html.ep:78 themes/default/templates/partial/lutim.js.ep:17
 msgid "Tweet it!"
@@ -539,7 +543,7 @@ msgstr "¡Tuitéalo!"
 
 #: themes/default/templates/partial/common.js.ep:110 themes/default/templates/partial/common.js.ep:90
 msgid "Unable to copy to clipboard"
-msgstr ""
+msgstr "imposible copiar al portapapeles"
 
 #. ($short)
 #: lib/Lutim/Controller/Image.pm:108 lib/Lutim/Controller/Image.pm:202 lib/Lutim/Controller/Image.pm:273
@@ -621,7 +625,7 @@ msgstr ""
 
 #: themes/default/templates/zip.html.ep:6
 msgid "You asked to download a zip archive for too much files."
-msgstr ""
+msgstr "Solicitó descargar un archivo zip para demasiados archivos."
 
 #: themes/default/templates/about.html.ep:8
 msgid ""
@@ -634,15 +638,15 @@ msgstr ""
 
 #: lib/Lutim/Controller/Authent.pm:27
 msgid "You have been successfully logged in."
-msgstr ""
+msgstr "Te has identificado con éxito."
 
 #: lib/Lutim/Controller/Authent.pm:66 themes/default/templates/logout.html.ep:3
 msgid "You have been successfully logged out."
-msgstr ""
+msgstr "Ha sido desconectado con éxito."
 
 #: themes/default/templates/gallery.html.ep:31
 msgid "Zoom in/out"
-msgstr ""
+msgstr "Zoom in/out"
 
 #: themes/default/templates/about.html.ep:27
 msgid "and on"
@@ -650,7 +654,7 @@ msgstr "y en"
 
 #: themes/default/templates/about.html.ep:40
 msgid "arabic translation"
-msgstr ""
+msgstr "Traducción al árabe"
 
 #: themes/default/templates/about.html.ep:27
 msgid "core developer"
@@ -670,11 +674,11 @@ msgstr "en"
 
 #: themes/default/templates/about.html.ep:39
 msgid "paste image to upload ability"
-msgstr ""
+msgstr "posibilidad de pegar una imagen para subirla (upload)"
 
 #: themes/default/templates/about.html.ep:41
 msgid "russian translation"
-msgstr ""
+msgstr "traducción rusa"
 
 #: themes/default/templates/about.html.ep:36
 msgid "spanish translation"
