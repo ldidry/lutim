@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2020-02-29 16:08+0000\n"
+"PO-Revision-Date: 2020-03-04 10:08+0000\n"
 "Last-Translator: ButterflyOfFire <butterflyoffire@protonmail.com>\n"
 "Language-Team: Arabic <https://weblate.framasoft.org/projects/lutim/"
 "development/ar/>\n"
@@ -335,7 +335,7 @@ msgstr "صوري"
 
 #: themes/default/templates/gallery.html.ep:45
 msgid "Next (arrow right)"
-msgstr ""
+msgstr "التالي (السهم إلى اليمين)"
 
 #: themes/default/templates/partial/myfiles.js.ep:105 themes/default/templates/partial/myfiles.js.ep:132
 msgid "No limit"
