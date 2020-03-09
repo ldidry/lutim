@@ -11,16 +11,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2019-11-16 13:46+0000\n"
+"PO-Revision-Date: 2020-03-09 16:23+0000\n"
 "Last-Translator: Luc Didry <luc@framasoft.org>\n"
 "Language-Team: French <https://weblate.framasoft.org/projects/lutim/"
-"development/fr/>\n"
+"default-theme/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 3.11.2\n"
 
 #. (7)
 #. (30)
@@ -439,8 +439,7 @@ msgid ""
 msgstr ""
 "L’IP de la personne ayant déposé l’image est stockée pendant un délai "
 "dépendant de l’administrateur de l’instance (pour l’instance officielle, "
-"dont le serveur est en France, c’est un délai\n"
-" d’un an)."
+"dont le serveur est en France, c’est un délai d’un an)."
 
 #: themes/default/templates/about.html.ep:23
 msgid ""
@@ -696,3 +695,21 @@ msgstr "traduction espagnole"
 #: themes/default/templates/about.html.ep:28
 msgid "webapp developer"
 msgstr "développeur de la webapp"
+
+#: themes/default/templates/index.html.ep:171 themes/default/templates/index.html.ep:215
+msgid "Tiling watermark"
+msgstr "Filigrane en tuile"
+
+#: themes/default/templates/index.html.ep:174 themes/default/templates/index.html.ep:218
+msgid "Single watermark"
+msgstr "Filigrane simple"
+
+#: themes/default/templates/index.html.ep:177 themes/default/templates/index.html.ep:221
+msgid "No watermark"
+msgstr "Pas de filigrane"
+
+#: themes/default/templates/about.html.ep:24
+msgid "For more details, see the <a href=\"https://framagit.org/fiat-tux/hat-softwares/lutim\">homepage of the project</a>."
+msgstr ""
+"Pour plus de détails, consultez la <a href=\"https://framagit.org/fiat-tux/"
+"hat-softwares/lutim\">page du projet</a>."
