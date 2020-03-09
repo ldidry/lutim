@@ -1,5 +1,6 @@
 EXTRACTDIR=-D lib -D themes/default/templates
 POT=themes/default/lib/Lutim/I18N/lutim.pot
+ENPO=themes/default/lib/Lutim/I18N/en.po
 XGETTEXT=carton exec local/bin/xgettext.pl -u
 CARTON=carton exec
 LUTIM=script/lutim
@@ -15,6 +16,7 @@ minify:
 
 locales:
 	$(XGETTEXT) $(EXTRACTDIR) -o $(POT) 2>/dev/null
+	$(XGETTEXT) $(EXTRACTDIR) -o $(ENPO) 2>/dev/null
 
 stats-locales:
 	wlc stats
