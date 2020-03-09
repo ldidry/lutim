@@ -32,6 +32,29 @@ sub startup {
         default => $default_config
     });
 
+    if ($config->{watermark_path}) {
+        die sprintf('%s does not exist or is not readable.', $config->{watermark_path}) unless -r $config->{watermark_path};
+        my $valid = {
+            center    => 1,
+            north     => 1,
+            northeast => 1,
+            east      => 1,
+            southeast => 1,
+            south     => 1,
+            southwest => 1,
+            west      => 1,
+            northwest => 1
+        };
+        die sprintf('%s is not a valid value for watermark_placement.', $config->{watermark_placement}) unless $valid->{lc($config->{watermark_placement})};
+        $valid = {
+            'tiling' => 1,
+            'single' => 1,
+            'none'   => 1
+        };
+        die sprintf('%s is not a valid value for watermark_default.', $config->{watermark_default}) unless $valid->{lc($config->{watermark_default})};
+        die sprintf('%s is not a valid value for watermark_enforce.', $config->{watermark_enforce}) unless $valid->{lc($config->{watermark_enforce})};
+    }
+
     if (scalar(@{$config->{memcached_servers}})) {
         $self->plugin(CHI => {
             lutim_images_cache => {
@@ -90,7 +113,7 @@ sub startup {
     if ($config->{minion}->{enabled}) {
         $self->config->{minion}->{dbtype} = 'sqlite' unless defined $config->{minion}->{dbtype};
         if ($config->{minion}->{dbtype} eq 'sqlite') {
-            $self->config('minion')->{db_path} = 'minion.db' unless defined $config->{minion}->{db_path};
+            $config->{minion}->{db_path} = 'minion.db' unless defined $config->{minion}->{db_path};
             $self->plugin('Minion' => { SQLite => 'sqlite:'.$config->{minion}->{db_path} });
         } elsif ($config->{minion}->{dbtype} eq 'postgresql') {
             $self->plugin('PgURLHelper');
@@ -147,14 +170,14 @@ sub startup {
     });
 
     # Authentication (if configured)
-    if (defined($self->config('ldap')) || defined($self->config('htpasswd'))) {
-        if (defined($self->config('ldap'))) {
+    if (defined($config->{ldap}) || defined($config->{htpasswd})) {
+        if (defined($config->{ldap})) {
             require Net::LDAP;
         }
-        if (defined($self->config('htpasswd'))) {
+        if (defined($config->{htpasswd})) {
             require Apache::Htpasswd;
         }
-        die 'Unable to read '.$self->config('htpasswd') if (defined($self->config('htpasswd')) && !-r $self->config('htpasswd'));
+        die sprintf('Unable to read %s', $config->{htpasswd}) if (defined($config->{htpasswd}) && !-r $config->{htpasswd});
         $self->plugin('Authentication' =>
             {
                 autoload_user => 1,
@@ -243,7 +266,7 @@ sub startup {
                 }
             }
         );
-        $self->app->sessions->default_expiration($self->config('session_duration'));
+        $self->app->sessions->default_expiration($config->{session_duration});
     }
 
     $self->defaults(layout => 'default');
@@ -256,7 +279,7 @@ sub startup {
     $r->add_condition(authorized => sub {
         my ($r, $c, $captures) = @_;
 
-        return 1 unless (defined($self->config('ldap')) || defined($self->config('htpasswd')));
+        return 1 unless (defined($config->{ldap}) || defined($config->{htpasswd}));
 
         return $c->is_user_authenticated;
     });
@@ -275,7 +298,7 @@ sub startup {
         to('Authent#index');
 
 
-    if (defined $self->config('ldap') || defined $self->config('htpasswd')) {
+    if (defined $config->{ldap} || defined $config->{htpasswd}) {
         # Login page
         $r->get('/login')
             ->to('Authent#index')
