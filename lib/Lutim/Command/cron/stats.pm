@@ -6,6 +6,7 @@ use Mojo::Util qw(encode);
 use Mojo::File;
 use Mojo::JSON qw(encode_json);
 use Lutim::DB::Image;
+use Lutim::DefaultConfig qw($default_config);
 use DateTime;
 use FindBin qw($Bin);
 use File::Spec qw(catfile);
@@ -26,11 +27,7 @@ sub run {
     }
     my $config = $c->app->plugin('Config', {
         file    => $cfile,
-        default => {
-            theme         => 'default',
-            stats_day_num => 365,
-            dbtype        => 'sqlite'
-        }
+        default => $default_config
     });
 
     my $template = 'themes/'.$config->{theme}.'/templates/data.html.ep.template';

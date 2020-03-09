@@ -3,6 +3,7 @@ package Lutim;
 use Mojo::Base 'Mojolicious';
 use Mojo::IOLoop;
 use Lutim::DB::Image;
+use Lutim::DefaultConfig qw($default_config);
 
 use vars qw($im_loaded);
 BEGIN {
@@ -28,39 +29,7 @@ sub startup {
     $self->plugin('DebugDumperHelper');
 
     my $config = $self->plugin('Config', {
-        default => {
-            provisioning           => 100,
-            provis_step            => 5,
-            length                 => 8,
-            always_encrypt         => 0,
-            anti_flood_delay       => 5,
-            max_file_size          => 10*1024*1024,
-            https                  => 0,
-            proposed_delays        => '0,1,7,30,365',
-            default_delay          => 0,
-            max_delay              => 0,
-            token_length           => 24,
-            crypto_key_length      => 8,
-            thumbnail_size         => 100,
-            theme                  => 'default',
-            dbtype                 => 'sqlite',
-            db_path                => 'lutim.db',
-            max_files_in_zip       => 15,
-            prefix                 => '/',
-            minion                 => {
-                enabled => 0,
-                dbtype  => 'sqlite',
-                db_path => 'minion.db'
-            },
-            session_duration       => 3600,
-            cache_max_size         => 0,
-            memcached_servers      => [],
-            quiet_logs             => 0,
-            disable_img_stats      => 0,
-            x_frame_options        => 'DENY',
-            x_content_type_options => 'nosniff',
-            x_xss_protection       => '1; mode=block',
-        }
+        default => $default_config
     });
 
     if (scalar(@{$config->{memcached_servers}})) {
