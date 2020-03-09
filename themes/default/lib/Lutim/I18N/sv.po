@@ -7,16 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2020-02-25 01:08+0000\n"
-"Last-Translator: Filip Bengtsson <filip@libreradio.org>\n"
+"PO-Revision-Date: 2020-03-09 16:23+0000\n"
+"Last-Translator: Luc Didry <luc@framasoft.org>\n"
 "Language-Team: Swedish <https://weblate.framasoft.org/projects/lutim/"
-"development/sv/>\n"
+"default-theme/sv/>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.11\n"
+"X-Generator: Weblate 3.11.2\n"
 
 #. (7)
 #. (30)
@@ -109,7 +109,7 @@ msgstr "Intervall för omfördelning av inaktiva bilder"
 
 #: themes/default/templates/index.html.ep:127 themes/default/templates/index.html.ep:159 themes/default/templates/index.html.ep:190 themes/default/templates/myfiles.html.ep:118 themes/default/templates/myfiles.html.ep:45 themes/default/templates/partial/lutim.js.ep:161
 msgid "Delete at first view?"
-msgstr "Radera efter första visningen"
+msgstr "Radera efter första visningen?"
 
 #: lib/Lutim/Command/cron/stats.pm:155 themes/default/templates/raw.html.ep:4
 msgid "Deleted images"
@@ -619,3 +619,9 @@ msgstr "översättning till spanska"
 #: themes/default/templates/about.html.ep:28
 msgid "webapp developer"
 msgstr "utvecklare av webbappen"
+
+#: themes/default/templates/about.html.ep:24
+msgid "For more details, see the <a href=\"https://framagit.org/fiat-tux/hat-softwares/lutim\">homepage of the project</a>."
+msgstr ""
+"Se <a href=\"https://framagit.org/fiat-tux/hat-softwares/lutim\">projektets "
+"hemsida</a> för mer information."
