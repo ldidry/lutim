@@ -47,6 +47,7 @@ sub register {
     $app->helper(max_delay          => \&_max_delay);
     $app->helper(default_delay      => \&_default_delay);
     $app->helper(is_selected        => \&_is_selected);
+    $app->helper(is_wm_selected     => \&_is_wm_selected);
     $app->helper(crypt              => \&_crypt);
     $app->helper(decrypt            => \&_decrypt);
     $app->helper(delete_image       => \&_delete_image);
@@ -248,6 +249,13 @@ sub _is_selected {
     my $num = shift;
 
     return ($num == $c->default_delay) ? 'selected="selected"' : '';
+}
+
+sub _is_wm_selected {
+    my $c  = shift;
+    my $wm = shift;
+
+    return ($wm eq $c->config('watermark_default')) ? 'selected="selected"' : '';
 }
 
 sub _crypt {
