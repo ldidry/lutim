@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2020-03-09 16:23+0000\n"
-"Last-Translator: Luc Didry <luc@framasoft.org>\n"
+"PO-Revision-Date: 2020-04-01 07:48+0000\n"
+"Last-Translator: Balázs Meskó <mesko.balazs@fsf.hu>\n"
 "Language-Team: Hungarian <https://weblate.framasoft.org/projects/lutim/"
 "default-theme/hu/>\n"
 "Language: hu\n"
@@ -25,11 +25,11 @@ msgstr "%1 nap"
 #. ($total)
 #: themes/default/templates/stats.html.ep:2
 msgid "%1 sent images on this instance from beginning."
-msgstr ""
+msgstr "%1 kép elküldve ezen a példányon a kezdetek óta."
 
 #: themes/default/templates/index.html.ep:208
 msgid "-or-"
-msgstr ""
+msgstr "-vagy-"
 
 #: lib/Lutim.pm:350 lib/Lutim/Command/cron/stats.pm:149 lib/Lutim/Command/cron/stats.pm:163 lib/Lutim/Command/cron/stats.pm:180 themes/default/templates/index.html.ep:5 themes/default/templates/myfiles.html.ep:5 themes/default/templates/partial/raw.js.ep:25 themes/default/templates/partial/raw.js.ep:8 themes/default/templates/raw.html.ep:10
 msgid "1 year"
@@ -41,7 +41,7 @@ msgstr "24 óra"
 
 #: themes/default/templates/partial/myfiles.js.ep:180
 msgid ": Error while trying to get the counter."
-msgstr ""
+msgstr ": Hiba a számláló lekérésekor."
 
 #: themes/default/templates/partial/navbar.html.ep:77
 msgid "About"
@@ -69,7 +69,7 @@ msgstr "Kattints a fájlböngésző megnyitásához"
 
 #: themes/default/templates/myfiles.html.ep:51
 msgid "Close"
-msgstr ""
+msgstr "Bezárás"
 
 #: themes/default/templates/gallery.html.ep:29
 msgid "Close (Esc)"
@@ -81,7 +81,7 @@ msgstr "Közreműködők"
 
 #: themes/default/templates/partial/common.js.ep:113 themes/default/templates/partial/common.js.ep:93
 msgid "Copied to clipboard"
-msgstr ""
+msgstr "Vágólapra másolva"
 
 #: themes/default/templates/partial/lutim.js.ep:215 themes/default/templates/partial/lutim.js.ep:278 themes/default/templates/partial/lutim.js.ep:364
 msgid "Copy all view links to clipboard"
@@ -133,7 +133,7 @@ msgstr "Zip letöltési hivatkozás"
 
 #: themes/default/templates/index.html.ep:207
 msgid "Drag & drop images here"
-msgstr "Húzd és ejtsd ide a képeket"
+msgstr "Húzza és ejtse ide a képeket"
 
 #: themes/default/templates/about.html.ep:7
 msgid ""
@@ -161,7 +161,7 @@ msgstr "Lejárat:"
 
 #: themes/default/templates/myfiles.html.ep:112
 msgid "Export localStorage data"
-msgstr ""
+msgstr "A helyi tárolóban lévő adatok exportálása"
 
 #: themes/default/templates/myfiles.html.ep:121
 msgid "File name"
@@ -177,11 +177,11 @@ msgstr ""
 
 #: themes/default/templates/partial/navbar.html.ep:80
 msgid "Fork me!"
-msgstr "Forkolj le!"
+msgstr "Forkolja le!"
 
 #: themes/default/templates/index.html.ep:10 themes/default/templates/index.html.ep:13 themes/default/templates/myfiles.html.ep:60 themes/default/templates/myfiles.html.ep:63
 msgid "Gallery link"
-msgstr "Galéria hivatkozás"
+msgstr "Galériahivatkozás"
 
 #: themes/default/templates/partial/common.js.ep:116 themes/default/templates/partial/common.js.ep:134
 msgid "Hit Ctrl+C, then Enter to copy the short link"
@@ -352,7 +352,7 @@ msgstr ""
 #. (config('contact')
 #: themes/default/templates/about.html.ep:19
 msgid "Please contact the administrator: %1"
-msgstr "Vedd fel a kapcsolatot az adminisztrátorral: %1"
+msgstr "Vegye fel a kapcsolatot az adminisztrátorral: %1"
 
 #: lib/Lutim/Controller/Authent.pm:36
 msgid "Please, check your credentials: unable to authenticate."
