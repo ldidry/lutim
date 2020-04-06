@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2020-04-01 13:09+0000\n"
+"PO-Revision-Date: 2020-04-04 10:08+0000\n"
 "Last-Translator: Balázs Meskó <mesko.balazs@fsf.hu>\n"
 "Language-Team: Hungarian <https://weblate.framasoft.org/projects/lutim/"
 "default-theme/hu/>\n"
@@ -185,7 +185,7 @@ msgstr "Galériahivatkozás"
 
 #: themes/default/templates/partial/common.js.ep:116 themes/default/templates/partial/common.js.ep:134
 msgid "Hit Ctrl+C, then Enter to copy the short link"
-msgstr ""
+msgstr "Nyomjon Ctrl+C-t, majd Entert a rövid hivatkozás másolásához"
 
 #: themes/default/templates/layouts/default.html.ep:47
 msgid "Homepage"
@@ -208,6 +208,8 @@ msgid ""
 "If the files are deleted if you ask it while posting it, their SHA512 "
 "footprint are retained."
 msgstr ""
+"Ha a fájlok törlésre fognak kerülni, mert így kérte feltöltéskor, akkor az "
+"SHA512-ujjlenyomat megmarad."
 
 #: themes/default/templates/index.html.ep:181 themes/default/templates/index.html.ep:221
 msgid "Image URL"
@@ -215,11 +217,11 @@ msgstr "Kép URL"
 
 #: lib/Lutim/Command/cron/stats.pm:141 themes/default/templates/raw.html.ep:2
 msgid "Image delay"
-msgstr ""
+msgstr "Kép késleltetése"
 
 #: themes/default/templates/partial/common.js.ep:157
 msgid "Image deleted"
-msgstr ""
+msgstr "Kép törölve"
 
 #: lib/Lutim/Controller/Image.pm:753
 msgid "Image not found."
@@ -227,7 +229,7 @@ msgstr "A kép nem található."
 
 #: themes/default/templates/myfiles.html.ep:113
 msgid "Import localStorage data"
-msgstr ""
+msgstr "Helyi tároló adatainak importálása"
 
 #: themes/default/templates/partial/navbar.html.ep:69
 msgid "Informations"
@@ -279,17 +281,19 @@ msgstr "Közösségi média megosztási hivatkozások"
 
 #: themes/default/templates/login.html.ep:8
 msgid "Login"
-msgstr ""
+msgstr "Bejelentkezés"
 
 #: themes/default/templates/partial/navbar.html.ep:33
 msgid "Logout"
-msgstr ""
+msgstr "Kijelentkezés"
 
 #: themes/default/templates/zip.html.ep:7
 msgid ""
 "Lutim can't zip so many images at once, so it splitted your demand in "
 "multiple URLs."
 msgstr ""
+"A Lutim nem tud ennyi fájlt összecsomagolni, így felosztotta a kérését több "
+"URL-re."
 
 #: themes/default/templates/about.html.ep:4
 msgid ""
@@ -297,6 +301,8 @@ msgid ""
 "also the name of the free (as in free speech) software which provides this "
 "service."
 msgstr ""
+"A Lutim egy ingyenes és anonim képmegosztó-szolgáltatás. Ez a szolgáltatás "
+"mögött álló szabad szoftver neve is."
 
 #: themes/default/templates/about.html.ep:25
 msgid "Main developers"
@@ -308,7 +314,7 @@ msgstr "Markdown szintaxis"
 
 #: themes/default/templates/partial/myfiles.js.ep:149
 msgid "Modify expiration delay"
-msgstr ""
+msgstr "Lejárait dátum módosítása"
 
 #: themes/default/templates/myfiles.html.ep:7 themes/default/templates/partial/navbar.html.ep:18
 msgid "My images"
@@ -332,6 +338,9 @@ msgid ""
 "stored in localStorage: if you delete your localStorage data, you'll loose "
 "these details."
 msgstr ""
+"Csak az ezzel a böngészővel elküldött képek fognak itt megjelenni. A "
+"részletek a helyi tárolóban tároltak: ha törli a helyi tároló adatait, akkor "
+"elveszíti ezeket a részleteket."
 
 #: themes/default/templates/about.html.ep:16
 msgid ""
@@ -343,11 +352,11 @@ msgstr ""
 
 #: themes/default/templates/login.html.ep:12
 msgid "Password"
-msgstr ""
+msgstr "Jelszó"
 
 #: themes/default/templates/zip.html.ep:12
 msgid "Please click on each URL to download the different zip files."
-msgstr ""
+msgstr "Kattintson az egyes URL-ekre, hogy letöltse a különböző ZIP-fájlokat."
 
 #. (config('contact')
 #: themes/default/templates/about.html.ep:19
@@ -596,7 +605,7 @@ msgstr ""
 
 #: themes/default/templates/zip.html.ep:6
 msgid "You asked to download a zip archive for too much files."
-msgstr ""
+msgstr "Túl sok fájl letöltését kérte ZIP-archívumként."
 
 #: themes/default/templates/about.html.ep:8
 msgid ""
@@ -606,15 +615,15 @@ msgstr ""
 
 #: lib/Lutim/Controller/Authent.pm:27
 msgid "You have been successfully logged in."
-msgstr ""
+msgstr "Sikeresen bejelentkezett."
 
 #: lib/Lutim/Controller/Authent.pm:66 themes/default/templates/logout.html.ep:3
 msgid "You have been successfully logged out."
-msgstr ""
+msgstr "Sikeresen kijelentkezett."
 
 #: themes/default/templates/gallery.html.ep:31
 msgid "Zoom in/out"
-msgstr ""
+msgstr "Nagyítás/kicsinyítés"
 
 #: themes/default/templates/about.html.ep:27
 msgid "and on"
@@ -622,23 +631,23 @@ msgstr ""
 
 #: themes/default/templates/about.html.ep:40
 msgid "arabic translation"
-msgstr ""
+msgstr "arab fordítás"
 
 #: themes/default/templates/about.html.ep:27
 msgid "core developer"
-msgstr ""
+msgstr "fő fejlesztő"
 
 #: lib/Lutim.pm:348 lib/Lutim/Command/cron/stats.pm:145 lib/Lutim/Command/cron/stats.pm:159 lib/Lutim/Command/cron/stats.pm:176 themes/default/templates/index.html.ep:3 themes/default/templates/myfiles.html.ep:3 themes/default/templates/partial/raw.js.ep:21 themes/default/templates/partial/raw.js.ep:4 themes/default/templates/raw.html.ep:6
 msgid "no time limit"
-msgstr ""
+msgstr "nincs időkorlát"
 
 #: themes/default/templates/about.html.ep:38
 msgid "occitan translation"
-msgstr ""
+msgstr "okcitán fordítás"
 
 #: themes/default/templates/about.html.ep:27
 msgid "on"
-msgstr ""
+msgstr "be"
 
 #: themes/default/templates/about.html.ep:39
 msgid "paste image to upload ability"
@@ -646,15 +655,15 @@ msgstr ""
 
 #: themes/default/templates/about.html.ep:41
 msgid "russian translation"
-msgstr ""
+msgstr "orosz fordítás"
 
 #: themes/default/templates/about.html.ep:36
 msgid "spanish translation"
-msgstr ""
+msgstr "spanyol fordítás"
 
 #: themes/default/templates/about.html.ep:28
 msgid "webapp developer"
-msgstr ""
+msgstr "webalkalmazás-fejlesztő"
 
 #: themes/default/templates/about.html.ep:24
 msgid "For more details, see the <a href=\"https://framagit.org/fiat-tux/hat-softwares/lutim\">homepage of the project</a>."
