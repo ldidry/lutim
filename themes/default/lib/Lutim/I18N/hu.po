@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2020-04-04 10:08+0000\n"
+"PO-Revision-Date: 2020-04-10 17:08+0000\n"
 "Last-Translator: Balázs Meskó <mesko.balazs@fsf.hu>\n"
 "Language-Team: Hungarian <https://weblate.framasoft.org/projects/lutim/"
 "default-theme/hu/>\n"
@@ -97,11 +97,11 @@ msgstr "Számláló"
 
 #: themes/default/templates/stats.html.ep:18
 msgid "Delay repartition chart for disabled images"
-msgstr ""
+msgstr "Lejárat felosztási diagramja a letiltott képekhez"
 
 #: themes/default/templates/stats.html.ep:15
 msgid "Delay repartition chart for enabled images"
-msgstr ""
+msgstr "Lejárat felosztási diagramja az engedélyezett képekhez"
 
 #: themes/default/templates/index.html.ep:133 themes/default/templates/index.html.ep:165 themes/default/templates/index.html.ep:196 themes/default/templates/myfiles.html.ep:124 themes/default/templates/myfiles.html.ep:45 themes/default/templates/partial/lutim.js.ep:161
 msgid "Delete at first view?"
@@ -142,6 +142,10 @@ msgid ""
 "other to directly download it, one you can use on social networks and a last "
 "to delete the image when you want."
 msgstr ""
+"Húzza és ejtse a képet a megfelelő területre, vagy küldje el a fájlokat a "
+"hagyományos módon, és a Lutim négy URL-t fog biztosítani. Egyet a kép "
+"megtekintéséhez, egyet a közvetlen letöltéséhez, egyet amelyet a közösségi "
+"hálózatokon használhat, illetve egyet, amellyel ha akarja, törölheti a képet."
 
 #: themes/default/templates/index.html.ep:168 themes/default/templates/index.html.ep:199
 msgid "Encrypt the image (Lutim does not keep the key)."
@@ -217,7 +221,7 @@ msgstr "Kép URL"
 
 #: lib/Lutim/Command/cron/stats.pm:141 themes/default/templates/raw.html.ep:2
 msgid "Image delay"
-msgstr "Kép késleltetése"
+msgstr "Kép lejárata"
 
 #: themes/default/templates/partial/common.js.ep:157
 msgid "Image deleted"
@@ -314,7 +318,7 @@ msgstr "Markdown szintaxis"
 
 #: themes/default/templates/partial/myfiles.js.ep:149
 msgid "Modify expiration delay"
-msgstr "Lejárait dátum módosítása"
+msgstr "Lejárati dátum módosítása"
 
 #: themes/default/templates/myfiles.html.ep:7 themes/default/templates/partial/navbar.html.ep:18
 msgid "My images"
@@ -595,6 +599,8 @@ msgid ""
 "stored when you send an image. Don't panic, it is normally the case of all "
 "sites on which you send files!"
 msgstr ""
+"Igen, tényleg. Viszont jogi okokból az IP-címét tároljuk, ha képet küld. Ne "
+"aggódjon, általában ez a helyzet az oldalakon, ahová képeket küld."
 
 #: themes/default/templates/about.html.ep:10
 msgid ""
@@ -602,6 +608,9 @@ msgid ""
 "do it via <a href=\"https://www.tipeee.com/fiat-tux\">Tipeee</a> or via <a "
 "href=\"https://liberapay.com/sky/\">Liberapay</a>."
 msgstr ""
+"Igen, tényleg. Viszont ha szeretné támogatni a fejlesztőt, akkor megteheti a "
+"<a href=\"https://www.tipeee.com/fiat-tux\">Tipeee</a> vagy a <a href=\""
+"https://liberapay.com/sky/\">Liberapay</a> segítségével."
 
 #: themes/default/templates/zip.html.ep:6
 msgid "You asked to download a zip archive for too much files."
@@ -612,6 +621,9 @@ msgid ""
 "You can, optionally, request that the image(s) posted on Lutim to be deleted "
 "at first view (or download) or after the delay selected from those proposed."
 msgstr ""
+"Azt is kérheti, hogy a közzétett képek az első megtekintéskor (vagy "
+"letöltéskor) vagy a felajánlottak közül kiválasztott idő múlva törölve "
+"legyenek."
 
 #: lib/Lutim/Controller/Authent.pm:27
 msgid "You have been successfully logged in."
@@ -627,7 +639,7 @@ msgstr "Nagyítás/kicsinyítés"
 
 #: themes/default/templates/about.html.ep:27
 msgid "and on"
-msgstr ""
+msgstr "és"
 
 #: themes/default/templates/about.html.ep:40
 msgid "arabic translation"
@@ -651,7 +663,7 @@ msgstr "be"
 
 #: themes/default/templates/about.html.ep:39
 msgid "paste image to upload ability"
-msgstr ""
+msgstr "kép beillesztése a feltöltéshez"
 
 #: themes/default/templates/about.html.ep:41
 msgid "russian translation"
@@ -670,3 +682,19 @@ msgid "For more details, see the <a href=\"https://framagit.org/fiat-tux/hat-sof
 msgstr ""
 "További részletekért lásd a <a href=\"https://framagit.org/fiat-tux/"
 "hat-softwares/lutim\">projekt weboldalát</a>."
+
+#: themes/default/templates/index.html.ep:171 themes/default/templates/index.html.ep:215
+msgid "Tiling watermark"
+msgstr "Mozaikos vízjel"
+
+#: lib/Lutim/Controller/Image.pm:168
+msgid "The image’s delay has been successfully modified"
+msgstr "A kép lejárata sikeresen módosítva"
+
+#: themes/default/templates/index.html.ep:174 themes/default/templates/index.html.ep:218
+msgid "Single watermark"
+msgstr "Egy vízjel"
+
+#: themes/default/templates/index.html.ep:177 themes/default/templates/index.html.ep:221
+msgid "No watermark"
+msgstr "Nincs vízjel"
