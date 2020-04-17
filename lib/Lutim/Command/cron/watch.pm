@@ -50,7 +50,7 @@ sub run {
                         $dbi->get_50_oldest()->each(
                             sub {
                                 my ($img, $num) = @_;
-                                $l->app->delete_image($img);
+                                $img->delete();
                             }
                         );
                     } while (du(qw/files/) > $config->{max_total_size});

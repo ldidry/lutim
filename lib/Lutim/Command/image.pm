@@ -173,7 +173,7 @@ sub delete_short {
         chomp $confirm;
     }
     if ($confirm =~ m/^y(es)?$/i) {
-        $c->app->delete_image($i);
+        $i->delete();
     } else {
         say 'Answer was not "y" or "yes". Aborting deletion.';
     }

@@ -231,7 +231,7 @@ sub delete {
         } else {
             $c->app->log->info('[DELETION] someone made '.$image->filename.' removed with token method (path: '.$image->path.')') unless $c->config('quiet_logs');
 
-            $c->delete_image($image);
+            $image->delete();
             return $c->respond_to(
                 json => {
                     json => {
@@ -397,7 +397,8 @@ sub add {
                 # Save file and create record
                 my $filename = unidecode($upload->filename);
                 my $ext      = ($filename =~ m/([^.]+)$/)[0];
-                my $path     = 'files/'.$record->short.'.'.$ext;
+                my $path     = $record->short.'.'.$ext;
+                $path        = Mojo::File->new('files', $path)->to_string unless ($c->app->config('swift'));
 
                 my ($width, $height);
                 if ($im_loaded && $mediatype ne 'image/svg+xml' && $mediatype !~ m#image/(x-)?xcf# && $mediatype ne 'image/webp') { # ImageMagick don't work in Debian with svg (for now?)
@@ -493,12 +494,11 @@ sub add {
                 if ($c->param('crypt') || $c->config('always_encrypt')) {
                     ($upload, $key, $iv) = $c->crypt($upload, $filename);
                 }
-                $upload->move_to($path);
 
                 $record->path($path)
                        ->filename($filename)
                        ->mediatype($mediatype)
-                       ->footprint(digest_file_hex($path, 'SHA-512'))
+                       ->footprint(digest_file_hex($upload->asset->to_file->path, 'SHA-512'))
                        ->enabled(1)
                        ->delete_at_day(($c->param('delete-day') && ($c->param('delete-day') <= $c->max_delay || $c->max_delay == 0)) ? $c->param('delete-day') : $c->max_delay)
                        ->delete_at_first_view(($c->param('first-view'))? 1 : 0)
@@ -507,7 +507,8 @@ sub add {
                        ->width($width)
                        ->height($height)
                        ->iv($iv)
-                       ->write;
+                       ->write
+                       ->store($upload);
 
                 # Log image creation
                 $c->app->log->info('[CREATION] '.$ip.' pushed '.$filename.' (path: '.$path.')') unless $c->config('quiet_logs');
@@ -605,12 +606,13 @@ sub short {
 
     my $image = Lutim::DB::Image->new(app => $c->app, short => $short);
     if ($image->enabled && $image->path) {
+        # Image deleted
         if($image->delete_at_day && $image->created_at + $image->delete_at_day * 86400 <= time()) {
             # Log deletion
             $c->app->log->info('[DELETION] someone tried to view '.$image->filename.' but it has been removed by expiration (path: '.$image->path.')') unless $c->config('quiet_logs');
 
             # Delete image
-            $c->delete_image($image);
+            $image->delete();
 
             # Warn user
             $c->flash(
@@ -620,6 +622,7 @@ sub short {
         }
 
         my $test;
+        # Twitter page
         if (defined($touit) && $image->mediatype !~ m/svg/) {
             $test = 1;
             my $short  = $image->short;
@@ -629,11 +632,11 @@ sub short {
                 if (defined($image->width) && defined($image->height)) {
                     ($width, $height) = ($image->width, $image->height);
                 } elsif ($im_loaded) {
-                    my $upload = $c->decrypt($key, $image->path, $image->iv);
-                    my $im     = Image::Magick->new;
-                    $im->BlobToImage($upload->slurp);
-                    $width     = $im->Get('width');
-                    $height    = $im->Get('height');
+                    my $tmp = $image->decrypt($key);
+                    my $im  = Image::Magick->new;
+                    $im->BlobToImage($tmp->slurp);
+                    $width  = $im->Get('width');
+                    $height = $im->Get('height');
 
                     $image->width($width)
                           ->height($height)
@@ -656,7 +659,7 @@ sub short {
                 $c->app->log->info('[DELETION] someone made '.$image->filename.' removed (path: '.$image->path.')') unless $c->config('quiet_logs');
 
                 # Delete image
-                $c->delete_image($image);
+                $image->delete();
 
                 $c->flash(
                     msg => $c->l('Unable to find the image: it has been deleted.')
@@ -688,7 +691,7 @@ sub short {
                     $c->app->log->info('[DELETION] someone made '.$image->filename.' removed (path: '.$image->path.')') unless $c->config('quiet_logs');
 
                     # Delete image
-                    $c->delete_image($image);
+                    $image->delete();
                 }
             });
         } else {
@@ -740,7 +743,7 @@ sub zip {
                     $c->app->log->info('[DELETION] someone tried to view '.$image->filename.' but it has been removed by expiration (path: '.$image->path.')') unless $c->config('quiet_logs');
 
                     # Delete image
-                    $c->delete_image($image);
+                    $image->delete();
 
                     # Warn user
                     $zip->addString(encode('UTF-8', $c->l('Unable to find the image: it has been deleted.')), 'images/'.$filename.'.txt');
@@ -753,7 +756,7 @@ sub zip {
                     $c->app->log->info('[DELETION] someone made '.$image->filename.' removed (path: '.$image->path.')') unless $c->config('quiet_logs');
 
                     # Delete image
-                    $c->delete_image($image);
+                    $image->delete();
 
                     $zip->addString(encode('UTF-8', $c->l('Unable to find the image: it has been deleted.')), 'images/'.$filename.'.txt');
                     next;
@@ -764,16 +767,18 @@ sub zip {
                     $expires = $dt->strftime("%a, %d %b %Y %H:%M:%S GMT");
 
                     my $path = $image->path;
-                    unless ( -f $path && -r $path ) {
-                        $c->app->log->error("Cannot read file [$path]. error [$!]");
-                        $zip->addString(encode('UTF-8', $c->l('Unable to find the image: it has been deleted.')), 'images/'.$filename.'.txt');
-                        next;
+                    unless ($c->app->config('swift')) {
+                        unless ( -f $path && -r $path ) {
+                            $c->app->log->error("Cannot read file [$path]. error [$!]");
+                            $zip->addString(encode('UTF-8', $c->l('Unable to find the image: it has been deleted.')), 'images/'.$filename.'.txt');
+                            next;
+                        }
                     }
 
                     if ($key) {
-                        $zip->addString($c->decrypt($key, $path, $image->iv), "images/$filename");
+                        $zip->addString($image->decrypt($key), "images/$filename");
                     } else {
-                        $zip->addFile($path, "images/$filename");
+                        $zip->addString($image->retrieve, "images/$filename");
                     }
 
                     # Log access

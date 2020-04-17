@@ -53,6 +53,9 @@ feature 'htpasswd', 'Htpasswd authentication support' => sub {
     requires 'Apache::Htpasswd';
     requires 'Mojolicious::Plugin::Authentication';
 };
+feature 'swift-storage', 'Openstack Swift object storage support' => sub {
+    requires 'Net::OpenStack::Swift';
+};
 feature 'test' => sub {
     requires 'Devel::Cover';
 };

@@ -9,6 +9,23 @@ DISTRIBUTIONS
       Digest::SHA 2
       ExtUtils::MakeMaker 0
       MIME::Base64 0
+  App-Rad-1.05
+    pathname: G/GA/GARU/App-Rad-1.05.tar.gz
+    provides:
+      App::Rad 1.05
+      App::Rad::Config undef
+      App::Rad::Exclude 0.01
+      App::Rad::Help 0.03
+      App::Rad::Include 0.01
+    requirements:
+      Attribute::Handlers 0
+      B::Deparse 0
+      Carp 0
+      ExtUtils::MakeMaker 0
+      File::Temp 0
+      FindBin 0
+      Getopt::Long 2.36
+      Test::More 0
   Archive-Zip-1.60
     pathname: P/PH/PHRED/Archive-Zip-1.60.tar.gz
     provides:
@@ -173,6 +190,12 @@ DISTRIBUTIONS
       strict 0
       vars 0
       warnings 0
+  Class-Accessor-Lite-0.08
+    pathname: K/KA/KAZUHO/Class-Accessor-Lite-0.08.tar.gz
+    provides:
+      Class::Accessor::Lite 0.08
+    requirements:
+      ExtUtils::MakeMaker 6.36
   Class-Data-Inheritable-0.08
     pathname: T/TM/TMTM/Class-Data-Inheritable-0.08.tar.gz
     provides:
@@ -537,6 +560,23 @@ DISTRIBUTIONS
       Data::Validate::Domain 0
       Data::Validate::IP 0
       ExtUtils::MakeMaker 0
+  Data-Validator-1.07
+    pathname: G/GF/GFUJI/Data-Validator-1.07.tar.gz
+    provides:
+      Data::Validator 1.07
+      Data::Validator::Role::AllowExtra undef
+      Data::Validator::Role::Croak undef
+      Data::Validator::Role::Method undef
+      Data::Validator::Role::NoRestricted undef
+      Data::Validator::Role::NoThrow undef
+      Data::Validator::Role::Sequenced undef
+      Data::Validator::Role::SmartSequenced undef
+      Data::Validator::Role::StrictSequenced undef
+    requirements:
+      ExtUtils::MakeMaker 6.59
+      Module::Build 0.38
+      Mouse 0.93
+      perl 5.008001
   DateTime-1.48
     pathname: D/DR/DROLSKY/DateTime-1.48.tar.gz
     provides:
@@ -995,6 +1035,19 @@ DISTRIBUTIONS
       perl 5.008004
       strict 0
       warnings 0
+  Devel-CheckCompiler-0.07
+    pathname: S/SY/SYOHEX/Devel-CheckCompiler-0.07.tar.gz
+    provides:
+      Devel::AssertC99 undef
+      Devel::CheckCompiler 0.07
+    requirements:
+      Exporter 0
+      ExtUtils::CBuilder 0
+      File::Temp 0
+      Module::Build::Tiny 0.035
+      Test::More 0.98
+      parent 0
+      perl 5.008001
   Devel-Cover-1.29
     pathname: P/PJ/PJCJ/Devel-Cover-1.29.tar.gz
     provides:
@@ -1077,6 +1130,13 @@ DISTRIBUTIONS
       perl 5.006
       strict 0
       warnings 0
+  Devel-PPPort-3.57
+    pathname: A/AT/ATOOMIC/Devel-PPPort-3.57.tar.gz
+    provides:
+      Devel::PPPort 3.57
+    requirements:
+      ExtUtils::MakeMaker 0
+      FindBin 0
   Devel-StackTrace-2.03
     pathname: D/DR/DROLSKY/Devel-StackTrace-2.03.tar.gz
     provides:
@@ -1329,6 +1389,27 @@ DISTRIBUTIONS
       Test::More 0
       Test::Warn 0
       perl 5.006
+  Furl-3.13
+    pathname: T/TO/TOKUHIROM/Furl-3.13.tar.gz
+    provides:
+      Furl 3.13
+      Furl::ConnectionCache undef
+      Furl::HTTP 3.13
+      Furl::Headers undef
+      Furl::Request undef
+      Furl::Response undef
+      Furl::ZlibStream undef
+    requirements:
+      Class::Accessor::Lite 0
+      Encode 0
+      HTTP::Parser::XS 0.11
+      MIME::Base64 0
+      Module::Build::Tiny 0.035
+      Mozilla::CA 0
+      Scalar::Util 0
+      Socket 0
+      Time::HiRes 0
+      perl 5.008001
   HTML-Parser-3.72
     pathname: G/GA/GAAS/HTML-Parser-3.72.tar.gz
     provides:
@@ -1447,6 +1528,14 @@ DISTRIBUTIONS
       ExtUtils::MakeMaker 0
       HTTP::Headers 6
       perl 5.008001
+  HTTP-Parser-XS-0.17
+    pathname: K/KA/KAZUHO/HTTP-Parser-XS-0.17.tar.gz
+    provides:
+      HTTP::Parser::XS 0.17
+      HTTP::Parser::XS::PP undef
+    requirements:
+      ExtUtils::MakeMaker 6.36
+      Test::More 0.96
   Hash-Merge-0.300
     pathname: R/RE/REHSACK/Hash-Merge-0.300.tar.gz
     provides:
@@ -1802,6 +1891,18 @@ DISTRIBUTIONS
       constant 0
       strict 0
       warnings 0
+  Log-Minimal-0.19
+    pathname: K/KA/KAZEBURO/Log-Minimal-0.19.tar.gz
+    provides:
+      Log::Minimal 0.19
+    requirements:
+      CPAN::Meta 0
+      CPAN::Meta::Prereqs 0
+      Data::Dumper 0
+      ExtUtils::CBuilder 0
+      Module::Build 0.38
+      Scalar::Util 0
+      Term::ANSIColor 0
   MRO-Compat-0.13
     pathname: H/HA/HAARG/MRO-Compat-0.13.tar.gz
     provides:
@@ -1918,6 +2019,21 @@ DISTRIBUTIONS
       perl 5.006
       strict 0
       warnings 0
+  Module-Build-XSUtil-0.19
+    pathname: H/HI/HIDEAKIO/Module-Build-XSUtil-0.19.tar.gz
+    provides:
+      Module::Build::XSUtil 0.19
+    requirements:
+      Devel::CheckCompiler 0
+      Devel::PPPort 0
+      Exporter 0
+      ExtUtils::CBuilder 0
+      File::Basename 0
+      File::Path 0
+      Module::Build 0.4005
+      XSLoader 0
+      parent 0
+      perl 5.008001
   Module-Implementation-0.09
     pathname: D/DR/DROLSKY/Module-Implementation-0.09.tar.gz
     provides:
@@ -2082,7 +2198,6 @@ DISTRIBUTIONS
       Mojolicious::Lite undef
       Mojolicious::Plugin undef
       Mojolicious::Plugin::Config undef
-      Mojolicious::Plugin::Config::Sandbox undef
       Mojolicious::Plugin::DefaultHelpers undef
       Mojolicious::Plugin::EPLRenderer undef
       Mojolicious::Plugin::EPRenderer undef
@@ -2605,6 +2720,44 @@ DISTRIBUTIONS
       parent 0.223
       strict 1.03
       warnings 1.03
+  Mouse-v2.5.9
+    pathname: S/SK/SKAJI/Mouse-v2.5.9.tar.gz
+    provides:
+      Mouse v2.5.9
+      Mouse::Exporter undef
+      Mouse::Meta::Attribute undef
+      Mouse::Meta::Class undef
+      Mouse::Meta::Method undef
+      Mouse::Meta::Method::Accessor undef
+      Mouse::Meta::Method::Constructor undef
+      Mouse::Meta::Method::Delegation undef
+      Mouse::Meta::Method::Destructor undef
+      Mouse::Meta::Module undef
+      Mouse::Meta::Role undef
+      Mouse::Meta::Role::Application undef
+      Mouse::Meta::Role::Application::RoleSummation undef
+      Mouse::Meta::Role::Composite undef
+      Mouse::Meta::Role::Method undef
+      Mouse::Meta::TypeConstraint undef
+      Mouse::Object undef
+      Mouse::PurePerl undef
+      Mouse::Role v2.5.9
+      Mouse::Spec v2.5.9
+      Mouse::TypeRegistry undef
+      Mouse::Util v2.5.9
+      Mouse::Util::MetaRole undef
+      Mouse::Util::TypeConstraints undef
+      Squirrel undef
+      Squirrel::Role undef
+      Test::Mouse undef
+      ouse undef
+    requirements:
+      ExtUtils::CBuilder 0
+      Module::Build 0.4005
+      Module::Build::XSUtil 0.19
+      Scalar::Util 1.14
+      XSLoader 0.02
+      perl 5.008005
   Mozilla-CA-20180117
     pathname: A/AB/ABH/Mozilla-CA-20180117.tar.gz
     provides:
@@ -2640,6 +2793,31 @@ DISTRIBUTIONS
       strict 0
       vars 0
       warnings 0
+  Net-OpenStack-Swift-0.15
+    pathname: M/MA/MASAKYST/Net-OpenStack-Swift-0.15.tar.gz
+    provides:
+      Net::OpenStack::Swift 0.15
+      Net::OpenStack::Swift::InnerKeystone::Base undef
+      Net::OpenStack::Swift::InnerKeystone::V1_0 undef
+      Net::OpenStack::Swift::InnerKeystone::V2_0 undef
+      Net::OpenStack::Swift::InnerKeystone::V3_0 undef
+      Net::OpenStack::Swift::Util undef
+    requirements:
+      App::Rad 0
+      Data::Validator 0
+      Furl 0
+      IO::Socket::SSL 0
+      JSON 0
+      Log::Minimal 0
+      Module::Build::Tiny 0.035
+      Mouse 0
+      Parallel::Fork::BossWorkerAsync 0
+      Path::Tiny 0
+      Sys::CPU 0
+      Text::ASCIITable 0
+      URI::Escape 0
+      namespace::clean 0
+      perl 5.010_001
   Net-SSLeay-1.85
     pathname: M/MI/MIKEM/Net-SSLeay-1.85.tar.gz
     provides:
@@ -2707,6 +2885,12 @@ DISTRIBUTIONS
       XSLoader 0
       strict 0
       warnings 0
+  Parallel-Fork-BossWorkerAsync-0.09
+    pathname: J/JV/JVANNUCCI/Parallel-Fork-BossWorkerAsync-0.09.tar.gz
+    provides:
+      Parallel::Fork::BossWorkerAsync 0.09
+    requirements:
+      ExtUtils::MakeMaker 0
   Params-Classify-0.015
     pathname: Z/ZE/ZEFRAM/Params-Classify-0.015.tar.gz
     provides:
@@ -2749,6 +2933,32 @@ DISTRIBUTIONS
       overload 0
       strict 0
       warnings 0
+  Path-Tiny-0.112
+    pathname: D/DA/DAGOLDEN/Path-Tiny-0.112.tar.gz
+    provides:
+      Path::Tiny 0.112
+      Path::Tiny::Error 0.112
+    requirements:
+      Carp 0
+      Cwd 0
+      Digest 1.03
+      Digest::SHA 5.45
+      Encode 0
+      Exporter 5.57
+      ExtUtils::MakeMaker 6.17
+      Fcntl 0
+      File::Copy 0
+      File::Glob 0
+      File::Path 2.07
+      File::Spec 0.86
+      File::Temp 0.19
+      File::stat 0
+      constant 0
+      overload 0
+      perl 5.008001
+      strict 0
+      warnings 0
+      warnings::register 0
   Role-Tiny-2.000006
     pathname: H/HA/HAARG/Role-Tiny-2.000006.tar.gz
     provides:
@@ -2773,17 +2983,6 @@ DISTRIBUTIONS
       Scalar::Util 0
       Sub::Quote 2.000001
       Text::Balanced 2.00
-      perl 5.006
-  Scalar-List-Utils-1.50
-    pathname: P/PE/PEVANS/Scalar-List-Utils-1.50.tar.gz
-    provides:
-      List::Util 1.50
-      List::Util::XS 1.50
-      Scalar::Util 1.50
-      Sub::Util 1.50
-    requirements:
-      ExtUtils::MakeMaker 0
-      Test::More 0
       perl 5.006
   Specio-0.42
     pathname: D/DR/DROLSKY/Specio-0.42.tar.gz
@@ -2948,6 +3147,12 @@ DISTRIBUTIONS
       Text::Balanced 2
       if 0
       perl 5.005
+  Sys-CPU-0.52
+    pathname: M/MK/MKODERER/Sys-CPU-0.52.tar.gz
+    provides:
+      Sys::CPU 0.52
+    requirements:
+      ExtUtils::MakeMaker 0
   Task-Weaken-1.06
     pathname: E/ET/ETHER/Task-Weaken-1.06.tar.gz
     provides:
@@ -2993,6 +3198,16 @@ DISTRIBUTIONS
       Test::Builder 0.13
       Test::Builder::Tester 1.02
       perl 5.006
+  Text-ASCIITable-0.22
+    pathname: L/LU/LUNATIC/Text-ASCIITable-0.22.tar.gz
+    provides:
+      Text::ASCIITable 0.22
+      Text::ASCIITable::Wrap 0.2
+    requirements:
+      Carp 0
+      Encode 0
+      List::Util 0
+      perl v5.6.0
   Text-Soundex-3.05
     pathname: R/RJ/RJBS/Text-Soundex-3.05.tar.gz
     provides:

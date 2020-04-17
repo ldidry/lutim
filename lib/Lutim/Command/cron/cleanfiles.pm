@@ -33,7 +33,7 @@ sub run {
     $dbi->get_images_to_clean()->each(
         sub {
             my ($img, $num) = @_;
-            $l->app->delete_image($img);
+            $img->delete();
         }
     );
 
@@ -42,7 +42,7 @@ sub run {
         $dbi->get_no_longer_viewed_files($time)->each(
             sub {
                 my ($img, $num) = @_;
-                $l->app->delete_image($img);
+                $img->delete();
             }
         );
     }

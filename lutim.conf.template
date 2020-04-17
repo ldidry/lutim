@@ -205,6 +205,18 @@
     # optional, default is 3600
     #session_duration => 3600,
 
+    # you can store images on Swift object storage (https://en.wikipedia.org/wiki/OpenStack#Swift) instead of filesystem
+    # please read https://metacpan.org/pod/Net::OpenStack::Swift#SYNOPSIS to know how to configure this setting
+    # IMPORTANT: add a `container` key in it, to let Lutim know which container to use. This is not a regular Net::OpenStack::Swift setting, but Lutim need it.
+    # optional, no default
+    #swift => {
+    #  auth_url    => 'https://auth-endpoint-url/v2.0',
+    #  user        => 'userid',
+    #  password    => 'password',
+    #  tenant_name => 'project_id',
+    #  container   => 'lutim'
+    #},
+
     # disable counters of images
     # set to 1 to disable counters
     # optional, counters are enabled by default

@@ -1,6 +1,10 @@
 # vim:set sw=4 ts=4 sts=4 ft=perl expandtab:
 package Lutim::DB::Image;
+use bytes;
 use Mojo::Base -base;
+use Mojo::File;
+use Crypt::CBC;
+use File::Temp qw(tempfile);
 
 has 'short';
 has 'path';
@@ -19,6 +23,8 @@ has 'width';
 has 'height';
 has 'iv';
 has 'app';
+
+=encoding utf8
 
 =head1 NAME
 
@@ -151,13 +157,11 @@ sub to_hash {
 
 =over 1
 
-=item B<Usage>     : C<$c-E<gt>count_delete_at_day_endis($delete_at_day, $enabled[, $time])>
+=item B<Usage>     : C<$c-E<gt>count_delete_at_day_endis($delete_at_day, $enabled, [$time])>
 
-=item B<Arguments> : two mandatory parameters: one integer, the delete_at_day attribute, a boolean (0 or 1), the enabled attribute
-                     an optional parameter: an unix timestamp
+=item B<Arguments> : two mandatory parameters: one integer, the delete_at_day attribute, a boolean (0 or 1), the enabled attribute and an optional parameter: an unix timestamp.
 
-=item B<Purpose>   : count how many images there are with the given delete_at_day attribute, and enabled or disabled, depending on the given enabled attribute
-                     if the optional parameter is given, count only images according to the given mandatory parameters that were created before the timestamp
+=item B<Purpose>   : count how many images there are with the given delete_at_day attribute, and enabled or disabled, depending on the given enabled attribute. If the optional parameter is given, count only images according to the given mandatory parameters that were created before the timestamp
 
 =item B<Returns>   : integer
 
@@ -345,6 +349,158 @@ sub to_hash {
 
 =back
 
+=head2 store
+
+=over 1
+
+=item B<Usage>     : C<$c-E<gt>store($upload)>
+
+=item B<Arguments> : a Mojo::Upload object
+
+=item B<Purpose>   : will store the content to the object’s path, either on filesystem or on Swift object storage
+
+=item B<Returns>   : the db accessor object
+
+=back
+
 =cut
 
+sub store {
+    my $c      = shift;
+    my $upload = shift;
+
+    if ($c->app->config('swift')) {
+        $c->app->swift->put_object(
+            container_name => $c->app->config('swift')->{container},
+            object_name    => $c->path,
+            content_length => $upload->size,
+            content        => $upload->slurp
+        );
+    } else {
+        $upload->move_to($c->path);
+    }
+
+    return $c;
+}
+
+=head2 retrieve
+
+=over 1
+
+=item B<Usage>     : C<$c-E<gt>retrieve>
+
+=item B<Arguments> : none
+
+=item B<Purpose>   : get file from storage, either filesystem or Swift object storage
+
+=item B<Returns>   : the data from the file
+
+=back
+
+=cut
+
+sub retrieve {
+    my $c      = shift;
+    my $upload = shift;
+
+    if ($c->app->config('swift')) {
+        my $file;
+        $c->app->swift->get_object(
+            container_name => $c->app->config('swift')->{container},
+            object_name    => $c->path,
+            write_code => sub {
+                my ($status, $message, $headers, $chunk) = @_;
+                $file .= $chunk;
+            }
+        );
+        return $file;
+    } else {
+        return Mojo::File->new($c->path)->slurp;
+    }
+}
+
+=head2 decrypt
+
+=over 1
+
+=item B<Usage>     : C<$c-E<gt>decrypt($key)>
+
+=item B<Arguments> : the decryption key
+
+=item B<Purpose>   : decrypt the image
+
+=item B<Returns>   : a Mojo::Asset::File object
+
+=back
+
+=cut
+
+sub decrypt {
+    my $c    = shift;
+    my $key  = shift;
+    $c->iv = 'dupajasi' unless $c->iv;
+
+    my $cipher = Crypt::CBC->new(
+        -key    => $key,
+        -cipher => 'Blowfish',
+        -header => 'none',
+        -iv     => $c->iv
+    );
+
+    $cipher->start('decrypting');
+
+    my $decrypt_asset = Mojo::Asset::File->new;
+
+    if ($c->app->config('swift')) {
+        $c->app->swift->get_object(
+            container_name => $c->app->config('swift')->{container},
+            object_name    => $c->path,
+            write_code     => sub {
+                my ($status, $message, $headers, $chunk) = @_;
+                $decrypt_asset->add_chunk($cipher->crypt($chunk));
+            }
+        );
+    } else {
+        open(my $f, "<", $c->path) or die "Unable to read encrypted file: $!";
+        binmode $f;
+        while (read($f, my $buffer, 1024)) {
+              $decrypt_asset->add_chunk($cipher->crypt($buffer));
+        }
+        $decrypt_asset->add_chunk($cipher->finish);
+
+    }
+    return $decrypt_asset->slurp;
+}
+
+=head2 delete
+
+=over 1
+
+=item B<Usage>     : C<$c-E<gt>delete>
+
+=item B<Arguments> : none
+
+=item B<Purpose>   : delete the file on filesystem or Swift object storage and disable the image in database
+
+=item B<Returns>   : the db accessor object
+
+=back
+
+=cut
+
+sub delete {
+    my $c   = shift;
+    if ($c->app->config('cache_max_size') != 0 || scalar(@{$c->app->config('memcached_servers')})) {
+        $c->app->chi('lutim_images_cache')->remove($c->short);
+    }
+    if ($c->app->config('swift')) {
+        $c->app->swift->delete_object({
+            container_name => $c->app->config('swift')->{container},
+            object_name    => $c->path
+        });
+    } else {
+        unlink $c->path or warn "Could not unlink ".$c->path.": $!";
+    }
+    return $c->disable();
+}
 1;

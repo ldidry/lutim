@@ -49,24 +49,59 @@ sub register {
     $app->helper(is_selected        => \&_is_selected);
     $app->helper(is_wm_selected     => \&_is_wm_selected);
     $app->helper(crypt              => \&_crypt);
-    $app->helper(decrypt            => \&_decrypt);
-    $app->helper(delete_image       => \&_delete_image);
     $app->helper(iso639_native_name => \&_iso639_native_name);
     $app->helper(prefix             => \&_prefix);
+    if ($app->config('swift')) {
+        use Net::OpenStack::Swift;
+        $app->helper(swift                 => \&_swift);
+        $app->helper(check_swift_container => \&_check_swift_container);
+        $app->helper(find_swift_container  => \&_find_swift_container);
+    }
 }
 
 sub _pg {
-    my $c     = shift;
+    my $c = shift;
 
     state $pg = Mojo::Pg->new($c->app->pg_url($c->app->config('pgdb')));
     return $pg;
 }
 
 sub _sqlite {
-    my $c     = shift;
+    my $c = shift;
 
     state $sqlite = Mojo::SQLite->new('sqlite:'.$c->app->config('db_path'));
     return $sqlite;
+}
+
+sub _swift {
+    my $c = shift;
+
+    state $swift = Net::OpenStack::Swift->new($c->app->config('swift'));
+    return $swift;
+}
+
+sub _check_swift_container {
+    my $c = shift;
+
+    my ($storage_url, $token)  = $c->swift->get_auth();
+    my ($headers, $containers) = $c->swift->get_account(url => $storage_url, token => $token);
+    unless ($c->find_swift_container($containers)) {
+        $c->swift->put_container(container_name => $c->app->config('swift')->{container});
+        my ($headers, $containers) = $c->swift->get_account(url => $storage_url, token => $token);
+        die sprintf("Swift container %s not found, and unable to create it.", $c->app->config('swift')->{container}) unless $c->find_swift_container($containers);
+    }
+}
+
+sub _find_swift_container {
+    my $c          = shift;
+    my $containers = shift;
+
+    my $found_container = 0;
+    foreach my $container (@{$containers}) {
+        $found_container = 1 if $container->{name} eq $c->app->config('swift')->{container};
+    }
+
+    return $found_container;
 }
 
 sub _render_file {
@@ -83,12 +118,15 @@ sub _render_file {
     $dl       = 'attachment' if ($mediatype =~ m/svg/);
     $filename = quote($filename);
 
-    unless (-f $path && -r $path) {
-        $c->app->log->error("Cannot read file [$path]. error [$!]");
-        $c->flash(
-            msg => $c->l('Unable to find the image: it has been deleted.')
-        );
-        return 500;
+    unless ($c->app->config('swift')) {
+        # Do we have the file on disk?
+        unless (-f $path && -r $path) {
+            $c->app->log->error("Cannot read file [$path]. error [$!]");
+            $c->flash(
+                msg => $c->l('Unable to find the image: it has been deleted.')
+            );
+            return 500;
+        }
     }
 
     $mediatype =~ s/x-//;
@@ -104,21 +142,22 @@ sub _render_file {
     $c->res->content->headers($headers);
 
     my $cache;
+    # Do we have the file in cache?
     if ($c->config('cache_max_size') != 0 || scalar(@{$c->config('memcached_servers')})) {
         $cache = $c->chi('lutim_images_cache')->compute($img->short, undef, sub {
             if ($key) {
                 return {
-                    asset => $c->decrypt($key, $path, $iv),
+                    asset => $img->decrypt($key),
                     key   => $key
                 };
             } else {
                 return {
-                    asset => Mojo::File->new($path)->slurp,
+                    asset => $img->retrieve
                 };
             }
         });
         if ($key && $key ne $cache->{key}) {
-            my $tmp = $c->decrypt($key, $path, $iv);
+            my $tmp = $img->decrypt($key);
             $cache->{asset} = $tmp;
             $c->chi('lutim_images_cache')->replace(
                 $img->short,
@@ -131,18 +170,18 @@ sub _render_file {
     } else {
         if ($key) {
             $cache = {
-                asset => $c->decrypt($key, $path, $iv),
+                asset => $img->decrypt($key),
             };
         } else {
             $cache = {
-                asset => Mojo::File->new($path)->slurp,
+                asset => $img->retrieve,
             };
         }
     }
-    # Extend expiration time
     my $asset = Mojo::Asset::Memory->new;
     $asset->add_chunk($cache->{asset});
 
+    # Do we need to create a thumbnail?
     if (defined $thumb && $im_loaded && $mediatype ne 'image/svg+xml' && $mediatype !~ m#image/(x-)?xcf# && $mediatype ne 'image/webp') { # ImageMagick don't work in Debian with svg (for now?)
         my $im  = Image::Magick->new;
         $im->BlobToImage($asset->slurp);
@@ -285,44 +324,6 @@ sub _crypt {
     $crypt_upload->asset($crypt_asset);
 
     return ($crypt_upload, $key, $iv);
-}
-
-sub _decrypt {
-    my $c    = shift;
-    my $key  = shift;
-    my $file = shift;
-    my $iv   = shift;
-    $iv = 'dupajasi' unless $iv;
-
-    my $cipher = Crypt::CBC->new(
-        -key    => $key,
-        -cipher => 'Blowfish',
-        -header => 'none',
-        -iv     => $iv
-    );
-
-    $cipher->start('decrypting');
-
-    my $decrypt_asset = Mojo::Asset::File->new;
-
-    open(my $f, "<",$file) or die "Unable to read encrypted file: $!";
-    binmode $f;
-    while (read($f, my $buffer, 1024)) {
-          $decrypt_asset->add_chunk($cipher->crypt($buffer));
-    }
-    $decrypt_asset->add_chunk($cipher->finish) ;
-
-    return $decrypt_asset->slurp;
-}
-
-sub _delete_image {
-    my $c   = shift;
-    my $img = shift;
-    if ($c->config('cache_max_size') != 0 || scalar(@{$c->config('memcached_servers')})) {
-        $c->chi('lutim_images_cache')->remove($img->short);
-    }
-    unlink $img->path or warn "Could not unlink ".$img->path.": $!";
-    $img->disable();
 }
 
 sub _iso639_native_name {

@@ -109,6 +109,11 @@ sub startup {
     $self->plugin('Lutim::Plugin::Helpers');
     $self->plugin('Lutim::Plugin::Lang');
 
+    # Now helpers has been loaded, time to check Swift container
+    if ($config->{swift}) {
+        $self->check_swift_container();
+    }
+
     # Minion
     if ($config->{minion}->{enabled}) {
         $self->config->{minion}->{dbtype} = 'sqlite' unless defined $config->{minion}->{dbtype};
