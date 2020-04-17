@@ -203,6 +203,7 @@
     fd.append('crypt',      ($("#crypt").prop('checked')) ? 1 : 0);
     fd.append('keep-exif',  ($("#keep-exif").prop('checked')) ? 1 : 0);
     fd.append('delete-day', ($("#delete-day").val()));
+    fd.append('watermark',  ($("#watermark").val()));
 
     widget.settings.onBeforeUpload.call(widget.element, widget.queuePos);
 

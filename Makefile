@@ -1,5 +1,6 @@
 EXTRACTDIR=-D lib -D themes/default/templates
 POT=themes/default/lib/Lutim/I18N/lutim.pot
+ENPO=themes/default/lib/Lutim/I18N/en.po
 XGETTEXT=carton exec local/bin/xgettext.pl -u
 CARTON=carton exec
 LUTIM=script/lutim
@@ -15,21 +16,10 @@ minify:
 
 locales:
 	$(XGETTEXT) $(EXTRACTDIR) -o $(POT) 2>/dev/null
-
-push-locales:
-    ifeq ($(HEAD),$(filter $(HEAD),master development))
-		sed -e 's@<project-version>.*</project-version>@<project-version>$(HEAD)</project-version>@' -i zanata.xml && \
-			zanata-cli -q -B push
-    endif
-
-pull-locales:
-    ifeq ($(HEAD),$(filter $(HEAD),master development))
-		sed -e 's@<project-version>.*</project-version>@<project-version>$(HEAD)</project-version>@' -i zanata.xml && \
-			zanata-cli -q -B pull
-    endif
+	$(XGETTEXT) $(EXTRACTDIR) -o $(ENPO) 2>/dev/null
 
 stats-locales:
-	zanata-cli -q stats
+	wlc stats
 
 podcheck:
 	podchecker lib/Lutim/DB/Image.pm

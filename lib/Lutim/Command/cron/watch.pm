@@ -3,6 +3,7 @@ package Lutim::Command::cron::watch;
 use Mojo::Base 'Mojolicious::Command';
 use Filesys::DiskUsage qw/du/;
 use Lutim::DB::Image;
+use Lutim::DefaultConfig qw($default_config);
 use Lutim;
 use Mojo::File;
 use Switch;
@@ -24,10 +25,7 @@ sub run {
     }
     my $config = $c->app->plugin('Config', {
         file    => $cfile,
-        default => {
-            policy_when_full => 'warn',
-            dbtype           => 'sqlite',
-        }
+        default => $default_config
     });
 
     if (defined($config->{max_total_size})) {

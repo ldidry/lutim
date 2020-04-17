@@ -4,6 +4,7 @@ use Mojo::Base 'Mojolicious';
 use Mojo::File;
 use FindBin qw($Bin);
 use File::Spec qw(catfile);
+use Lutim::DefaultConfig qw($default_config);
 
 # This method will run once at server start
 sub startup {
@@ -18,43 +19,10 @@ sub startup {
             $cfile = Mojo::File->new($Bin, '..', $ENV{MOJO_CONFIG});
         }
     }
-    my $config = $self->plugin('Config' =>
-        {
-            file    => $cfile,
-            default => {
-                provisioning           => 100,
-                provis_step            => 5,
-                length                 => 8,
-                always_encrypt         => 0,
-                anti_flood_delay       => 5,
-                max_file_size          => 10*1024*1024,
-                https                  => 0,
-                proposed_delays        => '0,1,7,30,365',
-                default_delay          => 0,
-                max_delay              => 0,
-                token_length           => 24,
-                crypto_key_length      => 8,
-                thumbnail_size         => 100,
-                theme                  => 'default',
-                dbtype                 => 'sqlite',
-                db_path                => 'lutim.db',
-                max_files_in_zip       => 15,
-                prefix                 => '/',
-                minion                 => {
-                    enabled => 0,
-                    dbtype  => 'sqlite',
-                    db_path => 'minion.db'
-                },
-                cache_max_size         => 0,
-                memcached_servers      => [],
-                quiet_logs             => 0,
-                disable_img_stats      => 0,
-                x_frame_options        => 'DENY',
-                x_content_type_options => 'nosniff',
-                x_xss_protection       => '1; mode=block',
-            }
-        }
-    );
+    my $config = $self->plugin('Config', {
+        file    => $cfile,
+        default => $default_config
+    });
 
     $config->{prefix} = $config->{url_sub_dir} if (defined($config->{url_sub_dir}) && $config->{prefix} eq '/');
 

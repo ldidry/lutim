@@ -285,6 +285,7 @@ sub add {
     my $upload    = $c->param('file');
     my $file_url  = $c->param('lutim-file-url');
     my $keep_exif = $c->param('keep-exif');
+    my $wm        = $c->param('watermark');
 
     if(!defined($c->stash('stop_upload'))) {
         if (defined($file_url) && $file_url) {
@@ -406,14 +407,56 @@ sub add {
                     # Automatic rotation from EXIF tag
                     $im->AutoOrient();
 
-                    # Update the uploaded file with it's auto-rotated clone
+                    # Get dimensions
+                    $width  = $im->Get('width');
+                    $height = $im->Get('height');
+
+                    # Optionally add watermark
+                    if ($c->config('watermark_path') && (
+                            ($wm && $wm ne 'none') ||
+                            $c->config('watermark_enforce') ne 'none'
+                        )) {
+                        my $watermarkim = Image::Magick->new;
+                        $watermarkim->ReadImage($c->config('watermark_path'));
+                        $watermarkim->Evaluate(
+                            operator => 'Multiply',
+                            value    => 0.25,
+                            channel  => 'Alpha'
+                        );
+                        if ($height <= 80) {
+                            $watermarkim->Resize(geometry => 'x10');
+                        } else {
+                            $watermarkim->Resize(geometry => 'x80');
+                        }
+
+                        # Add one watermark or repeat it all over the image?
+                        my $tilingw = 1 if ($c->config('watermark_enforce') eq 'tiling' || $wm eq 'tiling');
+                        my $singlew = 1 if ($c->config('watermark_enforce') eq 'single' || $wm eq 'single');
+                        if ($tilingw) {
+                            $im->Composite(
+                                image   => $watermarkim,
+                                compose => 'Dissolve',
+                                tile    => 'True',
+                                gravity => 'Center'
+                            );
+                        } elsif ($singlew) {
+                            $im->Composite(
+                                image   => $watermarkim,
+                                compose => 'Dissolve',
+                                tile    => 'False',
+                                x       => '20',
+                                y       => '20',
+                                gravity => $c->config('watermark_placement')
+                            );
+                        }
+                    }
+
+                    # Update the uploaded file with it's auto-rotated/watermarked clone
                     my $asset = Mojo::Asset::Memory->new->add_chunk($im->ImageToBlob());
                     $upload->asset($asset);
 
                     # Create the thumbnail
-                    $width  = $im->Get('width');
-                    $height = $im->Get('height');
-                    $im->Resize(geometry=>'x85');
+                    $im->Resize(geometry => 'x85');
 
                     $thumb  = 'data:'.$mediatype.';base64,';
                     if ($mediatype eq 'image/gif') {

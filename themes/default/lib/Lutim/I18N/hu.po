@@ -3,15 +3,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2020-04-10 17:08+0000\n"
+"Last-Translator: Balázs Meskó <mesko.balazs@fsf.hu>\n"
+"Language-Team: Hungarian <https://weblate.framasoft.org/projects/lutim/"
+"default-theme/hu/>\n"
+"Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2018-06-01 09:17+0000\n"
-"Last-Translator: Meskó Balázs <mesko.balazs@fsf.hu>\n"
-"Language-Team: Hungarian\n"
-"Language: hu\n"
-"X-Generator: Zanata 4.6.2\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.11.2\n"
 
 #. (7)
 #. (30)
@@ -24,11 +25,11 @@ msgstr "%1 nap"
 #. ($total)
 #: themes/default/templates/stats.html.ep:2
 msgid "%1 sent images on this instance from beginning."
-msgstr ""
+msgstr "%1 kép elküldve ezen a példányon a kezdetek óta."
 
 #: themes/default/templates/index.html.ep:208
 msgid "-or-"
-msgstr ""
+msgstr "-vagy-"
 
 #: lib/Lutim.pm:350 lib/Lutim/Command/cron/stats.pm:149 lib/Lutim/Command/cron/stats.pm:163 lib/Lutim/Command/cron/stats.pm:180 themes/default/templates/index.html.ep:5 themes/default/templates/myfiles.html.ep:5 themes/default/templates/partial/raw.js.ep:25 themes/default/templates/partial/raw.js.ep:8 themes/default/templates/raw.html.ep:10
 msgid "1 year"
@@ -40,7 +41,7 @@ msgstr "24 óra"
 
 #: themes/default/templates/partial/myfiles.js.ep:180
 msgid ": Error while trying to get the counter."
-msgstr ""
+msgstr ": Hiba a számláló lekérésekor."
 
 #: themes/default/templates/partial/navbar.html.ep:77
 msgid "About"
@@ -52,7 +53,7 @@ msgstr "Aktív képek"
 
 #: lib/Lutim/Controller/Image.pm:327
 msgid "An error occured while downloading the image."
-msgstr "Hiba történt a kép letöltése közben"
+msgstr "Hiba történt a kép letöltése közben."
 
 #: themes/default/templates/zip.html.ep:2
 msgid "Archives download"
@@ -68,7 +69,7 @@ msgstr "Kattints a fájlböngésző megnyitásához"
 
 #: themes/default/templates/myfiles.html.ep:51
 msgid "Close"
-msgstr ""
+msgstr "Bezárás"
 
 #: themes/default/templates/gallery.html.ep:29
 msgid "Close (Esc)"
@@ -80,7 +81,7 @@ msgstr "Közreműködők"
 
 #: themes/default/templates/partial/common.js.ep:113 themes/default/templates/partial/common.js.ep:93
 msgid "Copied to clipboard"
-msgstr ""
+msgstr "Vágólapra másolva"
 
 #: themes/default/templates/partial/lutim.js.ep:215 themes/default/templates/partial/lutim.js.ep:278 themes/default/templates/partial/lutim.js.ep:364
 msgid "Copy all view links to clipboard"
@@ -96,11 +97,11 @@ msgstr "Számláló"
 
 #: themes/default/templates/stats.html.ep:18
 msgid "Delay repartition chart for disabled images"
-msgstr ""
+msgstr "Lejárat felosztási diagramja a letiltott képekhez"
 
 #: themes/default/templates/stats.html.ep:15
 msgid "Delay repartition chart for enabled images"
-msgstr ""
+msgstr "Lejárat felosztási diagramja az engedélyezett képekhez"
 
 #: themes/default/templates/index.html.ep:133 themes/default/templates/index.html.ep:165 themes/default/templates/index.html.ep:196 themes/default/templates/myfiles.html.ep:124 themes/default/templates/myfiles.html.ep:45 themes/default/templates/partial/lutim.js.ep:161
 msgid "Delete at first view?"
@@ -132,7 +133,7 @@ msgstr "Zip letöltési hivatkozás"
 
 #: themes/default/templates/index.html.ep:207
 msgid "Drag & drop images here"
-msgstr "Húzd és ejtsd ide a képeket"
+msgstr "Húzza és ejtse ide a képeket"
 
 #: themes/default/templates/about.html.ep:7
 msgid ""
@@ -141,6 +142,10 @@ msgid ""
 "other to directly download it, one you can use on social networks and a last "
 "to delete the image when you want."
 msgstr ""
+"Húzza és ejtse a képet a megfelelő területre, vagy küldje el a fájlokat a "
+"hagyományos módon, és a Lutim négy URL-t fog biztosítani. Egyet a kép "
+"megtekintéséhez, egyet a közvetlen letöltéséhez, egyet amelyet a közösségi "
+"hálózatokon használhat, illetve egyet, amellyel ha akarja, törölheti a képet."
 
 #: themes/default/templates/index.html.ep:168 themes/default/templates/index.html.ep:199
 msgid "Encrypt the image (Lutim does not keep the key)."
@@ -160,7 +165,7 @@ msgstr "Lejárat:"
 
 #: themes/default/templates/myfiles.html.ep:112
 msgid "Export localStorage data"
-msgstr ""
+msgstr "A helyi tárolóban lévő adatok exportálása"
 
 #: themes/default/templates/myfiles.html.ep:121
 msgid "File name"
@@ -176,15 +181,15 @@ msgstr ""
 
 #: themes/default/templates/partial/navbar.html.ep:80
 msgid "Fork me!"
-msgstr "Forkolj le!"
+msgstr "Forkolja le!"
 
 #: themes/default/templates/index.html.ep:10 themes/default/templates/index.html.ep:13 themes/default/templates/myfiles.html.ep:60 themes/default/templates/myfiles.html.ep:63
 msgid "Gallery link"
-msgstr "Galéria hivatkozás"
+msgstr "Galériahivatkozás"
 
 #: themes/default/templates/partial/common.js.ep:116 themes/default/templates/partial/common.js.ep:134
 msgid "Hit Ctrl+C, then Enter to copy the short link"
-msgstr ""
+msgstr "Nyomjon Ctrl+C-t, majd Entert a rövid hivatkozás másolásához"
 
 #: themes/default/templates/layouts/default.html.ep:47
 msgid "Homepage"
@@ -207,6 +212,8 @@ msgid ""
 "If the files are deleted if you ask it while posting it, their SHA512 "
 "footprint are retained."
 msgstr ""
+"Ha a fájlok törlésre fognak kerülni, mert így kérte feltöltéskor, akkor az "
+"SHA512-ujjlenyomat megmarad."
 
 #: themes/default/templates/index.html.ep:181 themes/default/templates/index.html.ep:221
 msgid "Image URL"
@@ -214,11 +221,11 @@ msgstr "Kép URL"
 
 #: lib/Lutim/Command/cron/stats.pm:141 themes/default/templates/raw.html.ep:2
 msgid "Image delay"
-msgstr ""
+msgstr "Kép lejárata"
 
 #: themes/default/templates/partial/common.js.ep:157
 msgid "Image deleted"
-msgstr ""
+msgstr "Kép törölve"
 
 #: lib/Lutim/Controller/Image.pm:753
 msgid "Image not found."
@@ -226,7 +233,7 @@ msgstr "A kép nem található."
 
 #: themes/default/templates/myfiles.html.ep:113
 msgid "Import localStorage data"
-msgstr ""
+msgstr "Helyi tároló adatainak importálása"
 
 #: themes/default/templates/partial/navbar.html.ep:69
 msgid "Informations"
@@ -278,17 +285,19 @@ msgstr "Közösségi média megosztási hivatkozások"
 
 #: themes/default/templates/login.html.ep:8
 msgid "Login"
-msgstr ""
+msgstr "Bejelentkezés"
 
 #: themes/default/templates/partial/navbar.html.ep:33
 msgid "Logout"
-msgstr ""
+msgstr "Kijelentkezés"
 
 #: themes/default/templates/zip.html.ep:7
 msgid ""
 "Lutim can't zip so many images at once, so it splitted your demand in "
 "multiple URLs."
 msgstr ""
+"A Lutim nem tud ennyi fájlt összecsomagolni, így felosztotta a kérését több "
+"URL-re."
 
 #: themes/default/templates/about.html.ep:4
 msgid ""
@@ -296,6 +305,8 @@ msgid ""
 "also the name of the free (as in free speech) software which provides this "
 "service."
 msgstr ""
+"A Lutim egy ingyenes és anonim képmegosztó-szolgáltatás. Ez a szolgáltatás "
+"mögött álló szabad szoftver neve is."
 
 #: themes/default/templates/about.html.ep:25
 msgid "Main developers"
@@ -307,7 +318,7 @@ msgstr "Markdown szintaxis"
 
 #: themes/default/templates/partial/myfiles.js.ep:149
 msgid "Modify expiration delay"
-msgstr ""
+msgstr "Lejárati dátum módosítása"
 
 #: themes/default/templates/myfiles.html.ep:7 themes/default/templates/partial/navbar.html.ep:18
 msgid "My images"
@@ -331,6 +342,9 @@ msgid ""
 "stored in localStorage: if you delete your localStorage data, you'll loose "
 "these details."
 msgstr ""
+"Csak az ezzel a böngészővel elküldött képek fognak itt megjelenni. A "
+"részletek a helyi tárolóban tároltak: ha törli a helyi tároló adatait, akkor "
+"elveszíti ezeket a részleteket."
 
 #: themes/default/templates/about.html.ep:16
 msgid ""
@@ -342,20 +356,20 @@ msgstr ""
 
 #: themes/default/templates/login.html.ep:12
 msgid "Password"
-msgstr ""
+msgstr "Jelszó"
 
 #: themes/default/templates/zip.html.ep:12
 msgid "Please click on each URL to download the different zip files."
-msgstr ""
+msgstr "Kattintson az egyes URL-ekre, hogy letöltse a különböző ZIP-fájlokat."
 
 #. (config('contact')
 #: themes/default/templates/about.html.ep:19
 msgid "Please contact the administrator: %1"
-msgstr "Vedd fel a kapcsolatot az adminisztrátorral: %1"
+msgstr "Vegye fel a kapcsolatot a rendszergazdával: %1"
 
 #: lib/Lutim/Controller/Authent.pm:36
 msgid "Please, check your credentials: unable to authenticate."
-msgstr ""
+msgstr "Ellenőrizze a hitelesítő adatait: a hitelesítés sikertelen."
 
 #: themes/default/templates/gallery.html.ep:43
 msgid "Previous (arrow left)"
@@ -363,7 +377,7 @@ msgstr "Előző (balra nyíl)"
 
 #: themes/default/templates/index.html.ep:46 themes/default/templates/index.html.ep:49 themes/default/templates/myfiles.html.ep:96 themes/default/templates/myfiles.html.ep:99
 msgid "Random image link"
-msgstr ""
+msgstr "Előző képhivatkozás"
 
 #: themes/default/templates/stats.html.ep:22
 msgid "Raw stats"
@@ -371,7 +385,7 @@ msgstr "Nyers statisztikák"
 
 #: themes/default/templates/myfiles.html.ep:52
 msgid "Save changes"
-msgstr ""
+msgstr "Változtatások mentése"
 
 #: themes/default/templates/index.html.ep:176
 msgid "Send an image"
@@ -379,11 +393,11 @@ msgstr "Kép küldése"
 
 #: themes/default/templates/login.html.ep:16 themes/default/templates/logout.html.ep:5 themes/default/templates/partial/navbar.html.ep:37
 msgid "Signin"
-msgstr ""
+msgstr "Bejelentkezés"
 
 #: themes/default/templates/index.html.ep:151 themes/default/templates/partial/gallery.js.ep:211 themes/default/templates/partial/lutim.js.ep:176
 msgid "Something bad happened"
-msgstr "Valami rossz történt"
+msgstr "Valami elromlott"
 
 #. ($c->config('contact')
 #: lib/Lutim/Controller/Image.pm:760
@@ -391,6 +405,8 @@ msgid ""
 "Something went wrong when creating the zip file. Try again later or contact "
 "the administrator (%1)."
 msgstr ""
+"Valami elromlott a ZIP-fájl létrehozásakor. Próbálja újra később, vagy "
+"lépjen kapcsolatba a rendszergazdával (%1)."
 
 #: themes/default/templates/partial/navbar.html.ep:55
 msgid "Support the author"
@@ -410,6 +426,9 @@ msgid ""
 "of the administrator's choice (for the official instance, which is located "
 "in France, it's one year)."
 msgstr ""
+"A képküldő IP-címének tárolási ideje a rendszergazda által megadott "
+"beállítástól függ (a Franciaországban található hivatalos példánynál ez egy "
+"év)."
 
 #: themes/default/templates/about.html.ep:23
 msgid ""
@@ -432,10 +451,12 @@ msgid ""
 "The automatic download process will open a tab in your browser for each link."
 " You need to allow popups for Lutim."
 msgstr ""
+"Az automatikus letöltési folyamat új böngészőlapot fog megnyitni minden "
+"hivatkozáshoz. Engedélyeznie kell a felugró ablakokat a Lutim számára."
 
 #: themes/default/templates/partial/myfiles.js.ep:32
 msgid "The data has been successfully imported."
-msgstr ""
+msgstr "Az adatok sikeresen importálva lettek."
 
 #: lib/Lutim/Controller/Image.pm:159 lib/Lutim/Controller/Image.pm:227
 msgid "The delete token is invalid."
@@ -473,73 +494,79 @@ msgstr ""
 
 #: themes/default/templates/index.html.ep:63
 msgid "The images are encrypted on the server (Lutim does not keep the key)."
-msgstr ""
+msgstr "A képek a kiszolgálón titkosítottak (a Lutim nem tárolja a kulcsot)."
 
 #: themes/default/templates/about.html.ep:5
 msgid ""
 "The images you post on Lutim can be stored indefinitely or be deleted at "
 "first view or after a delay selected from those proposed."
 msgstr ""
+"A Lutimra feltöltött képek korlátlan ideig tárolhatók, illetve első "
+"megtekintés vagy bizonyos késleltetés után törölhetők."
 
 #: themes/default/templates/partial/gallery.js.ep:257
 msgid "There is XXXX image(s) in the gallery"
-msgstr ""
+msgstr "XXXX kép szerepel a galériában"
 
 #. ($c->config->{contact})
 #: lib/Lutim/Controller/Image.pm:484
 msgid "There is no more available URL. Retry or contact the administrator. %1"
 msgstr ""
+"Nincs több elérhető URL. Próbálja újra, vagy lépjen kapcsolatba a "
+"rendszergazdával. %1"
 
 #: themes/default/templates/gallery.html.ep:30
 msgid "Toggle fullscreen"
-msgstr ""
+msgstr "Teljes képernyő be/ki"
 
 #: themes/default/templates/partial/navbar.html.ep:8
 msgid "Toggle navigation"
-msgstr ""
+msgstr "Navigációs panel be/ki"
 
 #: lib/Lutim/Command/cron/stats.pm:150 themes/default/templates/raw.html.ep:11
 msgid "Total"
-msgstr ""
+msgstr "Összesen"
 
 #: themes/default/templates/index.html.ep:78 themes/default/templates/partial/lutim.js.ep:17
 msgid "Tweet it!"
-msgstr ""
+msgstr "Tweet közzététele!"
 
 #: themes/default/templates/partial/common.js.ep:110 themes/default/templates/partial/common.js.ep:90
 msgid "Unable to copy to clipboard"
-msgstr ""
+msgstr "Nem másolható a vágólapra"
 
 #. ($short)
 #: lib/Lutim/Controller/Image.pm:107 lib/Lutim/Controller/Image.pm:201 lib/Lutim/Controller/Image.pm:272
 msgid "Unable to find the image %1."
-msgstr ""
+msgstr "A(z) %1 kép nem található."
 
 #: lib/Lutim/Controller/Image.pm:573 lib/Lutim/Controller/Image.pm:618 lib/Lutim/Controller/Image.pm:657 lib/Lutim/Controller/Image.pm:700 lib/Lutim/Controller/Image.pm:712 lib/Lutim/Controller/Image.pm:723 lib/Lutim/Controller/Image.pm:750 lib/Lutim/Plugin/Helpers.pm:88
 msgid "Unable to find the image: it has been deleted."
-msgstr ""
+msgstr "A kép nem található: törölték."
 
 #: lib/Lutim/Controller/Image.pm:144
 msgid "Unable to get counter"
-msgstr ""
+msgstr "A számláló nem kérhető le"
 
 #: themes/default/templates/about.html.ep:17
 msgid ""
 "Unlike many image sharing services, you don't give us rights on uploaded "
 "images."
 msgstr ""
+"Számos más képmegosztó-szolgáltatással ellentétben, Ön nem ad nekünk jogokat "
+"a feltöltött képekhez."
 
 #: themes/default/templates/index.html.ep:180 themes/default/templates/index.html.ep:219
 msgid "Upload an image with its URL"
-msgstr ""
+msgstr "Képek feltöltése URL alapján"
 
 #: themes/default/templates/myfiles.html.ep:125
 msgid "Uploaded at"
-msgstr ""
+msgstr "Feltöltés ideje:"
 
 #: themes/default/templates/stats.html.ep:6
 msgid "Uploaded files by days"
-msgstr ""
+msgstr "Feltöltött fájlok napok szerint"
 
 #. ($c->app->config('contact')
 #: lib/Lutim/Plugin/Helpers.pm:221
@@ -547,22 +574,24 @@ msgid ""
 "Uploading is currently disabled, please try later or contact the "
 "administrator (%1)."
 msgstr ""
+"A feltöltés jelenleg ki van kapcsolva, próbálja újra később, vagy lépjen "
+"kapcsolatba a rendszergazdával (%1)."
 
 #: themes/default/templates/index.html.ep:83 themes/default/templates/index.html.ep:85 themes/default/templates/myfiles.html.ep:122 themes/default/templates/partial/lutim.js.ep:72 themes/default/templates/partial/lutim.js.ep:76
 msgid "View link"
-msgstr ""
+msgstr "Hivatkozás megtekintése"
 
 #: themes/default/templates/about.html.ep:22
 msgid "What about the software which provides the service?"
-msgstr ""
+msgstr "Mi a helyzet a szolgáltatást biztosító szoftverrel?"
 
 #: themes/default/templates/about.html.ep:3
 msgid "What is Lutim?"
-msgstr ""
+msgstr "Mi a Lutim?"
 
 #: themes/default/templates/about.html.ep:15
 msgid "Who owns rights on images uploaded on Lutim?"
-msgstr ""
+msgstr "Ki a feltöltött képek jogtulajdonosa a Lutimon?"
 
 #: themes/default/templates/about.html.ep:12
 msgid ""
@@ -570,6 +599,8 @@ msgid ""
 "stored when you send an image. Don't panic, it is normally the case of all "
 "sites on which you send files!"
 msgstr ""
+"Igen, tényleg. Viszont jogi okokból az IP-címét tároljuk, ha képet küld. Ne "
+"aggódjon, általában ez a helyzet az oldalakon, ahová képeket küld."
 
 #: themes/default/templates/about.html.ep:10
 msgid ""
@@ -577,65 +608,93 @@ msgid ""
 "do it via <a href=\"https://www.tipeee.com/fiat-tux\">Tipeee</a> or via <a "
 "href=\"https://liberapay.com/sky/\">Liberapay</a>."
 msgstr ""
+"Igen, tényleg. Viszont ha szeretné támogatni a fejlesztőt, akkor megteheti a "
+"<a href=\"https://www.tipeee.com/fiat-tux\">Tipeee</a> vagy a <a href=\""
+"https://liberapay.com/sky/\">Liberapay</a> segítségével."
 
 #: themes/default/templates/zip.html.ep:6
 msgid "You asked to download a zip archive for too much files."
-msgstr ""
+msgstr "Túl sok fájl letöltését kérte ZIP-archívumként."
 
 #: themes/default/templates/about.html.ep:8
 msgid ""
 "You can, optionally, request that the image(s) posted on Lutim to be deleted "
 "at first view (or download) or after the delay selected from those proposed."
 msgstr ""
+"Azt is kérheti, hogy a közzétett képek az első megtekintéskor (vagy "
+"letöltéskor) vagy a felajánlottak közül kiválasztott idő múlva törölve "
+"legyenek."
 
 #: lib/Lutim/Controller/Authent.pm:27
 msgid "You have been successfully logged in."
-msgstr ""
+msgstr "Sikeresen bejelentkezett."
 
 #: lib/Lutim/Controller/Authent.pm:66 themes/default/templates/logout.html.ep:3
 msgid "You have been successfully logged out."
-msgstr ""
+msgstr "Sikeresen kijelentkezett."
 
 #: themes/default/templates/gallery.html.ep:31
 msgid "Zoom in/out"
-msgstr ""
+msgstr "Nagyítás/kicsinyítés"
 
 #: themes/default/templates/about.html.ep:27
 msgid "and on"
-msgstr ""
+msgstr "és"
 
 #: themes/default/templates/about.html.ep:40
 msgid "arabic translation"
-msgstr ""
+msgstr "arab fordítás"
 
 #: themes/default/templates/about.html.ep:27
 msgid "core developer"
-msgstr ""
+msgstr "fő fejlesztő"
 
 #: lib/Lutim.pm:348 lib/Lutim/Command/cron/stats.pm:145 lib/Lutim/Command/cron/stats.pm:159 lib/Lutim/Command/cron/stats.pm:176 themes/default/templates/index.html.ep:3 themes/default/templates/myfiles.html.ep:3 themes/default/templates/partial/raw.js.ep:21 themes/default/templates/partial/raw.js.ep:4 themes/default/templates/raw.html.ep:6
 msgid "no time limit"
-msgstr ""
+msgstr "nincs időkorlát"
 
 #: themes/default/templates/about.html.ep:38
 msgid "occitan translation"
-msgstr ""
+msgstr "okcitán fordítás"
 
 #: themes/default/templates/about.html.ep:27
 msgid "on"
-msgstr ""
+msgstr "be"
 
 #: themes/default/templates/about.html.ep:39
 msgid "paste image to upload ability"
-msgstr ""
+msgstr "kép beillesztése a feltöltéshez"
 
 #: themes/default/templates/about.html.ep:41
 msgid "russian translation"
-msgstr ""
+msgstr "orosz fordítás"
 
 #: themes/default/templates/about.html.ep:36
 msgid "spanish translation"
-msgstr ""
+msgstr "spanyol fordítás"
 
 #: themes/default/templates/about.html.ep:28
 msgid "webapp developer"
+msgstr "webalkalmazás-fejlesztő"
+
+#: themes/default/templates/about.html.ep:24
+msgid "For more details, see the <a href=\"https://framagit.org/fiat-tux/hat-softwares/lutim\">homepage of the project</a>."
 msgstr ""
+"További részletekért lásd a <a href=\"https://framagit.org/fiat-tux/"
+"hat-softwares/lutim\">projekt weboldalát</a>."
+
+#: themes/default/templates/index.html.ep:171 themes/default/templates/index.html.ep:215
+msgid "Tiling watermark"
+msgstr "Mozaikos vízjel"
+
+#: lib/Lutim/Controller/Image.pm:168
+msgid "The image’s delay has been successfully modified"
+msgstr "A kép lejárata sikeresen módosítva"
+
+#: themes/default/templates/index.html.ep:174 themes/default/templates/index.html.ep:218
+msgid "Single watermark"
+msgstr "Egy vízjel"
+
+#: themes/default/templates/index.html.ep:177 themes/default/templates/index.html.ep:221
+msgid "No watermark"
+msgstr "Nincs vízjel"

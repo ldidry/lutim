@@ -3,6 +3,7 @@ package Lutim::Command::cron::cleanbdd;
 use Mojo::Base 'Mojolicious::Command';
 use Mojo::File;
 use Lutim::DB::Image;
+use Lutim::DefaultConfig qw($default_config);
 use FindBin qw($Bin);
 use File::Spec qw(catfile);
 
@@ -21,10 +22,7 @@ sub run {
     }
     my $config = $c->app->plugin('Config', {
         file    => $cfile,
-        default => {
-            keep_ip_during => 365,
-            dbtype         => 'sqlite',
-        }
+        default => $default_config
     });
 
     my $separation = time() - $config->{keep_ip_during} * 86400;
