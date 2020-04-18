@@ -1,0 +1,98 @@
+% # vim:set sw=4 ts=4 sts=4 ft=html.epl expandtab:
+% use Mojo::Util qw(url_escape);
+% my $twitter_url = 'https://twitter.com/share';
+% my $url    = url_for('/')->to_abs();
+% $twitter_url .= '?url='.url_escape("$url")
+%              .'&text=Check out this %23Lutim instance! ';
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Lutim</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="utf-8" />
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="icon" type="image/png" href="<%= url_for('/img/favicon.png') %>">
+        <link rel="icon" sizes="128x128" href="<%= url_for('/img/lutim128.png') %>">
+        <link rel="icon" sizes="196x196" href="<%= url_for('/img/lutim196.png') %>">
+        <link rel="apple-touch-icon" href="<%= url_for('/img/lutim60.png') %>">
+        <link rel="apple-touch-icon" sizes="76x76" href="<%= url_for('/img/lutim76.png') %>">
+        <link rel="apple-touch-icon" sizes="120x120" href="<%= url_for('/img/lutim120.png') %>">
+        <link rel="apple-touch-icon" sizes="152x152" href="<%= url_for('/img/lutim152.png') %>">
+        <link rel="apple-touch-icon-precomposed" sizes="128x128" href="<%= url_for('/img/lutim128.png') %>">
+        %= stylesheet '/css/common.min.css'
+% if (current_route 'stats') {
+        %= stylesheet '/css/morris-0.5.1.min.css'
+% } else {
+        %= stylesheet '/css/not_stats.min.css'
+% }
+% if (current_route 'gallery') {
+        %= stylesheet '/css/gallery.min.css'
+% }
+        %= stylesheet '/css/korrigan.css'
+    </head>
+    <body class="<%== current_route %>">
+        %= include 'partial/navbar', twitter_url => $twitter_url
+        <div class="container">
+            <div class="upload-info"><!-- Warning: ends in index.html.ep -->
+            <div>
+% if (defined(config('hosted_by'))) {
+                <div class="pull-right">
+                    <%== config('hosted_by') %>
+                </div>
+% }
+                <div class="header">
+                    <div class="pull-left hidden-xs logo">
+                        <img src="<%= url_for('/img/Lutim_small.png') %>" alt="Lutim logo" width="57" height="75">
+                    </div>
+                    <a class="link_nocol" href="<%= url_for('/') %>" title="<%= l('Homepage') %>"><h1 class="hennypenny">Let's Upload That Image!</h1></a>
+                </div>
+            </div>
+% if (defined(config('broadcast_message'))) {
+            <div class="alert alert-info">
+                <strong><%== config('broadcast_message') %></strong>
+            </div>
+% }
+% if (defined(stash('stop_upload'))) {
+            <div class="alert alert-danger">
+                <strong><%= stash('stop_upload') %></strong>
+            </div>
+% }
+            <%= content %>
+        </div>
+% if (defined(config('piwik_img'))) {
+        <img src="<%== config('piwik_img') %>" class="border-zero" alt="">
+% }
+        %= javascript '/js/jquery-3.2.1.min.js'
+        %= javascript '/partial/manifest.js'
+        %= javascript '/js/toastify.js'
+        %= javascript '/js/bootstrap.min.js'
+        %= javascript '/partial/common.js'
+% if (current_route 'stats') {
+        %= javascript '/js/lutim.js'
+        %= javascript '/js/raphael-min.js'
+        %= javascript '/js/morris-0.5.1.min.js'
+        %= javascript '/js/stats.js'
+        %= javascript '/partial/raw.js'
+% } elsif (!(current_route 'about')) {
+        %= javascript '/js/lutim.js'
+        %= javascript '/js/dmuploader.min.js'
+% }
+% if (current_route 'index') {
+        %= javascript '/partial/lutim.js'
+% }
+% if (current_route 'gallery') {
+        %= javascript '/js/photoswipe.min.js'
+        %= javascript '/js/photoswipe-ui-default.min.js'
+        %= javascript '/js/jszip.min.js'
+        %= javascript '/js/FileSaver.min.js'
+        %= javascript '/partial/gallery.js'
+        %= javascript '/partial/lutim.js'
+% }
+% if (current_route 'myfiles') {
+        %= javascript '/js/moment-with-locales.min.js'
+        %= javascript '/partial/myfiles.js'
+% }
+    </body>
+</html>
