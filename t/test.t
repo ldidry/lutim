@@ -150,8 +150,7 @@ $t->get_ok('/d/'.$rshort.'/'.$token, form => { format => 'json' })
 $t->get_ok('/'.$rshort)
   ->status_is(302);
 
-# Needed if we use Minion with sqlite for increasing counters
-sleep 8;
+$t->app->minion->perform_jobs if $t->app->config('minion')->{enabled};
 
 # Get image counter
 $t->post_ok('/c', form => { short => $rshort, token => $token })
