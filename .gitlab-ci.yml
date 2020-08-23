@@ -21,6 +21,7 @@ variables:
   retry: 2
   except:
     - tags
+
 .carton_bdd_template: &carton_bdd_definition
   <<: *retry
   stage: carton_bdd
@@ -29,20 +30,29 @@ variables:
       - local/
   needs:
     - carton
-.sqlite_template: &sqlite_definition
+
+.test_template: &test_definition
   <<: *retry
   stage: tests
+  script:
+    - MOJO_CONFIG=t/$CI_JOB_NAME.conf make test
+    - MOJO_CONFIG=t/$CI_JOB_NAME.conf make watch
+    - MOJO_CONFIG=t/$CI_JOB_NAME.conf make cleanbdd
+    - MOJO_CONFIG=t/$CI_JOB_NAME.conf make cleanfiles
+    - MOJO_CONFIG=t/$CI_JOB_NAME.conf make stats
+    - MOJO_CONFIG=t/$CI_JOB_NAME.conf make test-junit-output
   artifacts:
     paths:
+      - tap.xml
       - cover_db/
+
+.sqlite_template: &sqlite_definition
+  <<: *test_definition
   needs:
     - carton_sqlite
+
 .pg_template: &pg_definition
-  <<: *retry
-  stage: tests
-  artifacts:
-    paths:
-      - cover_db/
+  <<: *test_definition
   needs:
     - carton_postgresql
   services:
@@ -96,75 +106,37 @@ carton_postgresql:
 #
 sqlite1:
   <<: *sqlite_definition
-  script:
+  before_script:
     - carton install --deployment --without=postgresql --without=minion --without=cache --without=memcached
-    - MOJO_CONFIG=t/sqlite1.conf make test-sqlite
-    - MOJO_CONFIG=t/sqlite1.conf make watch
-    - MOJO_CONFIG=t/sqlite1.conf make cleanbdd
-    - MOJO_CONFIG=t/sqlite1.conf make cleanfiles
-    - MOJO_CONFIG=t/sqlite1.conf make stats
 sqlite2:
   <<: *sqlite_definition
-  script:
+  before_script:
     - carton install --deployment --without=postgresql --without=cache --without=memcached
-    - MOJO_CONFIG=t/sqlite2.conf make minion &
-    - sleep 3
-    - MOJO_CONFIG=t/sqlite2.conf make test-sqlite
-    - MOJO_CONFIG=t/sqlite2.conf make watch
-    - MOJO_CONFIG=t/sqlite2.conf make cleanbdd
-    - MOJO_CONFIG=t/sqlite2.conf make cleanfiles
-    - MOJO_CONFIG=t/sqlite2.conf make stats
 sqlite3:
   <<: *sqlite_definition
   services:
     - name: postgres:9.6
       alias: postgres
-  script:
+  before_script:
     - carton install --deployment --without=cache --without=memcached
     - export PGPASSWORD=lutim_pwd; echo 'CREATE DATABASE lutim_minion WITH OWNER lutim;' | psql -h postgres -U lutim lutim_db
-    - MOJO_CONFIG=t/sqlite3.conf make minion &
-    - sleep 3
-    - MOJO_CONFIG=t/sqlite3.conf make test-sqlite
-    - MOJO_CONFIG=t/sqlite3.conf make watch
-    - MOJO_CONFIG=t/sqlite3.conf make cleanbdd
-    - MOJO_CONFIG=t/sqlite3.conf make cleanfiles
-    - MOJO_CONFIG=t/sqlite3.conf make stats
 
 ### PostgreSQL tests
 ##
 #
 postgresql1:
   <<: *pg_definition
-  script:
+  before_script:
     - carton install --deployment --without=sqlite --without=minion --without=cache --without=memcached
-    - MOJO_CONFIG=t/postgresql1.conf make test-pg
-    - MOJO_CONFIG=t/postgresql1.conf make watch
-    - MOJO_CONFIG=t/postgresql1.conf make cleanbdd
-    - MOJO_CONFIG=t/postgresql1.conf make cleanfiles
-    - MOJO_CONFIG=t/postgresql1.conf make stats
 postgresql2:
   <<: *pg_definition
-  script:
+  before_script:
     - carton install --deployment --without=cache --without=memcached
-    - MOJO_CONFIG=t/postgresql2.conf make minion &
-    - sleep 3
-    - MOJO_CONFIG=t/postgresql2.conf make test-pg
-    - MOJO_CONFIG=t/postgresql2.conf make watch
-    - MOJO_CONFIG=t/postgresql2.conf make cleanbdd
-    - MOJO_CONFIG=t/postgresql2.conf make cleanfiles
-    - MOJO_CONFIG=t/postgresql2.conf make stats
 postgresql3:
   <<: *pg_definition
-  script:
+  before_script:
     - carton install --deployment --without=sqlite --without=cache --without=memcached
     - export PGPASSWORD=lutim_pwd; echo 'CREATE DATABASE lutim_minion WITH OWNER lutim;' | psql -h postgres -U lutim lutim_db
-    - MOJO_CONFIG=t/postgresql3.conf make minion &
-    - sleep 3
-    - MOJO_CONFIG=t/postgresql3.conf make test-pg
-    - MOJO_CONFIG=t/postgresql3.conf make watch
-    - MOJO_CONFIG=t/postgresql3.conf make cleanbdd
-    - MOJO_CONFIG=t/postgresql3.conf make cleanfiles
-    - MOJO_CONFIG=t/postgresql3.conf make stats
 
 ### Code coverage
 ##
@@ -173,6 +145,9 @@ cover:
   stage: cover
   script:
     - make cover
-  coverage: '/Total .*\d+\.\d+$/'
+  coverage: '/Total.* (\d+\.\d+)$/'
+  artifacts:
+    reports:
+      junit: tap.xml
   except:
     - tags

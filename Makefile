@@ -5,6 +5,7 @@ XGETTEXT=carton exec local/bin/xgettext.pl -u
 CARTON=carton exec
 LUTIM=script/lutim
 REAL_LUTIM=script/application
+HARNESS_PERL_SWITCHES=-MDevel::Cover=+ignore,local
 HEAD := $(shell git rev-parse --abbrev-ref HEAD)
 
 minify:
@@ -24,16 +25,20 @@ stats-locales:
 podcheck:
 	podchecker lib/Lutim/DB/Image.pm
 
+check-syntax:
+	find lib/ themes/ -name \*.pm -exec $(CARTON) perl -Ilib -c {} \;
+	find t/ -name \*.t -exec $(CARTON) perl -Ilib -c {} \;
+
 cover:
-	PERL5OPT='-Ilib/' HARNESS_PERL_SWITCHES='-MDevel::Cover' $(CARTON) cover --ignore_re '^local'
+	PERL5OPT='-Ilib' $(CARTON) cover --ignore_re '^local'
 
-test-sqlite:
-	@PERL5OPT='-Ilib/' HARNESS_PERL_SWITCHES='-MDevel::Cover' $(CARTON) $(REAL_LUTIM) test
+test:
+	@PERL5OPT='-Ilib/' HARNESS_PERL_SWITCHES='$(HARNESS_PERL_SWITCHES)' $(CARTON) $(REAL_LUTIM) test
 
-test-pg:
-	@PERL5OPT='-Ilib/' HARNESS_PERL_SWITCHES='-MDevel::Cover' $(CARTON) $(REAL_LUTIM) test
+test-junit-output:
+	@PERL5OPT='-Ilib/' HARNESS_PERL_SWITCHES='$(HARNESS_PERL_SWITCHES)' $(CARTON) $(REAL_LUTIM) test --formatter TAP::Formatter::JUnit > tap.xml
 
-test: podcheck test-sqlite test-pg
+full-test: podcheck just-test
 
 clean:
 	rm -rf lutim.db files/
