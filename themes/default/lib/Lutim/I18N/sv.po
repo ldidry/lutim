@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2020-03-09 16:23+0000\n"
-"Last-Translator: Luc Didry <luc@framasoft.org>\n"
+"PO-Revision-Date: 2020-09-20 09:51+0000\n"
+"Last-Translator: Filip Bengtsson <filip@libreradio.org>\n"
 "Language-Team: Swedish <https://weblate.framasoft.org/projects/lutim/"
 "default-theme/sv/>\n"
 "Language: sv\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.11.2\n"
+"X-Generator: Weblate 4.1\n"
 
 #. (7)
 #. (30)
@@ -567,6 +567,8 @@ msgstr "Du försökte ladda ner en zip-fil som innehöll för många filer."
 #: themes/default/templates/about.html.ep:8
 msgid "You can, optionally, request that the image(s) posted on Lutim to be deleted at first view (or download) or after the delay selected from those proposed."
 msgstr ""
+"Om du vill, kan bilden raderas en viss tid efter att den har publicerats på "
+"Lutim, eller omedelbart efter den första visningen eller nerladdningen."
 
 #: lib/Lutim/Controller/Authent.pm:27
 msgid "You have been successfully logged in."
@@ -606,7 +608,7 @@ msgstr "på"
 
 #: themes/default/templates/about.html.ep:39
 msgid "paste image to upload ability"
-msgstr ""
+msgstr "infoga en bild för att skicka den"
 
 #: themes/default/templates/about.html.ep:41
 msgid "russian translation"
@@ -625,3 +627,15 @@ msgid "For more details, see the <a href=\"https://framagit.org/fiat-tux/hat-sof
 msgstr ""
 "Se <a href=\"https://framagit.org/fiat-tux/hat-softwares/lutim\">projektets "
 "hemsida</a> för mer information."
+
+#: themes/default/templates/index.html.ep:177 themes/default/templates/index.html.ep:221
+msgid "No watermark"
+msgstr "Ingen vattenstämpling"
+
+#: themes/default/templates/index.html.ep:171 themes/default/templates/index.html.ep:215
+msgid "Tiling watermark"
+msgstr "Flera vatenstämplingar"
+
+#: themes/default/templates/index.html.ep:174 themes/default/templates/index.html.ep:218
+msgid "Single watermark"
+msgstr "En vattenstämpel"
