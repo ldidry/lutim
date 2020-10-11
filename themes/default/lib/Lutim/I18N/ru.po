@@ -4,17 +4,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2020-06-16 20:24+0000\n"
-"Last-Translator: Konstantin Timashov <ktimashov@hse.ru>\n"
+"PO-Revision-Date: 2020-10-11 23:48+0000\n"
+"Last-Translator: Валентин Бородко <valya.spaces@gmail.com>\n"
 "Language-Team: Russian <https://weblate.framasoft.org/projects/lutim/"
 "default-theme/ru/>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
-"4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 3.11.2\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 4.1\n"
 
 #. (7)
 #. (30)
@@ -43,23 +43,24 @@ msgstr "24 часа"
 
 #: themes/default/templates/partial/myfiles.js.ep:180
 msgid ": Error while trying to get the counter."
-msgstr ": Error while trying to get the counter."
+msgstr ": Ошибка при подсчете количества ."
 
 #: themes/default/templates/partial/navbar.html.ep:77
 msgid "About"
-msgstr "О Lutim"
+msgstr "Подробнее"
 
 #: lib/Lutim/Command/cron/stats.pm:154 themes/default/templates/raw.html.ep:3
 msgid "Active images"
 msgstr "Активные изображения"
 
 #: lib/Lutim/Controller/Image.pm:328
+#, fuzzy
 msgid "An error occured while downloading the image."
-msgstr "Произошла ошибка при скачивании изображения."
+msgstr "Произошла ошибка при загрузке изображения."
 
 #: themes/default/templates/zip.html.ep:2
 msgid "Archives download"
-msgstr "Archives download"
+msgstr "Загрузить архив"
 
 #: themes/default/templates/about.html.ep:44 themes/default/templates/myfiles.html.ep:135 themes/default/templates/stats.html.ep:25
 msgid "Back to homepage"
@@ -163,11 +164,11 @@ msgstr "Общее количество файлов"
 
 #: themes/default/templates/myfiles.html.ep:126
 msgid "Expires at"
-msgstr "Истекает в"
+msgstr "Исчезнет через"
 
 #: themes/default/templates/myfiles.html.ep:112
 msgid "Export localStorage data"
-msgstr ""
+msgstr "Сохранить данные в хранилище"
 
 #: themes/default/templates/myfiles.html.ep:121
 msgid "File name"
@@ -182,8 +183,9 @@ msgstr ""
 "lutim\">главную страницу проекта</a>."
 
 #: themes/default/templates/partial/navbar.html.ep:80
+#, fuzzy
 msgid "Fork me!"
-msgstr "Форкни меня!"
+msgstr "Выложить меня!"
 
 #: themes/default/templates/index.html.ep:10 themes/default/templates/index.html.ep:13 themes/default/templates/myfiles.html.ep:60 themes/default/templates/myfiles.html.ep:63
 msgid "Gallery link"
