@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2020-10-11 23:48+0000\n"
+"PO-Revision-Date: 2020-10-11 23:59+0000\n"
 "Last-Translator: Валентин Бородко <valya.spaces@gmail.com>\n"
 "Language-Team: Russian <https://weblate.framasoft.org/projects/lutim/"
 "default-theme/ru/>\n"
@@ -54,9 +54,8 @@ msgid "Active images"
 msgstr "Активные изображения"
 
 #: lib/Lutim/Controller/Image.pm:328
-#, fuzzy
 msgid "An error occured while downloading the image."
-msgstr "Произошла ошибка при загрузке изображения."
+msgstr "Ошибка при загрузке изображения."
 
 #: themes/default/templates/zip.html.ep:2
 msgid "Archives download"
@@ -237,7 +236,7 @@ msgstr "Изображение не найдено."
 
 #: themes/default/templates/myfiles.html.ep:113
 msgid "Import localStorage data"
-msgstr ""
+msgstr "Загрузить данные с хранилища"
 
 #: themes/default/templates/partial/navbar.html.ep:69
 msgid "Informations"
@@ -323,7 +322,7 @@ msgstr "Синтаксис Маркдауна"
 
 #: themes/default/templates/partial/myfiles.js.ep:149
 msgid "Modify expiration delay"
-msgstr ""
+msgstr "Изменить время на удление"
 
 #: themes/default/templates/myfiles.html.ep:7 themes/default/templates/partial/navbar.html.ep:18
 msgid "My images"
@@ -375,7 +374,7 @@ msgstr "Пожалуйста, свяжитесь с администраторо
 
 #: lib/Lutim/Controller/Authent.pm:36
 msgid "Please, check your credentials: unable to authenticate."
-msgstr ""
+msgstr "Пожалуйста проверьте свои данные: не удалось идентифицировать."
 
 #: themes/default/templates/gallery.html.ep:43
 msgid "Previous (arrow left)"
@@ -383,7 +382,7 @@ msgstr "Предыдущий (стрелка влево)"
 
 #: themes/default/templates/index.html.ep:46 themes/default/templates/index.html.ep:49 themes/default/templates/myfiles.html.ep:96 themes/default/templates/myfiles.html.ep:99
 msgid "Random image link"
-msgstr ""
+msgstr "Случайная ссылка на изображение"
 
 #: themes/default/templates/stats.html.ep:22
 msgid "Raw stats"
@@ -399,7 +398,7 @@ msgstr "Послать изображение"
 
 #: themes/default/templates/login.html.ep:16 themes/default/templates/logout.html.ep:5 themes/default/templates/partial/navbar.html.ep:37
 msgid "Signin"
-msgstr ""
+msgstr "Регистрация"
 
 #: themes/default/templates/index.html.ep:151 themes/default/templates/partial/gallery.js.ep:211 themes/default/templates/partial/lutim.js.ep:176
 msgid "Something bad happened"
@@ -694,3 +693,11 @@ msgstr ""
 #: themes/default/templates/index.html.ep:177 themes/default/templates/index.html.ep:221
 msgid "No watermark"
 msgstr "Без водного знака"
+
+#: themes/default/templates/index.html.ep:171 themes/default/templates/index.html.ep:215
+msgid "Tiling watermark"
+msgstr "Размещение водяного знака"
+
+#: themes/default/templates/index.html.ep:174 themes/default/templates/index.html.ep:218
+msgid "Single watermark"
+msgstr "Единственный водяной знак"
