@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 set -eu
 
@@ -14,7 +14,7 @@ then
     echo ""
     echo "You can then install the build dependencies with this command"
     echo "    sh ~lutim/docker/install-dev-env.sh"
-    
+
     tail -f /dev/null
     exit 0
 fi
@@ -28,7 +28,7 @@ then
     DB_HOST=$(perl utilities/read_conf.pl pgdb/host db)
     DB_PORT=$(perl utilities/read_conf.pl pgdb/port 5432)
 fi
-if [ -n "$DB_HOST" -a -n "$DB_PORT" ]
+if [ -n "$DB_HOST" ] && [ -n "$DB_PORT" ]
 then
     while ! nc -vz "${DB_HOST}" "${DB_PORT}"; do
         echo "Waiting for database..."
