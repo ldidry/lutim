@@ -4,7 +4,7 @@ ARG BUILD_DATE
 ARG VCS_REF
 ARG VERSION
 LABEL org.label-schema.build-date=$BUILD_DATE \
-      org.label-schema.name="Let's Upload That Image" \
+      org.label-schema.name="Lets Upload That Image" \
       org.label-schema.url="https://lut.im/" \
       org.label-schema.vcs-ref=$VCS_REF \
       org.label-schema.vcs-url="https://git.framasoft.org/luc/lutim" \
