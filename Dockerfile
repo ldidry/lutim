@@ -19,5 +19,6 @@ WORKDIR /home/lutim
 RUN /bin/sh /home/lutim/docker/build.sh
 
 USER lutim
+EXPOSE 8080
 
 ENTRYPOINT ["/bin/sh", "/home/lutim/docker/entrypoint.sh"]
