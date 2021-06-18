@@ -3,7 +3,7 @@
 set -eu
 
 apk --update add perl libpq perl-crypt-rijndael perl-io-socket-ssl perl-net-ssleay su-exec shared-mime-info libressl imagemagick imagemagick-perlmagick
-sh $(dirname $0)/install-dev-env.sh
+apk --update add --virtual .build-deps build-base perl-utils perl-dev postgresql-dev vim wget zlib-dev
 
 cpan notest Carton Config::FromHash
 carton install --without test
