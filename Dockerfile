@@ -19,7 +19,12 @@ COPY . /home/lutim
 RUN chmod -R g+rwX /home/lutim
 
 WORKDIR /home/lutim
-RUN /bin/sh /home/lutim/docker/build.sh
+RUN apk --update add perl libpq perl-crypt-rijndael perl-io-socket-ssl perl-net-ssleay su-exec shared-mime-info libressl imagemagick imagemagick-perlmagick \
+ && apk --update add --virtual .build-deps build-base perl-utils perl-dev postgresql-dev vim wget zlib-dev \
+ && cpan notest Carton Config::FromHash \
+ && carton install --without test \
+ && apk del .build-deps \
+ && rm -rf /var/cache/apk/* /root/.cpan*
 
 USER lutim
 EXPOSE 8080
