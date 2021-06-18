@@ -2,8 +2,7 @@
 
 set -eu
 
-apk update
-apk add perl libpq perl-crypt-rijndael perl-io-socket-ssl perl-net-ssleay su-exec shared-mime-info libressl
+apk --update add perl libpq perl-crypt-rijndael perl-io-socket-ssl perl-net-ssleay su-exec shared-mime-info libressl
 sh $(dirname $0)/install-dev-env.sh
 
 sh $(dirname $0)/install-imagemagick.sh
