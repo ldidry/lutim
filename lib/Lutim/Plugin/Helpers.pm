@@ -195,7 +195,7 @@ sub _provisioning {
                 ->delete_at_first_view(0)
                 ->delete_at_day(0)
                 ->mod_token($c->shortener($c->app->config('token_length')))
-                ->write;
+                ->write('provisioning');
 
             $img = Lutim::DB::Image->new(app => $c->app);
         }
