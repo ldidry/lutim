@@ -12,8 +12,11 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.version=$VERSION \
       org.label-schema.schema-version="1.0"
 
-RUN adduser -D lutim
-COPY --chown=lutim:lutim . /home/lutim
+RUN adduser -D lutim \
+ && addgroup lutim root
+
+COPY . /home/lutim
+RUN chmod -R g+rwX /home/lutim
 
 WORKDIR /home/lutim
 RUN /bin/sh /home/lutim/docker/build.sh
