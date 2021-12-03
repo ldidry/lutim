@@ -1,4 +1,4 @@
-FROM alpine:3.9
+FROM alpine:3.15
 
 ARG BUILD_DATE
 ARG VCS_REF
@@ -19,8 +19,8 @@ COPY . /home/lutim
 RUN chmod -R g+rwX /home/lutim
 
 WORKDIR /home/lutim
-RUN apk --update add perl libpq perl-crypt-rijndael perl-io-socket-ssl perl-net-ssleay su-exec shared-mime-info libressl imagemagick imagemagick-perlmagick \
- && apk --update add --virtual .build-deps build-base perl-utils perl-dev postgresql-dev vim wget zlib-dev \
+RUN apk --update add perl libpq perl-crypt-rijndael perl-io-socket-ssl perl-net-ssleay su-exec shared-mime-info libretls imagemagick imagemagick-perlmagick \
+ && apk --update add --virtual .build-deps build-base perl-utils perl-dev postgresql14-dev vim wget zlib-dev \
  && cpan notest Carton Config::FromHash \
  && carton install --without test \
  && apk del .build-deps \
