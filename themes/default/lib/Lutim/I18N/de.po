@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2020-03-09 16:23+0000\n"
-"Last-Translator: Luc Didry <luc@framasoft.org>\n"
+"PO-Revision-Date: 2022-01-24 13:32+0000\n"
+"Last-Translator: J. Lavoie <j.lavoie@net-c.ca>\n"
 "Language-Team: German <https://weblate.framasoft.org/projects/lutim/"
 "default-theme/de/>\n"
 "Language: de\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.11.2\n"
+"X-Generator: Weblate 4.10.1\n"
 
 #. (7)
 #. (30)
@@ -65,9 +65,8 @@ msgid "An error occured while downloading the image."
 msgstr "Beim Herunterladen des Bildes ist ein Fehler aufgetreten."
 
 #: themes/default/templates/zip.html.ep:2
-#, fuzzy
 msgid "Archives download"
-msgstr "Archiv-Download"
+msgstr "Herunterladen von Archiv"
 
 #: themes/default/templates/about.html.ep:44 themes/default/templates/myfiles.html.ep:135 themes/default/templates/stats.html.ep:25
 msgid "Back to homepage"
@@ -107,11 +106,11 @@ msgstr "Zähler"
 
 #: themes/default/templates/stats.html.ep:18
 msgid "Delay repartition chart for disabled images"
-msgstr ""
+msgstr "Diagramm zur Neuaufteilung der Verzögerung für deaktivierte Bilder"
 
 #: themes/default/templates/stats.html.ep:15
 msgid "Delay repartition chart for enabled images"
-msgstr ""
+msgstr "Diagramm zur Neuaufteilung der Verzögerung für deaktivierte Bilder"
 
 #: themes/default/templates/index.html.ep:133 themes/default/templates/index.html.ep:165 themes/default/templates/index.html.ep:196 themes/default/templates/myfiles.html.ep:124 themes/default/templates/myfiles.html.ep:45 themes/default/templates/partial/lutim.js.ep:161
 msgid "Delete at first view?"
@@ -190,7 +189,7 @@ msgstr ""
 
 #: themes/default/templates/partial/navbar.html.ep:80
 msgid "Fork me!"
-msgstr "Fork me!"
+msgstr "Fork mich!"
 
 #: themes/default/templates/index.html.ep:10 themes/default/templates/index.html.ep:13 themes/default/templates/myfiles.html.ep:60 themes/default/templates/myfiles.html.ep:63
 msgid "Gallery link"
