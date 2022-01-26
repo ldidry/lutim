@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2022-01-24 13:32+0000\n"
+"PO-Revision-Date: 2022-01-27 02:54+0000\n"
 "Last-Translator: J. Lavoie <j.lavoie@net-c.ca>\n"
 "Language-Team: German <https://weblate.framasoft.org/projects/lutim/"
 "default-theme/de/>\n"
@@ -466,7 +466,7 @@ msgstr ""
 
 #: themes/default/templates/partial/myfiles.js.ep:32
 msgid "The data has been successfully imported."
-msgstr ""
+msgstr "Die Daten wurden erfolgreich importiert."
 
 #: lib/Lutim/Controller/Image.pm:160 lib/Lutim/Controller/Image.pm:228
 msgid "The delete token is invalid."
@@ -517,7 +517,7 @@ msgstr "Die Zeit bis zum Löschen des Bildes wurde erfolgreich geändert"
 
 #: themes/default/templates/partial/gallery.js.ep:277
 msgid "There is XXXX image(s) in the gallery"
-msgstr ""
+msgstr "Es gibt XXXX Bild(er) in der Galerie"
 
 #. ($c->config->{contact})
 #: lib/Lutim/Controller/Image.pm:485
