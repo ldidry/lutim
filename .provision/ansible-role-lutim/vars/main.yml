@@ -1,0 +1,16 @@
+---
+# vars file for ansible-role-lutim
+
+lutim_owner: "www-data"
+
+lutim_group: "www-data"
+
+contact: "contact.example.com"
+
+app_dir: "/var/www/lutim"
+
+secrets: "yyiqwhuqwg"
+
+project_version: "master"
+
+servername: "192.168.56.18"
