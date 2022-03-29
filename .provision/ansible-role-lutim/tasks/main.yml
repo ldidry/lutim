@@ -1,0 +1,7 @@
+---
+# tasks file for ansible-role-lutim
+
+- include: dependencies.yaml
+- include: gitclone.yaml
+- include: apprun.yaml
+- include: cronjob.yaml

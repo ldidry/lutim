@@ -1,0 +1,6 @@
+#Path of the script
+PATH=/var/www/lutim
+
+carton exec script/lutim cron cleanbdd --mode production
+carton exec script/lutim cron cleanfiles --mode production
+carton exec script/lutim cron watch --mode production

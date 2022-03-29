@@ -1,0 +1,23 @@
+# dependencies.yaml
+--- 
+ - name: Lutim | Update apt cache
+   apt: update_cache=yes 
+   changed_when: no
+ - name: Install Dependencies
+   apt:
+     name:
+       - nginx
+       - carton
+       - build-essential
+       - libssl-dev 
+       - libpq-dev
+       - libio-socket-ssl-perl 
+       - zlib1g-dev
+       - libmojo-sqlite-perl
+       - shared-mime-info
+       - perlmagick
+     state: present
+
+
+    
+    

@@ -68,3 +68,7 @@ It uses:
 * [JSZip](https://stuk.github.io/jszip/) for generating a zip containing all the images in the gallery
 * [FileSaver.js](https://github.com/eligrey/FileSaver.js/) for saving the zip
 * [Toastify JS](https://apvarun.github.io/toastify-js/) for notifications
+
+## Deploy lutim
+
+An ansible role and a terraform plan reside under the `.provision` directory. An user could utilize the terraform plan if they chose to deploy lutim on AWS, if that's not the goal, they could simply execute the ansible role in part. Usage docs for both are present in their respective directories.
