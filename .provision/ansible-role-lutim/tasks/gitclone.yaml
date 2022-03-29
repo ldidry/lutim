@@ -1,0 +1,18 @@
+#gitclone
+---
+
+- name: clone the repository
+  ansible.builtin.git:
+    repo: 'https://framagit.org/fiat-tux/hat-softwares/lutim.git'
+    dest: "{{ app_dir }}"
+    clone: yes
+    update: yes 
+    version: "{{ project_version }}"
+
+- name: Change the owner 
+  ansible.builtin.file:
+    path: "{{ app_dir }}"
+    owner: "{{ lutim_owner }}"
+    group: "{{ lutim_group }}"
+    state: directory
+    recurse: yes
