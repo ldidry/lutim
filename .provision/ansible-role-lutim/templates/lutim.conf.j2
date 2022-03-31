@@ -6,7 +6,7 @@
     # see http://mojolicio.us/perldoc/Mojo/Server/Hypnotoad for a full list of settings
     hypnotoad => {
         # array of IP addresses and ports you want to listen to
-        listen => ['http://127.0.0.1:8080'],
+        listen => ['http://0.0.0.0:8080'],
         # if you use Lutim behind a reverse proxy like Nginx, you want to set proxy to 1
         # if you use Lutim directly, let it commented
         #proxy  => 1,
@@ -18,11 +18,11 @@
 
     # put a way to contact you here and uncomment it
     # mandatory
-    contact           => '{{ contact }}',
+    contact           => '{{ _contact }}',
 
     # random string used to encrypt cookies
     # mandatory
-    secrets           => ['{{ secrets }}'],
+    secrets           => ['{{ _secrets }}'],
 
     # choose a theme. See the available themes in `themes` directory
     # optional, default is 'default'
