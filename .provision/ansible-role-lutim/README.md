@@ -9,10 +9,10 @@ Role Variables
 | `app_dir` | /var/www/lutim | Set the application directory for the best practice |
 | `lutim_owner` | www-data | Set the application user for the best practice |
 | `lutim_group` | www-data | Set the application group for the best practice |
-| `contact` | contact.example.com | Contact option (mandatory), where you have to put some way for the users to contact you. |
-| `secrets` | ffyg7kbkjba | Secrets option (mandotory), which is array of random string. Used by Mojolicious for encrypting session cookies |
-| `project_version` | master | We can chose the project version either Master branch, Dev branch or tag based |
-| `servername` | IP address (or) CNAME/FQDN | Mention the Server Name for the Nginx configurations |
+| `_contact` | contact.example.com | Contact option (mandatory), where you have to put some way for the users to contact you. |
+| `_secrets` | ffyg7kbkjba | Secrets option (mandotory), which is array of random string. Used by Mojolicious for encrypting session cookies |
+| `_project_version` | master | We can chose the project version either Master branch, Dev branch or tag based |
+| `_server_name` | IP address (or) CNAME/FQDN | Mention the Server Name for the Nginx configurations |
 
 Sample example of use in a playbook
 --------------

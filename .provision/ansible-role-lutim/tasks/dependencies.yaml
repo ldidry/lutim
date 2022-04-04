@@ -1,10 +1,10 @@
 # dependencies.yaml
 --- 
  - name: Lutim | Update apt cache
-   apt: update_cache=yes 
+   ansible.builtin.apt: update_cache=yes 
    changed_when: no
  - name: Install Dependencies
-   apt:
+   ansible.builtin.apt:
      name:
        - nginx
        - carton

@@ -5,12 +5,12 @@ lutim_owner: "www-data"
 
 lutim_group: "www-data"
 
-contact: "contact.example.com"
-
 app_dir: "/var/www/lutim"
 
-secrets: "yyiqwhuqwg"
+_contact: ""
 
-project_version: "master"
+_secrets: ""
 
-servername: "192.168.56.18"
+_project_version: ""
+
+_servername: ""
