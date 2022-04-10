@@ -1,23 +1,23 @@
 #apprun.yml
 ---
-- name: This command will install the postgress module
-  ansible.builtin.shell:
-    cmd: carton install --deployment --without=test --without=sqlite
-    chdir: "{{ app_dir }}"          
-
-- name: Upload application config file
-  ansible.builtin.template:
-    src: ../templates/lutim.conf.j2
-    dest: "{{ app_dir }}/lutim.conf"
-
-- name: App executes
-  ansible.builtin.shell:
-    cmd: carton exec hypnotoad script/lutim
-    chdir: "{{ app_dir }}" 
-
-- name: Nginx configuration file add
-  ansible.builtin.template:
-    src: ../templates/app.conf
-    dest: /etc/nginx/conf.d/
-    mode: '0644'
-  notify: restart nginx
+    - name: This command will install the postgress module
+      ansible.builtin.shell:
+        cmd: carton install --deployment --without=test --without=sqlite
+        chdir: "{{ app_dir }}"          
+    
+    - name: Upload application config file
+      ansible.builtin.template:
+        src: ../templates/lutim.conf.j2
+        dest: "{{ app_dir }}/lutim.conf"
+    
+    - name: App executes
+      ansible.builtin.shell:
+        cmd: carton exec hypnotoad script/lutim
+        chdir: "{{ app_dir }}" 
+    
+    - name: Nginx configuration file add
+      ansible.builtin.template:
+        src: ../templates/app.conf
+        dest: /etc/nginx/conf.d/
+        mode: '0644'
+      notify: restart nginx
