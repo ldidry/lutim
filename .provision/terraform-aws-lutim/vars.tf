@@ -33,4 +33,28 @@ variable "instance_name" {
     default = "instance_name"  
 }
 
+variable "lutim_owner" {
+    default = ""  
+}
+
+variable "lutim_group" {
+    default = ""  
+}
+
+variable "app_dir" {
+    default = ""  
+}
+
+variable "contact_user" {
+  default   = ""
+}
+
+variable "contact" {
+    default = ""  
+}
+
+variable "secret" {
+    default = ""  
+}
+
 

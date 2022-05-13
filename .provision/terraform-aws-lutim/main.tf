@@ -1,3 +1,14 @@
+locals {
+  user_data_vars = {
+    user = var.lutim_owner
+    group = var.lutim_group
+    directory = var.app_dir
+    contact_user = var.contact_user
+    contact_lutim = var.contact
+    secret_lutim = var.secret
+  }
+}
+
 #Create the VPC 
 resource "aws_vpc" "vpc" {
   cidr_block           = "${var.vpc_cidr}"
@@ -100,33 +111,8 @@ resource "aws_instance" "ec2_instance" {
   associate_public_ip_address = "true"
   subnet_id          = "${aws_subnet.publicsubnet.id}"
   vpc_security_group_ids = ["${aws_security_group.security.id}"]
+  user_data          = templatefile("${path.module}/lutim_startup.sh", local.user_data_vars)
   key_name           = "lutim.webapp"
-
-  connection          {
-    agent            = false
-    type             = "ssh"
-    host             = aws_instance.ec2_instance.public_dns 
-    private_key      = "${file(var.private_key)}"
-    user             = "${var.user}"
-  }
-
-  provisioner "remote-exec" {
-    inline = [
-      "sudo apt update -y",
-      "sudo apt install python3.9 -y",
-      ]
-  }
-
-  provisioner "local-exec" {
-    command = <<EOT
-      sleep 120 && \
-      > hosts && \
-      echo "[lutim]" | tee -a hosts && \
-      echo "${aws_instance.ec2_instance.public_ip} ansible_user=${var.user} ansible_ssh_private_key_file=${var.private_key}" | tee -a hosts && \
-      export ANSIBLE_HOST_KEY_CHECKING=False && \
-      ansible-playbook -u ${var.user} --private-key ${var.private_key} -i hosts site.yml
-    EOT
-  }
   
   tags               = {
     Name             = "${var.instance_name}"
