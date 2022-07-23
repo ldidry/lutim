@@ -1,0 +1,588 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: hr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. (7)
+#. (30)
+#. ($delay)
+#. (config('max_delay')
+#: lib/Lutim/Command/cron/stats.pm:156 lib/Lutim/Command/cron/stats.pm:157 lib/Lutim/Command/cron/stats.pm:170 lib/Lutim/Command/cron/stats.pm:171 lib/Lutim/Command/cron/stats.pm:187 lib/Lutim/Command/cron/stats.pm:188 themes/default/templates/myfiles.html.ep:24 themes/default/templates/myfiles.html.ep:33 themes/default/templates/myfiles.html.ep:34 themes/default/templates/partial/for_my_delay.html.ep:13 themes/default/templates/partial/for_my_delay.html.ep:14 themes/default/templates/partial/for_my_delay.html.ep:4 themes/default/templates/partial/lutim.js.ep:140 themes/default/templates/partial/lutim.js.ep:149 themes/default/templates/partial/lutim.js.ep:150 themes/default/templates/partial/raw.js.ep:23 themes/default/templates/partial/raw.js.ep:24 themes/default/templates/partial/raw.js.ep:6 themes/default/templates/partial/raw.js.ep:7 themes/default/templates/raw.html.ep:8 themes/default/templates/raw.html.ep:9
+msgid "%1 days"
+msgstr ""
+
+#. ($total)
+#: themes/default/templates/stats.html.ep:2
+msgid "%1 sent images on this instance from beginning."
+msgstr ""
+
+#: themes/default/templates/index.html.ep:228
+msgid "-or-"
+msgstr ""
+
+#: lib/Lutim.pm:342 lib/Lutim/Command/cron/stats.pm:158 lib/Lutim/Command/cron/stats.pm:172 lib/Lutim/Command/cron/stats.pm:189 themes/default/templates/index.html.ep:5 themes/default/templates/myfiles.html.ep:5 themes/default/templates/partial/raw.js.ep:25 themes/default/templates/partial/raw.js.ep:8 themes/default/templates/raw.html.ep:10
+msgid "1 year"
+msgstr ""
+
+#: lib/Lutim.pm:341 lib/Lutim/Command/cron/stats.pm:155 lib/Lutim/Command/cron/stats.pm:169 lib/Lutim/Command/cron/stats.pm:186 themes/default/templates/index.html.ep:4 themes/default/templates/myfiles.html.ep:33 themes/default/templates/myfiles.html.ep:4 themes/default/templates/partial/for_my_delay.html.ep:13 themes/default/templates/partial/lutim.js.ep:149 themes/default/templates/partial/raw.js.ep:22 themes/default/templates/partial/raw.js.ep:5 themes/default/templates/raw.html.ep:7
+msgid "24 hours"
+msgstr ""
+
+#: themes/default/templates/partial/myfiles.js.ep:210
+msgid ": Error while trying to get the counter."
+msgstr ""
+
+#: themes/default/templates/partial/navbar.html.ep:63
+msgid "About"
+msgstr ""
+
+#: lib/Lutim/Command/cron/stats.pm:151 themes/default/templates/raw.html.ep:3
+msgid "Active images"
+msgstr ""
+
+#: lib/Lutim/Controller/Image.pm:329
+msgid "An error occured while downloading the image."
+msgstr ""
+
+#: themes/default/templates/zip.html.ep:2
+msgid "Archives download"
+msgstr ""
+
+#: themes/default/templates/about.html.ep:44 themes/default/templates/myfiles.html.ep:129 themes/default/templates/stats.html.ep:25
+msgid "Back to homepage"
+msgstr ""
+
+#: themes/default/templates/index.html.ep:231 themes/default/templates/index.html.ep:232
+msgid "Click to open the file browser"
+msgstr ""
+
+#: themes/default/templates/myfiles.html.ep:51
+msgid "Close"
+msgstr ""
+
+#: themes/default/templates/gallery.html.ep:29
+msgid "Close (Esc)"
+msgstr ""
+
+#: themes/default/templates/about.html.ep:30
+msgid "Contributors"
+msgstr ""
+
+#: themes/default/templates/partial/common.js.ep:113 themes/default/templates/partial/common.js.ep:93
+msgid "Copied to clipboard"
+msgstr ""
+
+#: themes/default/templates/partial/lutim.js.ep:215 themes/default/templates/partial/lutim.js.ep:278 themes/default/templates/partial/lutim.js.ep:364
+msgid "Copy all view links to clipboard"
+msgstr ""
+
+#: themes/default/templates/index.html.ep:105 themes/default/templates/index.html.ep:16 themes/default/templates/index.html.ep:32 themes/default/templates/index.html.ep:48 themes/default/templates/index.html.ep:81 themes/default/templates/index.html.ep:89 themes/default/templates/index.html.ep:97 themes/default/templates/myfiles.html.ep:66 themes/default/templates/myfiles.html.ep:82 themes/default/templates/myfiles.html.ep:98 themes/default/templates/partial/common.js.ep:186 themes/default/templates/partial/lutim.js.ep:106 themes/default/templates/partial/lutim.js.ep:121 themes/default/templates/partial/lutim.js.ep:80 themes/default/templates/partial/lutim.js.ep:92 themes/default/templates/partial/myfiles.js.ep:172
+msgid "Copy to clipboard"
+msgstr ""
+
+#: themes/default/templates/myfiles.html.ep:117
+msgid "Counter"
+msgstr ""
+
+#: themes/default/templates/stats.html.ep:18
+msgid "Delay repartition chart for disabled images"
+msgstr ""
+
+#: themes/default/templates/stats.html.ep:15
+msgid "Delay repartition chart for enabled images"
+msgstr ""
+
+#: themes/default/templates/index.html.ep:127 themes/default/templates/index.html.ep:159 themes/default/templates/index.html.ep:203 themes/default/templates/myfiles.html.ep:118 themes/default/templates/myfiles.html.ep:45 themes/default/templates/partial/lutim.js.ep:161
+msgid "Delete at first view?"
+msgstr ""
+
+#: lib/Lutim/Command/cron/stats.pm:152 themes/default/templates/raw.html.ep:4
+msgid "Deleted images"
+msgstr ""
+
+#: lib/Lutim/Command/cron/stats.pm:153 themes/default/templates/raw.html.ep:5
+msgid "Deleted images in 30 days"
+msgstr ""
+
+#: themes/default/templates/index.html.ep:110 themes/default/templates/myfiles.html.ep:121 themes/default/templates/partial/common.js.ep:178 themes/default/templates/partial/common.js.ep:181
+msgid "Deletion link"
+msgstr ""
+
+#: themes/default/templates/gallery.html.ep:10
+msgid "Download all images"
+msgstr ""
+
+#: themes/default/templates/index.html.ep:93 themes/default/templates/index.html.ep:95 themes/default/templates/partial/lutim.js.ep:102 themes/default/templates/partial/lutim.js.ep:98
+msgid "Download link"
+msgstr ""
+
+#: themes/default/templates/index.html.ep:26 themes/default/templates/index.html.ep:28 themes/default/templates/myfiles.html.ep:76 themes/default/templates/myfiles.html.ep:78
+msgid "Download zip link"
+msgstr ""
+
+#: themes/default/templates/index.html.ep:227
+msgid "Drag & drop images here"
+msgstr ""
+
+#: themes/default/templates/about.html.ep:7
+msgid "Drag and drop an image in the appropriate area or use the traditional way to send files and Lutim will provide you four URLs. One to view the image, an other to directly download it, one you can use on social networks and a last to delete the image when you want."
+msgstr ""
+
+#: themes/default/templates/index.html.ep:162 themes/default/templates/index.html.ep:206
+msgid "Encrypt the image (Lutim does not keep the key)."
+msgstr ""
+
+#: themes/default/templates/partial/lutim.js.ep:45 themes/default/templates/partial/myfiles.js.ep:128
+msgid "Error while trying to modify the image."
+msgstr ""
+
+#: themes/default/templates/stats.html.ep:10
+msgid "Evolution of total files"
+msgstr ""
+
+#: themes/default/templates/myfiles.html.ep:120
+msgid "Expires at"
+msgstr ""
+
+#: themes/default/templates/myfiles.html.ep:106
+msgid "Export localStorage data"
+msgstr ""
+
+#: themes/default/templates/myfiles.html.ep:115
+msgid "File name"
+msgstr ""
+
+#: themes/default/templates/about.html.ep:24
+msgid "For more details, see the <a href=\"https://framagit.org/fiat-tux/hat-softwares/lutim\">homepage of the project</a>."
+msgstr ""
+
+#: themes/default/templates/partial/navbar.html.ep:66
+msgid "Fork me!"
+msgstr ""
+
+#: themes/default/templates/index.html.ep:10 themes/default/templates/index.html.ep:12 themes/default/templates/myfiles.html.ep:60 themes/default/templates/myfiles.html.ep:62
+msgid "Gallery link"
+msgstr ""
+
+#: themes/default/templates/partial/common.js.ep:116 themes/default/templates/partial/common.js.ep:134
+msgid "Hit Ctrl+C, then Enter to copy the short link"
+msgstr ""
+
+#: themes/default/templates/layouts/default.html.ep:47
+msgid "Homepage"
+msgstr ""
+
+#: themes/default/templates/about.html.ep:20
+msgid "How do you pronounce Lutim?"
+msgstr ""
+
+#: themes/default/templates/about.html.ep:6
+msgid "How does it work?"
+msgstr ""
+
+#: themes/default/templates/about.html.ep:18
+msgid "How to report an image?"
+msgstr ""
+
+#: themes/default/templates/about.html.ep:14
+msgid "If the files are deleted if you ask it while posting it, their SHA512 footprint are retained."
+msgstr ""
+
+#: themes/default/templates/index.html.ep:188 themes/default/templates/index.html.ep:241
+msgid "Image URL"
+msgstr ""
+
+#: lib/Lutim/Command/cron/stats.pm:150 themes/default/templates/raw.html.ep:2
+msgid "Image delay"
+msgstr ""
+
+#: themes/default/templates/partial/common.js.ep:157
+msgid "Image deleted"
+msgstr ""
+
+#: lib/Lutim/Controller/Image.pm:799
+msgid "Image not found."
+msgstr ""
+
+#: themes/default/templates/myfiles.html.ep:107
+msgid "Import localStorage data"
+msgstr ""
+
+#: themes/default/templates/partial/navbar.html.ep:55
+msgid "Informations"
+msgstr ""
+
+#: themes/default/templates/partial/navbar.html.ep:25
+msgid "Install webapp"
+msgstr ""
+
+#: themes/default/templates/partial/navbar.html.ep:21
+msgid "Instance's statistics"
+msgstr ""
+
+#: themes/default/templates/about.html.ep:11
+msgid "Is it really anonymous?"
+msgstr ""
+
+#: themes/default/templates/about.html.ep:9
+msgid "Is it really free (as in free beer)?"
+msgstr ""
+
+#: themes/default/templates/about.html.ep:21
+msgid "Juste like you pronounce the French word <a href=\"https://fr.wikipedia.org/wiki/Lutin\">lutin</a> (/ly.tɛ̃/)."
+msgstr ""
+
+#: themes/default/templates/index.html.ep:165 themes/default/templates/index.html.ep:209
+msgid "Keep EXIF tags"
+msgstr ""
+
+#: themes/default/templates/partial/navbar.html.ep:43
+msgid "Language"
+msgstr ""
+
+#: themes/default/templates/index.html.ep:130 themes/default/templates/index.html.ep:191 themes/default/templates/index.html.ep:244 themes/default/templates/partial/lutim.js.ep:165
+msgid "Let's go!"
+msgstr ""
+
+#: themes/default/templates/partial/navbar.html.ep:60
+msgid "License:"
+msgstr ""
+
+#: themes/default/templates/index.html.ep:101 themes/default/templates/index.html.ep:103 themes/default/templates/partial/lutim.js.ep:112 themes/default/templates/partial/lutim.js.ep:116
+msgid "Link for share on social networks"
+msgstr ""
+
+#: themes/default/templates/login.html.ep:8
+msgid "Login"
+msgstr ""
+
+#: themes/default/templates/partial/navbar.html.ep:33
+msgid "Logout"
+msgstr ""
+
+#: themes/default/templates/zip.html.ep:7
+msgid "Lutim can't zip so many images at once, so it splitted your demand in multiple URLs."
+msgstr ""
+
+#: themes/default/templates/about.html.ep:4
+msgid "Lutim is a free (as in free beer) and anonymous image hosting service. It's also the name of the free (as in free speech) software which provides this service."
+msgstr ""
+
+#: themes/default/templates/about.html.ep:25
+msgid "Main developers"
+msgstr ""
+
+#: themes/default/templates/index.html.ep:85 themes/default/templates/index.html.ep:87 themes/default/templates/partial/lutim.js.ep:86 themes/default/templates/partial/lutim.js.ep:89
+msgid "Markdown syntax"
+msgstr ""
+
+#: themes/default/templates/partial/myfiles.js.ep:179
+msgid "Modify expiration delay"
+msgstr ""
+
+#: themes/default/templates/myfiles.html.ep:7 themes/default/templates/partial/navbar.html.ep:18
+msgid "My images"
+msgstr ""
+
+#: themes/default/templates/gallery.html.ep:45
+msgid "Next (arrow right)"
+msgstr ""
+
+#: themes/default/templates/partial/myfiles.js.ep:120 themes/default/templates/partial/myfiles.js.ep:162
+msgid "No limit"
+msgstr ""
+
+#: themes/default/templates/index.html.ep:177 themes/default/templates/index.html.ep:221
+msgid "No watermark"
+msgstr ""
+
+#: themes/default/templates/index.html.ep:190 themes/default/templates/index.html.ep:236
+msgid "Only images are allowed"
+msgstr ""
+
+#: themes/default/templates/myfiles.html.ep:11
+msgid "Only the images sent with this browser will be listed here. The details are stored in localStorage: if you delete your localStorage data, you'll loose these details."
+msgstr ""
+
+#: themes/default/templates/about.html.ep:16
+msgid "Only the uploader! (well, only if he's the only owner of the images' rights before the upload)"
+msgstr ""
+
+#: themes/default/templates/login.html.ep:12
+msgid "Password"
+msgstr ""
+
+#: themes/default/templates/zip.html.ep:12
+msgid "Please click on each URL to download the different zip files."
+msgstr ""
+
+#. (config('contact')
+#: themes/default/templates/about.html.ep:19
+msgid "Please contact the administrator: %1"
+msgstr ""
+
+#: lib/Lutim/Controller/Authent.pm:36
+msgid "Please, check your credentials: unable to authenticate."
+msgstr ""
+
+#: themes/default/templates/gallery.html.ep:43
+msgid "Previous (arrow left)"
+msgstr ""
+
+#: themes/default/templates/index.html.ep:42 themes/default/templates/index.html.ep:44 themes/default/templates/myfiles.html.ep:92 themes/default/templates/myfiles.html.ep:94
+msgid "Random image link"
+msgstr ""
+
+#: themes/default/templates/stats.html.ep:22
+msgid "Raw stats"
+msgstr ""
+
+#: themes/default/templates/myfiles.html.ep:52
+msgid "Save changes"
+msgstr ""
+
+#: themes/default/templates/index.html.ep:183
+msgid "Send an image"
+msgstr ""
+
+#: themes/default/templates/login.html.ep:16 themes/default/templates/logout.html.ep:5 themes/default/templates/partial/navbar.html.ep:37
+msgid "Signin"
+msgstr ""
+
+#: themes/default/templates/index.html.ep:174 themes/default/templates/index.html.ep:218
+msgid "Single watermark"
+msgstr ""
+
+#: themes/default/templates/index.html.ep:145 themes/default/templates/partial/gallery.js.ep:211 themes/default/templates/partial/lutim.js.ep:176
+msgid "Something bad happened"
+msgstr ""
+
+#. ($c->config('contact')
+#: lib/Lutim/Controller/Image.pm:806
+msgid "Something went wrong when creating the zip file. Try again later or contact the administrator (%1)."
+msgstr ""
+
+#: themes/default/templates/about.html.ep:13
+msgid "The IP address of the image's sender is retained for a delay which depends of the administrator's choice (for the official instance, which is located in France, it's one year)."
+msgstr ""
+
+#: themes/default/templates/about.html.ep:23
+msgid "The Lutim software is a <a href=\"http://en.wikipedia.org/wiki/Free_software\">free software</a>, which allows you to download and install it on you own server. Have a look at the <a href=\"https://www.gnu.org/licenses/agpl-3.0.html\">AGPL</a> to see what you can do."
+msgstr ""
+
+#: lib/Lutim/Controller/Image.pm:348
+msgid "The URL is not valid."
+msgstr ""
+
+#: themes/default/templates/zip.html.ep:16
+msgid "The automatic download process will open a tab in your browser for each link. You need to allow popups for Lutim."
+msgstr ""
+
+#: themes/default/templates/partial/myfiles.js.ep:32
+msgid "The data has been successfully imported."
+msgstr ""
+
+#: lib/Lutim/Controller/Image.pm:160 lib/Lutim/Controller/Image.pm:228
+msgid "The delete token is invalid."
+msgstr ""
+
+#. ($upload->filename)
+#: lib/Lutim/Controller/Image.pm:531
+msgid "The file %1 is not an image."
+msgstr ""
+
+#. ($tx->res->max_message_size)
+#. ($c->req->max_message_size)
+#. (config('max_file_size')
+#: lib/Lutim/Controller/Image.pm:312 lib/Lutim/Controller/Image.pm:381 themes/default/templates/partial/lutim.js.ep:249
+msgid "The file exceed the size limit (%1)"
+msgstr ""
+
+#: themes/default/templates/stats.html.ep:12
+msgid "The graph's datas are not updated in real-time."
+msgstr ""
+
+#. ($image->filename)
+#: lib/Lutim/Controller/Image.pm:230
+msgid "The image %1 has already been deleted."
+msgstr ""
+
+#. ($image->filename)
+#: lib/Lutim/Controller/Image.pm:239 lib/Lutim/Controller/Image.pm:244
+msgid "The image %1 has been successfully deleted"
+msgstr ""
+
+#: themes/default/templates/index.html.ep:57
+msgid "The images are encrypted on the server (Lutim does not keep the key)."
+msgstr ""
+
+#: themes/default/templates/about.html.ep:5
+msgid "The images you post on Lutim can be stored indefinitely or be deleted at first view or after a delay selected from those proposed."
+msgstr ""
+
+#: lib/Lutim/Controller/Image.pm:168
+msgid "The image’s delay has been successfully modified"
+msgstr ""
+
+#: themes/default/templates/partial/gallery.js.ep:277
+msgid "There is XXXX image(s) in the gallery"
+msgstr ""
+
+#. ($c->config->{contact})
+#: lib/Lutim/Controller/Image.pm:528
+msgid "There is no more available URL. Retry or contact the administrator. %1"
+msgstr ""
+
+#: themes/default/templates/index.html.ep:171 themes/default/templates/index.html.ep:215
+msgid "Tiling watermark"
+msgstr ""
+
+#: themes/default/templates/gallery.html.ep:30
+msgid "Toggle fullscreen"
+msgstr ""
+
+#: themes/default/templates/partial/navbar.html.ep:8
+msgid "Toggle navigation"
+msgstr ""
+
+#: lib/Lutim/Command/cron/stats.pm:159 themes/default/templates/raw.html.ep:11
+msgid "Total"
+msgstr ""
+
+#: themes/default/templates/index.html.ep:72 themes/default/templates/partial/lutim.js.ep:17
+msgid "Tweet it!"
+msgstr ""
+
+#: themes/default/templates/partial/common.js.ep:110 themes/default/templates/partial/common.js.ep:90
+msgid "Unable to copy to clipboard"
+msgstr ""
+
+#. ($short)
+#: lib/Lutim/Controller/Image.pm:108 lib/Lutim/Controller/Image.pm:202 lib/Lutim/Controller/Image.pm:273
+msgid "Unable to find the image %1."
+msgstr ""
+
+#: lib/Lutim/Controller/Image.pm:617 lib/Lutim/Controller/Image.pm:662 lib/Lutim/Controller/Image.pm:703 lib/Lutim/Controller/Image.pm:746 lib/Lutim/Controller/Image.pm:758 lib/Lutim/Controller/Image.pm:769 lib/Lutim/Controller/Image.pm:796 lib/Lutim/Plugin/Helpers.pm:89
+msgid "Unable to find the image: it has been deleted."
+msgstr ""
+
+#: lib/Lutim/Controller/Image.pm:145
+msgid "Unable to get counter"
+msgstr ""
+
+#: themes/default/templates/about.html.ep:17
+msgid "Unlike many image sharing services, you don't give us rights on uploaded images."
+msgstr ""
+
+#: themes/default/templates/index.html.ep:187 themes/default/templates/index.html.ep:239
+msgid "Upload an image with its URL"
+msgstr ""
+
+#: themes/default/templates/myfiles.html.ep:119
+msgid "Uploaded at"
+msgstr ""
+
+#: themes/default/templates/stats.html.ep:6
+msgid "Uploaded files by days"
+msgstr ""
+
+#. ($c->app->config('contact')
+#: lib/Lutim/Plugin/Helpers.pm:222
+msgid "Uploading is currently disabled, please try later or contact the administrator (%1)."
+msgstr ""
+
+#: themes/default/templates/index.html.ep:77 themes/default/templates/index.html.ep:79 themes/default/templates/myfiles.html.ep:116 themes/default/templates/partial/lutim.js.ep:72 themes/default/templates/partial/lutim.js.ep:76
+msgid "View link"
+msgstr ""
+
+#: themes/default/templates/about.html.ep:22
+msgid "What about the software which provides the service?"
+msgstr ""
+
+#: themes/default/templates/about.html.ep:3
+msgid "What is Lutim?"
+msgstr ""
+
+#: themes/default/templates/about.html.ep:15
+msgid "Who owns rights on images uploaded on Lutim?"
+msgstr ""
+
+#: themes/default/templates/about.html.ep:12
+msgid "Yes, it is! On the other side, for legal reasons, your IP address will be stored when you send an image. Don't panic, it is normally the case of all sites on which you send files!"
+msgstr ""
+
+#: themes/default/templates/about.html.ep:10
+msgid "Yes, it is! On the other side, if you want to support the developer, you can do it via <a href=\"https://www.tipeee.com/fiat-tux\">Tipeee</a> or via <a href=\"https://liberapay.com/sky/\">Liberapay</a>."
+msgstr ""
+
+#: themes/default/templates/zip.html.ep:6
+msgid "You asked to download a zip archive for too much files."
+msgstr ""
+
+#: themes/default/templates/about.html.ep:8
+msgid "You can, optionally, request that the image(s) posted on Lutim to be deleted at first view (or download) or after the delay selected from those proposed."
+msgstr ""
+
+#: lib/Lutim/Controller/Authent.pm:27
+msgid "You have been successfully logged in."
+msgstr ""
+
+#: lib/Lutim/Controller/Authent.pm:66 themes/default/templates/logout.html.ep:3
+msgid "You have been successfully logged out."
+msgstr ""
+
+#: themes/default/templates/gallery.html.ep:31
+msgid "Zoom in/out"
+msgstr ""
+
+#: themes/default/templates/about.html.ep:27
+msgid "and on"
+msgstr ""
+
+#: themes/default/templates/about.html.ep:40
+msgid "arabic translation"
+msgstr ""
+
+#: themes/default/templates/about.html.ep:27
+msgid "core developer"
+msgstr ""
+
+#: lib/Lutim.pm:340 lib/Lutim/Command/cron/stats.pm:154 lib/Lutim/Command/cron/stats.pm:168 lib/Lutim/Command/cron/stats.pm:185 themes/default/templates/index.html.ep:3 themes/default/templates/myfiles.html.ep:3 themes/default/templates/partial/raw.js.ep:21 themes/default/templates/partial/raw.js.ep:4 themes/default/templates/raw.html.ep:6
+msgid "no time limit"
+msgstr ""
+
+#: themes/default/templates/about.html.ep:38
+msgid "occitan translation"
+msgstr ""
+
+#: themes/default/templates/about.html.ep:27
+msgid "on"
+msgstr ""
+
+#: themes/default/templates/about.html.ep:39
+msgid "paste image to upload ability"
+msgstr ""
+
+#: themes/default/templates/about.html.ep:41
+msgid "russian translation"
+msgstr ""
+
+#: themes/default/templates/about.html.ep:36
+msgid "spanish translation"
+msgstr ""
+
+#: themes/default/templates/about.html.ep:28
+msgid "webapp developer"
+msgstr ""
