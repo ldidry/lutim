@@ -7,13 +7,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2022-07-24 18:36+0000\n"
+"Last-Translator: Milo Ivir <mail@milotype.de>\n"
+"Language-Team: Croatian <https://weblate.framasoft.org/projects/lutim/"
+"default-theme/hr/>\n"
 "Language: hr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 4.13.1\n"
 
 #. (7)
 #. (30)
@@ -21,568 +25,613 @@ msgstr ""
 #. (config('max_delay')
 #: lib/Lutim/Command/cron/stats.pm:156 lib/Lutim/Command/cron/stats.pm:157 lib/Lutim/Command/cron/stats.pm:170 lib/Lutim/Command/cron/stats.pm:171 lib/Lutim/Command/cron/stats.pm:187 lib/Lutim/Command/cron/stats.pm:188 themes/default/templates/myfiles.html.ep:24 themes/default/templates/myfiles.html.ep:33 themes/default/templates/myfiles.html.ep:34 themes/default/templates/partial/for_my_delay.html.ep:13 themes/default/templates/partial/for_my_delay.html.ep:14 themes/default/templates/partial/for_my_delay.html.ep:4 themes/default/templates/partial/lutim.js.ep:140 themes/default/templates/partial/lutim.js.ep:149 themes/default/templates/partial/lutim.js.ep:150 themes/default/templates/partial/raw.js.ep:23 themes/default/templates/partial/raw.js.ep:24 themes/default/templates/partial/raw.js.ep:6 themes/default/templates/partial/raw.js.ep:7 themes/default/templates/raw.html.ep:8 themes/default/templates/raw.html.ep:9
 msgid "%1 days"
-msgstr ""
+msgstr "%1 dana"
 
 #. ($total)
 #: themes/default/templates/stats.html.ep:2
 msgid "%1 sent images on this instance from beginning."
-msgstr ""
+msgstr "Broj poslanih slika u ovoj instanci od početka: %1."
 
 #: themes/default/templates/index.html.ep:228
 msgid "-or-"
-msgstr ""
+msgstr "-ili-"
 
 #: lib/Lutim.pm:342 lib/Lutim/Command/cron/stats.pm:158 lib/Lutim/Command/cron/stats.pm:172 lib/Lutim/Command/cron/stats.pm:189 themes/default/templates/index.html.ep:5 themes/default/templates/myfiles.html.ep:5 themes/default/templates/partial/raw.js.ep:25 themes/default/templates/partial/raw.js.ep:8 themes/default/templates/raw.html.ep:10
 msgid "1 year"
-msgstr ""
+msgstr "1 godina"
 
 #: lib/Lutim.pm:341 lib/Lutim/Command/cron/stats.pm:155 lib/Lutim/Command/cron/stats.pm:169 lib/Lutim/Command/cron/stats.pm:186 themes/default/templates/index.html.ep:4 themes/default/templates/myfiles.html.ep:33 themes/default/templates/myfiles.html.ep:4 themes/default/templates/partial/for_my_delay.html.ep:13 themes/default/templates/partial/lutim.js.ep:149 themes/default/templates/partial/raw.js.ep:22 themes/default/templates/partial/raw.js.ep:5 themes/default/templates/raw.html.ep:7
 msgid "24 hours"
-msgstr ""
+msgstr "24 sata"
 
 #: themes/default/templates/partial/myfiles.js.ep:210
 msgid ": Error while trying to get the counter."
-msgstr ""
+msgstr ": Greška u dohvaćanju brojača."
 
 #: themes/default/templates/partial/navbar.html.ep:63
 msgid "About"
-msgstr ""
+msgstr "O programu"
 
 #: lib/Lutim/Command/cron/stats.pm:151 themes/default/templates/raw.html.ep:3
 msgid "Active images"
-msgstr ""
+msgstr "Aktivne slike"
 
 #: lib/Lutim/Controller/Image.pm:329
 msgid "An error occured while downloading the image."
-msgstr ""
+msgstr "Dogodila se greška prilikom preuzimanja slike."
 
 #: themes/default/templates/zip.html.ep:2
 msgid "Archives download"
-msgstr ""
+msgstr "Preuzimanje arhiva"
 
 #: themes/default/templates/about.html.ep:44 themes/default/templates/myfiles.html.ep:129 themes/default/templates/stats.html.ep:25
 msgid "Back to homepage"
-msgstr ""
+msgstr "Natrag na web-stranicu"
 
 #: themes/default/templates/index.html.ep:231 themes/default/templates/index.html.ep:232
 msgid "Click to open the file browser"
-msgstr ""
+msgstr "Pritisni za otvaranje preglednika datoteka"
 
 #: themes/default/templates/myfiles.html.ep:51
 msgid "Close"
-msgstr ""
+msgstr "Zatvori"
 
 #: themes/default/templates/gallery.html.ep:29
 msgid "Close (Esc)"
-msgstr ""
+msgstr "Zatvori (Esc)"
 
 #: themes/default/templates/about.html.ep:30
 msgid "Contributors"
-msgstr ""
+msgstr "Doprinositelji"
 
 #: themes/default/templates/partial/common.js.ep:113 themes/default/templates/partial/common.js.ep:93
 msgid "Copied to clipboard"
-msgstr ""
+msgstr "Kopirano u međuspremnik"
 
 #: themes/default/templates/partial/lutim.js.ep:215 themes/default/templates/partial/lutim.js.ep:278 themes/default/templates/partial/lutim.js.ep:364
 msgid "Copy all view links to clipboard"
-msgstr ""
+msgstr "Kopiraj sve poveznice prikaza u međuspremnik"
 
 #: themes/default/templates/index.html.ep:105 themes/default/templates/index.html.ep:16 themes/default/templates/index.html.ep:32 themes/default/templates/index.html.ep:48 themes/default/templates/index.html.ep:81 themes/default/templates/index.html.ep:89 themes/default/templates/index.html.ep:97 themes/default/templates/myfiles.html.ep:66 themes/default/templates/myfiles.html.ep:82 themes/default/templates/myfiles.html.ep:98 themes/default/templates/partial/common.js.ep:186 themes/default/templates/partial/lutim.js.ep:106 themes/default/templates/partial/lutim.js.ep:121 themes/default/templates/partial/lutim.js.ep:80 themes/default/templates/partial/lutim.js.ep:92 themes/default/templates/partial/myfiles.js.ep:172
 msgid "Copy to clipboard"
-msgstr ""
+msgstr "Kopiraj u međuspremnik"
 
 #: themes/default/templates/myfiles.html.ep:117
 msgid "Counter"
-msgstr ""
+msgstr "Brojač"
 
 #: themes/default/templates/stats.html.ep:18
 msgid "Delay repartition chart for disabled images"
-msgstr ""
+msgstr "Dijagram odgode raspodjele za isključene slike"
 
 #: themes/default/templates/stats.html.ep:15
 msgid "Delay repartition chart for enabled images"
-msgstr ""
+msgstr "Dijagram odgode raspodjele za uključene slike"
 
 #: themes/default/templates/index.html.ep:127 themes/default/templates/index.html.ep:159 themes/default/templates/index.html.ep:203 themes/default/templates/myfiles.html.ep:118 themes/default/templates/myfiles.html.ep:45 themes/default/templates/partial/lutim.js.ep:161
 msgid "Delete at first view?"
-msgstr ""
+msgstr "Izbrisati pri prvom prikazu?"
 
 #: lib/Lutim/Command/cron/stats.pm:152 themes/default/templates/raw.html.ep:4
 msgid "Deleted images"
-msgstr ""
+msgstr "Izbrisane slike"
 
 #: lib/Lutim/Command/cron/stats.pm:153 themes/default/templates/raw.html.ep:5
 msgid "Deleted images in 30 days"
-msgstr ""
+msgstr "Izbrisane slike u 30 dana"
 
 #: themes/default/templates/index.html.ep:110 themes/default/templates/myfiles.html.ep:121 themes/default/templates/partial/common.js.ep:178 themes/default/templates/partial/common.js.ep:181
 msgid "Deletion link"
-msgstr ""
+msgstr "Poveznica za brisanje"
 
 #: themes/default/templates/gallery.html.ep:10
 msgid "Download all images"
-msgstr ""
+msgstr "Preuzmi sve slike"
 
 #: themes/default/templates/index.html.ep:93 themes/default/templates/index.html.ep:95 themes/default/templates/partial/lutim.js.ep:102 themes/default/templates/partial/lutim.js.ep:98
 msgid "Download link"
-msgstr ""
+msgstr "Poveznica za preuzimanje"
 
 #: themes/default/templates/index.html.ep:26 themes/default/templates/index.html.ep:28 themes/default/templates/myfiles.html.ep:76 themes/default/templates/myfiles.html.ep:78
 msgid "Download zip link"
-msgstr ""
+msgstr "Poveznica za preuzimanje zip-a"
 
 #: themes/default/templates/index.html.ep:227
 msgid "Drag & drop images here"
-msgstr ""
+msgstr "Povuci i ispusti slike ovamo"
 
 #: themes/default/templates/about.html.ep:7
 msgid "Drag and drop an image in the appropriate area or use the traditional way to send files and Lutim will provide you four URLs. One to view the image, an other to directly download it, one you can use on social networks and a last to delete the image when you want."
 msgstr ""
+"Povuci i ispusti sliku u odgovarajuće područje ili koristi tradicionalni "
+"način slanja datoteka i Lutim će ti dati četiri URL-a. Jedan za pregled "
+"slike, drugi za izravno preuzimanje, jedan koji možeš koristiti na "
+"društvenim mrežama i zadnji za brisanje slike kada želiš."
 
 #: themes/default/templates/index.html.ep:162 themes/default/templates/index.html.ep:206
 msgid "Encrypt the image (Lutim does not keep the key)."
-msgstr ""
+msgstr "Šifriraj sliku (Lutim ne čuva ključ)."
 
 #: themes/default/templates/partial/lutim.js.ep:45 themes/default/templates/partial/myfiles.js.ep:128
 msgid "Error while trying to modify the image."
-msgstr ""
+msgstr "Greška prilikom pokušaja stvaranja promjena u slici."
 
 #: themes/default/templates/stats.html.ep:10
 msgid "Evolution of total files"
-msgstr ""
+msgstr "Razvoj ukupnog broja datoteka"
 
 #: themes/default/templates/myfiles.html.ep:120
 msgid "Expires at"
-msgstr ""
+msgstr "Isteče"
 
 #: themes/default/templates/myfiles.html.ep:106
 msgid "Export localStorage data"
-msgstr ""
+msgstr "Izvezi podatke lokalnog spremišta"
 
 #: themes/default/templates/myfiles.html.ep:115
 msgid "File name"
-msgstr ""
+msgstr "Ime datoteke"
 
 #: themes/default/templates/about.html.ep:24
 msgid "For more details, see the <a href=\"https://framagit.org/fiat-tux/hat-softwares/lutim\">homepage of the project</a>."
 msgstr ""
+"Pogledaj detalje na <a href=\"https://framagit.org/fiat-tux/hat-softwares/"
+"lutim\">web-stranici projekta</a>."
 
 #: themes/default/templates/partial/navbar.html.ep:66
 msgid "Fork me!"
-msgstr ""
+msgstr "Kopiraj granu!"
 
 #: themes/default/templates/index.html.ep:10 themes/default/templates/index.html.ep:12 themes/default/templates/myfiles.html.ep:60 themes/default/templates/myfiles.html.ep:62
 msgid "Gallery link"
-msgstr ""
+msgstr "Poveznica galerije"
 
 #: themes/default/templates/partial/common.js.ep:116 themes/default/templates/partial/common.js.ep:134
 msgid "Hit Ctrl+C, then Enter to copy the short link"
-msgstr ""
+msgstr "Pritisni Ctrl+C, zatim Enter za kopiranje kratke poveznice"
 
 #: themes/default/templates/layouts/default.html.ep:47
 msgid "Homepage"
-msgstr ""
+msgstr "Web-stranica"
 
 #: themes/default/templates/about.html.ep:20
 msgid "How do you pronounce Lutim?"
-msgstr ""
+msgstr "Kako se izgovara Lutim?"
 
 #: themes/default/templates/about.html.ep:6
 msgid "How does it work?"
-msgstr ""
+msgstr "Kako radi?"
 
 #: themes/default/templates/about.html.ep:18
 msgid "How to report an image?"
-msgstr ""
+msgstr "Kako prijaviti sliku?"
 
 #: themes/default/templates/about.html.ep:14
 msgid "If the files are deleted if you ask it while posting it, their SHA512 footprint are retained."
 msgstr ""
+"Ako se datoteke izbrišu ako to zatražiš dok ih objavljuješ, njihov SHA512 "
+"otisak se zadržava."
 
 #: themes/default/templates/index.html.ep:188 themes/default/templates/index.html.ep:241
 msgid "Image URL"
-msgstr ""
+msgstr "URL adresa slike"
 
 #: lib/Lutim/Command/cron/stats.pm:150 themes/default/templates/raw.html.ep:2
 msgid "Image delay"
-msgstr ""
+msgstr "Kašnjenje slike"
 
 #: themes/default/templates/partial/common.js.ep:157
 msgid "Image deleted"
-msgstr ""
+msgstr "Slika izbrisana"
 
 #: lib/Lutim/Controller/Image.pm:799
 msgid "Image not found."
-msgstr ""
+msgstr "Slika nije pronađena."
 
 #: themes/default/templates/myfiles.html.ep:107
 msgid "Import localStorage data"
-msgstr ""
+msgstr "Uvezi podatke lokalnog spremišta"
 
 #: themes/default/templates/partial/navbar.html.ep:55
 msgid "Informations"
-msgstr ""
+msgstr "Informacije"
 
 #: themes/default/templates/partial/navbar.html.ep:25
 msgid "Install webapp"
-msgstr ""
+msgstr "Instaliraj web-aplikaciju"
 
 #: themes/default/templates/partial/navbar.html.ep:21
 msgid "Instance's statistics"
-msgstr ""
+msgstr "Statistika instance"
 
 #: themes/default/templates/about.html.ep:11
 msgid "Is it really anonymous?"
-msgstr ""
+msgstr "Je li stvarno anonimno?"
 
 #: themes/default/templates/about.html.ep:9
 msgid "Is it really free (as in free beer)?"
-msgstr ""
+msgstr "Je li se stvarno može besplatno koristiti?"
 
 #: themes/default/templates/about.html.ep:21
 msgid "Juste like you pronounce the French word <a href=\"https://fr.wikipedia.org/wiki/Lutin\">lutin</a> (/ly.tɛ̃/)."
 msgstr ""
+"Isto kao izgovaranje francuske riječi <a href=\"https://fr.wikipedia.org/"
+"wiki/Lutin\">lutin</a> (/ly.tɛ̃/)."
 
 #: themes/default/templates/index.html.ep:165 themes/default/templates/index.html.ep:209
 msgid "Keep EXIF tags"
-msgstr ""
+msgstr "Zadrži EXIF oznake"
 
 #: themes/default/templates/partial/navbar.html.ep:43
 msgid "Language"
-msgstr ""
+msgstr "Jezik"
 
 #: themes/default/templates/index.html.ep:130 themes/default/templates/index.html.ep:191 themes/default/templates/index.html.ep:244 themes/default/templates/partial/lutim.js.ep:165
 msgid "Let's go!"
-msgstr ""
+msgstr "Kreni!"
 
 #: themes/default/templates/partial/navbar.html.ep:60
 msgid "License:"
-msgstr ""
+msgstr "Licenca:"
 
 #: themes/default/templates/index.html.ep:101 themes/default/templates/index.html.ep:103 themes/default/templates/partial/lutim.js.ep:112 themes/default/templates/partial/lutim.js.ep:116
 msgid "Link for share on social networks"
-msgstr ""
+msgstr "Poveznica za dijeljenje na društvenim mrežama"
 
 #: themes/default/templates/login.html.ep:8
 msgid "Login"
-msgstr ""
+msgstr "Prijava"
 
 #: themes/default/templates/partial/navbar.html.ep:33
 msgid "Logout"
-msgstr ""
+msgstr "Odjava"
 
 #: themes/default/templates/zip.html.ep:7
 msgid "Lutim can't zip so many images at once, so it splitted your demand in multiple URLs."
 msgstr ""
+"Lutim ne može komprimirati toliko slika odjednom. Tvoj zahtjev je stoga "
+"podijeljen na više URL-ova."
 
 #: themes/default/templates/about.html.ep:4
 msgid "Lutim is a free (as in free beer) and anonymous image hosting service. It's also the name of the free (as in free speech) software which provides this service."
 msgstr ""
+"Lutim je besplatna i anonimna hosting usluga za slike. To je također ime "
+"slobodnog softvera koji pruža ovu uslugu."
 
 #: themes/default/templates/about.html.ep:25
 msgid "Main developers"
-msgstr ""
+msgstr "Glavni programeri"
 
 #: themes/default/templates/index.html.ep:85 themes/default/templates/index.html.ep:87 themes/default/templates/partial/lutim.js.ep:86 themes/default/templates/partial/lutim.js.ep:89
 msgid "Markdown syntax"
-msgstr ""
+msgstr "Markdown sintaksa"
 
 #: themes/default/templates/partial/myfiles.js.ep:179
 msgid "Modify expiration delay"
-msgstr ""
+msgstr "Promijeni odgodu isteka"
 
 #: themes/default/templates/myfiles.html.ep:7 themes/default/templates/partial/navbar.html.ep:18
 msgid "My images"
-msgstr ""
+msgstr "Moje slike"
 
 #: themes/default/templates/gallery.html.ep:45
 msgid "Next (arrow right)"
-msgstr ""
+msgstr "Sljedeće (desna strelica)"
 
 #: themes/default/templates/partial/myfiles.js.ep:120 themes/default/templates/partial/myfiles.js.ep:162
 msgid "No limit"
-msgstr ""
+msgstr "Bez ograničenja"
 
 #: themes/default/templates/index.html.ep:177 themes/default/templates/index.html.ep:221
 msgid "No watermark"
-msgstr ""
+msgstr "Bez vodenog žiga"
 
 #: themes/default/templates/index.html.ep:190 themes/default/templates/index.html.ep:236
 msgid "Only images are allowed"
-msgstr ""
+msgstr "Dozvoljene su samo slike"
 
 #: themes/default/templates/myfiles.html.ep:11
 msgid "Only the images sent with this browser will be listed here. The details are stored in localStorage: if you delete your localStorage data, you'll loose these details."
 msgstr ""
+"Ovdje će biti navedene samo slike poslane ovim preglednikom. Detalji se "
+"spremaju u lokalno spremište: ako izbrišeš svoje podatke lokalnog spremišta, "
+"izgubit ćeš te detalje."
 
 #: themes/default/templates/about.html.ep:16
 msgid "Only the uploader! (well, only if he's the only owner of the images' rights before the upload)"
 msgstr ""
+"Samo prenositelj! (zapravo, samo ako je on jedini vlasnik prava na slike "
+"prije prijenosa)"
 
 #: themes/default/templates/login.html.ep:12
 msgid "Password"
-msgstr ""
+msgstr "Lozinka"
 
 #: themes/default/templates/zip.html.ep:12
 msgid "Please click on each URL to download the different zip files."
-msgstr ""
+msgstr "Pritisni svaki URL za preuzimanje zip datoteka."
 
 #. (config('contact')
 #: themes/default/templates/about.html.ep:19
 msgid "Please contact the administrator: %1"
-msgstr ""
+msgstr "Kontaktiraj administratora: %1"
 
 #: lib/Lutim/Controller/Authent.pm:36
 msgid "Please, check your credentials: unable to authenticate."
-msgstr ""
+msgstr "Provjeri svoje podatke autentifikacije: autentifikacija je neuspjela."
 
 #: themes/default/templates/gallery.html.ep:43
 msgid "Previous (arrow left)"
-msgstr ""
+msgstr "Prethodno (lijeva strelica)"
 
 #: themes/default/templates/index.html.ep:42 themes/default/templates/index.html.ep:44 themes/default/templates/myfiles.html.ep:92 themes/default/templates/myfiles.html.ep:94
 msgid "Random image link"
-msgstr ""
+msgstr "Poveznica slučajne slike"
 
 #: themes/default/templates/stats.html.ep:22
 msgid "Raw stats"
-msgstr ""
+msgstr "Neobrađena statistika"
 
 #: themes/default/templates/myfiles.html.ep:52
 msgid "Save changes"
-msgstr ""
+msgstr "Spremi promjene"
 
 #: themes/default/templates/index.html.ep:183
 msgid "Send an image"
-msgstr ""
+msgstr "Pošalji sliku"
 
 #: themes/default/templates/login.html.ep:16 themes/default/templates/logout.html.ep:5 themes/default/templates/partial/navbar.html.ep:37
 msgid "Signin"
-msgstr ""
+msgstr "Prijava"
 
 #: themes/default/templates/index.html.ep:174 themes/default/templates/index.html.ep:218
 msgid "Single watermark"
-msgstr ""
+msgstr "Jedan vodeni žig"
 
 #: themes/default/templates/index.html.ep:145 themes/default/templates/partial/gallery.js.ep:211 themes/default/templates/partial/lutim.js.ep:176
 msgid "Something bad happened"
-msgstr ""
+msgstr "Dogodila se greška"
 
 #. ($c->config('contact')
 #: lib/Lutim/Controller/Image.pm:806
 msgid "Something went wrong when creating the zip file. Try again later or contact the administrator (%1)."
 msgstr ""
+"Dogodila se greška prilikom izrade zip datoteke. Pokušaj ponovo kasnije ili "
+"kontaktiraj administratora (%1)."
 
 #: themes/default/templates/about.html.ep:13
 msgid "The IP address of the image's sender is retained for a delay which depends of the administrator's choice (for the official instance, which is located in France, it's one year)."
 msgstr ""
+"IP adresa pošiljatelja slike zadržava se odgodom koja ovisi o izboru "
+"administratora (za službenu instancu, koja se nalazi u Francuskoj, to je "
+"godinu dana)."
 
 #: themes/default/templates/about.html.ep:23
 msgid "The Lutim software is a <a href=\"http://en.wikipedia.org/wiki/Free_software\">free software</a>, which allows you to download and install it on you own server. Have a look at the <a href=\"https://www.gnu.org/licenses/agpl-3.0.html\">AGPL</a> to see what you can do."
 msgstr ""
+"Softver Lutim je <a href=\"http://en.wikipedia.org/wiki/Free_software\""
+">slobodan softver</a> koji omogućuje preuzmanje i instaliranje softvera na "
+"vlastiti poslužitelj. Pogledaj <a href=\"https://www.gnu.org/licenses/agpl-3."
+"0.html\">AGPL</a> za prikaz mogućnosti."
 
 #: lib/Lutim/Controller/Image.pm:348
 msgid "The URL is not valid."
-msgstr ""
+msgstr "URL nije ispravan."
 
 #: themes/default/templates/zip.html.ep:16
 msgid "The automatic download process will open a tab in your browser for each link. You need to allow popups for Lutim."
 msgstr ""
+"Automatski postupak preuzimanja otvorit će karticu u tvom pregledniku za "
+"svaku poveznicu. Moraš dozvoliti skočne prozore za Lutim."
 
 #: themes/default/templates/partial/myfiles.js.ep:32
 msgid "The data has been successfully imported."
-msgstr ""
+msgstr "Podaci su uspješno uvezeni."
 
 #: lib/Lutim/Controller/Image.pm:160 lib/Lutim/Controller/Image.pm:228
 msgid "The delete token is invalid."
-msgstr ""
+msgstr "Token brisanja je neispravan."
 
 #. ($upload->filename)
 #: lib/Lutim/Controller/Image.pm:531
 msgid "The file %1 is not an image."
-msgstr ""
+msgstr "Datoteka %1 nije slika."
 
 #. ($tx->res->max_message_size)
 #. ($c->req->max_message_size)
 #. (config('max_file_size')
 #: lib/Lutim/Controller/Image.pm:312 lib/Lutim/Controller/Image.pm:381 themes/default/templates/partial/lutim.js.ep:249
 msgid "The file exceed the size limit (%1)"
-msgstr ""
+msgstr "Datoteka je prekoračila granicu (%1)"
 
 #: themes/default/templates/stats.html.ep:12
 msgid "The graph's datas are not updated in real-time."
-msgstr ""
+msgstr "Podaci dijagrama se ne aktualiziraju se u stvarnom vremenu."
 
 #. ($image->filename)
 #: lib/Lutim/Controller/Image.pm:230
 msgid "The image %1 has already been deleted."
-msgstr ""
+msgstr "Slika %1 je već izbrisana."
 
 #. ($image->filename)
 #: lib/Lutim/Controller/Image.pm:239 lib/Lutim/Controller/Image.pm:244
 msgid "The image %1 has been successfully deleted"
-msgstr ""
+msgstr "Slika %1 je uspješno izbrisana"
 
 #: themes/default/templates/index.html.ep:57
 msgid "The images are encrypted on the server (Lutim does not keep the key)."
-msgstr ""
+msgstr "Slike su šifrirane na poslužitelju (Lutim ne čuva ključ)."
 
 #: themes/default/templates/about.html.ep:5
 msgid "The images you post on Lutim can be stored indefinitely or be deleted at first view or after a delay selected from those proposed."
 msgstr ""
+"Slike koje objeviš na Lutimu mogu se spremiti na neodređeno vrijeme ili se "
+"mogu izbrisati pri prvom pregledu ili nakon odabrane odgode od predloženih."
 
 #: lib/Lutim/Controller/Image.pm:168
 msgid "The image’s delay has been successfully modified"
-msgstr ""
+msgstr "Kašnjenje slike je uspješno promijenjeno"
 
 #: themes/default/templates/partial/gallery.js.ep:277
 msgid "There is XXXX image(s) in the gallery"
-msgstr ""
+msgstr "Galerija sadrži XXXX slika"
 
 #. ($c->config->{contact})
 #: lib/Lutim/Controller/Image.pm:528
 msgid "There is no more available URL. Retry or contact the administrator. %1"
 msgstr ""
+"Nema više dostupnog URL-a. Pokušaj ponovo ili kontaktiraj administratora. %1"
 
 #: themes/default/templates/index.html.ep:171 themes/default/templates/index.html.ep:215
 msgid "Tiling watermark"
-msgstr ""
+msgstr "Pločasti vodeni žig"
 
 #: themes/default/templates/gallery.html.ep:30
 msgid "Toggle fullscreen"
-msgstr ""
+msgstr "Uključi/isključi cjeloekranski prikaz"
 
 #: themes/default/templates/partial/navbar.html.ep:8
 msgid "Toggle navigation"
-msgstr ""
+msgstr "Uključi/isključi navigaciju"
 
 #: lib/Lutim/Command/cron/stats.pm:159 themes/default/templates/raw.html.ep:11
 msgid "Total"
-msgstr ""
+msgstr "Ukupno"
 
 #: themes/default/templates/index.html.ep:72 themes/default/templates/partial/lutim.js.ep:17
 msgid "Tweet it!"
-msgstr ""
+msgstr "Pošalji tweet!"
 
 #: themes/default/templates/partial/common.js.ep:110 themes/default/templates/partial/common.js.ep:90
 msgid "Unable to copy to clipboard"
-msgstr ""
+msgstr "Neuspjelo kopiranje u međuspremink"
 
 #. ($short)
 #: lib/Lutim/Controller/Image.pm:108 lib/Lutim/Controller/Image.pm:202 lib/Lutim/Controller/Image.pm:273
 msgid "Unable to find the image %1."
-msgstr ""
+msgstr "Neuspjelo pronalaženje slike %1."
 
 #: lib/Lutim/Controller/Image.pm:617 lib/Lutim/Controller/Image.pm:662 lib/Lutim/Controller/Image.pm:703 lib/Lutim/Controller/Image.pm:746 lib/Lutim/Controller/Image.pm:758 lib/Lutim/Controller/Image.pm:769 lib/Lutim/Controller/Image.pm:796 lib/Lutim/Plugin/Helpers.pm:89
 msgid "Unable to find the image: it has been deleted."
-msgstr ""
+msgstr "Neuspjelo pronalaženje slike: slika je izbrisana."
 
 #: lib/Lutim/Controller/Image.pm:145
 msgid "Unable to get counter"
-msgstr ""
+msgstr "Neuspjelo dohvaćanje brojača"
 
 #: themes/default/templates/about.html.ep:17
 msgid "Unlike many image sharing services, you don't give us rights on uploaded images."
 msgstr ""
+"Za razliku od mnogih usluga za dijeljenje slika, ne daješ nam prava za "
+"prenesene slike."
 
 #: themes/default/templates/index.html.ep:187 themes/default/templates/index.html.ep:239
 msgid "Upload an image with its URL"
-msgstr ""
+msgstr "Prenesi sliku s ovim URL-om"
 
 #: themes/default/templates/myfiles.html.ep:119
 msgid "Uploaded at"
-msgstr ""
+msgstr "Preneseno"
 
 #: themes/default/templates/stats.html.ep:6
 msgid "Uploaded files by days"
-msgstr ""
+msgstr "Prenesene datoteke po danima"
 
 #. ($c->app->config('contact')
 #: lib/Lutim/Plugin/Helpers.pm:222
 msgid "Uploading is currently disabled, please try later or contact the administrator (%1)."
 msgstr ""
+"Prijenos je trenutačno onemogućen, pokušaj kasnije ili kontaktiraj "
+"administratora (%1)."
 
 #: themes/default/templates/index.html.ep:77 themes/default/templates/index.html.ep:79 themes/default/templates/myfiles.html.ep:116 themes/default/templates/partial/lutim.js.ep:72 themes/default/templates/partial/lutim.js.ep:76
 msgid "View link"
-msgstr ""
+msgstr "Pogledaj poveznicu"
 
 #: themes/default/templates/about.html.ep:22
 msgid "What about the software which provides the service?"
-msgstr ""
+msgstr "Što je sa softverom koji pruža uslugu?"
 
 #: themes/default/templates/about.html.ep:3
 msgid "What is Lutim?"
-msgstr ""
+msgstr "Što je Lutim?"
 
 #: themes/default/templates/about.html.ep:15
 msgid "Who owns rights on images uploaded on Lutim?"
-msgstr ""
+msgstr "Tko posjeduje prava nad slikama postavljene na Lutimu?"
 
 #: themes/default/templates/about.html.ep:12
 msgid "Yes, it is! On the other side, for legal reasons, your IP address will be stored when you send an image. Don't panic, it is normally the case of all sites on which you send files!"
 msgstr ""
+"Da, je! Međutim, iz pravnih razloga, tvoja IP adresa će se spremiti kada "
+"pošalješ sliku. Bez panike, to je normalno za sve stranice na koje šalješ "
+"datoteke!"
 
 #: themes/default/templates/about.html.ep:10
 msgid "Yes, it is! On the other side, if you want to support the developer, you can do it via <a href=\"https://www.tipeee.com/fiat-tux\">Tipeee</a> or via <a href=\"https://liberapay.com/sky/\">Liberapay</a>."
 msgstr ""
+"Da, je! Međutim, ako želiš podržati programera, to možete učiniti putem "
+"usluge <a href=\"https://www.tipeee.com/fiat-tux\">Tipeee</a> ili <a href=\" "
+"https://liberapay.com/sky/\">Liberapay</a>."
 
 #: themes/default/templates/zip.html.ep:6
 msgid "You asked to download a zip archive for too much files."
-msgstr ""
+msgstr "Zatražio/la si preuzimanje zip arhive za previše datoteka."
 
 #: themes/default/templates/about.html.ep:8
 msgid "You can, optionally, request that the image(s) posted on Lutim to be deleted at first view (or download) or after the delay selected from those proposed."
 msgstr ""
+"Opcionalno možeš zatražiti da se objavljene slike na Lutimu izbrišu pri "
+"prvom pregledu (ili preuzimanju) ili nakon odabrane odgode od predloženih."
 
 #: lib/Lutim/Controller/Authent.pm:27
 msgid "You have been successfully logged in."
-msgstr ""
+msgstr "Uspješno si prijavljan/a."
 
 #: lib/Lutim/Controller/Authent.pm:66 themes/default/templates/logout.html.ep:3
 msgid "You have been successfully logged out."
-msgstr ""
+msgstr "Uspješno si odjevljen/a."
 
 #: themes/default/templates/gallery.html.ep:31
 msgid "Zoom in/out"
-msgstr ""
+msgstr "Uvećaj/Umanji prikaz"
 
 #: themes/default/templates/about.html.ep:27
 msgid "and on"
-msgstr ""
+msgstr "i na"
 
 #: themes/default/templates/about.html.ep:40
 msgid "arabic translation"
-msgstr ""
+msgstr "prijevod na arapski"
 
 #: themes/default/templates/about.html.ep:27
 msgid "core developer"
-msgstr ""
+msgstr "izvorni programer"
 
 #: lib/Lutim.pm:340 lib/Lutim/Command/cron/stats.pm:154 lib/Lutim/Command/cron/stats.pm:168 lib/Lutim/Command/cron/stats.pm:185 themes/default/templates/index.html.ep:3 themes/default/templates/myfiles.html.ep:3 themes/default/templates/partial/raw.js.ep:21 themes/default/templates/partial/raw.js.ep:4 themes/default/templates/raw.html.ep:6
 msgid "no time limit"
-msgstr ""
+msgstr "bez vremenskog ograničenja"
 
 #: themes/default/templates/about.html.ep:38
 msgid "occitan translation"
-msgstr ""
+msgstr "prijevod na okcitanski"
 
 #: themes/default/templates/about.html.ep:27
 msgid "on"
-msgstr ""
+msgstr "na"
 
 #: themes/default/templates/about.html.ep:39
 msgid "paste image to upload ability"
-msgstr ""
+msgstr "umetni sliku za mogućnost prijenosa"
 
 #: themes/default/templates/about.html.ep:41
 msgid "russian translation"
-msgstr ""
+msgstr "prijevod na ruski"
 
 #: themes/default/templates/about.html.ep:36
 msgid "spanish translation"
-msgstr ""
+msgstr "prijevod na španjolski"
 
 #: themes/default/templates/about.html.ep:28
 msgid "webapp developer"
-msgstr ""
+msgstr "programer web-aplikacije"
