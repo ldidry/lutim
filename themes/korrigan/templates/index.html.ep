@@ -1,0 +1,251 @@
+% # vim:set sw=4 ts=4 sts=4 ft=html.epl expandtab:
+% my %d = (
+%   delay_0   => l('no time limit'),
+%   delay_1   => l('24 hours'),
+%   delay_365 => l('1 year')
+% );
+
+    <div id="gallery-url" class="hidden row">
+        <form class="form col-sm-12">
+            <div class="form-group">
+                <label for="gallery-url-input"><%= l('Gallery link') %></label>
+                <div class="input-group">
+                    <a class="input-group-addon" id="gallery-url-link" href="#" target="_blank" title="<%= l('Gallery link') %>">
+                        <span class="icon icon-picture"></span>
+                    </a>
+                    <input class="form-control" name="gallery-url-input" type="text" id="gallery-url-input" readonly></input>
+                    <a href="#" class="input-group-addon jsonly copy-to-clipboard-link" title="<%= l('Copy to clipboard') %>">
+                        <span class="icon icon-clipboard"></span>
+                    </a>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div id="zip-url" class="hidden row">
+        <form class="form col-sm-12">
+            <div class="form-group">
+                <label for="zip-url-input"><%= l('Download zip link') %></label>
+                <div class="input-group">
+                    <a class="input-group-addon" id="zip-url-link" href="#" target="_blank" title="<%= l('Download zip link') %>">
+                        <span class="icon icon-file-archive"></span>
+                    </a>
+                    <input class="form-control" name="zip-url-input" type="text" id="zip-url-input" readonly></input>
+                    <a href="#" class="input-group-addon jsonly copy-to-clipboard-link" title="<%= l('Copy to clipboard') %>">
+                        <span class="icon icon-clipboard"></span>
+                    </a>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div id="random-url" class="hidden row">
+        <form class="form col-sm-12">
+            <div class="form-group">
+                <label for="random-url-input"><%= l('Random image link') %></label>
+                <div class="input-group">
+                    <a class="input-group-addon" id="random-url-link" href="#" target="_blank" title="<%= l('Random image link') %>">
+                        <span class="icon icon-shuffle"></span>
+                    </a>
+                    <input class="form-control" name="random-url-input" type="text" id="random-url-input" readonly></input>
+                    <a href="#" class="input-group-addon jsonly copy-to-clipboard-link" title="<%= l('Copy to clipboard') %>">
+                        <span class="icon icon-clipboard"></span>
+                    </a>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="messages">
+    % if (config('always_encrypt')) {
+        <p><%= l('The images are encrypted on the server (Lutim does not keep the key).') %></p>
+    % }
+    % if (defined(stash('short'))) {
+        % my $url = url_for('/'.stash('short'))->to_abs();
+        <div class="alert alert-success">
+            <div>
+    %     if (defined(stash('thumb'))) {
+                <div class="preview">
+                    <a href="<%= $url.'.'.stash('ext') %>" target="_blank"><img class="thumbnail img-responsive" alt="<%= stash('filename') %> thumbnail" src="<%= stash('thumb') %>"></a>
+                </div>
+    %     }
+                <div>
+    % # Display image informations
+                    <h4>
+                        <a href="<%= $url.'.'.stash('ext') %>" target="_blank"><%= stash('filename') %></a>
+                        &nbsp;&nbsp;&nbsp;<a title="<%= l('Tweet it!') %>" target="_blank" href="https://twitter.com/share?url=<%= $url %>?t"><span class="icon icon-twitter"></span></a>
+                    </h4>
+                    % my $delete_url = url_for('delete', {short => stash('real_short'), token => stash('token')})->to_abs();
+                    <form class="form">
+                        <div class="form-group">
+                            <label class="sr-only" for="view"><%= l('View link') %></label>
+                            <div class="input-group">
+                                <div class="input-group-addon"><a href="<%= $url.'.'.stash('ext') %>" target="_blank"><span class="icon icon-eye" title =" <%= l('View link') %>"></span></a></div>
+                                <input type="text" class="form-control" id="view" value="<%= $url.'.'.stash('ext') %>" readonly>
+                                <a href="#" class="input-group-addon jsonly copy-to-clipboard-link" title="<%= l('Copy to clipboard') %>"><span class="icon icon-clipboard"></span></a>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="sr-only" for="markdown"><%= l('Markdown syntax') %></label>
+                            <div class="input-group">
+                                <div class="input-group-addon"><span class="markdown-mark-solid" title ="<%= l('Markdown syntax') %>"></span></div>
+                                <input type="text" class="form-control" id="markdown" value="![](<%= $url %>)" readonly>
+                                <a href="#" class="input-group-addon jsonly copy-to-clipboard-link" title="<%= l('Copy to clipboard') %>"><span class="icon icon-clipboard"></span></a>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="sr-only" for="download"><%= l('Download link') %></label>
+                            <div class="input-group">
+                                <div class="input-group-addon"><a href="<%= $url %>?dl"><span class="icon icon-download" title ="<%= l('Download link') %>"></span></a></div>
+                                <input type="text" class="form-control" id="download" value="<%= $url %>?dl" readonly>
+                                <a href="#" class="input-group-addon jsonly copy-to-clipboard-link" title="<%= l('Copy to clipboard') %>"><span class="icon icon-clipboard"></span></a>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="sr-only" for="share"><%= l('Link for share on social networks') %></label>
+                            <div class="input-group">
+                                <div class="input-group-addon"><a href="<%= $url %>?t" target="_blank"><span class="icon icon-share" title ="<%= l('Link for share on social networks') %>"></span></a></div>
+                                <input type="text" class="form-control" id="share" value="<%= $url %>?t" readonly>
+                                <a href="#" class="input-group-addon jsonly copy-to-clipboard-link" title="<%= l('Copy to clipboard') %>"><span class="icon icon-clipboard"></span></a>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="form-control-static"><%= link_to $delete_url => ( class => "btn btn-default col-xs-12 text-left", title => l('Deletion link') ) => begin %><span class="icon icon-trash"></span> <%= $delete_url %> <%= end %></span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+    % # Delay modification form
+                % my $modify_url = url_for('modify', {short => stash('real_short'), token => stash('token')})->to_abs();
+                <form class="form col-sm-11 col-sm-offset-1" method="POST" action="<%== $modify_url %>">
+                    <div class="form-group form-inline">
+                        <input name="image_url" type="hidden" value="<%= $url %>">
+                        <select name="delete-day" class="form-control">
+                            %= include 'partial/for_my_delay', d => \%d
+                        </select>
+                        <div class="">
+                            <label>
+                                <input type="checkbox" name="first-view"> <%= l('Delete at first view?') %>
+                            </label>
+                        </div>
+                        <%= submit_button l('Let\'s go!'), class => 'btn btn-sm btn-default btn-primary', id => 'submitmodbutton' %>
+                    </div>
+                </form>
+            </div>
+        </div>
+    % }
+    % if (defined(flash('success'))) {
+        <div class="alert alert-success">
+            <button type="button" class="close jsonly" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <p><%== flash('success') %></p>
+        </div>
+    % }
+    % if (defined(flash('msg'))) {
+        <div class="alert alert-danger">
+            <button type="button" class="close jsonly" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <strong><%= l('Something bad happened') %></strong><br>
+            <%= flash('filename') %> <%= flash('msg') %>
+        </div>
+    % }
+    </div>
+
+    <noscript>
+        <form class="form" method="POST" action="<%= url_for('/') %>" enctype="multipart/form-data">
+            <div class="form-group form-inline">
+                <select name="delete-day" class="form-control">
+                    %= include 'partial/for_my_delay', d => \%d
+                </select>
+                <div class="">
+                    <label>
+                        <input type="checkbox" name="first-view"> <%= l('Delete at first view?') %>
+                    </label>
+                    <label <%== (config('always_encrypt')) ? 'class="always-encrypt"' : '' %>>
+                        <input type="checkbox" name="crypt"> <%= l('Encrypt the image (Lutim does not keep the key).') %>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="keep-exif"> <%= l('Keep EXIF tags') %>
+                    </label>
+                </div>
+            % if ($c->config('watermark_path') && $c->config('watermark_enforce') eq 'none') {
+                <select name="watermark" class="form-control">
+                    <option value="tiling" <%== is_wm_selected('tiling') %>>
+                        <%= l('Tiling watermark') %>
+                    </option>
+                    <option value="single" <%== is_wm_selected('single') %>>
+                        <%= l('Single watermark') %>
+                    </option>
+                    <option value="none"   <%== is_wm_selected('none') %>>
+                        <%= l('No watermark') %>
+                    </option>
+                </select>
+            % }
+            </div>
+            <div class="form-group">
+                <label for="lutim-file"><%= l('Send an image') %></label>
+                <input type="file" name="file" id="lutim-file" accept="image/*">
+            </div>
+            <div class="form-group">
+                <label for="lutim-file-url"><%= l('Upload an image with its URL') %></label>
+                <input type="url" name="lutim-file-url" placeholder="<%= l('Image URL') %>">
+            </div>
+            <p class="help-block"><%= l('Only images are allowed') %></p>
+            <%= submit_button l('Let\'s go!'), class => 'btn btn-default btn-primary', id => 'submitbutton' %>
+        </form>
+    </noscript>
+
+        <!-- D&D Zone-->
+        <div class="jsonly">
+            <select id="delete-day" class="form-control">
+                %= include 'partial/for_my_delay', d => \%d
+            </select>
+            <div class="">
+                <label>
+                    <input type="checkbox" id="first-view"> <%= l('Delete at first view?') %>
+                </label>
+                <label <%== (config('always_encrypt')) ? 'class="always-encrypt"' : '' %>>
+                    <input type="checkbox" id="crypt"> <%= l('Encrypt the image (Lutim does not keep the key).') %>
+                </label>
+                <label>
+                    <input type="checkbox" id="keep-exif"> <%= l('Keep EXIF tags') %>
+                </label>
+            </div>
+            % if ($c->config('watermark_path') && $c->config('watermark_enforce') eq 'none') {
+                <select id="watermark" class="form-control">
+                    <option value="tiling" <%== is_wm_selected('tiling') %>>
+                        <%= l('Tiling watermark') %>
+                    </option>
+                    <option value="single" <%== is_wm_selected('single') %>>
+                        <%= l('Single watermark') %>
+                    </option>
+                    <option value="none"   <%== is_wm_selected('none') %>>
+                        <%= l('No watermark') %>
+                    </option>
+                </select>
+            % }
+        </div>
+    </div><!-- Warning: beings in default.html.ep -->
+
+    <div class="jsonly uploader-container">
+        <div id="drag-and-drop-zone" class="uploader">
+            <div><%= l('Drag & drop images here') %></div>
+            <div class="or"><%= l('-or-') %></div>
+            <div class="browser">
+                <label class="btn">
+                    <span><%= l('Click to open the file browser') %></span>
+                    <input type="file" name="files[]" multiple="multiple" title='<%= l('Click to open the file browser') %>' accept="image/*">
+                </label>
+            </div>
+        </div>
+        <p class="help-block"><%= l('Only images are allowed') %></p>
+        <form class="form-horizontal" method="POST" action="<%== url_for('add') %>">
+            <p>
+                <span class="hidden-spin spin"> <span class="icon-spinner animate-spin pull-right"></span></span>
+                <label for="lutim-file-url"><%= l('Upload an image with its URL') %></label>
+
+                <input type="url" name="lutim-file-url" class="form-control" id="lutim-file-url" placeholder="<%= l('Image URL') %>">
+            </p>
+            <a href="#" class="btn pull-right" id="file-url-button"><%= l('Let\'s go!') %></a>
+        </form>
+    </div>
+</div>
+<!-- /D&D Zone -->
