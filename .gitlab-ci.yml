@@ -86,6 +86,7 @@ carton:
       - local/
   dependencies: []
   script:
+    - cpanm -l local Devel::Cover~1.29
     - carton install --deployment --without=sqlite --without=postgresql --without=minion --without=cache --without=memcached
   when: always
 
