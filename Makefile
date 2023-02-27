@@ -19,9 +19,6 @@ locales:
 	$(XGETTEXT) $(EXTRACTDIR) -o $(POT) 2>/dev/null
 	$(XGETTEXT) $(EXTRACTDIR) -o $(ENPO) 2>/dev/null
 
-stats-locales:
-	wlc stats
-
 podcheck:
 	podchecker lib/Lutim/DB/Image.pm
 
