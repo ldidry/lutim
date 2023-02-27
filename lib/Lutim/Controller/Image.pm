@@ -291,7 +291,7 @@ sub add {
         $unauthorized_api = (!defined($c->req->headers->referrer) || Mojo::URL->new($c->req->headers->referrer)->host ne Mojo::URL->new('https://'.$c->req->headers->host)->host);
         if ($unauthorized_api) {
             my $msg = $c->l('Sorry, the API is disabled');
-            $c->app->log->info('Blocked API call for '.$ip);
+            $c->app->log->info('Blocked API call for '.$c->ip(1));
             return $c->respond_to(
                 json => { json => { success => Mojo::JSON->false, msg => $msg } },
                 any  => sub {
