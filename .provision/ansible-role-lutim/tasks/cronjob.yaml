@@ -1,0 +1,21 @@
+---
+  - name: Copy the cronjob file
+    ansible.builtin.copy:
+      src: ../files/cronjob
+      dest: /etc/cron.d/lutim
+      owner: www-data
+      group: www-data
+
+  - name: "example cronjob"
+    ansible.builtin.cron:
+      name: "cronjob"
+      state: present
+      user: www-data
+      minute: "0"
+      hour: "0"
+      day: "*"
+      month: "*"
+      weekday: "*"
+      job: |
+        carton exec script/lutim cron cleanbdd --mode production; carton exec script/lutim cron cleanfiles --mode production; carton exec script/lutim cron watch --mode production        
+        

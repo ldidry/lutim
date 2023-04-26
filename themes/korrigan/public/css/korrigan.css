@@ -1,0 +1,178 @@
+
+/* Yeched'mad CSS */
+:root {
+    --theme-blue: #0060DF;
+    --theme-blue-hover: #45A1FF;
+}
+
+body {
+    position: relative;
+    background-color: #EEEEEE;
+
+    background-size: cover;
+
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+body::before,
+body::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
+}
+
+body::before {
+    background-size: cover;
+    background-image: url("../img/background.svg");
+}
+
+body::after {
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.75) 4em, transparent 4em);
+}
+
+body .navbar-default {
+    background-color: transparent;
+    border-color: transparent;
+}
+
+body .navbar-default .open > a,
+body .navbar-default .open > a:focus,
+body .navbar-default .open > a:hover,
+body .navbar-default .open > a:active {
+    background-color: rgba(11, 103, 183, 0.5);
+}
+
+body > .container {
+    flex-grow: 1;
+    background-color: #FFFFFF;
+    padding: 3em;
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px #333333;
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.15em;
+
+    /* SVG coming from https://upload.wikimedia.org/wikipedia/commons/0/07/Triskele-Symbol-spiral-five-thirds-turns.svg */
+    background-image: url('../img/triskel.svg');
+    background-size: 500px;
+    background-repeat: no-repeat;
+    background-position: -125px calc(100% + 150px);
+}
+
+body > .container .upload-info {
+    width: 100%;
+}
+
+body > .container::before,
+body > .container::after {
+    display: none;
+}
+
+body.index > .container > * {
+    background-color: rgba(255, 255, 255, 0.8);
+    width: calc(50% - 2em);
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: inherit;
+}
+
+body .logo {
+    display: none;
+}
+
+body .header {
+    margin-bottom: 2em;
+}
+
+body .hennypenny {
+    color: var(--theme-blue);
+    margin-top: 0;
+    font-family: sans-serif;
+}
+
+body label {
+    font-weight: normal;
+    display: block;
+    margin: 1em 0;
+}
+
+body input[type='checkbox'] {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+
+    position: static;
+    margin: 0;
+    cursor: pointer;
+    vertical-align: middle;
+    display: inline-flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    background-color: #555555;
+    width: 3rem;
+    height: 1.5rem;
+    margin-top: 0.25em;
+    margin-bottom: 0.25em;
+    border: none;
+    border-radius: 1em;
+}
+
+body input[type='checkbox']:checked {
+    color: #FFFFFF;
+    background-color: var(--theme-blue);
+    justify-content: flex-end;
+}
+
+body input[type='checkbox']::after {
+    content: '';
+    margin: 0 0.15rem;
+    width: 1.2rem;
+    height: 1.2rem;
+    border-radius: 50%;
+    background-color: white;
+}
+
+body .uploader-container {
+    display: flex;
+    flex-direction: column;
+}
+
+body .uploader {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 1;
+    border: 2px dashed #DDDDDD;
+    border-radius: 5px;
+    color: #6F7986;
+}
+
+body .uploader:hover {
+    background-color: #FDFEFF;
+}
+
+body .uploader div.browser label {
+    background-color: var(--theme-blue);
+}
+
+body .uploader-container form .label {
+    display: block;
+}
+
+body .btn {
+    background-color: var(--theme-blue);
+    color: white;
+    padding: 0.5em;
+}
+
+body .btn:hover,
+body .btn:focus,
+body .btn:active {
+    background-color: var(--theme-blue-hover);
+}

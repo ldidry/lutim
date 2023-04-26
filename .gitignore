@@ -7,6 +7,7 @@ script/hypnotoad.pid
 local/*
 files/*
 stop-upload
+tap.xml
 themes/*
 !themes/default
 !themes/default/*
@@ -14,6 +15,8 @@ themes/default/templates/data.html.ep
 themes/default/templates/raw.html.ep
 themes/default/templates/stats.json.ep
 themes/default/templates/partial/raw.js.ep
+!themes/korrigan
+!themes/korrigan/*
 tmp/*
 .zanata-cache/*
 cover_db/*

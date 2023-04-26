@@ -294,13 +294,13 @@ DISTRIBUTIONS
       Test::More 0.88
       Time::HiRes 0
       version 0
-  DBD-SQLite-1.58
-    pathname: I/IS/ISHIGAKI/DBD-SQLite-1.58.tar.gz
+  DBD-SQLite-1.66
+    pathname: I/IS/ISHIGAKI/DBD-SQLite-1.66.tar.gz
     provides:
-      DBD::SQLite 1.58
+      DBD::SQLite 1.66
       DBD::SQLite::Constants undef
-      DBD::SQLite::VirtualTable 1.58
-      DBD::SQLite::VirtualTable::Cursor 1.58
+      DBD::SQLite::VirtualTable 1.66
+      DBD::SQLite::VirtualTable::Cursor 1.66
       DBD::SQLite::VirtualTable::FileContent undef
       DBD::SQLite::VirtualTable::FileContent::Cursor undef
       DBD::SQLite::VirtualTable::PerlData undef

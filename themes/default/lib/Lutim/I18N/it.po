@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2020-03-09 16:23+0000\n"
-"Last-Translator: Luc Didry <luc@framasoft.org>\n"
+"PO-Revision-Date: 2020-06-09 19:24+0000\n"
+"Last-Translator: roberto marcolin <nilogadda@gmail.com>\n"
 "Language-Team: Italian <https://weblate.framasoft.org/projects/lutim/"
 "default-theme/it/>\n"
 "Language: it\n"
@@ -691,3 +691,15 @@ msgid "For more details, see the <a href=\"https://framagit.org/fiat-tux/hat-sof
 msgstr ""
 "Per altre informazioni, vedi la <a href=\"https://framagit.org/fiat-tux/"
 "hat-softwares/lutim\">homepage del progetto</a>."
+
+#: themes/default/templates/index.html.ep:171 themes/default/templates/index.html.ep:215
+msgid "Tiling watermark"
+msgstr "Filigrana ripetuta"
+
+#: themes/default/templates/index.html.ep:174 themes/default/templates/index.html.ep:218
+msgid "Single watermark"
+msgstr "Filigrana semplice"
+
+#: themes/default/templates/index.html.ep:177 themes/default/templates/index.html.ep:221
+msgid "No watermark"
+msgstr "Nessuna filigrana"

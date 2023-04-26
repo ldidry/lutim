@@ -32,6 +32,7 @@ feature 'postgresql', 'PostgreSQL support' => sub {
 feature 'sqlite', 'SQLite support' => sub {
     requires 'Mojo::SQLite', '>= 3.000';
     requires 'Minion::Backend::SQLite', '>= 4.001';
+    requires 'DBD::SQLite', '>= 1.66';
 };
 feature 'minion', 'Minion support' => sub {
     requires 'Minion';

@@ -4,17 +4,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2020-03-09 16:23+0000\n"
-"Last-Translator: Luc Didry <luc@framasoft.org>\n"
+"PO-Revision-Date: 2022-12-15 21:38+0000\n"
+"Last-Translator: Дмитрий Кузнецов <dk65536@gmail.com>\n"
 "Language-Team: Russian <https://weblate.framasoft.org/projects/lutim/"
 "default-theme/ru/>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
-"4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 3.11.2\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 4.14.1\n"
 
 #. (7)
 #. (30)
@@ -43,11 +43,11 @@ msgstr "24 часа"
 
 #: themes/default/templates/partial/myfiles.js.ep:180
 msgid ": Error while trying to get the counter."
-msgstr ": Error while trying to get the counter."
+msgstr ": Ошибка при подсчете количества ."
 
 #: themes/default/templates/partial/navbar.html.ep:77
 msgid "About"
-msgstr "О Lutim"
+msgstr "Подробнее"
 
 #: lib/Lutim/Command/cron/stats.pm:154 themes/default/templates/raw.html.ep:3
 msgid "Active images"
@@ -55,11 +55,11 @@ msgstr "Активные изображения"
 
 #: lib/Lutim/Controller/Image.pm:328
 msgid "An error occured while downloading the image."
-msgstr "Произошла ошибка при скачивании изображения."
+msgstr "Ошибка при загрузке изображения."
 
 #: themes/default/templates/zip.html.ep:2
 msgid "Archives download"
-msgstr "Archives download"
+msgstr "Загрузить архив"
 
 #: themes/default/templates/about.html.ep:44 themes/default/templates/myfiles.html.ep:135 themes/default/templates/stats.html.ep:25
 msgid "Back to homepage"
@@ -83,7 +83,7 @@ msgstr "Участники"
 
 #: themes/default/templates/partial/common.js.ep:113 themes/default/templates/partial/common.js.ep:93
 msgid "Copied to clipboard"
-msgstr ""
+msgstr "Скопировано в буфер обмена"
 
 #: themes/default/templates/partial/lutim.js.ep:215 themes/default/templates/partial/lutim.js.ep:278 themes/default/templates/partial/lutim.js.ep:364
 msgid "Copy all view links to clipboard"
@@ -163,11 +163,11 @@ msgstr "Общее количество файлов"
 
 #: themes/default/templates/myfiles.html.ep:126
 msgid "Expires at"
-msgstr "Истекает в"
+msgstr "Исчезнет через"
 
 #: themes/default/templates/myfiles.html.ep:112
 msgid "Export localStorage data"
-msgstr ""
+msgstr "Сохранить данные в хранилище"
 
 #: themes/default/templates/myfiles.html.ep:121
 msgid "File name"
@@ -227,7 +227,7 @@ msgstr "Срок хранения"
 
 #: themes/default/templates/partial/common.js.ep:157
 msgid "Image deleted"
-msgstr ""
+msgstr "Изображение удалено"
 
 #: lib/Lutim/Controller/Image.pm:756
 msgid "Image not found."
@@ -235,7 +235,7 @@ msgstr "Изображение не найдено."
 
 #: themes/default/templates/myfiles.html.ep:113
 msgid "Import localStorage data"
-msgstr ""
+msgstr "Загрузить данные с хранилища"
 
 #: themes/default/templates/partial/navbar.html.ep:69
 msgid "Informations"
@@ -287,11 +287,11 @@ msgstr "Ссылка для того, чтоб поделиться в соци�
 
 #: themes/default/templates/login.html.ep:8
 msgid "Login"
-msgstr ""
+msgstr "Имя пользователя"
 
 #: themes/default/templates/partial/navbar.html.ep:33
 msgid "Logout"
-msgstr ""
+msgstr "Выйти"
 
 #: themes/default/templates/zip.html.ep:7
 msgid ""
@@ -321,7 +321,7 @@ msgstr "Синтаксис Маркдауна"
 
 #: themes/default/templates/partial/myfiles.js.ep:149
 msgid "Modify expiration delay"
-msgstr ""
+msgstr "Изменить время на удление"
 
 #: themes/default/templates/myfiles.html.ep:7 themes/default/templates/partial/navbar.html.ep:18
 msgid "My images"
@@ -373,7 +373,7 @@ msgstr "Пожалуйста, свяжитесь с администраторо
 
 #: lib/Lutim/Controller/Authent.pm:36
 msgid "Please, check your credentials: unable to authenticate."
-msgstr ""
+msgstr "Пожалуйста проверьте свои данные: не удалось идентифицировать."
 
 #: themes/default/templates/gallery.html.ep:43
 msgid "Previous (arrow left)"
@@ -381,7 +381,7 @@ msgstr "Предыдущий (стрелка влево)"
 
 #: themes/default/templates/index.html.ep:46 themes/default/templates/index.html.ep:49 themes/default/templates/myfiles.html.ep:96 themes/default/templates/myfiles.html.ep:99
 msgid "Random image link"
-msgstr ""
+msgstr "Случайная ссылка на изображение"
 
 #: themes/default/templates/stats.html.ep:22
 msgid "Raw stats"
@@ -389,7 +389,7 @@ msgstr "Сырые статистические данные"
 
 #: themes/default/templates/myfiles.html.ep:52
 msgid "Save changes"
-msgstr ""
+msgstr "Сохранить изменения"
 
 #: themes/default/templates/index.html.ep:176
 msgid "Send an image"
@@ -397,7 +397,7 @@ msgstr "Послать изображение"
 
 #: themes/default/templates/login.html.ep:16 themes/default/templates/logout.html.ep:5 themes/default/templates/partial/navbar.html.ep:37
 msgid "Signin"
-msgstr ""
+msgstr "Регистрация"
 
 #: themes/default/templates/index.html.ep:151 themes/default/templates/partial/gallery.js.ep:211 themes/default/templates/partial/lutim.js.ep:176
 msgid "Something bad happened"
@@ -460,7 +460,7 @@ msgstr ""
 
 #: themes/default/templates/partial/myfiles.js.ep:32
 msgid "The data has been successfully imported."
-msgstr ""
+msgstr "Данные были успешно импортированы."
 
 #: lib/Lutim/Controller/Image.pm:160 lib/Lutim/Controller/Image.pm:228
 msgid "The delete token is invalid."
@@ -511,7 +511,7 @@ msgstr "Срок хранения изображения успешно изме
 
 #: themes/default/templates/partial/gallery.js.ep:277
 msgid "There is XXXX image(s) in the gallery"
-msgstr ""
+msgstr "В галерее есть изображения для взрослых"
 
 #. ($c->config->{contact})
 #: lib/Lutim/Controller/Image.pm:485
@@ -538,7 +538,7 @@ msgstr "Твитнуть!"
 
 #: themes/default/templates/partial/common.js.ep:110 themes/default/templates/partial/common.js.ep:90
 msgid "Unable to copy to clipboard"
-msgstr ""
+msgstr "Не удается скопировать в буфер обмена"
 
 #. ($short)
 #: lib/Lutim/Controller/Image.pm:108 lib/Lutim/Controller/Image.pm:202 lib/Lutim/Controller/Image.pm:273
@@ -633,11 +633,11 @@ msgstr ""
 
 #: lib/Lutim/Controller/Authent.pm:27
 msgid "You have been successfully logged in."
-msgstr ""
+msgstr "Вы успешно вошли в учетную запись."
 
 #: lib/Lutim/Controller/Authent.pm:66 themes/default/templates/logout.html.ep:3
 msgid "You have been successfully logged out."
-msgstr ""
+msgstr "Вы успешно вышли из учетной записи."
 
 #: themes/default/templates/gallery.html.ep:31
 msgid "Zoom in/out"
@@ -688,3 +688,15 @@ msgid "For more details, see the <a href=\"https://framagit.org/fiat-tux/hat-sof
 msgstr ""
 "Чтоб узнать больше, посетите <a href=\"https://framagit.org/fiat-tux/"
 "hat-softwares/lutim\">главную страницу проекта</a>."
+
+#: themes/default/templates/index.html.ep:177 themes/default/templates/index.html.ep:221
+msgid "No watermark"
+msgstr "Без водного знака"
+
+#: themes/default/templates/index.html.ep:171 themes/default/templates/index.html.ep:215
+msgid "Tiling watermark"
+msgstr "Размещение водяного знака"
+
+#: themes/default/templates/index.html.ep:174 themes/default/templates/index.html.ep:218
+msgid "Single watermark"
+msgstr "Единственный водяной знак"

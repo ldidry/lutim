@@ -79,12 +79,15 @@ sub select_empty {
 }
 
 sub write {
-    my $c = shift;
+    my $c            = shift;
+    my $provisioning = shift;
 
     if ($c->record) {
         $c->app->sqlite->db->query('UPDATE lutim SET counter = ?, created_at = ?, created_by = ?, delete_at_day = ?, delete_at_first_view = ?, enabled = ?, filename = ?, footprint = ?, height = ?, last_access_at = ?, mediatype = ?, mod_token = ?, path = ?, short = ?, width = ?, iv = ? WHERE short = ?', $c->counter, $c->created_at, $c->created_by, $c->delete_at_day, $c->delete_at_first_view, $c->enabled, $c->filename, $c->footprint, $c->height, $c->last_access_at, $c->mediatype, $c->mod_token, $c->path, $c->short, $c->width, $c->iv, $c->short);
     } else {
-        $c->app->sqlite->db->query('INSERT INTO lutim (counter, created_at, created_by, delete_at_day, delete_at_first_view, enabled, filename, footprint, height, last_access_at, mediatype, mod_token, path, short, width, iv) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', $c->counter, $c->created_at, $c->created_by, $c->delete_at_day, $c->delete_at_first_view, $c->enabled, $c->filename, $c->footprint, $c->height, $c->last_access_at, $c->mediatype, $c->mod_token, $c->path, $c->short, $c->width, $c->iv);
+        my $query = 'INSERT INTO lutim (counter, created_at, created_by, delete_at_day, delete_at_first_view, enabled, filename, footprint, height, last_access_at, mediatype, mod_token, path, short, width, iv) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+        $query .= ' ON CONFLICT DO NOTHING' if $provisioning;
+        $c->app->sqlite->db->query($query, $c->counter, $c->created_at, $c->created_by, $c->delete_at_day, $c->delete_at_first_view, $c->enabled, $c->filename, $c->footprint, $c->height, $c->last_access_at, $c->mediatype, $c->mod_token, $c->path, $c->short, $c->width, $c->iv);
         $c->record(1);
     }
 

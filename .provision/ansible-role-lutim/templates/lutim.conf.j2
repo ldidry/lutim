@@ -1,0 +1,317 @@
+# vim:set sw=4 ts=4 sts=4 ft=perl expandtab:
+{
+    ####################
+    # Hypnotoad settings
+    ####################
+    # see http://mojolicio.us/perldoc/Mojo/Server/Hypnotoad for a full list of settings
+    hypnotoad => {
+        # array of IP addresses and ports you want to listen to
+        listen => ['http://127.0.0.1:8080'],
+        # if you use Lutim behind a reverse proxy like Nginx, you want to set proxy to 1
+        # if you use Lutim directly, let it commented
+        #proxy  => 1,
+    },
+
+    ################
+    # Lutim settings
+    ################
+
+    # put a way to contact you here and uncomment it
+    # mandatory
+    contact           => '{{ _contact }}',
+
+    # random string used to encrypt cookies
+    # mandatory
+    secrets           => ['{{ _secrets }}'],
+
+    # choose a theme. See the available themes in `themes` directory
+    # optional, default is 'default'
+    #theme         => 'default',
+
+    # length of the images random URL
+    # optional, default is 8
+    #length            => 8,
+
+    # length of the encryption key
+    # optional, default is 8
+    #crypto_key_length => 8,
+
+    # how many URLs will be provisioned in a batch ?
+    # optional, default is 5
+    #provis_step       => 5,
+
+    # max number of URLs to be provisioned
+    # optional, default is 100
+    #provisioning      => 100,
+
+    # anti-flood protection delay, in seconds
+    # users won't be able to ask Lutim to download images more than one per anti_flood_delay seconds
+    # optional, default is 5
+    #anti_flood_delay  => 5,
+
+    # twitter account which will appear on twitter cards
+    # see https://dev.twitter.com/docs/cards/validation/validator to register your Lutim instance on twitter
+    # optional, no default
+    #tweet_card_via    => '@foo',
+
+    # max image size, in octets
+    # you can write it 10*1024*1024
+    # optional, default is 10485760
+    #max_file_size     => 10485760,
+
+    # if you want to have piwik statistics, provide a piwik image tracker
+    # only the image tracker is allowed, no javascript
+    # optional, no default
+    #piwik_img         => 'https://piwik.example.org/piwik.php?idsite=1&amp;rec=1',
+
+    # if you want to include something in the right of the screen, put it here
+    # here's an example to put the logo of your hoster
+    # optional, no default
+    #hosted_by         => 'My super hoster <img src="http://hoster.example.com" alt="Hoster logo">',
+
+    # DEPRECATED DEPRECATED DEPRECATED DEPRECATED DEPRECATED DEPRECATED DEPRECATED DEPRECATED DEPRECATED DEPRECATED
+    # Lutim now checks if the X-Forwarded-Proto header is present and equal to https.
+    # set to 1 if you use Lutim behind a secure web server
+    # optional, default is 0
+    #https             => 0,
+
+    # broadcast_message which will displayed on all pages of Lutim (but no in json response)
+    # optional, no default
+    #broadcast_message => 'Maintenance',
+
+    # array of authorized domains for API calls.
+    # if you want to authorize everyone to use the API: ['*']
+    # optional, no domains allowed by default
+    #allowed_domains   => ['http://1.example.com', 'http://2.example.com'],
+
+    # default time limit for files
+    # valid values are 0, 1, 7, 30 and 365
+    # optional, default is 0 (no limit)
+    #default_delay     => 0,
+
+    # comma-separated values proposed for delays
+    # optional, default is '0,1,7,30,365'
+    #proposed_delays         => '0,1,7,30,365',
+
+    # number of days after which the images will be deleted, even if they were uploaded with "no delay" (or value superior to max_delay)
+    # a warning message will be displayed on homepage
+    # optional, default is 0 (no limit)
+    #max_delay         => 0,
+
+    # if set to 1, all the images will be encrypted and the encryption option will no be displayed
+    # optional, default is 0
+    #always_encrypt    => 0,
+
+    # you can allow to use a watermark on the uploaded images (or enforce its use)
+    # define a path to the watermark image (provide an image with alpha channel)
+    # you can define the path relative to lutim directory or set an absolute path
+    # to disable the usage of a watermark, leave it blank or commented
+    # optional, no default
+    #watermark_path              => '',
+
+    # the watermark can be a tiling one or a single one
+    # when using a small one, you can choose where to place it
+    # valid values are 'Center', 'North', 'NorthEast', 'East', 'SouthEast', 'South', 'SouthWest', 'West' and 'NorthWest' (case insensitive)
+    # optional, default is 'SouthEast'
+    #watermark_placement => 'SouthEast',
+
+    # choose which watermark (tiling, single or none) should be used by default
+    # valid values are 'tiling', 'single' or 'none' (case insensitive)
+    # optional, default is 'none'
+    #watermark_default => 'none',
+
+    # choose which watermark (tiling, single or none) should be enforced (users will always have a watermark and won’t be able to disable it)
+    # valid values are 'tiling', 'single' or 'none' (case insensitive)
+    # optional, default is 'none'
+    #watermark_enforce => 'none',
+
+    # length of the image's delete token
+    # optional, default is 24
+    #token_length      => 24,
+
+    # URL sub-directory in which you want Lutim to be accessible
+    # example: you want to have Lutim under https://example.org/lutim/
+    # => set prefix to '/lutim' or to '/lutim/', it doesn't matter
+    # optional, defaut is /
+    #prefix            => '/',
+
+    # choose what database you want to use
+    # valid choices are sqlite and postgresql (all lowercase)
+    # optional, default is sqlite
+    #dbtype => 'sqlite',
+
+    # SQLite ONLY - only used if dbtype is set to sqlite
+    # define a path to the SQLite database
+    # you can define it relative to lutim directory or set an absolute path
+    # remember that it has to be in a directory writable by Lutim user
+    # optional, default is lutim.db
+    #db_path           => 'lutim.db',
+
+    # PostgreSQL ONLY - only used if dbtype is set to postgresql
+    # these are the credentials to access the PostgreSQL database
+    # mandatory if you choosed postgresql as dbtype
+    pgdb => {
+        database => 'lutim',
+        host     => 'localhost',
+        user     => 'DBUSER',
+        pwd      => 'DBPASSWORD'
+    },
+
+    # use Minion instead of directly increase counters
+    # need to launch a minion worker service if enabled
+    # optional, Minion is disabled by default
+    minion => {
+        enabled => 0,
+    #    # Which Minion backend to use?
+    #    # valid values are sqlite and postgresql (all lowercase)
+    #    # mandatory if Minion is enabled, default is sqlite
+    #    dbtype  => 'sqlite',
+    #    # SQLite ONLY - only used if if you choose sqlite as Minion backend, define the path to the minion database
+    #    # you can define it relative to lutim directory or set an absolute path
+    #    # remember that it has to be in a directory writable by Lutim user
+    #    # optional, default is minion.db
+        db_path => 'minion.db',
+    #    # PostgreSQL ONLY - only used if you choose postgresql as Minion backend
+    #    # these are the credentials to access the Minion's PostgreSQL database
+    #    # mandatory if you choosed postgresql as Minion backend, no default
+        pgdb => {
+            database => 'lutim_minion',
+            host     => 'localhost',
+            user     => 'DBUSER',
+            pwd      => 'DBPASSWORD'
+        }
+    },
+
+    # set `ldap` if you want that only authenticated users can shorten URLs
+    # please note that everybody can still use shortend URLs
+    # optional, no default
+    #ldap => {
+    #    uri         => 'ldaps://ldap.example.org',                 # server URI
+    #    user_tree   => 'ou=users,dc=example,dc=org',               # search base DN
+    #    bind_dn     => 'uid=ldap_user,ou=users,dc=example,dc=org', # search bind DN
+    #    bind_pwd    => 'secr3t',                                   # search bind password
+    #    user_attr   => 'uid',                                      # user attribute (uid, mail, sAMAccountName, etc.)
+    #    user_filter => '(!(uid=ldap_user))',                       # user filter (to exclude some users, etc.)
+    #},
+
+    # set `htpasswd` if you want to use an htpasswd file instead of ldap
+    # create the file with `htpasswd -c lutim.passwd user`, update it with `htpasswd lutim.passwd user2`
+    # make sure that lutim can read the file!
+    # optional, no default
+    #htpasswd => 'lutim.passwd',
+
+    # if you've set ldap or htpasswd above, the session will last `session_duration` seconds before
+    # the user needs to reauthenticate
+    # optional, default is 3600
+    #session_duration => 3600,
+
+    # disable counters of images
+    # set to 1 to disable counters
+    # optional, counters are enabled by default
+    #disable_img_stats => 0,
+
+    # define the height of the thumbnails generated at users' will
+    # this is not the height of the thumbnails send after upload,
+    # we're talking about thumbnails generated when someone asked for
+    # https://example.org/lutim/tesrinp?thumb
+    # this works only if you have ImageMagick
+    # optional, default is 100 (pixels)
+    #thumbnail_size => 100,
+
+    # maximum number of files that can be downloaded as a single zip archive
+    # if too many files are asked, it results a timeout, so Lutim split the zip URL
+    # in multiple URLs, each with max_file_size images.
+    # timeout behavior depends heavily on your server ressources (CPU) and if images
+    # are encrypted
+    # optional, default is 15
+    #max_files_in_zip => 15,
+
+    # maximum size (in MB) of memory allowed for the image cache
+    # Lutim has a built-in memory-based image cache to accelerate responses to often-viewed images.
+    # This setting makes the cache remove oldest viewed image if the cache size is over it.
+    # WARNING: a cache is created for each hypnotoad worker, which by default is twice the number of
+    # CPUs you have. See http://mojolicious.org/perldoc/Mojo/Server/Hypnotoad#workers for details
+    # So, if you have 4 workers and set cache_max_size to 100, the real maximum size of RAM used for
+    # cache is 400MB.
+    # If set to 0, the cache is disabled
+    # optional, default is 0
+    #cache_max_size => 0,
+
+    # array of memcached servers to cache URL in order to accelerate responses to often-viewed URL.
+    # If set to [], the use of memcached is disabled.
+    # If you use memcached, the internal cache (see cache_max_size option above) will not be used.
+    # Please see https://framagit.org/luc/lutim/wikis/memcached to know how to configure your memcached
+    # servers.
+    # exemple of valid value: ['127.0.0.1:11211']
+    # optional, default is []
+    #memcached_servers => [],
+
+    # enable or disable Lutim built-in logs
+    # set to 1 to disable logs
+    # optional, default is 0
+    #quiet_logs => 0,
+
+    # Content-Security-Policy header that will be sent by Lstu
+    # Set to '' to disable CSP header
+    # https://content-security-policy.com/ provides a good documentation about CSP.
+    # https://report-uri.com/home/generate provides a tool to generate a CSP header.
+    # optional, default is "base-uri 'self'; connect-src 'self'; default-src 'none'; font-src 'self'; form-action 'self'; img-src 'self' data:; script-src 'self' 'unsafe-eval'; style-src 'self' 'unsafe-inline'"
+    # NB: unsafe-inline for script-src and style-src are here only because morris,
+    # the graph library used in the stats page requires it
+    # the default value is good for `default` theme
+    #csp => "base-uri 'self'; connect-src 'self'; default-src 'none'; font-src 'self'; form-action 'self'; img-src 'self' data:; script-src 'self' 'unsafe-eval'; style-src 'self' 'unsafe-inline'",
+
+    # X-Frame-Options header that will be sent by Lstu
+    # Valid values are: 'DENY', 'SAMEORIGIN', 'ALLOW-FROM https://example.com/'
+    # Set to '' to disable X-Frame-Options header
+    # See https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options
+    # Please note that this will add a "frame-ancestors" directive to the CSP header (see above) accordingly
+    # to the chosen setting (See https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/frame-ancestors)
+    # optional, default is 'DENY'
+    #x_frame_options => 'DENY',
+
+    # X-Content-Type-Options that will be sent by Lstu
+    # See https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Content-Type-Options
+    # Set to '' to disable X-Content-Type-Options header
+    # optional, default is 'nosniff'
+    #x_content_type_options => 'nosniff',
+
+    # X-XSS-Protection that will be sent by Lstu
+    # See https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-XSS-Protection
+    # Set to '' to disable X-XSS-Protection header
+    # optional, default is '1; mode=block'
+    #x_xss_protection => '1; mode=block',
+
+    # if set, the uploaded images will use this domain
+    # optional
+    #fixed_domain => 'example.org',
+
+    ##########################
+    # Lutim cron jobs settings
+    ##########################
+
+    # number of days shown in /stats page (used with script/lutim cron stats)
+    # optional, default is 365
+    stats_day_num     => 365,
+
+    # number of days senders' IP addresses are kept in database
+    # after that delay, they will be deleted from database (used with script/lutim cron cleanbdd)
+    # optional, default is 365
+    keep_ip_during    => 365,
+
+    # max size of the files directory, in octets
+    # used by script/lutim cron watch to trigger an action
+    # optional, no default
+    max_total_size    => 10*1024*1024*1024,
+
+    # default action when files directory is over max_total_size (used with script/lutim cron watch)
+    # valid values are 'warn', 'stop-upload' and 'delete'
+    # please, see readme
+    # optional, default is 'warn'
+    #policy_when_full  => 'warn',
+
+    # images which are not viewed since delete_no_longer_viewed_files days will be deleted by the cron cleanfiles task
+    # if delete_no_longer_viewed_files is not set, the no longer viewed files will NOT be deleted
+    # optional, no default
+    delete_no_longer_viewed_files => 90
+};

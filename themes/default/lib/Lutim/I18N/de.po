@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2020-03-09 16:23+0000\n"
-"Last-Translator: Luc Didry <luc@framasoft.org>\n"
+"PO-Revision-Date: 2022-12-24 17:38+0000\n"
+"Last-Translator: Vri <vrifox@vrifox.cc>\n"
 "Language-Team: German <https://weblate.framasoft.org/projects/lutim/"
 "default-theme/de/>\n"
 "Language: de\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.11.2\n"
+"X-Generator: Weblate 4.14.1\n"
 
 #. (7)
 #. (30)
@@ -65,9 +65,8 @@ msgid "An error occured while downloading the image."
 msgstr "Beim Herunterladen des Bildes ist ein Fehler aufgetreten."
 
 #: themes/default/templates/zip.html.ep:2
-#, fuzzy
 msgid "Archives download"
-msgstr "Archiv-Download"
+msgstr "Herunterladen von Archiv"
 
 #: themes/default/templates/about.html.ep:44 themes/default/templates/myfiles.html.ep:135 themes/default/templates/stats.html.ep:25
 msgid "Back to homepage"
@@ -107,11 +106,11 @@ msgstr "Zähler"
 
 #: themes/default/templates/stats.html.ep:18
 msgid "Delay repartition chart for disabled images"
-msgstr ""
+msgstr "Diagramm zur Neuaufteilung der Verzögerung für deaktivierte Bilder"
 
 #: themes/default/templates/stats.html.ep:15
 msgid "Delay repartition chart for enabled images"
-msgstr ""
+msgstr "Diagramm zur Neuaufteilung der Verzögerung für deaktivierte Bilder"
 
 #: themes/default/templates/index.html.ep:133 themes/default/templates/index.html.ep:165 themes/default/templates/index.html.ep:196 themes/default/templates/myfiles.html.ep:124 themes/default/templates/myfiles.html.ep:45 themes/default/templates/partial/lutim.js.ep:161
 msgid "Delete at first view?"
@@ -162,7 +161,7 @@ msgstr "Verschlüssle das Bild (Lutim behält den Key nicht)."
 
 #: themes/default/templates/partial/lutim.js.ep:45 themes/default/templates/partial/myfiles.js.ep:113
 msgid "Error while trying to modify the image."
-msgstr "Beim bearbeiten des Bildes ist ein Fehler aufgetreten."
+msgstr "Beim Bearbeiten des Bildes ist ein Fehler aufgetreten."
 
 #: themes/default/templates/stats.html.ep:10
 msgid "Evolution of total files"
@@ -174,7 +173,7 @@ msgstr "Läuft ab am"
 
 #: themes/default/templates/myfiles.html.ep:112
 msgid "Export localStorage data"
-msgstr ""
+msgstr "localStorage-Daten exportieren"
 
 #: themes/default/templates/myfiles.html.ep:121
 msgid "File name"
@@ -190,7 +189,7 @@ msgstr ""
 
 #: themes/default/templates/partial/navbar.html.ep:80
 msgid "Fork me!"
-msgstr "Fork me!"
+msgstr "Fork mich!"
 
 #: themes/default/templates/index.html.ep:10 themes/default/templates/index.html.ep:13 themes/default/templates/myfiles.html.ep:60 themes/default/templates/myfiles.html.ep:63
 msgid "Gallery link"
@@ -230,7 +229,7 @@ msgstr "Bild-URL"
 
 #: lib/Lutim/Command/cron/stats.pm:153 themes/default/templates/raw.html.ep:2
 msgid "Image delay"
-msgstr ""
+msgstr "Bild-Verzögerung"
 
 #: themes/default/templates/partial/common.js.ep:157
 msgid "Image deleted"
@@ -242,7 +241,7 @@ msgstr "Bild nicht gefunden."
 
 #: themes/default/templates/myfiles.html.ep:113
 msgid "Import localStorage data"
-msgstr ""
+msgstr "localStorage-Daten importieren"
 
 #: themes/default/templates/partial/navbar.html.ep:69
 msgid "Informations"
@@ -294,11 +293,11 @@ msgstr "Links zum teilen auf sozialen Netzwerken"
 
 #: themes/default/templates/login.html.ep:8
 msgid "Login"
-msgstr "Login"
+msgstr "Anmelden"
 
 #: themes/default/templates/partial/navbar.html.ep:33
 msgid "Logout"
-msgstr "Ausloggen"
+msgstr "Abmelden"
 
 #: themes/default/templates/zip.html.ep:7
 msgid ""
@@ -335,7 +334,7 @@ msgstr "Meine Bilder"
 
 #: themes/default/templates/gallery.html.ep:45
 msgid "Next (arrow right)"
-msgstr ""
+msgstr "Nächstes (rechte Pfeiltaste)"
 
 #: themes/default/templates/partial/myfiles.js.ep:105 themes/default/templates/partial/myfiles.js.ep:132
 msgid "No limit"
@@ -386,7 +385,7 @@ msgstr ""
 
 #: themes/default/templates/gallery.html.ep:43
 msgid "Previous (arrow left)"
-msgstr ""
+msgstr "Vorheriges (linke Pfeiltaste)"
 
 #: themes/default/templates/index.html.ep:46 themes/default/templates/index.html.ep:49 themes/default/templates/myfiles.html.ep:96 themes/default/templates/myfiles.html.ep:99
 msgid "Random image link"
@@ -394,7 +393,7 @@ msgstr "Zufälliger Bildlink"
 
 #: themes/default/templates/stats.html.ep:22
 msgid "Raw stats"
-msgstr ""
+msgstr "Rohe Statistiken"
 
 #: themes/default/templates/myfiles.html.ep:52
 msgid "Save changes"
@@ -406,7 +405,7 @@ msgstr "Sende ein Bild"
 
 #: themes/default/templates/login.html.ep:16 themes/default/templates/logout.html.ep:5 themes/default/templates/partial/navbar.html.ep:37
 msgid "Signin"
-msgstr "Einloggen"
+msgstr "Anmelden"
 
 #: themes/default/templates/index.html.ep:151 themes/default/templates/partial/gallery.js.ep:211 themes/default/templates/partial/lutim.js.ep:176
 msgid "Something bad happened"
@@ -464,10 +463,12 @@ msgid ""
 "The automatic download process will open a tab in your browser for each link."
 " You need to allow popups for Lutim."
 msgstr ""
+"Das automatische Herunterladen wird für jeden Link einen neuen Tab in deinem "
+"Browser öffnen. Du musst Pop-Ups für Lutim erlauben."
 
 #: themes/default/templates/partial/myfiles.js.ep:32
 msgid "The data has been successfully imported."
-msgstr ""
+msgstr "Die Daten wurden erfolgreich importiert."
 
 #: lib/Lutim/Controller/Image.pm:160 lib/Lutim/Controller/Image.pm:228
 msgid "The delete token is invalid."
@@ -518,7 +519,7 @@ msgstr "Die Zeit bis zum Löschen des Bildes wurde erfolgreich geändert"
 
 #: themes/default/templates/partial/gallery.js.ep:277
 msgid "There is XXXX image(s) in the gallery"
-msgstr ""
+msgstr "Es gibt XXXX Bild(er) in der Galerie"
 
 #. ($c->config->{contact})
 #: lib/Lutim/Controller/Image.pm:485
@@ -529,11 +530,11 @@ msgstr ""
 
 #: themes/default/templates/gallery.html.ep:30
 msgid "Toggle fullscreen"
-msgstr ""
+msgstr "Vollbild umschalten"
 
 #: themes/default/templates/partial/navbar.html.ep:8
 msgid "Toggle navigation"
-msgstr ""
+msgstr "Navigation umschalten"
 
 #: lib/Lutim/Command/cron/stats.pm:162 themes/default/templates/raw.html.ep:11
 msgid "Total"
@@ -621,9 +622,9 @@ msgid ""
 "do it via <a href=\"https://www.tipeee.com/fiat-tux\">Tipeee</a> or via <a "
 "href=\"https://liberapay.com/sky/\">Liberapay</a>."
 msgstr ""
-"Ja, ist es! Auf der anderen Seite kannst du den Entwickler via <a href="
-"\"https://www.tipeee.com/fiat-tux\">Tipeee</a> oder <a href=\"https://"
-"liberapay.com/sky/\">Liberapay</a> unterstützen."
+"Ja, ist es! Jedoch kannst du den Entwickler via <a href=\"https://www.tipeee."
+"com/fiat-tux\">Tipeee</a> oder <a href=\"https://liberapay.com/sky/\""
+">Liberapay</a> unterstützen."
 
 #: themes/default/templates/zip.html.ep:6
 msgid "You asked to download a zip archive for too much files."
@@ -677,7 +678,7 @@ msgstr "auf"
 
 #: themes/default/templates/about.html.ep:39
 msgid "paste image to upload ability"
-msgstr ""
+msgstr "Bild zum Hochladen einfügen-Funktion"
 
 #: themes/default/templates/about.html.ep:41
 msgid "russian translation"
@@ -690,3 +691,21 @@ msgstr "spanische Übersetzung"
 #: themes/default/templates/about.html.ep:28
 msgid "webapp developer"
 msgstr "Webapp-Entwickler"
+
+#: themes/default/templates/about.html.ep:24
+msgid "For more details, see the <a href=\"https://framagit.org/fiat-tux/hat-softwares/lutim\">homepage of the project</a>."
+msgstr ""
+"Für weitere Details besuche die <a href=\"https://framagit.org/fiat-tux/"
+"hat-softwares/lutim\">Website des Projekts</a>."
+
+#: themes/default/templates/index.html.ep:174 themes/default/templates/index.html.ep:218
+msgid "Single watermark"
+msgstr "Einzelnes Wasserzeichen"
+
+#: themes/default/templates/index.html.ep:171 themes/default/templates/index.html.ep:215
+msgid "Tiling watermark"
+msgstr "Gekacheltes Wasserzeichen"
+
+#: themes/default/templates/index.html.ep:177 themes/default/templates/index.html.ep:221
+msgid "No watermark"
+msgstr "Kein Wasserzeichen"

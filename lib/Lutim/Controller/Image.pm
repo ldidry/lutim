@@ -287,6 +287,22 @@ sub add {
     my $keep_exif = $c->param('keep-exif');
     my $wm        = $c->param('watermark');
 
+    if ($c->config('disable_api')) {
+        my $unauthorized_api = (!defined($c->req->headers->referrer) || Mojo::URL->new($c->req->headers->referrer)->host ne Mojo::URL->new('https://'.$c->req->headers->host)->host);
+        if ($unauthorized_api) {
+            my $msg = $c->l('Sorry, the API is disabled');
+            $c->app->log->info('Blocked API call for '.$c->ip(1));
+            return $c->respond_to(
+                json => { json => { success => Mojo::JSON->false, msg => $msg } },
+                any  => sub {
+                    shift->render(
+                        template => 'index',
+                        msg      => $msg,
+                    );
+                }
+            );
+        }
+    }
     if(!defined($c->stash('stop_upload'))) {
         if (defined($file_url) && $file_url) {
             if (is_http_uri($file_url) || is_https_uri($file_url)) {
