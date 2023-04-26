@@ -1,8 +1,10 @@
 Revision history for Lutim
 
 0.13.0 ????-??-??
-    - 💄 — Add Korrigan theme (Nicolas Frandeboeuf)
+	- 💄 — Add Korrigan theme (Nicolas Frandeboeuf)
 	- 🔥 — Remove zanata stuff
+	- ✨ — Add a config flag to disable API (@b_b)
+	- 🌐 — Update translations
 
 0.12.1 2020-10-08
 	- ⬆️ Update jQuery
