@@ -1,6 +1,8 @@
 Revision history for Lutim
 
 0.14.0 ????-??-??
+	- ⬆️ Update dependencies
+	- 💥 BREAKING CHANGE: Use `?_format=json` instead of `?format=json`
 
 0.13.0 2023-04-26
 	- 💄 — Add Korrigan theme (Nicolas Frandeboeuf)

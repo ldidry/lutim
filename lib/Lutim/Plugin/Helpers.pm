@@ -8,6 +8,7 @@ use Data::Entropy qw(entropy_source);
 use DateTime;
 use Mojo::Util qw(decode);
 use ISO::639_1;
+use Digest::MD5 'md5';
 
 sub register {
     my ($self, $app) = @_;
@@ -258,6 +259,18 @@ sub _is_wm_selected {
     return ($wm eq $c->config('watermark_default')) ? 'selected="selected"' : '';
 }
 
+sub _key_from_key {
+    my $key = shift;
+
+    # Key size for Blowfish is 56
+    my $ks = 56;
+    my $material = md5($key);
+    while (length($material) < $ks) {
+        $material .= md5($material);
+    }
+    return substr($material,0,$ks);
+}
+
 sub _crypt {
     my $c        = shift;
     my $upload   = shift;
@@ -267,10 +280,12 @@ sub _crypt {
     my $iv    = $c->shortener(8);
 
     my $cipher = Crypt::CBC->new(
-        -key    => $key,
-        -cipher => 'Blowfish',
-        -header => 'none',
-        -iv     => $iv
+        -key         => _key_from_key($key),
+        -cipher      => 'Blowfish',
+        -header      => 'none',
+        -literal_key => 1,
+        -pbkdf       => 'pbkdf2',
+        -iv          => $iv
     );
 
     $cipher->start('encrypting');
@@ -289,16 +304,18 @@ sub _crypt {
 
 sub _decrypt {
     my $c    = shift;
-    my $key  = shift;
+    my $key  = _key_from_key(shift);
     my $file = shift;
     my $iv   = shift;
     $iv = 'dupajasi' unless $iv;
 
     my $cipher = Crypt::CBC->new(
-        -key    => $key,
-        -cipher => 'Blowfish',
-        -header => 'none',
-        -iv     => $iv
+        -key         => $key,
+        -cipher      => 'Blowfish',
+        -header      => 'none',
+        -literal_key => 1,
+        -pbkdf       => 'pbkdf2',
+        -iv          => $iv
     );
 
     $cipher->start('decrypting');

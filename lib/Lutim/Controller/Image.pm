@@ -1,8 +1,8 @@
 # vim:set sw=4 ts=4 sts=4 expandtab:
 package Lutim::Controller::Image;
+use Mojo::Asset::Memory;
 use Mojo::Base 'Mojolicious::Controller';
 use Mojo::Util qw(url_escape url_unescape b64_encode encode);
-use Mojo::Asset::Memory;
 use Mojo::JSON qw(true false);
 use Lutim::DB::Image;
 use DateTime;
@@ -487,12 +487,10 @@ sub add {
                     if ($mediatype ne 'image/svg+xml' && $mediatype !~ m#image/(x-)?xcf# && $mediatype ne 'image/webp') {
                         # Remove the EXIF tags
                         my $data = new IO::Scalar \$upload->slurp();
-                        my $et   = new Image::ExifTool;
+                        my $et   = Image::ExifTool->new;
 
-                        # Use $data in Image::ExifTool object
-                        $et->ExtractInfo($data);
                         # Remove all metadata
-                        $et->SetNewValue('*', undef);
+                        $et->SetNewValue('*');
 
                         # Create a temporary IO::Scalar to write into
                         my $temp;
