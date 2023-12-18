@@ -15,6 +15,7 @@ requires 'Filesys::DiskUsage';
 requires 'Switch';
 requires 'Crypt::CBC';
 requires 'Crypt::Blowfish';
+requires 'Digest::MD5';
 requires 'Locale::Maketext';
 requires 'Locale::Maketext::Extract';
 requires 'File::MimeInfo';
