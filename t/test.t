@@ -81,7 +81,7 @@ $t->get_ok('/css/lutim.css')
 # Instance settings informations
 $t->get_ok('/infos')
   ->status_is(200)
-  ->json_has('image_magick')
+  ->json_has('/image_magick')
   ->json_is(
       '/always_encrypt'    => false,
       '/broadcast_message' => 'test broadcast message',
@@ -96,7 +96,7 @@ $t->get_ok('/infos')
 my $image = Mojo::File->new($Bin, '..', 'themes', 'default', 'public', 'img', 'Lutim.png')->to_string;
 $t->post_ok('/' => form => { file => { file => $image }, format => 'json' })
   ->status_is(200)
-  ->json_has('msg', 'success')
+  ->json_has('/msg', '/success')
   ->json_is('/success' => true, '/msg/filename' => 'Lutim.png')
   ->json_like('/msg/short' => qr#[-_a-zA-Z0-9]{8}#, '/msg/real_short' => qr#[-_a-zA-Z0-9]{8}#, '/msg/token' => qr#[-_a-zA-Z0-9]{24}#);
 
@@ -138,7 +138,7 @@ my $token  = $raw->json('/msg/token');
 $t->get_ok('/'.$rshort)
   ->status_is(200);
 
-$t->get_ok('/d/'.$rshort.'/'.$token, form => { format => 'json' })
+$t->get_ok('/d/'.$rshort.'/'.$token, form => { _format => 'json' })
   ->status_is('200')
   ->json_is(
       {

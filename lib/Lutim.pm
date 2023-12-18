@@ -291,7 +291,7 @@ sub startup {
     });
 
     $r->get('/')->
-        over('authorized')->
+        requires('authorized')->
         to('Image#home')->
         name('index');
     $r->get('/')->
@@ -330,7 +330,7 @@ sub startup {
         to('Image#change_lang')->
         name('lang');
 
-    $r->get('/partial/:file' => sub {
+    $r->get('/partial/<:file>.<:f>' => sub {
         my $c = shift;
         $c->render(
             template => 'partial/'.$c->param('file'),
@@ -351,7 +351,7 @@ sub startup {
     })->name('gallery');
 
     $r->get('/myfiles')->
-        over('authorized')->
+        requires('authorized')->
         name('myfiles');
     $r->get('/myfiles')->
         to('Authent#index');
@@ -369,28 +369,28 @@ sub startup {
         ->name('random');
 
     $r->post('/')->
-        over('authorized')->
+        requires('authorized')->
         to('Image#add')->
         name('add');
     $r->post('/')->
         to('Authent#index');
 
     $r->get('/d/:short/:token')->
-        over('authorized')->
+        requires('authorized')->
         to('Image#delete')->
         name('delete');
     $r->get('/d/:short/:token')->
         to('Authent#index');
 
     $r->post('/m/:short/:token')->
-        over('authorized')->
+        requires('authorized')->
         to('Image#modify')->
         name('modify');
     $r->post('/m/:short/:token')->
         to('Authent#index');
 
     $r->post('/c')->
-        over('authorized')->
+        requires('authorized')->
         to('Image#get_counter')->
         name('counter');
     $r->post('/c')->
