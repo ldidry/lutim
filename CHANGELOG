@@ -1,6 +1,8 @@
 Revision history for Lutim
 
-0.15.0 ????-??-??
+0.16.0 ????-??-??
+
+0.15.0 2023-12-19
 	- ✨ — Add --nuke option to image command
 
 0.14.0 2023-12-18
