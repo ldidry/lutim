@@ -46,7 +46,8 @@ sub run {
       'r|remove=s{1,}' => \my @remove,
       'y|yes'          => \my $yes,
       'q|quiet'        => \my $quiet,
-      's|search=s'     => \my $ip
+      's|search=s'     => \my $ip,
+      'n|nuke=s'       => \my $nuke,
     ;
 
     if (scalar @info) {
@@ -85,8 +86,42 @@ sub run {
             push @shorts, $e->short;
             print_infos($e, $csv);
         });
-        say sprintf('%d matching URLs', $u->size);
+        say sprintf('%d matching images', $u->size);
         say sprintf("If you want to delete those images, please do:\n  carton exec script/lutim image --remove %s", join(' ', @shorts)) if @shorts;
+    }
+    if ($nuke) {
+        my $i = get_short($c, $nuke);
+        if ($i && $i->created_by) {
+            my $u = Lutim::DB::Image->new(app => $c->app)->search_exact_created_by($i->created_by);
+            my @shorts;
+            say sprintf('%d images created by the same IP address (%s) than image %s', $u->size, $i->created_by, $nuke);
+            my $confirm = ($yes) ? 'yes' : undef;
+            unless (defined $confirm) {
+                printf('Are you sure you want to remove those %d images? [N/y] ', $u->size);
+                $confirm = <STDIN>;
+                chomp $confirm;
+            }
+            if ($confirm =~ m/^y(es)?$/i) {
+                $u->each(sub {
+                    my ($e, $num) = @_;
+                    my $i = get_short($c, $e->short);
+                    if ($i) {
+                        print_infos($i, $csv);
+                        if ($i->enabled) {
+                            delete_short($c, $i, 1);
+                        } else {
+                            say sprintf('The image %s is already disabled', $e->short);
+                        }
+                    }
+                });
+            } else {
+                say 'Answer was not "y" or "yes". Aborting deletion.';
+            }
+        } elsif (! $i->created_by) {
+            say sprintf('Image %s does not contain its creator’s IP address.', $nuke);
+        } else {
+            say sprintf('Sorry, can’t find image %s', $nuke);
+        }
     }
 }
 
@@ -168,7 +203,7 @@ sub delete_short {
 
     my $confirm = ($y) ? 'yes' : undef;
     unless (defined $confirm) {
-        printf('Are you sure you want to remove this image (%s) ? [N/y] ', $i->short);
+        printf('Are you sure you want to remove this image (%s)? [N/y] ', $i->short);
         $confirm = <STDIN>;
         chomp $confirm;
     }
@@ -191,6 +226,7 @@ Lutim::Command::image - Manage URL in Lutim's database
       carton exec script/lutim image --info <short> <short> [--csv]              Print infos about the space-separated images (--csv creates a CSV output)
       carton exec script/lutim image --remove <short> <short> [--yes] [--quiet]  Delete the space-separated images (--yes disables confirmation, --quiet disables informations printing)
       carton exec script/lutim image --search <ip>                               Print infos about the images uploaded by this IP (database LIKE, may include images uploaded by other IPs)
+      carton exec script/lutim image --nuke <short>                              Delete the image and all images sent by the same IP address and print infos about the deleted images
 
 =cut
 
