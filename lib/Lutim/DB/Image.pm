@@ -345,6 +345,20 @@ sub to_hash {
 
 =back
 
+=head2 search_exact_created_by
+
+=over 1
+
+=item B<Usage>     : C<$c-E<gt>search_exact_created_by($ip)>
+
+=item B<Arguments> : an IP address
+
+=item B<Purpose>   : get enabled images that have been uploaded by this IP address
+
+=item B<Returns>   : a Mojo::Collection object containing the matching images as Lutim::DB::Image objects
+
+=back
+
 =cut
 
 1;

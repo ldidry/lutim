@@ -213,6 +213,27 @@ sub search_created_by {
     return c(@images);
 }
 
+sub search_exact_created_by {
+    my $c  = shift;
+    my $ip = shift;
+
+    my @images;
+
+    my $records = $c->app->pg->db->select('lutim', undef, { enabled => 1, created_by => $ip })->hashes;
+
+    $records->each(
+        sub {
+            my ($e, $num) = @_;
+            my $i = Lutim::DB::Image->new(app => $c->app);
+            $i->_slurp($e);
+
+            push @images, $i;
+        }
+    );
+
+    return c(@images);
+}
+
 sub _slurp {
     my $c = shift;
     my $r = shift;
