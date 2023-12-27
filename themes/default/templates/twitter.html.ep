@@ -26,7 +26,7 @@
         <meta name="twitter:title" content="<%= $filename %>">
         <meta name="twitter:player:width" content="<%= $width %>">
         <meta name="twitter:player:height" content="<%= $height %>">
-        %= javascript '/js/jquery-3.2.1.min.js'
+        %= javascript '/js/jquery-3.7.1.min.js'
         %= javascript '/js/freezeframe.min.js'
         %= javascript '/js/twitter.js'
 % } else {

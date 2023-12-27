@@ -62,7 +62,7 @@
 % if (defined(config('piwik_img'))) {
         <img src="<%== config('piwik_img') %>" class="border-zero" alt="">
 % }
-        %= javascript '/js/jquery-3.2.1.min.js'
+        %= javascript '/js/jquery-3.7.1.min.js'
         %= javascript '/partial/manifest.js'
         %= javascript '/js/toastify.js'
         %= javascript '/js/bootstrap.min.js'
