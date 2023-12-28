@@ -1,9 +1,6 @@
 % # vim:set sw=4 ts=4 sts=4 ft=html.epl expandtab:
 % use Mojo::Util qw(url_escape);
-% my $twitter_url = 'https://twitter.com/share';
 % my $url    = url_for('/')->to_abs();
-% $twitter_url .= '?url='.url_escape("$url")
-%              .'&text=Check out this %23Lutim instance! ';
 <!DOCTYPE html>
 <html>
     <head>
@@ -32,7 +29,7 @@
 % }
     </head>
     <body>
-        %= include 'partial/navbar', twitter_url => $twitter_url
+        %= include 'partial/navbar'
         <div class="container">
             <div>
 % if (defined(config('hosted_by'))) {

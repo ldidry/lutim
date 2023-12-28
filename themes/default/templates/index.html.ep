@@ -69,7 +69,6 @@
 % # Display image informations
                 <h4>
                     <a href="<%= $url.'.'.stash('ext') %>" target="_blank"><%= stash('filename') %></a>
-                    &nbsp;&nbsp;&nbsp;<a title="<%= l('Tweet it!') %>" target="_blank" href="https://twitter.com/share?url=<%= $url %>?t"><span class="icon icon-twitter"></span></a>
                 </h4>
                 % my $delete_url = url_for('delete', {short => stash('real_short'), token => stash('token')})->to_abs();
                 <form class="form">

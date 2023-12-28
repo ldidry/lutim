@@ -4,7 +4,7 @@
 It means Let's Upload That Image.
 
 ## What does it do?
-It stores images and allows you to see them, download them or share them on social networks. From version 0.5, the gif images can be displayed as animated gifs in Twitter, but you need an HTTPS server (Twitter requires that. Lutim detects if you have a HTTPS server and displays a static image twitter card if you don't);
+It stores images and allows you to see them, download them or share them on social networks.
 
 Images are indefinitely stored unless you request that they will be deleted at first view or after 24 hours / one week / one month / one year.
 

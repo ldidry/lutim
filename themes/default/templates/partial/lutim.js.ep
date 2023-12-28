@@ -12,13 +12,6 @@ function cleanName(name, empty) {
         return name.replace(/</g, '&lt;').replace(/>/g, '&gt;');
     }
 }
-function tw_url(url) {
-    return btn = [
-        '<a title="<%= l('Tweet it!') %>" target="_blank" href="https://twitter.com/share?url=<%== url_for('/')->to_abs() %>', url, '?t" class="btn btn-default">',
-           '<span class="icon icon-twitter"></span>',
-        '</a>'
-    ].join('');
-}
 function modifyImage(e) {
     e.preventDefault();
     var url   = $(this).data('modlink');
@@ -115,7 +108,6 @@ function buildMessage(success, msg) {
                                         '<a href="', link(msg.short, 't'), '" target="_blank" class="btn btn-default">',
                                             '<span class="icon icon-share" title="<%= l('Link for share on social networks') %>"></span>',
                                         '</a>',
-                                        tw_url(msg.short),
                                     '</div>',
                                     '<input type="text" class="form-control" id="share', msg.real_short, '" value="', link(msg.short, 't'), '" readonly>',
                                     '<a href="#" class="input-group-addon copy-to-clipboard-link" title="<%= l('Copy to clipboard') %>">',
