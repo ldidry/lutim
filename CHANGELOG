@@ -6,6 +6,7 @@ Revision history for Lutim
 	- 🎨 — Use template literals in js
 	- 🐛 — Gallery, zip and random URLs are now updated when closing image dialog box
 	— ➖ — Replace moment.js with Date().toLocaleDateString(…)
+	- 🩹 — Replace old URL of the project
 
 0.15.0 2023-12-19
 	- ✨ — Add --nuke option to image command

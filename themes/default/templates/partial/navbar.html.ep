@@ -63,7 +63,7 @@
                             <%= link_to url_for('about') => begin %><%= l('About') %><% end %>
                         </li>
                         <li>
-                            <%= link_to 'https://framagit.org/luc/lutim' => begin %><%= l('Fork me!') %><% end %>
+                            <%= link_to 'https://framagit.org/fiat-tux/hat-softwares/lutim' => begin %><%= l('Fork me!') %><% end %>
                         </li>
                     </ul>
                 </li>

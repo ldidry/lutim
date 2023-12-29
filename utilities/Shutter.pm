@@ -39,7 +39,7 @@ $d->dir( $ENV{'SHUTTER_INTL'} );
 
 my %upload_plugin_info = (
     'module'                        => "Lutim",
-    'url'                           => "https://lut.im/",
+    'url'                           => "https://lutim.fiat-tux.fr/",
     'registration'                  => "-",
     'name'                          => "Lutim",
     'description'                   => "Upload screenshots to Lutim",
@@ -102,7 +102,7 @@ sub upload {
     #upload the file
     eval{
 
-        my $url     = 'https://lut.im/';
+        my $url     = 'https://lutim.fiat-tux.fr/';
         my $request = HTTP::Request::Common::POST(
             $url,
             Content_Type => 'multipart/form-data',

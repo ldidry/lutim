@@ -11,8 +11,8 @@
         "256": "<%= url_for('/img/lutim256.png') %>"
     },
     "developer": {
-        "name": "Lutim team !",
-        "url": "https://framagit.org/luc/lutim"
+        "name": "Lutim team!",
+        "url": "https://framagit.org/fiat-tux/hat-softwares/lutim"
     },
     "default_locale": "en",
     "locales": {

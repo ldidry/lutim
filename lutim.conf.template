@@ -239,7 +239,7 @@
     # array of memcached servers to cache URL in order to accelerate responses to often-viewed URL.
     # If set to [], the use of memcached is disabled.
     # If you use memcached, the internal cache (see cache_max_size option above) will not be used.
-    # Please see https://framagit.org/luc/lutim/wikis/memcached to know how to configure your memcached
+    # Please see https://framagit.org/fiat-tux/hat-softwares/lutim/-/wikis/memcached to know how to configure your memcached
     # servers.
     # exemple of valid value: ['127.0.0.1:11211']
     # optional, default is []

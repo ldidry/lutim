@@ -171,12 +171,6 @@ msgstr "Exportera localStorage-data"
 msgid "File name"
 msgstr "Filnamn"
 
-#: themes/default/templates/about.html.ep:24
-msgid "For more details, see the <a href=\"https://framagit.org/luc/lutim\">homepage of the project</a>."
-msgstr ""
-"Se <a href=\"https://framagit.org/luc/lutim\">projektets hemsida</a> för mer "
-"information."
-
 #: themes/default/templates/partial/navbar.html.ep:66
 msgid "Fork me!"
 msgstr "Grena mig!"
