@@ -49,7 +49,7 @@ function buildMessage(success, msg) {
                                                 </a>
                                             </div>` : '';
         return `<div class="alert alert-success" id="alert-${msg.real_short}">
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <button id="close-${msg.real_short}" type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                     <div class="row">${thumb}
                         <div class="col-sm-11">
                             <h4>
@@ -208,6 +208,12 @@ function bindddz(firstview, deleteday) {
                                         </div>`);
             }
             $('.messages').append(buildMessage(data.success, data.msg));
+            $(`#close-${data.msg.real_short}`).on('click', function(e) {
+                e.preventDefault();
+                rmFromShortHash(`${data.msg.short}.${data.msg.ext}`);
+                rmFromZipHash(data.msg.short);
+                rmFromRandomHash(data.msg.short);
+            });
             $(`#del-${data.msg.real_short}`).on('click', function(e) {
                 e.preventDefault();
                 rmFromShortHash(`${data.msg.short}.${data.msg.ext}`);
