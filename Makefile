@@ -13,7 +13,6 @@ minify:
 	@cd ./themes/default/public/css/ && cat bootstrap.min.css fontello.css hennypenny.css lutim.css toastify.css | csso > common.min.css
 	@cd ./themes/default/public/css/ && cat animation.css uploader.css markdown.css                              | csso > not_stats.min.css
 	@cd ./themes/default/public/css/ && cat photoswipe.css default-skin/default-skin.css                         | csso > gallery.min.css
-	@cd ./themes/default/public/css/ && cat twitter.css                                                          | csso > twitter.min.css
 
 locales:
 	$(XGETTEXT) $(EXTRACTDIR) -o $(POT) 2>/dev/null
