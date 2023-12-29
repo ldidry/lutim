@@ -179,14 +179,6 @@ msgstr "Exportar datos de almacenamiento local"
 msgid "File name"
 msgstr "Nombre de archivo"
 
-#: themes/default/templates/about.html.ep:24
-msgid ""
-"For more details, see the <a href=\"https://framagit.org/luc/"
-"lutim\">homepage of the project</a>."
-msgstr ""
-"Para más detalles, vea la <a href=\"https://framagit.org/luc/lutim\">página "
-"del proyecto</a>."
-
 #: themes/default/templates/partial/navbar.html.ep:80
 msgid "Fork me!"
 msgstr "¡Clóname!"

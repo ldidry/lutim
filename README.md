@@ -4,27 +4,24 @@
 It means Let's Upload That Image.
 
 ## What does it do?
-It stores images and allows you to see them, download them or share them on social networks. From version 0.5, the gif images can be displayed as animated gifs in Twitter, but you need an HTTPS server (Twitter requires that. Lutim detects if you have a HTTPS server and displays a static image twitter card if you don't);
+It stores images and allows you to see them, download them or share them on social networks.
 
 Images are indefinitely stored unless you request that they will be deleted at first view or after 24 hours / one week / one month / one year.
 
 ## License
 Lutim is licensed under the terms of the AGPL. See the LICENSE file.
 
-## Official instance
-You can see it working at https://lut.im.
-
 ## Logo
 Lutim's logo is an adaptation of [Lutin](http://commons.wikimedia.org/wiki/File:Lutin_by_godo.jpg) by [Godo](http://godoillustrateur.wordpress.com/), licensed under the terms of the CC-BY-SA 3.0 license.
 
-![Lutim's logo](https://lut.im/img/Lutim_small.png)
+![Lutim's logo](https://lutim.fiat-tux.fr/img/Lutim_small.png)
 
 ## Wiki
 
-The official wiki contains all you need to know about Lutim (installation, API, etc.). Go to <https://framagit.org/luc/lutim/wikis/home> or clone it:
+The official wiki contains all you need to know about Lutim (installation, API, etc.). Go to <https://framagit.org/fiat-tux/hat-softwares/lutim/-/wikis/home> or clone it:
 
 ```
-git clone https://framagit.org/luc/lutim.wiki.git
+git clone https://framagit.org/fiat-tux/hat-softwares/lutim.wiki.git
 ```
 
 ## Encryption
@@ -43,9 +40,9 @@ See [AUTHORS.md](AUTHORS.md) file.
 
 ## Contribute!
 
-Please consider contributing, either by [reporting issues](https://framagit.org/luc/lutim/issues) or by helping the [internationalization](https://weblate.framasoft.org/projects/lutim/). And of course, code contribution are welcome!
+Please consider contributing, either by [reporting issues](https://framagit.org/fiat-tux/hat-softwares/lutim/issues) or by helping the [internationalization](https://weblate.framasoft.org/projects/lutim/). And of course, code contribution are welcome!
 
-The details on how to contribute are on the [wiki](https://framagit.org/luc/lutim/wikis/contribute).
+The details on how to contribute are on the [wiki](https://framagit.org/fiat-tux/hat-softwares/lutim/wikis/contribute).
 
 ## Make a donation
 

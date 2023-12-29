@@ -1,9 +1,6 @@
 % # vim:set sw=4 ts=4 sts=4 ft=html.epl expandtab:
 % use Mojo::Util qw(url_escape);
-% my $twitter_url = 'https://twitter.com/share';
 % my $url    = url_for('/')->to_abs();
-% $twitter_url .= '?url='.url_escape("$url")
-%              .'&text=Check out this %23Lutim instance! ';
 <!DOCTYPE html>
 <html>
     <head>
@@ -33,7 +30,7 @@
         %= stylesheet '/css/korrigan.css'
     </head>
     <body class="<%== current_route %>">
-        %= include 'partial/navbar', twitter_url => $twitter_url
+        %= include 'partial/navbar'
         <div class="container">
             <div class="upload-info"><!-- Warning: ends in index.html.ep -->
             <div>
@@ -64,7 +61,7 @@
 % if (defined(config('piwik_img'))) {
         <img src="<%== config('piwik_img') %>" class="border-zero" alt="">
 % }
-        %= javascript '/js/jquery-3.2.1.min.js'
+        %= javascript '/js/jquery-3.7.1.min.js'
         %= javascript '/partial/manifest.js'
         %= javascript '/js/toastify.js'
         %= javascript '/js/bootstrap.min.js'
@@ -81,6 +78,7 @@
 % }
 % if (current_route 'index') {
         %= javascript '/partial/lutim.js'
+        %= javascript '/partial/korrigan.js'
 % }
 % if (current_route 'gallery') {
         %= javascript '/js/photoswipe.min.js'
@@ -89,9 +87,9 @@
         %= javascript '/js/FileSaver.min.js'
         %= javascript '/partial/gallery.js'
         %= javascript '/partial/lutim.js'
+        %= javascript '/partial/korrigan.js'
 % }
 % if (current_route 'myfiles') {
-        %= javascript '/js/moment-with-locales.min.js'
         %= javascript '/partial/myfiles.js'
 % }
     </body>

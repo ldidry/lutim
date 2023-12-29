@@ -9,14 +9,14 @@ function addToShortHash(short) {
     window.short_hash[short] = 1;
     if (Object.keys(window.short_hash).length > 0) {
         $('#gallery-url').removeClass('hidden');
-        $('#gallery-url-input').val(window.gallery_url+Object.keys(window.short_hash).join(','));
-        $('#gallery-url-link').attr('href', window.gallery_url+Object.keys(window.short_hash).join(','));
+        $('#gallery-url-input').val(`${window.gallery_url}${Object.keys(window.short_hash).join(',')}`);
+        $('#gallery-url-link').attr('href', `${window.gallery_url}${Object.keys(window.short_hash).join(',')}`);
     }
 }
 function rmFromShortHash(short) {
     delete window.short_hash[short];
-    $('#gallery-url-input').val(window.gallery_url+Object.keys(window.short_hash).join(','));
-    $('#gallery-url-link').attr('href', window.gallery_url+Object.keys(window.short_hash).join(','));
+    $('#gallery-url-input').val(`${window.gallery_url}${Object.keys(window.short_hash).join(',')}`);
+    $('#gallery-url-link').attr('href', `${window.gallery_url}${Object.keys(window.short_hash).join(',')}`);
     if (Object.keys(window.short_hash).length === 0) {
         $('#gallery-url').addClass('hidden');
     }
@@ -25,14 +25,14 @@ function addToZipHash(short) {
     window.zip_hash[short] = 1;
     if (Object.keys(window.zip_hash).length > 0) {
         $('#zip-url').removeClass('hidden');
-        $('#zip-url-input').val(window.zip_url+Object.keys(window.zip_hash).join('&i='));
-        $('#zip-url-link').attr('href', window.zip_url+Object.keys(window.zip_hash).join('&i='));
+        $('#zip-url-input').val(`${window.zip_url}${Object.keys(window.zip_hash).join('&i=')}`);
+        $('#zip-url-link').attr('href', `${window.zip_url}${Object.keys(window.zip_hash).join('&i=')}`);
     }
 }
 function rmFromZipHash(short) {
     delete window.zip_hash[short];
-    $('#zip-url-input').val(window.zip_url+Object.keys(window.zip_hash).join('&i='));
-    $('#zip-url-link').attr('href', window.zip_url+Object.keys(window.zip_hash).join('&i='));
+    $('#zip-url-input').val(`${window.zip_url}${Object.keys(window.zip_hash).join('&i=')}`);
+    $('#zip-url-link').attr('href', `${window.zip_url}${Object.keys(window.zip_hash).join('&i=')}`);
     if (Object.keys(window.zip_hash).length === 0) {
         $('#zip-url').addClass('hidden');
     }
@@ -41,14 +41,14 @@ function addToRandomHash(short) {
     window.random_hash[short] = 1;
     if (Object.keys(window.random_hash).length > 0) {
         $('#random-url').removeClass('hidden');
-        $('#random-url-input').val(window.random_url+Object.keys(window.random_hash).join('&i='));
-        $('#random-url-link').attr('href', window.random_url+Object.keys(window.random_hash).join('&i='));
+        $('#random-url-input').val(`${window.random_url}${Object.keys(window.random_hash).join('&i=')}`);
+        $('#random-url-link').attr('href', `${window.random_url}${Object.keys(window.random_hash).join('&i=')}`);
     }
 }
 function rmFromRandomHash(short) {
     delete window.random_hash[short];
-    $('#random-url-input').val(window.random_url+Object.keys(window.random_hash).join('&i='));
-    $('#random-url-link').attr('href', window.random_url+Object.keys(window.random_hash).join('&i='));
+    $('#random-url-input').val(`${window.random_url}${Object.keys(window.random_hash).join('&i=')}`);
+    $('#random-url-link').attr('href', `${window.random_url}${Object.keys(window.random_hash).join('&i=')}`);
     if (Object.keys(window.random_hash).length === 0) {
         $('#random-url').addClass('hidden');
     }
@@ -85,10 +85,10 @@ function copyLink(e) {
     e.preventDefault();
     var successful = copyText($(this).prop('href'));
     var msg = successful ? 'successful' : 'unsuccessful';
-    console.debug('Copying text command was ' + msg);
+    console.debug(`Copying text command was ${msg}`);
     if (!successful) {
         badToast('<%= l('Unable to copy to clipboard') %>');
-        throw new Error('Copying text command was ' + msg);
+        throw new Error(`Copying text command was ${msg}`);
     } else {
         goodToast('<%= l('Copied to clipboard') %>');
     }
@@ -105,10 +105,10 @@ function copyToClipboard(el) {
     try {
         var successful = copyInput(el);
         var msg = successful ? 'successful' : 'unsuccessful';
-        console.debug('Copying text command was ' + msg);
+        console.debug(`Copying text command was ${msg}`);
         if (!successful) {
             badToast('<%= l('Unable to copy to clipboard') %>');
-            throw new Error('Copying text command was ' + msg);
+            throw new Error(`Copying text command was ${msg}`);
         } else {
             goodToast('<%= l('Copied to clipboard') %>');
         }
@@ -126,9 +126,9 @@ function copyAllToClipboard(e) {
     try {
         var successful = copyText(text.join("\n"));
         var msg = successful ? 'successful' : 'unsuccessful';
-        console.debug('Copying text command was ' + msg);
+        console.debug(`Copying text command was ${msg}`);
         if (!successful) {
-            throw new Error('Copying text command was ' + msg);
+            throw new Error(`Copying text command was ${msg}`);
         }
     } catch (err) {
         prompt('<%= l('Hit Ctrl+C, then Enter to copy the short link') %>', text.join(" "));
@@ -144,14 +144,14 @@ function delImage(e) {
     var short = $(this).attr('data-short');
     var token = $(this).attr('data-token');
     $.ajax({
-        url: '<%= url_for('/') %>d/'+short+'/'+token,
+        url: `<%= url_for('/') %>d/${short}/${token}`,
         method: 'GET',
         data: {
             _format: 'json'
         },
         success: function(data) {
             if (data.success) {
-                $('#alert-'+short).remove();
+                $(`#alert-${short}`).remove();
                 evaluateCopyAll();
                 delItem(short);
                 goodToast('<%= l('Image deleted') %>');
@@ -168,30 +168,33 @@ function delImage(e) {
 function link(url, dl, token, modify, only_url) {
     if (token !== undefined) {
         if (modify !== undefined && modify === true) {
-            return  '<%== url_for('/m/')->to_abs() %>'+url+'/'+token;
+            return  `<%== url_for('/m/')->to_abs() %>${url}/${token}`;
         }
-        var link = '<%== url_for('/')->to_abs() %>d/'+url+'/'+token;
+        var link = `<%== url_for('/')->to_abs() %>d/${url}/${token}`;
         if (only_url !== undefined && only_url === true) {
             return link;
         }
-        return [
-            '<label class="sr-only" for="link-del-', url, '"><%= l('Deletion link') %></label>',
-            '<div class="input-group input-group-sm">',
-                '<div class="input-group-btn adjust-addon">',
-                    '<a class="btn btn-default text-danger" href="#" title="<%= l('Deletion link') %>" id="del-', url, '" data-short="', url, '" data-token="', token, '">',
-                        '<span class="icon icon-trash"></span> ',
-                    '</a>',
-                '</div>',
-                '<input type="text" class="form-control" id="link-del-', url, '" value="', link, '" readonly>',
-                '<a href="#" class="input-group-addon copy-to-clipboard-link" title="<%= l('Copy to clipboard') %>">',
-                    '<span class="icon icon-clipboard"></span>',
-                '</a>',
-            '</div>'
-        ].join('');
+        return `<label class="sr-only" for="link-del-${url}"><%= l('Deletion link') %></label>
+                <div class="input-group input-group-sm">
+                    <div class="input-group-btn adjust-addon">
+                        <a href="#"
+                           class="btn btn-default text-danger"
+                           title="<%= l('Deletion link') %>"
+                           id="del-${url}"
+                           data-short="${url}"
+                           data-token="${token}">
+                            <span class="icon icon-trash"></span>
+                        </a>
+                    </div>
+                    <input type="text" class="form-control" id="link-del-${url}" value="${link}" readonly>
+                    <a href="#" class="input-group-addon copy-to-clipboard-link" title="<%= l('Copy to clipboard') %>">
+                        <span class="icon icon-clipboard"></span>
+                    </a>
+                </div>`;
     } else if (dl !== '') {
-        url = url+'?'+dl;
+        url = `${url}?${dl}`;
     }
-    return '<%== prefix() %>'+url;
+    return `<%== prefix() %>${url}`;
 }
 
 function badToast(msg) {
@@ -215,4 +218,15 @@ function goodToast(msg) {
         gravity: 'bottom',
         positionLeft: false
     }).showToast();
+}
+
+function formatDate(unixTimestamp) {
+    return new Date(unixTimestamp * 1000).toLocaleString(window.navigator.language, {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        weekday: 'long',
+        hour: '2-digit',
+        minute: '2-digit',
+    })
 }

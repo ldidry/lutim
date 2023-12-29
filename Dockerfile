@@ -5,9 +5,9 @@ ARG VCS_REF
 ARG VERSION
 LABEL org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.name="Lets Upload That Image" \
-      org.label-schema.url="https://lut.im/" \
+      org.label-schema.url="https://lutim.fiat-tux.fr/" \
       org.label-schema.vcs-ref=$VCS_REF \
-      org.label-schema.vcs-url="https://git.framasoft.org/luc/lutim" \
+      org.label-schema.vcs-url="https://framagit.org/fiat-tux/hat-softwares/lutim" \
       org.label-schema.vendor="Luc Didry" \
       org.label-schema.version=$VERSION \
       org.label-schema.schema-version="1.0"

@@ -49,11 +49,6 @@
     # optional, default is 5
     #anti_flood_delay  => 5,
 
-    # twitter account which will appear on twitter cards
-    # see https://dev.twitter.com/docs/cards/validation/validator to register your Lutim instance on twitter
-    # optional, no default
-    #tweet_card_via    => '@foo',
-
     # max image size, in octets
     # you can write it 10*1024*1024
     # optional, default is 10485760
@@ -244,7 +239,7 @@
     # array of memcached servers to cache URL in order to accelerate responses to often-viewed URL.
     # If set to [], the use of memcached is disabled.
     # If you use memcached, the internal cache (see cache_max_size option above) will not be used.
-    # Please see https://framagit.org/luc/lutim/wikis/memcached to know how to configure your memcached
+    # Please see https://framagit.org/fiat-tux/hat-softwares/lutim/-/wikis/memcached to know how to configure your memcached
     # servers.
     # exemple of valid value: ['127.0.0.1:11211']
     # optional, default is []

@@ -655,11 +655,11 @@ sub short {
                 }
             }
             return $c->render(
-                template => 'twitter',
+                template => 'share',
                 layout   => undef,
                 short    => $short,
                 filename => $image->filename,
-                mimetype => ($c->req->url->to_abs()->scheme eq 'https') ? $image->mediatype : '',
+                mimetype => $image->mediatype,
                 width    => $width,
                 height   => $height
             );

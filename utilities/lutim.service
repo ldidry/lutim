@@ -1,6 +1,6 @@
 [Unit]
 Description=Image hosting and sharing service
-Documentation=https://framagit.org/luc/lutim
+Documentation=https://framagit.org/fiat-tux/hat-softwares/lutim
 Requires=network.target
 After=network.target
 #Requires=postgresql.service
