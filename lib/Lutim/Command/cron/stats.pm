@@ -198,11 +198,11 @@ var disabled_donut = {
 };
 EOF
 
-    Mojo::File->new('themes/'.$config->{theme}.'/templates/stats.json.ep')->spurt(encode_json($stats));
-    Mojo::File->new('themes/'.$config->{theme}.'/templates/data.html.ep')->spurt($dom);
-    Mojo::File->new('themes/'.$config->{theme}.'/templates/raw.html.ep')->spurt(encode('UTF-8', $dom2));
+    Mojo::File->new('themes/'.$config->{theme}.'/templates/stats.json.ep')->spew(encode_json($stats));
+    Mojo::File->new('themes/'.$config->{theme}.'/templates/data.html.ep')->spew($dom);
+    Mojo::File->new('themes/'.$config->{theme}.'/templates/raw.html.ep')->spew(encode('UTF-8', $dom2));
     mkdir 'themes/'.$config->{theme}.'/templates/partial/' unless -d 'themes/'.$config->{theme}.'/templates/partial/';
-    Mojo::File->new('themes/'.$config->{theme}.'/templates/partial/raw.js.ep')->spurt(encode('UTF-8', $js));
+    Mojo::File->new('themes/'.$config->{theme}.'/templates/partial/raw.js.ep')->spew(encode('UTF-8', $js));
 }
 
 =encoding utf8
