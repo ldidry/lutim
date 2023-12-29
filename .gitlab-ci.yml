@@ -1,6 +1,6 @@
 image: hatsoftwares/lutim-test-ci:latest
 stages:
-  - publish_changelog
+  - create_release
   - pouet_it
   - podcheck
   - carton
