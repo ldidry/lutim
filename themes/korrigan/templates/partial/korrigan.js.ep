@@ -1,0 +1,131 @@
+% # vim:set sw=4 ts=4 sts=4 ft=javascript expandtab:
+function buildMessage(success, msg) {
+    if(success) {
+        var s_url = link([msg.short, '.', msg.ext].join(''), '');
+        var thumb = (msg.thumb !== null) ? `<div class="preview">
+                                                <a href="${s_url}" target="_blank">
+                                                    <img class="thumbnail img-responsive" alt="${cleanName(msg.filename, true)} thumbnail" src="${msg.thumb}">
+                                                </a>
+                                            </div>` : '';
+        return `<div class="alert alert-success" id="alert-${msg.real_short}">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <div>${thumb}
+                        <div>
+                            <h4>
+                                <a href="${s_url}" target="_blank">
+                                    ${msg.filename}
+                                </a>
+                            </h4>
+                            <form class="form">
+                                <div class="form-group">
+                                    <label class="sr-only" for="view${msg.real_short}"><%= l('View link') %></label>
+                                    <div class="input-group input-group-sm">
+                                        <div class="input-group-btn adjust-addon">
+                                            <a href="${s_url}" target="_blank" class="btn btn-default">
+                                                <span class="icon icon-eye" title=" <%= l('View link') %>"></span>
+                                            </a>
+                                        </div>
+                                        <input type="text" class="form-control view-link-input" id="view${msg.real_short}" value="${s_url}" readonly>
+                                        <a href="#" class="input-group-addon copy-to-clipboard-link" title="<%= l('Copy to clipboard') %>">
+                                            <span class="icon icon-clipboard"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="sr-only" for="markdown${msg.real_short}"><%= l('Markdown syntax') %></label>
+                                    <div class="input-group input-group-sm">
+                                        <div class="input-group-addon adjust-addon">
+                                            <span class="markdown-mark-solid" title="<%= l('Markdown syntax') %>"></span>
+                                        </div>
+                                        <input type="text" class="form-control" id="markdown${msg.real_short}" value="![](${link(msg.short, '')})" readonly>
+                                        <a href="#" class="input-group-addon copy-to-clipboard-link" title="<%= l('Copy to clipboard') %>">
+                                            <span class="icon icon-clipboard"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="sr-only" for="download${msg.real_short}"><%= l('Download link') %></label>
+                                    <div class="input-group input-group-sm">
+                                        <div class="input-group-btn adjust-addon">
+                                            <a href="${link(msg.short, 'dl')}" class="btn btn-default">
+                                                <span class="icon icon-download" title="<%= l('Download link') %>"></span>
+                                            </a>
+                                        </div>
+                                        <input type="text" class="form-control" id="download${msg.real_short}" value="${link(msg.short, 'dl')}" readonly>
+                                        <a href="#" class="input-group-addon copy-to-clipboard-link" title="<%= l('Copy to clipboard') %>">
+                                            <span class="icon icon-clipboard"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="sr-only" for="share${msg.real_short}"><%= l('Link for share on social networks') %></label>
+                                    <div class="input-group input-group-sm">
+                                        <div class="input-group-btn adjust-addon">
+                                            <a href="${link(msg.short, 't')}" target="_blank" class="btn btn-default">
+                                                <span class="icon icon-share" title="<%= l('Link for share on social networks') %>"></span>
+                                            </a>
+                                        </div>
+                                        <input type="text" class="form-control" id="share${msg.real_short}" value="${link(msg.short, 't')}" readonly>
+                                        <a href="#" class="input-group-addon copy-to-clipboard-link" title="<%= l('Copy to clipboard') %>">
+                                            <span class="icon icon-clipboard"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <span class="form-control-static">${link(msg.real_short, '', msg.token)}</span>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <form class="form col-sm-11 col-sm-offset-1" role="form" method="POST" action="${link(msg.real_short, '', msg.token, true)}">
+                            <div class="form-group form-inline">
+                                <select id="day-${msg.real_short}" name="delete-day" class="form-control">
+% my @delays = split(',', $self->config('proposed_delays'));
+% for my $delay (@delays) {
+%   my $text = (defined($d->{'delay_'.$delay})) ? $d->{'delay_'.$delay} : l('%1 days', $delay);
+%   if (config('max_delay')) {
+%       if ($delay) {
+%           if ($delay < config('max_delay')) {
+                                    <option value="<%= $delay %>" <%== is_selected($delay) %>><%= $text %></option>
+%           } elsif ($delay == config('max_delay')) {
+                                    <option value="<%= $delay %>" <%== is_selected($delay) %>><%= $text %></option>
+%               last;
+%           } else {
+%               my $text = ($delay == 1) ? l('24 hours') : l('%1 days', $delay);
+                                    <option value="<%= config('max_delay') %>" <%== is_selected(config('max_delay')) %>><%= l('%1 days', config('max_delay')) %></option>
+%               last;
+%           }
+%       }
+%   } else {
+                                    <option value="<%= $delay %>" <%== is_selected($delay) %>><%= $text %></option>
+%   }
+% }
+                                </select>&nbsp;
+                                <div class="checkbox">
+                                    <label>
+                                        <input id="first-view-${msg.real_short}" type="checkbox" name="first-view"> <%= l('Delete at first view?') %>
+                                    </label>
+                                </div>&nbsp;
+                                <a href="#"
+                                   class="btn btn-sm btn-default btn-primary modify-image"
+                                   data-modlink="${link(msg.real_short, '', msg.token, true)}"
+                                   data-modshort="${msg.real_short}">
+                                    <%= l('Let\'s go!') %>
+                                </a>
+                            </div>
+                        </form>
+                    </div>
+                </div>`
+    } else {
+        return `<div class="alert alert-danger">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <strong><%= l('Something bad happened') %></strong><br>
+                    ${cleanName(msg.filename, false)}
+                    <br>
+                    ${cleanName(msg.msg, false)}
+                </div>`;
+    }
+}

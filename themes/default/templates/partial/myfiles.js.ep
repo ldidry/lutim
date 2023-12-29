@@ -57,7 +57,7 @@ function onCheck(e) {
     var short = $(this).data('short');
     var ext   = $(this).data('ext');
     if ($(this).is(':checked')) {
-        addToShortHash(short+'.'+ext);
+        addToShortHash(`${short}.${ext}`);
         addToZipHash(short);
         addToRandomHash(short);
         if (!$('#check-all').is(':checked') && isAllChecked()) {
@@ -67,7 +67,7 @@ function onCheck(e) {
         if ($('#check-all').is(':checked')) {
             $('#check-all').prop('checked', false);
         }
-        rmFromShortHash(short+'.'+ext);
+        rmFromShortHash(`${short}.${ext}`);
         rmFromZipHash(short);
         rmFromRandomHash(short);
     }
@@ -118,10 +118,10 @@ function modifyDelay() {
         success: function(data) {
             updateItem(short, parseInt(limit), del_at_view);
             var newLimit = (parseInt(limit, 10) === 0) ? '<%= l('No limit') %>' : moment.unix(limit * 86400 + created_at).locale(window.navigator.language).format('LLLL');
-            $('#limit-'+short).html(newLimit);
-            $('#del_at_view-'+short).html(delView(del_at_view));
-            $('#edit-'+short).data('moddelay', limit);
-            $('#edit-'+short).data('modfirstview', del_at_view);
+            $(`#limit-${short}`).html(newLimit);
+            $(`#del_at_view-${short}`).html(delView(del_at_view));
+            $(`#edit-${short}`).data('moddelay', limit);
+            $(`#edit-${short}`).data('modfirstview', del_at_view);
             goodToast(data.msg);
         },
         error: function() {
@@ -157,35 +157,62 @@ function populateFilesTable() {
     $('#myfiles').empty();
     files.forEach(function(element, index, array) {
         var real_short = element.real_short;
-        var vlink      = link(element.short+'.'+element.ext, '');
+        var vlink      = link(`${element.short}.${element.ext}`, '');
         var dlink      = link(real_short, 'dl', element.token, false, true);
         var limit      = (element.limit === 0) ? '<%= l('No limit') %>' : moment.unix(element.limit * 86400 + element.created_at).locale(window.navigator.language).format('LLLL');
         var created_at = moment.unix(element.created_at).locale(window.navigator.language).format('LLLL');
 
         var name = element.filename.replace(/</g, '&lt;').replace(/>/g, '&gt;');
-        var tr = [
-            '<tr id="alert-',real_short,'">',
-                '<td><span class="checkbox"><label><input type="checkbox" class="ckbx" data-short="', element.short, '" data-ext="', element.ext, '"><label></span></td>',
-                '<td class="ellips"><span title="', name,'">', name, '</span></td>',
-                '<td class="text-center">',
-                    '<a href="',vlink,'" target="_blank"><i class="icon icon-eye"></i></a>',
-                    '&nbsp;<a href="',vlink,'" class="copy-to-clipboard" title="<%= l('Copy to clipboard') %>"><i class="icon icon-clipboard"></i></a>',
-                '</td>',
-                '<td id="count-',real_short,'" class="text-center"></td>',
-                '<td id="del_at_view-', real_short, '" class="text-center">', delView(element.del_at_view), '</td>',
-                '<td>', created_at, '</td>',
-                '<td>',
-                    '<span id="limit-', element.real_short, '">', limit, '</span>',
-                    '&nbsp;<a href="#" id="edit-', element.real_short, '" data-modlink="', link(element.real_short, '', element.token, true), '" data-modshort="', element.real_short, '" data-modfirstview="', element.del_at_view, '" data-moddelay="', element.limit, '" data-modcreated_at="', element.created_at, '" data-modname="', name, '" title="<%= l('Modify expiration delay') %>">',
-                        '<i class="icon icon-edit"></i>',
-                    '</a>',
-                '</td>',
-                '<td class="text-center"><a id="del-',real_short,'" data-short="',real_short,'" data-token="',element.token,'" href="#" class="remove-link"><i class="icon icon-trash"></i></a></td>',
-            '</tr>'
-        ].join('');
+        var tr = `<tr id="alert-${real_short}">',
+                      <td>
+                          <span class="checkbox">
+                              <label>
+                                  <input type="checkbox"
+                                         class="ckbx"
+                                         data-short="${element.short}"
+                                         data-ext="${element.ext}">
+                              </label>
+                          </span>
+                      </td>
+                      <td class="ellips"><span title="${name}">${name}</span></td>
+                      <td class="text-center">
+                          <a href="${vlink}" target="_blank"><i class="icon icon-eye"></i></a>
+                          &nbsp;<a href="${vlink}"
+                                   class="copy-to-clipboard"
+                                   title="<%= l('Copy to clipboard') %>">
+                                   <i class="icon icon-clipboard"></i>
+                          </a>
+                      </td>
+                      <td id="count-${real_short}" class="text-center"></td>
+                      <td id="del_at_view-${real_short}" class="text-center">${delView(element.del_at_view)}</td>
+                      <td>${created_at}</td>
+                      <td>
+                          <span id="limit-${element.real_short}">${limit}</span>
+                          &nbsp;<a href="#"
+                                   id="edit-${element.real_short}"
+                                   data-modlink="${link(element.real_short, '', element.token, true)}"
+                                   data-modshort="${element.real_short}"
+                                   data-modfirstview="${element.del_at_view}"
+                                   data-moddelay="${element.limit}"
+                                   data-modcreated_at="${element.created_at}"
+                                   data-modname="${name}"
+                                   title="<%= l('Modify expiration delay') %>">
+                              <i class="icon icon-edit"></i>
+                          </a>
+                      </td>
+                      <td class="text-center">
+                          <a id="del-${real_short}"
+                             data-short="${real_short}"
+                             data-token="${element.token}"
+                             href="#"
+                             class="remove-link">
+                             <i class="icon icon-trash"></i>
+                          </a>
+                      </td>
+                  </tr>`;
         $('#myfiles').append(tr);
-        $('#del-'+real_short).on('click', delImage);
-        $('#edit-'+real_short).on('click', editImage);
+        $(`#del-${real_short}`).on('click', delImage);
+        $(`#edit-${real_short}`).on('click', editImage);
 
         $.ajax({
             url  : '<%== url_for('counter') %>',
@@ -197,17 +224,17 @@ function populateFilesTable() {
             success: function(data) {
                 if (data.success) {
                     if (data.enabled) {
-                        $('#count-'+real_short).text(data.counter);
+                        $(`#count-${real_short}`).text(data.counter);
                     } else {
                         delItem(real_short);
-                        $('#alert-'+real_short).remove();
+                        $(`#alert-${real_short}`).remove();
                     }
                 } else {
-                    badToast(element.filename+' '+data.msg);
+                    badToast(`${element.filename} ${data.msg}`);
                 }
             },
             error: function() {
-                badToast(element.filename+'<%= l(': Error while trying to get the counter.') %>');
+                badToast(`${element.filename}<%= l(': Error while trying to get the counter.') %>`);
             }
         });
     });

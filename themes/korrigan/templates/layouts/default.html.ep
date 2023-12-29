@@ -78,6 +78,7 @@
 % }
 % if (current_route 'index') {
         %= javascript '/partial/lutim.js'
+        %= javascript '/partial/korrigan.js'
 % }
 % if (current_route 'gallery') {
         %= javascript '/js/photoswipe.min.js'
@@ -86,6 +87,7 @@
         %= javascript '/js/FileSaver.min.js'
         %= javascript '/partial/gallery.js'
         %= javascript '/partial/lutim.js'
+        %= javascript '/partial/korrigan.js'
 % }
 % if (current_route 'myfiles') {
         %= javascript '/js/moment-with-locales.min.js'
