@@ -1,6 +1,8 @@
 Revision history for Lutim
 
-0.16.0 ????-??-??
+0.17.0 ????-??-??
+
+0.16.0 2023-12-29
 	- ⬆️ UUpdate jQuery
 	- 💥 BREAKING CHANGE: no more twitter cards
 	- 🎨 — Use template literals in js
