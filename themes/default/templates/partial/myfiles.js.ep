@@ -117,7 +117,7 @@ function modifyDelay() {
         },
         success: function(data) {
             updateItem(short, parseInt(limit), del_at_view);
-            var newLimit = (parseInt(limit, 10) === 0) ? '<%= l('No limit') %>' : moment.unix(limit * 86400 + created_at).locale(window.navigator.language).format('LLLL');
+            var newLimit = (parseInt(limit, 10) === 0) ? '<%= l('No limit') %>' : formatDate(limit * 86400 + created_at);
             $(`#limit-${short}`).html(newLimit);
             $(`#del_at_view-${short}`).html(delView(del_at_view));
             $(`#edit-${short}`).data('moddelay', limit);
@@ -159,8 +159,8 @@ function populateFilesTable() {
         var real_short = element.real_short;
         var vlink      = link(`${element.short}.${element.ext}`, '');
         var dlink      = link(real_short, 'dl', element.token, false, true);
-        var limit      = (element.limit === 0) ? '<%= l('No limit') %>' : moment.unix(element.limit * 86400 + element.created_at).locale(window.navigator.language).format('LLLL');
-        var created_at = moment.unix(element.created_at).locale(window.navigator.language).format('LLLL');
+        var limit      = (element.limit === 0) ? '<%= l('No limit') %>' : formatDate(element.limit * 86400 + element.created_at);
+        var created_at = formatDate(element.created_at);
 
         var name = element.filename.replace(/</g, '&lt;').replace(/>/g, '&gt;');
         var tr = `<tr id="alert-${real_short}">',

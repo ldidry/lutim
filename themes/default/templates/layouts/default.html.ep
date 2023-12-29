@@ -86,7 +86,6 @@
         %= javascript '/partial/lutim.js'
 % }
 % if (current_route 'myfiles') {
-        %= javascript '/js/moment-with-locales.min.js'
         %= javascript '/partial/myfiles.js'
 % }
     </body>
