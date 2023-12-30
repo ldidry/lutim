@@ -73,7 +73,7 @@ function buildMessage(success, msg) {
                                 </div>
                                 <div class="form-group">
                                     <div class="input-group">
-                                        <span class="form-control-static">${link(msg.real_short, '', msg.token)}</span>
+                                        <span class="form-control-static">${link(msg.real_short, '', msg.token, false, false, msg.ext)}</span>
                                     </div>
                                 </div>
                             </form>
@@ -128,4 +128,14 @@ function buildMessage(success, msg) {
                     ${cleanName(msg.msg, false)}
                 </div>`;
     }
+}
+
+// Overwrite the function to edit the gallery selector: `.container .gallery` instead of `.gallery` as the page name is added
+// to the body's classnames in this theme.
+function appendToGallery(url, width, height) {
+    $('.container .gallery').append(`<figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+                              <a href="${url}" itemprop="contentUrl" data-size="${width}x${height}">
+                                  <img src="${url}?width=275" itemprop="thumbnail" alt="" class="img-responsive"/>
+                              </a>
+                          </figure>`);
 }

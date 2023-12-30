@@ -134,6 +134,15 @@
     # optional, default is 0
     #disable_api => 0,
 
+    # Define a path to the upload directory, where the uploaded images will be stored.
+    # You can define it relative to lutim directory or set an absolute path.
+    # The path is stored in database for each uploaded file, so you’ll need to do some
+    # SQL commands if you move the images in an other directory (if you keep the old directory
+    # where it was, you have nothing to do).
+    # Remember that it has to be in a directory writable by Lutim user
+    # optional, default is 'files'
+    #upload_dir => 'files',
+
     # choose what database you want to use
     # valid choices are sqlite and postgresql (all lowercase)
     # optional, default is sqlite

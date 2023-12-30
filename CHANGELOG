@@ -1,9 +1,14 @@
 Revision history for Lutim
 
 0.17.0 ????-??-??
+	- 🐛 — AVIF format support (#139)
+	- ✨ — Allow to configure the directory where to store the images (#125)
+	- ✨ — Ask for confirmation before deleting image on index page (#92)
+	- ✨ — Mass delete button in "My images" page (#47)
+	- ♿ — Improve accessibility on index page
 
 0.16.0 2023-12-29
-	- ⬆️ UUpdate jQuery
+	- ⬆️ Update jQuery
 	- 💥 BREAKING CHANGE: no more twitter cards
 	- 🎨 — Use template literals in js
 	- 🐛 — Gallery, zip and random URLs are now updated when closing image dialog box

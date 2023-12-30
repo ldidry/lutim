@@ -134,3 +134,21 @@ h1.ellips {
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+/*
+ * a11y
+ */
+.navbar-default .navbar-brand,
+.navbar-default .navbar-nav > li > a,
+.navbar-default .navbar-text {
+    color: #555;
+}
+
+.navbar-default .navbar-nav > li > a:focus
+.navbar-default .navbar-nav > li > a:hover {
+    color: #111;
+}
+
+.btn-primary {
+    background-color: #3c74c8;
+}

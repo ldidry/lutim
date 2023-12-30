@@ -23,6 +23,7 @@ our $default_config = {
     watermark_enforce   => 'none',
     theme               => 'default',
     disable_api         => 0,
+    upload_dir          => 'files',
     dbtype              => 'sqlite',
     db_path             => 'lutim.db',
     max_files_in_zip    => 15,

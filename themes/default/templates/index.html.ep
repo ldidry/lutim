@@ -180,7 +180,7 @@
         </div>
         <div class="form-group">
             <label for="lutim-file"><%= l('Send an image') %></label>
-            <input type="file" name="file" id="lutim-file" accept="image/*">
+            <input type="file" name="file" id="lutim-file" accept="image/*,image/avif">
         </div>
         <div class="form-group">
             <label for="lutim-file-url"><%= l('Upload an image with its URL') %></label>
@@ -228,7 +228,7 @@
         <div class="browser">
             <label>
                 <span><%= l('Click to open the file browser') %></span>
-                <input type="file" name="files[]" multiple="multiple" title='<%= l('Click to open the file browser') %>' accept="image/*">
+                <input type="file" name="files[]" multiple="multiple" title='<%= l('Click to open the file browser') %>' accept="image/*,image/avif">
             </label>
         </div>
     </div>

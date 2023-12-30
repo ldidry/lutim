@@ -2,7 +2,7 @@
 {
 	border: 2px dotted #A5A5C7;
 	width: 100%;
-	color: #92AAB0;
+	color: #777;
 	text-align: center;
 	vertical-align: middle;
 	padding: 30px 0px;
@@ -22,7 +22,7 @@
 .uploader div.or {
 	font-size: 50%;
 	font-weight: bold;
-	color: #C0C0C0;
+	color: #677;
 	padding: 10px;
 }
 
@@ -39,7 +39,7 @@
 }
 
 .uploader div.browser label {
-	background-color: #5a7bc2;
+	background-color: #416bc4;
 	padding: 5px 15px;
 	color: white;
 	padding: 6px 0px;

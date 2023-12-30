@@ -2,6 +2,7 @@
 package Lutim::Controller::Image;
 use Mojo::Asset::Memory;
 use Mojo::Base 'Mojolicious::Controller';
+use Mojo::File qw(path);
 use Mojo::Util qw(url_escape url_unescape b64_encode encode);
 use Mojo::JSON qw(true false);
 use Lutim::DB::Image;
@@ -390,9 +391,6 @@ sub add {
         my ($msg, $short, $real_short, $token, $thumb, $limit, $created);
         # Check file type
         if (index($mediatype, 'image/') >= 0) {
-            # Create directory if needed
-            mkdir('files', 0700) unless (-d 'files');
-
             if ($c->req->is_limit_exceeded) {
                 $msg = $c->l('The file exceed the size limit (%1)', $c->req->max_message_size);
                 if (defined($c->param('format')) && $c->param('format') eq 'json') {
@@ -413,10 +411,12 @@ sub add {
                 # Save file and create record
                 my $filename = unidecode($upload->filename);
                 my $ext      = ($filename =~ m/([^.]+)$/)[0];
-                my $path     = 'files/'.$record->short.'.'.$ext;
+                my $path     = path($c->config('upload_dir'), $record->short.'.'.$ext)->to_string;
 
                 my ($width, $height);
-                if ($im_loaded && $mediatype ne 'image/svg+xml' && $mediatype !~ m#image/(x-)?xcf# && $mediatype ne 'image/webp') { # ImageMagick don't work in Debian with svg (for now?)
+                if ($im_loaded && $mediatype ne 'image/svg+xml' # ImageMagick doesn't work with SVG, xcf or avif files
+                               && $mediatype !~ m#image/(x-)?xcf#
+                               && $mediatype ne 'image/avif') {
                     my $im  = Image::Magick->new;
                     $im->BlobToImage($upload->slurp);
 
@@ -484,7 +484,9 @@ sub add {
                 }
 
                 unless (defined($keep_exif) && $keep_exif) {
-                    if ($mediatype ne 'image/svg+xml' && $mediatype !~ m#image/(x-)?xcf# && $mediatype ne 'image/webp') {
+                    # Exiftool can’t process SVG or xcf files
+                    if ($mediatype ne 'image/svg+xml'
+                        && $mediatype !~ m#image/(x-)?xcf#) {
                         # Remove the EXIF tags
                         my $data = new IO::Scalar \$upload->slurp();
                         my $et   = Image::ExifTool->new;
@@ -642,7 +644,7 @@ sub short {
             if ($image->mediatype eq 'image/gif') {
                 if (defined($image->width) && defined($image->height)) {
                     ($width, $height) = ($image->width, $image->height);
-                } elsif ($im_loaded) {
+                } elsif ($im_loaded && $image->mediatype !~ m/xcf|avif/) {
                     my $upload = $c->decrypt($key, $image->path, $image->iv);
                     my $im     = Image::Magick->new;
                     $im->BlobToImage($upload->slurp);

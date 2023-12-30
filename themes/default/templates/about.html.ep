@@ -18,7 +18,7 @@
     <h4><%= l('How to report an image?') %></h4>
     <p><%= l('Please contact the administrator: %1', config('contact')) %></p>
     <h4><%= l('How do you pronounce Lutim?') %></h4>
-    <p><%== l('Juste like you pronounce the French word <a href="https://fr.wikipedia.org/wiki/Lutin">lutin</a> (/ly.tɛ̃/).') %></p>
+    <p><%== l('The way you pronounce the French word <a href="%1">lutin</a> (/ly.tɛ̃/).', 'https://fr.wikipedia.org/wiki/Lutin') %></p>
     <h4><%= l('What about the software which provides the service?') %></h4>
     <p><%== l('The Lutim software is a <a href="http://en.wikipedia.org/wiki/Free_software">free software</a>, which allows you to download and install it on you own server. Have a look at the <a href="https://www.gnu.org/licenses/agpl-3.0.html">AGPL</a> to see what you can do.') %></p>
     <p><%== l('For more details, see the <a href="https://framagit.org/fiat-tux/hat-softwares/lutim">homepage of the project</a>.') %></p>

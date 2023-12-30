@@ -139,10 +139,25 @@ function clickOnCopyLink(e) {
     e.preventDefault();
     copyToClipboard($(this));
 }
+function delImageConfirm(e) {
+    e.preventDefault();
+    var short = $(this).attr('data-short');
+    if (confirm(`<%= l('Are you sure you want to delete the image ${short}?') %>`)) {
+        var token = $(this).attr('data-token');
+        var ext = $(this).attr('data-ext');
+        delImageRequest(short, token);
+        rmFromShortHash(`${short}.${ext}`);
+        rmFromZipHash(short);
+        rmFromRandomHash(short);
+    }
+}
 function delImage(e) {
     e.preventDefault();
     var short = $(this).attr('data-short');
     var token = $(this).attr('data-token');
+    delImageRequest(short, token);
+}
+function delImageRequest(short, token) {
     $.ajax({
         url: `<%= url_for('/') %>d/${short}/${token}`,
         method: 'GET',
@@ -162,10 +177,13 @@ function delImage(e) {
         error: function() {
         },
         complete: function() {
+            if (typeof evaluateMassDelete === "function") {
+                evaluateMassDelete();
+            }
         }
     });
 }
-function link(url, dl, token, modify, only_url) {
+function link(url, dl, token, modify, only_url, ext) {
     if (token !== undefined) {
         if (modify !== undefined && modify === true) {
             return  `<%== url_for('/m/')->to_abs() %>${url}/${token}`;
@@ -182,6 +200,7 @@ function link(url, dl, token, modify, only_url) {
                            title="<%= l('Deletion link') %>"
                            id="del-${url}"
                            data-short="${url}"
+                           data-ext="${ext}"
                            data-token="${token}">
                             <span class="icon icon-trash"></span>
                         </a>
