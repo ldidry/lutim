@@ -212,6 +212,13 @@ function populateFilesTable() {
                   </tr>`;
         $('#myfiles').append(tr);
         $(`#del-${real_short}`).on('click', delImage);
+        $(`#del-${real_short}`).on('click', function(e) {
+            e.preventDefault();
+            rmFromShortHash(`${element.short}.${element.ext}`);
+            rmFromZipHash(element.short);
+            rmFromRandomHash(element.short);
+        });
+
         $(`#edit-${real_short}`).on('click', editImage);
 
         $.ajax({

@@ -32,15 +32,15 @@ msgstr ""
 msgid "-or-"
 msgstr ""
 
-#: lib/Lutim.pm:342 lib/Lutim/Command/cron/stats.pm:158 lib/Lutim/Command/cron/stats.pm:172 lib/Lutim/Command/cron/stats.pm:189 themes/default/templates/index.html.ep:5 themes/default/templates/myfiles.html.ep:5 themes/default/templates/partial/raw.js.ep:25 themes/default/templates/partial/raw.js.ep:8 themes/default/templates/raw.html.ep:10
+#: lib/Lutim.pm:346 lib/Lutim/Command/cron/stats.pm:158 lib/Lutim/Command/cron/stats.pm:172 lib/Lutim/Command/cron/stats.pm:189 themes/default/templates/index.html.ep:5 themes/default/templates/myfiles.html.ep:5 themes/default/templates/partial/raw.js.ep:25 themes/default/templates/partial/raw.js.ep:8 themes/default/templates/raw.html.ep:10
 msgid "1 year"
 msgstr ""
 
-#: lib/Lutim.pm:341 lib/Lutim/Command/cron/stats.pm:155 lib/Lutim/Command/cron/stats.pm:169 lib/Lutim/Command/cron/stats.pm:186 themes/default/templates/index.html.ep:4 themes/default/templates/myfiles.html.ep:33 themes/default/templates/myfiles.html.ep:4 themes/default/templates/partial/for_my_delay.html.ep:13 themes/default/templates/partial/lutim.js.ep:138 themes/default/templates/partial/raw.js.ep:22 themes/default/templates/partial/raw.js.ep:5 themes/default/templates/raw.html.ep:7
+#: lib/Lutim.pm:345 lib/Lutim/Command/cron/stats.pm:155 lib/Lutim/Command/cron/stats.pm:169 lib/Lutim/Command/cron/stats.pm:186 themes/default/templates/index.html.ep:4 themes/default/templates/myfiles.html.ep:33 themes/default/templates/myfiles.html.ep:4 themes/default/templates/partial/for_my_delay.html.ep:13 themes/default/templates/partial/lutim.js.ep:138 themes/default/templates/partial/raw.js.ep:22 themes/default/templates/partial/raw.js.ep:5 themes/default/templates/raw.html.ep:7
 msgid "24 hours"
 msgstr ""
 
-#: themes/default/templates/partial/myfiles.js.ep:237
+#: themes/default/templates/partial/myfiles.js.ep:244
 msgid ": Error while trying to get the counter."
 msgstr ""
 
@@ -52,12 +52,16 @@ msgstr ""
 msgid "Active images"
 msgstr ""
 
-#: lib/Lutim/Controller/Image.pm:345
+#: lib/Lutim/Controller/Image.pm:346
 msgid "An error occured while downloading the image."
 msgstr ""
 
 #: themes/default/templates/zip.html.ep:2
 msgid "Archives download"
+msgstr ""
+
+#: themes/default/templates/partial/common.js.ep:145
+msgid "Are you sure you want to delete the image ${short}?"
 msgstr ""
 
 #: themes/default/templates/about.html.ep:44 themes/default/templates/myfiles.html.ep:129 themes/default/templates/stats.html.ep:25
@@ -84,11 +88,11 @@ msgstr ""
 msgid "Copied to clipboard"
 msgstr ""
 
-#: themes/default/templates/partial/lutim.js.ep:206 themes/default/templates/partial/lutim.js.ep:273 themes/default/templates/partial/lutim.js.ep:360
+#: themes/default/templates/partial/lutim.js.ep:206 themes/default/templates/partial/lutim.js.ep:267 themes/default/templates/partial/lutim.js.ep:354
 msgid "Copy all view links to clipboard"
 msgstr ""
 
-#: themes/default/templates/index.html.ep:104 themes/default/templates/index.html.ep:16 themes/default/templates/index.html.ep:32 themes/default/templates/index.html.ep:48 themes/default/templates/index.html.ep:80 themes/default/templates/index.html.ep:88 themes/default/templates/index.html.ep:96 themes/default/templates/myfiles.html.ep:66 themes/default/templates/myfiles.html.ep:82 themes/default/templates/myfiles.html.ep:98 themes/default/templates/partial/common.js.ep:190 themes/default/templates/partial/lutim.js.ep:110 themes/default/templates/partial/lutim.js.ep:70 themes/default/templates/partial/lutim.js.ep:82 themes/default/templates/partial/lutim.js.ep:96 themes/default/templates/partial/myfiles.js.ep:182
+#: themes/default/templates/index.html.ep:104 themes/default/templates/index.html.ep:16 themes/default/templates/index.html.ep:32 themes/default/templates/index.html.ep:48 themes/default/templates/index.html.ep:80 themes/default/templates/index.html.ep:88 themes/default/templates/index.html.ep:96 themes/default/templates/myfiles.html.ep:66 themes/default/templates/myfiles.html.ep:82 themes/default/templates/myfiles.html.ep:98 themes/default/templates/partial/common.js.ep:206 themes/default/templates/partial/lutim.js.ep:110 themes/default/templates/partial/lutim.js.ep:70 themes/default/templates/partial/lutim.js.ep:82 themes/default/templates/partial/lutim.js.ep:96 themes/default/templates/partial/myfiles.js.ep:182
 msgid "Copy to clipboard"
 msgstr ""
 
@@ -116,7 +120,7 @@ msgstr ""
 msgid "Deleted images in 30 days"
 msgstr ""
 
-#: themes/default/templates/index.html.ep:109 themes/default/templates/myfiles.html.ep:121 themes/default/templates/partial/common.js.ep:177 themes/default/templates/partial/common.js.ep:182
+#: themes/default/templates/index.html.ep:109 themes/default/templates/myfiles.html.ep:121 themes/default/templates/partial/common.js.ep:192 themes/default/templates/partial/common.js.ep:197
 msgid "Deletion link"
 msgstr ""
 
@@ -208,11 +212,11 @@ msgstr ""
 msgid "Image delay"
 msgstr ""
 
-#: themes/default/templates/partial/common.js.ep:157
+#: themes/default/templates/partial/common.js.ep:172
 msgid "Image deleted"
 msgstr ""
 
-#: lib/Lutim/Controller/Image.pm:817
+#: lib/Lutim/Controller/Image.pm:815
 msgid "Image not found."
 msgstr ""
 
@@ -366,11 +370,11 @@ msgid "Something bad happened"
 msgstr ""
 
 #. ($c->config('contact')
-#: lib/Lutim/Controller/Image.pm:824
+#: lib/Lutim/Controller/Image.pm:822
 msgid "Something went wrong when creating the zip file. Try again later or contact the administrator (%1)."
 msgstr ""
 
-#: lib/Lutim/Controller/Image.pm:293
+#: lib/Lutim/Controller/Image.pm:294
 msgid "Sorry, the API is disabled"
 msgstr ""
 
@@ -382,7 +386,7 @@ msgstr ""
 msgid "The Lutim software is a <a href=\"http://en.wikipedia.org/wiki/Free_software\">free software</a>, which allows you to download and install it on you own server. Have a look at the <a href=\"https://www.gnu.org/licenses/agpl-3.0.html\">AGPL</a> to see what you can do."
 msgstr ""
 
-#: lib/Lutim/Controller/Image.pm:364
+#: lib/Lutim/Controller/Image.pm:365
 msgid "The URL is not valid."
 msgstr ""
 
@@ -394,19 +398,19 @@ msgstr ""
 msgid "The data has been successfully imported."
 msgstr ""
 
-#: lib/Lutim/Controller/Image.pm:160 lib/Lutim/Controller/Image.pm:228
+#: lib/Lutim/Controller/Image.pm:161 lib/Lutim/Controller/Image.pm:229
 msgid "The delete token is invalid."
 msgstr ""
 
 #. ($upload->filename)
-#: lib/Lutim/Controller/Image.pm:549
+#: lib/Lutim/Controller/Image.pm:547
 msgid "The file %1 is not an image."
 msgstr ""
 
 #. ($tx->res->max_message_size)
 #. ($c->req->max_message_size)
 #. (config('max_file_size')
-#: lib/Lutim/Controller/Image.pm:328 lib/Lutim/Controller/Image.pm:397 themes/default/templates/partial/lutim.js.ep:245
+#: lib/Lutim/Controller/Image.pm:329 lib/Lutim/Controller/Image.pm:395 themes/default/templates/partial/lutim.js.ep:239
 msgid "The file exceed the size limit (%1)"
 msgstr ""
 
@@ -415,12 +419,12 @@ msgid "The graph's datas are not updated in real-time."
 msgstr ""
 
 #. ($image->filename)
-#: lib/Lutim/Controller/Image.pm:230
+#: lib/Lutim/Controller/Image.pm:231
 msgid "The image %1 has already been deleted."
 msgstr ""
 
 #. ($image->filename)
-#: lib/Lutim/Controller/Image.pm:239 lib/Lutim/Controller/Image.pm:244
+#: lib/Lutim/Controller/Image.pm:240 lib/Lutim/Controller/Image.pm:245
 msgid "The image %1 has been successfully deleted"
 msgstr ""
 
@@ -432,7 +436,7 @@ msgstr ""
 msgid "The images you post on Lutim can be stored indefinitely or be deleted at first view or after a delay selected from those proposed."
 msgstr ""
 
-#: lib/Lutim/Controller/Image.pm:168
+#: lib/Lutim/Controller/Image.pm:169
 msgid "The image’s delay has been successfully modified"
 msgstr ""
 
@@ -446,7 +450,7 @@ msgid "There is XXXX image(s) in the gallery"
 msgstr ""
 
 #. ($c->config->{contact})
-#: lib/Lutim/Controller/Image.pm:546
+#: lib/Lutim/Controller/Image.pm:544
 msgid "There is no more available URL. Retry or contact the administrator. %1"
 msgstr ""
 
@@ -471,15 +475,15 @@ msgid "Unable to copy to clipboard"
 msgstr ""
 
 #. ($short)
-#: lib/Lutim/Controller/Image.pm:108 lib/Lutim/Controller/Image.pm:202 lib/Lutim/Controller/Image.pm:273
+#: lib/Lutim/Controller/Image.pm:109 lib/Lutim/Controller/Image.pm:203 lib/Lutim/Controller/Image.pm:274
 msgid "Unable to find the image %1."
 msgstr ""
 
-#: lib/Lutim/Controller/Image.pm:635 lib/Lutim/Controller/Image.pm:680 lib/Lutim/Controller/Image.pm:721 lib/Lutim/Controller/Image.pm:764 lib/Lutim/Controller/Image.pm:776 lib/Lutim/Controller/Image.pm:787 lib/Lutim/Controller/Image.pm:814 lib/Lutim/Plugin/Helpers.pm:90
+#: lib/Lutim/Controller/Image.pm:633 lib/Lutim/Controller/Image.pm:678 lib/Lutim/Controller/Image.pm:719 lib/Lutim/Controller/Image.pm:762 lib/Lutim/Controller/Image.pm:774 lib/Lutim/Controller/Image.pm:785 lib/Lutim/Controller/Image.pm:812 lib/Lutim/Plugin/Helpers.pm:90
 msgid "Unable to find the image: it has been deleted."
 msgstr ""
 
-#: lib/Lutim/Controller/Image.pm:145
+#: lib/Lutim/Controller/Image.pm:146
 msgid "Unable to get counter"
 msgstr ""
 
@@ -560,7 +564,7 @@ msgstr ""
 msgid "core developer"
 msgstr ""
 
-#: lib/Lutim.pm:340 lib/Lutim/Command/cron/stats.pm:154 lib/Lutim/Command/cron/stats.pm:168 lib/Lutim/Command/cron/stats.pm:185 themes/default/templates/index.html.ep:3 themes/default/templates/myfiles.html.ep:3 themes/default/templates/partial/raw.js.ep:21 themes/default/templates/partial/raw.js.ep:4 themes/default/templates/raw.html.ep:6
+#: lib/Lutim.pm:344 lib/Lutim/Command/cron/stats.pm:154 lib/Lutim/Command/cron/stats.pm:168 lib/Lutim/Command/cron/stats.pm:185 themes/default/templates/index.html.ep:3 themes/default/templates/myfiles.html.ep:3 themes/default/templates/partial/raw.js.ep:21 themes/default/templates/partial/raw.js.ep:4 themes/default/templates/raw.html.ep:6
 msgid "no time limit"
 msgstr ""
 

@@ -114,7 +114,7 @@ function buildMessage(success, msg) {
                                 </div>
                                 <div class="form-group">
                                     <div class="input-group col-sm-6 col-xs-12">
-                                        <span class="form-control-static">${link(msg.real_short, '', msg.token)}</span>
+                                        <span class="form-control-static">${link(msg.real_short, '', msg.token, false, false, msg.ext)}</span>
                                     </div>
                                 </div>
                             </form>
@@ -214,13 +214,7 @@ function bindddz(firstview, deleteday) {
                 rmFromZipHash(data.msg.short);
                 rmFromRandomHash(data.msg.short);
             });
-            $(`#del-${data.msg.real_short}`).on('click', function(e) {
-                e.preventDefault();
-                rmFromShortHash(`${data.msg.short}.${data.msg.ext}`);
-                rmFromZipHash(data.msg.short);
-                rmFromRandomHash(data.msg.short);
-            });
-            $(`#del-${data.msg.real_short}`).on('click', delImage);
+            $(`#del-${data.msg.real_short}`).on('click', delImageConfirm);
             if (data.success) {
                 addToShortHash(`${data.msg.short}.${data.msg.ext}`);
                 addToZipHash(data.msg.short);
