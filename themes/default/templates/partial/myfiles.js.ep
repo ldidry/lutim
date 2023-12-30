@@ -54,6 +54,7 @@ function itemExists(name) {
 }
 function onCheck(e) {
     e.preventDefault();
+    evaluateMassDelete();
     var short = $(this).data('short');
     var ext   = $(this).data('ext');
     if ($(this).is(':checked')) {
@@ -247,4 +248,24 @@ function populateFilesTable() {
     });
     $('input.ckbx[type="checkbox"]').on('change', onCheck);
     $('.copy-to-clipboard').on('click', copyLink);
+}
+
+function evaluateMassDelete() {
+    if ($('input.ckbx:checked').length > 0) {
+        $('#mass-delete').removeAttr('disabled');
+        $('#mass-delete').removeClass('disabled');
+    } else {
+        $('#mass-delete').attr('disabled');
+        $('#mass-delete').addClass('disabled');
+    }
+}
+
+function massDelete(event) {
+    event.preventDefault();
+    $('input.ckbx:checked').each(delIm);
+}
+
+function delIm() {
+    var short = $(this).attr('data-short');
+    $(`#del-${short}`).click();
 }

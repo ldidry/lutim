@@ -110,6 +110,7 @@ $('document').ready(function() {
         $('#import').on('change', function() { importStorage(this.files); })
         $('#mod-delay').on('click', modifyDelay);
         $('#check-all').on('click', checkAll)
+        $('#mass-delete').on('click', massDelete);
     }
     $('.copy-to-clipboard-link').on('click', clickOnCopyLink);
     $('.copy-all-to-clipboard-link').on('click', copyAllToClipboard);

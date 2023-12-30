@@ -177,6 +177,9 @@ function delImageRequest(short, token) {
         error: function() {
         },
         complete: function() {
+            if (typeof evaluateMassDelete === "function") {
+                evaluateMassDelete();
+            }
         }
     });
 }
