@@ -1,9 +1,10 @@
 Revision history for Lutim
 
 0.17.0 ????-??-??
+	- 🐛 — AVIF format support
 
 0.16.0 2023-12-29
-	- ⬆️ UUpdate jQuery
+	- ⬆️ Update jQuery
 	- 💥 BREAKING CHANGE: no more twitter cards
 	- 🎨 — Use template literals in js
 	- 🐛 — Gallery, zip and random URLs are now updated when closing image dialog box

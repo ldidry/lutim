@@ -416,7 +416,9 @@ sub add {
                 my $path     = 'files/'.$record->short.'.'.$ext;
 
                 my ($width, $height);
-                if ($im_loaded && $mediatype ne 'image/svg+xml' && $mediatype !~ m#image/(x-)?xcf# && $mediatype ne 'image/webp') { # ImageMagick don't work in Debian with svg (for now?)
+                if ($im_loaded && $mediatype ne 'image/svg+xml' # ImageMagick doesn't work with SVG, xcf or avif files
+                               && $mediatype !~ m#image/(x-)?xcf#
+                               && $mediatype ne 'image/avif') {
                     my $im  = Image::Magick->new;
                     $im->BlobToImage($upload->slurp);
 
@@ -484,7 +486,9 @@ sub add {
                 }
 
                 unless (defined($keep_exif) && $keep_exif) {
-                    if ($mediatype ne 'image/svg+xml' && $mediatype !~ m#image/(x-)?xcf# && $mediatype ne 'image/webp') {
+                    # Exiftool can’t process SVG or xcf files
+                    if ($mediatype ne 'image/svg+xml'
+                        && $mediatype !~ m#image/(x-)?xcf#) {
                         # Remove the EXIF tags
                         my $data = new IO::Scalar \$upload->slurp();
                         my $et   = Image::ExifTool->new;
