@@ -244,10 +244,8 @@ msgid "Is it really free (as in free beer)?"
 msgstr "Är det verkligen gratis?"
 
 #: themes/default/templates/about.html.ep:21
-msgid "Juste like you pronounce the French word <a href=\"https://fr.wikipedia.org/wiki/Lutin\">lutin</a> (/ly.tɛ̃/)."
-msgstr ""
-"Precis som du uttalar ordet <a href=\"https://fr.wikipedia.org/wiki/Lutin\""
-">lutin</a> på franska ([ly.tɛ̃])."
+msgid "The way you pronounce the French word <a href=\"%1\">lutin</a> (/ly.tɛ̃/)."
+msgstr "Precis som du uttalar ordet <a href=\"%1\">lutin</a> på franska ([ly.tɛ̃])."
 
 #: themes/default/templates/index.html.ep:165 themes/default/templates/index.html.ep:196
 msgid "Keep EXIF tags"

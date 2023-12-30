@@ -253,10 +253,8 @@ msgid "Is it really free (as in free beer)?"
 msgstr "Je li se stvarno može besplatno koristiti?"
 
 #: themes/default/templates/about.html.ep:21
-msgid "Juste like you pronounce the French word <a href=\"https://fr.wikipedia.org/wiki/Lutin\">lutin</a> (/ly.tɛ̃/)."
-msgstr ""
-"Isto kao izgovaranje francuske riječi <a href=\"https://fr.wikipedia.org/"
-"wiki/Lutin\">lutin</a> (/ly.tɛ̃/)."
+msgid "The way you pronounce the French word <a href=\"%1\">lutin</a> (/ly.tɛ̃/)."
+msgstr "Isto kao izgovaranje francuske riječi <a href=\"%1\">lutin</a> (/ly.tɛ̃/)."
 
 #: themes/default/templates/index.html.ep:165 themes/default/templates/index.html.ep:209
 msgid "Keep EXIF tags"
