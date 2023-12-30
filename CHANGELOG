@@ -1,6 +1,8 @@
 Revision history for Lutim
 
-0.17.0 ????-??-??
+0.18.0 ????-??-??
+
+0.17.0 2023-12-30
 	- 🐛 — AVIF format support (#139)
 	- ✨ — Allow to configure the directory where to store the images (#125)
 	- ✨ — Ask for confirmation before deleting image on index page (#92)
