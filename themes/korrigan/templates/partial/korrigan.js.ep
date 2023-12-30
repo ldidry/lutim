@@ -129,3 +129,13 @@ function buildMessage(success, msg) {
                 </div>`;
     }
 }
+
+// Overwrite the function to edit the gallery selector: `.container .gallery` instead of `.gallery` as the page name is added
+// to the body's classnames in this theme.
+function appendToGallery(url, width, height) {
+    $('.container .gallery').append(`<figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+                              <a href="${url}" itemprop="contentUrl" data-size="${width}x${height}">
+                                  <img src="${url}?width=275" itemprop="thumbnail" alt="" class="img-responsive"/>
+                              </a>
+                          </figure>`);
+}
