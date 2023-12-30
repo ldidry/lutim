@@ -144,7 +144,7 @@ sub _render_file {
     my $asset = Mojo::Asset::Memory->new;
     $asset->add_chunk($cache->{asset});
 
-    if (defined $thumb && $im_loaded && $mediatype ne 'image/svg+xml' && $mediatype !~ m#image/(x-)?xcf# && $mediatype ne 'image/webp') { # ImageMagick don't work in Debian with svg (for now?)
+    if (defined $thumb && $im_loaded && $mediatype ne 'image/svg+xml' && $mediatype !~ m#image/(x-)?xcf# && $mediatype ne 'image/avif') { # ImageMagick don't work in Debian with svg (for now?)
         my $im  = Image::Magick->new;
         $im->BlobToImage($asset->slurp);
 

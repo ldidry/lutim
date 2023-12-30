@@ -109,6 +109,10 @@ sub startup {
     $self->plugin('Lutim::Plugin::Helpers');
     $self->plugin('Lutim::Plugin::Lang');
 
+    # Create directory if needed
+    mkdir($self->config('upload_dir'), 0700) unless (-d $self->config('upload_dir'));
+    die ('The upload directory ('.$self->config('upload_dir').') is not writable') unless (-w $self->config('upload_dir'));
+
     # Minion
     if ($config->{minion}->{enabled}) {
         $self->config->{minion}->{dbtype} = 'sqlite' unless defined $config->{minion}->{dbtype};

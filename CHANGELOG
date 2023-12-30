@@ -1,7 +1,8 @@
 Revision history for Lutim
 
 0.17.0 ????-??-??
-	- 🐛 — AVIF format support
+	- 🐛 — AVIF format support (#139)
+	- ✨ — Allow to configure the directory where to store the images (#125)
 
 0.16.0 2023-12-29
 	- ⬆️ Update jQuery
