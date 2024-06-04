@@ -7,13 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2024-06-04 21:20+0000\n"
+"Last-Translator: Goudarz Jafari <goudarz.jafari@gmail.com>\n"
+"Language-Team: Persian <https://weblate.framasoft.org/projects/lutim/"
+"default-theme/fa/>\n"
 "Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 5.5.5\n"
 
 #. (7)
 #. (30)
@@ -21,7 +24,7 @@ msgstr ""
 #. (config('max_delay')
 #: lib/Lutim/Command/cron/stats.pm:156 lib/Lutim/Command/cron/stats.pm:157 lib/Lutim/Command/cron/stats.pm:170 lib/Lutim/Command/cron/stats.pm:171 lib/Lutim/Command/cron/stats.pm:187 lib/Lutim/Command/cron/stats.pm:188 themes/default/templates/myfiles.html.ep:24 themes/default/templates/myfiles.html.ep:33 themes/default/templates/myfiles.html.ep:34 themes/default/templates/partial/for_my_delay.html.ep:13 themes/default/templates/partial/for_my_delay.html.ep:14 themes/default/templates/partial/for_my_delay.html.ep:4 themes/default/templates/partial/lutim.js.ep:129 themes/default/templates/partial/lutim.js.ep:138 themes/default/templates/partial/lutim.js.ep:139 themes/default/templates/partial/raw.js.ep:23 themes/default/templates/partial/raw.js.ep:24 themes/default/templates/partial/raw.js.ep:6 themes/default/templates/partial/raw.js.ep:7 themes/default/templates/raw.html.ep:8 themes/default/templates/raw.html.ep:9
 msgid "%1 days"
-msgstr ""
+msgstr "%1 روز"
 
 #. ($total)
 #: themes/default/templates/stats.html.ep:2
@@ -30,63 +33,63 @@ msgstr ""
 
 #: themes/default/templates/index.html.ep:227
 msgid "-or-"
-msgstr ""
+msgstr "-یا-"
 
 #: lib/Lutim.pm:346 lib/Lutim/Command/cron/stats.pm:158 lib/Lutim/Command/cron/stats.pm:172 lib/Lutim/Command/cron/stats.pm:189 themes/default/templates/index.html.ep:5 themes/default/templates/myfiles.html.ep:5 themes/default/templates/partial/raw.js.ep:25 themes/default/templates/partial/raw.js.ep:8 themes/default/templates/raw.html.ep:10
 msgid "1 year"
-msgstr ""
+msgstr "۱ سال"
 
 #: lib/Lutim.pm:345 lib/Lutim/Command/cron/stats.pm:155 lib/Lutim/Command/cron/stats.pm:169 lib/Lutim/Command/cron/stats.pm:186 themes/default/templates/index.html.ep:4 themes/default/templates/myfiles.html.ep:33 themes/default/templates/myfiles.html.ep:4 themes/default/templates/partial/for_my_delay.html.ep:13 themes/default/templates/partial/lutim.js.ep:138 themes/default/templates/partial/raw.js.ep:22 themes/default/templates/partial/raw.js.ep:5 themes/default/templates/raw.html.ep:7
 msgid "24 hours"
-msgstr ""
+msgstr "۲۴ ساعت"
 
 #: themes/default/templates/partial/myfiles.js.ep:245
 msgid ": Error while trying to get the counter."
-msgstr ""
+msgstr ": در تلاش برای بدست آوردن شمارنده خطای رخ داد."
 
 #: themes/default/templates/partial/navbar.html.ep:63
 msgid "About"
-msgstr ""
+msgstr "درباره ما"
 
 #: lib/Lutim/Command/cron/stats.pm:151 themes/default/templates/raw.html.ep:3
 msgid "Active images"
-msgstr ""
+msgstr "تصاویر فعال"
 
 #: lib/Lutim/Controller/Image.pm:346
 msgid "An error occured while downloading the image."
-msgstr ""
+msgstr "هنگام بارگیری تصویر خطایی رخ داد."
 
 #: themes/default/templates/zip.html.ep:2
 msgid "Archives download"
-msgstr ""
+msgstr "بارگیری بایگانی"
 
 #: themes/default/templates/partial/common.js.ep:145
 msgid "Are you sure you want to delete the image ${short}?"
-msgstr ""
+msgstr "آیا مطمئن هستید که تصویر ${short} را می‌خواهید، حذف کنید؟"
 
 #: themes/default/templates/about.html.ep:44 themes/default/templates/myfiles.html.ep:130 themes/default/templates/stats.html.ep:25
 msgid "Back to homepage"
-msgstr ""
+msgstr "بازگشت به صفحه اصلی"
 
 #: themes/default/templates/index.html.ep:230 themes/default/templates/index.html.ep:231
 msgid "Click to open the file browser"
-msgstr ""
+msgstr "برای باز شدن مرور پرونده، کلیک کنید"
 
 #: themes/default/templates/myfiles.html.ep:51
 msgid "Close"
-msgstr ""
+msgstr "بستن"
 
 #: themes/default/templates/gallery.html.ep:29
 msgid "Close (Esc)"
-msgstr ""
+msgstr "بستن (Esc)"
 
 #: themes/default/templates/about.html.ep:30
 msgid "Contributors"
-msgstr ""
+msgstr "مشارکت کنندگان"
 
 #: themes/default/templates/partial/common.js.ep:113 themes/default/templates/partial/common.js.ep:93
 msgid "Copied to clipboard"
-msgstr ""
+msgstr "در کلیپ‌بورد رونوشت شد"
 
 #: themes/default/templates/partial/lutim.js.ep:206 themes/default/templates/partial/lutim.js.ep:267 themes/default/templates/partial/lutim.js.ep:354
 msgid "Copy all view links to clipboard"
