@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2024-03-10 16:38+0000\n"
+"PO-Revision-Date: 2024-06-06 16:59+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://weblate.framasoft.org/projects/lutim/"
 "default-theme/hr/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.4.2\n"
+"X-Generator: Weblate 5.5.5\n"
 
 #. (7)
 #. (30)
@@ -409,8 +409,8 @@ msgid "The Lutim software is a <a href=\"http://en.wikipedia.org/wiki/Free_softw
 msgstr ""
 "Softver Lutim je <a href=\"http://en.wikipedia.org/wiki/Free_software\""
 ">slobodan softver</a> koji omogućuje preuzmanje i instaliranje softvera na "
-"vlastiti poslužitelj. Pogledaj <a href=\"https://www.gnu.org/licenses/agpl-3."
-"0.html\">AGPL</a> za prikaz mogućnosti."
+"vlastiti server. Pogledaj <a href=\"https://www.gnu.org/licenses/agpl-3.0."
+"html\">AGPL</a> za prikaz mogućnosti."
 
 #: lib/Lutim/Controller/Image.pm:348
 msgid "The URL is not valid."
@@ -458,7 +458,7 @@ msgstr "Slika %1 je uspješno izbrisana"
 
 #: themes/default/templates/index.html.ep:57
 msgid "The images are encrypted on the server (Lutim does not keep the key)."
-msgstr "Slike su šifrirane na poslužitelju (Lutim ne čuva ključ)."
+msgstr "Slike su šifrirane na serveru (Lutim ne čuva ključ)."
 
 #: themes/default/templates/about.html.ep:5
 msgid "The images you post on Lutim can be stored indefinitely or be deleted at first view or after a delay selected from those proposed."
