@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2020-06-09 19:24+0000\n"
-"Last-Translator: roberto marcolin <nilogadda@gmail.com>\n"
+"PO-Revision-Date: 2024-12-11 17:28+0000\n"
+"Last-Translator: Giuseppe De Ninno <peppedeninno@gmail.com>\n"
 "Language-Team: Italian <https://weblate.framasoft.org/projects/lutim/"
 "default-theme/it/>\n"
 "Language: it\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.11.2\n"
+"X-Generator: Weblate 5.8.4\n"
 
 #. (7)
 #. (30)
@@ -699,3 +699,7 @@ msgstr "Filigrana semplice"
 #: themes/default/templates/index.html.ep:177 themes/default/templates/index.html.ep:221
 msgid "No watermark"
 msgstr "Nessuna filigrana"
+
+#: themes/default/templates/partial/common.js.ep:145
+msgid "Are you sure you want to delete the image ${short}?"
+msgstr "Sei sicuro di voler cancellare l'immagine ${short}?"
