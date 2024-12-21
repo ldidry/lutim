@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2024-12-21 08:33+0000\n"
+"PO-Revision-Date: 2024-12-21 21:15+0000\n"
 "Last-Translator: Quentin PAGÈS <quentinantonin@free.fr>\n"
 "Language-Team: Occitan <https://weblate.framasoft.org/projects/lutim/"
 "default-theme/oc/>\n"
@@ -709,3 +709,7 @@ msgstr "O planhèm, l'API es desactivada"
 #: themes/default/templates/partial/common.js.ep:145
 msgid "Are you sure you want to delete the image ${short}?"
 msgstr "Volètz vertadièrament suprimir aqueste imatge${short} ?"
+
+#: themes/default/templates/myfiles.html.ep:109
+msgid "Delete selected images"
+msgstr " "
