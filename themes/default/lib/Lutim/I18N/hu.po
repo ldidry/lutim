@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2020-04-10 17:08+0000\n"
-"Last-Translator: Balázs Meskó <mesko.balazs@fsf.hu>\n"
+"PO-Revision-Date: 2025-02-18 21:16+0000\n"
+"Last-Translator: Ghost of Sparta <makesocialfoss32@keemail.me>\n"
 "Language-Team: Hungarian <https://weblate.framasoft.org/projects/lutim/"
 "default-theme/hu/>\n"
 "Language: hu\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.11.2\n"
+"X-Generator: Weblate 5.9.2\n"
 
 #. (7)
 #. (30)
@@ -694,3 +694,15 @@ msgstr "Egy vízjel"
 #: themes/default/templates/index.html.ep:177 themes/default/templates/index.html.ep:221
 msgid "No watermark"
 msgstr "Nincs vízjel"
+
+#: lib/Lutim/Controller/Image.pm:294
+msgid "Sorry, the API is disabled"
+msgstr "Sajnáljuk, az API le van tiltva"
+
+#: themes/default/templates/partial/common.js.ep:145
+msgid "Are you sure you want to delete the image ${short}?"
+msgstr "Biztosan törölni szeretné a(z) ${short} képet?"
+
+#: themes/default/templates/myfiles.html.ep:109
+msgid "Delete selected images"
+msgstr "."
