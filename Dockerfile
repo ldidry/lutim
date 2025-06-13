@@ -1,4 +1,4 @@
-FROM alpine:3.15
+FROM alpine:3.22
 
 ARG BUILD_DATE
 ARG VCS_REF
@@ -20,7 +20,7 @@ RUN chmod -R g+rwX /home/lutim
 
 WORKDIR /home/lutim
 RUN apk --no-cache add perl~=5 \
-                       libpq~=14 \
+                       libpq~=17 \
                        perl-crypt-rijndael~=1 \
                        perl-io-socket-ssl~=2 \
                        perl-net-ssleay~=1 \
@@ -33,8 +33,8 @@ RUN apk --no-cache add perl~=5 \
  && apk --no-cache add --virtual .build-deps build-base~=0.5 \
                                              perl-utils~=5 \
                                              perl-dev~=5 \
-                                             postgresql14-dev~=14 \
-                                             vim~=8 \
+                                             postgresql17-dev~=17 \
+                                             vim~=9 \
                                              wget~=1 \
                                              zlib-dev~=1 \
  && cpan notest Carton Config::FromHash \
