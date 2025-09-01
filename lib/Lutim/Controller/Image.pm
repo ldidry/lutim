@@ -313,8 +313,8 @@ sub add {
                     sleep($c->config->{anti_flood_delay});
                 }
                 my $ua = Mojo::UserAgent->new;
-                my $tx = $ua->get($file_url => {DNT => 1});
-                if (my $res = $tx->success) {
+                my $res = $ua->get($file_url => {DNT => 1})->result;
+                if ($res->is_success) {
                     $file_url    = url_unescape $file_url;
                     $file_url    =~ m#^.*/([^/?]*)\??.*$#;
                     my $filename = $1;
@@ -325,8 +325,8 @@ sub add {
                         filename => $filename
                     );
                     $c->app->{wait_for_it}->{$ip} = time;
-                } elsif ($tx->res->is_limit_exceeded) {
-                    my $msg = $c->l('The file exceed the size limit (%1)', $tx->res->max_message_size);
+                } elsif ($res->is_limit_exceeded) {
+                    my $msg = $c->l('The file exceed the size limit (%1)', $res->max_message_size);
                     if (defined($c->param('format')) && $c->param('format') eq 'json') {
                         return $c->render(
                             json => {
@@ -344,7 +344,7 @@ sub add {
                     }
                 } else {
                     my $msg = $c->l('An error occured while downloading the image.');
-                    $c->app->log->warn('[DOWNLOAD ERROR]'.$c->dumper($tx->error));
+                    $c->app->log->warn('[DOWNLOAD ERROR]'.$c->dumper($res->message));
                     if (defined($c->param('format')) && $c->param('format') eq 'json') {
                         return $c->render(
                             json => {
