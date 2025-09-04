@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2020-03-09 16:23+0000\n"
-"Last-Translator: Luc Didry <luc@framasoft.org>\n"
+"PO-Revision-Date: 2025-09-05 22:53+0000\n"
+"Last-Translator: Ian Gruson <ian-priv@tuta.com>\n"
 "Language-Team: French (France) <https://weblate.framasoft.org/projects/lutim/"
 "default-theme/fr_FR/>\n"
 "Language: fr_FR\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 3.11.2\n"
+"X-Generator: Weblate 5.13.1\n"
 
 #. (7)
 #. (30)
@@ -709,3 +709,11 @@ msgid "For more details, see the <a href=\"https://framagit.org/fiat-tux/hat-sof
 msgstr ""
 "Pour plus de détails, consultez la <a href=\"https://framagit.org/fiat-tux/"
 "hat-softwares/lutim\">page du projet</a>."
+
+#: themes/default/templates/partial/common.js.ep:145
+msgid "Are you sure you want to delete the image ${short}?"
+msgstr "Êtes-vous sûr de vouloir supprimer cette image ${short} ?"
+
+#: lib/Lutim/Controller/Image.pm:294
+msgid "Sorry, the API is disabled"
+msgstr "Navré, l'API est désactivée"
