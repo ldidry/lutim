@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2025-09-05 22:53+0000\n"
-"Last-Translator: Ian Gruson <ian-priv@tuta.com>\n"
+"PO-Revision-Date: 2025-10-13 07:05+0000\n"
+"Last-Translator: Luc Didry <luc@framasoft.org>\n"
 "Language-Team: French (France) <https://weblate.framasoft.org/projects/lutim/"
 "default-theme/fr_FR/>\n"
 "Language: fr_FR\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.13.1\n"
+"X-Generator: Weblate 5.13.3\n"
 
 #. (7)
 #. (30)
@@ -348,7 +348,7 @@ msgid ""
 "these details."
 msgstr ""
 "Seules les images envoyées avec ce navigateur seront listées ici. Les "
-"détails sont stockées en localStorage : si vous supprimez vos données "
+"détails sont stockés en localStorage : si vous supprimez vos données "
 "localStorage, vous perdrez ces détails."
 
 #: themes/default/templates/about.html.ep:16
