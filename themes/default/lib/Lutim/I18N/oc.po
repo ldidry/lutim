@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2020-03-09 16:30+0000\n"
+"PO-Revision-Date: 2024-12-21 21:15+0000\n"
 "Last-Translator: Quentin PAGÈS <quentinantonin@free.fr>\n"
 "Language-Team: Occitan <https://weblate.framasoft.org/projects/lutim/"
 "default-theme/oc/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 3.11.2\n"
+"X-Generator: Weblate 5.9.1\n"
 
 #. (7)
 #. (30)
@@ -701,3 +701,15 @@ msgstr "Filigrana simpla"
 #: themes/default/templates/index.html.ep:177 themes/default/templates/index.html.ep:221
 msgid "No watermark"
 msgstr "Cap de filigrana"
+
+#: lib/Lutim/Controller/Image.pm:294
+msgid "Sorry, the API is disabled"
+msgstr "O planhèm, l'API es desactivada"
+
+#: themes/default/templates/partial/common.js.ep:145
+msgid "Are you sure you want to delete the image ${short}?"
+msgstr "Volètz vertadièrament suprimir aqueste imatge${short} ?"
+
+#: themes/default/templates/myfiles.html.ep:109
+msgid "Delete selected images"
+msgstr " "

@@ -1,6 +1,9 @@
 Revision history for Lutim
 
 0.18.0 ????-??-??
+	- 🌐 — Update translations
+	- 📦 — Update alpine version by @ploc
+	- 🔧 — Ability to configure MOJO_TMPDIR via environment by @s7b4
 
 0.17.0 2023-12-30
 	- 🐛 — AVIF format support (#139)
